@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js stage-bad">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRADE — Plano B (Sala Clara)</title>
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <div class="slide-inner">
+        <span class="section-tag">O estado atual</span>
+        <h2>[TBD] Asserção clínica do hook</h2>
+      </div>
+      <aside class="notes">
+        [0:00-0:30] Hook. Plano B: sem animação.
+        [DATA] Fonte: [TBD]
+      </aside>
+    </section>
+
+    <section class="appendix" data-visibility="hidden">
+      <div class="slide-inner">
+        <span class="section-tag">Apêndice · Conceitos Fundamentais</span>
+        <h2>O que é o sistema GRADE?</h2>
+      </div>
+      <aside class="notes">[Modo residência]</aside>
+    </section>
+
+  </div>
+</div>
+
+<script type="module">
+  import Reveal from 'reveal.js';
+  import Notes from 'reveal.js/plugin/notes/notes.esm.js';
+  import gsap from 'gsap';
+  import 'reveal.js/dist/reveal.css';
+  import '../../shared/css/base.css';
+  import { initAula } from '../../shared/js/engine.js';
+
+  // Plan B: smaller resolution, no transitions
+  await initAula(Reveal, gsap, {
+    plugins: [Notes],
+    width: 1280,
+    height: 720,
+    transition: 'none',
+  });
+  // No animation dispatcher — Plan B is static
+</script>
+
+</body>
+</html>

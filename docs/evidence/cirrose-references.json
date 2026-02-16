@@ -1,0 +1,147 @@
+[
+  {
+    "id": "predesci-2019",
+    "type": "article-journal",
+    "title": "β blockers to prevent decompensation of cirrhosis in patients with clinically significant portal hypertension (PREDESCI): a randomised, double-blind, placebo-controlled, multicentre trial",
+    "author": [
+      { "family": "Villanueva", "given": "Càndid" }
+    ],
+    "container-title": "The Lancet",
+    "volume": "393",
+    "page": "1597-1608",
+    "issued": { "date-parts": [[2019]] },
+    "DOI": "10.1016/S0140-6736(18)31875-0",
+    "PMID": "30910320",
+    "custom": {
+      "trial-name": "PREDESCI",
+      "design": "RCT, double-blind, multicenter",
+      "n": 201,
+      "primary-endpoint": "First decompensation or death",
+      "effect-size": "HR 0.51 (95% CI 0.26–0.97)",
+      "nnt": "5.6 at 3 years",
+      "grade": "moderate",
+      "slide-refs": [],
+      "headline": "Carvedilol reduces first decompensation by 51% in compensated cirrhosis with CSPH"
+    }
+  },
+  {
+    "id": "garcia-pagan-2010",
+    "type": "article-journal",
+    "title": "Early use of TIPS in patients with cirrhosis and variceal bleeding",
+    "author": [
+      { "family": "García-Pagán", "given": "Juan Carlos" }
+    ],
+    "container-title": "New England Journal of Medicine",
+    "volume": "362",
+    "page": "2370-2379",
+    "issued": { "date-parts": [[2010]] },
+    "DOI": "10.1056/NEJMoa0910102",
+    "PMID": "20573925",
+    "custom": {
+      "trial-name": "Early TIPS",
+      "design": "RCT, multicenter",
+      "n": 63,
+      "primary-endpoint": "Treatment failure at 1 year",
+      "effect-size": "1-year mortality 14% vs 26%",
+      "grade": "moderate",
+      "slide-refs": [],
+      "headline": "Early TIPS within 72h reduces 1-year mortality from 26% to 14%"
+    }
+  },
+  {
+    "id": "answer-2018",
+    "type": "article-journal",
+    "title": "Long-term albumin administration in decompensated cirrhosis (ANSWER): an open-label randomised trial",
+    "author": [
+      { "family": "Caraceni", "given": "Paolo" }
+    ],
+    "container-title": "The Lancet",
+    "volume": "391",
+    "page": "2417-2429",
+    "issued": { "date-parts": [[2018]] },
+    "DOI": "10.1016/S0140-6736(18)30840-7",
+    "PMID": "29861076",
+    "custom": {
+      "trial-name": "ANSWER",
+      "design": "RCT, open-label, multicenter",
+      "n": 431,
+      "primary-endpoint": "18-month mortality",
+      "effect-size": "HR 0.62 (95% CI 0.40–0.95)",
+      "grade": "moderate",
+      "slide-refs": [],
+      "headline": "Long-term albumin 40g/week reduces 18-month mortality in decompensated cirrhosis"
+    }
+  },
+  {
+    "id": "confirm-2021",
+    "type": "article-journal",
+    "title": "Terlipressin plus Albumin for the Treatment of Type 1 Hepatorenal Syndrome",
+    "author": [
+      { "family": "Wong", "given": "Florence" }
+    ],
+    "container-title": "New England Journal of Medicine",
+    "volume": "384",
+    "page": "818-828",
+    "issued": { "date-parts": [[2021]] },
+    "DOI": "10.1056/NEJMoa2008290",
+    "PMID": "33657294",
+    "custom": {
+      "trial-name": "CONFIRM",
+      "design": "RCT, double-blind, placebo-controlled, multicenter",
+      "n": 300,
+      "primary-endpoint": "HRS reversal",
+      "effect-size": "RR 1.87 (32% vs 17%)",
+      "safety-signal": "Respiratory failure increased",
+      "grade": "high",
+      "slide-refs": [],
+      "headline": "Terlipressin reverses HRS-AKI in 32% vs 17% placebo, but increases respiratory failure"
+    }
+  },
+  {
+    "id": "canonic-2013",
+    "type": "article-journal",
+    "title": "Acute-on-chronic liver failure is a distinct syndrome that develops in patients with acute decompensation of cirrhosis",
+    "author": [
+      { "family": "Moreau", "given": "Richard" }
+    ],
+    "container-title": "Gastroenterology",
+    "volume": "144",
+    "page": "1426-1437",
+    "issued": { "date-parts": [[2013]] },
+    "DOI": "10.1053/j.gastro.2013.02.042",
+    "PMID": "23474284",
+    "custom": {
+      "trial-name": "CANONIC",
+      "design": "Prospective observational, multicenter (EASL-CLIF)",
+      "n": 1343,
+      "primary-endpoint": "28-day mortality by ACLF grade",
+      "effect-size": "ACLF-3: 73% 28-day mortality",
+      "grade": "moderate",
+      "slide-refs": [],
+      "headline": "ACLF grade 3 carries 73% mortality at 28 days — futility threshold"
+    }
+  },
+  {
+    "id": "baveno-vii-2022",
+    "type": "article-journal",
+    "title": "Baveno VII — Renewing consensus in portal hypertension",
+    "author": [
+      { "family": "de Franchis", "given": "Roberto" }
+    ],
+    "container-title": "Journal of Hepatology",
+    "volume": "76",
+    "page": "959-974",
+    "issued": { "date-parts": [[2022]] },
+    "DOI": "10.1016/j.jhep.2021.12.022",
+    "PMID": "35120736",
+    "custom": {
+      "trial-name": "Baveno VII",
+      "design": "Consensus guideline",
+      "primary-endpoint": "Rule-of-Five for CSPH",
+      "effect-size": "LSM <15 kPa rules out CSPH (NPV 90%), ≥25 kPa rules in (PPV >90%)",
+      "grade": "high",
+      "slide-refs": [],
+      "headline": "Rule-of-Five: LSM thresholds at 5-unit intervals stratify portal hypertension risk"
+    }
+  }
+]

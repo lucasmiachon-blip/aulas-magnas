@@ -1,0 +1,20 @@
+---
+description: "Formato Assertion-Evidence para slides médicos — título como afirmação verificável + evidência visual"
+globs: "aulas/**/*.html"
+alwaysApply: false
+---
+
+# Assertion-Evidence
+
+Todo slide:
+- `<h2>` = frase completa com claim verificável (NÃO rótulo)
+- Corpo = evidência visual (gráfico, tabela, diagrama, número-chave)
+- Max 30 palavras de texto no corpo
+- PROIBIDO `<ul>`/`<ol>` em slides projetados
+- `<aside class="notes">` obrigatório com timing e fontes
+- `<footer class="citation">` com PMID no formato AMA
+
+Animação via data-attributes:
+- `data-animate="countUp|stagger|drawPath|fadeUp|highlight"`
+- NUNCA gsap inline. Cleanup via gsap.context() + revert().
+- Tudo funciona sem animação (graceful degradation).

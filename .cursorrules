@@ -1,0 +1,56 @@
+# .cursorrules — Aulas Magnas v6
+
+> Claude Code é o agente principal. Regras em `.claude/rules/`.
+> Este arquivo: essencial para qualquer modelo no Cursor.
+
+## Projeto
+Apresentações médicas elite. Congressos internacionais.
+3 aulas: GRADE, Meta-análise, Cirrose. Congress (45min) + Residência (+apêndice).
+
+## Stack
+Reveal.js 5.x · GSAP 3.12 · Vite · OKLCH · Zero CDN · npm/ESM · WOFF2 self-hosted
+
+## Regras detalhadas (incluir no contexto quando necessário)
+1. `CLAUDE.md` — visão geral
+2. `.claude/rules/design-system.md` — tokens, cores, Tol palette
+3. `.claude/rules/reveal-patterns.md` — Reveal, GSAP, data-animate
+4. `.claude/rules/design-principles.md` — cognição, Duarte, Tufte, andragogia
+5. `.claude/rules/css-errors.md` — 31 erros catalogados
+6. `.claude/rules/slide-editing.md` — checklist
+7. `.claude/rules/medical-data.md` — fontes Tier 1
+
+## Constraints
+
+### Conteúdo
+- `<h2>` = asserção clínica, NUNCA rótulo genérico
+- PROIBIDO `<ul>`/`<ol>` em slides (só notes/apêndice)
+- Todo `<section>` TEM `<aside class="notes">` (linter bloqueia)
+- Tabelas Tufte: sem bordas verticais
+- Congress = zero revisão básica. Teoria → apêndice.
+
+### Cores
+- var() obrigatório. Linter bloqueia literais (inclui hex).
+- `data-background-color` aceita HEX (exceção: Reveal parseia JS-side)
+- **Cor clínica ≠ UI.** safe/warning/danger = clínico. Progress/tags → --ui-accent.
+- Daltonismo: ícone obrigatório (✓/⚠/✕)
+- Gráficos: paleta Tol (--cmp-1/2/3 ou --data-1..7), NÃO cores clínicas
+
+### Animação
+- data-animate declarativo: countUp|stagger|drawPath|fadeUp|highlight
+- NUNCA gsap inline em slide
+- Print-pdf: engine força estado final (sem animação)
+
+### Infra
+- Zero CDN. Offline = servidor local (npm run preview --port 4173). NÃO file://.
+- Chrome ≥111 (OKLCH). Fallback HEX em @supports not block.
+- Plano A (dark) + Plano B (light, .stage-bad) + calibracao.html (standalone)
+
+### Naming
+- Slides: `S{NNN}_{kebab}.html`
+- Commits: `[AULA] batch N — desc`
+
+## Para double-check
+1. @.cursorrules (este arquivo)
+2. CSS/tokens: @.claude/rules/design-system.md
+3. HTML slides: @.claude/rules/reveal-patterns.md + @.claude/rules/slide-editing.md
+4. Dados: @.claude/rules/medical-data.md

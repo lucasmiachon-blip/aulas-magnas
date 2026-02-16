@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Exports (PDFs, screenshots)
+exports/
+
+# Vite
+.vite/
+*.local
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Fonts (downloaded via npm run fonts:install, not versioned)
+shared/assets/fonts/*.woff2
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# MCP Memory (local knowledge graph)
+.memory/
+
+# Transcripts (arquivos grandes, gerados localmente)
+docs/transcripts/*.whisper.json
+docs/transcripts/*.analysis.json

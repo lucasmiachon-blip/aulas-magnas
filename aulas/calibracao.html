@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calibração de Palco</title>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+  <!-- CALIBRAÇÃO: decidir Plano A vs B -->
+  <section data-background-color="#0d1a2d">
+    <div class="slide-inner slide-navy">
+      <h1 style="font-size:var(--text-hero)">Aa 123</h1>
+      <h2>Headline H2 — teste de legibilidade</h2>
+      <p>Corpo de texto. Se este parágrafo estiver fraco ou ilegível, use Plano B.</p>
+      <div style="display:flex;gap:var(--space-sm);margin:var(--space-md) 0">
+        <div style="width:80px;height:60px;background:var(--bg-navy);border:1px solid var(--border-navy);border-radius:var(--radius-sm)"></div>
+        <div style="width:80px;height:60px;background:var(--bg-surface);border-radius:var(--radius-sm)"></div>
+        <div style="width:80px;height:60px;background:var(--ui-accent);border-radius:var(--radius-sm)"></div>
+      </div>
+      <div style="display:flex;gap:var(--space-md)">
+        <span class="text-safe" style="color:var(--safe-on-dark)">✓ Safe</span>
+        <span style="color:var(--warning-on-dark)">⚠ Warning</span>
+        <span style="color:var(--danger-on-dark)">✕ Danger</span>
+      </div>
+    </div>
+    <aside class="notes">
+      Slide de calibração. Se navy lavado ou texto fraco → Plano B.
+    </aside>
+  </section>
+
+  <section>
+    <div class="slide-inner">
+      <h1 style="font-size:var(--text-hero)">Aa 123</h1>
+      <h2>Headline H2 — fundo claro</h2>
+      <p>Se este texto está nítido, Plano A funciona. Se não, use Plano B (index.stage-b.html).</p>
+      <div style="display:flex;gap:var(--space-sm);margin:var(--space-md) 0">
+        <div style="width:80px;height:60px;background:var(--bg-navy);border-radius:var(--radius-sm)"></div>
+        <div style="width:80px;height:60px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-sm)"></div>
+        <div style="width:80px;height:60px;background:var(--ui-accent);border-radius:var(--radius-sm)"></div>
+      </div>
+      <div style="display:flex;gap:var(--space-md)">
+        <span class="text-safe">✓ Safe</span>
+        <span class="text-warning">⚠ Warning</span>
+        <span class="text-danger">✕ Danger</span>
+      </div>
+    </div>
+    <aside class="notes">Slide claro. Comparar com o anterior.</aside>
+  </section>
+
+</div></div>
+<script type="module">
+  import Reveal from 'reveal.js';
+  import gsap from 'gsap';
+  import 'reveal.js/dist/reveal.css';
+  import '../shared/css/base.css';
+  import { initAula } from '../shared/js/engine.js';
+  await initAula(Reveal, gsap);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+---
+description: "Design system OKLCH para slides médicos Reveal.js — tokens, cores, tipografia, WCAG, modos"
+globs: "**/*.html,**/*.css"
+alwaysApply: false
+---
+
+# Design System OKLCH
+
+## Cores — NUNCA hardcoded
+- var() obrigatório. Linter bloqueia hex/oklch/rgb/hsl fora de `@supports not`.
+- Exceção: `data-background-color` aceita HEX (Reveal parseia JS-side).
+
+## Semântica
+- `--safe` (teal) / `--warning` (amber) / `--danger` (red) = significado CLÍNICO
+- `--ui-accent` (navy) = chrome, UI, decoração. NUNCA clínico.
+- `--downgrade` (ocre) = rebaixamento de evidência. Sempre com ícone ↓.
+- Daltonismo: ícone obrigatório (✓/⚠/✕) junto a toda cor semântica.
+
+## Tipografia
+- Display: Instrument Serif 400 (serif = autoridade)
+- Body: DM Sans 400 (NUNCA 300 em projetor)
+- Mono: JetBrains Mono
+- Escala: hero → h1 → h2 → h3 → body → small → caption (todos clamp())
+
+## Paleta de dados (gráficos)
+- 2-3 séries: Tol High-contrast (`--cmp-1/2/3`)
+- 4-7 séries: Tol Bright (`--data-1..7`)
+- NUNCA usar cores clínicas em gráficos
+
+## Modos
+- Plano A: dark, 1920×1080 (padrão)
+- Plano B: `.stage-bad`, light, 1280×720, sem animação
+- Residência: `?mode=residencia`
+- Alto contraste: tecla C
+- `@media (prefers-reduced-motion: reduce)` respeitado

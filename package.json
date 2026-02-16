@@ -1,0 +1,34 @@
+{
+  "name": "aulas-magnas",
+  "version": "7.0.0",
+  "description": "Aulas magnas para congressos — Reveal.js + GSAP + OKLCH",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:grade": "vite --open /aulas/grade/index.html",
+    "dev:cirrose": "vite --open /aulas/cirrose/index.html",
+    "dev:metanalise": "vite --open /aulas/metanalise/index.html",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "fonts:install": "node scripts/install-fonts.js",
+    "lint:slides": "node scripts/lint-slides.js",
+    "export:pdf": "node scripts/export-pdf.js",
+    "export:screenshots": "node scripts/export-screenshots.js",
+    "qa:a11y": "node scripts/qa-accessibility.js",
+    "transcribe": "node scripts/transcribe-lecture.js"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "decktape": "^3.14.0",
+    "dotenv": "^16.4.0",
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@notionhq/client": "^2.3.0"
+  },
+  "dependencies": {
+    "reveal.js": "^5.1.0",
+    "gsap": "^3.12.5"
+  }
+}
