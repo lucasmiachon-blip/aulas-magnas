@@ -76,8 +76,8 @@ function animStagger(gsap, el) {
     return;
   }
   const delay = parseFloat(el.dataset.stagger || '0.15');
-  gsap.from(el.children, {
-    y: 30, opacity: 0, duration: 0.5, stagger: delay, ease: 'power3.out'
+  gsap.to(el.children, {
+    y: 0, opacity: 1, duration: 0.5, stagger: delay, ease: 'power3.out'
   });
 }
 
@@ -98,7 +98,7 @@ function animDrawPath(gsap, el) {
 }
 
 function animFadeUp(gsap, el) {
-  gsap.from(el, { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' });
+  gsap.to(el, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
 }
 
 function animHighlight(gsap, el) {

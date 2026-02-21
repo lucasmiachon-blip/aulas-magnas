@@ -195,7 +195,22 @@
   }
 }
 
+/* --- Hide animated elements until GSAP triggers --- */
+[data-animate="fadeUp"] {
+  opacity: 0;
+  transform: translateY(40px);
+}
+[data-animate="stagger"] > * {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 /* --- No-JS fallback --- */
+.no-js [data-animate="fadeUp"],
+.no-js [data-animate="stagger"] > * {
+  opacity: 1 !important;
+  transform: none !important;
+}
 .no-js .fragment {
   opacity: 1 !important;
   transform: none !important;
