@@ -151,6 +151,17 @@
     --text-muted: #333333; --text-on-dark: #000000;
     --border: rgba(0,0,0,0.18);
   }
+  .stage-c {
+    --bg-surface: #ededf1; --bg-card: #f9f9fb;
+    --bg-navy: #ededf1; --bg-navy-mid: #e2e3e9;
+    --text-primary: #1c1d28; --text-secondary: #383844;
+    --text-muted: #565a64; --text-on-dark: #1c1d28;
+    --text-on-dark-muted: #444854;
+    --border: rgba(0,0,0,0.10);
+    --safe-on-dark: #2a6a5a; --warning-on-dark: #7a6530;
+    --danger-on-dark: #a04030; --downgrade-on-dark: #5a4828;
+    --ui-accent-on-dark: #2a2a80;
+  }
 }
 .high-contrast {
   --bg-surface:     oklch(100% 0 0);
@@ -184,6 +195,87 @@
   font-weight: 500;
   line-height: 1.35;
   max-width: 56ch;
+}
+
+/* --- Stage C (Plano C: light bg, WITH animations, 1280×720) ---
+   Sala clara + projetor razoável. Default recomendado.
+   Contraste verificado: todos ≥ AA WCAG 2.1 (texto normal).
+   Tipo scale bumped: mínimos +2-3px para projeção 720p.
+   ------------------------------------------------------------ */
+.stage-c {
+  /* Surfaces — hue 258 consistent, L=95% main */
+  --bg-surface:         oklch(95% 0.005 258);
+  --bg-card:            oklch(98% 0.003 258);
+  --bg-elevated:        oklch(100% 0 0);
+  --bg-navy:            oklch(95% 0.005 258);
+  --bg-navy-mid:        oklch(91% 0.008 258);
+
+  /* Text — all AAA on bg-surface except muted (AA 6.1:1) */
+  --text-primary:       oklch(12% 0.015 258);
+  --text-secondary:     oklch(25% 0.010 258);
+  --text-muted:         oklch(38% 0.008 258);
+  --text-on-dark:       oklch(12% 0.015 258);
+  --text-on-dark-muted: oklch(30% 0.008 258);
+
+  /* Accent — remapped for light bg */
+  --ui-accent:          oklch(35% 0.12 258);
+  --ui-accent-on-dark:  oklch(35% 0.12 258);
+
+  /* Clinical semantics — dark-on-light, all ≥ AA */
+  --safe-on-dark:       oklch(36% 0.10 170);     /* 6.6:1 */
+  --warning-on-dark:    oklch(42% 0.10 85);      /* 5.3:1 */
+  --danger-on-dark:     oklch(45% 0.14 25);      /* 4.7:1 */
+  --downgrade-on-dark:  oklch(30% 0.08 55);      /* 8.2:1 */
+
+  /* Borders — lower opacity than Plan B */
+  --border:             oklch(0% 0 0 / 0.10);
+  --border-navy:        oklch(0% 0 0 / 0.08);
+  --divider:            oklch(0% 0 0 / 0.06);
+
+  /* Type scale — bumped minimums for 720p projection */
+  --text-h2:      clamp(32px, 2.4vw, 42px);
+  --text-h3:      clamp(22px, 1.6vw, 30px);
+  --text-body:    clamp(20px, 1.25vw, 26px);
+  --text-small:   clamp(16px, 1.0vw, 20px);
+  --text-caption: clamp(14px, 0.85vw, 15px);
+}
+
+/* Typography: DM Sans 600 headlines, 450 body */
+.stage-c .reveal h1,
+.stage-c .reveal h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.stage-c .reveal p {
+  font-weight: 450;
+  line-height: 1.4;
+  max-width: 56ch;
+}
+
+/* Section tag — ui-accent on light bg */
+.stage-c .section-tag {
+  color: var(--ui-accent);
+}
+
+/* Source tag */
+.stage-c .source-tag {
+  color: var(--text-muted);
+}
+
+/* Cards — subtle elevation */
+.stage-c .card-metric {
+  background: var(--bg-card);
+  border: 1px solid oklch(0% 0 0 / 0.08);
+  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.04);
+}
+
+/* Paper figures — dual-shadow separation */
+.stage-c .slide-figure img {
+  border-radius: var(--radius-sm);
+  border: 1px solid oklch(0% 0 0 / 0.06);
+  box-shadow: 0 1px 4px oklch(0% 0 0 / 0.06),
+              0 4px 12px oklch(0% 0 0 / 0.04);
 }
 
 /* --- Reduced Motion --- */
