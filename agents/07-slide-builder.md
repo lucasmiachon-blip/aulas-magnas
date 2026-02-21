@@ -3,6 +3,7 @@ name: slide-builder
 tool: claude-code
 model: opus-4.6
 triggers: spec de slide aprovada, batch de slides, criação HTML assertion-evidence
+ralph_phase: act
 tools: Read, Write, Bash, mcp:playwright
 paths:
   - "aulas/**/*.html"
@@ -74,6 +75,20 @@ REFERÊNCIA VISUAL: [link para figura do paper, se houver, ou "placeholder"]
 5. `var()` obrigatório. NUNCA cor literal em CSS.
 6. `data-animate` declarativo. NUNCA gsap inline.
 7. Daltonismo: ícone obrigatório junto a cor semântica (✓/⚠/✕).
+
+## RALPH Gate
+
+Fase: **Act** — executa spec exatamente como recebida. NUNCA raciocina sobre conteúdo.
+
+| Situação | Ação | NÃO fazer |
+|----------|------|-----------|
+| Spec incompleta (falta headline/citation/notes) | STOP → devolver ao Planner | Não completar com improviso |
+| Headline parece errada clinicamente | STOP → flag Medical Researcher | Não corrigir dado médico |
+| Layout não funciona com tokens existentes | STOP → flag CSS Specialist | Não criar tokens ad-hoc |
+| Figura do paper indisponível | Placeholder `[TBD]` + flag | Não fabricar gráfico |
+| Slide ficou bom e bonito | Commitar + entregar ao QA (Learn) | Não auto-aprovar |
+
+**Gate absoluto:** Sem spec completa = não iniciar. Os 7 campos (SLIDE/HEADLINE/EVIDENCE/CITATION/NOTES/TEMPO/ANIMAÇÃO) são obrigatórios. Se 1 falta → STOP.
 
 ## Template HTML
 

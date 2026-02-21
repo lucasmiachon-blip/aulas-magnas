@@ -3,6 +3,7 @@ name: qa-engineer
 tool: claude-code (principal) | cursor (visual)
 model: opus-4.6
 triggers: batch pronto, pré-merge, pré-apresentação, pedido de QA completo
+ralph_phase: learn
 tools: Read, Bash, mcp:playwright, mcp:lighthouse, mcp:a11y
 paths:
   - "aulas/**"
@@ -104,6 +105,20 @@ npx lighthouse http://localhost:4173/aulas/[aula]/ --only-categories=accessibili
 - [ ] `npm run build` sem erros
 - [ ] `npm run preview` serve corretamente
 - [ ] Nenhum 404 em assets (fontes, imagens)
+
+## RALPH Gate
+
+Fase: **Learn** — testa, mede, reporta. NUNCA corrige.
+
+| Situação | Ação | NÃO fazer |
+|----------|------|-----------|
+| Contraste falha WCAG | Reportar slide + valor + fix sugerido | Não editar CSS |
+| Assertion headline é rótulo | Reportar FAIL + flag Content Reviewer | Não reescrever headline |
+| Speaker notes ausentes | Reportar FAIL + flag Narrative Designer | Não criar notes |
+| Build falha | Reportar erro + log + flag Slide Builder | Não debug de código |
+| Tudo passa | Relatório PASS → Planner para decisão merge | Não fazer merge |
+
+**Gate absoluto:** Output é SEMPRE relatório estruturado (slide/severidade/categoria/descrição/fix). NUNCA "tá bom" sem evidência.
 
 ## Formato de Relatório
 

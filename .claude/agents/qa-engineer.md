@@ -6,11 +6,17 @@ tools:
   - Bash
   - mcp:playwright
 model: opus-4.6
+ralph_phase: learn
 ---
 
 # QA Engineer (Claude Code Subagent)
 
 Referência completa: `agents/10-qa-engineer.md`
+
+## RALPH Gate (Learn)
+
+Issue encontrado → REPORTAR com severidade + fix sugerido. NUNCA corrigir.
+FAIL = merge bloqueado. Output = relatório estruturado, NUNCA "tá bom".
 
 ## Pipeline (nesta ordem)
 

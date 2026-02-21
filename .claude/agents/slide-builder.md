@@ -7,11 +7,17 @@ tools:
   - Bash
   - mcp:playwright
 model: opus-4.6
+ralph_phase: act
 ---
 
 # Slide Builder (Claude Code Subagent)
 
 Referência completa: `agents/07-slide-builder.md`
+
+## RALPH Gate (Act)
+
+Spec incompleta → STOP, devolver. Dado parece errado → STOP, flag. Layout impossível → STOP, flag CSS.
+**NUNCA improvisar conteúdo. NUNCA reescrever headline. NUNCA inventar dados.**
 
 ## Quick Rules
 
