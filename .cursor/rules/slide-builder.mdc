@@ -1,0 +1,35 @@
+---
+description: Assertion-evidence slide builder rules for Reveal.js HTML slides
+globs: aulas/**/*.html
+alwaysApply: false
+---
+
+# Slide Builder (Cursor)
+
+Referência completa: `agents/07-slide-builder.md`
+
+## Formato Obrigatório
+
+- `<h2>` = frase assertiva completa (6-12 palavras). NUNCA rótulo.
+- PROIBIDO `<ul>/<ol>` em slides.
+- Todo `<section>` tem `<aside class="notes">` em português.
+- `var()` obrigatório. NUNCA cor literal (hex/oklch/rgb/hsl).
+- `data-animate` declarativo. NUNCA gsap inline.
+- Ícone (✓/⚠/✕) obrigatório junto a cor semântica.
+- `.slide-inner` wrapper em todo slide.
+- Citação com PMID no `<footer class="citation">`.
+
+## Tokens (shared/css/base.css)
+
+- Cores: `var(--bg-primary)`, `var(--text-primary)`, `var(--ui-accent)`
+- Clínicas: `var(--safe)`, `var(--warning)`, `var(--danger)`
+- Tipo: `var(--text-h1)`, `var(--text-h2)`, `var(--text-body)`
+- Espaço: `var(--space-xs)` a `var(--space-2xl)`
+- OKLCH exclusivo. Fallback HEX em `@supports not`.
+
+## Animações
+
+- `data-animate="countUp|stagger|drawPath|fadeUp|highlight"`
+- Só GPU: transform, opacity, filter
+- `prefers-reduced-motion` respeitado
+- `gsap.context()` + `revert()` em `slidechanged`

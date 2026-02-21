@@ -1,0 +1,53 @@
+---
+description: CSS polish and GSAP animation rules for slide visual refinement
+globs: shared/css/**,aulas/**/*.css,aulas/**/*.html
+alwaysApply: false
+---
+
+# CSS / Animation Specialist (Cursor)
+
+Referência completa: `agents/08-css-animation-specialist.md`
+
+## Regra Absoluta
+
+NUNCA alterar headlines, dados clínicos ou speaker notes. Só visual/layout.
+
+## Tokens CSS (obrigatórios)
+
+- `var()` sempre. Zero cores literais. Linter bloqueia.
+- OKLCH exclusivo. Fallback HEX em `@supports not (color: oklch(0 0 0))`.
+- Escala tipográfica: `var(--text-h1)` a `var(--text-caption)`.
+- Espaçamento: `var(--space-xs)` a `var(--space-2xl)`.
+- Zero `!important` (exceção: print, reduced-motion, no-js).
+
+## Animações GSAP
+
+- Via `data-animate` declarativo (engine.js processa)
+- Tipos: countUp, stagger, drawPath, fadeUp, highlight
+- Só GPU: transform, opacity, filter
+- Duração: ≤500ms transição, ≤1s build
+- `gsap.context()` + `revert()` em `slidechanged` (cleanup obrigatório)
+- Animação SÓ quando reduz carga cognitiva
+
+## Contraste WCAG AA
+
+- Texto normal: 4.5:1
+- Large text (≥24px ou bold ≥18.5px): 3:1
+- UI/gráficos: 3:1
+
+## Tabelas Tufte
+
+- Sem bordas verticais
+- Números à direita, texto à esquerda
+- Header com `border-bottom` sutil
+- Zebra stripe via `var(--table-stripe)`
+
+## Plans
+
+- Plan A: dark + animated + 1920×1080
+- Plan C: light + animated + 1280×720 (DEFAULT)
+- Plan B: light + static + 1280×720 (fallback)
+
+## Workflow
+
+Antes/depois obrigatório para toda mudança visual significativa.
