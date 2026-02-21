@@ -240,6 +240,14 @@
   --text-caption: clamp(14px, 0.85vw, 15px);
 }
 
+/* Background: override Reveal's white default */
+.stage-c.reveal-viewport {
+  background: var(--bg-surface);
+}
+.stage-c .reveal {
+  background: var(--bg-surface);
+}
+
 /* Typography: DM Sans 600 headlines, 450 body */
 .stage-c .reveal h1,
 .stage-c .reveal h2 {
