@@ -4,6 +4,14 @@
  */
 
 // ============================================
+// PRINT-PDF DETECTION
+// ============================================
+function isPrintPdf() {
+  const p = new URLSearchParams(window.location.search);
+  return p.has('print-pdf') || p.get('view') === 'print';
+}
+
+// ============================================
 // REVEAL INIT
 // ============================================
 export function initReveal(Reveal, config = {}) {
@@ -23,17 +31,9 @@ export function initReveal(Reveal, config = {}) {
     backgroundTransition: 'fade',
     pdfSeparateFragments: false,
     pdfMaxPagesPerSlide: 1,
-    showNotes: 'separate-page',
+    showNotes: isPrintPdf() ? 'separate-page' : false,
     ...config,
   });
-}
-
-// ============================================
-// PRINT-PDF DETECTION
-// ============================================
-function isPrintPdf() {
-  const p = new URLSearchParams(window.location.search);
-  return p.has('print-pdf') || p.get('view') === 'print';
 }
 
 // ============================================

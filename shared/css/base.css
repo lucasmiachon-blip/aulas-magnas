@@ -172,7 +172,7 @@
   --text-muted:     oklch(20% 0 0);
   --text-on-dark:   oklch(0% 0 0);
   --text-on-dark-muted: oklch(15% 0 0);
-  --border:         oklch(0% 0 0 / 0.18);
+  --border:         oklch(0% 0 0 / 0.25);
 }
 .stage-bad .reveal h1,
 .stage-bad .reveal h2 {
@@ -283,7 +283,8 @@
    UTILITIES
    ============================================ */
 .section-tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--text-caption);
   text-transform: uppercase;
   letter-spacing: 0.2em;

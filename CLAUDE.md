@@ -33,9 +33,9 @@ scripts/               → lint, serve
 
 | Pasta | Tema | Duração | Status |
 |-------|------|---------|--------|
-| aulas/grade/ | Sistema GRADE | 45-60 min | Framework pronto, conteúdo parcial |
-| aulas/cirrose/ | Cirrose: manejo global | 60 min | Pesquisa completa, slides a criar |
-| aulas/metanalise/ | Meta-análise: conceitos e metodologia | 60 min | Escopo definido, pesquisa a iniciar |
+| aulas/grade/ | Sistema GRADE | 45-60 min | Blueprint (reestruturação pendente) |
+| aulas/cirrose/ | Cirrose: manejo global | 70 min | Blueprint v2 completo, slides a criar |
+| aulas/metanalise/ | Meta-análise: conceitos e metodologia | 60 min | Pesquisa completa, blueprint rascunho |
 
 ## Comandos
 

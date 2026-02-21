@@ -83,9 +83,13 @@ Hierarquia visual: **NNT > ARR > HR**
 | AACE 2020 | Diretriz endocrinologia | Endocr Pract 2020 | DOI: TBD |
 | CLEAR trial | RCT individual | N Engl J Med 2023 | PMID: 36876740 |
 | CTT meta-analysis | Meta-análise | Lancet 2010, 2012 | PMID: 21067804 |
-| EASL 2024 | Diretriz cirrose | J Hepatol 2024 | DOI: TBD |
 | BAVENO VII | Consenso HP | J Hepatol 2022 | DOI: 10.1016/j.jhep.2021.12.012 |
-| AASLD 2023 | Diretriz hepatologia | Hepatology 2023 | DOI: TBD |
+| EASL Cirrose 2024 | CPG | J Hepatol 2024 | DOI: TBD |
+| AASLD Varizes 2024 | Practice Guidance | Hepatology 2024 | DOI: TBD |
+| PREDESCI | RCT | Lancet 2019 | PMID: 30910320 |
+| CONFIRM | RCT | N Engl J Med 2021 | PMID: 34882432 |
+| ANSWER | RCT | Lancet 2018 | PMID: 29793859 |
+| D'Amico 2006 | Landmark | J Hepatol 2006 | PMID: 16364498 |
 
 **TODO:** Preencher DOIs faltantes antes de usar dados em slides.
 

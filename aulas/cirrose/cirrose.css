@@ -1,0 +1,289 @@
+/* ============================================
+   CIRROSE — Lecture-specific components
+   ============================================ */
+
+/* --- Hook: data grid --- */
+.data-grid {
+  display: grid;
+  gap: var(--space-sm);
+  width: 100%;
+  margin: var(--space-lg) 0;
+}
+.data-grid[data-cols="5"] {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* --- Metric card (valor + label) --- */
+.card-metric {
+  text-align: center;
+  padding: var(--space-md) var(--space-sm);
+}
+.card-metric .value {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 3vw, 52px);
+  font-weight: 400;
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--text-on-dark);
+}
+.card-metric .label {
+  font-size: var(--text-caption);
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-xs);
+}
+.card-metric .unit {
+  font-size: 0.5em;
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* --- Hook context paragraph --- */
+.hook-context {
+  font-size: var(--text-h3);
+  color: var(--text-on-dark-muted);
+  margin-bottom: var(--space-md);
+  max-width: 48ch;
+  line-height: 1.5;
+}
+
+/* --- Hook question (hero h2) ---
+     Bumped to --text-hero for impact.
+     This is the climax of the hook slide. */
+.hook-question {
+  font-size: var(--text-hero);
+  color: var(--text-on-dark);
+  max-width: 22ch;
+  margin-top: var(--space-lg);
+  line-height: 1.05;
+}
+
+/* --- Text accent utility --- */
+.text-accent {
+  color: var(--ui-accent);
+}
+.slide-navy .text-accent {
+  color: var(--ui-accent-on-dark);
+}
+.card-metric .value.text-warning {
+  color: var(--warning-on-dark);
+}
+
+/* --- Title slide (capa centrada) --- */
+.slide-title {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.slide-title h1 {
+  font-size: var(--text-hero);
+  max-width: 18ch;
+  margin: 0 auto;
+}
+.slide-title .subtitle {
+  font-size: var(--text-h3);
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-md);
+}
+
+/* --- Assertion headline (shared across content slides) --- */
+.slide-headline {
+  font-size: var(--text-h2);
+  color: var(--text-on-dark);
+  max-width: 32ch;
+  margin-bottom: var(--space-lg);
+  line-height: 1.15;
+}
+
+/* --- Source tag (reference footer) --- */
+.source-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--text-on-dark-muted);
+  margin-top: auto;
+}
+
+/* --- Metavir strip (CIRR-A1-01) --- */
+.metavir-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-sm);
+  width: 100%;
+  margin: var(--space-lg) 0;
+}
+.metavir-stage {
+  text-align: center;
+  padding: var(--space-md);
+}
+.metavir-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--bg-navy-mid);
+  border: 1px solid var(--border-navy);
+}
+.metavir-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  color: var(--text-on-dark);
+}
+.metavir-desc {
+  display: block;
+  font-size: var(--text-caption);
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-xs);
+}
+.metavir-stage--cirrhosis .metavir-label {
+  color: var(--danger-on-dark);
+}
+.metavir-stage--cirrhosis .metavir-icon {
+  border-color: var(--danger-on-dark);
+}
+
+/* --- Cliff diagram (CIRR-A1-02) --- */
+.cliff-diagram {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-sm);
+  width: 100%;
+  margin: var(--space-lg) 0;
+}
+.cliff-stage {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+.cliff-stage--safe {
+  background: var(--bg-navy-mid);
+  border: 1px solid var(--border-navy);
+  min-height: 180px;
+}
+.cliff-stage--danger {
+  background: var(--bg-navy-mid);
+  border: 1px solid var(--border-navy);
+  min-height: 120px;
+}
+.cliff-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  color: var(--text-on-dark);
+  line-height: 1;
+}
+.cliff-number.text-warning {
+  color: var(--warning-on-dark);
+}
+.cliff-number.text-danger {
+  color: var(--danger-on-dark);
+}
+.cliff-label {
+  display: block;
+  font-size: var(--text-small);
+  color: var(--text-on-dark);
+  margin-top: var(--space-xs);
+  font-weight: 600;
+}
+.cliff-desc {
+  display: block;
+  font-size: var(--text-caption);
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-xs);
+}
+.cliff-divider {
+  flex: 0 0 4px;
+  background: var(--danger-on-dark);
+  min-height: 200px;
+  border-radius: 2px;
+  position: relative;
+}
+.cliff-divider-label {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--danger-on-dark);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ============================================
+   STAGE-BAD OVERRIDES (Plan B: light)
+   ============================================ */
+.stage-bad .card-navy {
+  background: var(--bg-surface);
+  border: 2px solid var(--border);
+}
+.stage-bad .card-metric .value {
+  color: var(--text-primary);
+}
+.stage-bad .card-metric .label {
+  color: var(--text-muted);
+}
+.stage-bad .hook-context {
+  color: var(--text-secondary);
+}
+.stage-bad .hook-question {
+  color: var(--text-primary);
+}
+.stage-bad .text-accent {
+  color: var(--ui-accent);
+}
+.stage-bad .card-metric .value.text-warning {
+  color: var(--warning-on-light);
+}
+.stage-bad .slide-title .subtitle {
+  color: var(--text-secondary);
+}
+.stage-bad .slide-headline {
+  color: var(--text-primary);
+}
+.stage-bad .source-tag {
+  color: var(--text-muted);
+}
+.stage-bad .metavir-icon {
+  background: var(--bg-surface);
+  border-color: var(--border);
+}
+.stage-bad .metavir-label {
+  color: var(--text-primary);
+}
+.stage-bad .metavir-desc {
+  color: var(--text-muted);
+}
+.stage-bad .metavir-stage--cirrhosis .metavir-label {
+  color: var(--danger);
+}
+.stage-bad .metavir-stage--cirrhosis .metavir-icon {
+  border-color: var(--danger);
+}
+.stage-bad .cliff-stage {
+  background: var(--bg-surface);
+  border-color: var(--border);
+}
+.stage-bad .cliff-number {
+  color: var(--text-primary);
+}
+.stage-bad .cliff-number.text-warning {
+  color: var(--warning-on-light);
+}
+.stage-bad .cliff-number.text-danger {
+  color: var(--danger);
+}
+.stage-bad .cliff-label {
+  color: var(--text-primary);
+}
+.stage-bad .cliff-desc {
+  color: var(--text-muted);
+}
+.stage-bad .cliff-divider {
+  background: var(--danger);
+}
+.stage-bad .cliff-divider-label {
+  color: var(--danger);
+}

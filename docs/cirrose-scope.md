@@ -2,10 +2,10 @@
 ## Escopo da Aula
 
 ### Metadados
-- **Duração:** 60 minutos
+- **Duração:** 70 minutos
 - **Público:** Hepatologistas e gastroenterologistas seniores (congresso internacional)
 - **Formato:** Assertion-evidence, Reveal.js
-- **Idioma:** A definir (inglês para congresso internacional?)
+- **Idioma:** PT (slides), EN (speaker notes)
 - **Tom:** Acadêmico-prático, baseado em evidência (Baveno VII + EASL + AASLD)
 
 ### Objetivo central
@@ -39,4 +39,7 @@ Co-criação colaborativa (não AI-gerada):
 3. Cruzar o que é mais importante
 4. Criar slides com objetivo e mensagem claros
 
-### Status: PESQUISA COMPLETA, STORYBOARD EM CO-CRIAÇÃO
+### Slides DB
+26 registros em `c6713964-0b31-454f-83f5-4b287911a01b`
+
+### Status: BLUEPRINT V2 COMPLETO, SLIDES A CRIAR
