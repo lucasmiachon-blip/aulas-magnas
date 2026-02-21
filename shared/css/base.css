@@ -297,6 +297,13 @@
   transform: translateY(30px);
 }
 
+/* --- Stage Bad: force visible (no GSAP dispatcher) --- */
+.stage-bad [data-animate="fadeUp"],
+.stage-bad [data-animate="stagger"] > * {
+  opacity: 1;
+  transform: none;
+}
+
 /* --- No-JS fallback --- */
 .no-js [data-animate="fadeUp"],
 .no-js [data-animate="stagger"] > * {

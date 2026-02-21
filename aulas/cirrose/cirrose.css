@@ -153,3 +153,38 @@
 .stage-bad .source-tag {
   color: var(--text-muted);
 }
+
+/* ============================================
+   STAGE-C OVERRIDES (Plan C: light + animated)
+   Tokens already remapped in base.css .stage-c.
+   Only need to override hardcoded on-dark refs.
+   ============================================ */
+.stage-c .card-navy {
+  background: var(--bg-card);
+  border: 1px solid oklch(0% 0 0 / 0.08);
+  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.04);
+}
+.stage-c .card-metric .value {
+  color: var(--text-primary);
+}
+.stage-c .card-metric .label {
+  color: var(--text-muted);
+}
+.stage-c .hook-context {
+  color: var(--text-secondary);
+}
+.stage-c .hook-question {
+  color: var(--text-primary);
+}
+.stage-c .text-accent {
+  color: var(--ui-accent);
+}
+.stage-c .card-metric .value.text-warning {
+  color: var(--warning-on-dark);
+}
+.stage-c .slide-title .subtitle {
+  color: var(--text-secondary);
+}
+.stage-c .slide-headline {
+  color: var(--text-primary);
+}
