@@ -102,114 +102,21 @@
   margin-top: auto;
 }
 
-/* --- Metavir strip (CIRR-A1-01) --- */
-.metavir-strip {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-sm);
-  width: 100%;
-  margin: var(--space-lg) 0;
-}
-.metavir-stage {
-  text-align: center;
-  padding: var(--space-md);
-}
-.metavir-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto var(--space-sm);
-  border-radius: var(--radius-md);
-  background: var(--bg-navy-mid);
-  border: 1px solid var(--border-navy);
-}
-.metavir-label {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--text-h2);
-  color: var(--text-on-dark);
-}
-.metavir-desc {
-  display: block;
-  font-size: var(--text-caption);
-  color: var(--text-on-dark-muted);
-  margin-top: var(--space-xs);
-}
-.metavir-stage--cirrhosis .metavir-label {
-  color: var(--danger-on-dark);
-}
-.metavir-stage--cirrhosis .metavir-icon {
-  border-color: var(--danger-on-dark);
-}
-
-/* --- Cliff diagram (CIRR-A1-02) --- */
-.cliff-diagram {
+/* --- Figure slide (paper image) --- */
+.slide-figure {
   display: flex;
-  align-items: flex-end;
-  gap: var(--space-sm);
-  width: 100%;
-  margin: var(--space-lg) 0;
-}
-.cliff-stage {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex: 1;
-  text-align: center;
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+  min-height: 0;
 }
-.cliff-stage--safe {
-  background: var(--bg-navy-mid);
-  border: 1px solid var(--border-navy);
-  min-height: 180px;
-}
-.cliff-stage--danger {
-  background: var(--bg-navy-mid);
-  border: 1px solid var(--border-navy);
-  min-height: 120px;
-}
-.cliff-number {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--text-h1);
-  color: var(--text-on-dark);
-  line-height: 1;
-}
-.cliff-number.text-warning {
-  color: var(--warning-on-dark);
-}
-.cliff-number.text-danger {
-  color: var(--danger-on-dark);
-}
-.cliff-label {
-  display: block;
-  font-size: var(--text-small);
-  color: var(--text-on-dark);
-  margin-top: var(--space-xs);
-  font-weight: 600;
-}
-.cliff-desc {
-  display: block;
-  font-size: var(--text-caption);
-  color: var(--text-on-dark-muted);
-  margin-top: var(--space-xs);
-}
-.cliff-divider {
-  flex: 0 0 4px;
-  background: var(--danger-on-dark);
-  min-height: 200px;
-  border-radius: 2px;
-  position: relative;
-}
-.cliff-divider-label {
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-body);
-  font-size: var(--text-caption);
-  font-weight: 600;
-  color: var(--danger-on-dark);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  white-space: nowrap;
+.slide-figure img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
 }
 
 /* ============================================
@@ -245,45 +152,4 @@
 }
 .stage-bad .source-tag {
   color: var(--text-muted);
-}
-.stage-bad .metavir-icon {
-  background: var(--bg-surface);
-  border-color: var(--border);
-}
-.stage-bad .metavir-label {
-  color: var(--text-primary);
-}
-.stage-bad .metavir-desc {
-  color: var(--text-muted);
-}
-.stage-bad .metavir-stage--cirrhosis .metavir-label {
-  color: var(--danger);
-}
-.stage-bad .metavir-stage--cirrhosis .metavir-icon {
-  border-color: var(--danger);
-}
-.stage-bad .cliff-stage {
-  background: var(--bg-surface);
-  border-color: var(--border);
-}
-.stage-bad .cliff-number {
-  color: var(--text-primary);
-}
-.stage-bad .cliff-number.text-warning {
-  color: var(--warning-on-light);
-}
-.stage-bad .cliff-number.text-danger {
-  color: var(--danger);
-}
-.stage-bad .cliff-label {
-  color: var(--text-primary);
-}
-.stage-bad .cliff-desc {
-  color: var(--text-muted);
-}
-.stage-bad .cliff-divider {
-  background: var(--danger);
-}
-.stage-bad .cliff-divider-label {
-  color: var(--danger);
 }
