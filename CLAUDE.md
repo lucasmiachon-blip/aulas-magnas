@@ -6,7 +6,7 @@
 
 Slides para médicos especialistas seniores em congressos.
 Clareza de decisão clínica > estética. Hierarquia visual rigorosa.
-Cada aula: modo **congress** (45min) e modo **residência** (+apêndice didático).
+Cada aula: modo **congress** e modo **residência** (+apêndice didático).
 
 ## Stack
 
@@ -17,85 +17,112 @@ Reveal.js 5.x · GSAP 3.12 · Vite · HTML/CSS/JS puro · OKLCH
 
 ```
 shared/
-  css/base.css         → design system completo
-  js/engine.js         → init + data-animate + modes
-  assets/fonts/        → WOFF2 (ver shared/assets/fonts/README.md)
+  css/base.css         → design system completo (~516 linhas, inclui .stage-c)
+  js/engine.js         → init + data-animate + modes (~289 linhas)
+  assets/fonts/        → WOFF2 (npm run fonts:install)
 aulas/[nome]/
-  index.html           → Plano A (dark, 1920×1080)
-  index.stage-b.html   → Plano B (light, 1280×720, sem animação)
+  index.html           → Plan A (dark, animated, 1920×1080)
+  index.stage-b.html   → Plan B (light, static, 1280×720)
+  index.stage-c.html   → Plan C (light, animated, 1280×720) ← DEFAULT
 aulas/calibracao.html  → Slide de calibração standalone
-docs/                  → narrativa, storyboard, referências
-scripts/               → lint, serve
+docs/                  → scope, handoff, referências (CSL-JSON)
+scripts/               → lint, export, QA, transcribe
 .claude/rules/         → regras modulares (auto-carregadas)
+.claude/skills/        → domain skills (on-demand)
 ```
+
+## Tri-Mode Display (IMPORTANTE)
+
+| Mode | Theme | Resolution | Animation | Use |
+|------|-------|-----------|-----------|-----|
+| **Plan A** | Dark (navy) | 1920×1080 | GSAP | Projetor calibrado |
+| **Plan B** | Light | 1280×720 | Nenhuma | Projetor ruim, fallback |
+| **Plan C** ← DEFAULT | Light | 1280×720 | GSAP | Situação desconhecida |
+
+**Ao criar slides: sempre target Plan C** salvo instrução contrária. Testar: `npm run preview` → `calibracao.html` → decidir Plan.
 
 ## Projetos
 
-| Pasta | Tema | Duração | Status |
-|-------|------|---------|--------|
-| aulas/grade/ | Sistema GRADE | 45-60 min | Blueprint (reestruturação pendente) |
-| aulas/cirrose/ | Cirrose: manejo global | 70 min | Blueprint v2 completo, slides a criar |
-| aulas/metanalise/ | Meta-análise: conceitos e metodologia | 60 min | Pesquisa completa, blueprint rascunho |
+| Pasta | Tema | Duração | Slides Reais | Status |
+|-------|------|---------|-------------|--------|
+| aulas/cirrose/ | Cirrose: manejo global | **70 min** | 4 sections (title+hook+A1-01+A1-02) | Blueprint v2 ✅, 26 specs no Notion |
+| aulas/grade/ | Sistema GRADE | 45-60 min | 2 sections (placeholder) | Reestruturação pendente |
+| aulas/metanalise/ | Meta-análise | 45-60 min | 1 section (placeholder) | Pesquisa ✅, blueprint rascunho |
+
+## Tool Priority Order
+
+IMPORTANTE — ao buscar informação, seguir esta ordem:
+
+1. **Notion** (Slides DB, References DB) — source of truth para specs e refs
+2. **Arquivos locais** (docs/, .claude/rules/, .claude/skills/) — convenções
+3. **PubMed / BioMCP / Semantic Scholar** — evidência médica Tier-1
+4. **CrossRef** — verificação DOI e metadados
+5. **Filesystem MCP** — leitura/escrita no projeto
+6. **Playwright** — screenshots, visual QA
+7. **Web** — último recurso, só info externa não-médica
+
+## Notion IDs
+
+| Recurso | Data Source ID |
+|---------|---------------|
+| Aulas Magnas DB | `def36683-985e-4a33-bd8c-ae0f2141ebbd` |
+| Slides DB | `c6713964-0b31-454f-83f5-4b287911a01b` |
+| References DB | `2b24bb6c-91be-42c0-ae28-908a794e5cf5` |
+| Cirrose (page) | `30adfe68-59a8-815a-abf5-c817cd705b29` |
+| Meta-análise (page) | `30adfe68-59a8-81d2-b1f6-c81c59e3e12d` |
+| GRADE (page) | `30adfe68-59a8-81c5-8be6-fb4aead46c94` |
+
+## Slide Spec Format (handoffs do Claude.ai)
+
+Ao receber spec de slide, esperar estes campos:
+
+```
+SLIDE: [ID do Notion Slides DB]
+HEADLINE: [assertion em PT]
+EVIDENCE: [tipo visual + dados]
+CITATION: [Author et al. Journal Year. PMID: XXXXX]
+SPEAKER NOTES: [o que falar, em português, com timing]
+TEMPO: [XX seg]
+ANIMAÇÃO: [tipo + justificativa, ou "none"]
+```
 
 ## Comandos
 
 ```bash
-npm run dev             # Vite dev
+npm run dev             # Vite dev (port 3000)
 npm run dev:grade       # Só GRADE
 npm run build           # Produção (base:'./')
 npm run preview         # Servir build localmente (palco)
-npm run lint:slides     # Gates automatizados
+npm run lint:slides     # Gates assertion-evidence
+npm run fonts:install   # Baixar WOFF2 do Google Fonts
 ```
-
-## Worktree
-
-```bash
-git branch grade main && git worktree add ../aulas-grade grade
-git branch cirrose main && git worktree add ../aulas-cirrose cirrose
-git branch metanalise main && git worktree add ../aulas-metanalise metanalise
-```
-
-Commits: `[AULA] batch N — descrição`
-
-## Procedimento de palco (OBRIGATÓRIO)
-
-```bash
-npm run build
-npm run preview          # http://localhost:4173
-# NÃO abrir via file:// (CORS bloqueia ESM modules)
-```
-
-1. Abrir `http://localhost:4173/aulas/calibracao.html`
-2. Se navy lavado ou texto fraco → Plano B (`index.stage-b.html`)
-3. Se ok → Plano A (`index.html`)
-4. Requisito: **Chrome ≥111** (OKLCH). Fallback HEX existe mas preferir browser atual.
 
 ## Hard Constraints
 
 ### Conteúdo e Estrutura
-1. **Assertion-Evidence (LEI).** `<h2>` = asserção clínica verificável. Corpo = evidência visual.
+1. **Assertion-Evidence.** `<h2>` = asserção clínica verificável. Corpo = evidência visual.
 2. **PROIBIDO `<ul>` e `<ol>` em slides projetados.** Listas só em `<aside class="notes">` e apêndice.
 3. **Todo `<section>` DEVE ter `<aside class="notes">`** com timing, pausas e fontes. Linter bloqueia build.
-4. **Expertise-Reversal.** Congress = zero revisão básica. Teoria → apêndice residência.
-5. **Tabelas Tufte.** Sem bordas verticais. Números à direita, texto à esquerda.
+4. **Speaker notes DEVEM ser em português.** Formato: `[0:00-0:30] O que falar. PAUSA 3s.`
+5. **Expertise-Reversal.** Congress = zero revisão básica. Teoria → apêndice residência.
+6. **Tabelas Tufte.** Sem bordas verticais. Números à direita, texto à esquerda.
 
 ### Dados Médicos
-6. **NUNCA inventar dados.** Sem fonte Tier 1 → `[TBD]`.
+7. **NUNCA inventar dados.** Sem fonte Tier 1 → `[TBD]`.
 
 ### CSS e Tokens
-7. **var() obrigatório.** NUNCA cor literal em CSS. Linter bloqueia hex/oklch/rgb/hsl (exceção: `@supports not` fallback block).
-8. **Exceção:** `data-background-color` aceita HEX literal (Reveal parseia JS-side).
+8. **var() obrigatório.** NUNCA cor literal em CSS. Exceção: `data-background-color` (HEX para Reveal).
 9. **Zero !important** novos (exceção: print, reduced-motion, no-js).
 10. **Daltonismo:** semânticas com ícone/label obrigatório (✓/⚠/✕).
-11. **Cor clínica ≠ cor de UI.** `--safe/--warning/--danger` = significado clínico. Progress bar, section-tag, chrome → usar `--ui-accent`.
+11. **Cor clínica ≠ cor de UI.** `--safe/--warning/--danger` = significado clínico. `--ui-accent` = chrome.
 
 ### Animação
-12. **data-animate declarativo.** Tipos: `countUp|stagger|drawPath|fadeUp|highlight`. NUNCA gsap inline em slide.
+12. **data-animate declarativo.** Tipos: `countUp|stagger|drawPath|fadeUp|highlight`. NUNCA gsap inline.
 13. **Cleanup obrigatório.** gsap.context() + revert() no slidechanged.
 
 ### Infra
 14. **Zero CDN.** npm/ESM. Fontes WOFF2 locais.
-15. **Offline = servidor local** (npm run preview ou npx serve dist). NÃO file://.
+15. **Offline = servidor local** (npm run preview). NÃO file://.
 16. **NUNCA reescrever shared/ ou index.html inteiro** sem aprovação.
 17. **Erro recorrente → propor regra** para rules/.
 
@@ -113,81 +140,34 @@ npm run preview          # http://localhost:4173
 
 | Tipo | Padrão | Exemplo |
 |------|--------|---------|
-| Slide | `S{NNN}_{kebab}.html` | `S012_estatinas-evidencia.html` |
-| Asset | `{aula}_{desc}.{ext}` | `grade_forest-plot.svg` |
-| Commit | `[AULA] batch N — desc` | `[GRADE] batch 3 — slides 12-16` |
+| Slide file | seguir estrutura existente em aulas/[nome]/ | `index.html`, `index.stage-b.html` |
+| Asset | `{aula}_{desc}.{ext}` | `cirrose_forest-plot.svg` |
+| Commit | `[AULA] batch N — desc` | `[CIRROSE] batch 2 — A1-03 a A1-06` |
 
-## Rules (canônicas — em .claude/rules/)
+## Worktree (trabalho paralelo)
 
-| Arquivo | Escopo |
-|---------|--------|
-| `design-system.md` | Tokens, cores, tipografia, WCAG, modos, paleta de dados |
-
-> Adicionar novas regras conforme erros recorrentes.
-> Cursor: regras espelhadas em `.cursor/rules/*.mdc`
+```bash
+git worktree add ../am-cirrose cirrose
+git worktree add ../am-grade grade
+```
 
 ## MCP Servers
 
-| Arquivo | Ferramenta | Nota |
-|---------|-----------|------|
-| `.mcp.json` | Claude Code | Lido automaticamente |
-| `.cursor/mcp.json` | Cursor | Mesmo conteúdo, path separado |
-| `claude_desktop_config.json` | Claude Desktop | Configuração global no OS (ver docs/SETUP.md) |
+Configurados em `.mcp.json` (Claude Code) e `.cursor/mcp.json` (Cursor): BioMCP, PubMed, CrossRef, Semantic Scholar, Playwright, Filesystem, Memory, ESLint, Lighthouse, a11y, Sharp, Notion.
 
-Servers configurados:
+`export NCBI_API_KEY=your_key` (ncbi.nlm.nih.gov, grátis).
 
-| Server | Categoria | Uso |
-|--------|-----------|-----|
-| BioMCP | Pesquisa | PubMed + ClinicalTrials.gov + Europe PMC + bioRxiv (sem API key) |
-| PubMed (@cyanheads) | Pesquisa | Busca PubMed focada (NCBI_API_KEY opcional) |
-| CrossRef | Pesquisa | Verificação de DOIs e metadados de citações |
-| Semantic Scholar | Pesquisa | Citation networks, busca acadêmica ampla |
-| Playwright | Dev/QA | Screenshots, browser testing, PDF verification |
-| Filesystem | Produtividade | Leitura/escrita de arquivos do projeto |
-| Memory | Produtividade | Contexto persistente entre sessões (JSONL local) |
-| ESLint | Dev/QA | Linting do código via chat |
-| Lighthouse | Dev/QA | Performance e acessibilidade dos slides |
-| a11y (axe-core) | Dev/QA | WCAG 2.x testing |
-| Sharp | Dev/QA | Otimização de imagens médicas |
-| Notion | Produtividade | Storyboards, tracking, blocos narrativos |
-API key: `export NCBI_API_KEY=your_key` (ncbi.nlm.nih.gov, grátis)
-
-## Custom Commands (/.claude/commands/)
+## Commands & Skills
 
 | Comando | Uso |
 |---------|-----|
-| `/new-slide [aula] [assertion]` | Cria slide assertion-evidence com template |
-| `/export [aula]` | PDF + screenshots via DeckTape |
-| `/review [aula]` | Audita compliance, acessibilidade, dados |
-| `/evidence [query]` | Busca PubMed/Semantic Scholar para evidência |
+| `/new-slide [aula] [assertion]` | Criar slide assertion-evidence |
+| `/export [aula]` | PDF + screenshots |
+| `/review [aula]` | Auditar compliance + a11y |
+| `/evidence [query]` | Buscar PubMed/Semantic Scholar |
 
-## Skills (/.claude/skills/)
-
-| Skill | Auto-trigger |
-|-------|-------------|
-| `assertion-evidence.md` | Ao criar/editar slides HTML |
-| `medical-data.md` | Ao adicionar dados clínicos a slides |
+Skills auto-triggered: `assertion-evidence` (ao editar HTML), `medical-data` (ao inserir dados clínicos).
 
 ## Roadmap
 
-### Transcribe Pipeline (scripts/transcribe-lecture.js)
-
-Pipeline isolado de transcrição de palestras médicas:
-```bash
-node scripts/transcribe-lecture.js --file video.mp4           # JSON local
-node scripts/transcribe-lecture.js --file video.mp4 --notion  # + publica no Notion
-node scripts/transcribe-lecture.js --file video.mp4 --lang en --model large-v3
-```
-
-Requer: Whisper no PATH, ANTHROPIC_API_KEY no .env.
-Notion opcional (NOTION_API_KEY + NOTION_DATABASE_ID).
-Output: `docs/transcripts/{nome}.whisper.json` + `{nome}.analysis.json`
-**NÃO toca no core do projeto** (shared/, aulas/, vite.config.js).
-
-### Futuro
-- APCA contraste (quando spec estabilizar)
-- DTCG tokens / Style Dictionary (quando >3 aulas)
-- Lint CI no GitHub Actions
-- DeckTape + GitHub Actions export automatizado
-- CanvasXpress para Kaplan-Meier nativos
-- Glyphhanger font subsetting no build pipeline
+Ver @docs/HANDOFF.md para prioridades e pendências.
