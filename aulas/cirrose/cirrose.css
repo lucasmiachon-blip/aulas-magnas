@@ -2,6 +2,17 @@
    CIRROSE — Lecture-specific components
    ============================================ */
 
+/* --- Tighter slide padding for cirrose (gains ~40px vertical) --- */
+.reveal .slides section .slide-inner {
+  padding: 40px 64px;
+}
+
+/* --- Section tag spacing --- */
+.section-tag {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+}
+
 /* --- Hook: data grid --- */
 .data-grid {
   display: grid;
@@ -90,16 +101,17 @@
   font-size: var(--text-h2);
   color: var(--text-on-dark);
   max-width: 32ch;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
   line-height: 1.15;
 }
 
 /* --- Source tag (reference footer) --- */
 .source-tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--text-caption);
   color: var(--text-on-dark-muted);
   margin-top: auto;
+  padding-bottom: var(--space-xs);
 }
 
 /* --- Figure slide (paper image) --- */
@@ -109,7 +121,7 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  margin: var(--space-xs) 0;
+  margin: var(--space-sm) 0;
   min-height: 0;
 }
 .slide-figure img {
@@ -117,6 +129,7 @@
   max-height: 100%;
   object-fit: contain;
   border-radius: var(--radius-sm);
+  mix-blend-mode: multiply;
 }
 
 /* ============================================
