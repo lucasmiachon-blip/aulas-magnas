@@ -21,14 +21,15 @@
     "transcribe": "node scripts/transcribe-lecture.js"
   },
   "devDependencies": {
-    "vite": "^6.0.0",
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@notionhq/client": "^2.3.0",
     "decktape": "^3.14.0",
     "dotenv": "^16.4.0",
-    "@anthropic-ai/sdk": "^0.39.0",
-    "@notionhq/client": "^2.3.0"
+    "playwright": "^1.58.2",
+    "vite": "^6.0.0"
   },
   "dependencies": {
-    "reveal.js": "^5.1.0",
-    "gsap": "^3.12.5"
+    "gsap": "^3.12.5",
+    "reveal.js": "^5.1.0"
   }
 }
