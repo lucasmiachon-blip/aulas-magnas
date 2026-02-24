@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** s-close + APP-01..08 — 28 sections total
-- **Commit:** [a definir após git commit]
+- **Commit:** 795b971
 - **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
 - **Alterações:** s-close (pos 20) + s-app-01 a s-app-08 (pos 21-28) replicados nos 3 Plans. Plan A/C: data-animate (fadeUp/stagger). Plan B: sem data-animate.
