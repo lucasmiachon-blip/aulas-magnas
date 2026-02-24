@@ -1,24 +1,38 @@
 # HANDOFF — Cirrose (atualizado 2026-02-24)
 
 ## Último batch executado
-- **Batch:** Plan A/C balance + stage-a + qa-screenshots script
-- **Commit:** 2b82280
+- **Batch:** Batch 0 — Redesign v4 Foundation PoC
+- **Commit:** [PENDING — commit após este HANDOFF]
 - **Data:** 2026-02-24
-- **Agente:** Cursor / Claude Code
-- **Alterações:** Plan A: body class="stage-a", dark theme (base.css). Plan C: já stage-c. cirrose.css: stage-a overrides (slide-figure mix-blend, HOOK visibility). scripts/qa-screenshots-cirrose.js: PORT configurável.
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** prompt-batch0-redesign-v4.md + ADDENDUM-batch0-narrativa.md
+- **Alterações:**
+  - 4 slides refatorados para archetypes: s-a1-01 (figure), s-a2-01 (metrics), s-a1-03 (interactive), s-cp1 (checkpoint)
+  - Click-reveal system: data-reveal elements substituem auto-play fadeUp nos 4 PoC
+  - Case panel sidebar (190px): estado do paciente evolui por 5 checkpoints
+  - MELD-Na calculator interativo no s-a1-03
+  - Speaker notes enriquecidas (ADDENDUM) nos 4 PoC
+
+## Novos arquivos (Batch 0)
+| Arquivo | Propósito |
+|---------|-----------|
+| `aulas/cirrose/archetypes.css` | 4 layouts archetype + case panel + click-reveal CSS |
+| `shared/js/click-reveal.js` | Classe ClickReveal: fragmentos manuais por click/→ |
+| `shared/js/case-panel.js` | Classe CasePanel: sidebar com 5 estados paciente |
+| `shared/js/interactions/meld-calc.js` | Classe MeldCalc: calculadora MELD-Na interativa |
 
 ## Estado do HTML (index.stage-c.html)
 - **Total sections:** 28
 - **Ordem:**
   1. s-title (CIRR-TITLE)
-  2. s-a1-01 (CIRR-A1-01)
+  2. s-a1-01 (CIRR-A1-01) ← **archetype-figure** + click-reveal
   3. s-a1-02 (CIRR-A1-02)
   4. s-hook (CIRR-HOOK)
-  5. s-a1-03 (CIRR-A1-03)
+  5. s-a1-03 (CIRR-A1-03) ← **archetype-interactive** + MELD calculator
   6. s-a1-04 (CIRR-A1-04)
   7. s-a1-05 (CIRR-A1-05)
-  8. s-cp1 (CIRR-CP1)
-  9. s-a2-01 (CIRR-A2-01)
+  8. s-cp1 (CIRR-CP1) ← **archetype-checkpoint** + click-reveal
+  9. s-a2-01 (CIRR-A2-01) ← **archetype-metrics** + click-reveal
   10. s-a2-02 (CIRR-A2-02)
   11. s-a2-03 (CIRR-A2-03)
   12. s-a2-04 (CIRR-A2-04)
@@ -38,22 +52,34 @@
   26. s-app-06 (SHP/HPP)
   27. s-app-07 (Estatina)
   28. s-app-08 (Anticoagulação)
-- **registerCustom:** index 3 → HOOK (framework + case stagger). gsap.set(visibility) + gsap.fromTo(opacity, y). Demais via data-animate (fadeUp/stagger).
+- **registerCustom:** index 3 → HOOK (framework + case stagger). Demais via data-animate (fadeUp/stagger) nos 24 slides antigos.
+- **Click-reveal:** Slides com data-reveal: s-a1-01 (2 reveals), s-a2-01 (3 reveals), s-cp1 (3 reveals)
+- **Case panel:** 5 estados registrados (indexes 3/7/14/18/19). Visível slides 3-27.
 - **Assets referenciados:** villanueva-2025-fig1.png, villanueva-2025-fig2a.png
 
-## Pendências
-- ☐ QA narrativo após todas sections implementadas
+## Pendências (Batches 1-3)
+- ☐ Refatorar 24 slides restantes para archetypes
+- ☐ Módulos: decision-tree.js, timeline.js
+- ☐ QA visual dos 4 PoC (archetype layout, click-reveal, panel transitions)
+- ☐ Sincronizar alterações nos Plans A e B (apenas stage-c foi modificado)
+- ☐ Speaker notes: enriquecer os 24 slides restantes (BIBLIA-NARRATIVA-CIRROSE.md como referência)
 
-## QA 24/fev (before/after)
+## Notion sync pendente (Claude.ai deve executar):
+- A1-01: Pipeline → redesign-poc, Visual QA → pending, Animação → click-reveal
+- A2-01: Pipeline → redesign-poc, Visual QA → pending, Animação → click-reveal
+- A1-03: Pipeline → redesign-poc, Visual QA → pending, Animação → interactive-meld
+- CP1: Pipeline → redesign-poc, Visual QA → pending, Animação → click-reveal
+
+## QA 24/fev (before batch 0)
 - **CSS:** Removido data-grid, card-metric, hook-context, hook-question, text-accent, stage overrides para card-navy/card-metric
 - **CLAUDE.md:** Slim — ordem/status em HANDOFF apenas
 - **Assertion-evidence:** Headlines OK, source-tag OK, zero bullets
 - **QA visual:** 28 slides avaliados foto a foto. Relatório em QA-VISUAL-24fev.md. Screenshots em qa-screenshots/
 
 ## Tri-mode sync
-- ✅ Plan A (index.html): body class="stage-a", dark 1920×1080, GSAP
-- ✅ Plan C (stage-c): light 1280×720, GSAP
-- ✅ Plan B (stage-b): light 1280×720, sem animação
+- ✅ Plan A (index.html): body class="stage-a", dark 1920×1080, GSAP — **NÃO atualizado neste batch**
+- ✅ Plan C (stage-c): light 1280×720, GSAP — **ATUALIZADO (4 PoC + panel + click-reveal)**
+- ✅ Plan B (stage-b): light 1280×720, sem animação — **NÃO atualizado neste batch**
 
 ## Sync Notion ↔ Repo (24/fev/2026)
 
@@ -70,7 +96,7 @@
 
 - **Slides DB:** 28 registros ativos (20 core + 8 APP) • 3 DEPRECATED (A1-02-OLD, CIRR-04-01, A2-04-OLD)
 - **Blueprint page:** Ordem definitiva v3 documentada (TITLE→A1-01→A1-02→HOOK→A1-03...→CLOSE→APP-01...APP-08)
-- **Ação manual pendente:** Na tabela de status da Blueprint, atualizar linha "Popular Slides DB" de "2 DEPRECATED" para "3 DEPRECATED (A1-02-OLD, 04-01, A2-04-OLD)"
 
 ## Próximo batch esperado
-- QA pass: narrativa, visual, animações
+- Batch 1-3: Refatorar 24 slides restantes para archetypes (ver BIBLIA-NARRATIVA-CIRROSE.md)
+- Sincronizar Plans A e B com as mudanças do stage-c

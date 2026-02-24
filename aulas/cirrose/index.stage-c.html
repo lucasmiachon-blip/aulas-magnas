@@ -6,7 +6,18 @@
   <title>Cirrose — Plano C</title>
 </head>
 <body class="stage-c">
-<div class="reveal"><div class="slides">
+<div class="reveal">
+  <!-- Case Panel (sidebar) -->
+  <div class="case-panel hidden" id="case-panel" data-severity="neutral">
+    <div class="panel-header">
+      <div class="panel-dot"></div>
+      <span class="panel-name">Seu Antônio, 55a</span>
+    </div>
+    <div class="panel-fields"></div>
+    <div class="panel-events"></div>
+  </div>
+
+  <div class="slides">
   <section id="s-title">
     <div class="slide-inner slide-title">
       <h1>Cirrose: Manejo Global — 5 Números, 3 Decisões</h1>
@@ -21,29 +32,37 @@ PAUSA 3s. Deixar a pergunta pairar.
   </section>
 
   <section id="s-a1-01">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-figure">
       <p class="section-tag">ATO 1 — CLASSIFICAR</p>
       <h2 class="slide-headline">Doença hepática é um espectro — não um switch</h2>
 
-      <figure class="slide-figure" data-animate="fadeUp">
+      <figure class="slide-figure">
         <img src="./assets/villanueva-2025-fig1.png"
              alt="Continuum da doença hepática crônica avançada: cACLD → CSPH → dACLD">
       </figure>
 
-      <p class="source-tag">Villanueva et al. Nat Rev Gastroenterol Hepatol 2025</p>
+      <div data-reveal="1" class="evidence-card">
+        <span class="evidence-text">5 estágios D'Amico: 1% → 3% → 20% → 57% mortalidade/ano</span>
+      </div>
+
+      <p class="source-tag" data-reveal="2">Villanueva et al. Nat Rev Gastroenterol Hepatol 2025</p>
     </div>
 
     <aside class="notes">
-[0:00-1:00 D'AMICO]
-"5 estágios. Compensada sem varizes: sobrevida >12 anos. Ascite aparece: cai para ~2 anos."
-"Esse penhasco é PREVISÍVEL — e é isso que vamos aprender a interceptar."
+[0:00-0:30] Olhem para este espectro. À esquerda, compensado — o paciente que sorri na sua frente.
+À direita, descompensado — o paciente que chega de ambulância.
+No meio, o limiar. HVPG 10 — hipertensão portal clinicamente significativa.
+A partir daqui, tudo muda.
 
-[1:00-2:00 PRIMEIRO NÚMERO]
-"Mortalidade por estágio: 1%, 3%, 20%, 57%."
-"Esses são os primeiros números que vocês precisam ter na cabeça."
+[0:30-1:00] D'Amico descreveu 5 estágios. O que importa pra vocês: a mortalidade salta de 1%
+para 57% quando o paciente cruza o limiar da descompensação. PAUSA 3s.
 
-[2:00-3:00 ESPECTRO]
-"Cirrose NÃO é diagnóstico binário. É contínuo. E cada transição de estágio é um evento que podia ter sido prevenido."
+[1:00-1:30] Um detalhe que o slide não mostra: na MASLD, a causa número 1 de morte
+NÃO é hepática — é cardiovascular. Só passa a ser hepática quando a fibrose chega
+ao estágio 2 ou mais. O fígado é silencioso até que não é mais.
+
+[1:30-2:00] E uma nota sobre o Seu Antônio: ele é motorista, tá sorrindo, enzimas "normais".
+Mas o FIB-4 dele é 3,2. Ele já está neste espectro. Onde exatamente, a gente vai descobrir agora.
     </aside>
   </section>
 
@@ -123,45 +142,41 @@ PAUSA 3s. Deixar a pergunta pairar.
   </section>
 
   <section id="s-a1-03">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-interactive">
       <p class="section-tag">ATO 1 — CLASSIFICAR</p>
       <h2 class="slide-headline">MELD-Na é o GPS do cirrótico — e tem um semáforo</h2>
 
-      <div class="meld-semaphore" data-animate="fadeUp">
-        <div class="meld-band meld-green">
-          <span class="meld-range">&lt;15</span>
-          <span class="meld-action">Acompanhar</span>
-        </div>
-        <div class="meld-band meld-yellow">
-          <span class="meld-range">≥15</span>
-          <span class="meld-action">Encaminhar hepato</span>
-        </div>
-        <div class="meld-band meld-red">
-          <span class="meld-range">≥20</span>
-          <span class="meld-action">Planejar transplante</span>
-        </div>
-        <div class="meld-band meld-black">
-          <span class="meld-range">≥25</span>
-          <span class="meld-action">Janela curta — urgência</span>
-        </div>
+      <div class="interactive-area" data-interaction="meld-calc">
+        <!-- JS populates: 4 inputs (Bil, Cr, INR, Na) + result + semaphore bar -->
       </div>
+
+      <div class="interactive-controls">
+        <button class="ctrl-btn ctrl-secondary" data-action="reset">Reset</button>
+        <button class="ctrl-btn ctrl-primary" data-action="load-case">Seu Antônio</button>
+      </div>
+
+      <p class="source-tag">Mahmud et al. ACG 2025 · Northup Ann Surg 2005</p>
     </div>
     <aside class="notes">
-[0:00-1:00 SCORES]
-"Dois scores, dois propósitos. Child-Pugh: estratificação clássica A/B/C, ainda útil em estudos e cirurgia."
-"MELD-Na: alocação de transplante + prognóstico."
+[0:00-0:30] Vou mostrar a ferramenta que vocês vão usar toda semana.
+O MELD-Na. Quatro variáveis: bilirrubina, creatinina, INR, sódio.
+O resultado é um número. E esse número é um semáforo.
 
-[1:00-2:00 SEMÁFORO]
-"Para o gastro geral — semáforo MELD:"
-"MELD &lt;15: você acompanha."
-"≥15: encaminhe para hepatologista."
-"≥20: planeje transplante."
-"≥25: janela curta — urgência."
-PAUSA 2s.
+[0:30-1:00] [CLICAR "Seu Antônio"] Antônio: bilirrubina 1,8, creatinina 1,1, INR 1,3, sódio 136.
+MELD-Na... 10. Semáforo verde. Acompanhar. Respira. PAUSA 3s.
 
-[2:00-3:00 PRÁTICA]
-"~1% mortalidade por ponto MELD até 20 em cirurgia eletiva. Acima de 20: risco sobe exponencialmente."
-"Se o cirurgião ligar pedindo parecer: calcule MELD primeiro."
+[1:00-1:30] Agora vou mudar UMA variável. [EDITAR Cr → 3,1]
+Creatinina 3,1. MELD-Na... 28. Semáforo vermelho. Planejar transplante.
+UMA variável. É isso que a descompensação faz.
+
+[1:30-2:00] Nota importante: o sódio no MELD-Na é preditor independente de mortalidade
+na cirrose. Mas atenção — na hepatite alcoólica severa, usamos o MELD original,
+sem sódio. Sódio não é preditor independente nesse contexto específico.
+
+[2:00-2:30] O MELD ≥18 é o ponto de inflexão para transplante.
+Abaixo de 18, o paciente com HCV curado que descompensou pode ser delistado.
+Acima de 20, nenhum paciente conseguiu ser delistado após SVR.
+Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhora.
     </aside>
   </section>
 
@@ -236,78 +251,107 @@ PAUSA 2s.
   </section>
 
   <section id="s-cp1" data-timing="180">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-checkpoint" data-severity="caution">
       <h2 class="slide-headline">LSM 21 kPa, plaquetas 118k. Como você estadia?</h2>
 
-      <div class="checkpoint-case" data-animate="fadeUp">
-        <div class="case-card">
+      <div class="checkpoint-layout">
+        <div class="case-expanded">
           <h3>Seu Antônio — retorno</h3>
           <div class="case-data">
             <div class="data-item"><span class="data-label">LSM</span><span class="data-value">21 kPa</span></div>
             <div class="data-item"><span class="data-label">PLQ</span><span class="data-value">118k</span></div>
             <div class="data-item"><span class="data-label">MELD-Na</span><span class="data-value">~10</span></div>
-            <div class="data-item"><span class="data-label">Baveno</span><span class="data-value">CSPH provável</span></div>
+            <div class="data-item"><span class="data-label">Estágio</span><span class="data-value">cACLD → CSPH</span></div>
+            <div class="data-item"><span class="data-label">Albumina</span><span class="data-value">3,6 g/dL</span></div>
+            <div class="data-item"><span class="data-label">FIB-4</span><span class="data-value">3,2</span></div>
           </div>
-          <p class="case-question">Carvedilol? EDA? Encaminhar?</p>
+        </div>
+        <div class="decision-area">
+          <div class="decision-option" data-reveal="1">
+            <span class="option-label">Carvedilol?</span>
+            <span class="option-answer">SIM — PREDESCI. CSPH + sem contraindicação. 6,25 mg BID.</span>
+          </div>
+          <div class="decision-option" data-reveal="2">
+            <span class="option-label">EDA?</span>
+            <span class="option-answer">LIMITE — Baveno VII: LSM &lt;25 + PLQ &gt;110 dispensa. Ele tem LSM 21 + PLQ 118k. Pode dispensar, mas está no limiar. Se dúvida, faz.</span>
+          </div>
+          <div class="decision-option" data-reveal="3">
+            <span class="option-label">Encaminhar transplante?</span>
+            <span class="option-answer">NÃO — MELD ~10. Semáforo verde. Acompanhar com carvedilol + vigilância + elastografia anual.</span>
+          </div>
         </div>
       </div>
     </div>
     <aside class="notes">
-[0:00-1:00 RETORNO]
-"Lembram do Seu Antônio? FIB-4 3,2. Elastografia: LSM 21 kPa. PLQ 118k."
+[0:00-0:30] [PAINEL ATUALIZA — amarelo] Antônio fez a elastografia. LSM 21 kPa.
+Plaquetas 118 mil. O que isso significa? cACLD confirmada.
+Hipertensão portal clinicamente significativa. PAUSA 3s.
 
-[1:00-2:00 APLICAR]
-"LSM &gt;20 = presumir CSPH. PLQ 118k &lt; 150k = não dispensa EDA pelo Baveno."
-"Carvedilol: SIM — PREDESCI. EDA: Baveno VII expandido permite dispensar se LSM &lt;25 + PLQ &gt;110 — ele está no limite."
-"Screening CHC: SIM — todo cACLD."
+[0:30-1:00] Primeira pergunta: carvedilol? [CLICK → revela opção 1]
+SIM. PREDESCI. Paciente compensado com CSPH. Candidato perfeito.
+Dose: 6,25 mg duas vezes ao dia. Monitorar PA sistólica >90.
 
-[2:00-3:00 SEMÁFORO]
-"MELD-Na dele = ~10. Semáforo verde — vocês acompanham, mas com carvedilol e vigilância."
-"Seu Antônio está estadiado. Ato 2: e quando descompensa?"
+[1:00-1:30] Segunda pergunta: endoscopia? [CLICK → revela opção 2]
+Baveno VII diz: LSM &lt;25 + plaquetas >110 → pode dispensar.
+Antônio: LSM 21, plaquetas 118. Está dentro. Poupa a endoscopia.
+Mas ele está no LIMITE. Se vocês têm dúvida, façam a EGD.
+O Baveno poupa 1/3 das endoscopias com menos de 5% de miss rate.
+
+[1:30-2:00] Terceira pergunta: encaminhar para transplante? [CLICK → revela opção 3]
+NÃO. MELD 10. Semáforo verde. Isso é classificar, não transplantar.
+O plano agora: carvedilol, vigilância com elastografia anual,
+e a conversa mais difícil — falar sobre o álcool.
+
+[2:00-2:30] Porque lembrem: Antônio bebe ~60g por dia.
+O threshold para "excessivo" é 60g para homens. Ele está no corte.
+E tem MASLD por cima. É MetALD — a epidemia real.
+Se ele não parar, voltamos aqui em 6 meses com o slide vermelho.
     </aside>
   </section>
 
   <section id="s-a2-01">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-metrics">
       <p class="section-tag">ATO 2 — INTERVIR</p>
       <h2 class="slide-headline">Carvedilol previne a primeira descompensação — comece antes da ascite</h2>
 
-      <div class="trial-result" data-animate="fadeUp">
-        <div class="trial-header">PREDESCI — Villanueva, Lancet 2019 (n=201)</div>
-        <div class="trial-metrics">
-          <div class="metric-box">
-            <span class="metric-value">HR 0,51</span>
-            <span class="metric-ci">IC 0,26–0,97</span>
-          </div>
-          <div class="metric-box metric-highlight">
-            <span class="metric-value">NNT 9</span>
-            <span class="metric-ci">ARR 11% em ~3 anos</span>
-          </div>
+      <div class="metric-row">
+        <div class="metric-card" data-reveal="1">
+          <span class="metric-value">HR 0,51</span>
+          <span class="metric-ci">IC 0,26–0,97</span>
+          <span class="metric-label">Descompensação</span>
         </div>
-        <div class="trial-dose">
-          <span class="dose-label">Dose:</span> 6,25 mg → 12,5 mg/dia · FC ≥55 · PAS ≥90
+        <div class="metric-card" data-reveal="2">
+          <span class="metric-icon metric-safe">✓</span>
+          <span class="metric-value">NNT 9</span>
+          <span class="metric-ci">ARR 11% em ~3a</span>
+          <span class="metric-label">Benefício absoluto</span>
+        </div>
+        <div class="metric-card" data-reveal="3">
+          <span class="metric-value">6,25 → 12,5 mg</span>
+          <span class="metric-label">Dose · FC ≥55 · PAS ≥90</span>
         </div>
       </div>
 
-      <p class="source-tag">Villanueva et al. Lancet 2019</p>
+      <p class="source-tag">PREDESCI — Villanueva et al. Lancet 2019 (n=201)</p>
     </div>
     <aside class="notes">
-[0:00-0:30 ABERTURA ATO 2]
-"Ato 1 foi CLASSIFICAR. Ato 2 é INTERVIR. E a primeira decisão — das 3 do refrão — começa ANTES da descompensação."
+[0:00-0:30] PREDESCI mudou a prática. Carvedilol em compensados com CSPH reduz
+a PRIMEIRA descompensação — ascite — pela metade. HR 0,51.
+As novas guidelines da AASLD vão recomendar. PAUSA 2s.
 
-[0:30-1:30 PREDESCI]
-"Villanueva, Lancet 2019. 201 pacientes, 8 centros na Espanha. CSPH sem varizes de alto risco. Carvedilol vs placebo."
-"Descompensação em 3 anos: 16% vs 27%. HR 0,51 (IC 0,26-0,97). ARR 11%, NNT 9."
-"O que protegeu? Redução de ascite: HR 0,44."
+[0:30-1:00] Por que carvedilol e não propranolol? Dois motivos.
+Primeiro: tem efeito anti-alfa-1 adrenérgico — causa vasodilatação intra-hepática,
+reduz a resistência portal por dentro. É mais potente.
+Segundo: dose fixa. 6,25 mg duas vezes ao dia. Sem titulação por frequência cardíaca.
+Só vigiar pressão arterial sistólica acima de 90.
 
-[1:30-2:30 DOSE]
-"No trial: até 25 mg/dia. Na prática clínica e Baveno VII: titular até 12,5 mg/dia."
-"6,25 mg 1×/dia → titular para 6,25 mg 2×/dia. Guardrails: FC ≥55, PAS ≥90."
-"Por que carvedilol e não propranolol? Anti-alfa1: reduz resistência intra-hepática além da porta."
+[1:00-1:30] E a pergunta que vai cair na prova: se o paciente desenvolver ascite refratária,
+para o betabloqueador? NÃO. Mudança recente. Ascite refratária e PBE não são contraindicações.
+Usar doses baixas. Suspender TEMPORARIAMENTE se: hipotensão, hiponatremia, ou AKI.
+Retomar quando melhorar.
 
-[2:30-3:20 AASLD 2024]
-"Se CSPH por NITs (LSM &gt;25): carvedilol. EDA não é necessária se tolera NSBB."
-"Evidência de fronteira (estatina, anticoagulação) está no apêndice para quem quiser."
+[1:30-2:00] Voltando ao Antônio: CSPH confirmada, MELD 10, compensado.
+Ele é o candidato PERFEITO pro carvedilol. Começamos hoje.
     </aside>
   </section>
 
@@ -1032,7 +1076,12 @@ PAUSA 2s.
   import 'reveal.js/dist/reveal.css';
   import '../../shared/css/base.css';
   import './cirrose.css';
+  import './archetypes.css';
   import { initAula, createAnimationDispatcher } from '../../shared/js/engine.js';
+  import { ClickReveal } from '../../shared/js/click-reveal.js';
+  import { CasePanel } from '../../shared/js/case-panel.js';
+  import { MeldCalc } from '../../shared/js/interactions/meld-calc.js';
+
   const deck = await initAula(Reveal, gsap, { plugins: [Notes], width: 1280, height: 720 });
   const anim = createAnimationDispatcher(Reveal, gsap);
   anim.connect();
@@ -1053,6 +1102,93 @@ PAUSA 2s.
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.5, stagger: 0.15, delay: 0.8, ease: 'power2.out' }
       );
+    }
+  });
+
+  // ============================================
+  // CASE PANEL
+  // ============================================
+  const panelEl = document.getElementById('case-panel');
+  if (panelEl) {
+    const panel = new CasePanel(panelEl, gsap);
+
+    panel.registerState(3, {
+      severity: 'neutral',
+      values: { fib4: '3,2', lsm: '—', plq: '118k', meld: '—', albumin: '3,6', stage: '?' },
+      events: []
+    });
+    panel.registerState(7, {
+      severity: 'caution',
+      values: { fib4: '3,2', lsm: '21 kPa', plq: '118k', meld: '~10', albumin: '3,6', stage: 'cACLD → CSPH' },
+      events: ['Elastografia realizada']
+    });
+    panel.registerState(14, {
+      severity: 'danger',
+      values: { fib4: '3,2', lsm: '32 kPa', plq: '89k', meld: '28', albumin: '2,4', stage: 'dACLD' },
+      events: ['Ascite +++', 'PBE', 'HRS-AKI', 'Cr 3,1']
+    });
+    panel.registerState(18, {
+      severity: 'hope',
+      values: { fib4: '2,1', lsm: '18 kPa', plq: '132k', meld: '12', albumin: '3,8', stage: 'Recompensando' },
+      events: ['Abstinente 10m', 'Sem ascite 8m', 'SVR confirmado']
+    });
+    panel.registerState(19, {
+      severity: 'resolved',
+      showTimeline: true
+    });
+
+    deck.on('slidechanged', (event) => {
+      panel.onSlideChanged(event.indexh);
+    });
+
+    // Initialize panel for current slide on load
+    deck.on('ready', (event) => {
+      panel.onSlideChanged(event.indexh);
+    });
+  }
+
+  // ============================================
+  // CLICK-REVEAL
+  // ============================================
+  const revealers = new Map();
+
+  deck.on('ready', () => {
+    document.querySelectorAll('.slides > section').forEach((section, index) => {
+      const revealEls = section.querySelectorAll('[data-reveal]');
+      if (revealEls.length > 0) {
+        revealers.set(index, new ClickReveal(section, gsap));
+      }
+    });
+  });
+
+  // Override arrow keys: click-reveal consumes first, then advance slide
+  deck.addKeyBinding({ keyCode: 39, key: 'ArrowRight', description: 'Next reveal or slide' }, () => {
+    const idx = deck.getState().indexh;
+    const revealer = revealers.get(idx);
+    if (revealer && revealer.next()) return;
+    deck.right();
+  });
+
+  deck.addKeyBinding({ keyCode: 32, key: ' ', description: 'Next reveal or slide (space)' }, () => {
+    const idx = deck.getState().indexh;
+    const revealer = revealers.get(idx);
+    if (revealer && revealer.next()) return;
+    deck.right();
+  });
+
+  // Reset reveals when entering a slide
+  deck.on('slidechanged', (event) => {
+    const revealer = revealers.get(event.indexh);
+    if (revealer) revealer.reset();
+  });
+
+  // ============================================
+  // MELD CALCULATOR
+  // ============================================
+  deck.on('ready', () => {
+    const meldContainer = document.querySelector('[data-interaction="meld-calc"]');
+    if (meldContainer) {
+      new MeldCalc(meldContainer);
     }
   });
 </script>
