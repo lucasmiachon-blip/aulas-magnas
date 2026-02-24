@@ -1,39 +1,40 @@
-# HANDOFF — Cirrose (atualizado 2026-02-24)
+# HANDOFF — Cirrose (atualizado 2026-02-25)
 
 ## Último batch executado
-- **Batch:** Initial implementation (4 sections)
-- **Commit:** (ver git log — 3 commits no main)
-- **Data:** 2026-02-21 (aprox)
-- **Agente:** Cursor
+- **Batch:** Mega-batch (revalidar 4 + implementar 15 novas)
+- **Commit:** c35f472
+- **Data:** 2026-02-25
+- **Agente:** Cursor / Claude Code
 
 ## Estado do HTML (index.stage-c.html)
-- **Total sections:** 4
+- **Total sections:** 19
 - **Ordem:**
   1. s-title (CIRR-TITLE)
   2. s-a1-01 (CIRR-A1-01)
   3. s-a1-02 (CIRR-A1-02)
   4. s-hook (CIRR-HOOK)
-- **registerCustom map:**
-  - index 0 → countUp (TITLE)
-  - index 1 → fadeUp (A1-01 — Villanueva fig1)
-  - index 2 → stagger (A1-02 — Baveno pipeline)
-  - index 3 → stagger (HOOK — case cards)
+  5. s-a1-03 (CIRR-A1-03)
+  6. s-a1-04 (CIRR-A1-04)
+  7. s-a1-05 (CIRR-A1-05)
+  8. s-cp1 (CIRR-CP1)
+  9. s-a2-01 (CIRR-A2-01)
+  10. s-a2-02 (CIRR-A2-02)
+  11. s-a2-03 (CIRR-A2-03)
+  12. s-a2-04 (CIRR-A2-04)
+  13. s-a2-05 (CIRR-A2-05)
+  14. s-a2-06 (CIRR-A2-06)
+  15. s-cp2 (CIRR-CP2)
+  16. s-a3-01 (CIRR-A3-01)
+  17. s-a3-02 (CIRR-A3-02)
+  18. s-a3-03 (CIRR-A3-03)
+  19. s-cp3 (CIRR-CP3)
+- **registerCustom:** index 3 → HOOK (framework + case stagger). Demais via data-animate (fadeUp/stagger).
+- **Assets referenciados:** villanueva-2025-fig1.png, villanueva-2025-fig2a.png
 
-## Assets referenciados
-- assets/villanueva-2025-fig1.png
-- assets/villanueva-2025-fig2a.png
-
-## O que foi feito
-- 4 sections implementadas em stage-c (Plan C)
-- Tri-mode system funcional (A/B/C)
-- CSS específico em cirrose.css
-
-## O que NÃO foi feito (pendências)
-- ⚠️ TITLE speaker notes ainda em inglês (v3 tem em PT)
-- ⚠️ HOOK mostra só cards clínicos (v3 quer advance organizer "5+3" + caso)
-- ⚠️ A1-01 e A1-02 precisam revalidar headlines/notes contra v3
-- ☐ 16 sections core pendentes (pos 5-20)
-- ☐ 8 sections apêndice pendentes (pos 21-28)
+## Pendências
+- ☐ s-close (pos 20) — spec não incluída neste batch
+- ☐ APP-01 a APP-08 (pos 21-28) — próximo batch
+- ☐ QA narrativo após todas sections implementadas
 
 ## Sync Notion ↔ Repo (24/fev/2026)
 
@@ -53,7 +54,6 @@
 - **Ação manual pendente:** Na tabela de status da Blueprint, atualizar linha "Popular Slides DB" de "2 DEPRECATED" para "3 DEPRECATED (A1-02-OLD, 04-01, A2-04-OLD)"
 
 ## Próximo batch esperado
-- **Batch 1:** Revalidar 4 sections existentes contra specs v3 do Notion
-  - TITLE: notes EN→PT
-  - A1-01, A1-02: confirmar headlines/notes v3
-  - HOOK: reescrever para advance organizer + caso
+- Spec CLOSE (pos 20) + implementar
+- QA pass: narrativa, visual, animações
+- Apêndice APP-01 a APP-08
