@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Fix degrau — imagem aparece antes do efeito (Plan A/C)
-- **Commit:** bdfc82d
+- **Commit:** b46afb7
 - **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
 - **Alterações:** shared/css/base.css + shared/js/engine.js — `visibility: hidden` em [data-animate] até GSAP rodar; animFadeUp/animStagger setam `visibility: visible`
