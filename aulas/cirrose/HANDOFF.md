@@ -1,11 +1,11 @@
 # HANDOFF — Cirrose (atualizado 2026-02-24)
 
 ## Último batch executado
-- **Batch:** QA — CSS morto, CLAUDE slim, HANDOFF
-- **Commit:** 7740f4b
+- **Batch:** QA visual + HANDOFF update
+- **Commit:** [após commit]
 - **Data:** 2026-02-24
 - **Agente:** Cursor / Claude Code
-- **Alterações:** Removido ~90 linhas CSS morto (data-grid, card-metric, hook-context, hook-question, card-navy). CLAUDE.md slim → aponta para HANDOFF. Assertion-evidence OK.
+- **Alterações:** QA visual 28 slides foto a foto. QA-VISUAL-24fev.md. HANDOFF atualizado.
 
 ## Estado do HTML (index.stage-c.html)
 - **Total sections:** 28
@@ -48,6 +48,7 @@
 - **CSS:** Removido data-grid, card-metric, hook-context, hook-question, text-accent, stage overrides para card-navy/card-metric
 - **CLAUDE.md:** Slim — ordem/status em HANDOFF apenas
 - **Assertion-evidence:** Headlines OK, source-tag OK, zero bullets
+- **QA visual:** 28 slides avaliados foto a foto. Relatório em QA-VISUAL-24fev.md. Screenshots em qa-screenshots/
 
 ## Tri-mode sync
 - ✅ Plan C (stage-c): 28 sections implementadas
