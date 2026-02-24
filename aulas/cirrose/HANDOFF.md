@@ -1,11 +1,11 @@
 # HANDOFF — Cirrose (atualizado 2026-02-24)
 
 ## Último batch executado
-- **Batch:** sync — commit + HANDOFF + Notion
-- **Commit:** 1285463
+- **Batch:** QA — CSS morto, CLAUDE slim, HANDOFF
+- **Commit:** [após commit]
 - **Data:** 2026-02-24
 - **Agente:** Cursor / Claude Code
-- **Alterações:** sync HANDOFF + Notion. 28 sections já implementadas (batch anterior). Ajustes menores HTML.
+- **Alterações:** Removido ~90 linhas CSS morto (data-grid, card-metric, hook-context, hook-question, card-navy). CLAUDE.md slim → aponta para HANDOFF. Assertion-evidence OK.
 
 ## Estado do HTML (index.stage-c.html)
 - **Total sections:** 28
@@ -43,6 +43,11 @@
 
 ## Pendências
 - ☐ QA narrativo após todas sections implementadas
+
+## QA 24/fev (before/after)
+- **CSS:** Removido data-grid, card-metric, hook-context, hook-question, text-accent, stage overrides para card-navy/card-metric
+- **CLAUDE.md:** Slim — ordem/status em HANDOFF apenas
+- **Assertion-evidence:** Headlines OK, source-tag OK, zero bullets
 
 ## Tri-mode sync
 - ✅ Plan C (stage-c): 28 sections implementadas

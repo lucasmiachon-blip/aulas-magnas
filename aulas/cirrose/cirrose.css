@@ -13,72 +13,6 @@
   margin-bottom: var(--space-sm);
 }
 
-/* --- Hook: data grid --- */
-.data-grid {
-  display: grid;
-  gap: var(--space-sm);
-  width: 100%;
-  margin: var(--space-lg) 0;
-}
-.data-grid[data-cols="5"] {
-  grid-template-columns: repeat(5, 1fr);
-}
-
-/* --- Metric card (valor + label) --- */
-.card-metric {
-  text-align: center;
-  padding: var(--space-md) var(--space-sm);
-}
-.card-metric .value {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 3vw, 52px);
-  font-weight: 400;
-  line-height: 1;
-  font-variant-numeric: tabular-nums lining-nums;
-  color: var(--text-on-dark);
-}
-.card-metric .label {
-  font-size: var(--text-caption);
-  color: var(--text-on-dark-muted);
-  margin-top: var(--space-xs);
-}
-.card-metric .unit {
-  font-size: 0.5em;
-  font-family: var(--font-body);
-  font-weight: 400;
-}
-
-/* --- Hook context paragraph --- */
-.hook-context {
-  font-size: var(--text-h3);
-  color: var(--text-on-dark-muted);
-  margin-bottom: var(--space-md);
-  max-width: 48ch;
-  line-height: 1.5;
-}
-
-/* --- Hook question (hero h2) ---
-     Bumped to --text-hero for impact.
-     This is the climax of the hook slide. */
-.hook-question {
-  font-size: var(--text-hero);
-  color: var(--text-on-dark);
-  max-width: 22ch;
-  margin-top: var(--space-lg);
-  line-height: 1.05;
-}
-
-/* --- Text accent utility --- */
-.text-accent {
-  color: var(--ui-accent);
-}
-.slide-navy .text-accent {
-  color: var(--ui-accent-on-dark);
-}
-.card-metric .value.text-warning {
-  color: var(--warning-on-dark);
-}
-
 /* --- Title slide (capa centrada) --- */
 .slide-title {
   justify-content: center;
@@ -135,28 +69,6 @@
 /* ============================================
    STAGE-BAD OVERRIDES (Plan B: light)
    ============================================ */
-.stage-bad .card-navy {
-  background: var(--bg-surface);
-  border: 2px solid var(--border);
-}
-.stage-bad .card-metric .value {
-  color: var(--text-primary);
-}
-.stage-bad .card-metric .label {
-  color: var(--text-muted);
-}
-.stage-bad .hook-context {
-  color: var(--text-secondary);
-}
-.stage-bad .hook-question {
-  color: var(--text-primary);
-}
-.stage-bad .text-accent {
-  color: var(--ui-accent);
-}
-.stage-bad .card-metric .value.text-warning {
-  color: var(--warning-on-light);
-}
 .stage-bad .slide-title .subtitle {
   color: var(--text-secondary);
 }
@@ -178,29 +90,6 @@
    Tokens already remapped in base.css .stage-c.
    Only need to override hardcoded on-dark refs.
    ============================================ */
-.stage-c .card-navy {
-  background: var(--bg-card);
-  border: 1px solid oklch(0% 0 0 / 0.08);
-  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.04);
-}
-.stage-c .card-metric .value {
-  color: var(--text-primary);
-}
-.stage-c .card-metric .label {
-  color: var(--text-muted);
-}
-.stage-c .hook-context {
-  color: var(--text-secondary);
-}
-.stage-c .hook-question {
-  color: var(--text-primary);
-}
-.stage-c .text-accent {
-  color: var(--ui-accent);
-}
-.stage-c .card-metric .value.text-warning {
-  color: var(--warning-on-dark);
-}
 
 /* ============================================
    HOOK — advance organizer + case (v3)
