@@ -46,7 +46,7 @@ Público: gastroenterologistas gerais (Brasil). Conteúdo PT, termos técnicos E
 | 20 | s-close | CLOSE |
 | 21-28 | s-app-01..08 | APP-01→08 |
 
-**Implementadas:** pos 1-4. **NÃO reordenar sem instrução do Claude.ai.**
+**Implementadas:** pos 1-28 (todas — 20 core + 8 APP). QA visual 24/fev OK. **NÃO reordenar sem instrução do Claude.ai.**
 
 ## Hard Constraints
 

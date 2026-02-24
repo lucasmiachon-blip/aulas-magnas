@@ -47,7 +47,7 @@ npm run lint:slides  # Assertion-evidence linter
 | Pasta | Tema | Status |
 |-------|------|--------|
 | aulas/grade/ | Sistema GRADE | Framework pronto, conteúdo parcial |
-| aulas/cirrose/ | Cirrose: manejo global (60 min) | Pesquisa completa, slides a criar |
+| aulas/cirrose/ | Cirrose: manejo global (70 min) | 28/28 slides HTML, QA visual OK, speaker notes PT pendente |
 | aulas/metanalise/ | Meta-análise (60 min) | Escopo definido, pesquisa a iniciar |
 
 ## Convenções

@@ -34,7 +34,7 @@
 ```
 --bg-navy    = #0d1a2d
 --bg-surface = #f5f5f7
---bg-deep    = #111111   (oklch 18% 0 0)   (oklch 18% 0 0)
+--bg-deep    = #111111   (oklch 18% 0 0)
 ```
 
 IMPORTANTE: HEX é a verdade. OKLCH é aproximação perceptual. Se divergirem, HEX vence.

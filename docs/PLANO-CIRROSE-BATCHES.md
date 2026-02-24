@@ -1,5 +1,7 @@
 # Plano Unificado — Cirrose: 3 Batches (20 slides)
 
+> **⚠️ STATUS: PLANO EXECUTADO INTEGRALMENTE (25/fev/2026).** Os 3 batches foram implementados. Este documento é agora HISTÓRICO — referência de como o plano foi estruturado, não trabalho pendente.
+>
 > **FONTE ÚNICA DE VERDADE:** CIRROSE — ORDEM DEFINITIVA v3 (24/fev/2026)
 >
 > **Fontes auxiliares:** 3 MD em Downloads (batch1, batch2, batch3)
@@ -13,10 +15,11 @@
 | Item | Valor |
 |------|-------|
 | Arquivo alvo | `aulas/cirrose/index.stage-c.html` |
-| Sections existentes | 4 (TITLE, A1-01, A1-02, HOOK) |
+| Sections existentes | **28 (20 core + 8 APP) — PLANO COMPLETO** |
 | Design system | `shared/css/base.css` — tokens OKLCH, `.stage-c` |
 | Engine | `shared/js/engine.js` — countUp, stagger, fadeUp, drawPath, highlight, registerCustom |
-| cirrose.css | slide-inner, section-tag, slide-headline, source-tag, card-metric, data-grid, hook-question |
+| cirrose.css | Todos componentes: evidence-panel, bar-chart, timeline, cols-2/3, myth-text, meld-badge, etc. |
+| QA Visual | 28/28 OK (24/fev/2026). Único issue: ghost text em transições. |
 
 ---
 

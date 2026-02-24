@@ -128,7 +128,7 @@ highlight → data-highlight-row (tables)
 | 20 | s-close | CIRR-CLOSE |
 | 21-28 | s-app-01..08 | CIRR-APP-01..08 |
 
-**Implementadas (24/fev):** pos 1-4 apenas.
+**Implementadas (25/fev):** pos 1-28 (todas — 20 core + 8 APP). QA visual 24/fev: 28/28 OK.
 
 ---
 
