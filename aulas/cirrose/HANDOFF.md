@@ -35,6 +35,12 @@
 - ☐ 16 sections core pendentes (pos 5-20)
 - ☐ 8 sections apêndice pendentes (pos 21-28)
 
+## Sync Notion ↔ Repo (24/fev/2026)
+
+- **Slides DB:** 28 registros ativos (20 core + 8 APP) • 3 DEPRECATED (A1-02-OLD, CIRR-04-01, A2-04-OLD)
+- **Blueprint page:** Ordem definitiva v3 documentada (TITLE→A1-01→A1-02→HOOK→A1-03...→CLOSE→APP-01...APP-08)
+- **Ação manual pendente:** Na tabela de status da Blueprint, atualizar linha "Popular Slides DB" de "2 DEPRECATED" para "3 DEPRECATED (A1-02-OLD, 04-01, A2-04-OLD)" — API Notion não permite editar células de table_row
+
 ## Próximo batch esperado
 - **Batch 1:** Revalidar 4 sections existentes contra specs v3 do Notion
   - TITLE: notes EN→PT
