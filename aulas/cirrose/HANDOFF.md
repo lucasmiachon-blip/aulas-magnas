@@ -1,10 +1,11 @@
 # HANDOFF — Cirrose (atualizado 2026-02-23)
 
 ## Último batch executado
-- **Batch:** Tri-mode sync — replicar 19 sections para Plans A e B
-- **Commit:** fd08be8
+- **Batch:** Fix degrau — imagem aparece antes do efeito (Plan A/C)
+- **Commit:** bdfc82d
 - **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
+- **Alterações:** shared/css/base.css + shared/js/engine.js — `visibility: hidden` em [data-animate] até GSAP rodar; animFadeUp/animStagger setam `visibility: visible`
 
 ## Estado do HTML (index.stage-c.html)
 - **Total sections:** 19

@@ -295,14 +295,17 @@
   }
 }
 
-/* --- Hide animated elements until GSAP triggers --- */
+/* --- Hide animated elements until GSAP triggers ---
+    visibility: hidden evita flash da imagem antes do efeito (degrau) --- */
 [data-animate="fadeUp"] {
   opacity: 0;
   transform: translateY(40px);
+  visibility: hidden;
 }
 [data-animate="stagger"] > * {
   opacity: 0;
   transform: translateY(30px);
+  visibility: hidden;
 }
 
 /* --- Stage Bad: force visible (no GSAP dispatcher) --- */
@@ -310,6 +313,7 @@
 .stage-bad [data-animate="stagger"] > * {
   opacity: 1;
   transform: none;
+  visibility: visible;
 }
 
 /* --- No-JS fallback --- */
@@ -317,6 +321,7 @@
 .no-js [data-animate="stagger"] > * {
   opacity: 1 !important;
   transform: none !important;
+  visibility: visible !important;
 }
 .no-js .fragment {
   opacity: 1 !important;
@@ -512,5 +517,6 @@
   [data-animate] {
     opacity: 1 !important;
     transform: none !important;
+    visibility: visible !important;
   }
 }
