@@ -1,60 +1,42 @@
-# HANDOFF — Cirrose: Manejo Global
+# HANDOFF — Cirrose (atualizado 2026-02-24)
 
-## Estado (22 fev 2026)
+## Último batch executado
+- **Batch:** Initial implementation (4 sections)
+- **Commit:** (ver git log — 3 commits no main)
+- **Data:** 2026-02-21 (aprox)
+- **Agente:** Cursor
 
-| Item | Valor |
-|------|-------|
-| Duração | 70 min (aceito 60-75) |
-| Estrutura | 3 atos: Classificar → Intervir → Reverter |
-| Fio condutor | Caso clínico (homem, 55a, álcool + MASLD) |
-| Specs no Notion | 26 slides na Slides DB |
-| HTML prontos | 4 sections (title + A1-01 + A1-02 + hook) |
-| Plan ativo | **C** (light animated, 1280×720) |
-| Layout | v3 (+61% figure size, mix-blend-mode) |
+## Estado do HTML (index.stage-c.html)
+- **Total sections:** 4
+- **Ordem:**
+  1. s-title (CIRR-TITLE)
+  2. s-a1-01 (CIRR-A1-01)
+  3. s-a1-02 (CIRR-A1-02)
+  4. s-hook (CIRR-HOOK)
+- **registerCustom map:**
+  - index 0 → countUp (TITLE)
+  - index 1 → fadeUp (A1-01 — Villanueva fig1)
+  - index 2 → stagger (A1-02 — Baveno pipeline)
+  - index 3 → stagger (HOOK — case cards)
 
-## Slides implementados
+## Assets referenciados
+- assets/villanueva-2025-fig1.png
+- assets/villanueva-2025-fig2a.png
 
-| # | ID | Conteúdo | Notas |
-|---|-----|---------|-------|
-| 1 | TITLE | Cirrose: Manejo Global — da classificação à recompensação | Title slide |
-| 2 | A1-01 | Doença hepática é um espectro — Villanueva 2025 Fig 1 | Figura do paper |
-| 3 | A1-02 | Baveno VII: diagnosticar CSPH sem medir pressão portal | Villanueva Fig 2a |
-| 4 | HOOK | Caso clínico — homem 55a, FIB-4 3.2, plaquetas 118K | 5 cards métricos + pergunta |
+## O que foi feito
+- 4 sections implementadas em stage-c (Plan C)
+- Tri-mode system funcional (A/B/C)
+- CSS específico em cirrose.css
 
-## Assets
+## O que NÃO foi feito (pendências)
+- ⚠️ TITLE speaker notes ainda em inglês (v3 tem em PT)
+- ⚠️ HOOK mostra só cards clínicos (v3 quer advance organizer "5+3" + caso)
+- ⚠️ A1-01 e A1-02 precisam revalidar headlines/notes contra v3
+- ☐ 16 sections core pendentes (pos 5-20)
+- ☐ 8 sections apêndice pendentes (pos 21-28)
 
-| Arquivo | Origem |
-|---------|--------|
-| villanueva-2025-fig1.png | Villanueva 2025, Fig 1 (PMID 39870944) |
-| villanueva-2025-fig2a.png | Villanueva 2025, Fig 2a (PMID 39870944) |
-
-## Arquivos por Plan
-
-| Plan | Arquivo | Tema | Resolução | Animação |
-|------|---------|------|-----------|----------|
-| A | index.html | Dark (navy) | 1920×1080 | GSAP |
-| B | index.stage-b.html | Light | 1280×720 | Nenhuma |
-| C | index.stage-c.html | Light | 1280×720 | GSAP |
-
-## Ordem dos slides no deck
-
-Title → A1-01 (Villanueva espectro) → A1-02 (Baveno VII) → HOOK (caso clínico)
-
-**Nota:** Hook vem DEPOIS dos dois slides de classificação, por design narrativo — a plateia precisa do modelo mental (espectro + Baveno) antes de receber o caso.
-
-## Referências Tier 1 usadas
-
-- Villanueva C, et al. Nat Rev Gastroenterol Hepatol 2025;22:265-280 | PMID: 39870944
-- de Franchis R, et al. J Hepatol 2022;76:959-974 (Baveno VII) | PMID: 35120736
-- D'Amico G, et al. J Hepatol 2006;44:217-31 | PMID: 16298014
-- D'Amico G, et al. J Hepatol 2018;68:563-576 | PMID: 29111320
-
-## Pendente
-
-- 22 slides restantes (A1-03 em diante)
-- Ato 2: Intervir (betabloqueadores, TIPS, varizes)
-- Ato 3: Reverter (recompensação)
-- Speaker notes de title slide em português (atualmente inglês)
-
----
-*Atualizado em 22/02/2026.*
+## Próximo batch esperado
+- **Batch 1:** Revalidar 4 sections existentes contra specs v3 do Notion
+  - TITLE: notes EN→PT
+  - A1-01, A1-02: confirmar headlines/notes v3
+  - HOOK: reescrever para advance organizer + caso
