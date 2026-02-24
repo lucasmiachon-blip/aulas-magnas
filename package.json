@@ -18,6 +18,7 @@
     "export:pdf": "node scripts/export-pdf.js",
     "export:screenshots": "node scripts/export-screenshots.js",
     "qa:a11y": "node scripts/qa-accessibility.js",
+    "qa:screenshots:cirrose": "node scripts/qa-screenshots-cirrose.js",
     "transcribe": "node scripts/transcribe-lecture.js"
   },
   "devDependencies": {

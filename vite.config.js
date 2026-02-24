@@ -39,6 +39,7 @@ export default defineConfig({
     open: '/aulas/grade/index.html'
   },
   build: {
+    target: 'esnext',
     rollupOptions: {
       input: discoverEntries()
     }

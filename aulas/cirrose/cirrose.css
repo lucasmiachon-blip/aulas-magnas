@@ -67,6 +67,20 @@
 }
 
 /* ============================================
+   STAGE-A OVERRIDES (Plan A: dark, 1080p)
+   Tokens remapped in base.css .stage-a.
+   ============================================ */
+.stage-a .slide-figure img {
+  mix-blend-mode: lighten;
+}
+.stage-a #s-hook .framework-item,
+.stage-a #s-hook .case-data .data-item {
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+}
+
+/* ============================================
    STAGE-BAD OVERRIDES (Plan B: light)
    ============================================ */
 .stage-bad .slide-title .subtitle {

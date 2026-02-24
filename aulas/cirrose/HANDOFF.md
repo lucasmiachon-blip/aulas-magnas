@@ -1,11 +1,11 @@
 # HANDOFF — Cirrose (atualizado 2026-02-24)
 
 ## Último batch executado
-- **Batch:** QA visual + HANDOFF update
-- **Commit:** ecc454e
+- **Batch:** Plan A/C balance + stage-a + qa-screenshots script
+- **Commit:** [após commit]
 - **Data:** 2026-02-24
 - **Agente:** Cursor / Claude Code
-- **Alterações:** QA visual 28 slides foto a foto. QA-VISUAL-24fev.md. HANDOFF atualizado.
+- **Alterações:** Plan A: body class="stage-a", dark theme (base.css). Plan C: já stage-c. cirrose.css: stage-a overrides (slide-figure mix-blend, HOOK visibility). scripts/qa-screenshots-cirrose.js: PORT configurável.
 
 ## Estado do HTML (index.stage-c.html)
 - **Total sections:** 28
@@ -51,9 +51,9 @@
 - **QA visual:** 28 slides avaliados foto a foto. Relatório em QA-VISUAL-24fev.md. Screenshots em qa-screenshots/
 
 ## Tri-mode sync
-- ✅ Plan C (stage-c): 28 sections implementadas
-- ✅ Plan A (index.html): 28 sections replicadas (dark, 1920×1080, GSAP)
-- ✅ Plan B (stage-b): 28 sections replicadas (light, 1280×720, sem animação)
+- ✅ Plan A (index.html): body class="stage-a", dark 1920×1080, GSAP
+- ✅ Plan C (stage-c): light 1280×720, GSAP
+- ✅ Plan B (stage-b): light 1280×720, sem animação
 
 ## Sync Notion ↔ Repo (24/fev/2026)
 
