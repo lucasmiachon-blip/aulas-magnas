@@ -195,6 +195,98 @@
 .stage-c .card-metric .value.text-warning {
   color: var(--warning-on-dark);
 }
+
+/* ============================================
+   HOOK — advance organizer + case (v3)
+   ============================================ */
+.slide-inner.split-50-50 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.split-50-50 .col-left,
+.split-50-50 .col-right {
+  min-width: 0;
+}
+
+.framework-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.framework-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  border-left: 4px solid var(--cmp-1);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+}
+
+.framework-item .label {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  color: var(--cmp-1);
+}
+
+.framework-item .value {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.case-card {
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  box-shadow: 0 4px 12px oklch(0% 0 0 / 0.08);
+}
+
+.case-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.case-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.case-data .data-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+}
+
+.case-data .data-label {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.case-data .data-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.case-question {
+  font-style: italic;
+  font-size: var(--text-body);
+  color: var(--warning);
+  margin-top: var(--space-sm);
+}
 .stage-c .slide-title .subtitle {
   color: var(--text-secondary);
 }
