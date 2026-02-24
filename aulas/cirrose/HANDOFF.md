@@ -2,10 +2,10 @@
 
 ## Último batch executado
 - **Batch:** sync — commit + HANDOFF + Notion
-- **Commit:** [hash após commit]
+- **Commit:** 1285463
 - **Data:** 2026-02-24
 - **Agente:** Cursor / Claude Code
-- **Alterações:** s-close (pos 20) + s-app-01 a s-app-08 (pos 21-28) replicados nos 3 Plans. Plan A/C: data-animate (fadeUp/stagger). Plan B: sem data-animate.
+- **Alterações:** sync HANDOFF + Notion. 28 sections já implementadas (batch anterior). Ajustes menores HTML.
 
 ## Estado do HTML (index.stage-c.html)
 - **Total sections:** 28
