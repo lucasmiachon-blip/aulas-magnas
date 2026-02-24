@@ -1,9 +1,9 @@
-# HANDOFF — Cirrose (atualizado 2026-02-25)
+# HANDOFF — Cirrose (atualizado 2026-02-23)
 
 ## Último batch executado
-- **Batch:** Mega-batch (revalidar 4 + implementar 15 novas)
-- **Commit:** cdb47ab
-- **Data:** 2026-02-25
+- **Batch:** Tri-mode sync — replicar 19 sections para Plans A e B
+- **Commit:** d284e9e
+- **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
 
 ## Estado do HTML (index.stage-c.html)
@@ -35,6 +35,11 @@
 - ☐ s-close (pos 20) — spec não incluída neste batch
 - ☐ APP-01 a APP-08 (pos 21-28) — próximo batch
 - ☐ QA narrativo após todas sections implementadas
+
+## Tri-mode sync
+- ✅ Plan C (stage-c): 19 sections implementadas
+- ✅ Plan A (index.html): 19 sections replicadas (dark, 1920×1080, GSAP)
+- ✅ Plan B (stage-b): 19 sections replicadas (light, 1280×720, sem animação)
 
 ## Sync Notion ↔ Repo (24/fev/2026)
 
