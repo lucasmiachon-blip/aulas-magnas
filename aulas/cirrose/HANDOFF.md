@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Tri-mode sync — replicar 19 sections para Plans A e B
-- **Commit:** d284e9e
+- **Commit:** fd08be8
 - **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
 
