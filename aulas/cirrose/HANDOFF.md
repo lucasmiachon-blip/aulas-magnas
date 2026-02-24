@@ -37,9 +37,20 @@
 
 ## Sync Notion ↔ Repo (24/fev/2026)
 
+**IDs para Claude.ai (MCP Notion):**
+- Slides DB: `c6713964-0b31-454f-83f5-4b287911a01b`
+- Blueprint Cirrose: `30adfe68-59a8-815a-abf5-c817cd705b29`
+- References DB: `2b24bb6c-91be-42c0-ae28-908a794e5cf5`
+
+**Notion → Repo:** Query Slides DB, ler specs (Headline PT, Evidence, Citation, Speaker Notes, Animação), atualizar HTML ou gerar handoff. Pedir: "sincroniza Notion → repo para slide X".
+
+**Repo → Notion:** Após implementar slide no HTML, atualizar Slides DB: Pipeline Status → html-ready, Visual QA → approved. Pedir: "sincroniza repo → Notion para os slides que implementei".
+
+**Limitação:** Células de table_row não são editáveis via API. Tabelas na Blueprint = edição manual.
+
 - **Slides DB:** 28 registros ativos (20 core + 8 APP) • 3 DEPRECATED (A1-02-OLD, CIRR-04-01, A2-04-OLD)
 - **Blueprint page:** Ordem definitiva v3 documentada (TITLE→A1-01→A1-02→HOOK→A1-03...→CLOSE→APP-01...APP-08)
-- **Ação manual pendente:** Na tabela de status da Blueprint, atualizar linha "Popular Slides DB" de "2 DEPRECATED" para "3 DEPRECATED (A1-02-OLD, 04-01, A2-04-OLD)" — API Notion não permite editar células de table_row
+- **Ação manual pendente:** Na tabela de status da Blueprint, atualizar linha "Popular Slides DB" de "2 DEPRECATED" para "3 DEPRECATED (A1-02-OLD, 04-01, A2-04-OLD)"
 
 ## Próximo batch esperado
 - **Batch 1:** Revalidar 4 sections existentes contra specs v3 do Notion
