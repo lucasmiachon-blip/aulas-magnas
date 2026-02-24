@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Batch 0 — Redesign v4 Foundation PoC
-- **Commit:** [PENDING — commit após este HANDOFF]
+- **Commit:** d068a4b
 - **Data:** 2026-02-24
 - **Agente:** Claude Code (Opus 4.6)
 - **Fonte:** prompt-batch0-redesign-v4.md + ADDENDUM-batch0-narrativa.md
