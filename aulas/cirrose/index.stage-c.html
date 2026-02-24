@@ -327,7 +327,8 @@ Se ele não parar, voltamos aqui em 6 meses com o slide vermelho.
           <span class="metric-label">Benefício absoluto</span>
         </div>
         <div class="metric-card" data-reveal="3">
-          <span class="metric-value">6,25 → 12,5 mg</span>
+          <span class="metric-value">6,25 → 12,5</span>
+          <span class="metric-unit">mg</span>
           <span class="metric-label">Dose · FC ≥55 · PAS ≥90</span>
         </div>
       </div>
@@ -1137,60 +1138,52 @@ PAUSA 2s.
       showTimeline: true
     });
 
-    deck.on('slidechanged', (event) => {
+    Reveal.on('slidechanged', (event) => {
       panel.onSlideChanged(event.indexh);
     });
 
-    // Initialize panel for current slide on load
-    deck.on('ready', (event) => {
-      panel.onSlideChanged(event.indexh);
-    });
+    // Initialize panel for current slide (sync — 'ready' already fired)
+    panel.onSlideChanged(Reveal.getState().indexh);
   }
 
   // ============================================
-  // CLICK-REVEAL
+  // CLICK-REVEAL  (init sync — 'ready' already fired after await initAula)
   // ============================================
   const revealers = new Map();
 
-  deck.on('ready', () => {
-    document.querySelectorAll('.slides > section').forEach((section, index) => {
-      const revealEls = section.querySelectorAll('[data-reveal]');
-      if (revealEls.length > 0) {
-        revealers.set(index, new ClickReveal(section, gsap));
-      }
-    });
+  document.querySelectorAll('.slides > section').forEach((section, index) => {
+    const revealEls = section.querySelectorAll('[data-reveal]');
+    if (revealEls.length > 0) {
+      revealers.set(index, new ClickReveal(section, gsap));
+    }
   });
 
-  // Override arrow keys: click-reveal consumes first, then advance slide
-  deck.addKeyBinding({ keyCode: 39, key: 'ArrowRight', description: 'Next reveal or slide' }, () => {
-    const idx = deck.getState().indexh;
+  // Intercept ArrowRight/Space: click-reveal consumes before Reveal navigates
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowRight' && e.key !== ' ') return;
+    const idx = Reveal.getState().indexh;
     const revealer = revealers.get(idx);
-    if (revealer && revealer.next()) return;
-    deck.right();
-  });
-
-  deck.addKeyBinding({ keyCode: 32, key: ' ', description: 'Next reveal or slide (space)' }, () => {
-    const idx = deck.getState().indexh;
-    const revealer = revealers.get(idx);
-    if (revealer && revealer.next()) return;
-    deck.right();
-  });
+    if (revealer && revealer.hasMore) {
+      e.preventDefault();
+      e.stopPropagation();
+      revealer.next();
+    }
+    // If no reveals left, let Reveal handle navigation normally
+  }, true);  // capture phase — runs before Reveal's listener
 
   // Reset reveals when entering a slide
-  deck.on('slidechanged', (event) => {
+  Reveal.on('slidechanged', (event) => {
     const revealer = revealers.get(event.indexh);
     if (revealer) revealer.reset();
   });
 
   // ============================================
-  // MELD CALCULATOR
+  // MELD CALCULATOR  (init sync — same reason)
   // ============================================
-  deck.on('ready', () => {
-    const meldContainer = document.querySelector('[data-interaction="meld-calc"]');
-    if (meldContainer) {
-      new MeldCalc(meldContainer);
-    }
-  });
+  const meldContainer = document.querySelector('[data-interaction="meld-calc"]');
+  if (meldContainer) {
+    new MeldCalc(meldContainer);
+  }
 </script>
 </body>
 </html>

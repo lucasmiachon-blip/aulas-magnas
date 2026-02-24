@@ -98,22 +98,30 @@
   background: var(--bg-elevated, #fff);
   border: 1px solid var(--border, oklch(88% 0.005 258));
   border-radius: var(--radius-sm, 8px);
-  padding: 20px 24px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  min-width: 180px;
+  min-width: 160px;
   flex: 1;
-  max-width: 280px;
+  max-width: 300px;
+  overflow: hidden;
 }
 
 .archetype-metrics .metric-value {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   font-weight: 600;
   color: var(--ui-accent, oklch(35% 0.12 258));
   line-height: 1.1;
+}
+
+.archetype-metrics .metric-unit {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .archetype-metrics .metric-ci {

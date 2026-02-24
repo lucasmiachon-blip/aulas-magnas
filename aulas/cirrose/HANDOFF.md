@@ -57,10 +57,28 @@
 - **Case panel:** 5 estados registrados (indexes 3/7/14/18/19). Visível slides 3-27.
 - **Assets referenciados:** villanueva-2025-fig1.png, villanueva-2025-fig2a.png
 
+## QA Batch 0 (24/fev — pós-implementação)
+- **Agente:** Claude Code (Opus 4.6)
+- **Bugfixes aplicados:**
+  1. Script block: `deck.on()` → `Reveal.on()` (TypeError — initAula retorna objeto sem .on)
+  2. Script block: `Reveal.on('ready', ...)` → sync init (evento já disparou após await)
+  3. Script block: `Reveal.addKeyBinding` → `document.addEventListener('keydown', ..., true)` (capture phase)
+  4. CSS: metric-value font-size `clamp(1.8rem,3.5vw,2.6rem)` → `clamp(1.5rem,2.5vw,2.2rem)` (card 3 overflow)
+  5. CSS: metric-card padding/min-width/max-width ajustados + overflow:hidden
+  6. CSS: nova classe `.metric-unit` para separar unidade do valor
+  7. HTML s-a2-01: Card 3 split "6,25 → 12,5 mg" → value "6,25 → 12,5" + unit "mg"
+- **QA visual PASS:**
+  - s-a1-01: headline + figure + evidence-card reveal ✓
+  - s-a2-01: 3 metric cards reveal sequencial ✓ (card 3 overflow fixed)
+  - s-a1-03: MELD calc render + "Seu Antônio" load + live calc + reset ✓
+  - s-cp1: checkpoint layout + caution bg + 3 decision reveals ✓
+  - Case panel transitions: hidden→neutral→caution→danger→hope→resolved ✓
+  - ArrowRight: reveals consume before navigation ✓
+  - Build: `npm run build` success ✓
+
 ## Pendências (Batches 1-3)
 - ☐ Refatorar 24 slides restantes para archetypes
 - ☐ Módulos: decision-tree.js, timeline.js
-- ☐ QA visual dos 4 PoC (archetype layout, click-reveal, panel transitions)
 - ☐ Sincronizar alterações nos Plans A e B (apenas stage-c foi modificado)
 - ☐ Speaker notes: enriquecer os 24 slides restantes (BIBLIA-NARRATIVA-CIRROSE.md como referência)
 
