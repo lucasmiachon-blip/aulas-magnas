@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Mega-batch (revalidar 4 + implementar 15 novas)
-- **Commit:** c35f472
+- **Commit:** cdb47ab
 - **Data:** 2026-02-25
 - **Agente:** Cursor / Claude Code
 
