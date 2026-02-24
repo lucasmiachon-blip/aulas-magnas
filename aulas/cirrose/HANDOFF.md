@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Fix degrau HOOK (s-hook) — imagem/conteúdo aparece antes do efeito
-- **Commit:** 25c5267
+- **Commit:** b26e5e6
 - **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
 - **Alterações:** cirrose.css (#s-hook .framework-item, .case-data .data-item: visibility hidden + overrides stage-bad/no-js/print). index.html + index.stage-c.html: registerCustom(3) usa gsap.set(visibility) + gsap.fromTo (não from) para animar corretamente.
