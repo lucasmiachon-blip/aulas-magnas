@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** QA visual + HANDOFF update
-- **Commit:** [após commit]
+- **Commit:** ecc454e
 - **Data:** 2026-02-24
 - **Agente:** Cursor / Claude Code
 - **Alterações:** QA visual 28 slides foto a foto. QA-VISUAL-24fev.md. HANDOFF atualizado.
