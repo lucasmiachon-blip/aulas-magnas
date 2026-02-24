@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** QA — CSS morto, CLAUDE slim, HANDOFF
-- **Commit:** [após commit]
+- **Commit:** 7740f4b
 - **Data:** 2026-02-24
 - **Agente:** Cursor / Claude Code
 - **Alterações:** Removido ~90 linhas CSS morto (data-grid, card-metric, hook-context, hook-question, card-navy). CLAUDE.md slim → aponta para HANDOFF. Assertion-evidence OK.
