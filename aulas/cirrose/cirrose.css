@@ -166,6 +166,12 @@
 .stage-bad .source-tag {
   color: var(--text-muted);
 }
+.stage-bad #s-hook .framework-item,
+.stage-bad #s-hook .case-data .data-item {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
 
 /* ============================================
    STAGE-C OVERRIDES (Plan C: light + animated)
@@ -216,6 +222,20 @@
   flex-direction: column;
   gap: var(--space-md);
   margin-top: var(--space-lg);
+}
+
+/* HOOK: esconder até registerCustom rodar (evita degrau) */
+#s-hook .framework-item,
+#s-hook .case-data .data-item {
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+}
+.no-js #s-hook .framework-item,
+.no-js #s-hook .case-data .data-item {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
 }
 
 .framework-item {
@@ -669,3 +689,13 @@
 .case-hope { border: 2px solid var(--safe); }
 .case-hope .case-question { color: var(--safe); }
 .data-improving .data-value { color: var(--safe); font-weight: 700; }
+
+/* Print: HOOK elements visíveis (sem animação) */
+@media print {
+  #s-hook .framework-item,
+  #s-hook .case-data .data-item {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}

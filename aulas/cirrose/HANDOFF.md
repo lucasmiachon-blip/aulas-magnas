@@ -1,10 +1,11 @@
 # HANDOFF — Cirrose (atualizado 2026-02-23)
 
 ## Último batch executado
-- **Batch:** Tri-mode sync — replicar 19 sections para Plans A e B
-- **Commit:** fd08be8
+- **Batch:** Fix degrau HOOK (s-hook) — imagem/conteúdo aparece antes do efeito
+- **Commit:** 25c5267
 - **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
+- **Alterações:** cirrose.css (#s-hook .framework-item, .case-data .data-item: visibility hidden + overrides stage-bad/no-js/print). index.html + index.stage-c.html: registerCustom(3) usa gsap.set(visibility) + gsap.fromTo (não from) para animar corretamente.
 
 ## Estado do HTML (index.stage-c.html)
 - **Total sections:** 19
@@ -28,7 +29,7 @@
   17. s-a3-02 (CIRR-A3-02)
   18. s-a3-03 (CIRR-A3-03)
   19. s-cp3 (CIRR-CP3)
-- **registerCustom:** index 3 → HOOK (framework + case stagger). Demais via data-animate (fadeUp/stagger).
+- **registerCustom:** index 3 → HOOK (framework + case stagger). gsap.set(visibility) + gsap.fromTo(opacity, y). Demais via data-animate (fadeUp/stagger).
 - **Assets referenciados:** villanueva-2025-fig1.png, villanueva-2025-fig2a.png
 
 ## Pendências

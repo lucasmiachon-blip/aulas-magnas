@@ -725,23 +725,19 @@ PAUSA 1s.
   // HOOK (index 3): stagger framework + case, countUp via data-animate
   anim.registerCustom(3, (slide, gsap) => {
     const frameworkItems = slide.querySelectorAll('.framework-item');
-    if (frameworkItems.length) {
-      gsap.from(frameworkItems, {
-        opacity: 0, y: 30,
-        duration: 0.6,
-        stagger: 0.3,
-        ease: 'power2.out'
-      });
-    }
     const dataItems = slide.querySelectorAll('.case-data .data-item');
+    gsap.set([...frameworkItems, ...dataItems], { visibility: 'visible' });
+    if (frameworkItems.length) {
+      gsap.fromTo(frameworkItems,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.3, ease: 'power2.out' }
+      );
+    }
     if (dataItems.length) {
-      gsap.from(dataItems, {
-        opacity: 0, y: 20,
-        duration: 0.5,
-        stagger: 0.15,
-        delay: 0.8,
-        ease: 'power2.out'
-      });
+      gsap.fromTo(dataItems,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.15, delay: 0.8, ease: 'power2.out' }
+      );
     }
   });
 </script>
