@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Plan A/C balance + stage-a + qa-screenshots script
-- **Commit:** [após commit]
+- **Commit:** 2b82280
 - **Data:** 2026-02-24
 - **Agente:** Cursor / Claude Code
 - **Alterações:** Plan A: body class="stage-a", dark theme (base.css). Plan C: já stage-c. cirrose.css: stage-a overrides (slide-figure mix-blend, HOOK visibility). scripts/qa-screenshots-cirrose.js: PORT configurável.
