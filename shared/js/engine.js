@@ -77,7 +77,7 @@ function animStagger(gsap, el) {
   }
   const delay = parseFloat(el.dataset.stagger || '0.15');
   gsap.to(el.children, {
-    y: 0, opacity: 1, visibility: 'visible', duration: 0.5, stagger: delay, ease: 'power3.out'
+    y: 0, opacity: 1, duration: 0.5, stagger: delay, ease: 'power3.out'
   });
 }
 
@@ -98,7 +98,7 @@ function animDrawPath(gsap, el) {
 }
 
 function animFadeUp(gsap, el) {
-  gsap.to(el, { y: 0, opacity: 1, visibility: 'visible', duration: 0.8, ease: 'power3.out' });
+  gsap.to(el, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
 }
 
 function animHighlight(gsap, el) {
@@ -134,13 +134,12 @@ function forceAnimFinalState(slide) {
     const type = el.dataset.animate;
     el.style.opacity = '1';
     el.style.transform = 'none';
-    el.style.visibility = 'visible';
 
     if (type === 'countUp') animCountUpFinal(el);
 
     if (type === 'stagger') {
       Array.from(el.children).forEach(c => {
-        c.style.opacity = '1'; c.style.transform = 'none'; c.style.visibility = 'visible';
+        c.style.opacity = '1'; c.style.transform = 'none';
       });
     }
 
