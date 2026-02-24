@@ -1,14 +1,14 @@
 # HANDOFF — Cirrose (atualizado 2026-02-23)
 
 ## Último batch executado
-- **Batch:** Fix degrau HOOK (s-hook) — imagem/conteúdo aparece antes do efeito
-- **Commit:** b26e5e6
+- **Batch:** s-close + APP-01..08 — 28 sections total
+- **Commit:** [a definir após git commit]
 - **Data:** 2026-02-23
 - **Agente:** Cursor / Claude Code
-- **Alterações:** cirrose.css (#s-hook .framework-item, .case-data .data-item: visibility hidden + overrides stage-bad/no-js/print). index.html + index.stage-c.html: registerCustom(3) usa gsap.set(visibility) + gsap.fromTo (não from) para animar corretamente.
+- **Alterações:** s-close (pos 20) + s-app-01 a s-app-08 (pos 21-28) replicados nos 3 Plans. Plan A/C: data-animate (fadeUp/stagger). Plan B: sem data-animate.
 
 ## Estado do HTML (index.stage-c.html)
-- **Total sections:** 19
+- **Total sections:** 28
 - **Ordem:**
   1. s-title (CIRR-TITLE)
   2. s-a1-01 (CIRR-A1-01)
@@ -29,18 +29,25 @@
   17. s-a3-02 (CIRR-A3-02)
   18. s-a3-03 (CIRR-A3-03)
   19. s-cp3 (CIRR-CP3)
+  20. s-close (CIRR-CLOSE)
+  21. s-app-01 (ACLF)
+  22. s-app-02 (Early TIPS)
+  23. s-app-03 (Etiologias raras)
+  24. s-app-04 (NSBB vs EVL)
+  25. s-app-05 (Cardiomiopatia)
+  26. s-app-06 (SHP/HPP)
+  27. s-app-07 (Estatina)
+  28. s-app-08 (Anticoagulação)
 - **registerCustom:** index 3 → HOOK (framework + case stagger). gsap.set(visibility) + gsap.fromTo(opacity, y). Demais via data-animate (fadeUp/stagger).
 - **Assets referenciados:** villanueva-2025-fig1.png, villanueva-2025-fig2a.png
 
 ## Pendências
-- ☐ s-close (pos 20) — spec não incluída neste batch
-- ☐ APP-01 a APP-08 (pos 21-28) — próximo batch
 - ☐ QA narrativo após todas sections implementadas
 
 ## Tri-mode sync
-- ✅ Plan C (stage-c): 19 sections implementadas
-- ✅ Plan A (index.html): 19 sections replicadas (dark, 1920×1080, GSAP)
-- ✅ Plan B (stage-b): 19 sections replicadas (light, 1280×720, sem animação)
+- ✅ Plan C (stage-c): 28 sections implementadas
+- ✅ Plan A (index.html): 28 sections replicadas (dark, 1920×1080, GSAP)
+- ✅ Plan B (stage-b): 28 sections replicadas (light, 1280×720, sem animação)
 
 ## Sync Notion ↔ Repo (24/fev/2026)
 
@@ -60,6 +67,4 @@
 - **Ação manual pendente:** Na tabela de status da Blueprint, atualizar linha "Popular Slides DB" de "2 DEPRECATED" para "3 DEPRECATED (A1-02-OLD, 04-01, A2-04-OLD)"
 
 ## Próximo batch esperado
-- Spec CLOSE (pos 20) + implementar
 - QA pass: narrativa, visual, animações
-- Apêndice APP-01 a APP-08

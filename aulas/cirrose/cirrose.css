@@ -690,6 +690,139 @@
 .case-hope .case-question { color: var(--safe); }
 .data-improving .data-value { color: var(--safe); font-weight: 700; }
 
+/* ============================================
+   CLOSE RECAP (CLOSE)
+   ============================================ */
+.close-recap {
+  margin: var(--space-lg) 0;
+  max-width: 650px;
+}
+.close-takeaways {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.close-take {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid oklch(0% 0 0 / 0.08);
+}
+.close-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--text-h1);
+  color: var(--cmp-1);
+  min-width: 44px;
+  text-align: center;
+}
+.close-text {
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+
+/* ============================================
+   APÊNDICE (APP-01 a APP-08)
+   ============================================ */
+.app-aclf-table,
+.app-nsbb-summary,
+.app-ccc-criteria,
+.app-cirrox-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0;
+  max-width: 650px;
+}
+.app-row,
+.app-nsbb-point,
+.app-ccc-item,
+.app-cirrox-point {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid oklch(0% 0 0 / 0.08);
+}
+.app-grade { font-family: var(--font-mono); font-weight: 700; min-width: 60px; }
+.app-detail { flex: 1; font-size: var(--text-body); }
+.app-mort { font-family: var(--font-mono); font-weight: 700; color: var(--cmp-1); }
+.app-row-danger { border-color: var(--danger); }
+.app-row-danger .app-mort { color: var(--danger); }
+
+.app-tips-flow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin: var(--space-lg) 0;
+  justify-content: center;
+}
+.app-tips-step {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid oklch(0% 0 0 / 0.08);
+  font-size: var(--text-body);
+}
+.app-tips-highlight { border: 2px solid var(--safe); background: oklch(from var(--safe) l c h / 0.06); }
+.app-tips-arrow { font-size: var(--text-h2); color: var(--text-muted); }
+.app-tips-result { width: 100%; text-align: center; font-weight: 600; color: var(--safe); }
+
+.app-etio-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0;
+  font-family: var(--font-body);
+}
+.app-etio-table th {
+  text-align: left;
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  padding: var(--space-xs) var(--space-sm);
+  border-bottom: 2px solid var(--border);
+}
+.app-etio-table td {
+  padding: var(--space-sm);
+  font-size: var(--text-body);
+  border-bottom: 1px solid oklch(0% 0 0 / 0.06);
+}
+
+.app-pulm-compare,
+.app-frontier-compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+.app-pulm-panel,
+.app-frontier-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid oklch(0% 0 0 / 0.08);
+}
+.app-pulm-name,
+.app-frontier-trial { font-weight: 700; font-size: var(--text-h3); color: var(--cmp-1); margin-bottom: var(--space-xs); }
+.app-pulm-mech,
+.app-frontier-result { font-size: var(--text-small); color: var(--text-secondary); }
+.app-pulm-tx { font-size: var(--text-body); font-weight: 600; margin-top: var(--space-xs); }
+.app-frontier-yes { border-color: var(--safe); }
+.app-frontier-no { border-color: var(--danger); }
+.app-frontier-no .app-frontier-result { color: var(--danger); }
+
+.app-ccc-label { font-weight: 600; min-width: 80px; }
+.app-ccc-val { flex: 1; font-size: var(--text-body); }
+
 /* Print: HOOK elements visíveis (sem animação) */
 @media print {
   #s-hook .framework-item,
