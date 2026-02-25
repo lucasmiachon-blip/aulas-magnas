@@ -1,6 +1,61 @@
 # HANDOFF — Cirrose (atualizado 2026-02-25)
 
 ## Último batch executado
+- **Batch:** P0 — Stage-C Stability (branch `p0/stage-c-stability`)
+- **Commit:** 52b9cb7 + bugfix commit (ver abaixo)
+- **Data:** 2026-02-25
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** 3 auditorias externas triadas criticamente (AUDIT-CONSOLIDADA, ERRATA-FIX-SENIOR, Gemini Gem)
+- **Alterações (commit inicial 52b9cb7):**
+  1. **QA script determinístico** (`scripts/qa-screenshots-stage-c.js`):
+     - `ArrowRight` → `Reveal.slide(i)` API (bypasses ClickReveal interceptor)
+     - `waitForTimeout(400)` → `waitForFunction(Reveal.getState)` (deterministic)
+     - Appends `?qa=1` para modo QA automático
+  2. **QA mode** (`shared/js/engine.js`):
+     - `?qa=1` → `transition: 'none'`, no controls/progress/hash
+     - `forceAnimFinalState()` aplicado a TODOS os slides
+     - Todos `[data-reveal]` forçados visíveis (`.revealed` + inline styles)
+     - Reutiliza infraestrutura existente de print-pdf (zero duplicação)
+  3. **Panel safe area** (`aulas/cirrose/cirrose.css`):
+     - `padding: 40px 64px` → `padding: 40px var(--slide-pad-h, 64px)`
+     - Com panel ativo: `--slide-pad-h: 48px` (ganha 32px de conteúdo útil)
+  4. **Panel width como variável** (`aulas/cirrose/archetypes.css`):
+     - `:root { --panel-width: 190px }` — variável extraída
+     - `grid-template-columns: 1fr var(--panel-width)` — dinâmico
+     - `--slide-pad-h: 48px` propagado pelo `.reveal.panel-active`
+     - `.slides { min-width: 0 }` — previne overflow em grid child
+     - `max-width: min(1120px, 100%)` nos archetypes — respeita espaço disponível
+- **Bugfixes (commits pós-validação visual — 861741a, ver abaixo):**
+  1. **Bug #1 — QA `ready` event timing** (`engine.js`):
+     - Causa: `Reveal.on('ready')` registrado em `connect()` DEPOIS de `ready` já ter disparado (durante `await initReveal()`)
+     - Fix: QA setup movido de `dispatcher.ready` → `initAula()` (executa APÓS `await initReveal()`)
+  2. **Bug #2 — ClickReveal.reset() race** (`engine.js`):
+     - Causa: `slidechanged` → `ClickReveal.reset()` re-oculta `[data-reveal]` DEPOIS do QA global setup
+     - Fix: `animate()` re-revela `[data-reveal]` per-slide no `slidetransitionend` (AFTER reset)
+  3. **Bug #3 — Reveal scale overflow** (`archetypes.css`):
+     - Causa: Reveal escala conteúdo para largura total do `.reveal`, não da coluna `.slides`
+     - Fix: `overflow: hidden` em `.reveal.panel-active .slides` clip limpo na boundary do panel
+     - Nota: Em 1280×720 (produção) conteúdo cabe sem clip. Fix é safety net para viewports menores.
+  4. **Bug #4 — `slidetransitionend` não dispara em QA** (`engine.js`):
+     - Causa: `transition: 'none'` faz Reveal pular CSS transition → `slidetransitionend` nunca emitido
+     - Fix: QA mode usa `slidechanged` + `requestAnimationFrame()` (garante execução APÓS `ClickReveal.reset()`)
+     - Sem este fix, `[data-reveal]` ficava oculto em TODOS os slides navegados (só o slide inicial do page load funcionava)
+- **Impacto:** Zero `!important` adicionados. Build OK (480ms). Nenhum HTML modificado.
+- **Matemática do fix:**
+  - Antes: 1280 - 190 - (64×2) = 962px úteis, max-width 1120px > 1090px disponível (overflow)
+  - Depois: 1280 - 190 - (48×2) = 994px úteis, max-width min(1120px, 100%) = 1090px (sem overflow)
+- **Validação visual 1280×720:**
+  - s-title (0): PASS — centrado, sem panel
+  - s-hook (3): PASS — panel ativo, caso clínico visível
+  - s-a1-01 (1): PASS — figure + evidence card revelado
+  - s-a1-03 (4): PASS — MELD calc, 4 inputs, bar zones, botões
+  - s-cp1 (7): PASS — checkpoint caution bg, 3 decisions revelados
+  - s-a2-01 (8): PASS — 3 metric cards revelados (Bug #4 fixou)
+  - s-a2-03 (10): **P1** — card 4 clipado pelo `overflow:hidden` (slide não-archetype, precisa max-width)
+  - s-close (19): PASS — 3 takeaways, timeline no panel
+  - s-app-01 (20): PASS — ACLF graus, Grau 3 highlighted
+
+## Batch anterior
 - **Batch:** QA scripts + cleanup + review package
 - **Commit:** 1d8c280
 - **Data:** 2026-02-25
@@ -197,10 +252,22 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - Exportar ambas via `notion-fetch` → salvar como `.md` na pasta `docs/` do pacote
 - Nomes: `docs/blueprint-cirrose.md` e `docs/biblia-narrativa.md`
 
-## Próximo batch esperado
-- [Code] **Fix CSS Sistêmico**: S1 (panel 190→140px + hide in appendix) + S2 (max-width responsivo) + S3 (fill ratio)
+## Próximo batch esperado (P1-P3)
+- [Code] **P1: Fill ratio** — `min(Xpx, 100%)` nos max-width de cirrose.css (predict-bars, decision-tree, etc.)
+- [Code] **P1: Source-tags** faltantes (3 slides)
+- [Code] **P2: Hero typography** — `.metric-value` → `var(--text-h1)` + `var(--font-display)`
+- [Code] **P2: Graceful degradation** — mover `no-js` removal para depois do GSAP confirmar
+- [Code] **P3: Panel wrapper** — tirar `display: grid` do `.reveal`, usar wrapper externo
+- [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
 - [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md backlog)
-- [Claude.ai] Revisão headline-by-headline (20 core slides) → gerar handoff com headlines atualizadas
+- [Claude.ai] Revisão headline-by-headline (5 slides indicados na triagem)
 - [Claude.ai] Auditoria de conteúdo/narrativa (usar AUDIT-VISUAL.md + Bíblia Narrativa)
-- [Code] Batch 1-3: Refatorar 24 slides para archetypes
+- [Code] Batch 1-3: Refatorar 24 slides restantes para archetypes
 - [Code] Sincronizar Plans A e B com as mudanças do stage-c
+
+## Triagem de auditorias externas (25/fev)
+3 fontes analisadas criticamente:
+- **AUDIT-CONSOLIDADA** (Claude.ai Opus): 28 slides × 8 dimensões. Ghost text + stagger = ARTEFATOS de screenshot (confirmado por análise de cascata). Panel clip = real.
+- **ERRATA-FIX-SENIOR**: Diagnóstico correto. Propõe custom properties sem `!important`. Aceito integralmente.
+- **Gemini Custom Gem**: Rejeitados: `!important` spray (10+ desnecessários), glassmorphism, --panel-width 260px (piora clip), emojis em HTML, `animation: failsafe-gsap` (luta com GSAP). Aceito parcialmente: fill ratio via `min()`.
+- **Resultado:** 4 `!important` no codebase (todos pré-existentes e justificados). Zero adicionados.

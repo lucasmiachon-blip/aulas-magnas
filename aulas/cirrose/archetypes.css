@@ -16,7 +16,7 @@
   gap: 1rem;
   padding: 2rem;
   height: 100%;
-  max-width: 1120px;
+  max-width: min(1120px, 100%);
   margin: 0 auto;
   align-content: start;
 }
@@ -429,16 +429,23 @@
 }
 
 /* ============================================
-   CASE PANEL — Sidebar (190px)
+   CASE PANEL — Sidebar
    ============================================ */
 
+:root {
+  --panel-width: 190px;
+}
+
 .reveal.panel-active {
-  display: grid !important;
-  grid-template-columns: 1fr 190px;
+  display: grid !important;   /* justified: overrides Reveal.js inline style */
+  grid-template-columns: 1fr var(--panel-width);
+  --slide-pad-h: 48px;        /* propagates to .slide-inner via cirrose.css */
 }
 
 .reveal.panel-active .slides {
   grid-column: 1;
+  min-width: 0;    /* prevents grid child from expanding beyond column */
+  overflow: hidden; /* clips Reveal's scaled content at panel boundary */
 }
 
 .case-panel {

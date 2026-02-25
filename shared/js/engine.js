@@ -11,24 +11,29 @@ function isPrintPdf() {
   return p.has('print-pdf') || p.get('view') === 'print';
 }
 
+function isQaMode() {
+  return new URLSearchParams(window.location.search).get('qa') === '1';
+}
+
 // ============================================
 // REVEAL INIT
 // ============================================
 export function initReveal(Reveal, config = {}) {
+  const qa = isQaMode();
   return Reveal.initialize({
-    hash: true,
-    transition: 'fade',
-    transitionSpeed: 'default',
+    hash: !qa,
+    transition: qa ? 'none' : 'fade',
+    transitionSpeed: qa ? 'fast' : 'default',
     slideNumber: 'c/t',
-    controls: true,
-    progress: true,
+    controls: !qa,
+    progress: !qa,
     center: false,
     width: 1920,
     height: 1080,
     margin: 0,
     minScale: 0.1,
     maxScale: 2.0,
-    backgroundTransition: 'fade',
+    backgroundTransition: qa ? 'none' : 'fade',
     pdfSeparateFragments: false,
     pdfMaxPagesPerSlide: 1,
     showNotes: isPrintPdf() ? 'separate-page' : false,
@@ -181,6 +186,7 @@ export function createAnimationDispatcher(Reveal, gsap) {
   let activeTimers = [];
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const printing = isPrintPdf();
+  const qa = isQaMode();
   const customAnimations = new Map();
 
   function cleanup(slide) {
@@ -192,8 +198,19 @@ export function createAnimationDispatcher(Reveal, gsap) {
   }
 
   function animate(slide, indexh) {
-    if (prefersReduced || printing) {
-      if (printing && slide) forceAnimFinalState(slide);
+    if (prefersReduced || printing || qa) {
+      if ((printing || qa) && slide) {
+        forceAnimFinalState(slide);
+        // QA: re-reveal [data-reveal] after ClickReveal.reset() in slidechanged
+        if (qa) {
+          slide.querySelectorAll('[data-reveal]').forEach(el => {
+            el.classList.add('revealed');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.pointerEvents = 'auto';
+          });
+        }
+      }
       return;
     }
     if (!slide) return;
@@ -208,14 +225,23 @@ export function createAnimationDispatcher(Reveal, gsap) {
   return {
     connect() {
       Reveal.on('slidechanged', (e) => cleanup(e.previousSlide));
-      Reveal.on('slidetransitionend', (e) => animate(e.currentSlide, e.indexh));
+      if (qa) {
+        // QA mode: transition='none' → slidetransitionend never fires.
+        // Use slidechanged + rAF to run AFTER ClickReveal.reset() (also on slidechanged).
+        Reveal.on('slidechanged', (e) => {
+          requestAnimationFrame(() => animate(e.currentSlide, e.indexh));
+        });
+      } else {
+        Reveal.on('slidetransitionend', (e) => animate(e.currentSlide, e.indexh));
+      }
       Reveal.on('ready', (e) => {
         if (printing) {
           // Force all slides to final state for PDF
           document.querySelectorAll('.slides section').forEach(s => forceAnimFinalState(s));
-        } else {
+        } else if (!qa) {
           animate(Reveal.getCurrentSlide(), e.indexh);
         }
+        // QA setup runs in initAula() — ready event fires before connect()
       });
     },
 
@@ -285,5 +311,17 @@ export async function initAula(Reveal, gsap, config = {}) {
   initResidenciaMode();
   const deck = await initReveal(Reveal, config);
   initHighContrastToggle(Reveal); // Must be after init
+
+  // QA mode: force final state AFTER Reveal is ready (ready event already fired)
+  if (isQaMode()) {
+    document.querySelectorAll('.slides section').forEach(s => forceAnimFinalState(s));
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.classList.add('revealed');
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.pointerEvents = 'auto';
+    });
+  }
+
   return deck;
 }
