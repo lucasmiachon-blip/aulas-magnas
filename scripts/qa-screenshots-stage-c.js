@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 /**
- * QA Screenshots - Captura os 28 slides da cirrose via Playwright.
+ * QA Screenshots — Stage C (Plan C: light, 1280×720, GSAP)
+ * Captura os 28 slides da cirrose via Playwright.
+ *
+ * Usage: PORT=5173 node scripts/qa-screenshots-stage-c.js
  */
 import { chromium } from 'playwright';
 import { mkdirSync } from 'node:fs';
@@ -9,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const ROOT = join(__dirname, '..');
-const OUT_DIR = join(ROOT, 'aulas', 'cirrose', 'qa-screenshots');
+const OUT_DIR = join(ROOT, 'aulas', 'cirrose', 'qa-screenshots', 'stage-c');
 
 const SLIDE_IDS = [
   's-title', 's-a1-01', 's-a1-02', 's-hook', 's-a1-03', 's-a1-04', 's-a1-05',
@@ -22,7 +25,7 @@ const SLIDE_IDS = [
   's-app-01', 's-app-02', 's-app-03', 's-app-04', 's-app-05', 's-app-06', 's-app-07', 's-app-08',
 ];
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5173;
 const PAGE_URL = `http://localhost:${PORT}/aulas/cirrose/index.stage-c.html`;
 
 async function main() {
@@ -30,26 +33,28 @@ async function main() {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ viewport: { width: 1280, height: 720 } });
   const page = await context.newPage();
+
+  console.log(`Stage C — ${PAGE_URL}`);
   await page.goto(PAGE_URL, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(800);
 
   const files = [];
-  for (let i = 0; i < 28; i++) {
+  for (let i = 0; i < SLIDE_IDS.length; i++) {
     const num = String(i + 1).padStart(2, '0');
     const id = SLIDE_IDS[i];
-    const filename = num + '-' + id + '.png';
+    const filename = `${num}-${id}.png`;
     const filepath = join(OUT_DIR, filename);
     await page.screenshot({ path: filepath });
     files.push(filename);
-    if (i < 27) {
+    if (i < SLIDE_IDS.length - 1) {
       await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(400);
     }
   }
+
   await browser.close();
-  console.log('Screenshots saved to', OUT_DIR);
+  console.log(`\n${files.length} screenshots saved to ${OUT_DIR}`);
   files.forEach((f) => console.log('  -', f));
-  return files;
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

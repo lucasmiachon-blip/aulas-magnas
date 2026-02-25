@@ -1,8 +1,20 @@
 # HANDOFF — Cirrose (atualizado 2026-02-25)
 
 ## Último batch executado
-- **Batch:** Auditoria Visual Completa — 28 slides Plan C
-- **Commit:** (pendente)
+- **Batch:** QA scripts + cleanup + review package
+- **Commit:** 1d8c280
+- **Data:** 2026-02-25
+- **Agente:** Claude Code (Opus 4.6)
+- **Alterações:**
+  - QA scripts separados por stage: `qa-screenshots-stage-a.js`, `qa-screenshots-stage-c.js`, `qa-pdf-stage-b.js`
+  - Script genérico `qa-screenshots-cirrose.js` removido
+  - Screenshots reorganizados: `qa-screenshots/stage-c/` (28 PNGs estado atual)
+  - Limpeza: 33 PNGs temporários removidos da raiz + 4 arquivos soltos
+  - Notion sync: 28 slides com Visual QA atualizado (10 fail + 18 needs-revision)
+  - Review package externo: `C:\Dev\Projetos\aulas-magnas-review-20260224.zip` (2.2 MB, 57 arquivos)
+
+## Batch anterior: Auditoria Visual Completa
+- **Commit:** d40c015
 - **Data:** 2026-02-25
 - **Agente:** Claude Code (Opus 4.6)
 - **Método:** preview_screenshot 1280×720 + force-reveal de data-reveal/GSAP/fragments
@@ -156,7 +168,7 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - **CSS:** Removido data-grid, card-metric, hook-context, hook-question, text-accent, stage overrides para card-navy/card-metric
 - **CLAUDE.md:** Slim — ordem/status em HANDOFF apenas
 - **Assertion-evidence:** Headlines OK, source-tag OK, zero bullets
-- **QA visual:** 28 slides avaliados foto a foto. Relatório em QA-VISUAL-24fev.md. Screenshots em qa-screenshots/
+- **QA visual:** 28 slides avaliados foto a foto. Relatório em QA-VISUAL-24fev.md. Screenshots em qa-screenshots/stage-c/
 
 ## Tri-mode sync
 - ✅ Plan A (index.html): body class="stage-a", dark 1920×1080, GSAP — **NÃO atualizado neste batch**
