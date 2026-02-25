@@ -1,7 +1,50 @@
-# HANDOFF — Cirrose (atualizado 2026-02-24)
+# HANDOFF — Cirrose (atualizado 2026-02-25)
 
 ## Último batch executado
-- **Batch:** Batch 0 — Redesign v4 Foundation PoC
+- **Batch:** Título + Evidence Enrichment Sync
+- **Commit:** 081429c
+- **Data:** 2026-02-25
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** Handoff Claude.ai sessão 25/fev (Evidence Enrichment)
+- **Alterações:**
+  - Título atualizado nos 3 HTMLs: "Cirrose Hepática" / "Classificar · Intervir · Reverter"
+  - Antes: "Cirrose: Manejo Global — 5 Números, 3 Decisões" / "Da classificação à recompensação"
+  - Speaker notes do s-title NÃO alteradas (micro-hook mantido)
+
+## Evidence Enrichment (25/fev — Claude.ai)
+
+Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials via PubMed.
+
+### Bíblia Narrativa
+- **Notion page:** `311dfe68-59a8-816b-b9c0-ec10eccfb235`
+- Conteúdo: Arco do Seu Antônio, pérolas por ato, compilações temáticas, micro-narrativas Duarte
+
+### 7 Trials Tier-1 Verificados (NNT + GRADE)
+| Trial | PMID | NNT | GRADE |
+|-------|------|-----|-------|
+| PREDESCI (Villanueva, Lancet 2019) | 30910320 | 9 (descompensação 3a) | ⊕⊕⊕◯ |
+| Sort (NEJM 1999) | 10432325 | 5 (morte) / 4 (renal) | ⊕⊕⊕⊕ |
+| CONFIRM (Wong, NEJM 2021) | 33657294 | 7 (reverter HRS) / NNH 11 | ⊕⊕⊕◯ |
+| ANSWER (Caraceni, Lancet 2018) | 29861076 | 9 (morte 18m) | ⊕⊕⊕◯ |
+| ATTIRE (China, NEJM 2021) | 33657293 | ∞ (NÃO funciona) | ⊕⊕⊕⊕ |
+| Bass (NEJM 2010) | 20335583 | 4 (HE 6m) | ⊕⊕⊕⊕ |
+| Baveno VII (de Franchis, J Hepatol 2022) | 35431106 | consensus | ⊕⊕⊕◯ |
+
+### 8 TBDs Resolvidos
+| TBD | Trial | PMID | Resultado-chave |
+|-----|-------|------|-----------------|
+| Early TIPS | García-Pagán, NEJM 2010 | 20573925 | Sobrevida 86% vs 61%, NNT ~4 |
+| DAA-SVR + HCC | Singal/Ioannou, Gastro 2019 | 31374215 | HR 0,29 (morte) com SVR |
+| STOPAH | Thursz, NEJM 2015 | 25901427 | Prednisolona OR 0,72 (NS!) |
+| Rifaximin pré-TIPS | Bureau, Ann Intern Med 2021 | 33524293 | 34% vs 53% HE, NNT ~5 |
+| PEG-3350 (HELP) | Rahimi, JAMA Int Med 2014 | 25243839 | 91% vs 52% melhora 24h |
+| D'Amico staging | D'Amico, J Hepatol 2006 | 16298014 | 4 estágios: 1%→57% mortalidade |
+| Early transplant ALD | Mathurin, NEJM 2011 | 22070476 | 77% vs 23% sobrevida 6m |
+| Recompensação | Baveno VII, J Hepatol 2022 | 35431106 | ≥12m sem descomp + labs melhorados |
+
+---
+
+## Batch anterior: Batch 0 — Redesign v4 Foundation PoC
 - **Commit:** d068a4b
 - **Data:** 2026-02-24
 - **Agente:** Claude Code (Opus 4.6)
@@ -76,11 +119,14 @@
   - ArrowRight: reveals consume before navigation ✓
   - Build: `npm run build` success ✓
 
-## Pendências (Batches 1-3)
-- ☐ Refatorar 24 slides restantes para archetypes
-- ☐ Módulos: decision-tree.js, timeline.js
-- ☐ Sincronizar alterações nos Plans A e B (apenas stage-c foi modificado)
-- ☐ Speaker notes: enriquecer os 24 slides restantes (BIBLIA-NARRATIVA-CIRROSE.md como referência)
+## Pendências
+- ☐ [Code] Batches 1-3: Refatorar 24 slides restantes para archetypes
+- ☐ [Code] Módulos: decision-tree.js, timeline.js
+- ☐ [Code] Sincronizar alterações nos Plans A e B (apenas stage-c foi modificado)
+- ☐ [Claude.ai] Revisão headline-by-headline dos 20 slides core
+- ☐ [Claude.ai] Speaker notes EN→PT para slides que ainda não têm
+- ☐ [Claude.ai] Popular References DB com os 15 PMIDs verificados
+- ☐ [Code] QA narrativo completo pós-atualização de headlines
 
 ## Notion sync pendente (Claude.ai deve executar):
 - A1-01: Pipeline → redesign-poc, Visual QA → pending, Animação → click-reveal
@@ -116,5 +162,6 @@
 - **Blueprint page:** Ordem definitiva v3 documentada (TITLE→A1-01→A1-02→HOOK→A1-03...→CLOSE→APP-01...APP-08)
 
 ## Próximo batch esperado
-- Batch 1-3: Refatorar 24 slides restantes para archetypes (ver BIBLIA-NARRATIVA-CIRROSE.md)
-- Sincronizar Plans A e B com as mudanças do stage-c
+- [Claude.ai] Revisão headline-by-headline (20 core slides) → gerar handoff com headlines atualizadas
+- [Code] Batch 1-3: Refatorar 24 slides para archetypes (usar Bíblia Narrativa como referência)
+- [Code] Sincronizar Plans A e B com as mudanças do stage-c
