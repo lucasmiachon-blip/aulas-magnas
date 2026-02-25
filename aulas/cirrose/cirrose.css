@@ -3,8 +3,9 @@
    ============================================ */
 
 /* --- Tighter slide padding for cirrose (gains ~40px vertical) --- */
+/* --slide-pad-h is reduced when panel-active (set in archetypes.css) */
 .reveal .slides section .slide-inner {
-  padding: 40px 64px;
+  padding: 40px var(--slide-pad-h, 64px);
 }
 
 /* --- Section tag spacing --- */

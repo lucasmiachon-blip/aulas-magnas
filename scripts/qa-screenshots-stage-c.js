@@ -3,6 +3,9 @@
  * QA Screenshots — Stage C (Plan C: light, 1280×720, GSAP)
  * Captura os 28 slides da cirrose via Playwright.
  *
+ * Navigates via Reveal.slide(i) API — deterministic, no ArrowRight conflicts.
+ * Appends ?qa=1 to force: transition=none, final anim state, all [data-reveal] visible.
+ *
  * Usage: PORT=5173 node scripts/qa-screenshots-stage-c.js
  */
 import { chromium } from 'playwright';
@@ -26,7 +29,7 @@ const SLIDE_IDS = [
 ];
 
 const PORT = process.env.PORT || 5173;
-const PAGE_URL = `http://localhost:${PORT}/aulas/cirrose/index.stage-c.html`;
+const PAGE_URL = `http://localhost:${PORT}/aulas/cirrose/index.stage-c.html?qa=1`;
 
 async function main() {
   mkdirSync(OUT_DIR, { recursive: true });
@@ -34,22 +37,43 @@ async function main() {
   const context = await browser.newContext({ viewport: { width: 1280, height: 720 } });
   const page = await context.newPage();
 
-  console.log(`Stage C — ${PAGE_URL}`);
+  console.log(`Stage C (QA mode) — ${PAGE_URL}`);
   await page.goto(PAGE_URL, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(800);
+
+  // Wait for Reveal to be fully ready (deck initialized)
+  await page.waitForFunction(() => {
+    return typeof window.Reveal !== 'undefined'
+      && window.Reveal.isReady
+      && window.Reveal.isReady();
+  }, { timeout: 10000 });
+
+  const totalSlides = await page.evaluate(() => window.Reveal.getTotalSlides());
+  console.log(`Deck ready — ${totalSlides} slides detected`);
+
+  if (totalSlides !== SLIDE_IDS.length) {
+    console.warn(`⚠ Expected ${SLIDE_IDS.length} slides, got ${totalSlides}`);
+  }
 
   const files = [];
   for (let i = 0; i < SLIDE_IDS.length; i++) {
+    // Navigate via Reveal API — deterministic, bypasses ClickReveal interceptor
+    await page.evaluate((idx) => window.Reveal.slide(idx), i);
+
+    // Wait for Reveal to confirm the slide is current
+    await page.waitForFunction((idx) => {
+      const state = window.Reveal.getState();
+      return state.indexh === idx;
+    }, i, { timeout: 5000 });
+
+    // One frame for paint to complete (QA mode has no transitions)
+    await page.waitForTimeout(100);
+
     const num = String(i + 1).padStart(2, '0');
     const id = SLIDE_IDS[i];
     const filename = `${num}-${id}.png`;
     const filepath = join(OUT_DIR, filename);
     await page.screenshot({ path: filepath });
     files.push(filename);
-    if (i < SLIDE_IDS.length - 1) {
-      await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(400);
-    }
   }
 
   await browser.close();
