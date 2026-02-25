@@ -225,7 +225,15 @@ export function createAnimationDispatcher(Reveal, gsap) {
   return {
     connect() {
       Reveal.on('slidechanged', (e) => cleanup(e.previousSlide));
-      Reveal.on('slidetransitionend', (e) => animate(e.currentSlide, e.indexh));
+      if (qa) {
+        // QA mode: transition='none' → slidetransitionend never fires.
+        // Use slidechanged + rAF to run AFTER ClickReveal.reset() (also on slidechanged).
+        Reveal.on('slidechanged', (e) => {
+          requestAnimationFrame(() => animate(e.currentSlide, e.indexh));
+        });
+      } else {
+        Reveal.on('slidetransitionend', (e) => animate(e.currentSlide, e.indexh));
+      }
       Reveal.on('ready', (e) => {
         if (printing) {
           // Force all slides to final state for PDF

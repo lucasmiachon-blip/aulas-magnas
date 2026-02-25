@@ -25,7 +25,7 @@
      - `--slide-pad-h: 48px` propagado pelo `.reveal.panel-active`
      - `.slides { min-width: 0 }` — previne overflow em grid child
      - `max-width: min(1120px, 100%)` nos archetypes — respeita espaço disponível
-- **Bugfixes (commit pós-validação visual):**
+- **Bugfixes (commits pós-validação visual — 861741a, ver abaixo):**
   1. **Bug #1 — QA `ready` event timing** (`engine.js`):
      - Causa: `Reveal.on('ready')` registrado em `connect()` DEPOIS de `ready` já ter disparado (durante `await initReveal()`)
      - Fix: QA setup movido de `dispatcher.ready` → `initAula()` (executa APÓS `await initReveal()`)
@@ -36,11 +36,24 @@
      - Causa: Reveal escala conteúdo para largura total do `.reveal`, não da coluna `.slides`
      - Fix: `overflow: hidden` em `.reveal.panel-active .slides` clip limpo na boundary do panel
      - Nota: Em 1280×720 (produção) conteúdo cabe sem clip. Fix é safety net para viewports menores.
+  4. **Bug #4 — `slidetransitionend` não dispara em QA** (`engine.js`):
+     - Causa: `transition: 'none'` faz Reveal pular CSS transition → `slidetransitionend` nunca emitido
+     - Fix: QA mode usa `slidechanged` + `requestAnimationFrame()` (garante execução APÓS `ClickReveal.reset()`)
+     - Sem este fix, `[data-reveal]` ficava oculto em TODOS os slides navegados (só o slide inicial do page load funcionava)
 - **Impacto:** Zero `!important` adicionados. Build OK (480ms). Nenhum HTML modificado.
 - **Matemática do fix:**
   - Antes: 1280 - 190 - (64×2) = 962px úteis, max-width 1120px > 1090px disponível (overflow)
   - Depois: 1280 - 190 - (48×2) = 994px úteis, max-width min(1120px, 100%) = 1090px (sem overflow)
-- **Validação visual 1280×720:** Title, CP1, A2-01, A3-02 — todos PASS
+- **Validação visual 1280×720:**
+  - s-title (0): PASS — centrado, sem panel
+  - s-hook (3): PASS — panel ativo, caso clínico visível
+  - s-a1-01 (1): PASS — figure + evidence card revelado
+  - s-a1-03 (4): PASS — MELD calc, 4 inputs, bar zones, botões
+  - s-cp1 (7): PASS — checkpoint caution bg, 3 decisions revelados
+  - s-a2-01 (8): PASS — 3 metric cards revelados (Bug #4 fixou)
+  - s-a2-03 (10): **P1** — card 4 clipado pelo `overflow:hidden` (slide não-archetype, precisa max-width)
+  - s-close (19): PASS — 3 takeaways, timeline no panel
+  - s-app-01 (20): PASS — ACLF graus, Grau 3 highlighted
 
 ## Batch anterior
 - **Batch:** QA scripts + cleanup + review package
