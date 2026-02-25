@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Título + Evidence Enrichment Sync
-- **Commit:** 081429c
+- **Commit:** 4904ecd
 - **Data:** 2026-02-25
 - **Agente:** Claude Code (Opus 4.6)
 - **Fonte:** Handoff Claude.ai sessão 25/fev (Evidence Enrichment)
