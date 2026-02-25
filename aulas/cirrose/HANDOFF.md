@@ -1,7 +1,21 @@
 # HANDOFF — Cirrose (atualizado 2026-02-25)
 
 ## Último batch executado
-- **Batch:** Título + Evidence Enrichment Sync
+- **Batch:** Auditoria Visual Completa — 28 slides Plan C
+- **Commit:** (pendente)
+- **Data:** 2026-02-25
+- **Agente:** Claude Code (Opus 4.6)
+- **Método:** preview_screenshot 1280×720 + force-reveal de data-reveal/GSAP/fragments
+- **Alterações:**
+  - `AUDIT-VISUAL.md` criado: scoring 8 dimensões × 28 slides
+  - Média global: **2.7/5.0** — FAIL (0 PASS, 18 WARN, 10 FAIL)
+  - Issue #1: Case panel 190px clipando conteúdo em 22/28 slides
+  - Issue #2: >40% espaço vazio na maioria dos slides
+  - Issue #3: Conteúdo concentrado no quadrante superior-esquerdo
+  - Fix backlog: 5 sistêmicos + 10 individuais + 3 redesigns
+  - **Nenhum CSS/HTML modificado** — auditoria = somente diagnóstico
+
+## Batch anterior: Título + Evidence Enrichment Sync
 - **Commit:** 4904ecd
 - **Data:** 2026-02-25
 - **Agente:** Claude Code (Opus 4.6)
@@ -120,6 +134,10 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
   - Build: `npm run build` success ✓
 
 ## Pendências
+- ☑ [Code] Auditoria Visual completa — AUDIT-VISUAL.md (25/fev)
+- ☐ [Code] **URGENTE** Fix S1+S2: case panel responsivo + content max-width (resolve 22/28 slides)
+- ☐ [Code] Fix S3: fill ratio (padding/max-width ajustes — 25/28 slides)
+- ☐ [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md)
 - ☐ [Code] Batches 1-3: Refatorar 24 slides restantes para archetypes
 - ☐ [Code] Módulos: decision-tree.js, timeline.js
 - ☐ [Code] Sincronizar alterações nos Plans A e B (apenas stage-c foi modificado)
@@ -162,6 +180,9 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - **Blueprint page:** Ordem definitiva v3 documentada (TITLE→A1-01→A1-02→HOOK→A1-03...→CLOSE→APP-01...APP-08)
 
 ## Próximo batch esperado
+- [Code] **Fix CSS Sistêmico**: S1 (panel 190→140px + hide in appendix) + S2 (max-width responsivo) + S3 (fill ratio)
+- [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md backlog)
 - [Claude.ai] Revisão headline-by-headline (20 core slides) → gerar handoff com headlines atualizadas
-- [Code] Batch 1-3: Refatorar 24 slides para archetypes (usar Bíblia Narrativa como referência)
+- [Claude.ai] Auditoria de conteúdo/narrativa (usar AUDIT-VISUAL.md + Bíblia Narrativa)
+- [Code] Batch 1-3: Refatorar 24 slides para archetypes
 - [Code] Sincronizar Plans A e B com as mudanças do stage-c

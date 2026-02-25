@@ -47,5 +47,8 @@ docs/transcripts/*.analysis.json
 # Exceção: figuras de papers (assets de aula)
 !aulas/cirrose/assets/*.png
 
+# Audit export (temporary, for Claude.ai upload)
+audit-export/
+
 # Windows artifact
 NUL
