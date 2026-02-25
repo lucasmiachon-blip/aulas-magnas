@@ -191,6 +191,12 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - **Slides DB:** 28 registros ativos (20 core + 8 APP) • 3 DEPRECATED (A1-02-OLD, CIRR-04-01, A2-04-OLD)
 - **Blueprint page:** Ordem definitiva v3 documentada (TITLE→A1-01→A1-02→HOOK→A1-03...→CLOSE→APP-01...APP-08)
 
+## Regras de Export (review packages / audit-export)
+- **SEMPRE incluir** a Blueprint do projeto em Markdown (Notion page `30adfe68-59a8-815a-abf5-c817cd705b29`)
+- **SEMPRE incluir** a Bíblia Narrativa + Pérolas Clínicas (Notion page `311dfe68-59a8-816b-b9c0-ec10eccfb235`)
+- Exportar ambas via `notion-fetch` → salvar como `.md` na pasta `docs/` do pacote
+- Nomes: `docs/blueprint-cirrose.md` e `docs/biblia-narrativa.md`
+
 ## Próximo batch esperado
 - [Code] **Fix CSS Sistêmico**: S1 (panel 190→140px + hide in appendix) + S2 (max-width responsivo) + S3 (fill ratio)
 - [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md backlog)
