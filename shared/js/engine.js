@@ -199,7 +199,18 @@ export function createAnimationDispatcher(Reveal, gsap) {
 
   function animate(slide, indexh) {
     if (prefersReduced || printing || qa) {
-      if ((printing || qa) && slide) forceAnimFinalState(slide);
+      if ((printing || qa) && slide) {
+        forceAnimFinalState(slide);
+        // QA: re-reveal [data-reveal] after ClickReveal.reset() in slidechanged
+        if (qa) {
+          slide.querySelectorAll('[data-reveal]').forEach(el => {
+            el.classList.add('revealed');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.pointerEvents = 'auto';
+          });
+        }
+      }
       return;
     }
     if (!slide) return;
@@ -216,21 +227,13 @@ export function createAnimationDispatcher(Reveal, gsap) {
       Reveal.on('slidechanged', (e) => cleanup(e.previousSlide));
       Reveal.on('slidetransitionend', (e) => animate(e.currentSlide, e.indexh));
       Reveal.on('ready', (e) => {
-        if (printing || qa) {
-          // Force all slides to final state for PDF / QA screenshots
+        if (printing) {
+          // Force all slides to final state for PDF
           document.querySelectorAll('.slides section').forEach(s => forceAnimFinalState(s));
-          if (qa) {
-            // Reveal all click-reveal elements (no interaction needed)
-            document.querySelectorAll('[data-reveal]').forEach(el => {
-              el.classList.add('revealed');
-              el.style.opacity = '1';
-              el.style.transform = 'none';
-              el.style.pointerEvents = 'auto';
-            });
-          }
-        } else {
+        } else if (!qa) {
           animate(Reveal.getCurrentSlide(), e.indexh);
         }
+        // QA setup runs in initAula() — ready event fires before connect()
       });
     },
 
@@ -300,5 +303,17 @@ export async function initAula(Reveal, gsap, config = {}) {
   initResidenciaMode();
   const deck = await initReveal(Reveal, config);
   initHighContrastToggle(Reveal); // Must be after init
+
+  // QA mode: force final state AFTER Reveal is ready (ready event already fired)
+  if (isQaMode()) {
+    document.querySelectorAll('.slides section').forEach(s => forceAnimFinalState(s));
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.classList.add('revealed');
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.pointerEvents = 'auto';
+    });
+  }
+
   return deck;
 }

@@ -2,18 +2,18 @@
 
 ## Último batch executado
 - **Batch:** P0 — Stage-C Stability (branch `p0/stage-c-stability`)
-- **Commit:** a0d8ade
+- **Commit:** 52b9cb7 + bugfix commit (ver abaixo)
 - **Data:** 2026-02-25
 - **Agente:** Claude Code (Opus 4.6)
 - **Fonte:** 3 auditorias externas triadas criticamente (AUDIT-CONSOLIDADA, ERRATA-FIX-SENIOR, Gemini Gem)
-- **Alterações:**
+- **Alterações (commit inicial 52b9cb7):**
   1. **QA script determinístico** (`scripts/qa-screenshots-stage-c.js`):
      - `ArrowRight` → `Reveal.slide(i)` API (bypasses ClickReveal interceptor)
      - `waitForTimeout(400)` → `waitForFunction(Reveal.getState)` (deterministic)
      - Appends `?qa=1` para modo QA automático
   2. **QA mode** (`shared/js/engine.js`):
      - `?qa=1` → `transition: 'none'`, no controls/progress/hash
-     - `forceAnimFinalState()` aplicado a TODOS os slides no `ready`
+     - `forceAnimFinalState()` aplicado a TODOS os slides
      - Todos `[data-reveal]` forçados visíveis (`.revealed` + inline styles)
      - Reutiliza infraestrutura existente de print-pdf (zero duplicação)
   3. **Panel safe area** (`aulas/cirrose/cirrose.css`):
@@ -25,10 +25,22 @@
      - `--slide-pad-h: 48px` propagado pelo `.reveal.panel-active`
      - `.slides { min-width: 0 }` — previne overflow em grid child
      - `max-width: min(1120px, 100%)` nos archetypes — respeita espaço disponível
+- **Bugfixes (commit pós-validação visual):**
+  1. **Bug #1 — QA `ready` event timing** (`engine.js`):
+     - Causa: `Reveal.on('ready')` registrado em `connect()` DEPOIS de `ready` já ter disparado (durante `await initReveal()`)
+     - Fix: QA setup movido de `dispatcher.ready` → `initAula()` (executa APÓS `await initReveal()`)
+  2. **Bug #2 — ClickReveal.reset() race** (`engine.js`):
+     - Causa: `slidechanged` → `ClickReveal.reset()` re-oculta `[data-reveal]` DEPOIS do QA global setup
+     - Fix: `animate()` re-revela `[data-reveal]` per-slide no `slidetransitionend` (AFTER reset)
+  3. **Bug #3 — Reveal scale overflow** (`archetypes.css`):
+     - Causa: Reveal escala conteúdo para largura total do `.reveal`, não da coluna `.slides`
+     - Fix: `overflow: hidden` em `.reveal.panel-active .slides` clip limpo na boundary do panel
+     - Nota: Em 1280×720 (produção) conteúdo cabe sem clip. Fix é safety net para viewports menores.
 - **Impacto:** Zero `!important` adicionados. Build OK (480ms). Nenhum HTML modificado.
 - **Matemática do fix:**
   - Antes: 1280 - 190 - (64×2) = 962px úteis, max-width 1120px > 1090px disponível (overflow)
   - Depois: 1280 - 190 - (48×2) = 994px úteis, max-width min(1120px, 100%) = 1090px (sem overflow)
+- **Validação visual 1280×720:** Title, CP1, A2-01, A3-02 — todos PASS
 
 ## Batch anterior
 - **Batch:** QA scripts + cleanup + review package

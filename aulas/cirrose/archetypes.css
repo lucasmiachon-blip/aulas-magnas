@@ -444,7 +444,8 @@
 
 .reveal.panel-active .slides {
   grid-column: 1;
-  min-width: 0;  /* prevents grid child overflow */
+  min-width: 0;    /* prevents grid child from expanding beyond column */
+  overflow: hidden; /* clips Reveal's scaled content at panel boundary */
 }
 
 .case-panel {
