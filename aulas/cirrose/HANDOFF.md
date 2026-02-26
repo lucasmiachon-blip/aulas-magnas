@@ -1,9 +1,44 @@
 # HANDOFF — Cirrose (atualizado 2026-02-26)
 
 ## Último batch executado
-- **Batch:** P2 — Hero typography + Graceful degradation (branch `main`)
-- **Commit:** (pending)
+- **Batch:** Refactor — Floating panel + HOOK card fix (branch `refactor/floating-panel`)
+- **Commit:** (pending — será commitado agora)
 - **Data:** 2026-02-26
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** Diagnóstico arquitetural: panel grid comprime slides, HOOK card invisível em stage-c
+- **Problema grave identificado:**
+  - `.reveal.panel-active { display: grid !important; grid-template-columns: 1fr 190px }` forçava ALL slides a perder 190px
+  - Reveal.js força `width: 1280px` inline no `.slides` — grid resolvia primeira coluna para **0px**
+  - HOOK mostrava card navy (#0d1a2d) + sidebar panel = **dados duplicados**
+  - Stage-c remapeia `--text-on-dark` → `oklch(12%)` (dark) = **texto invisível** em navy card
+- **Alterações:**
+  1. **Panel → floating overlay** (`archetypes.css`):
+     - REMOVIDO: `:root { --panel-width }`, `.reveal.panel-active { display: grid !important }`, grid-template-columns, `.slides { grid-column }`, `.slides section > .slide-inner { max-width: calc(...) }`
+     - ADICIONADO: `.case-panel { position: absolute; top: 12px; right: 12px; width: 180px; z-index: 20 }`
+     - Background: `var(--bg-elevated, #fff)` + border + border-radius + box-shadow
+     - Severity indicators: border-left accent (caution=gold, danger=red, hope=teal, resolved=slate)
+     - `.case-panel.hidden { opacity: 0; transform: translateY(-8px); pointer-events: none }`
+  2. **case-panel.js** (`shared/js/case-panel.js`):
+     - Threshold: `slideIndex < 1` → `slideIndex < 2` (panel hidden on title AND HOOK)
+     - REMOVIDO: `document.querySelector('.reveal').classList.add/remove('panel-active')`
+     - show/hide agora apenas toggle `.hidden` class
+  3. **HOOK card — navy → light elevated** (`cirrose.css`):
+     - REMOVIDO: absolute positioning (`.col-right { position: absolute; top: 0; right: 20px; width: 440px }`)
+     - REMOVIDO: navy card (`background: #0d1a2d`, `--text-on-dark`, `oklch(26%)` data items)
+     - ADICIONADO: grid override `grid-template-columns: 1.2fr 1fr; align-items: center`
+     - ADICIONADO: light card (`var(--bg-elevated)`, `border-left: 4px solid var(--cmp-1)`, soft shadow)
+     - Text uses `--text-primary` (works in all stages)
+  4. **Cleanup** (`cirrose.css`):
+     - `padding: 40px var(--slide-pad-h, 64px)` → `padding: 40px 64px` (variable no longer needed)
+- **Impacto:** 4 arquivos, ~135 inserções, ~109 deleções. Arquitetura de layout fundamentalmente mudou.
+- **QA:** Pendente validação visual completa dos 28 slides (CSS hot-reload confirmado OK pelo Vite)
+- **NOTA:** Este branch NÃO inclui P3 (panel wrapper, panel por ID). P3 é próximo passo.
+
+## Batch anterior
+- **Batch:** P2 — Hero typography + Graceful degradation (branch `main`)
+- **Commit:** 822cf38
+- **Data:** 2026-02-26
+- **Agente:** Claude Code (Opus 4.6)
 - **Agente:** Claude Code (Opus 4.6)
 - **Fonte:** Roadmap P2 do HANDOFF
 - **Alterações:**
@@ -290,9 +325,15 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 
 ## Pendências
 - ☑ [Code] Auditoria Visual completa — AUDIT-VISUAL.md (25/fev)
-- ☐ [Code] **URGENTE** Fix S1+S2: case panel responsivo + content max-width (resolve 22/28 slides)
-- ☐ [Code] Fix S3: fill ratio (padding/max-width ajustes — 25/28 slides)
+- ☑ [Code] **URGENTE** Fix S1+S2: panel responsivo → **RESOLVIDO** (floating panel, branch `refactor/floating-panel`)
+- ☑ [Code] Fix S3: fill ratio → **RESOLVIDO** (P1, commit 92328c7)
+- ☐ [Code] **QA visual dos 28 slides** pós-floating-panel (validar que nenhum slide quebrou)
+- ☐ [Code] **Merge `refactor/floating-panel` → `main`** após QA
+- ☐ [Code] **P3: Panel wrapper** — container externo em vez de `.reveal` grid
+- ☐ [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
 - ☐ [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md)
+- ☐ [Code] Slides críticos (usuário vai indicar após P3)
+- ☐ [Code] Audit export (Gemini + Claude.ai + ChatGPT zip com PNG transições)
 - ☐ [Code] Batches 1-3: Refatorar 24 slides restantes para archetypes
 - ☐ [Code] Módulos: decision-tree.js, timeline.js
 - ☐ [Code] Sincronizar alterações nos Plans A e B (apenas stage-c foi modificado)
@@ -343,11 +384,15 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 ## Próximo batch esperado (P3+)
 - ☑ [Code] **P1: Fill ratio** — FEITO (92328c7)
 - ☑ [Code] **P1: Source-tags** — FEITO (92328c7)
-- ☑ [Code] **P2: Hero typography** — FEITO (este batch)
-- ☑ [Code] **P2: Graceful degradation** — FEITO (este batch)
-- ☑ [Code] **JS bugfix: hash navigation** — FEITO (59c10e7)
-- ☐ [Code] **P3: Panel wrapper** — tirar `display: grid` do `.reveal`, usar wrapper externo
+- ☑ [Code] **P2: Hero typography** — FEITO (822cf38)
+- ☑ [Code] **P2: Graceful degradation** — FEITO (822cf38)
+- ☑ [Code] **JS bugfix: hash navigation** — FEITO (7a49c9f)
+- ☑ [Code] **Floating panel refactor** — FEITO (branch `refactor/floating-panel`)
+- ☐ [Code] **QA + merge floating-panel → main**
+- ☐ [Code] **P3: Panel wrapper** — container externo (se necessário após floating refactor)
 - ☐ [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
+- ☐ [Code] **Slides críticos** — usuário indicará quais após P3
+- ☐ [Code] **Audit export** — Gemini, Claude.ai, ChatGPT (zip + PNG transições)
 - [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md backlog)
 - [Claude.ai] Revisão headline-by-headline (5 slides indicados na triagem)
 - [Claude.ai] Auditoria de conteúdo/narrativa (usar AUDIT-VISUAL.md + Bíblia Narrativa)

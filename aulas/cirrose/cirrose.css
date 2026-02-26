@@ -3,9 +3,8 @@
    ============================================ */
 
 /* --- Tighter slide padding for cirrose (gains ~40px vertical) --- */
-/* --slide-pad-h is reduced when panel-active (set in archetypes.css) */
 .reveal .slides section .slide-inner {
-  padding: 40px var(--slide-pad-h, 64px);
+  padding: 40px 64px;
 }
 
 /* --- Section tag spacing --- */
@@ -109,7 +108,8 @@
 /* ============================================
    HOOK — advance organizer + case (v3)
    ============================================ */
-.slide-inner.split-50-50 {
+/* --- Split 50-50 (generic grid) --- */
+.reveal .slides section .slide-inner.split-50-50 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-xl);
@@ -119,6 +119,12 @@
 .split-50-50 .col-left,
 .split-50-50 .col-right {
   min-width: 0;
+}
+
+/* --- HOOK override: framework wider than card --- */
+.reveal .slides section#s-hook .slide-inner.split-50-50 {
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
 }
 
 .framework-box {
@@ -164,6 +170,7 @@
   color: var(--text-secondary);
 }
 
+/* --- Case card (base — used by checkpoints too) --- */
 .case-card {
   padding: var(--space-md);
   border-radius: var(--radius-lg);
@@ -210,6 +217,46 @@
   font-size: var(--text-body);
   color: var(--warning);
   margin-top: var(--space-sm);
+}
+
+/* --- HOOK case card — elevated, compact, legible --- */
+#s-hook .case-card {
+  background: var(--bg-elevated);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--cmp-1);
+  box-shadow:
+    0 8px 32px oklch(0% 0 0 / 0.10),
+    0 2px 8px oklch(0% 0 0 / 0.06);
+  max-width: 440px;
+}
+
+#s-hook .case-card h3 {
+  font-size: var(--text-h2);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+#s-hook .case-data {
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+#s-hook .case-data .data-item {
+  padding: var(--space-xs) var(--space-sm);
+}
+
+#s-hook .case-data .data-label {
+  font-size: var(--text-body);
+}
+
+#s-hook .case-data .data-value {
+  font-size: var(--text-body);
+}
+
+#s-hook .case-question {
+  font-size: var(--text-h3);
+  margin-top: var(--space-md);
 }
 .stage-c .slide-title .subtitle {
   color: var(--text-secondary);

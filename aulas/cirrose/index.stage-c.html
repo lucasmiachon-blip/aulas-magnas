@@ -31,6 +31,51 @@ PAUSA 3s. Deixar a pergunta pairar.
     </aside>
   </section>
 
+  <section id="s-hook" data-timing="150">
+    <div class="slide-inner split-50-50">
+      <div class="col-left">
+        <h2 class="slide-headline">5 números classificam. 3 decisões mudam o destino.</h2>
+        <div class="framework-box">
+          <div class="framework-item">
+            <span class="label">5 números</span>
+            <span class="value">FIB-4 · LSM · PLQ · MELD-Na · D'Amico</span>
+          </div>
+          <div class="framework-item">
+            <span class="label">3 decisões</span>
+            <span class="value">Carvedilol? · Albumina? · Encaminhar?</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="case-card">
+          <h3>Seu Antônio, 55 anos</h3>
+          <div class="case-data">
+            <div class="data-item"><span class="data-label">FIB-4</span><span class="data-value" data-animate="countUp" data-target="3.2">0</span></div>
+            <div class="data-item"><span class="data-label">AST</span><span class="data-value">58</span></div>
+            <div class="data-item"><span class="data-label">ALT</span><span class="data-value">42</span></div>
+            <div class="data-item"><span class="data-label">PLQ</span><span class="data-value">118k</span></div>
+            <div class="data-item"><span class="data-label">Albumina</span><span class="data-value">3,6</span></div>
+          </div>
+          <p class="case-question">Sem queixas. O que você faz?</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="notes">
+[0:00-1:00 FRAMEWORK]
+"Se vocês saírem daqui com esses 5 números na cabeça e essas 3 decisões no reflexo, a aula cumpriu o objetivo."
+5 números: FIB-4, LSM (kPa), plaquetas, MELD-Na, estágio D'Amico.
+3 decisões: Carvedilol? Albumina? Encaminhar?
+PAUSA 2s.
+
+[1:00-2:30 CASO]
+"Seu Antônio. 55 anos. Motorista de caminhão. IMC 31, DM2, etilismo 40g/dia há 20 anos."
+"Clínico geral pediu FIB-4 = 3,2. AST 58, ALT 42, plaquetas 118k, albumina 3,6."
+"Sem queixas. Encaminhou para vocês. E agora?"
+PAUSA 3s. Deixar a pergunta pairar.
+    </aside>
+  </section>
+
   <section id="s-a1-01">
     <div class="slide-inner archetype-figure">
       <p class="section-tag">ATO 1 — CLASSIFICAR</p>
@@ -93,51 +138,6 @@ Mas o FIB-4 dele é 3,2. Ele já está neste espectro. Onde exatamente, a gente 
 [2:00-3:20 CAVEAT MASLD]
 "ATENÇÃO para pacientes obesos com MASLD: IPD meta-análise Bañares 2025 mostrou que LSM ≥25 tem PPV de apenas 0,67 em obesos (vs 0,92 geral). Considerar modelo ANTICIPATE±NASH (≥75% threshold → PPV 0,83)."
 "Seu Antônio: IMC 31, MASLD — esse caveat se aplica diretamente."
-    </aside>
-  </section>
-
-  <section id="s-hook" data-timing="150">
-    <div class="slide-inner split-50-50">
-      <div class="col-left">
-        <h2 class="slide-headline">5 números classificam. 3 decisões mudam o destino.</h2>
-        <div class="framework-box">
-          <div class="framework-item">
-            <span class="label">5 números</span>
-            <span class="value">FIB-4 · LSM · PLQ · MELD-Na · D'Amico</span>
-          </div>
-          <div class="framework-item">
-            <span class="label">3 decisões</span>
-            <span class="value">Carvedilol? · Albumina? · Encaminhar?</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-right">
-        <div class="case-card">
-          <h3>Seu Antônio, 55 anos</h3>
-          <div class="case-data">
-            <div class="data-item"><span class="data-label">FIB-4</span><span class="data-value" data-animate="countUp" data-target="3.2">0</span></div>
-            <div class="data-item"><span class="data-label">AST</span><span class="data-value">58</span></div>
-            <div class="data-item"><span class="data-label">ALT</span><span class="data-value">42</span></div>
-            <div class="data-item"><span class="data-label">PLQ</span><span class="data-value">118k</span></div>
-            <div class="data-item"><span class="data-label">Albumina</span><span class="data-value">3,6</span></div>
-          </div>
-          <p class="case-question">Sem queixas. O que você faz?</p>
-        </div>
-      </div>
-    </div>
-
-    <aside class="notes">
-[0:00-1:00 FRAMEWORK]
-"Se vocês saírem daqui com esses 5 números na cabeça e essas 3 decisões no reflexo, a aula cumpriu o objetivo."
-5 números: FIB-4, LSM (kPa), plaquetas, MELD-Na, estágio D'Amico.
-3 decisões: Carvedilol? Albumina? Encaminhar?
-PAUSA 2s.
-
-[1:00-2:30 CASO]
-"Seu Antônio. 55 anos. Motorista de caminhão. IMC 31, DM2, etilismo 40g/dia há 20 anos."
-"Clínico geral pediu FIB-4 = 3,2. AST 58, ALT 42, plaquetas 118k, albumina 3,6."
-"Sem queixas. Encaminhou para vocês. E agora?"
-PAUSA 3s. Deixar a pergunta pairar.
     </aside>
   </section>
 
@@ -1089,8 +1089,8 @@ PAUSA 2s.
   const anim = createAnimationDispatcher(Reveal, gsap);
   anim.connect();
 
-  // HOOK (index 3): stagger framework + case, countUp via data-animate
-  anim.registerCustom(3, (slide, gsap) => {
+  // HOOK (index 1): stagger framework + case, countUp via data-animate
+  anim.registerCustom(1, (slide, gsap) => {
     const frameworkItems = slide.querySelectorAll('.framework-item');
     const dataItems = slide.querySelectorAll('.case-data .data-item');
     gsap.set([...frameworkItems, ...dataItems], { visibility: 'visible' });
@@ -1115,7 +1115,7 @@ PAUSA 2s.
   if (panelEl) {
     const panel = new CasePanel(panelEl, gsap);
 
-    panel.registerState(3, {
+    panel.registerState(1, {
       severity: 'neutral',
       values: { fib4: '3,2', lsm: '—', plq: '118k', meld: '—', albumin: '3,6', stage: '?' },
       events: []

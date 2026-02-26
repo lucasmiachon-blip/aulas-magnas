@@ -32,7 +32,7 @@ export class CasePanel {
    * @param {number} slideIndex — current horizontal slide index
    */
   onSlideChanged(slideIndex) {
-    if (slideIndex < 3) {
+    if (slideIndex < 2) {
       this.hide();
       return;
     }
@@ -163,13 +163,11 @@ export class CasePanel {
     if (!this.visible) return;
     this.visible = false;
     this.el.classList.add('hidden');
-    this.el.closest('.reveal')?.classList.remove('panel-active');
   }
 
   show() {
     if (this.visible) return;
     this.visible = true;
     this.el.classList.remove('hidden');
-    this.el.closest('.reveal')?.classList.add('panel-active');
   }
 }

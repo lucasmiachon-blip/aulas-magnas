@@ -90,6 +90,7 @@
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
+  align-items: stretch;
   align-self: center;
   width: 100%;
 }
@@ -102,6 +103,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   min-width: 160px;
   flex: 1;
@@ -230,6 +232,7 @@
 .archetype-checkpoint .case-expanded {
   background: var(--bg-card, oklch(99% 0.003 258));
   border: 1px solid var(--border, oklch(88% 0.005 258));
+  border-left: 4px solid var(--checkpoint-accent, var(--border, oklch(88% 0.005 258)));
   border-radius: var(--radius-sm, 8px);
   padding: 16px;
 }
@@ -294,22 +297,11 @@
   line-height: 1.4;
 }
 
-/* Severity tinting for checkpoint */
-.archetype-checkpoint[data-severity="neutral"] {
-  background: #eeeef2;
-}
-
-.archetype-checkpoint[data-severity="caution"] {
-  background: #fdf6e3;
-}
-
-.archetype-checkpoint[data-severity="danger"] {
-  background: #fde8e8;
-}
-
-.archetype-checkpoint[data-severity="hope"] {
-  background: #e3f5ee;
-}
+/* Severity tinting for checkpoint — neutral bg + accent border on case card */
+.archetype-checkpoint[data-severity="neutral"] { --checkpoint-accent: var(--border, oklch(88% 0.005 258)); }
+.archetype-checkpoint[data-severity="caution"] { --checkpoint-accent: #e9c44a; }
+.archetype-checkpoint[data-severity="danger"]  { --checkpoint-accent: #e05555; }
+.archetype-checkpoint[data-severity="hope"]    { --checkpoint-accent: #3aaa8a; }
 
 /* ============================================
    MELD CALCULATOR (inside interactive-area)
@@ -431,79 +423,65 @@
 }
 
 /* ============================================
-   CASE PANEL — Sidebar
+   CASE PANEL — Floating Overlay
    ============================================ */
 
-:root {
-  --panel-width: 190px;
-}
-
-.reveal.panel-active {
-  display: grid !important;   /* justified: overrides Reveal.js inline style */
-  grid-template-columns: 1fr var(--panel-width);
-  --slide-pad-h: 48px;        /* propagates to .slide-inner via cirrose.css */
-}
-
-.reveal.panel-active .slides {
-  grid-column: 1;
-  min-width: 0;    /* prevents grid child from expanding beyond column */
-  overflow: hidden; /* clips Reveal's scaled content at panel boundary */
-}
-
-/* Reveal.js forces inline width:1280px on .slides, ignoring grid column.
-   Content inside still renders at full 1280px → rightmost ~190px get clipped.
-   Fix: constrain all .slide-inner to the VISIBLE width (1280 − panel). */
-.reveal.panel-active .slides section > .slide-inner {
-  max-width: calc(1280px - var(--panel-width, 190px));
-}
-
 .case-panel {
-  background: var(--panel-bg, #eeeef2);
-  border-left: 1.5px solid var(--panel-border, #d0d0d8);
-  padding: 12px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 180px;
+  z-index: 20;
+  background: var(--bg-elevated, #fff);
+  border: 1px solid var(--panel-border, oklch(88% 0.005 258));
+  border-radius: var(--radius-md, 12px);
+  box-shadow:
+    0 4px 16px oklch(0% 0 0 / 0.10),
+    0 1px 4px oklch(0% 0 0 / 0.06);
+  padding: 14px;
   font-family: var(--font-body);
   font-size: 11px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  transition: background 0.4s ease, border-color 0.4s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   overflow-y: auto;
-  grid-column: 2;
-  z-index: 10;
+  max-height: calc(100% - 24px);
 }
 
 .case-panel.hidden {
-  display: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
 }
 
 .case-panel[data-severity="neutral"] {
-  --panel-bg: #eeeef2;
   --panel-border: #d0d0d8;
   --panel-dot: #888899;
 }
 
 .case-panel[data-severity="caution"] {
-  --panel-bg: #fdf6e3;
   --panel-border: #e9c44a;
   --panel-dot: #c4960a;
+  border-left: 3px solid #e9c44a;
 }
 
 .case-panel[data-severity="danger"] {
-  --panel-bg: #fde8e8;
   --panel-border: #e05555;
   --panel-dot: #c03030;
+  border-left: 3px solid #e05555;
 }
 
 .case-panel[data-severity="hope"] {
-  --panel-bg: #e3f5ee;
   --panel-border: #3aaa8a;
   --panel-dot: #2a8a6a;
+  border-left: 3px solid #3aaa8a;
 }
 
 .case-panel[data-severity="resolved"] {
-  --panel-bg: #e8eef5;
   --panel-border: #7a8fa8;
   --panel-dot: #4a6580;
+  border-left: 3px solid #7a8fa8;
 }
 
 .case-panel .panel-header {
@@ -531,7 +509,10 @@
 .case-panel .panel-fields {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
+  background: rgba(0,0,0,0.03);
+  border-radius: 6px;
+  padding: 8px;
 }
 
 .case-panel .panel-field {
@@ -542,13 +523,13 @@
 
 .case-panel .panel-field-label {
   color: var(--text-muted, #777);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .case-panel .panel-field-value {
   font-family: var(--font-mono, monospace);
   font-weight: 500;
-  font-size: 10.5px;
+  font-size: 12px;
   color: var(--text-primary, #222);
 }
 
