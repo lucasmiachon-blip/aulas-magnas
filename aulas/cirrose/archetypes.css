@@ -448,6 +448,13 @@
   overflow: hidden; /* clips Reveal's scaled content at panel boundary */
 }
 
+/* Reveal.js forces inline width:1280px on .slides, ignoring grid column.
+   Content inside still renders at full 1280px → rightmost ~190px get clipped.
+   Fix: constrain all .slide-inner to the VISIBLE width (1280 − panel). */
+.reveal.panel-active .slides section > .slide-inner {
+  max-width: calc(1280px - var(--panel-width, 190px));
+}
+
 .case-panel {
   background: var(--panel-bg, #eeeef2);
   border-left: 1.5px solid var(--panel-border, #d0d0d8);
