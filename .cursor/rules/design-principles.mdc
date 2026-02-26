@@ -1,0 +1,79 @@
+---
+description: "Princípios cognitivos (Miller, Gestalt, Mayer, Tufte, Duarte) e Escola Duarte. USE WHEN designing slides or making layout decisions."
+globs: "**/*.html,**/*.css,**/slides/**"
+alwaysApply: false
+---
+
+# Design Principles — Psicologia Cognitiva + Escola Duarte
+
+> Cada princípio: O QUE FAZER + anti-padrão.
+
+---
+
+## Psicologia Cognitiva Operacionalizada
+
+### 1. Miller (7±2)
+**Fazer:** Max 5 items por grupo visual. 3 = ideal.
+**Anti-padrão:** Slide com 8+ bullets soltos sem agrupamento.
+
+### 2. Von Restorff (Efeito Isolamento)
+**Fazer:** 1 hero number/element por slide, tamanho 2-3x maior que o corpo.
+**Anti-padrão:** Tudo do mesmo tamanho = nada se destaca.
+
+### 3. Gestalt Proximidade
+**Fazer:** Cards do mesmo tipo agrupados. Gap interno < metade do gap entre grupos.
+**Anti-padrão:** Itens relacionados separados por whitespace igual ao de itens não-relacionados.
+
+### 4. Gestalt Similaridade
+**Fazer:** Mesmo tipo de informação = mesma cor/forma/tamanho.
+**Anti-padrão:** Cards de comparação com estilos diferentes para dados equivalentes.
+
+### 5. Gestalt Continuidade
+**Fazer:** Alinhamento consistente — border-left, baseline grid, colunas alinhadas.
+**Anti-padrão:** Elementos "quase" alinhados que criam tensão visual.
+
+### 6. Dual Coding (Paivio)
+**Fazer:** Todo dado numérico tem representação visual (chart, hero number, bar).
+**Anti-padrão:** Tabela de números sem nenhum destaque visual.
+
+### 7. Cognitive Load (Sweller)
+**Fazer:** Eliminar extraneous load — decoração, redundância, informação não-essencial.
+**Anti-padrão:** Gradientes decorativos, ícones sem função, texto que repete o título.
+
+### 8. Signaling (Mayer)
+**Fazer:** Hierarquia de cor = hierarquia de importância. Cor mais saturada = dado mais importante.
+**Anti-padrão:** Cor mais vibrante num dado secundário.
+
+### 9. Spatial Contiguity (Mayer)
+**Fazer:** Label junto ao dado, nunca em footnote separada ou legenda distante.
+**Anti-padrão:** Número no topo, explicação no rodapé.
+
+### 10. Data-Ink Ratio (Tufte)
+**Fazer:** Cada pixel carrega informação. Remover gridlines, bordas e sombras desnecessárias.
+**Anti-padrão:** Box-shadow em card que não precisa de elevação visual.
+
+### 11. Assertion-Evidence (Alley)
+**Fazer:** Título = conclusão verificável ("Estatinas reduzem eventos em 25%"), não descrição ("Resultados do estudo").
+**Anti-padrão:** Título genérico que não comunica o insight.
+
+---
+
+## Escola Duarte
+
+- **Sparkline:** Arco narrativo no deck — tensão → resolução → call to action
+- **Contraste:** Alternar bg-navy / bg-claro como ritmo narrativo
+- **Ponto focal:** UM elemento dominante por slide (hero number, imagem, quote)
+- **Regra de 3:** Max 3 grupos por layout
+- **Título = conclusão:** Afirmação, não descrição
+
+---
+
+## Princípios Operacionais
+
+1. **Uma ideia por slide** — Título = conclusão
+2. **Ponto focal obrigatório** — Cada slide tem UM elemento dominante
+3. **Hierarquia 3 níveis** — Título > corpo > detalhe
+4. **Dual coding** — Texto mínimo + visual com significado
+5. **Screenshot → Crítica → Fix** — Mínimo 3 rounds antes de entregar
+6. **Consistência cross-slide** — Tokens iguais em todos os slides do mesmo tipo
+7. **Menos é mais** — Remover até não poder mais remover

@@ -391,11 +391,21 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - ☑ **Floating panel refactor** — grid→overlay + HOOK card light (982dd01)
 
 ### Imediato (próxima sessão)
+- ☐ [Code] **s-a1-01 título** — encurtar para continuum sem repetir 1%/57%
+- ☐ [Code] **s-hook refactoring** — título verbo, layout ≠ split-50-50, texto revisado, manter case card
 - ☐ [Code] **QA visual 28 slides** pós-floating-panel → validar que nada quebrou
 - ☐ [Code] **Merge `refactor/floating-panel` → `main`** após QA
 
 ### Curto prazo
-- ☐ [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
+- ☐ [Code] **P3: Panel por ID** (plano aprovado: `valiant-twirling-sunrise.md`)
+  - Escopo: migrar CasePanel, ClickReveal, registerCustom de index numérico → slide ID
+  - 3 arquivos: `case-panel.js`, `engine.js`, `index.stage-c.html`
+  - P3.1: CasePanel `.connect(slidesContainer)` + `registerState(slideId, state)`
+  - P3.2: ClickReveal `revealers.set(section.id, ...)` em vez de index
+  - P3.3: registerCustom `customAnimations.set(slideId, fn)` em vez de slideIndex
+  - P3.4: HTML call sites — 5 registerState (1,7,14,18,19 → IDs) + 1 registerCustom
+  - ~40 linhas alteradas, 0 arquivos novos
+  - Wrapper `<div class="deck-wrapper">` deferido para batch separado
 - ☐ [Code] **Fixes individuais I1-I10** (ver AUDIT-VISUAL.md backlog)
 - ☐ [Code] **Slides críticos** — usuário indicará quais
 - ☐ [Code] **Audit export** — Gemini, Claude.ai, ChatGPT (zip + PNG transições)
