@@ -1,8 +1,46 @@
 # HANDOFF — Cirrose (atualizado 2026-02-25)
 
 ## Último batch executado
+- **Batch:** P1 — Fill Ratio + Source Tags (branch `p1/fill-ratio`)
+- **Commit:** 92328c7
+- **Data:** 2026-02-25
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** P0 validation findings + AUDIT-VISUAL backlog
+- **Alterações:**
+  1. **Fill ratio fix — `min()` em 9 containers** (`cirrose.css`):
+     - `.meld-semaphore` 600px → `min(600px, 100%)`
+     - `.predict-bars` 700px → `min(700px, 100%)`
+     - `.trial-result` 600px → `min(600px, 100%)`
+     - `.bleed-timeline` 700px → `min(700px, 100%)`
+     - `.decision-tree` 650px → `min(650px, 100%)`
+     - `.recomp-criteria` 600px → `min(600px, 100%)`
+     - `.surveillance-rule` 550px → `min(550px, 100%)`
+     - `.close-recap` 650px → `min(650px, 100%)`
+     - `.app-aclf-table` + 3 similares 650px → `min(650px, 100%)`
+  2. **Albumin-cards responsive grid** (`cirrose.css`):
+     - `repeat(4, 1fr)` → `repeat(auto-fit, minmax(min(180px, 100%), 1fr))`
+     - Card 4 (Normalizar) agora visível com panel ativo
+  3. **Panel-aware slide-inner constraint** (`archetypes.css`):
+     - Root cause: Reveal.js força `width: 1280px` inline no `.slides`, ignorando grid column
+     - Fix: `.reveal.panel-active .slides section > .slide-inner { max-width: calc(1280px - var(--panel-width, 190px)) }`
+     - Afeta TODOS os slides (archetype e não-archetype) quando panel ativo
+     - Resultado: conteúdo respeita a largura visível (1090px), sem clip
+  4. **Source-tags adicionadas** (2 slides):
+     - `s-a1-05`: "EASL CPG Cirrhosis, J Hepatol 2024 · AASLD Practice Guidance 2024"
+     - `s-a3-02`: "Baveno VII, J Hepatol 2022 · Lens et al. · EASL CPG 2024"
+  5. **Motion QA heurísticas** (`.claude/rules/motion-qa.md`):
+     - Checklist de heurísticas de animação (duration, easing, stagger, propósito)
+     - Workflow de validação em 5 tiers (state assertion → GIF → Gemini video)
+     - Limitações documentadas (agente vs humano)
+- **Impacto:** Zero `!important` adicionados. Build OK (595ms). Zero JS modificado.
+- **Validação visual 1280×720 (12 slides testados — todos PASS):**
+  - s-title (0), s-a1-04 (5), s-a1-05 (6), s-cp1 (7), s-a2-01 (8)
+  - s-a2-02 (9), s-a2-03 (10) ← **era FAIL, agora PASS**, s-a2-04 (12)
+  - s-a3-01 (15), s-a3-02 (16), s-close (19), s-app-01 (20)
+
+## Batch anterior
 - **Batch:** P0 — Stage-C Stability (branch `p0/stage-c-stability`)
-- **Commit:** 52b9cb7 + bugfix commit (ver abaixo)
+- **Commit:** ba474f8 (merge)
 - **Data:** 2026-02-25
 - **Agente:** Claude Code (Opus 4.6)
 - **Fonte:** 3 auditorias externas triadas criticamente (AUDIT-CONSOLIDADA, ERRATA-FIX-SENIOR, Gemini Gem)

@@ -225,7 +225,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  max-width: 600px;
+  max-width: min(600px, 100%);
   margin: var(--space-lg) auto;
 }
 .meld-band {
@@ -257,7 +257,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  max-width: 700px;
+  max-width: min(700px, 100%);
   margin: var(--space-lg) 0;
 }
 .predict-bar {
@@ -311,7 +311,7 @@
    TRIAL RESULT (A2-01)
    ============================================ */
 .trial-result {
-  max-width: 600px;
+  max-width: min(600px, 100%);
   margin: var(--space-lg) 0;
 }
 .trial-header {
@@ -358,7 +358,7 @@
   flex-direction: column;
   gap: var(--space-sm);
   margin: var(--space-lg) 0;
-  max-width: 700px;
+  max-width: min(700px, 100%);
 }
 .timeline-step {
   display: grid;
@@ -389,7 +389,7 @@
    ============================================ */
 .albumin-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
   gap: var(--space-sm);
   margin: var(--space-lg) 0;
 }
@@ -444,7 +444,7 @@
   flex-direction: column;
   gap: var(--space-md);
   margin: var(--space-lg) 0;
-  max-width: 650px;
+  max-width: min(650px, 100%);
 }
 .decision-q {
   display: grid;
@@ -498,7 +498,7 @@
   flex-direction: column;
   gap: var(--space-md);
   margin: var(--space-lg) 0;
-  max-width: 600px;
+  max-width: min(600px, 100%);
 }
 .recomp-item {
   display: flex;
@@ -548,7 +548,7 @@
    ============================================ */
 .surveillance-rule {
   margin: var(--space-xl) auto;
-  max-width: 550px;
+  max-width: min(550px, 100%);
 }
 .surv-box {
   display: flex;
@@ -599,7 +599,7 @@
    ============================================ */
 .close-recap {
   margin: var(--space-lg) 0;
-  max-width: 650px;
+  max-width: min(650px, 100%);
 }
 .close-takeaways {
   display: flex;
@@ -639,7 +639,7 @@
   flex-direction: column;
   gap: var(--space-sm);
   margin: var(--space-lg) 0;
-  max-width: 650px;
+  max-width: min(650px, 100%);
 }
 .app-row,
 .app-nsbb-point,
