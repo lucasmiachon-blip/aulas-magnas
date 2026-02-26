@@ -1,6 +1,32 @@
-# HANDOFF — Cirrose (atualizado 2026-02-25)
+# HANDOFF — Cirrose (atualizado 2026-02-26)
 
 ## Último batch executado
+- **Batch:** JS bugfix — hash navigation fallback (branch `main`)
+- **Commit:** 59c10e7
+- **Data:** 2026-02-26
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** Diagnóstico JS solicitado pelo usuário ("muitos problemas no JS")
+- **Alterações:**
+  1. **Bug: hash/refresh navigation não dispara animações** (`shared/js/engine.js`):
+     - **Causa:** `createAnimationDispatcher.connect()` usava apenas `slidetransitionend` como trigger de animação. Esse evento NÃO dispara em hash jumps (`#/N`), page refresh, ou navegação instantânea — deixando conteúdo `data-animate` invisível (opacity: 0).
+     - **Fix:** Fallback timer de 800ms no `slidechanged`. Se `slidetransitionend` dispara (navegação sequencial normal ~600ms), ele cancela o timer e anima. Se não dispara (hash jump), o timer garante a animação.
+     - **Guard:** Variável `animatedSlide` previne dupla execução quando ambos triggers tentam animar o mesmo slide.
+     - **`ready` handler:** Agora seta `animatedSlide = Reveal.getCurrentSlide()` para prevenir dupla animação no slide inicial.
+     - **QA mode:** Inalterado (já usava `slidechanged` + rAF).
+- **Validação:**
+  - ✓ Hash jump direto (`#/6`, `#/11`, `#/14`, `#/19`): animações disparam após ~800ms
+  - ✓ Navegação sequencial (→): `slidetransitionend` continua como trigger primário
+  - ✓ HOOK countUp (slide 3): "2,7" com opacity 1 (navegação sequencial)
+  - ✓ Stagger em `<table>` (slide 6): THEAD + TBODY opacity 1 (hash jump)
+  - ✓ Case panel transitions: caution (7) → danger (14) → resolved/timeline (19)
+  - ✓ Click-reveal: funciona com teclado (capture phase), by design não intercepta botão
+- **Diagnóstico completo:**
+  - HOOK `visibility: hidden` — NÃO é bug (CSS estado inicial, GSAP revela no stagger)
+  - Click-reveal: keyboard-only by design (document capture phase listener)
+  - `getComputedStyle` em slides ocultos retorna `transform: none` (misleading, não é bug)
+- **Impacto:** Apenas `engine.js` modificado. Zero CSS, zero HTML. Build OK.
+
+## Batch anterior
 - **Batch:** P1 — Fill Ratio + Source Tags (branch `p1/fill-ratio`)
 - **Commit:** 92328c7
 - **Data:** 2026-02-25

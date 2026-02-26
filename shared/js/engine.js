@@ -224,22 +224,52 @@ export function createAnimationDispatcher(Reveal, gsap) {
 
   return {
     connect() {
-      Reveal.on('slidechanged', (e) => cleanup(e.previousSlide));
-      if (qa) {
-        // QA mode: transition='none' → slidetransitionend never fires.
-        // Use slidechanged + rAF to run AFTER ClickReveal.reset() (also on slidechanged).
-        Reveal.on('slidechanged', (e) => {
+      // Track which slide has been animated to prevent double-execution.
+      // slidetransitionend doesn't fire for hash jumps, refresh, or instant
+      // navigation — the fallback timer handles those cases.
+      let animatedSlide = null;
+      let fallbackTimer = null;
+
+      Reveal.on('slidechanged', (e) => {
+        cleanup(e.previousSlide);
+        animatedSlide = null; // reset for incoming slide
+
+        if (qa) {
+          // QA mode: transition='none' → slidetransitionend never fires.
+          // Use rAF to run AFTER ClickReveal.reset() (also on slidechanged).
           requestAnimationFrame(() => animate(e.currentSlide, e.indexh));
+          return;
+        }
+
+        // Fallback: if slidetransitionend doesn't fire within 800ms
+        // (hash jump, refresh, instant navigation), animate anyway.
+        clearTimeout(fallbackTimer);
+        fallbackTimer = setTimeout(() => {
+          if (animatedSlide !== e.currentSlide) {
+            animate(e.currentSlide, e.indexh);
+            animatedSlide = e.currentSlide;
+          }
+        }, 800);
+      });
+
+      if (!qa) {
+        // Primary trigger: fires after CSS fade transition ends (~600ms).
+        Reveal.on('slidetransitionend', (e) => {
+          clearTimeout(fallbackTimer);
+          if (animatedSlide !== e.currentSlide) {
+            animate(e.currentSlide, e.indexh);
+            animatedSlide = e.currentSlide;
+          }
         });
-      } else {
-        Reveal.on('slidetransitionend', (e) => animate(e.currentSlide, e.indexh));
       }
+
       Reveal.on('ready', (e) => {
         if (printing) {
           // Force all slides to final state for PDF
           document.querySelectorAll('.slides section').forEach(s => forceAnimFinalState(s));
         } else if (!qa) {
           animate(Reveal.getCurrentSlide(), e.indexh);
+          animatedSlide = Reveal.getCurrentSlide();
         }
         // QA setup runs in initAula() — ready event fires before connect()
       });
