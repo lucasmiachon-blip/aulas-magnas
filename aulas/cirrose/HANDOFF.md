@@ -1,6 +1,30 @@
 # HANDOFF — Cirrose (atualizado 2026-02-26)
 
 ## Último batch executado
+- **Batch:** P2 — Hero typography + Graceful degradation (branch `main`)
+- **Commit:** (pending)
+- **Data:** 2026-02-26
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** Roadmap P2 do HANDOFF
+- **Alterações:**
+  1. **Hero typography** (`archetypes.css` + `cirrose.css`):
+     - `.metric-value`: `font-mono` → `font-display` (Instrument Serif) — autoridade visual
+     - `.metric-value`: weight 600/700 → 400 (serif não precisa bold)
+     - `.metric-value`: cor `ui-accent` → `text-primary` (navy escuro, sem cor semântica clínica)
+     - Adicionado `letter-spacing: -0.02em` + `font-variant-numeric: tabular-nums lining-nums`
+     - Size mantido `--text-h2` (32px @1280px) — suficiente para cards de 300px max-width
+  2. **Graceful degradation** (`engine.js`):
+     - `initNoJs()` movido de ANTES para DEPOIS de `await initReveal()`
+     - Se imports falharem → `initAula()` nunca executa → `.no-js` permanece → CSS fallback mostra conteúdo em `opacity: 1 !important`
+     - Se Reveal falhar no init → mesma proteção
+     - Conteúdo só fica em estado de animação (`opacity: 0`) APÓS confirmar que engine está funcional
+- **Validação:**
+  - ✓ Metric cards (s-a2-01): Instrument Serif 32px, peso 400, tabular-nums
+  - ✓ Reload completo: `no-js` removido após init, HOOK anima corretamente
+  - ✓ Build OK (478ms)
+- **Impacto:** 3 arquivos, 15 inserções, 8 deleções. Zero HTML modificado.
+
+## Batch anterior
 - **Batch:** JS bugfix — hash navigation fallback (branch `main`)
 - **Commit:** 59c10e7
 - **Data:** 2026-02-26
@@ -316,13 +340,14 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - Exportar ambas via `notion-fetch` → salvar como `.md` na pasta `docs/` do pacote
 - Nomes: `docs/blueprint-cirrose.md` e `docs/biblia-narrativa.md`
 
-## Próximo batch esperado (P1-P3)
-- [Code] **P1: Fill ratio** — `min(Xpx, 100%)` nos max-width de cirrose.css (predict-bars, decision-tree, etc.)
-- [Code] **P1: Source-tags** faltantes (3 slides)
-- [Code] **P2: Hero typography** — `.metric-value` → `var(--text-h1)` + `var(--font-display)`
-- [Code] **P2: Graceful degradation** — mover `no-js` removal para depois do GSAP confirmar
-- [Code] **P3: Panel wrapper** — tirar `display: grid` do `.reveal`, usar wrapper externo
-- [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
+## Próximo batch esperado (P3+)
+- ☑ [Code] **P1: Fill ratio** — FEITO (92328c7)
+- ☑ [Code] **P1: Source-tags** — FEITO (92328c7)
+- ☑ [Code] **P2: Hero typography** — FEITO (este batch)
+- ☑ [Code] **P2: Graceful degradation** — FEITO (este batch)
+- ☑ [Code] **JS bugfix: hash navigation** — FEITO (59c10e7)
+- ☐ [Code] **P3: Panel wrapper** — tirar `display: grid` do `.reveal`, usar wrapper externo
+- ☐ [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
 - [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md backlog)
 - [Claude.ai] Revisão headline-by-headline (5 slides indicados na triagem)
 - [Claude.ai] Auditoria de conteúdo/narrativa (usar AUDIT-VISUAL.md + Bíblia Narrativa)

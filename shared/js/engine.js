@@ -337,9 +337,12 @@ function initNoJs() {
 // INIT
 // ============================================
 export async function initAula(Reveal, gsap, config = {}) {
-  initNoJs();
   initResidenciaMode();
   const deck = await initReveal(Reveal, config);
+  // Remove no-js AFTER Reveal confirmed working.
+  // If module imports fail, initAula() never executes → no-js stays
+  // → CSS fallback shows all content at opacity:1 (graceful degradation).
+  initNoJs();
   initHighContrastToggle(Reveal); // Must be after init
 
   // QA mode: force final state AFTER Reveal is ready (ready event already fired)

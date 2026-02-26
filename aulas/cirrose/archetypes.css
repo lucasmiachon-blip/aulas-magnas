@@ -110,11 +110,13 @@
 }
 
 .archetype-metrics .metric-value {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-  font-weight: 600;
-  color: var(--ui-accent, oklch(35% 0.12 258));
+  font-family: var(--font-display, 'Instrument Serif', Georgia, serif);
+  font-size: var(--text-h2, clamp(28px, 2.2vw, 42px));
+  font-weight: 400;
+  color: var(--text-primary, oklch(13% 0.02 258));
   line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .archetype-metrics .metric-unit {
