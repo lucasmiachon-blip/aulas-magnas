@@ -1,0 +1,25 @@
+---
+description: "USE WHEN reading specs from Notion, updating slide status, or checking references. Notion is the source of truth for content."
+globs: ""
+alwaysApply: false
+---
+
+# Notion — Fonte da Verdade
+
+## Databases
+| Database | ID | Conteúdo |
+|----------|-----|---------|
+| Aulas Magnas | `def36683-985e-4a33-bd8c-ae0f2141ebbd` | Status geral das aulas |
+| Slides DB | `c6713964-0b31-454f-83f5-4b287911a01b` | Specs por slide (25+ campos) |
+| References DB | `2b24bb6c-91be-42c0-ae28-908a794e5cf5` | PMIDs, DOIs, verificação |
+
+## Workflow com MCP Notion
+1. Ler spec do slide (Headline PT, Visual Recomendado, Objetivo Cognitivo)
+2. Implementar HTML seguindo spec + assertion-evidence
+3. QA visual (Playwright screenshot) + a11y (WCAG check)
+4. Atualizar Pipeline Status no Notion
+
+## Regra de autoridade
+- **Notion** = verdade para conteúdo e specs
+- **GitHub** = verdade para código e implementação
+- Se conflito: Notion vence para conteúdo, GitHub vence para código

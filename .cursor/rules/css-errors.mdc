@@ -1,0 +1,27 @@
+---
+description: "USE WHEN editing CSS files or fixing layout/styling issues. Common CSS errors to avoid."
+globs: "**/*.css"
+alwaysApply: false
+---
+
+# Erros CSS Comuns
+
+## Flexbox & Layout
+- `space-between` com N≠M items = PROIBIDO
+- `flex:1` igualitário em containers desiguais = PROIBIDO
+- ≤3 children para space-between
+- Diagnosticar assimetria ANTES de escolher layout
+
+## Display
+- NUNCA `display` inline no `<section class="slide">` (quebra viewer)
+- Cache-busting `?v=date` em todos CSS/JS linkados
+
+## Cores
+- Gold em bg claro = usar `--gold-dark`
+- Cor = semântica clínica (ler texto antes de escolher)
+- Em dark mode: verificar contraste sobre true black (#000) — ratio ≥ 4.5:1
+- Semântica: teal=safe | copper=cautela | danger=risco | navy=estrutural
+
+## Processo
+- Gerar PDF/screenshot antes de declarar "pronto"
+- NUNCA remover overflow:hidden do @media print

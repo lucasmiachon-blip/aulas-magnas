@@ -2,7 +2,7 @@
 
 ## Último batch executado
 - **Batch:** Refactor — Floating panel + HOOK card fix (branch `refactor/floating-panel`)
-- **Commit:** (pending — será commitado agora)
+- **Commit:** 982dd01
 - **Data:** 2026-02-26
 - **Agente:** Claude Code (Opus 4.6)
 - **Fonte:** Diagnóstico arquitetural: panel grid comprime slides, HOOK card invisível em stage-c
@@ -381,23 +381,32 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - Exportar ambas via `notion-fetch` → salvar como `.md` na pasta `docs/` do pacote
 - Nomes: `docs/blueprint-cirrose.md` e `docs/biblia-narrativa.md`
 
-## Próximo batch esperado (P3+)
-- ☑ [Code] **P1: Fill ratio** — FEITO (92328c7)
-- ☑ [Code] **P1: Source-tags** — FEITO (92328c7)
-- ☑ [Code] **P2: Hero typography** — FEITO (822cf38)
-- ☑ [Code] **P2: Graceful degradation** — FEITO (822cf38)
-- ☑ [Code] **JS bugfix: hash navigation** — FEITO (7a49c9f)
-- ☑ [Code] **Floating panel refactor** — FEITO (branch `refactor/floating-panel`)
-- ☐ [Code] **QA + merge floating-panel → main**
-- ☐ [Code] **P3: Panel wrapper** — container externo (se necessário após floating refactor)
+## Roadmap (atualizado 2026-02-26)
+
+### Concluído
+- ☑ **P0: Stage-C Stability** — QA script, QA mode, panel safe area (ba474f8)
+- ☑ **P1: Fill ratio** — min() em 9 containers + source-tags (92328c7)
+- ☑ **P2: Hero typography** — Instrument Serif + graceful degradation (822cf38)
+- ☑ **JS bugfix: hash navigation** — fallback timer 800ms (7a49c9f)
+- ☑ **Floating panel refactor** — grid→overlay + HOOK card light (982dd01)
+
+### Imediato (próxima sessão)
+- ☐ [Code] **QA visual 28 slides** pós-floating-panel → validar que nada quebrou
+- ☐ [Code] **Merge `refactor/floating-panel` → `main`** após QA
+
+### Curto prazo
 - ☐ [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
-- ☐ [Code] **Slides críticos** — usuário indicará quais após P3
+- ☐ [Code] **Fixes individuais I1-I10** (ver AUDIT-VISUAL.md backlog)
+- ☐ [Code] **Slides críticos** — usuário indicará quais
 - ☐ [Code] **Audit export** — Gemini, Claude.ai, ChatGPT (zip + PNG transições)
-- [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md backlog)
-- [Claude.ai] Revisão headline-by-headline (5 slides indicados na triagem)
-- [Claude.ai] Auditoria de conteúdo/narrativa (usar AUDIT-VISUAL.md + Bíblia Narrativa)
-- [Code] Batch 1-3: Refatorar 24 slides restantes para archetypes
-- [Code] Sincronizar Plans A e B com as mudanças do stage-c
+
+### Médio prazo
+- ☐ [Code] Batches 1-3: Refatorar 24 slides restantes para archetypes
+- ☐ [Code] Módulos: decision-tree.js, timeline.js
+- ☐ [Code] Sincronizar Plans A e B com mudanças do stage-c
+- ☐ [Claude.ai] Revisão headline-by-headline dos 20 slides core
+- ☐ [Claude.ai] Speaker notes EN→PT para slides pendentes
+- ☐ [Claude.ai] Popular References DB com os 15 PMIDs verificados
 
 ## Triagem de auditorias externas (25/fev)
 3 fontes analisadas criticamente:

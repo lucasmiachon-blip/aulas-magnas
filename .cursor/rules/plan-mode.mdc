@@ -1,0 +1,25 @@
+---
+description: "USE WHEN planning multi-step work, batch operations, redesigns, new interactive features, or any task touching more than 1 slide."
+globs: ""
+alwaysApply: false
+---
+
+# Plan Mode
+
+**Entrar quando:** >1 tela | redesign | dados médicos | nova feature de interatividade | >3 passos
+
+## Protocolo
+PARAR → DECLARAR escopo → ESPERAR aprovação → EXECUTAR → REPORTAR
+
+## Escalation por complexidade
+| Complexidade | Exemplo | Plan Mode |
+|--------------|---------|-----------|
+| Trivial | Typo, fix de texto | Declarar depois |
+| Baixa | Ajuste CSS, padding | 1 frase de escopo |
+| Média | 1 tela interativa | Plano estruturado |
+| Alta | Batch, novo módulo JS | Plano + aprovação + batches de 3-5 |
+| Crítica | Dados médicos, refator | Plano + fontes + aprovação explícita |
+
+## Regra de batch
+- Máximo 5 slides por batch sem QA visual intermediária
+- Commit git ANTES de cada batch

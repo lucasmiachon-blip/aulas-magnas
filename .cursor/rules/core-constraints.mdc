@@ -1,0 +1,43 @@
+---
+description: ""
+globs: ""
+alwaysApply: true
+---
+
+# Hard Constraints — Sempre Ativos
+
+## Documentação
+- Toda mudança de código → atualizar `CHANGELOG.md`
+- Mudanças de estrutura → atualizar `README.md`
+
+## CSS Mínimo
+- Máximo 5-10 linhas de CSS por tarefa
+- Preferir classes existentes / design tokens
+- Se precisar de mais CSS: PARAR e PERGUNTAR
+
+## Sem !important
+- Evitar `!important`. Usar apenas como último recurso quando:
+  - Override de estilos do Reveal.js impossível de outra forma
+  - Print styles que precisam forçar layout
+- Se usar: adicionar comentário explicando POR QUÊ
+
+## Sem novas dependências sem aprovação
+- Vanilla JS/CSS preferido
+- Pacotes npm apenas com aprovação explícita
+
+## Git checkpoint
+- Commit ANTES de mudanças em 3+ arquivos
+- Commit ANTES de refators significativos
+
+## Sem refator sem permissão
+- NUNCA reescrever arquivos inteiros "para melhorar"
+- Escopo = apenas o pedido do usuário
+
+## Verificação pós-mudança
+- [ ] Viewer/frontend funciona?
+- [ ] Interatividade responde corretamente?
+- [ ] Sem erros no console?
+- [ ] Acessibilidade básica (teclado, foco)?
+
+## Compromisso
+Erros novos = aprendizado. Erros repetidos = inaceitável. 3x = checklist obrigatório.

@@ -1,0 +1,39 @@
+---
+description: "USE WHEN working with colors, fonts, themes, or visual styling for Cirrose slides."
+globs: "**/*.css,**/*.html"
+alwaysApply: false
+---
+
+# Design System — Cirrose
+
+## OLED-First Palette
+Dark theme é o default. Light é fallback para projetores ruins.
+
+| Token | Dark (OLED) | Light (fallback) | Uso |
+|-------|-------------|-------------------|-----|
+| `--bg` | #000000 (true black) | #f8fafc | Background |
+| `--surface` | #0a0a0a | #f1f5f9 | Cards, painéis |
+| `--text` | #e2e8f0 | #0f172a | Corpo de texto |
+| `--accent-primary` | teal vibrante | teal escuro | Positivo, destaque |
+| `--accent-secondary` | copper/bronze | terra | Warmth, cautela |
+| `--danger` | #ef4444 | #dc2626 | Risco clínico |
+
+**Regra:** `var()` obrigatório — NUNCA hex hardcoded.
+**Regra OLED:** True black (#000) não projeta em LCD (light leakage) — por isso o fallback light existe.
+
+## Fontes
+- **Sans:** Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif
+- **Serif:** Georgia, 'Times New Roman', Times, serif
+- **NUNCA:** Lato, Source Sans 3, JetBrains Mono, Sohne
+
+## Tipografia mínima (plateia ≥ 3-5m)
+| Tier | Função | Mínimo |
+|------|--------|--------|
+| A (must-read) | Títulos, KPIs, conclusões | ≥ 0.97vw |
+| B (support) | Body text, labels | ≥ 0.78vw |
+| C (metadata) | Refs, footnotes | ≥ 0.65vw |
+
+## Contraste
+- WCAG AA mínimo: 4.5:1 para body text
+- Em dark mode: verificar contraste sobre true black especificamente
+- Gold em background claro = usar variante `--gold-dark`

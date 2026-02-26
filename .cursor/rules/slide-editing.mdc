@@ -1,0 +1,51 @@
+---
+description: "USE WHEN editing Cirrose slide HTML files. Covers tri-mode, Reveal.js, assertion-evidence, interactivity, and animation rules."
+globs: "**/slides/**/*.html,**/cirrose/**/*.html"
+alwaysApply: false
+---
+
+# Slide Editing — Cirrose
+
+## Assertion-Evidence (padrão obrigatório)
+- **Título = afirmação** (frase completa, max 2 linhas)
+  - ✅ "Albumina reduz mortalidade em PBE por restaurar volemia efetiva"
+  - ❌ "Tratamento de PBE"
+- **Corpo = evidência visual** que comprova a afirmação
+- Hierarquia: SVG/D3 gráfico > imagem de paper > tabela > texto puro
+
+## Tri-Mode (obrigatório)
+Cada slide DEVE funcionar em 3 modos:
+
+| Mode | Resolução | Tema | Animações | Quando |
+|------|-----------|------|-----------|--------|
+| **Plan A** | 1920×1080 | Dark (OLED) | Sim | TV/OLED, sala escura |
+| **Plan B** | 1280×720 | Light (static) | Não | Projetor ruim, PDF |
+| **Plan C** | 1280×720 | Light (animated) | Sim | Projetor razoável — **default** |
+
+Antes de marcar pronto: testar A (contraste no preto?), B (legível sem animação?), C (animações no claro?).
+
+## Reveal.js — Convenções
+- Transições entre slides: `data-transition` do Reveal
+- Progressive disclosure: `class="fragment"` do Reveal
+- Speaker notes: `<aside class="notes">` em português
+- Não misturar fragments do Reveal com JS custom sem necessidade
+
+## Interatividade
+- **Com propósito:** cada interação deve ensinar ou reforçar
+- **Feedback <200ms** em hover, click, quiz
+- **Animações curtas** (<500ms) e com razão pedagógica
+- **fadeUp genérico em tudo = PROIBIDO** — cada animação precisa justificativa
+- Acessibilidade: navegável por teclado, foco visível
+- Fallback: conteúdo legível sem JS
+
+## Checklist pré-edição
+- [ ] Título é afirmação, não descrição?
+- [ ] Funciona em Plan A, B e C?
+- [ ] Animação tem propósito pedagógico?
+- [ ] Dados numéricos verificados contra fonte primária?
+- [ ] Tags HTML balanceadas?
+- [ ] Nenhum `display` inline no `<section>`?
+
+## Batch limits
+- Máximo 5 slides por batch sem QA visual
+- "Só ajusta X" → escopo é APENAS X

@@ -1,0 +1,15 @@
+---
+description: ""
+globs: ""
+alwaysApply: true
+---
+
+# Dados Médicos — Regras Invioláveis
+
+- **NUNCA** inventar, estimar ou usar de memória dados numéricos clínicos
+- Sem fonte verificada → usar `[TBD]`
+- NNT deve incluir IC 95% e time frame obrigatoriamente
+- HR ≠ RR — NUNCA misturar (são medidas estatísticas diferentes)
+- Trial isolado ≠ meta-análise — sempre especificar qual é
+- Fonte Tier 1 obrigatória para todo dado numérico em slides
+- Cada slide clínico deve ter ≥ 3 referências verificadas (PMID ou DOI)
