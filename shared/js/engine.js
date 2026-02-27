@@ -216,7 +216,7 @@ export function createAnimationDispatcher(Reveal, gsap) {
     if (!slide) return;
     const ctx = gsap.context(() => {
       animateSlide(gsap, slide);
-      const customFn = customAnimations.get(indexh);
+      const customFn = customAnimations.get(slide.id);
       if (customFn) customFn(slide, gsap);
     }, slide);
     contexts.set(slide, ctx);
@@ -277,9 +277,9 @@ export function createAnimationDispatcher(Reveal, gsap) {
 
     trackTimer(id) { activeTimers.push(id); },
 
-    /** Register custom animation for a specific slide index */
-    registerCustom(slideIndex, fn) {
-      customAnimations.set(slideIndex, fn);
+    /** Register custom animation for a specific slide ID */
+    registerCustom(slideId, fn) {
+      customAnimations.set(slideId, fn);
     }
   };
 }

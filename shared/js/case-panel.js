@@ -11,64 +11,84 @@ export class CasePanel {
   constructor(containerEl, gsapRef) {
     this.el = containerEl;
     this.gsap = gsapRef;
-    this.states = new Map();
-    this.currentStateIndex = null;
+    this.states = new Map();       // Map<slideId, state>
+    this.slideOrder = new Map();   // Map<slideId, domIndex>
+    this.firstStatePos = Infinity;
+    this.currentStateId = null;
     this.fieldsEl = this.el.querySelector('.panel-fields');
     this.eventsEl = this.el.querySelector('.panel-events');
     this.visible = false;
   }
 
   /**
-   * Register a patient state at a specific slide index.
-   * @param {number} slideIndex
+   * Build slide-order map from the DOM. Call once after init.
+   * @param {HTMLElement} slidesContainer — the .slides element
+   */
+  connect(slidesContainer) {
+    const sections = slidesContainer.querySelectorAll(':scope > section[id]');
+    sections.forEach((sec, i) => this.slideOrder.set(sec.id, i));
+    // Compute first registered-state position (hide panel before it)
+    this.firstStatePos = Infinity;
+    for (const id of this.states.keys()) {
+      const pos = this.slideOrder.get(id) ?? Infinity;
+      if (pos < this.firstStatePos) this.firstStatePos = pos;
+    }
+  }
+
+  /**
+   * Register a patient state at a specific slide ID.
+   * @param {string} slideId — e.g. 's-hook', 's-cp1'
    * @param {object} state — { severity, values, events, showTimeline? }
    */
-  registerState(slideIndex, state) {
-    this.states.set(slideIndex, state);
+  registerState(slideId, state) {
+    this.states.set(slideId, state);
   }
 
   /**
    * Called by Reveal slidechanged event.
-   * @param {number} slideIndex — current horizontal slide index
+   * @param {HTMLElement} slideEl — current slide element
    */
-  onSlideChanged(slideIndex) {
-    if (slideIndex < 2) {
+  onSlideChanged(slideEl) {
+    const slideId = slideEl?.id;
+    const pos = this.slideOrder.get(slideId) ?? -1;
+    if (pos < this.firstStatePos) {
       this.hide();
       return;
     }
 
     this.show();
-    const applicableIndex = this.findLatestStateIndex(slideIndex);
-    if (applicableIndex !== null && applicableIndex !== this.currentStateIndex) {
-      this.transitionTo(applicableIndex);
+    const applicable = this.findLatestState(pos);
+    if (applicable !== null && applicable !== this.currentStateId) {
+      this.transitionTo(applicable);
     }
   }
 
   /**
-   * Find the latest registered state at or before slideIndex.
+   * Find the latest registered state at or before currentPos.
    */
-  findLatestStateIndex(slideIndex) {
-    let latest = null;
-    for (const idx of this.states.keys()) {
-      if (idx <= slideIndex && (latest === null || idx > latest)) {
-        latest = idx;
+  findLatestState(currentPos) {
+    let latestId = null, latestPos = -1;
+    for (const id of this.states.keys()) {
+      const pos = this.slideOrder.get(id) ?? -1;
+      if (pos <= currentPos && pos > latestPos) {
+        latestId = id; latestPos = pos;
       }
     }
-    return latest;
+    return latestId;
   }
 
   /**
    * Transition to a new state, animating changes.
    */
-  transitionTo(stateIndex) {
-    const state = this.states.get(stateIndex);
+  transitionTo(stateId) {
+    const state = this.states.get(stateId);
     if (!state) return;
 
-    const prevState = this.currentStateIndex !== null
-      ? this.states.get(this.currentStateIndex)
+    const prevState = this.currentStateId !== null
+      ? this.states.get(this.currentStateId)
       : null;
 
-    this.currentStateIndex = stateIndex;
+    this.currentStateId = stateId;
 
     // Update severity
     this.el.setAttribute('data-severity', state.severity || 'neutral');

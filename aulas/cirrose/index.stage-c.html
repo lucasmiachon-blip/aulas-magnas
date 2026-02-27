@@ -1098,7 +1098,7 @@ PAUSA 2s.
   anim.connect();
 
   // HOOK (index 1): stagger framework + case, countUp via data-animate
-  anim.registerCustom(1, (slide, gsap) => {
+  anim.registerCustom('s-hook', (slide, gsap) => {
     const frameworkItems = slide.querySelectorAll('.framework-item');
     const dataItems = slide.querySelectorAll('.case-data .data-item');
     gsap.set([...frameworkItems, ...dataItems], { visibility: 'visible' });
@@ -1123,37 +1123,38 @@ PAUSA 2s.
   if (panelEl) {
     const panel = new CasePanel(panelEl, gsap);
 
-    panel.registerState(1, {
+    panel.registerState('s-hook', {
       severity: 'neutral',
       values: { fib4: '3,2', lsm: '—', plq: '118k', meld: '—', albumin: '3,6', stage: '?' },
       events: []
     });
-    panel.registerState(7, {
+    panel.registerState('s-cp1', {
       severity: 'caution',
       values: { fib4: '3,2', lsm: '21 kPa', plq: '118k', meld: '~10', albumin: '3,6', stage: 'cACLD → CSPH' },
       events: ['Elastografia realizada']
     });
-    panel.registerState(14, {
+    panel.registerState('s-cp2', {
       severity: 'danger',
       values: { fib4: '3,2', lsm: '32 kPa', plq: '89k', meld: '28', albumin: '2,4', stage: 'dACLD' },
       events: ['Ascite +++', 'PBE', 'HRS-AKI', 'Cr 3,1']
     });
-    panel.registerState(18, {
+    panel.registerState('s-cp3', {
       severity: 'hope',
       values: { fib4: '2,1', lsm: '18 kPa', plq: '132k', meld: '12', albumin: '3,8', stage: 'Recompensando' },
       events: ['Abstinente 10m', 'Sem ascite 8m', 'SVR confirmado']
     });
-    panel.registerState(19, {
+    panel.registerState('s-close', {
       severity: 'resolved',
       showTimeline: true
     });
 
+    panel.connect(document.querySelector('.slides'));
     Reveal.on('slidechanged', (event) => {
-      panel.onSlideChanged(event.indexh);
+      panel.onSlideChanged(event.currentSlide);
     });
 
     // Initialize panel for current slide (sync — 'ready' already fired)
-    panel.onSlideChanged(Reveal.getState().indexh);
+    panel.onSlideChanged(Reveal.getCurrentSlide());
   }
 
   // ============================================
@@ -1164,15 +1165,14 @@ PAUSA 2s.
   document.querySelectorAll('.slides > section').forEach((section, index) => {
     const revealEls = section.querySelectorAll('[data-reveal]');
     if (revealEls.length > 0) {
-      revealers.set(index, new ClickReveal(section, gsap));
+      revealers.set(section.id, new ClickReveal(section, gsap));
     }
   });
 
   // Intercept ArrowRight/Space: click-reveal consumes before Reveal navigates
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'ArrowRight' && e.key !== ' ') return;
-    const idx = Reveal.getState().indexh;
-    const revealer = revealers.get(idx);
+    const revealer = revealers.get(Reveal.getCurrentSlide()?.id);
     if (revealer && revealer.hasMore) {
       e.preventDefault();
       e.stopPropagation();
@@ -1183,7 +1183,7 @@ PAUSA 2s.
 
   // Reset reveals when entering a slide
   Reveal.on('slidechanged', (event) => {
-    const revealer = revealers.get(event.indexh);
+    const revealer = revealers.get(event.currentSlide?.id);
     if (revealer) revealer.reset();
   });
 
