@@ -1,40 +1,37 @@
 # HANDOFF — Cirrose (atualizado 2026-02-26)
 
 ## Último batch executado
+- **Batch:** P3 — Migrate CasePanel/ClickReveal/registerCustom to slide IDs (branch `refactor/floating-panel`)
+- **Commit:** c441540
+- **Data:** 2026-02-26
+- **Agente:** Claude Code (Opus 4.6)
+- **Fonte:** Plano aprovado `valiant-twirling-sunrise.md`
+- **Alterações:**
+  1. **case-panel.js** (P3.1):
+     - `connect(slidesContainer)` — recebe container `.slides`, resolve slide IDs internamente
+     - `registerState(slideId, state)` — keyed por string ID em vez de index numérico
+     - `onSlideChanged(slideEl)` — recebe DOM element, extrai `.id` internamente
+     - Threshold: `slideEl.id === 's-title'` em vez de comparação numérica
+  2. **engine.js** (P3.3):
+     - `registerCustom(slideId, fn)` — aceita string slide ID em vez de slideIndex
+     - `customAnimations` Map keyed por string ID
+     - Lookup no `slidetransitionend`: `event.currentSlide.id`
+  3. **index.stage-c.html** (P3.2 + P3.4):
+     - registerCustom: `anim.registerCustom(1, ...)` → `anim.registerCustom('s-hook', ...)`
+     - 5× registerState: índices numéricos → IDs string (`'s-hook'`, `'s-cp1'`, `'s-cp2'`, `'s-cp3'`, `'s-close'`)
+     - CasePanel wiring: `panel.connect(document.querySelector('.slides'))` + `panel.onSlideChanged(event.currentSlide)`
+     - ClickReveal Map: `revealers.set(index, ...)` → `revealers.set(section.id, ...)`
+     - Revealer lookup: `Reveal.getState().indexh` → `Reveal.getCurrentSlide()?.id`
+     - slidechanged reset: `event.indexh` → `event.currentSlide?.id`
+- **Impacto:** 3 arquivos, 60 inserções, 40 deleções. Zero silent failures (antes: index mismatch = no-op).
+- **QA:** 28 slides carregam, zero erros console, CasePanel floating panel visível e funcional.
+
+## Batch anterior (Floating panel)
 - **Batch:** Refactor — Floating panel + HOOK card fix (branch `refactor/floating-panel`)
 - **Commit:** 982dd01
 - **Data:** 2026-02-26
-- **Agente:** Claude Code (Opus 4.6)
-- **Fonte:** Diagnóstico arquitetural: panel grid comprime slides, HOOK card invisível em stage-c
-- **Problema grave identificado:**
-  - `.reveal.panel-active { display: grid !important; grid-template-columns: 1fr 190px }` forçava ALL slides a perder 190px
-  - Reveal.js força `width: 1280px` inline no `.slides` — grid resolvia primeira coluna para **0px**
-  - HOOK mostrava card navy (#0d1a2d) + sidebar panel = **dados duplicados**
-  - Stage-c remapeia `--text-on-dark` → `oklch(12%)` (dark) = **texto invisível** em navy card
-- **Alterações:**
-  1. **Panel → floating overlay** (`archetypes.css`):
-     - REMOVIDO: `:root { --panel-width }`, `.reveal.panel-active { display: grid !important }`, grid-template-columns, `.slides { grid-column }`, `.slides section > .slide-inner { max-width: calc(...) }`
-     - ADICIONADO: `.case-panel { position: absolute; top: 12px; right: 12px; width: 180px; z-index: 20 }`
-     - Background: `var(--bg-elevated, #fff)` + border + border-radius + box-shadow
-     - Severity indicators: border-left accent (caution=gold, danger=red, hope=teal, resolved=slate)
-     - `.case-panel.hidden { opacity: 0; transform: translateY(-8px); pointer-events: none }`
-  2. **case-panel.js** (`shared/js/case-panel.js`):
-     - Threshold: `slideIndex < 1` → `slideIndex < 2` (panel hidden on title AND HOOK)
-     - REMOVIDO: `document.querySelector('.reveal').classList.add/remove('panel-active')`
-     - show/hide agora apenas toggle `.hidden` class
-  3. **HOOK card — navy → light elevated** (`cirrose.css`):
-     - REMOVIDO: absolute positioning (`.col-right { position: absolute; top: 0; right: 20px; width: 440px }`)
-     - REMOVIDO: navy card (`background: #0d1a2d`, `--text-on-dark`, `oklch(26%)` data items)
-     - ADICIONADO: grid override `grid-template-columns: 1.2fr 1fr; align-items: center`
-     - ADICIONADO: light card (`var(--bg-elevated)`, `border-left: 4px solid var(--cmp-1)`, soft shadow)
-     - Text uses `--text-primary` (works in all stages)
-  4. **Cleanup** (`cirrose.css`):
-     - `padding: 40px var(--slide-pad-h, 64px)` → `padding: 40px 64px` (variable no longer needed)
-- **Impacto:** 4 arquivos, ~135 inserções, ~109 deleções. Arquitetura de layout fundamentalmente mudou.
-- **QA:** Pendente validação visual completa dos 28 slides (CSS hot-reload confirmado OK pelo Vite)
-- **NOTA:** Este branch NÃO inclui P3 (panel wrapper, panel por ID). P3 é próximo passo.
 
-## Batch anterior
+## Batch anterior (P2)
 - **Batch:** P2 — Hero typography + Graceful degradation (branch `main`)
 - **Commit:** 822cf38
 - **Data:** 2026-02-26
@@ -299,9 +296,9 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
   26. s-app-06 (SHP/HPP)
   27. s-app-07 (Estatina)
   28. s-app-08 (Anticoagulação)
-- **registerCustom:** index 3 → HOOK (framework + case stagger). Demais via data-animate (fadeUp/stagger) nos 24 slides antigos.
-- **Click-reveal:** Slides com data-reveal: s-a1-01 (2 reveals), s-a2-01 (3 reveals), s-cp1 (3 reveals)
-- **Case panel:** 5 estados registrados (indexes 3/7/14/18/19). Visível slides 3-27.
+- **registerCustom:** `'s-hook'` → HOOK (framework + case stagger). Demais via data-animate (fadeUp/stagger) nos 24 slides antigos.
+- **Click-reveal:** Slides com data-reveal: s-a1-01 (2 reveals), s-a2-01 (3 reveals), s-cp1 (3 reveals). Map keyed por `section.id` (string).
+- **Case panel:** 5 estados registrados por slide ID (`'s-hook'`/`'s-cp1'`/`'s-cp2'`/`'s-cp3'`/`'s-close'`). Visível após s-title.
 - **Assets referenciados:** villanueva-2025-fig1.png, villanueva-2025-fig2a.png
 
 ## QA Batch 0 (24/fev — pós-implementação)
@@ -329,8 +326,8 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - ☑ [Code] Fix S3: fill ratio → **RESOLVIDO** (P1, commit 92328c7)
 - ☐ [Code] **QA visual dos 28 slides** pós-floating-panel (validar que nenhum slide quebrou)
 - ☐ [Code] **Merge `refactor/floating-panel` → `main`** após QA
-- ☐ [Code] **P3: Panel wrapper** — container externo em vez de `.reveal` grid
-- ☐ [Code] **P3: Panel por ID** — `registerState` por slide ID em vez de index
+- ☑ [Code] **P3: Panel wrapper** — deferido (wrapper não necessário após overlay refactor)
+- ☑ [Code] **P3: Panel por ID** — CasePanel/ClickReveal/registerCustom → slide IDs (c441540)
 - ☐ [Code] Fixes individuais I1-I10 (ver AUDIT-VISUAL.md)
 - ☐ [Code] Slides críticos (usuário vai indicar após P3)
 - ☐ [Code] Audit export (Gemini + Claude.ai + ChatGPT zip com PNG transições)
@@ -389,6 +386,7 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - ☑ **P2: Hero typography** — Instrument Serif + graceful degradation (822cf38)
 - ☑ **JS bugfix: hash navigation** — fallback timer 800ms (7a49c9f)
 - ☑ **Floating panel refactor** — grid→overlay + HOOK card light (982dd01)
+- ☑ **P3: Panel por ID** — CasePanel/ClickReveal/registerCustom → slide IDs (c441540)
 
 ### Imediato (próxima sessão)
 - ☐ [Code] **s-a1-01 título** — encurtar para continuum sem repetir 1%/57%
@@ -397,15 +395,6 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - ☐ [Code] **Merge `refactor/floating-panel` → `main`** após QA
 
 ### Curto prazo
-- ☐ [Code] **P3: Panel por ID** (plano aprovado: `valiant-twirling-sunrise.md`)
-  - Escopo: migrar CasePanel, ClickReveal, registerCustom de index numérico → slide ID
-  - 3 arquivos: `case-panel.js`, `engine.js`, `index.stage-c.html`
-  - P3.1: CasePanel `.connect(slidesContainer)` + `registerState(slideId, state)`
-  - P3.2: ClickReveal `revealers.set(section.id, ...)` em vez de index
-  - P3.3: registerCustom `customAnimations.set(slideId, fn)` em vez de slideIndex
-  - P3.4: HTML call sites — 5 registerState (1,7,14,18,19 → IDs) + 1 registerCustom
-  - ~40 linhas alteradas, 0 arquivos novos
-  - Wrapper `<div class="deck-wrapper">` deferido para batch separado
 - ☐ [Code] **Fixes individuais I1-I10** (ver AUDIT-VISUAL.md backlog)
 - ☐ [Code] **Slides críticos** — usuário indicará quais
 - ☐ [Code] **Audit export** — Gemini, Claude.ai, ChatGPT (zip + PNG transições)
