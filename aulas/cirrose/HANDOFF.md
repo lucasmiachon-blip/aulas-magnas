@@ -1,6 +1,18 @@
 # HANDOFF — Cirrose (atualizado 2026-02-26)
 
 ## Último batch executado
+- **Batch:** QA fix — Expose `window.Reveal` for QA scripts + QA screenshots (branch `refactor/floating-panel`)
+- **Commit:** TBD (this session)
+- **Data:** 2026-02-26
+- **Agente:** Claude Code (Opus 4.6)
+- **Alterações:**
+  1. **index.stage-c.html**: Added `window.Reveal = Reveal;` after `initAula()` call
+     - Root cause: `initAula()` returns `deck` (the `Reveal.initialize()` 'ready' event object with `{isTrusted, indexh, indexv, currentSlide}`), NOT the Reveal API
+     - ESM module scope doesn't expose `Reveal` to `window` — QA script `qa-screenshots-stage-c.js` needs `window.Reveal.isReady()`, `.getTotalSlides()`, `.slide()`
+     - Fix: `window.Reveal = Reveal` (the imported ESM module, NOT `deck`)
+- **QA:** 28 screenshots captured successfully (qa-screenshots/stage-c/). All slides render, zero console errors.
+
+## Batch anterior (P3)
 - **Batch:** P3 — Migrate CasePanel/ClickReveal/registerCustom to slide IDs (branch `refactor/floating-panel`)
 - **Commit:** c441540
 - **Data:** 2026-02-26
@@ -324,7 +336,7 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 - ☑ [Code] Auditoria Visual completa — AUDIT-VISUAL.md (25/fev)
 - ☑ [Code] **URGENTE** Fix S1+S2: panel responsivo → **RESOLVIDO** (floating panel, branch `refactor/floating-panel`)
 - ☑ [Code] Fix S3: fill ratio → **RESOLVIDO** (P1, commit 92328c7)
-- ☐ [Code] **QA visual dos 28 slides** pós-floating-panel (validar que nenhum slide quebrou)
+- ☑ [Code] **QA visual dos 28 slides** pós-floating-panel — 28 PNGs capturados via Playwright (26/fev)
 - ☐ [Code] **Merge `refactor/floating-panel` → `main`** após QA
 - ☑ [Code] **P3: Panel wrapper** — deferido (wrapper não necessário após overlay refactor)
 - ☑ [Code] **P3: Panel por ID** — CasePanel/ClickReveal/registerCustom → slide IDs (c441540)
@@ -359,7 +371,7 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 ## Sync Notion ↔ Repo (24/fev/2026)
 
 **IDs para Claude.ai (MCP Notion):**
-- Slides DB: `c6713964-0b31-454f-83f5-4b287911a01b`
+- Slides DB: `620431d1-8955-42b7-8b04-8f7cc616a8ab`
 - Blueprint Cirrose: `30adfe68-59a8-815a-abf5-c817cd705b29`
 - References DB: `2b24bb6c-91be-42c0-ae28-908a794e5cf5`
 
@@ -391,7 +403,7 @@ Sessão do Claude.ai criou **Bíblia Narrativa** no Notion + verificou 15 trials
 ### Imediato (próxima sessão)
 - ☐ [Code] **s-a1-01 título** — encurtar para continuum sem repetir 1%/57%
 - ☐ [Code] **s-hook refactoring** — título verbo, layout ≠ split-50-50, texto revisado, manter case card
-- ☐ [Code] **QA visual 28 slides** pós-floating-panel → validar que nada quebrou
+- ☑ [Code] **QA visual 28 slides** pós-floating-panel — 28 PNGs OK (26/fev)
 - ☐ [Code] **Merge `refactor/floating-panel` → `main`** após QA
 
 ### Curto prazo

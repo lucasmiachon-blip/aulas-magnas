@@ -1094,6 +1094,7 @@ PAUSA 2s.
   import { MeldCalc } from '../../shared/js/interactions/meld-calc.js';
 
   const deck = await initAula(Reveal, gsap, { plugins: [Notes], width: 1280, height: 720 });
+  window.Reveal = Reveal;        // expose for QA scripts (qa-screenshots-stage-c.js)
   const anim = createAnimationDispatcher(Reveal, gsap);
   anim.connect();
 
