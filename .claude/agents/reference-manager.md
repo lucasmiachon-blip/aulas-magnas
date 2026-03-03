@@ -18,7 +18,7 @@ ralph_phase: act
 
 ## RALPH Gate (Act)
 
-PMID inválido → STOP, flag. Retração → remoção + alerta. Escolha de papers → NÃO (→ Medical Researcher).
+PMID inválido → STOP, flag + reportar ao Lucas. Retração → remoção imediata + alerta ao Lucas. Escolha de papers → NÃO. Só valida e organiza o que recebe.
 **NUNCA verificar de memória. SEMPRE via MCP.**
 
 ## Quick Rules

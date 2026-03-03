@@ -14,7 +14,7 @@ ralph_phase: act
 
 ## RALPH Gate (Act)
 
-Spec incompleta → STOP, devolver. Dado parece errado → STOP, flag. Layout impossível → STOP, flag CSS.
+Spec incompleta → STOP. Listar campos faltantes, aguardar Lucas. Dado parece errado → STOP. Reportar discrepância + fonte, aguardar Lucas. Layout impossível com tokens existentes → STOP. Descrever limitação, aguardar Lucas.
 **NUNCA improvisar conteúdo. NUNCA reescrever headline. NUNCA inventar dados.**
 
 ## Quick Rules
