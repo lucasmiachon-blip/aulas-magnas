@@ -53,3 +53,12 @@ PAUSA 3s.
 ## PDF Export
 
 `?print-pdf` → engine desabilita animações e força estado final.
+
+## GSAP Timeline (obrigatório pra animações)
+
+- Position parameter: `"-=0.5"` (overlap), `"<"` (com anterior), `">"` (após anterior)
+- Labels: `tl.addLabel("phase2", 2)` — navegação por nome
+- Nested timelines: uma por slide, master compõe todas
+- ScrollTrigger: `pin: true` + `snap` pra scroll-driven
+- Performance: `autoAlpha` > `opacity`, `will-change`, `stagger` pra grupos
+- Fallback: checar CSS Scroll-driven Animations API (Chrome 115+), GSAP pra Firefox/Safari

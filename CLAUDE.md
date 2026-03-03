@@ -113,6 +113,14 @@ Se algo não bater com o prompt recebido → **PARAR e perguntar.**
 | 11 | **Speaker notes em português.** Sempre. | Audience locale |
 | 12 | **GSAP failsafe:** todo `[data-animate]` tem `opacity:0` em CSS. `.no-js` e `.stage-bad` forçam `opacity:1`. | Graceful degradation |
 | 13 | **Tabelas Tufte:** sem bordas verticais, números à direita, classe `.tufte`. | Visual literacy |
+| 14 | **OKLCH padrão.** Tokens novos em `oklch(L C H)`. HSL proibido. Fallback HEX para WCAG. | Perceptual uniformity |
+
+### Color System
+- OKLCH padrão para tokens novos: `oklch(L C H)`
+- Manter fallback hex pra WCAG (contrast calculations assumem sRGB)
+- Relative color syntax pra theming: `oklch(from var(--base) calc(l + 0.15) c h)`
+- HSL proibido pra cores novas — lightness não-uniforme entre hues
+- PostCSS `postcss-oklab-function` gera fallbacks sRGB automaticamente
 
 ---
 
@@ -276,3 +284,42 @@ npm run build:cirrose    # Concatena slides → index.html via _manifest.js
 2. **meld-calc.js:** Literal `#1a1a2e` for bg — migrate to `var(--bg-navy)`. Missing null checks on inputs.
 3. **.gitignore:** `*.png` pattern ignores QA screenshots in `qa-screenshots/` dir.
 4. **index.stage-c.html:** Deprecated; index.html (modular) é fonte. qa-screenshots usa index.html + PORT 3000.
+
+---
+
+## Structured Notes
+
+Agents DEVEM registrar decisões e achados em `aulas/cirrose/NOTES.md` (criar se não existir).
+Formato:
+```
+[DATA] [AGENT] — [CONTEXTO]
+
+Decisão/achado
+Razão
+```
+
+Próximo agent ou sessão lê NOTES.md antes de começar.
+Isso substitui memória de contexto — não dependa do histórico da conversa.
+
+---
+
+## Anti-drift
+
+- Uma task por sessão. Commitar, /clear, nova sessão.
+- /compact manual antes de batches grandes: `/compact Focus on: [task atual], [paths], [constraints]`
+- Não depender de "como discutimos antes" — cada prompt deve ser self-contained com ATUAL/NOVO explícito.
+- Se contexto >80%: parar, commitar o que tem, /clear, continuar em sessão nova.
+- 80% do contexto é consumido por file reads e tool results, não mensagens.
+
+### Compaction automática
+- Se contexto atingir ~70%, rodar /compact com foco na task atual ANTES de continuar
+- Não esperar 95% (default) — a essa altura já perdeu detalhes
+- Regra prática: se fez >5 file reads numa sessão, considerar /compact
+
+### Variável de ambiente recomendada
+```bash
+export CLAUDE_CODE_SUBAGENT_MODEL=sonnet
+```
+Agents com `model: opus` no frontmatter override isso.
+Agents com `model: fast` usam Haiku.
+Resultado: Opus só onde precisa, Sonnet default, Haiku pra lightweight.

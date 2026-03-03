@@ -46,6 +46,15 @@ npm run build && npm run preview
 |---|-------|-----------|-----------|-----------|-----|
 ```
 
+## a11y Checks Avançados
+
+Além de contraste (axe-core), verificar por slide:
+- aria-labels em elementos interativos
+- Slides ocultos: display:none ou visibility:hidden (não só opacity:0)
+- Heading hierarchy: h2 assertion dentro de cada section
+- Se reveal-a11y plugin presente: verificar ativo no config do Reveal.initialize()
+- @media (prefers-reduced-motion: reduce) declarado no CSS
+
 ## Regra Única
 
 FAIL = merge bloqueado. Sem exceções.
