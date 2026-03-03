@@ -3,6 +3,8 @@
 > Protocolo para manter Slides DB, Blueprint e HTML alinhados. MCP Notion + Cursor.
 > **IDs Notion:** única referência no repo — outros MDs apontam aqui.
 
+**Autoridade em conflito:** O que Composer ou Claude Opus determinar como mais atual prevalece. Repo e Notion devem refletir essa decisão.
+
 ## IDs
 
 | Recurso | ID |

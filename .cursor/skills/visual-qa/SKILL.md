@@ -1,6 +1,6 @@
 ---
 name: visual-qa
-description: Use when testing, reviewing, or doing QA on slides. Runs visual checks with Playwright screenshots, accessibility verification with a11y, contrast checks, and reports issues found.
+description: Use when testing, reviewing, or doing QA on slides. Runs visual checks with Playwright screenshots, accessibility verification with a11y, contrast checks, and reports issues found. See docs/SKILLS.md for best practices.
 ---
 
 # Visual QA for Slides

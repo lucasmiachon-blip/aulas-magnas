@@ -1,7 +1,7 @@
 # Evidence DB — Cirrose Masterclass
 
 > Dados clínicos canônicos. NUNCA modificar sem PMID verificado.
-> Extraído de: HANDOFF.md sessão Evidence Enrichment 25/fev/2026.
+> Atualizado: 01/mar/2026 — D'Amico 2014-2024 + Garcia-Guix 2024 adicionados.
 
 ---
 
@@ -17,6 +17,51 @@
 | Bass | Bass | NEJM 2010 | 20335583 | Rifaximina previne HE recorrente | 4 (HE 6m) | ⊕⊕⊕⊕ |
 | Baveno VII | de Franchis | J Hepatol 2022 | 35431106 | Consensus: CSPH, recompensação | — | ⊕⊕⊕◯ |
 
+## D'Amico Staging — 6 DOIs verificados (PubMed)
+
+| Paper | Autor/Ano | Journal | DOI | PMID | Dado-chave |
+|-------|-----------|---------|-----|------|------------|
+| D'Amico 2006 | D'Amico G | J Hepatol | `10.1016/j.jhep.2005.10.013` | 16298014 | 118 estudos. 4 estágios: mortalidade 1%→3-4%→20%→57% |
+| D'Amico 2014 | D'Amico G | Aliment Pharmacol Ther | `10.1111/apt.12721` | 24654740 | 494 pts. 5 estágios: mortalidade 5a 1,5%/10%/20%/30%/88% |
+| D'Amico 2018 | D'Amico G | J Hepatol | `10.1016/j.jhep.2017.10.020` | 29111320 | 6 states multistate. ACLF em qualquer fase |
+| D'Amico 2022 | D'Amico G | J Hepatol | `10.1016/j.jhep.2021.06.018` | — | NAD vs AD. Redefine descompensação |
+| D'Amico 2024 | D'Amico G | Hepatology | `10.1097/HEP.0000000000000652` | 37916970 | 2028 pts. Further decomp ~60%, dobra mortalidade |
+| Garcia-Guix 2024 | Garcia-Guix I | Liver Int | `10.1111/liv.15937` | 38634685 | HVPG non-response prediz further decomp |
+
+### D'Amico Staging — Resumo evolutivo
+
+**2006 — 4 estágios clássicos (mortalidade anual):**
+1. Compensada sem varizes: 1%/ano
+2. Compensada com varizes: 3-4%/ano
+3. Ascite (1ª descompensação): ~20%/ano
+4. Sangramento varicoso: ~57%/ano (1º ano)
+
+**2014 — 5 estágios (mortalidade 5 anos):**
+1. Compensada sem varizes: 1,5%
+2. Compensada com varizes: 10%
+3. Ascite sem sangramento: 20%
+4. Sangramento ± ascite: 30%
+5. Qualquer descompensação + infecção/AKI: 88%
+
+**2018 — 6 states multistate model:**
+- States 1-4 = similar 2014
+- State 5 = further decompensation (2º evento)
+- State 6 = ACLF (pode surgir em qualquer state)
+- Transições probabilísticas entre states
+
+**2022 — NAD vs AD:**
+- Redefine descompensação como NAD (non-acute decompensation) vs AD (acute decompensation)
+- AD = ACLF pathway, prognóstico pior
+
+**2024 — Further decompensation (n=2028):**
+- ~60% dos descompensados progridem para further decomp
+- Further decomp DOBRA mortalidade vs 1ª descompensação
+- Tempo mediano para further decomp: relativamente curto
+
+**Garcia-Guix 2024 — HVPG e further decomp:**
+- HVPG non-response (não reduz ≥10% ou para <12) prediz further decomp
+- Ferramenta prognóstica para identificar alto risco pós-1ª descompensação
+
 ## Tier-2 Trials (8 TBDs resolvidos)
 
 | Tópico | Trial/Autor | Journal/Ano | PMID | Resultado-chave |
@@ -29,24 +74,38 @@
 | D'Amico staging | D'Amico | J Hepatol 2006 | 16298014 | 4 estágios: 1% → 57% mortalidade |
 | Early transplant ALD | Mathurin | NEJM 2011 | 22070476 | 77% vs 23% sobrevida 6m |
 | Recompensação | Baveno VII | J Hepatol 2022 | 35431106 | ≥12m sem descomp + labs melhorados |
+| Recompensação expandida | Tonon 2025 | [TBD] | [TBD] | 7% strict, 37,6% expanded |
+
+## Literatura Tier-1 — Referências mestras
+
+| Ref | Uso |
+|-----|-----|
+| D'Amico 2006/2014/2018/2022/2024 | Stages, mortalidade, further decomp |
+| Garcia-Guix 2024 | HVPG non-response → further decomp |
+| Villanueva 2025 (Nat Rev) | Referência-mestra (Fig 1 = stages ACLD) |
+| Baveno VII 2022 | cACLD, CSPH, NITs, NSBB, recompensação |
+| Tonon 2025 | Recompensação: 7% strict, 37,6% expanded |
+| Villanueva 2019 (PREDESCI) | Carvedilol NNT 9, HR 0,51 |
 
 ## Dados Clínicos por Slide
 
 | Slide ID | Dado crítico | Fonte |
 |----------|-------------|-------|
-| s-a1-01 | Espectro: 1% → 57% mortalidade por estágio | D'Amico 2006 (PMID 16298014) |
-| s-a1-01 | Continuum compensada → descompensada | Villanueva fig1 |
+| s-a1-01 | Espectro: 4→5→6 estágios D'Amico, mortalidade 1%→57% | D'Amico 2006 (16298014), 2014 (24654740), 2018 (29111320) |
+| s-a1-01 | Further decomp: ~60% progridem, dobra mortalidade | D'Amico 2024 (PMID 37916970) |
+| s-a1-01 | HVPG non-response prediz further decomp | Garcia-Guix 2024 (PMID 38634685) |
+| s-a1-01 | Continuum compensada → descomp → further decomp → recompensação | Villanueva 2025 fig1 + D'Amico 2024 |
 | s-a1-02 | FIB-4 → elastografia → CSPH muda conduta | Baveno VII (PMID 35431106) |
 | s-a1-03 | MELD-Na: semáforo da cirrose | Fórmula UNOS padrão |
 | s-a1-04 | Infecção = 33% das internações | PREDICT study |
 | s-a1-05 | 10 etiologias em 3 perguntas | EASL CPG 2024 + AASLD 2024 |
-| s-a2-01 | Carvedilol HR, NNT 9, dose 6,25→12,5 mg | PREDESCI (PMID 30910320) |
+| s-a2-01 | Carvedilol HR 0,51, NNT 9, dose 6,25→12,5 mg | PREDESCI (PMID 30910320) |
 | s-a2-02 | Early TIPS 72h: sobrevida 86% vs 61% | García-Pagán (PMID 20573925) |
 | s-a2-03 | Albumina: Sort NNT 5, ANSWER NNT 9, ATTIRE NNT ∞ | PMIDs 10432325, 29861076, 33657293 |
 | s-a2-04 | PBE: PMN ≥250 = tratar | EASL CPG 2024 |
 | s-a2-05 | HRS-AKI: terlipressina NNT 7 / NNH 11 | CONFIRM (PMID 33657294) |
 | s-a2-06 | Encefalopatia: rifaximina NNT 4 | Bass (PMID 20335583) |
-| s-a3-01 | Recompensação: Baveno VII definição | PMID 35431106 |
+| s-a3-01 | Recompensação: Baveno VII definição + Tonon 2025 | PMID 35431106 + [TBD] |
 | s-a3-02 | SVR ≠ cura CSPH (53% persistem) | Baveno VII + Lens et al |
 | s-a3-03 | Vigilância HCC a cada 6 meses | EASL/AASLD guidelines |
 | s-app-01 | ACLF grau 3: mortalidade 28d >70% | EASL-CLIF |

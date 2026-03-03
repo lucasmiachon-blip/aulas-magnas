@@ -13,4 +13,10 @@
 
 ---
 
-*28/fev*
+## Próxima sessão
+
+Auditoria batches concluída (docs/AUDIT-BATCHES.md). Pendente: NNT com IC 95% em 6 slides (08, 09, 10, 11, 12, 21).
+
+---
+
+*03/mar*

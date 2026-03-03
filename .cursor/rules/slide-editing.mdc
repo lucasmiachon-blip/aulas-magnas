@@ -38,6 +38,13 @@ Antes de marcar pronto: testar A (contraste no preto?), B (legível sem animaç�
 - Acessibilidade: navegável por teclado, foco visível
 - Fallback: conteúdo legível sem JS
 
+## AI Markers (PROIBIDO)
+
+- Linhas decorativas sob títulos
+- Emojis em slides médicos
+- Gradientes decorativos sem função informacional
+- Sombras excessivas em elementos simples
+
 ## Checklist pré-edição
 - [ ] Título é afirmação, não descrição?
 - [ ] Funciona em Plan A, B e C?

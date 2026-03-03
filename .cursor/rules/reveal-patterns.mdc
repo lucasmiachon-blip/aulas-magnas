@@ -1,0 +1,55 @@
+---
+description: "Reveal.js + GSAP: data-animate, speaker notes, fragments, PDF. Código em shared/js/engine.js."
+globs: "**/*.html,**/slides/**"
+alwaysApply: false
+---
+
+# Reveal.js + GSAP Patterns
+
+> Canônico para: speaker notes, fragments, data-animate, PDF export.
+
+## Estrutura de Slide
+
+```html
+<section data-background-color="#0d1a2d">
+  <div class="slide-inner slide-navy">
+    <h2>Afirmação clínica</h2>
+    <div class="evidence" data-animate="stagger">...</div>
+  </div>
+  <aside class="notes">[0:00-0:30] Hook. [DATA] Fonte: ...</aside>
+</section>
+```
+
+- `<h2>` = asserção (NUNCA rótulo)
+- `<aside class="notes">` obrigatório em TODO `<section>`
+- NUNCA inline style com `display` no `<section>` (E07)
+- Background: HEX em `data-background-color`
+- `.slide-navy` no `.slide-inner` quando bg escuro
+
+## data-animate (declarativo)
+
+**NUNCA gsap.to() inline.** Tipos:
+
+| Tipo | Efeito | Extras |
+|------|--------|--------|
+| countUp | Número animado | `data-target="25"` |
+| stagger | Filhos sequenciais | `data-stagger="0.15"` |
+| drawPath | SVG stroke | — |
+| fadeUp | Fade + translate Y | — |
+| highlight | Destaque seletivo | `data-highlight-row="3"` |
+
+## Speaker Notes — Formato
+
+```
+[0:00-0:30] Hook.
+PAUSA 3s.
+[DATA] Fonte: EASL 2024 | Verificado: 2026-02-13
+```
+
+## Apêndice
+
+`data-visibility="hidden"` (não uncounted). `?mode=residencia` remove antes do init.
+
+## PDF Export
+
+`?print-pdf` → engine desabilita animações e força estado final.

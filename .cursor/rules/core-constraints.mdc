@@ -1,5 +1,5 @@
 ---
-description: ""
+description: "Hard constraints: documentação, CSS mínimo, Git checkpoint, sem refator sem permissão. Sempre ativo."
 globs: ""
 alwaysApply: true
 ---
@@ -39,6 +39,26 @@ alwaysApply: true
 - [ ] Interatividade responde corretamente?
 - [ ] Sem erros no console?
 - [ ] Acessibilidade básica (teclado, foco)?
+
+## Context Window
+
+- **Em cada output:** Informar ao usuário o uso da janela: "Contexto ~X%." (quando a plataforma expuser essa métrica).
+- **≥70%:** Manter o aviso em todo output.
+- **≥85%:** Recomendar: subagent para tarefas paralelas ou novo chat para sessão longa.
+- **≥95%:** Parar e recomendar novo chat antes de continuar — risco de truncamento.
+
+### Sinais de perda de eficácia (sem métrica)
+
+Quando o usuário ou o agente notar:
+- Respostas mais genéricas ou que "esquecem" contexto recente
+- Repetição de informações já dadas
+- Confusão entre arquivos ou decisões da conversa
+- Pedidos de clarificação que já foram respondidos
+- Lentidão ou respostas truncadas
+
+→ **Recomendar novo chat.** O contexto está provavelmente saturado.
+
+Referência: `docs/SUBAGENTS.md` (quando delegar) e `docs/RULES.md`.
 
 ## Compromisso
 Erros novos = aprendizado. Erros repetidos = inaceitável. 3x = checklist obrigatório.

@@ -52,5 +52,9 @@ docs/transcripts/*.analysis.json
 # Audit export (temporary, for Claude.ai upload)
 audit-export/
 
+# Diagnostic temp (local debugging)
+diagnostico-temp/
+diagnostico.zip
+
 # Windows artifact
 NUL

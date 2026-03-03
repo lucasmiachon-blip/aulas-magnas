@@ -146,22 +146,22 @@ export class MeldCalc {
     if (bar) bar.style.width = `${(score / 40) * 100}%`;
 
     if (score < 15) {
-      if (bar) bar.style.background = 'var(--safe, #2a9d8f)';
+      if (bar) bar.style.background = 'var(--safe)';
       if (actionText) {
         actionText.textContent = '\u2713 Acompanhar ambulatorialmente';
-        actionText.style.color = 'var(--safe, #2a9d8f)';
+        actionText.style.color = 'var(--safe)';
       }
     } else if (score < 20) {
-      if (bar) bar.style.background = 'var(--warning, #e9a820)';
+      if (bar) bar.style.background = 'var(--warning)';
       if (actionText) {
         actionText.textContent = '\u26a0 Encaminhar para hepatologista';
-        actionText.style.color = 'var(--warning-on-light, #c4960a)';
+        actionText.style.color = 'var(--warning-on-light)';
       }
     } else if (score < 25) {
-      if (bar) bar.style.background = 'var(--danger, #d64545)';
+      if (bar) bar.style.background = 'var(--danger)';
       if (actionText) {
         actionText.textContent = '\u2717 Planejar transplante';
-        actionText.style.color = 'var(--danger, #d64545)';
+        actionText.style.color = 'var(--danger)';
       }
     } else {
       if (bar) bar.style.background = 'var(--bg-navy)';

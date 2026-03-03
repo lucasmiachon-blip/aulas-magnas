@@ -4,6 +4,8 @@
 > Para Claude.ai (web): colar `aulas/cirrose/HANDOFF-CLAUDE-AI.md` no Project Knowledge.
 > Este arquivo SUBSTITUI o CLAUDE.md anterior e absorve regras do AGENTS.md.
 
+**Hierarquia:** AGENTS.md (geral) → CLAUDE.md (Cursor/Claude Code) → aulas/cirrose/CLAUDE.md (Cirrose). Regras extensíveis: docs/RULES.md, docs/SKILLS.md, docs/SUBAGENTS.md.
+
 ---
 
 ## Projeto
@@ -118,9 +120,11 @@ Se algo não bater com o prompt recebido → **PARAR e perguntar.**
 
 ```
 shared/css/base.css              → Design system: OKLCH tokens, tipografia, stages, print
-shared/css/archetypes.css        → 12 archetypes (4 existentes + 8 novos Batch 1)
-shared/css/cirrose.css           → Legacy overrides (gradual deprecation)
 shared/js/engine.js              → Reveal init + data-animate dispatcher + stage modes
+aulas/cirrose/archetypes.css     → 12 archetypes (layout por slide)
+aulas/cirrose/cirrose.css       → Estilos específicos Cirrose
+aulas/grade/archetypes.css       → Archetypes GRADE
+aulas/osteoporose/archetypes.css → Archetypes Osteoporose
 shared/js/case-panel.js          → Panel Seu Antônio (floating overlay, severity states)
 shared/js/click-reveal.js        → [data-reveal] progressive disclosure controller
 shared/js/interactions/meld-calc.js → MELD-Na calculator

@@ -245,11 +245,12 @@ function switchStage(s) {
         <section>
           <div style="display:grid; place-items:center; height:80vh; text-align:center;">
             <div>
-              <h2 style="color: var(--danger, #d64545); font-size: 1.5rem;">Erro ao carregar slide</h2>
+              <h2 style="color: var(--danger); font-size: 1.5rem;">Erro ao carregar slide</h2>
               <p style="font-family: monospace; margin-top: 1rem; font-size: 0.9rem;">${err.message}</p>
               <p style="margin-top: 2rem;"><a href="?" style="color: var(--ui-accent);">← Voltar ao índice</a></p>
             </div>
           </div>
+          <aside class="notes">Erro de carregamento.</aside>
         </section>`;
       dbgReveal.textContent = 'ERROR';
     }

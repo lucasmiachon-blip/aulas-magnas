@@ -1,5 +1,5 @@
 ---
-description: "Princípios cognitivos (Miller, Gestalt, Mayer, Tufte, Duarte) e Escola Duarte. USE WHEN designing slides or making layout decisions."
+description: "Princípios cognitivos (Miller, Gestalt, Mayer, Tufte, Alley). USE WHEN designing slides or layout. Ver docs/RULES.md."
 globs: "**/*.html,**/*.css,**/slides/**"
 alwaysApply: false
 ---

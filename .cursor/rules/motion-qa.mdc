@@ -1,0 +1,50 @@
+---
+description: "Heurísticas GSAP/Reveal para validar animações. Duration, easing, stagger, propósito. USE WHEN reviewing motion."
+globs: "**/*.html,**/slides/**"
+alwaysApply: false
+---
+
+# Motion QA — Heurísticas + Validação
+
+> Checklist para agentes validarem animações. Julgamento contextual (ritmo, feeling) → humano.
+
+## Limitações do Agente
+
+| Faz bem | NÃO faz |
+|---------|---------|
+| Verificar se animação rodou | Julgar se easing "parece" certo |
+| Checar durations/delays | Avaliar ritmo vs fala |
+| Detectar animação decorativa | Perceber distração no contexto clínico |
+
+## Checklist Heurísticas
+
+### Duration
+- Fade/translate: 300–600ms (ideal 400ms)
+- countUp: 800–1200ms
+- stagger total: ≤ 1.5s
+- Nenhuma animação > 2s (exceto sequências)
+
+### Easing
+- Entrada: `power2.out` ou `power3.out`
+- PROIBIDO: `bounce`, `elastic`, `back`
+- PROIBIDO: `linear` em UI
+
+### Propósito
+- Toda animação tem função: guiar atenção, revelar, destacar
+- countUp APENAS em números de impacto (NNT, HR, %)
+- fadeUp para revelar evidência na ordem da fala
+
+### Click-Reveal
+- ≤ 4 reveals por slide (Cowan 4±1)
+- Ordem = ordem das speaker notes
+- Estado final = slide legível sem animação
+
+### Estado Final
+- opacity: 1, translate: 0
+- Print-pdf mostra estado final correto
+
+## Referências
+
+- Duarte: ritmo narrativo
+- Mayer: contiguidade temporal
+- Tufte: data-ink ratio — animação = "ink temporal"

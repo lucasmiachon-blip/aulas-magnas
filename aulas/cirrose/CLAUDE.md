@@ -1,6 +1,6 @@
 # CLAUDE.md — Cirrose Masterclass
 
-> Lei suprema do repositório. Qualquer agente (Claude Code, Cursor, Gemini) DEVE ler este arquivo primeiro.
+> Contexto Cirrose. Hierarquia: AGENTS.md → CLAUDE.md (root) → **este arquivo** (cirrose-specific).
 
 ## Projeto
 

@@ -1,5 +1,5 @@
 ---
-description: "USE WHEN editing CSS files or fixing layout/styling issues. Common CSS errors to avoid."
+description: "USE WHEN editing CSS. Flexbox, display, cores, semântica. Evitar space-between assimétrico, display inline em section."
 globs: "**/*.css"
 alwaysApply: false
 ---
@@ -25,3 +25,7 @@ alwaysApply: false
 ## Processo
 - Gerar PDF/screenshot antes de declarar "pronto"
 - NUNCA remover overflow:hidden do @media print
+
+## E-codes (registro completo)
+
+Para erros E01–E31 com prioridade MUST/SHOULD/MAY e reincidências: ver .claude/rules/css-errors.md (legado). Clusters: Flexbox (E06,E10,E18,E20,E22,E26,E27,E28), Display (E07,E12,E23,E24), Dados (E21,E25), Cores (E08,E13–E15,E17,E31), Processo (E01–E03,E05,E09,E11,E16,E19,E30).

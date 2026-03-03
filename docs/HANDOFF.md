@@ -57,6 +57,12 @@ Ver `docs/MCP-ENV-VARS.md` para variáveis necessárias.
 - **Output:** `exports/aulas-magnas-ia-YYYYMMDD.zip`
 - **Inclui:** código + screenshots PNG. **Exclui:** node_modules, dist, fontes, imagens pesadas
 
+## Próxima sessão
+
+**Auditoria batches concluída.** Ver `docs/AUDIT-BATCHES.md`. Próximo:
+- NNT com IC 95%: 6 slides (08, 09, 10, 11, 12, 21)
+- Conteúdo/criação de slides somente após resolver pendências
+
 ## Pendências globais
 
 1. Speaker notes: converter EN → PT em todos os 28 slides
@@ -70,4 +76,4 @@ Ver `docs/MCP-ENV-VARS.md` para variáveis necessárias.
 `docs/SYNC-NOTION-REPO.md`
 
 ---
-*Atualizado 27/02/2026 — Migração GRADE (58) + Osteoporose (70) de Aulas_core concluída.*
+*Atualizado 03/03/2026 — Auditoria batches concluída. docs/AUDIT-BATCHES.md, tasks/lessons.md. Próximo: NNT IC 95%.*

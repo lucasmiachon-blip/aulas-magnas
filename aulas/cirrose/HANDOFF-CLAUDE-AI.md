@@ -20,6 +20,10 @@
 3. Speaker notes EN → PT
 4. Merge refactor/floating-panel → main
 
+## Próxima sessão
+
+Rodar projeto inteiro em batches: inconsistências, redundâncias, boas práticas. Ver HANDOFF.md.
+
 ---
 
 ## Paths

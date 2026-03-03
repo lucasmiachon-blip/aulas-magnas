@@ -1,0 +1,53 @@
+---
+description: "Tokens OKLCH completos, tipografia, paleta de dados. Referência canônica. Ver shared/css/base.css."
+globs: "**/*.css,**/*.html"
+alwaysApply: false
+---
+
+# Design System — OKLCH + Tokens
+
+> Canônico para tokens, semântica, tipografia. Código em [shared/css/base.css](../../shared/css/base.css).
+
+## HEX canônicos (data-background-color)
+
+```
+--bg-navy    = #0d1a2d
+--bg-surface = #f5f5f7
+--bg-deep    = #111111
+```
+
+HEX é a verdade. OKLCH é aproximação. Se divergirem, HEX vence.
+
+## Semântica clínica
+
+| Token | Uso |
+|-------|-----|
+| --safe | Seguro, manter conduta |
+| --warning | Atenção, investigar |
+| --danger | Dano clínico, intervir |
+| --downgrade | Rebaixamento evidência (sempre com ícone ↓) |
+| --ui-accent | Chrome, UI (NUNCA clínico) |
+
+**Daltonismo:** ✓ (safe), ⚠ (warning), ✕ (danger) obrigatórios.
+
+## Paleta de dados (gráficos)
+
+- `--cmp-1/2/3` (2–3 séries) — Tol High-contrast
+- `--data-1..7` (4+ séries) — Tol Bright
+
+## Tipografia
+
+- `--font-display`, `--font-body`, `--font-mono`
+- Escala: `--text-hero` → `--text-caption`
+- NUNCA 300 em projetor
+
+## Modos
+
+- Plan A: dark 1920×1080
+- Plan B: .stage-bad, light, sem animação
+- Residência: ?mode=residencia remove data-visibility="hidden"
+- Alto contraste: .high-contrast
+
+## Referência completa
+
+Para tokens OKLCH detalhados, layout, contraste WCAG: .claude/rules/design-system.md (legado) ou base.css.

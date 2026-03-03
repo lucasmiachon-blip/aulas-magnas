@@ -94,6 +94,11 @@
   --divider:     oklch(92% 0.003 258);
   --border-navy: oklch(30% 0.02 258);
 
+  /* --- Shadows (translucent black) --- */
+  --shadow-subtle: oklch(0% 0 0 / 0.04);
+  --shadow-soft:   oklch(0% 0 0 / 0.06);
+  --overlay-border: oklch(0% 0 0 / 0.08);
+
   /* --- Fonts --- */
   --font-display: 'Instrument Serif', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
@@ -318,16 +323,16 @@
 /* Cards — subtle elevation */
 .stage-c .card-metric {
   background: var(--bg-card);
-  border: 1px solid oklch(0% 0 0 / 0.08);
-  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.04);
+  border: 1px solid var(--overlay-border);
+  box-shadow: 0 1px 3px var(--shadow-subtle);
 }
 
 /* Paper figures — dual-shadow separation */
 .stage-c .slide-figure img {
   border-radius: var(--radius-sm);
-  border: 1px solid oklch(0% 0 0 / 0.06);
-  box-shadow: 0 1px 4px oklch(0% 0 0 / 0.06),
-              0 4px 12px oklch(0% 0 0 / 0.04);
+  border: 1px solid var(--shadow-soft);
+  box-shadow: 0 1px 4px var(--shadow-soft),
+              0 4px 12px var(--shadow-subtle);
 }
 
 /* --- Reduced Motion --- */

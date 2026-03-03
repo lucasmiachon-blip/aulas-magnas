@@ -1,6 +1,6 @@
 ---
 name: medical-slide
-description: Use when creating, implementing, or modifying medical presentation slides. Covers the full workflow from Notion spec to HTML with assertion-evidence structure, tri-mode verification, and clinical data safety.
+description: Use when creating, implementing, or modifying medical presentation slides. Covers the full workflow from Notion spec to HTML with assertion-evidence structure, tri-mode verification, and clinical data safety. See docs/SKILLS.md for best practices.
 ---
 
 # Medical Slide Builder

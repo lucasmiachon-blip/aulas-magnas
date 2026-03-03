@@ -7,11 +7,13 @@ alwaysApply: false
 # Notion — Fonte da Verdade
 
 ## Databases
-| Database | ID | Conteúdo |
-|----------|-----|---------|
-| Aulas Magnas | `def36683-985e-4a33-bd8c-ae0f2141ebbd` | Status geral das aulas |
-| Slides DB | `c6713964-0b31-454f-83f5-4b287911a01b` | Specs por slide (25+ campos) |
-| References DB | `2b24bb6c-91be-42c0-ae28-908a794e5cf5` | PMIDs, DOIs, verificação |
+
+IDs canônicos em `docs/SYNC-NOTION-REPO.md`. Resumo:
+| Database | ID |
+|----------|-----|
+| Slides DB | `c6713964-0b31-454f-83f5-4b287911a01b` |
+| References DB | `2b24bb6c-91be-42c0-ae28-908a794e5cf5` |
+| Blueprint Cirrose | `30adfe68-59a8-815a-abf5-c817cd705b29` |
 
 ## Workflow com MCP Notion
 1. Ler spec do slide (Headline PT, Visual Recomendado, Objetivo Cognitivo)
@@ -21,5 +23,5 @@ alwaysApply: false
 
 ## Regra de autoridade
 - **Notion** = verdade para conteúdo e specs
-- **GitHub** = verdade para código e implementação
-- Se conflito: Notion vence para conteúdo, GitHub vence para código
+- **Repo** = verdade para código e implementação
+- **Conflito de versão:** O que Composer ou Claude Opus determinar como mais atual prevalece. Ver `docs/SYNC-NOTION-REPO.md`.

@@ -1,5 +1,5 @@
 ---
-description: ""
+description: "Dados médicos: NUNCA inventar. Fonte Tier 1 obrigatória. NNT com IC95%. HR≠RR."
 globs: ""
 alwaysApply: true
 ---
@@ -13,3 +13,20 @@ alwaysApply: true
 - Trial isolado ≠ meta-análise — sempre especificar qual é
 - Fonte Tier 1 obrigatória para todo dado numérico em slides
 - Cada slide clínico deve ter ≥ 3 referências verificadas (PMID ou DOI)
+
+## Formato NNT
+
+```
+NNT [valor] (IC 95%: [lower]–[upper]) em [tempo] | [população]
+```
+
+Hierarquia visual: NNT > ARR > HR.
+
+## Versionamento
+
+Speaker notes com dados numéricos:
+```
+[DATA] Fonte: EASL 2024, Tab.3 | Verificado: 2026-02-12 | Revisar se guideline atualizar.
+```
+
+Guideline atualiza → marcar slides `[REVISAR: nova versão]`.
