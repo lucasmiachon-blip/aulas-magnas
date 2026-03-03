@@ -11,8 +11,6 @@ ralph_phase: learn
 
 # QA Engineer (Claude Code Subagent)
 
-Referência completa: `docs/pipeline/10-qa-engineer.md`
-
 ## RALPH Gate (Learn)
 
 Issue encontrado → REPORTAR com severidade + fix sugerido. NUNCA corrigir.

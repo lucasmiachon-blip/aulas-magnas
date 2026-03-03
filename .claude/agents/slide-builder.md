@@ -12,8 +12,6 @@ ralph_phase: act
 
 # Slide Builder (Claude Code Subagent)
 
-Referência completa: `docs/pipeline/07-slide-builder.md`
-
 ## RALPH Gate (Act)
 
 Spec incompleta → STOP, devolver. Dado parece errado → STOP, flag. Layout impossível → STOP, flag CSS.

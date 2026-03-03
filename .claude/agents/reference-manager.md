@@ -14,8 +14,6 @@ ralph_phase: act
 
 # Reference Manager (Claude Code Subagent)
 
-Referência completa: `docs/pipeline/09-reference-manager.md`
-
 ## RALPH Gate (Act)
 
 PMID inválido → STOP, flag. Retração → remoção + alerta. Escolha de papers → NÃO (→ Medical Researcher).
