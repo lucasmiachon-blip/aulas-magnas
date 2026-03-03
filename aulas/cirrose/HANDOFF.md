@@ -16,7 +16,7 @@
    - Outros: sync Notion, reference-checker, etc.
 2. **Verbosity** — AUDIT-VISUAL.md (404 linhas): split ou index; docs-audit reference.md critério
 3. **Biblia narrativa** — docs/biblia-narrativa.md (302 linhas): index ou split por bloco
-4. **Alinhamento Notion** — docs/SYNC-NOTION-REPO.md; References DB; Slides DB status
+4. ~~**Alinhamento Notion**~~ ✅ **DONE (03/mar)** — References DB schema + must-read trials completo
 5. **Conflitos** — verificar redundâncias restantes (.cursor vs .claude, paths)
 6. **HTML** — só após 1–5 ok: ERRO-008, AUDIT-VISUAL fixes, speaker notes PT
 
@@ -33,6 +33,8 @@
   - Refs GBD prontas: PMIDs 31981519, 41092928, 41092926 (evidence-db.md)
   - Pendente: slide de burden global + slide DM2/screening guidelines (EASL 2024, ADA 2024)
 - **Tier classification** adicionado ao topo de evidence-db.md — Tier 1/2/3 com regra
+- ✅ **References DB Notion** — propriedades `Leitura` + `Tier` adicionadas; 194 entries classificadas
+- ✅ **must-read-trials.md** — 16 trials canon por Bloco (B02–B08, Epi, Etio); commit e69fad8
 
 ---
 
