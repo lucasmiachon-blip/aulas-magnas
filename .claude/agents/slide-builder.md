@@ -12,7 +12,7 @@ ralph_phase: act
 
 # Slide Builder (Claude Code Subagent)
 
-Referência completa: `agents/07-slide-builder.md`
+Referência completa: `docs/pipeline/07-slide-builder.md`
 
 ## RALPH Gate (Act)
 

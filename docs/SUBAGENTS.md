@@ -8,7 +8,7 @@
 
 Subagents são agentes especializados com contexto próprio. Cursor: `.cursor/agents/*.md`. Claude Code: `.claude/agents/*.md`. mcp_task: tipos explore, generalPurpose, shell, etc.
 
-**agents/** (pasta raiz) = pipeline humano, handoffs — não são subagents. Ver `agents/README.md`.
+**docs/pipeline/** = pipeline humano, handoffs — não são subagents. Ver `docs/pipeline/README.md`.
 
 ---
 
@@ -23,7 +23,7 @@ Subagents são agentes especializados com contexto próprio. Cursor: `.cursor/ag
 | **slide-builder** | .claude/agents/ | Criar slides HTML |
 | **reference-manager** | .claude/agents/ | Validar PMIDs/DOIs |
 | **reference-checker** | .cursor/agents/ | Verificar PMIDs/DOIs em slides |
-| **verifier** | .cursor/agents/, .claude/agents/ | Validar trabalho "pronto" (Opus best practice) |
+| **verifier** | .claude/agents/ | Validar trabalho "pronto" (Opus best practice) |
 
 ---
 

@@ -11,7 +11,7 @@ ralph_phase: learn
 
 # QA Engineer (Claude Code Subagent)
 
-Referência completa: `agents/10-qa-engineer.md`
+Referência completa: `docs/pipeline/10-qa-engineer.md`
 
 ## RALPH Gate (Learn)
 

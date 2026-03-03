@@ -14,7 +14,7 @@ ralph_phase: act
 
 # Reference Manager (Claude Code Subagent)
 
-Referência completa: `agents/09-reference-manager.md`
+Referência completa: `docs/pipeline/09-reference-manager.md`
 
 ## RALPH Gate (Act)
 

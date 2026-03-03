@@ -10,7 +10,7 @@
 |-------|----------|-------|
 | `.cursor/agents/` | reference-checker | Cursor: verificação PMIDs/DOIs |
 | `.claude/agents/` | qa-engineer, slide-builder, reference-manager | Claude Code: specs por agente |
-| `agents/` | 01-planner … 11-long-context-auditor | Pipeline humano: handoffs, não subagents Cursor |
+| `docs/pipeline/` | 01-planner … 10-qa-engineer | Pipeline humano: handoffs, não subagents Cursor |
 | `docs/SUBAGENTS.md` | mcp_task types | Documentação tipos (explore, generalPurpose, etc.) |
 
 **Conflito:** agents/ tem nomes sobrepostos (qa-engineer, reference-manager, slide-builder) com .claude/agents/. Formato diferente: agents/ = pipeline; .claude/agents/ = subagents Claude Code.
@@ -60,7 +60,7 @@
 
 | Item | Ação |
 |------|------|
-| agents/ | Manter como pipeline humano (Planner, etc.). Não são subagents Cursor. Adicionar README em agents/ explicando. |
+| docs/pipeline/ | Pipeline humano (Planner, etc.). Não são subagents Cursor. README em docs/pipeline/. |
 | docs/SUBAGENTS.md | Atualizar: mcp_task types + referência a .cursor/agents/ e .claude/agents/ |
 | mcp_task types | explore, generalPurpose, shell = built-in. qa-engineer, slide-builder, reference-manager = custom (mapear para .claude/agents/) |
 
