@@ -1,7 +1,7 @@
 # Evidence DB — Cirrose Masterclass
 
 > Dados clínicos canônicos. NUNCA modificar sem PMID verificado.
-> Atualizado: 03/mar/2026 — tier classification + GBD refs + BAVENO VII PMID corrigido (35120736).
+> Atualizado: 03/mar/2026 — tier classification + GBD refs completos + BAVENO VII PMID corrigido (35120736).
 
 ---
 
@@ -9,29 +9,41 @@
 
 | Tier | Critério | Exemplos |
 |------|---------|---------|
-| **Tier-1** | RCT multicêntrico, meta-análise Cochrane, guideline com GRADE | BAVENO VII, PREDESCI, CONFIRM, GBD Collaborators |
-| **Tier-2** | RCT single-center, coorte prospectiva >500, meta-análise não-Cochrane | CLEARED, Llamosas-Falcón 2023, Paik 2020 |
-| **Tier-3** | Coorte retrospectiva, série de casos, expert opinion | — |
+| **Tier-1** | RCT multicêntrico, meta-análise Cochrane, guideline com GRADE | BAVENO VII, PREDESCI, CONFIRM |
+| **Tier-2** | RCT single-center, coorte prospectiva >500, meta-análise não-Cochrane, systematic analysis GBD | GBD Collaborators, CLEARED, Llamosas-Falcón 2023 |
+| **Tier-3** | Coorte retrospectiva, série de casos, expert opinion / narrative review | Devarbhavi 2023, Asrani 2019 |
 
 **Regra:** Na dúvida entre tiers → classificar no MENOR. Lucas decide promoção.
 
 ---
 
-## GBD — Burden Global de Cirrose (Tier-1)
+## GBD — Burden Global de Cirrose (Tier-2)
 
 | Paper | PMID | Journal/Ano | Dado-chave |
 |-------|------|-------------|-----------|
-| GBD 2017 Cirrhosis Collaborators | **31981519** | Lancet Gastroenterol Hepatol 2020 | 1,32M mortes/ano · 8ª causa global · trajetória 1990-2017 por etiologia |
-| GBD 2023 Causes of Death Collaborators | **41092928** | Lancet 2025 | Atualização mais recente: 292 causas, 204 países, 1990-2023 |
-| GBD 2023 Disease and Injury Collaborators | **41092926** | Lancet 2025 | DALYs + YLDs + healthy life expectancy, 1990-2023 |
+| GBD 2017 Cirrhosis Collaborators | **31981519** | Lancet Gastroenterol Hepatol 2020 | **1,32M mortes/ano** · 8ª causa global · trajetória 1990-2017 por etiologia |
+| GBD 2021 — Tham EKJ et al. | **39927433** | Liver Int 2025 | Cirrose + outras DRC crónicas: dados GBD 2021 |
+| GBD 2021 — Feng G et al. | **40062742** | Liver Int 2025 | Major chronic liver diseases 2021 — confirmar sobreposição com 39927433 |
+| GBD 2023 Causes of Death | **41092928** | Lancet 2025 | 292 causas · 204 países · 1990-2023 (mais recente) |
+| GBD 2023 Disease and Injury | **41092926** | Lancet 2025 | DALYs + YLDs + healthy life expectancy, 1990-2023 |
 
-## Trajetória de Etiologias (Tier-2)
+## Burden Global — Doença Hepática Completa (Tier-3)
+
+> Narrative reviews — alta citação mas não meta-análise. Usar para contexto, não para dados primários.
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Devarbhavi H, Asrani SK et al. | **36990226** | J Hepatol 2023 | **2M mortes/ano** total (cirrose + HCC + hepatites) · 4% de todas as mortes · 2/3 em homens |
+| Asrani SK, Devarbhavi H et al. | **30266282** | J Hepatol 2019 | Original — framework completo de burden global de doença hepática |
+
+## Trajetória de Etiologias + DM2/MASLD (Tier-2)
 
 | Paper | PMID | Journal/Ano | Dado-chave |
 |-------|------|-------------|-----------|
 | Paik JM et al. | **32043613** | Hepatology 2020 | MASLD subindo enquanto HCV cai pós-DAA (2012-2017) |
 | Llamosas-Falcón L et al. | **37684424** | Hepatol Int 2023 | Dose-resposta álcool → cirrose: meta-análise |
 | Owrangi S et al. | **39697043** | Aliment Pharmacol Ther 2024 | Meta-análise MASLD → cirrose: prevalência + mortalidade |
+| En Li Cho E et al. | **37491159** | Gut 2023 | **MASLD em DM2: prevalência global** — meta-análise (link Antônio DM2 → risco hepático) |
 | Cao Z, Wong F et al. (CLEARED) | **39243795** | Lancet Gastroenterol Hepatol 2024 | Infecção hospitalar = principal complicação aguda globalmente |
 
 ---
