@@ -9,10 +9,11 @@
 
 | Recurso | ID |
 |---------|-----|
-| Slides DB | `c6713964-0b31-454f-83f5-4b287911a01b` |
+| Slides DB | `620431d1-8955-42b7-8b04-8f7cc616a8ab` |
 | Blueprint Cirrose | `30adfe68-59a8-815a-abf5-c817cd705b29` |
 | Blueprint Meta-análise | `30adfe68-59a8-81d2-b1f6-c81c59e3e12d` |
-| References DB | `2b24bb6c-91be-42c0-ae28-908a794e5cf5` |
+| References DB (outer) | `9340cdc0-7c59-4566-81a2-6b5c6b4e7b5d` |
+| References DB (data source) | `2b24bb6c-91be-42c0-ae28-908a794e5cf5` |
 | Bíblia Narrativa | `311dfe68-59a8-816b-b9c0-ec10eccfb235` |
 
 ## Direções
