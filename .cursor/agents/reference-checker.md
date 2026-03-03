@@ -1,6 +1,6 @@
 ---
 name: reference-checker
-description: Verifies medical references (PMIDs, DOIs) in slide HTML files. Delegates to this agent when slides contain clinical data that needs source verification. Runs in background using PubMed and CrossRef MCPs.
+description: Scans slide HTML files to extract PMIDs, DOIs, and citation metadata (scan-only, no MCP access).
 model: fast
 readonly: true
 is_background: true
@@ -22,9 +22,9 @@ You are a medical reference verification specialist. Your only job is to check t
 
 | # | Citation in slide | PMID/DOI | Status | Issue (if any) |
 |---|-------------------|----------|--------|----------------|
-| 1 | Sort et al, NEJM 1999 | PMID: 10451459 | ✅ Verified | — |
+| 1 | Sort et al, NEJM 1999 | PMID: 10451459 | ✅ Extracted | — |
 | 2 | CONFIRM trial, 2023 | PMID: [not found] | ❌ Not found | PMID missing from HTML |
-| 3 | HR 0.58 (CI 0.38-0.88) | PMID: 12345678 | ⚠️ Mismatch | Paper says HR 0.62 |
+| 3 | HR 0.58 (CI 0.38-0.88) | PMID: 12345678 | ⚠️ Flagged | Year mismatch with author |
 
 ### Summary
 - Verified: X/Y
