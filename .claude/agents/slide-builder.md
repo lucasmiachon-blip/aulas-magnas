@@ -1,6 +1,6 @@
 ---
 name: slide-builder
-description: Cria slides HTML assertion-evidence a partir de specs aprovadas. Usa Reveal.js + design system tokens. Nunca decide conteúdo clínico.
+description: "Builds and updates Reveal.js slide HTML from specs. Use PROACTIVELY when slides need creation, update, or refactoring based on narrative/evidence changes."
 tools:
   - Read
   - Write

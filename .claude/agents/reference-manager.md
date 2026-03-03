@@ -1,6 +1,6 @@
 ---
 name: reference-manager
-description: Valida PMIDs/DOIs, formata citações AMA, cadastra no Notion References DB. Nunca escolhe papers — só valida e organiza.
+description: "Validates PMIDs/DOIs via PubMed/CrossRef/Scite MCPs, formats AMA citations, syncs to Notion. Use PROACTIVELY when evidence-db.md or slide references change."
 tools:
   - Read
   - Write

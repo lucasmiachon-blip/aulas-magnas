@@ -1,6 +1,6 @@
 ---
 name: verifier
-description: Validates completed work. Use after tasks are marked done to confirm implementations are functional. Runs build, lint, checks edge cases. Skeptical — does not accept claims at face value.
+description: "Validates that work declared as done actually passes: build succeeds, qa-engineer ran, FAILs resolved. Use PROACTIVELY when a task is marked complete."
 model: fast
 ---
 

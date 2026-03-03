@@ -1,6 +1,6 @@
 ---
 name: qa-engineer
-description: Roda lint, acessibilidade, screenshots e build tests. Reporta PASS/WARN/FAIL com dados objetivos. Nunca altera conteúdo.
+description: "Runs QA pipeline on slides: lint, a11y, screenshots, assertions. Use PROACTIVELY after any slide HTML is created or modified."
 tools:
   - Read
   - Bash
