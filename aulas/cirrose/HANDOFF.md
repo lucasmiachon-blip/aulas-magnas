@@ -38,3 +38,35 @@
 ---
 
 *03/mar*
+
+---
+
+## Batches de otimização arquitetural — 03/03/2026 (orquestrador Claude.ai)
+
+### Executados
+
+| Batch | Commit | Mudança |
+|-------|--------|---------|
+| 1 | 7cbe353 | qa-engineer model opus→fast. verifier reescrito. reference-checker escopo honesto. |
+| 3 | 527f588 | slide-builder escalação → Lucas (não agents fantasma). |
+| 4 | b5c3f8b | Removidas refs fantasma a docs/pipeline/. reference-checker item 4 corrigido. |
+| 5 | 9b27c51 | SUBAGENTS docs atualizados. Limpeza untracked. |
+| 6 | 71cb825 | Pipeline otimizado: verifier→spot-check, ref-manager+scite+zotero, qa-engineer position. |
+
+### Estado dos agents
+
+| Agent | Model | MCPs | Escopo |
+|-------|-------|------|--------|
+| slide-builder | opus | playwright | Cria HTML por spec. Escala pra Lucas. |
+| qa-engineer | fast | playwright | Lint,a11y,screenshots. Relatório formal. |
+| reference-manager | opus | pubmed,crossref,notion,scite,zotero | Valida refs, formata AMA, cadastra Notion. |
+| verifier | fast | nenhum | Checa se qa-engineer rodou, build passa, spot-check. |
+| reference-checker (Cursor) | fast | nenhum (scan-only) | Extrai PMIDs/DOIs de HTML. |
+
+### Pipeline linear
+
+reference-checker → reference-manager → slide-builder → qa-engineer → verifier
+
+### Conflitos pendentes (resolver quando iniciar conteúdo)
+- BAVENO VII: PMID 35431106 vs 35120736
+- Case Antônio: repo=40g/dia, Notion=60g/dia
