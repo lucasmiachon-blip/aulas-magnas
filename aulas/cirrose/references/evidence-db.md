@@ -48,6 +48,39 @@
 
 ---
 
+## Etiologias — Álcool, MASLD, MetALD
+
+### Nomenclatura (Tier-1 — consenso multi-sociedade)
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Rinella ME, Lazarus JV, Ratziu V et al. | **37363821** | Hepatology 2023 | Delphi multi-sociedade: NAFLD→MASLD; NASH→MASH; novo: **MetALD** (MASLD + álcool 140–350g/sem ♂, 70–140g/sem ♀) |
+
+> Nota: mesmo paper publicado simultaneamente em J Hepatol (PMID **37364790**) e Ann Hepatol (PMID **37364816**). Citar Hepatology como primário.
+
+### Álcool — Cirrose (Tier-2)
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Niu X et al. | **37170239** | BMC Public Health 2023 | Meta-análise global ALD: prevalência, incidência, desfechos — maior síntese recente |
+| Llamosas-Falcón L et al. | **37684424** | Hepatol Int 2023 | Dose-resposta álcool → cirrose: cada 12g/dia ↑ risco 26% |
+
+> **Antônio:** 60g/dia = ~4× acima do limiar MetALD (♂ ≥20g/dia MASLD+álcool). Classifica como ALD/MetALD, não MASLD pura.
+
+### MASLD — Progressão para Cirrose (Tier-2)
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Younossi ZM et al. | **26707365** | Hepatology 2016 | NAFLD: 25% prevalência global — maior meta-análise |
+| Singh S et al. | **24768810** | Clin Gastroenterol Hepatol 2015 | Progressão fibrose: NAFLD = 1 estágio/14a · NASH = 1 estágio/7a (paired biopsy meta-análise) |
+| Owrangi S et al. | **39697043** | Aliment Pharmacol Ther 2024 | MASLD → cirrose: prevalência + mortalidade global |
+
+### MetALD — Status atual
+
+> MetALD é definição de 2023 (Rinella). **Sem estudos epidemiológicos específicos ainda** — dados virão nos próximos anos. Para slides: usar ALD + MASLD separados com nota de sobreposição MetALD.
+
+---
+
 ## Tier-1 Trials (7 verificados via PubMed)
 
 | Trial | Autor | Journal/Ano | PMID | Resultado-chave | NNT | GRADE |
