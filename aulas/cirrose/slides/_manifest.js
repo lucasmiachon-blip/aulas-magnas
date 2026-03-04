@@ -39,12 +39,12 @@ export const slides = [
 export const panelStates = {
   's-hook': {
     severity: 'neutral',
-    values: { fib4: '—', lsm: '—', plq: '118k', meld: '—', albumin: '3,6', stage: '?' },
+    values: { fib4: '—', lsm: '—', plq: '112k', meld: '—', albumin: '3,5', stage: '?' },
     events: [],
   },
   's-cp1': {
     severity: 'caution',
-    values: { fib4: '3,2', lsm: '21 kPa', plq: '118k', meld: '~10', albumin: '3,6', stage: 'cACLD → CSPH' },
+    values: { fib4: '5,10', lsm: '21 kPa', plq: '118k', meld: '~10', albumin: '3,6', stage: 'cACLD → CSPH' },
     events: ['Elastografia realizada'],
   },
   's-cp2': {
