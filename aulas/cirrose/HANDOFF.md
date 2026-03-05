@@ -6,7 +6,22 @@
 
 ## Prioridades — PRÓXIMA SESSÃO
 
-> Bloco 1 fixes concluídos (05/mar noite). Foco agora é interatividade (C) e Bloco 2/3.
+> Sessão 05/mar (tarde+noite) + sessão 06/mar: Bloco C (interatividade) completo + dados clínicos resolvidos.
+> Foco agora: build + QA visual, depois Bloco 2/3 médio, então PMIDs low-priority.
+
+### ✅ DONE (06/mar) — Interatividade + Dados Clínicos
+
+- **handlePoll** implementado em CP1 (07), CP2 (14), CP3 (18) — opções, feedback imediato, scoped JS
+- **CP2 + CP3 migrados** para `archetype-checkpoint` + `checkpoint-layout` (eram `slide-inner` estático)
+- **Baveno VII checklist** em CP3 — 3 checkboxes + animação GSAP `back.out(2)` ao completar
+- **FIB-4 calculator** criado (`shared/js/interactions/fib4-calc.js`) + montado em `#panel-fib4`
+- **scrollIntoView** adicionado ao `renderEvents()` em `case-panel.js`
+- **I5** (albumina 2×2), **I6** (HE max-width), **I7** (SVR max-width) — SYS-1 clipping corrigido
+- **D'Amico**: Estádio 5 "2ª Descompensação", further decompensation framing, retreat() reset vals
+- **NNT IC 95%** calculado para slides 08, 10/11, 12 — adicionado em `metric-ci` e speaker notes
+- **PMIDs resolvidos**: PREDICT 33227350, CANONIC 23474284, Northup 16041215, AASLD ACLF 37939273
+- ~~Speaker notes EN → PT~~ — **STALE**: já estavam em PT desde batch anterior
+- **docs/insights-html-cirrose-2026.md** criado com padrões implementados
 
 ### ✅ DONE (05/mar noite) — Limpeza + Bloco 1 Fixes
 - Screenshots já ausentes do repo; `.playwright-mcp/` adicionado ao `.gitignore` (commit 38c6246)
@@ -16,22 +31,20 @@
 - **S4** `02-a1-continuum.html`: já estava correto (`archetype-hero-stat .hero-number` = `clamp(72px, 8vw, 140px)`) ✅
 - Commit: `44dcac8`
 
-### 🔴 ALTA — Interatividade Checkpoints (Bloco C — nova sessão)
+### 🟡 MÉDIA — Build + QA (próxima ação imediata)
 
-Padrão `handlePoll` documentado em `docs/insights-html-cirrose-2026.md`.
+1. **`npm run build:cirrose`** — rebuild index.html (CP2/CP3 mudaram de `slide-inner` genérico; FIB-4 no template)
+2. **QA visual** — screenshots CP1, CP2, CP3, albumina, HE, SVR via Playwright
+3. **`npm run lint:slides`** — verificar assertion-evidence dos novos slides
 
-1. **handlePoll pattern** — para CP1/CP2/CP3: opções de conduta com feedback imediato (verde=certo, opaco=errado, mensagem aparece). JS simples, zero dependência
-2. **EMR sidebar phase sync** — `syncSidebar(phase)` já existe no nosso `case-panel.js` mas sem `scrollIntoView`. Adicionar scroll suave ao activar fase
-3. **In-sidebar FIB-4** — Calculadora FIB-4 no painel lateral (já temos MELD calculator no slide; FIB-4 faz mais sentido no painel junto com os labs)
-4. **Baveno VII checklist** — `checkBaveno()`: 3 checkboxes no painel para CP3 (recompensação). Animação `gsap.fromTo` com `back.out(2)` ao completar
+### 🟡 MÉDIA — PMIDs restantes TBD (baixa urgência, alta integridade)
 
-Todos os trials citados precisam PMID antes de usar. Ver `docs/insights-html-cirrose-2026.md`.
+14 PMIDs ainda TBD. Ver `docs/insights-html-cirrose-2026.md` seção "Pendências TBD restantes".
+Prioritários quando disponíveis: AGA 2025 Orman (s-a2-03), Lens CSPH 53% (s-a3-02), EASL HCC 2025 (s-a3-03).
 
-### 🟡 MÉDIA — Bloco 2 e 3 fixes (após C ok)
-
-### 🟢 BAIXA — Slides Bloco 2 e 3 (após Bloco 1 ok)
-- Bloco 2 (s-a2-01 a s-cp2): I5, I6, I7 fixes + S3 fill
-- Bloco 3 (s-a3-01 a s-close): S3 fill + hero typography
+### 🟢 BAIXA — Bloco 2 e 3 restantes
+- Bloco 2: S3 fill remanescente
+- Bloco 3: S3 fill + hero typography
 - Appendix: R1 (archetype-appendix sem case panel)
 
 ---

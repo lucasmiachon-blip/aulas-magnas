@@ -14,44 +14,54 @@
             <div class="data-item"><span class="data-label">FIB-4</span><span class="data-value">5,10</span></div>
           </div>
         </div>
-        <div class="decision-area">
-          <div class="decision-option" data-reveal="1">
-            <span class="option-label">Carvedilol?</span>
-            <span class="option-answer">SIM — PREDESCI. CSPH + sem contraindicação. 6,25 mg BID.</span>
-          </div>
-          <div class="decision-option" data-reveal="2">
-            <span class="option-label">EDA?</span>
-            <span class="option-answer">LIMITE — Baveno VII: LSM &lt;25 + PLQ &gt;110 dispensa. Ele tem LSM 21 + PLQ 118k. Pode dispensar, mas está no limiar. Se dúvida, faz.</span>
-          </div>
-          <div class="decision-option" data-reveal="3">
-            <span class="option-label">Encaminhar transplante?</span>
-            <span class="option-answer">NÃO — MELD ~10. Semáforo verde. Acompanhar com carvedilol + vigilância + elastografia anual.</span>
+        <div class="decision-area poll-area">
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:4px;">Qual conduta você indica <strong>agora</strong>?</p>
+          <button class="poll-btn" data-correct="true">✓ Carvedilol 6,25 mg BID — profilaxia primária</button>
+          <button class="poll-btn" data-correct="false">◯ EDA obrigatória antes de qualquer conduta</button>
+          <button class="poll-btn" data-correct="false">◯ Encaminhar para lista de transplante</button>
+          <div class="poll-feedback" hidden>
+            <strong>Carvedilol indicado:</strong> PREDESCI confirmou redução da 1ª descompensação em CSPH compensado (PMID 30910320). LSM 21 + PLQ 118k → Baveno VII <em>permite dispensar</em> EDA. MELD ~10 = transplante não indicado.
           </div>
         </div>
       </div>
     </div>
+    <script type="module">
+      (function () {
+        const section = document.getElementById('s-cp1');
+        const btns = section.querySelectorAll('.poll-btn');
+        const feedback = section.querySelector('.poll-feedback');
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => {
+              if (b === btn) {
+                b.classList.add(b.dataset.correct === 'true' ? 'poll-correct' : 'poll-wrong');
+              } else {
+                b.classList.add('poll-dim');
+              }
+              b.disabled = true;
+            });
+            feedback.hidden = false;
+          });
+        });
+      })();
+    </script>
     <aside class="notes">
 [0:00-0:30] [PAINEL ATUALIZA — amarelo] Antônio fez a elastografia. LSM 21 kPa.
 Plaquetas 118 mil. O que isso significa? cACLD confirmada.
 Hipertensão portal clinicamente significativa. PAUSA 3s.
 
-[0:30-1:00] Primeira pergunta: carvedilol? [CLICK → revela opção 1]
-SIM. PREDESCI. Paciente compensado com CSPH. Candidato perfeito.
+[0:30-1:00] Pergunto a vocês: qual conduta agora? [POLL — aguardar resposta da plateia]
+Carvedilol? EDA primeiro? Transplante?
+
+[1:00-1:30] [CLICK → revela resposta] Carvedilol. PREDESCI. Paciente compensado com CSPH.
 Dose: 6,25 mg duas vezes ao dia. Monitorar PA sistólica >90.
-
-[1:00-1:30] Segunda pergunta: endoscopia? [CLICK → revela opção 2]
-Baveno VII diz: LSM &lt;25 + plaquetas >110 → pode dispensar.
+Baveno VII: LSM &lt;25 + plaquetas &gt;110 → pode dispensar EDA.
 Antônio: LSM 21, plaquetas 118. Está dentro. Poupa a endoscopia.
-Mas ele está no LIMITE. Se vocês têm dúvida, façam a EGD.
-O Baveno poupa 1/3 das endoscopias com menos de 5% de miss rate.
+MELD 10 = semáforo verde. Não transplantar agora.
 
-[1:30-2:00] Terceira pergunta: encaminhar para transplante? [CLICK → revela opção 3]
-NÃO. MELD 10. Semáforo verde. Isso é classificar, não transplantar.
-O plano agora: carvedilol, vigilância com elastografia anual,
+[1:30-2:30] O plano: carvedilol, vigilância com elastografia anual,
 e a conversa mais difícil — falar sobre o álcool.
-
-[2:00-2:30] Porque lembrem: Antônio bebe ~60g por dia.
-O threshold para "excessivo" é 60g para homens. Ele está no corte.
+Antônio bebe ~60g por dia. Threshold "excessivo" para homens = 60g. No corte.
 E tem MASLD por cima. É MetALD — a epidemia real.
 Se ele não parar, voltamos aqui em 6 meses com o slide vermelho.
     </aside>

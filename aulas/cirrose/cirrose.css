@@ -460,9 +460,10 @@
    ============================================ */
 .albumin-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-sm);
   margin: var(--space-lg) 0;
+  max-width: calc(100% - var(--panel-width, 0px) - 3rem);
 }
 .alb-card {
   display: flex;
@@ -545,6 +546,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   margin: var(--space-lg) 0;
+  max-width: calc(100% - var(--panel-width, 0px) - 3rem);
 }
 .he-pillar {
   display: flex;
@@ -598,6 +600,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   margin: var(--space-lg) 0;
+  max-width: calc(100% - var(--panel-width, 0px) - 3rem);
 }
 .etio-panel {
   display: flex;
@@ -664,6 +667,41 @@
 .case-hope { border: 2px solid var(--safe); }
 .case-hope .case-question { color: var(--safe); }
 .data-improving .data-value { color: var(--safe); font-weight: 700; }
+
+/* ============================================
+   POLL INTERACTIVITY (CP1, CP2, CP3)
+   ============================================ */
+.poll-area { display: flex; flex-direction: column; gap: 10px; }
+.poll-btn {
+  width: 100%; text-align: left; cursor: pointer;
+  background: var(--bg-elevated); border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px 16px;
+  font-family: var(--font-body); font-size: 0.88rem; font-weight: 500;
+  color: var(--text-primary); transition: opacity 0.2s, border-color 0.2s, background 0.2s;
+}
+.poll-btn:hover:not(:disabled) { border-color: var(--ui-accent); }
+.poll-btn.poll-correct { background: oklch(from var(--safe) l c h / 0.12); border-color: var(--safe); color: var(--safe); font-weight: 700; }
+.poll-btn.poll-wrong  { border-color: var(--danger); color: var(--danger); }
+.poll-btn.poll-dim    { opacity: 0.3; pointer-events: none; }
+.poll-feedback {
+  margin-top: 8px; padding: 10px 14px; border-radius: var(--radius-sm);
+  background: var(--bg-card); border-left: 3px solid var(--checkpoint-accent, var(--ui-accent));
+  font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
+}
+
+/* ============================================
+   BAVENO VII CHECKLIST (CP3)
+   ============================================ */
+.baveno-checklist { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.baveno-checklist label {
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  font-family: var(--font-body); font-size: 0.85rem; color: var(--text-primary);
+  padding: 8px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--bg-elevated);
+  transition: background 0.2s;
+}
+.baveno-checklist input[type="checkbox"] { accent-color: var(--safe); width: 16px; height: 16px; flex-shrink: 0; }
+.baveno-checklist.all-checked label { background: oklch(from var(--safe) l c h / 0.1); border-color: var(--safe); }
 
 /* ============================================
    CLOSE RECAP (CLOSE)

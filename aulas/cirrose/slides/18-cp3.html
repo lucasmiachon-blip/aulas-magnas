@@ -1,31 +1,94 @@
 <section id="s-cp3" data-timing="150">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-checkpoint" data-severity="hope">
       <h2 class="slide-headline">SVR + abstinência, LSM 32→18. Pode sair da vigilância? Da fila?</h2>
 
-      <div class="checkpoint-case" data-animate="fadeUp">
-        <div class="case-card case-hope">
+      <div class="checkpoint-layout">
+        <div class="case-expanded">
           <h3>Seu Antônio — 1 ano depois</h3>
           <div class="case-data">
             <div class="data-item data-improving"><span class="data-label">LSM</span><span class="data-value">32 → 18 kPa</span></div>
             <div class="data-item data-improving"><span class="data-label">Ascite</span><span class="data-value">Ausente 8m</span></div>
-            <div class="data-item data-improving"><span class="data-label">Albumina</span><span class="data-value">3,8</span></div>
+            <div class="data-item data-improving"><span class="data-label">Albumina</span><span class="data-value">3,8 g/dL</span></div>
             <div class="data-item"><span class="data-label">Abstinência</span><span class="data-value">10 meses</span></div>
           </div>
-          <p class="case-question">Recompensou? Sai da vigilância?</p>
+          <div class="baveno-checklist" id="baveno-check">
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px;font-weight:600;">Critérios Baveno VII (recompensação)</p>
+            <label><input type="checkbox" data-baveno="1"> Sem descompensação ≥ 12 meses</label>
+            <label><input type="checkbox" data-baveno="2"> Melhora laboratorial (albumina, bilirrubina, INR)</label>
+            <label><input type="checkbox" data-baveno="3"> Causa tratada (SVR + abstinência)</label>
+          </div>
+        </div>
+        <div class="decision-area poll-area">
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:4px;">LSM 18 kPa + 10m abstinência. O que você decide?</p>
+          <button class="poll-btn" data-correct="true">✓ Manter vigilância HCC + reavaliar fila em 12m</button>
+          <button class="poll-btn" data-correct="false">◯ Alta definitiva — SVR = hepatite curada</button>
+          <button class="poll-btn" data-correct="false">◯ Deslistar da fila imediatamente — LSM caiu</button>
+          <div class="poll-feedback" hidden>
+            <strong>Vigilância obrigatória:</strong> LSM 18 kPa ainda indica fibrose significativa. Critério Baveno VII exige ≥12m sem descompensação (ele tem 8m). MASLD + álcool = risco residual. Recompensação a confirmar — reavaliar.
+          </div>
         </div>
       </div>
     </div>
+    <script type="module">
+      (function () {
+        const section = document.getElementById('s-cp3');
+        const btns = section.querySelectorAll('.poll-btn');
+        const feedback = section.querySelector('.poll-feedback');
+        const checklist = section.querySelector('#baveno-check');
+        const checks = checklist.querySelectorAll('input[type="checkbox"]');
+
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => {
+              if (b === btn) {
+                b.classList.add(b.dataset.correct === 'true' ? 'poll-correct' : 'poll-wrong');
+              } else {
+                b.classList.add('poll-dim');
+              }
+              b.disabled = true;
+            });
+            feedback.hidden = false;
+          });
+        });
+
+        checks.forEach(cb => {
+          cb.addEventListener('change', () => {
+            const allChecked = Array.from(checks).every(c => c.checked);
+            if (allChecked) {
+              checklist.classList.add('all-checked');
+              if (typeof gsap !== 'undefined') {
+                gsap.fromTo(checklist, { scale: 1 }, {
+                  scale: 1.04, duration: 0.4, ease: 'back.out(2)',
+                  yoyo: true, repeat: 1
+                });
+              }
+            } else {
+              checklist.classList.remove('all-checked');
+            }
+          });
+        });
+      })();
+    </script>
     <aside class="notes">
 [0:00-1:00 DADOS]
-"1 ano depois. Abstinência 10 meses. LSM 32→18. Sem ascite 8m. Albumina 3,8."
+"1 ano depois. Abstinência 10 meses. SVR alcançado. LSM 32→18. Sem ascite 8m. Albumina 3,8."
+[PAINEL ATUALIZA — verde esperança]
 
-[1:00-2:00 RESOLUÇÃO]
-"Critérios Baveno VII parcialmente preenchidos. Sem descompensação 12m: quase (8m). Melhora laboratorial: sim."
-"Vigilância: NUNCA para. Álcool + MASLD = risco persistente."
+[1:00-1:30 CHECKLIST — marcar com a plateia]
+"Vamos pelos critérios Baveno VII para recompensação."
+"Sem descompensação ≥12m? [MARCAR] — quase, ele tem 8m."
+"Melhora laboratorial? [MARCAR] — sim, albumina 3,8."
+"Causa tratada? [MARCAR] — SVR + abstinência ativa. SIM."
+[Se todos marcados → animação]
 
-[2:00-2:30 FILA]
-"LSM 18 ainda sugere fibrose significativa. Avaliar caso a caso."
-"Se recompensação se confirmar em 12m, pode considerar deslistar com vigilância intensificada."
-"Seu Antônio mostra que é possível. Fechamento."
+[1:30-2:00 POLL — aguardar resposta]
+"O que vocês decidem: alta, deslistar ou manter vigilância?"
+
+[2:00-2:30 RESOLUÇÃO]
+"Vigilância nunca cessa. LSM 18 = fibrose ainda presente."
+"8m é promissor, mas critério é 12m. Reavaliar em 4m."
+"MASLD subjacente + histórico etílico = risco residual de HCC."
+"Seu Antônio mostra que recompensação é real. Mas exige tempo e protocolo."
+"Fechamento."
     </aside>
   </section>

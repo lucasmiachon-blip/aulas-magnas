@@ -14,6 +14,7 @@
     </div>
     <div class="panel-fields"></div>
     <div class="panel-events"></div>
+    <div class="panel-calc" id="panel-fib4"></div>
   </div>
 
   <div class="slides">
@@ -501,7 +502,7 @@ Vamos ver exatamente onde está esse abismo."
             <div class="pathway-stage">
               <span class="pathway-value" data-target="88">0</span>
               <span class="pathway-unit">%/5a</span>
-              <span class="pathway-label">Est. 5<br>Infecção/AKI</span>
+              <span class="pathway-label">Est. 5<br>2ª Descompensação</span>
             </div>
           </div>
         </div>
@@ -512,11 +513,11 @@ Vamos ver exatamente onde está esse abismo."
           Métricas diferentes — não comparar 2006 (anual) com 2014 (5 anos)
         </div>
 
-        <!-- Further decompensation 2024: HR = Hazard Ratio, não RR -->
-        <!-- PMID 37916970 — D'Amico 2024, J Hepatol, further decomp -->
+        <!-- Further decompensation = conceito prognóstico Baveno VII, NÃO estádio 6 -->
+        <!-- PMID 37916970 — D'Amico 2024, J Hepatol -->
         <span class="scores-era-tag scores-era-tag--danger">
-          ✕ Further decompensation: ~60% progridem, dobra mortalidade ·
-          HR 1,46 (IC 95% 1,23–1,71) [PMID 37916970]
+          ✕ Further decompensation (Baveno VII — conceito prognóstico, não estádio):
+          ~60% progridem · dobra mortalidade · HR 1,46 (IC 95% 1,23–1,71) [PMID 37916970]
         </span>
         <span class="scores-era-source">
           PMID 16298014 (D'Amico 2006) · PMID 24654740 (D'Amico 2014) · PMID 37916970 (D'Amico 2024)
@@ -843,7 +844,7 @@ precisa de rastreio de varizes, considerar NSBB."
         <button class="ctrl-btn ctrl-primary" data-action="load-case">Seu Antônio</button>
       </div>
 
-      <p class="source-tag">Mahmud et al. ACG 2025 · Northup Ann Surg 2005</p>
+      <p class="source-tag">Mahmud et al. ACG 2025 [PMID TBD] · Northup Ann Surg 2005 [PMID 16041215]</p>
     </div>
     <aside class="notes">
 [0:00-0:30] Vou mostrar a ferramenta que vocês vão usar toda semana.
@@ -891,7 +892,7 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
         </div>
       </div>
 
-      <p class="source-tag">Trebicka et al. J Hepatol 2021 — PREDICT (n=1273)</p>
+      <p class="source-tag">Trebicka et al. J Hepatol 2021 — PREDICT (n=1273) [PMID 33227350]</p>
     </div>
     <aside class="notes">
 [0:00-1:00 PREDICT]
@@ -899,7 +900,7 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
 
 [1:00-2:00 CHECKLIST D0]
 "Todo cirrótico que interna: paracentese diagnóstica (PMN ≥250 = PBE), hemoculturas, urocultura."
-"Suspender PPIs desnecessários (HR 1,75 para PBE). Suspender NSAIDs. Revisar diuréticos."
+"Suspender PPIs desnecessários (OR ~2,17 para PBE — meta-análise [PMID 26214428]; HR específico [TBD]). Suspender NSAIDs. Revisar diuréticos."
 
 [2:00-3:00 MENSAGEM]
 "A intervenção mais impactante que vocês podem fazer é diagnosticar infecção rápido e tratar rápido."
@@ -991,44 +992,54 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
             <div class="data-item"><span class="data-label">FIB-4</span><span class="data-value">5,10</span></div>
           </div>
         </div>
-        <div class="decision-area">
-          <div class="decision-option" data-reveal="1">
-            <span class="option-label">Carvedilol?</span>
-            <span class="option-answer">SIM — PREDESCI. CSPH + sem contraindicação. 6,25 mg BID.</span>
-          </div>
-          <div class="decision-option" data-reveal="2">
-            <span class="option-label">EDA?</span>
-            <span class="option-answer">LIMITE — Baveno VII: LSM &lt;25 + PLQ &gt;110 dispensa. Ele tem LSM 21 + PLQ 118k. Pode dispensar, mas está no limiar. Se dúvida, faz.</span>
-          </div>
-          <div class="decision-option" data-reveal="3">
-            <span class="option-label">Encaminhar transplante?</span>
-            <span class="option-answer">NÃO — MELD ~10. Semáforo verde. Acompanhar com carvedilol + vigilância + elastografia anual.</span>
+        <div class="decision-area poll-area">
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:4px;">Qual conduta você indica <strong>agora</strong>?</p>
+          <button class="poll-btn" data-correct="true">✓ Carvedilol 6,25 mg BID — profilaxia primária</button>
+          <button class="poll-btn" data-correct="false">◯ EDA obrigatória antes de qualquer conduta</button>
+          <button class="poll-btn" data-correct="false">◯ Encaminhar para lista de transplante</button>
+          <div class="poll-feedback" hidden>
+            <strong>Carvedilol indicado:</strong> PREDESCI confirmou redução da 1ª descompensação em CSPH compensado (PMID 30910320). LSM 21 + PLQ 118k → Baveno VII <em>permite dispensar</em> EDA. MELD ~10 = transplante não indicado.
           </div>
         </div>
       </div>
     </div>
+    <script type="module">
+      (function () {
+        const section = document.getElementById('s-cp1');
+        const btns = section.querySelectorAll('.poll-btn');
+        const feedback = section.querySelector('.poll-feedback');
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => {
+              if (b === btn) {
+                b.classList.add(b.dataset.correct === 'true' ? 'poll-correct' : 'poll-wrong');
+              } else {
+                b.classList.add('poll-dim');
+              }
+              b.disabled = true;
+            });
+            feedback.hidden = false;
+          });
+        });
+      })();
+    </script>
     <aside class="notes">
 [0:00-0:30] [PAINEL ATUALIZA — amarelo] Antônio fez a elastografia. LSM 21 kPa.
 Plaquetas 118 mil. O que isso significa? cACLD confirmada.
 Hipertensão portal clinicamente significativa. PAUSA 3s.
 
-[0:30-1:00] Primeira pergunta: carvedilol? [CLICK → revela opção 1]
-SIM. PREDESCI. Paciente compensado com CSPH. Candidato perfeito.
+[0:30-1:00] Pergunto a vocês: qual conduta agora? [POLL — aguardar resposta da plateia]
+Carvedilol? EDA primeiro? Transplante?
+
+[1:00-1:30] [CLICK → revela resposta] Carvedilol. PREDESCI. Paciente compensado com CSPH.
 Dose: 6,25 mg duas vezes ao dia. Monitorar PA sistólica >90.
-
-[1:00-1:30] Segunda pergunta: endoscopia? [CLICK → revela opção 2]
-Baveno VII diz: LSM &lt;25 + plaquetas >110 → pode dispensar.
+Baveno VII: LSM &lt;25 + plaquetas &gt;110 → pode dispensar EDA.
 Antônio: LSM 21, plaquetas 118. Está dentro. Poupa a endoscopia.
-Mas ele está no LIMITE. Se vocês têm dúvida, façam a EGD.
-O Baveno poupa 1/3 das endoscopias com menos de 5% de miss rate.
+MELD 10 = semáforo verde. Não transplantar agora.
 
-[1:30-2:00] Terceira pergunta: encaminhar para transplante? [CLICK → revela opção 3]
-NÃO. MELD 10. Semáforo verde. Isso é classificar, não transplantar.
-O plano agora: carvedilol, vigilância com elastografia anual,
+[1:30-2:30] O plano: carvedilol, vigilância com elastografia anual,
 e a conversa mais difícil — falar sobre o álcool.
-
-[2:00-2:30] Porque lembrem: Antônio bebe ~60g por dia.
-O threshold para "excessivo" é 60g para homens. Ele está no corte.
+Antônio bebe ~60g por dia. Threshold "excessivo" para homens = 60g. No corte.
 E tem MASLD por cima. É MetALD — a epidemia real.
 Se ele não parar, voltamos aqui em 6 meses com o slide vermelho.
     </aside>
@@ -1048,7 +1059,7 @@ Se ele não parar, voltamos aqui em 6 meses com o slide vermelho.
         <div class="metric-card" data-reveal="2">
           <span class="metric-icon metric-safe">✓</span>
           <span class="metric-value">NNT 9</span>
-          <span class="metric-ci">ARR 11% em ~3a</span>
+          <span class="metric-ci">IC 95%: 5–∞ | ARR 11% em ~37m</span>
           <span class="metric-label">Benefício absoluto</span>
         </div>
         <div class="metric-card" data-reveal="3">
@@ -1078,6 +1089,11 @@ Retomar quando melhorar.
 
 [1:30-2:00] Voltando ao Antônio: CSPH confirmada, MELD 10, compensado.
 Ele é o candidato PERFEITO pro carvedilol. Começamos hoje.
+
+[DATA] NNT 9 (IC 95%: 5–∞) em ~37 meses | CSPH compensado sem varizes alto risco
+Calculado de: 16/100 (16%) vs 27/101 (27%), ARR 10.7% ± 11.2%
+Nota: IC cruza zero pela análise absoluta — significância pelo modelo HR com riscos competitivos (p=0.041)
+Fonte: PREDESCI, Villanueva C, Lancet 2019, PMID 30910320 | Verificado: 2026-03-05 | Revisar quando AASLD CPG atualizar.
     </aside>
   </section>
 
@@ -1146,7 +1162,7 @@ Ele é o candidato PERFEITO pro carvedilol. Começamos hoje.
           <span class="alb-icon">✓</span>
           <span class="alb-indication">PBE</span>
           <span class="alb-dose">1,5 g/kg D1 + 1 g/kg D3</span>
-          <span class="alb-nnt">NNT 5</span>
+          <span class="alb-nnt">NNT 5 (IC 95%: 3–17)</span>
         </div>
         <div class="alb-card alb-yes">
           <span class="alb-icon">✓</span>
@@ -1177,6 +1193,10 @@ Ele é o candidato PERFEITO pro carvedilol. Começamos hoje.
 [2:30-3:20 AGA 2025]
 "Orman, Gastroenterology 2025: 13 best practice advice statements. Confirmam: indicações específicas, não rotina."
 "DECISÃO #2 do refrão: Albumina quando? Só nessas 3 indicações."
+
+[DATA] NNT 5 (IC 95%: 3–17) em internação | cirrose + PBE
+Calculado de: 18/63 (28.6%) vs 6/63 (9.5%), ARR 19.1% (IC 95%: 5.8%–32.3%)
+Fonte: Sort P et al., NEJM 1999, Tabela 3, PMID 10432325 | Verificado: 2026-03-05 | Revisar se meta-análise Cochrane atualizar.
     </aside>
   </section>
 
@@ -1212,12 +1232,16 @@ Ele é o candidato PERFEITO pro carvedilol. Começamos hoje.
 
 [1:00-2:00 TRATAMENTO]
 "Cefotaxima 2g 8/8h ou ceftriaxone 1g/dia — ambos disponíveis SUS."
-"Albumina D1 (1,5g/kg) + D3 (1g/kg) — Sort 1999, NNT 5."
+"Albumina D1 (1,5g/kg) + D3 (1g/kg) — Sort 1999, NNT 5 (IC 95%: 3–17) em internação."
 "Duração: 5-7 dias, guiar por resposta clínica."
 
 [2:00-3:00 PROFILAXIA]
 "Secundária: norfloxacino 400mg/dia. AASLD: indefinidamente ou até transplante."
 "Primária: PTN líquido ascítico &lt;1,5g/dL + Child ≥B9 OU Cr&gt;1,2 OU Na&lt;130 OU Bil&gt;3."
+
+[DATA] NNT 5 (IC 95%: 3–17) em internação | cirrose + PBE
+Calculado de: 18/63 (28.6%) vs 6/63 (9.5%), ARR 19.1% (IC 95%: 5.8%–32.3%)
+Fonte: Sort P et al., NEJM 1999, PMID 10432325 | Verificado: 2026-03-05
     </aside>
   </section>
 
@@ -1258,11 +1282,15 @@ Ele é o candidato PERFEITO pro carvedilol. Começamos hoje.
 
 [1:30-2:30 TERLIPRESSINA]
 "Se preenche critérios ICA/ADQI 2024: terlipressina + albumina."
-"CONFIRM (Wong, NEJM 2021, n=300): reversão renal 32% vs 17% (NNT 7)."
+"CONFIRM (Wong, NEJM 2021, n=300): reversão renal 32% vs 17% — NNT 7 (IC 95%: 4–20) em 14 dias."
 "MAS: morte por causa respiratória em 90 dias: 11% vs 2% (NNH 11). Monitorar SpO2, balanço hídrico."
 "E atenção: mortalidade global 90 dias 51% vs 45% — terlipressina melhora RIM, mas NÃO melhorou SOBREVIDA no CONFIRM."
 "Selecionar paciente: evitar ACLF-3, Cr&gt;5, sobrecarga hídrica."
 "Disponível no SUS."
+
+[DATA] NNT 7 (IC 95%: 4–20) em 14 dias | HRS-AKI com cirrose
+Calculado de: 63/199 (31.7%) vs 17/101 (16.8%), ARR 14.9% (IC 95%: 5.1%–24.6%)
+Fonte: CONFIRM, Wong F, NEJM 2021, PMID 33657294 | Verificado: 2026-03-05 | Revisar quando FDA labeling ou guidelines AASLD/EASL atualizarem.
 
 [2:30-3:20 ENCAMINHAR]
 "DECISÃO #3 do refrão: quando encaminhar? Semáforo MELD."
@@ -1311,34 +1339,65 @@ PAUSA 1s.
   </section>
 
 <section id="s-cp2" data-timing="180">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-checkpoint" data-severity="danger">
       <h2 class="slide-headline">Cr 2,8 + Na 126 + ascite tensa. HRS-AKI? O que você faz?</h2>
 
-      <div class="checkpoint-case" data-animate="fadeUp">
-        <div class="case-card case-danger">
+      <div class="checkpoint-layout">
+        <div class="case-expanded">
           <h3>Seu Antônio — 2 anos depois</h3>
           <div class="case-data">
-            <div class="data-item data-danger"><span class="data-label">Cr</span><span class="data-value">2,8</span></div>
-            <div class="data-item data-danger"><span class="data-label">Na</span><span class="data-value">126</span></div>
-            <div class="data-item"><span class="data-label">Ascite</span><span class="data-value">Tensa</span></div>
+            <div class="data-item data-danger"><span class="data-label">Cr</span><span class="data-value">2,8 mg/dL</span></div>
+            <div class="data-item data-danger"><span class="data-label">Na</span><span class="data-value">126 mEq/L</span></div>
+            <div class="data-item data-danger"><span class="data-label">Ascite</span><span class="data-value">Tensa</span></div>
             <div class="data-item data-danger"><span class="data-label">MELD-Na</span><span class="data-value">~28</span></div>
+            <div class="data-item"><span class="data-label">Albumina</span><span class="data-value">2,4 g/dL</span></div>
+            <div class="data-item"><span class="data-label">Abstinência</span><span class="data-value">Não</span></div>
           </div>
-          <p class="case-question">HRS-AKI? 3 perguntas → conduta?</p>
+        </div>
+        <div class="decision-area poll-area">
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:4px;">Critérios ICA/ADQI 2024 preenchidos. Primeira intervenção?</p>
+          <button class="poll-btn" data-correct="true">✓ Terlipressina + albumina IV + descartar gatilho</button>
+          <button class="poll-btn" data-correct="false">◯ Albumina IV isolada — aguardar resposta 48h</button>
+          <button class="poll-btn" data-correct="false">◯ Hemodiálise imediata — Cr 2,8 = IRA grave</button>
+          <div class="poll-feedback" hidden>
+            <strong>HRS-AKI confirmado:</strong> ICA/ADQI 2024 — terlipressina + albumina 1 g/kg d1 (máx 100g) → 0,5 g/kg/dia. Primeiro: descartar PBE (paracentese!), desidratação. MELD ≥25 → encaminhar para transplante <em>urgente</em>.
+          </div>
         </div>
       </div>
     </div>
+    <script type="module">
+      (function () {
+        const section = document.getElementById('s-cp2');
+        const btns = section.querySelectorAll('.poll-btn');
+        const feedback = section.querySelector('.poll-feedback');
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => {
+              if (b === btn) {
+                b.classList.add(b.dataset.correct === 'true' ? 'poll-correct' : 'poll-wrong');
+              } else {
+                b.classList.add('poll-dim');
+              }
+              b.disabled = true;
+            });
+            feedback.hidden = false;
+          });
+        });
+      })();
+    </script>
     <aside class="notes">
 [0:00-1:00 EVOLUÇÃO]
-"2 anos depois. Seu Antônio parou abstinência. Volta com ascite tensa, Cr 2,8, Na 126."
+"2 anos depois. Antônio não parou com o álcool. Volta com ascite tensa, Cr 2,8, Na 126."
+[PAINEL ATUALIZA — vermelho]
 
-[1:00-2:00 APLICAR 3 PERGUNTAS]
-"1) Gatilho reversível? Investiguem PBE (paracentese!), desidratação."
-"2) NTA vs HRS? Sedimento, NGAL."
-"3) ACLF? MELD-Na ~28. Semáforo VERMELHO."
+[1:00-1:30 POLL — aguardar resposta da plateia]
+"Critérios de HRS-AKI preenchidos. Qual a primeira intervenção?"
 
-[2:00-3:00 RESOLUÇÃO]
-"Preenche critérios ICA/ADQI 2024 para HRS-AKI. Terlipressina + albumina, monitorar SpO2."
-"Mas: ENCAMINHAR. MELD ≥25 = janela curta."
+[1:30-2:30 RESOLUÇÃO — após click]
+"Terlipressina + albumina. Padrão ICA/ADQI 2024."
+"Mas PRIMEIRO: paracentese para descartar PBE. Gatilho reversível?"
+"Sedimento urinário, NGAL para diferenciar NTA de HRS."
+"MELD ~28 = semáforo VERMELHO. Encaminhar urgente."
 "Seu Antônio sobreviveu. E se agora ele voltar a cuidar de si?"
     </aside>
   </section>
@@ -1450,34 +1509,97 @@ PAUSA 1s.
   </section>
 
 <section id="s-cp3" data-timing="150">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-checkpoint" data-severity="hope">
       <h2 class="slide-headline">SVR + abstinência, LSM 32→18. Pode sair da vigilância? Da fila?</h2>
 
-      <div class="checkpoint-case" data-animate="fadeUp">
-        <div class="case-card case-hope">
+      <div class="checkpoint-layout">
+        <div class="case-expanded">
           <h3>Seu Antônio — 1 ano depois</h3>
           <div class="case-data">
             <div class="data-item data-improving"><span class="data-label">LSM</span><span class="data-value">32 → 18 kPa</span></div>
             <div class="data-item data-improving"><span class="data-label">Ascite</span><span class="data-value">Ausente 8m</span></div>
-            <div class="data-item data-improving"><span class="data-label">Albumina</span><span class="data-value">3,8</span></div>
+            <div class="data-item data-improving"><span class="data-label">Albumina</span><span class="data-value">3,8 g/dL</span></div>
             <div class="data-item"><span class="data-label">Abstinência</span><span class="data-value">10 meses</span></div>
           </div>
-          <p class="case-question">Recompensou? Sai da vigilância?</p>
+          <div class="baveno-checklist" id="baveno-check">
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px;font-weight:600;">Critérios Baveno VII (recompensação)</p>
+            <label><input type="checkbox" data-baveno="1"> Sem descompensação ≥ 12 meses</label>
+            <label><input type="checkbox" data-baveno="2"> Melhora laboratorial (albumina, bilirrubina, INR)</label>
+            <label><input type="checkbox" data-baveno="3"> Causa tratada (SVR + abstinência)</label>
+          </div>
+        </div>
+        <div class="decision-area poll-area">
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:4px;">LSM 18 kPa + 10m abstinência. O que você decide?</p>
+          <button class="poll-btn" data-correct="true">✓ Manter vigilância HCC + reavaliar fila em 12m</button>
+          <button class="poll-btn" data-correct="false">◯ Alta definitiva — SVR = hepatite curada</button>
+          <button class="poll-btn" data-correct="false">◯ Deslistar da fila imediatamente — LSM caiu</button>
+          <div class="poll-feedback" hidden>
+            <strong>Vigilância obrigatória:</strong> LSM 18 kPa ainda indica fibrose significativa. Critério Baveno VII exige ≥12m sem descompensação (ele tem 8m). MASLD + álcool = risco residual. Recompensação a confirmar — reavaliar.
+          </div>
         </div>
       </div>
     </div>
+    <script type="module">
+      (function () {
+        const section = document.getElementById('s-cp3');
+        const btns = section.querySelectorAll('.poll-btn');
+        const feedback = section.querySelector('.poll-feedback');
+        const checklist = section.querySelector('#baveno-check');
+        const checks = checklist.querySelectorAll('input[type="checkbox"]');
+
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => {
+              if (b === btn) {
+                b.classList.add(b.dataset.correct === 'true' ? 'poll-correct' : 'poll-wrong');
+              } else {
+                b.classList.add('poll-dim');
+              }
+              b.disabled = true;
+            });
+            feedback.hidden = false;
+          });
+        });
+
+        checks.forEach(cb => {
+          cb.addEventListener('change', () => {
+            const allChecked = Array.from(checks).every(c => c.checked);
+            if (allChecked) {
+              checklist.classList.add('all-checked');
+              if (typeof gsap !== 'undefined') {
+                gsap.fromTo(checklist, { scale: 1 }, {
+                  scale: 1.04, duration: 0.4, ease: 'back.out(2)',
+                  yoyo: true, repeat: 1
+                });
+              }
+            } else {
+              checklist.classList.remove('all-checked');
+            }
+          });
+        });
+      })();
+    </script>
     <aside class="notes">
 [0:00-1:00 DADOS]
-"1 ano depois. Abstinência 10 meses. LSM 32→18. Sem ascite 8m. Albumina 3,8."
+"1 ano depois. Abstinência 10 meses. SVR alcançado. LSM 32→18. Sem ascite 8m. Albumina 3,8."
+[PAINEL ATUALIZA — verde esperança]
 
-[1:00-2:00 RESOLUÇÃO]
-"Critérios Baveno VII parcialmente preenchidos. Sem descompensação 12m: quase (8m). Melhora laboratorial: sim."
-"Vigilância: NUNCA para. Álcool + MASLD = risco persistente."
+[1:00-1:30 CHECKLIST — marcar com a plateia]
+"Vamos pelos critérios Baveno VII para recompensação."
+"Sem descompensação ≥12m? [MARCAR] — quase, ele tem 8m."
+"Melhora laboratorial? [MARCAR] — sim, albumina 3,8."
+"Causa tratada? [MARCAR] — SVR + abstinência ativa. SIM."
+[Se todos marcados → animação]
 
-[2:00-2:30 FILA]
-"LSM 18 ainda sugere fibrose significativa. Avaliar caso a caso."
-"Se recompensação se confirmar em 12m, pode considerar deslistar com vigilância intensificada."
-"Seu Antônio mostra que é possível. Fechamento."
+[1:30-2:00 POLL — aguardar resposta]
+"O que vocês decidem: alta, deslistar ou manter vigilância?"
+
+[2:00-2:30 RESOLUÇÃO]
+"Vigilância nunca cessa. LSM 18 = fibrose ainda presente."
+"8m é promissor, mas critério é 12m. Reavaliar em 4m."
+"MASLD subjacente + histórico etílico = risco residual de HCC."
+"Seu Antônio mostra que recompensação é real. Mas exige tempo e protocolo."
+"Fechamento."
     </aside>
   </section>
 
@@ -1529,7 +1651,7 @@ Agradecimento breve.
         <div class="app-row"><span class="app-grade">Grau 2</span><span class="app-detail">2 falências</span><span class="app-mort">~30%</span></div>
         <div class="app-row app-row-danger"><span class="app-grade">Grau 3</span><span class="app-detail">≥3 falências</span><span class="app-mort">&gt;70%</span></div>
       </div>
-      <p class="source-tag">CANONIC Moreau 2013 · AASLD ACLF 2024</p>
+      <p class="source-tag">CANONIC — Moreau et al. NEJM 2013 [PMID 23474284] · AASLD ACLF Practice Guidance 2024 [PMID 37939273]</p>
     </div>
     <aside class="notes">
 [0:00-0:40 CONCEITO]
@@ -1813,12 +1935,13 @@ PAUSA 2s.
   import { ClickReveal } from '../../shared/js/click-reveal.js';
   import { CasePanel } from '../../shared/js/case-panel.js';
   import { MeldCalc } from '../../shared/js/interactions/meld-calc.js';
+  import { Fib4Calc } from '../../shared/js/interactions/fib4-calc.js';
   import { wireAll } from './slide-registry.js';
 
   const deck = await initAula(Reveal, gsap, { plugins: [Notes], width: 1280, height: 720 });
   window.Reveal = Reveal;
   const anim = createAnimationDispatcher(Reveal, gsap);
-  wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc });
+  wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, Fib4Calc });
   anim.connect();
 </script>
 </body>

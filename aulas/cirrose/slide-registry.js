@@ -392,12 +392,16 @@ export const customAnimations = {
     function retreat() {
       if (busy || state <= 0) return false;
 
-      if (state === 5 && sourceTag) gsap.to(sourceTag, { opacity: 0, duration: 0.2 });
+      if (state === 5) {
+        if (sourceTag) gsap.to(sourceTag, { opacity: 0, duration: 0.2 });
+        // Reset pathway values so CountUp re-animates correctly on next advance
+        slide.querySelectorAll('.scores-era[data-era="5"] .pathway-value[data-target]')
+          .forEach(el => { gsap.killTweensOf(el); el.textContent = '0'; });
+      }
 
       state--;
       busy = true;
 
-      // On retreat: show previous era (content stays at whatever opacity was achieved)
       showEra(state, () => { busy = false; });
 
       return true;
@@ -668,7 +672,7 @@ export { panelStates };
  * Wire all systems: custom anims → case panel → click-reveal → interactions.
  * Deps injected to avoid circular imports and keep registry testable.
  */
-export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc }) {
+export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, Fib4Calc }) {
   for (const [id, fn] of Object.entries(customAnimations)) {
     anim.registerCustom(id, fn);
   }
@@ -707,4 +711,7 @@ export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc }
 
   const meldContainer = document.querySelector('[data-interaction="meld-calc"]');
   if (meldContainer) new MeldCalc(meldContainer);
+
+  const fib4Container = document.getElementById('panel-fib4');
+  if (fib4Container) new Fib4Calc(fib4Container);
 }

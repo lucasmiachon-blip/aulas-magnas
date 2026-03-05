@@ -1,32 +1,63 @@
 <section id="s-cp2" data-timing="180">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-checkpoint" data-severity="danger">
       <h2 class="slide-headline">Cr 2,8 + Na 126 + ascite tensa. HRS-AKI? O que você faz?</h2>
 
-      <div class="checkpoint-case" data-animate="fadeUp">
-        <div class="case-card case-danger">
+      <div class="checkpoint-layout">
+        <div class="case-expanded">
           <h3>Seu Antônio — 2 anos depois</h3>
           <div class="case-data">
-            <div class="data-item data-danger"><span class="data-label">Cr</span><span class="data-value">2,8</span></div>
-            <div class="data-item data-danger"><span class="data-label">Na</span><span class="data-value">126</span></div>
-            <div class="data-item"><span class="data-label">Ascite</span><span class="data-value">Tensa</span></div>
+            <div class="data-item data-danger"><span class="data-label">Cr</span><span class="data-value">2,8 mg/dL</span></div>
+            <div class="data-item data-danger"><span class="data-label">Na</span><span class="data-value">126 mEq/L</span></div>
+            <div class="data-item data-danger"><span class="data-label">Ascite</span><span class="data-value">Tensa</span></div>
             <div class="data-item data-danger"><span class="data-label">MELD-Na</span><span class="data-value">~28</span></div>
+            <div class="data-item"><span class="data-label">Albumina</span><span class="data-value">2,4 g/dL</span></div>
+            <div class="data-item"><span class="data-label">Abstinência</span><span class="data-value">Não</span></div>
           </div>
-          <p class="case-question">HRS-AKI? 3 perguntas → conduta?</p>
+        </div>
+        <div class="decision-area poll-area">
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:4px;">Critérios ICA/ADQI 2024 preenchidos. Primeira intervenção?</p>
+          <button class="poll-btn" data-correct="true">✓ Terlipressina + albumina IV + descartar gatilho</button>
+          <button class="poll-btn" data-correct="false">◯ Albumina IV isolada — aguardar resposta 48h</button>
+          <button class="poll-btn" data-correct="false">◯ Hemodiálise imediata — Cr 2,8 = IRA grave</button>
+          <div class="poll-feedback" hidden>
+            <strong>HRS-AKI confirmado:</strong> ICA/ADQI 2024 — terlipressina + albumina 1 g/kg d1 (máx 100g) → 0,5 g/kg/dia. Primeiro: descartar PBE (paracentese!), desidratação. MELD ≥25 → encaminhar para transplante <em>urgente</em>.
+          </div>
         </div>
       </div>
     </div>
+    <script type="module">
+      (function () {
+        const section = document.getElementById('s-cp2');
+        const btns = section.querySelectorAll('.poll-btn');
+        const feedback = section.querySelector('.poll-feedback');
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => {
+              if (b === btn) {
+                b.classList.add(b.dataset.correct === 'true' ? 'poll-correct' : 'poll-wrong');
+              } else {
+                b.classList.add('poll-dim');
+              }
+              b.disabled = true;
+            });
+            feedback.hidden = false;
+          });
+        });
+      })();
+    </script>
     <aside class="notes">
 [0:00-1:00 EVOLUÇÃO]
-"2 anos depois. Seu Antônio parou abstinência. Volta com ascite tensa, Cr 2,8, Na 126."
+"2 anos depois. Antônio não parou com o álcool. Volta com ascite tensa, Cr 2,8, Na 126."
+[PAINEL ATUALIZA — vermelho]
 
-[1:00-2:00 APLICAR 3 PERGUNTAS]
-"1) Gatilho reversível? Investiguem PBE (paracentese!), desidratação."
-"2) NTA vs HRS? Sedimento, NGAL."
-"3) ACLF? MELD-Na ~28. Semáforo VERMELHO."
+[1:00-1:30 POLL — aguardar resposta da plateia]
+"Critérios de HRS-AKI preenchidos. Qual a primeira intervenção?"
 
-[2:00-3:00 RESOLUÇÃO]
-"Preenche critérios ICA/ADQI 2024 para HRS-AKI. Terlipressina + albumina, monitorar SpO2."
-"Mas: ENCAMINHAR. MELD ≥25 = janela curta."
+[1:30-2:30 RESOLUÇÃO — após click]
+"Terlipressina + albumina. Padrão ICA/ADQI 2024."
+"Mas PRIMEIRO: paracentese para descartar PBE. Gatilho reversível?"
+"Sedimento urinário, NGAL para diferenciar NTA de HRS."
+"MELD ~28 = semáforo VERMELHO. Encaminhar urgente."
 "Seu Antônio sobreviveu. E se agora ele voltar a cuidar de si?"
     </aside>
   </section>

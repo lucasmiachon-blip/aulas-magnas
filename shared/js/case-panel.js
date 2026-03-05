@@ -146,6 +146,9 @@ export class CasePanel {
       el.textContent = evt;
       this.eventsEl.appendChild(el);
     });
+
+    const lastEvent = this.eventsEl.querySelector('.panel-event:last-child');
+    if (lastEvent) lastEvent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   /**
