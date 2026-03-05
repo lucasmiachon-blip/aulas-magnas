@@ -128,7 +128,7 @@ export class CasePanel {
 
     this.currentCalc = type;
     this.el.classList.add('has-calc');
-    this.el.closest('.reveal')?.classList.add('has-calc-panel');
+    this.el.closest('#deck')?.classList.add('has-calc-panel');
 
     if (!this.calcEl) return;
     this.calcEl.classList.add('active');
@@ -141,7 +141,7 @@ export class CasePanel {
     if (!this.currentCalc) return;
     this.currentCalc = null;
     this.el.classList.remove('has-calc');
-    this.el.closest('.reveal')?.classList.remove('has-calc-panel');
+    this.el.closest('#deck')?.classList.remove('has-calc-panel');
     if (this.calcEl) {
       this.calcEl.classList.remove('active');
       this.calcEl.innerHTML = '';
@@ -397,7 +397,7 @@ export class CasePanel {
     if (!this.visible) return;
     this.visible = false;
     this.el.classList.add('hidden');
-    this.el.closest('.reveal')?.classList.remove('has-panel');
+    this.el.closest('#deck')?.classList.remove('has-panel');
     this.hideCalc();
   }
 
@@ -405,6 +405,6 @@ export class CasePanel {
     if (this.visible) return;
     this.visible = true;
     this.el.classList.remove('hidden');
-    this.el.closest('.reveal')?.classList.add('has-panel');
+    this.el.closest('#deck')?.classList.add('has-panel');
   }
 }
