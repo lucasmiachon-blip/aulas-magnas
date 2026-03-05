@@ -14,7 +14,7 @@
     </div>
     <div class="panel-fields"></div>
     <div class="panel-events"></div>
-    <div class="panel-calc" id="panel-fib4"></div>
+    <div class="panel-calc-area"></div>
   </div>
 
   <div class="slides">
@@ -35,14 +35,12 @@
   import { initAula, createAnimationDispatcher } from '../../shared/js/engine.js';
   import { ClickReveal } from '../../shared/js/click-reveal.js';
   import { CasePanel } from '../../shared/js/case-panel.js';
-  import { MeldCalc } from '../../shared/js/interactions/meld-calc.js';
-  import { Fib4Calc } from '../../shared/js/interactions/fib4-calc.js';
   import { wireAll } from './slide-registry.js';
 
   const deck = await initAula(Reveal, gsap, { plugins: [Notes], width: 1280, height: 720 });
   window.Reveal = Reveal;
   const anim = createAnimationDispatcher(Reveal, gsap);
-  wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, Fib4Calc });
+  wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal });
   anim.connect();
 </script>
 </body>

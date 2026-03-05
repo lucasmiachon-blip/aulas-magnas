@@ -117,35 +117,31 @@ export const customAnimations = {
   },
 
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     s-a1-screening — Rastreamento cACLD (5 estados)
-     Era 0: gancho Antônio (auto)
+     s-a1-classify — Classificar cedo (4 estados)
+     Era 0: gancho Antonio (auto)
      Era 1: dado 83% + CountUp (click)
-     Era 2: critérios em stagger (click)
-     Era 3: ferramentas FIB-4 / Elastografia (click)
-     Era 4: Antônio + PREDESCI pill (click)
-     Plan B: todos os estados visíveis via CSS failsafe — retorna cedo
+     Era 2: criterios em stagger (click)
+     Era 3: Antonio + PREDESCI pill (click)
+     Plan B: todos os estados visiveis via CSS failsafe — retorna cedo
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  's-a1-screening': (slide, gsap) => {
+  's-a1-classify': (slide, gsap) => {
     if (document.body.classList.contains('stage-bad')) return;
 
     let state = 0;
-    const maxState = 4;
+    const maxState = 3;
 
     const hero = slide.querySelector('.screening-hero');
     const criteria = slide.querySelector('.screening-criteria');
-    const tools = slide.querySelector('.screening-tools');
     const pill = slide.querySelector('.screening-predesci-pill');
     const sourceTag = slide.querySelector('.source-tag');
 
     // Reset state on every slide entry (inline styles from prev visits override CSS)
-    [hero, criteria, tools, pill, sourceTag].forEach(el => {
+    [hero, criteria, pill, sourceTag].forEach(el => {
       if (!el) return;
       el.style.display = 'none';
       el.style.opacity = '';
     });
 
-    // Helper: reveal an element that starts as display:none
-    // Justificativa: display:none elimina impacto no layout (não empurra conteúdo visível)
     function showEl(el, displayVal, animFrom, animTo, onDone) {
       if (!el) return;
       el.style.display = displayVal;
@@ -167,7 +163,6 @@ export const customAnimations = {
       state++;
 
       if (state === 1) {
-        // CountUp justificativa: dado central da persuasão — número crescendo = impacto cognitivo
         showEl(hero, 'flex', { y: 12 }, { y: 0 });
         const statEl = hero?.querySelector('[data-target]');
         if (statEl) {
@@ -177,7 +172,6 @@ export const customAnimations = {
       }
 
       if (state === 2) {
-        // Stagger justificativa: cada critério é uma revelação separada — impede leitura antecipada
         showEl(criteria, 'flex');
         const items = criteria?.querySelectorAll('.screening-criterion');
         if (items?.length) {
@@ -188,17 +182,6 @@ export const customAnimations = {
       }
 
       if (state === 3) {
-        // flipIn justificativa: dois cards = dois atos narrativos, flip diferencia do stagger anterior
-        showEl(tools, 'flex');
-        const cards = tools?.querySelectorAll('.screening-tool-card');
-        if (cards?.length) {
-          gsap.from(cards, {
-            opacity: 0, rotationY: -25, duration: 0.45, stagger: 0.15, delay: 0.1, ease: 'power2.out',
-          });
-        }
-      }
-
-      if (state === 4) {
         showEl(pill, 'inline-block');
         showEl(sourceTag, 'block', {}, { delay: 0.1 });
       }
@@ -209,8 +192,7 @@ export const customAnimations = {
     function retreat() {
       if (state <= 0) return false;
 
-      if (state === 4) { hideEl(pill); hideEl(sourceTag); }
-      if (state === 3) hideEl(tools);
+      if (state === 3) { hideEl(pill); hideEl(sourceTag); }
       if (state === 2) hideEl(criteria);
       if (state === 1) {
         hideEl(hero);
@@ -412,55 +394,37 @@ export const customAnimations = {
   },
 
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     s-a1-02 — PARADIGMA cACLD/dACLD
-     States: 0=auto dissolve, 1=Rule-of-5, 2=Antônio, 3=source
+     s-a1-baveno — Paradigma Baveno VII (SplitText dissolve)
+     States: 0=auto dissolve, 1=source
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  's-a1-02': (slide, gsap) => {
+  's-a1-baveno': (slide, gsap) => {
     let state = 0;
-    const maxState = 3;
+    const maxState = 1;
 
     const oldTerm = slide.querySelector('.paradigm-old');
     const spectrum = slide.querySelector('.paradigm-spectrum');
     const bavRef = slide.querySelector('.paradigm-ref');
-    const rule5 = slide.querySelector('.rule-of-5');
-    const zones = slide.querySelectorAll('.rule-zone');
-    const antonioPlot = slide.querySelector('.antonio-plot');
     const sourceTag = slide.querySelector('.source-tag');
 
-    // Auto-play: SplitText dissolve → spectrum emerges
     let splitInstance = null;
 
     if (oldTerm && oldTerm.textContent.trim()) {
       splitInstance = new SplitText(oldTerm, { type: 'chars' });
 
-      // Initial state: old term visible
       gsap.set(oldTerm, { opacity: 1 });
       gsap.set(spectrum, { opacity: 0 });
       gsap.set(bavRef, { opacity: 0 });
 
-      // Timeline: dissolve chars → show spectrum
       const tl = gsap.timeline({ delay: 1.5 });
       tl.to(splitInstance.chars, {
-        opacity: 0,
-        y: -20,
-        rotationX: 90,
+        opacity: 0, y: -20, rotationX: 90,
         stagger: { each: 0.06, from: 'random' },
-        duration: 0.5,
-        ease: 'power2.in',
+        duration: 0.5, ease: 'power2.in',
       });
       tl.set(oldTerm, { display: 'none' });
-      tl.to(spectrum, {
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-      });
-      tl.to(bavRef, {
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power2.out',
-      }, '-=0.2');
+      tl.to(spectrum, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+      tl.to(bavRef, { opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.2');
     } else {
-      // Failsafe: no SplitText, just show spectrum
       gsap.set(spectrum, { opacity: 1 });
       gsap.set(bavRef, { opacity: 1 });
     }
@@ -468,33 +432,57 @@ export const customAnimations = {
     function advance() {
       if (state >= maxState) return false;
       state++;
+      if (state === 1) {
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+      }
+      return true;
+    }
+
+    function retreat() {
+      if (state <= 0) return false;
+      if (state === 1) {
+        gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
+      }
+      state--;
+      return true;
+    }
+
+    slide.__hookAdvance = advance;
+    slide.__hookRetreat = retreat;
+    slide.__hookCurrentBeat = () => state;
+  },
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-rule5 — Rule-of-5 + Antonio plotado
+     States: 0=zones stagger (auto), 1=Antonio highlight, 2=source
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-rule5': (slide, gsap) => {
+    let state = 0;
+    const maxState = 2;
+
+    const zones = slide.querySelectorAll('.rule-zone');
+    const antonioPlot = slide.querySelector('.antonio-plot');
+    const sourceTag = slide.querySelector('.source-tag');
+
+    // Auto: stagger zones on entry
+    gsap.set(zones, { opacity: 0, y: 16 });
+    gsap.to(zones, {
+      opacity: 1, y: 0,
+      duration: 0.4, stagger: 0.12, delay: 0.4,
+      ease: 'power3.out',
+    });
+
+    function advance() {
+      if (state >= maxState) return false;
+      state++;
 
       if (state === 1) {
-        // Compress spectrum up, show Rule-of-5
-        gsap.to(spectrum, { y: -20, scale: 0.85, duration: 0.5, ease: 'power2.out' });
-        gsap.to(bavRef, { opacity: 0, duration: 0.3 });
-        gsap.to(rule5, { opacity: 1, duration: 0.5, delay: 0.2, ease: 'power2.out' });
-
-        // Stagger zones L→R
-        gsap.set(zones, { opacity: 0, y: 16 });
-        gsap.to(zones, {
-          opacity: 1, y: 0,
-          duration: 0.4,
-          stagger: 0.1,
-          delay: 0.3,
-          ease: 'power3.out',
-        });
-      }
-
-      if (state === 2) {
-        // Highlight zone 4 (20-25) and show Antônio
         const targetZone = slide.querySelector('[data-zone-idx="3"]');
         if (targetZone) targetZone.classList.add('rule-zone--highlighted');
-
         gsap.to(antonioPlot, { opacity: 1, duration: 0.5, ease: 'power2.out' });
       }
 
-      if (state === 3) {
+      if (state === 2) {
         gsap.to(sourceTag, { opacity: 1, duration: 0.4, ease: 'power2.out' });
       }
 
@@ -504,20 +492,14 @@ export const customAnimations = {
     function retreat() {
       if (state <= 0) return false;
 
-      if (state === 3) {
+      if (state === 2) {
         gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
       }
 
-      if (state === 2) {
+      if (state === 1) {
         const targetZone = slide.querySelector('[data-zone-idx="3"]');
         if (targetZone) targetZone.classList.remove('rule-zone--highlighted');
         gsap.to(antonioPlot, { opacity: 0, duration: 0.3 });
-      }
-
-      if (state === 1) {
-        gsap.to(spectrum, { y: 0, scale: 1, duration: 0.4, ease: 'power2.out' });
-        gsap.to(bavRef, { opacity: 1, duration: 0.3, delay: 0.2 });
-        gsap.to(rule5, { opacity: 0, duration: 0.3 });
       }
 
       state--;
@@ -671,7 +653,7 @@ export { panelStates };
  * Wire all systems: custom anims → case panel → click-reveal → interactions.
  * Deps injected to avoid circular imports and keep registry testable.
  */
-export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, Fib4Calc }) {
+export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal }) {
   for (const [id, fn] of Object.entries(customAnimations)) {
     anim.registerCustom(id, fn);
   }
@@ -706,22 +688,9 @@ export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, 
   document.querySelector('.reveal .slides')?.addEventListener('click', (e) => {
     if (tryRevealNext()) { e.preventDefault(); e.stopPropagation(); }
   });
-  const fib4Container = document.getElementById('panel-fib4');
-  if (fib4Container) new Fib4Calc(fib4Container);
-
-  const FIB4_SLIDE = 's-a1-02';
-  function syncFib4Visibility(slideId) {
-    fib4Container?.classList.toggle('fib4-visible', slideId === FIB4_SLIDE);
-  }
-
   Reveal.on('slidechanged', (e) => {
     const id = e.currentSlide?.id;
     const r = revealers.get(id);
     if (r) r.reset();
-    syncFib4Visibility(id);
   });
-  syncFib4Visibility(Reveal.getCurrentSlide()?.id);
-
-  const meldContainer = document.querySelector('[data-interaction="meld-calc"]');
-  if (meldContainer) new MeldCalc(meldContainer);
 }

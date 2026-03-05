@@ -14,7 +14,7 @@
     </div>
     <div class="panel-fields"></div>
     <div class="panel-events"></div>
-    <div class="panel-calc" id="panel-fib4"></div>
+    <div class="panel-calc-area"></div>
   </div>
 
   <div class="slides">
@@ -657,30 +657,37 @@ PAUSA 2s.
 </section>
 
 <!-- ============================================================
-     s-a1-fib4 — Calculadora FIB-4 interativa (full-slide)
-     Archetype: interactive
-     JS: Fib4CalcSlide (shared/js/interactions/fib4-calc-slide.js)
-     Pattern: segue MeldCalc — 4 inputs + score + bar semaforo
+     s-a1-fib4 — FIB-4: triagem com 4 variáveis do prontuário
+     Archetype: hero-stat (formula hero + cutoff zones)
+     Calc: sidebar panel (case-panel.js renderFib4)
      ============================================================ -->
 <section id="s-a1-fib4"
          data-timing="120"
          data-panel-state="neutral">
 
-  <div class="slide-inner archetype-interactive">
+  <div class="slide-inner archetype-hero-stat">
     <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-    <h2 class="slide-headline">FIB-4 e outras ferramentas</h2>
+    <h2 class="slide-headline">FIB-4 estratifica risco com 4 variáveis do prontuário</h2>
 
-    <div class="fib4s-formula">
-      <span class="fib4s-formula-text">(Idade × AST) / (PLQ × √ALT)</span>
-    </div>
+    <div class="hero-block">
+      <div class="fib4s-formula">
+        <span class="fib4s-formula-text">(Idade &times; AST) / (PLQ &times; &radic;ALT)</span>
+      </div>
 
-    <div class="interactive-area" data-interaction="fib4-calc-slide">
-      <!-- JS populates: 4 inputs (Idade, AST, PLQ, ALT) + result + semaphore bar -->
-    </div>
-
-    <div class="interactive-controls">
-      <button class="ctrl-btn ctrl-secondary" data-action="reset">Reset</button>
-      <button class="ctrl-btn ctrl-primary" data-action="load-case">Seu Antonio</button>
+      <div class="fib4-cutoffs">
+        <div class="fib4-cutoff fib4-cutoff--safe">
+          <span class="fib4-cutoff-val">&lt; 1,30</span>
+          <span class="fib4-cutoff-lbl">&check; Baixo risco — manter APS</span>
+        </div>
+        <div class="fib4-cutoff fib4-cutoff--warning">
+          <span class="fib4-cutoff-val">1,30 &ndash; 2,67</span>
+          <span class="fib4-cutoff-lbl">&#x26A0; Indeterminado — elastografia</span>
+        </div>
+        <div class="fib4-cutoff fib4-cutoff--danger">
+          <span class="fib4-cutoff-val">&gt; 2,67</span>
+          <span class="fib4-cutoff-lbl">&#x2717; Alto risco — encaminhar</span>
+        </div>
+      </div>
     </div>
 
     <p class="source-tag">Sterling RK et al. Hepatology 2006 PMID 16729309 · Baveno VII PMID 35120736</p>
@@ -692,9 +699,9 @@ PAUSA 2s.
 "A formula e simples: idade vezes AST, dividido por plaquetas vezes raiz de ALT."
 "Sterling publicou em 2006, e ate hoje e a triagem de primeira linha."
 
-[0:30-1:00] [CLICAR "Seu Antonio"]
+[0:30-1:00] [APONTAR PARA PAINEL LATERAL — clicar "Seu Antonio"]
 "Antonio: 54 anos, AST 68, plaquetas 112 mil, ALT 45."
-"FIB-4... 5,10. Vermelho. Alto risco. Precisa de elastografia."
+"FIB-4... 4,89. Vermelho. Alto risco. Precisa de elastografia."
 PAUSA 2s — deixar o resultado registrar.
 
 [1:00-1:30] "Notem os cortes: abaixo de 1,30 — baixo risco, mantem na APS.
@@ -708,7 +715,7 @@ conseguiu fazer em escala populacional."
 
 [DATA] FIB-4: Sterling RK et al. Hepatology 2006 (PMID 16729309) | Formula original | Verificado: evidence-db.md
 [DATA] Baveno VII: PMID 35120736 | FIB-4 como triagem em cACLD | Verificado: 2026-03-04
-[DATA] Antonio: 54a, AST 68, PLQ 112k, ALT 45 → FIB-4 5,10 | Caso ficticio
+[DATA] Antonio: 54a, AST 68, PLQ 112k, ALT 45 → FIB-4 4,89 | Caso ficticio
   </aside>
 </section>
 
@@ -870,36 +877,59 @@ precisa de rastreio de varizes, considerar NSBB."
   </aside>
 </section>
 
+<!-- ============================================================
+     s-a1-meld — MELD-Na: o GPS do cirrótico
+     Archetype: hero-stat (semáforo + inflection point)
+     Calc: sidebar panel (case-panel.js renderMeld)
+     ============================================================ -->
 <section id="s-a1-meld"
-        data-timing="150"
-        data-panel-state="neutral">
-    <div class="slide-inner archetype-interactive">
-      <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-      <h2 class="slide-headline">MELD-Na é o GPS do cirrótico — e tem um semáforo</h2>
+         data-timing="150"
+         data-panel-state="neutral">
 
-      <div class="interactive-area" data-interaction="meld-calc">
-        <!-- JS populates: 4 inputs (Bil, Cr, INR, Na) + result + semaphore bar -->
+  <div class="slide-inner archetype-hero-stat">
+    <p class="section-tag">ATO 1 — CLASSIFICAR</p>
+    <h2 class="slide-headline">MELD-Na é o GPS do cirrótico — e tem um semáforo</h2>
+
+    <div class="hero-block">
+      <div class="meld-semaphore">
+        <div class="meld-band meld-green">
+          <span class="meld-range">&lt; 15</span>
+          <span class="meld-action">&check; Acompanhar</span>
+        </div>
+        <div class="meld-band meld-yellow">
+          <span class="meld-range">15 &ndash; 19</span>
+          <span class="meld-action">&#x26A0; Encaminhar hepatologista</span>
+        </div>
+        <div class="meld-band meld-red">
+          <span class="meld-range">20 &ndash; 24</span>
+          <span class="meld-action">&#x2717; Planejar transplante</span>
+        </div>
+        <div class="meld-band meld-black">
+          <span class="meld-range">&ge; 25</span>
+          <span class="meld-action">&#x26A0;&#x26A0; URGÊNCIA</span>
+        </div>
       </div>
 
-      <div class="interactive-controls">
-        <button class="ctrl-btn ctrl-secondary" data-action="reset">Reset</button>
-        <button class="ctrl-btn ctrl-primary" data-action="load-case">Seu Antônio</button>
+      <div class="hero-context">
+        <strong>MELD &ge;18</strong> — ponto de inflexão para transplante
       </div>
-
-      <p class="source-tag">Mahmud et al. ACG 2025 [PMID TBD] · Northup Ann Surg 2005 PMID 16041215</p>
     </div>
-    <aside class="notes">
+
+    <p class="source-tag">Kamath PS Hepatology 2001 · Kim WR Hepatology 2008 · Mahmud et al. ACG 2025</p>
+  </div>
+
+  <aside class="notes">
 [0:00-0:30] "Vou mostrar a ferramenta que vocês vão usar toda semana."
 "O MELD-Na. Quatro variáveis: bilirrubina, creatinina, INR, sódio."
-[STAGING CUE: Apontar para os badges — pausar no sódio.]
+[STAGING CUE: Apontar para o painel lateral com a calculadora.]
 "O resultado é um número. E esse número é um semáforo."
 
-[0:30-1:00] [CLICAR "Seu Antônio"]
+[0:30-1:00] [CLICAR "Seu Antônio" NO PAINEL LATERAL]
 "Antônio: bilirrubina 1,8, creatinina 1,1, INR 1,3, sódio 136."
 "MELD-Na... 10. Semáforo verde. Acompanhar. Respira."
 PAUSA 3s — deixar o verde registrar.
 
-[1:00-1:30] [EDITAR Cr → 3,1]
+[1:00-1:30] [EDITAR Cr → 3,1 NO PAINEL]
 "Agora vou mudar UMA variável. Creatinina 3,1."
 "MELD-Na... 28. Semáforo vermelho. Planejar transplante."
 "UMA variável. É isso que a descompensação faz."
@@ -917,8 +947,8 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
 [DATA] MELD-Na: Kamath PS et al. Hepatology 2001; Kim WR et al. Hepatology 2008 (Na correction) | Verificado: 2026-03-04
 [DATA] Northup: Ann Surg 2005 (PMID 16041215) | MELD validation | Verificado: 2026-03-04
 [DATA] MELD ≥18 inflection: Mahmud et al. ACG 2025 [PMID TBD — buscar] | Verificado: pendente
-    </aside>
-  </section>
+  </aside>
+</section>
 
 <!-- ============================================================
      s-a1-classify — Classificar cedo (state machine, 4 estados)
@@ -2094,15 +2124,12 @@ PAUSA 2s.
   import { initAula, createAnimationDispatcher } from '../../shared/js/engine.js';
   import { ClickReveal } from '../../shared/js/click-reveal.js';
   import { CasePanel } from '../../shared/js/case-panel.js';
-  import { MeldCalc } from '../../shared/js/interactions/meld-calc.js';
-  import { Fib4Calc } from '../../shared/js/interactions/fib4-calc.js';
-  import { Fib4CalcSlide } from '../../shared/js/interactions/fib4-calc-slide.js';
   import { wireAll } from './slide-registry.js';
 
   const deck = await initAula(Reveal, gsap, { plugins: [Notes], width: 1280, height: 720 });
   window.Reveal = Reveal;
   const anim = createAnimationDispatcher(Reveal, gsap);
-  wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, Fib4Calc, Fib4CalcSlide });
+  wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal });
   anim.connect();
 </script>
 </body>

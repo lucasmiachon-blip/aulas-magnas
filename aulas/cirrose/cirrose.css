@@ -2224,16 +2224,45 @@
 
 /* (FIB-4 old styles removed — now uses shared .calc-* in archetypes.css) */
 
-/* FIB-4 formula line (kept — above the calc-split) */
+/* FIB-4 formula + cutoff zones */
 .fib4s-formula {
   text-align: center;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 .fib4s-formula-text {
   font-family: var(--font-mono);
-  font-size: var(--text-body);
-  color: var(--text-secondary);
+  font-size: var(--text-h2);
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
 }
+
+.fib4-cutoffs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: min(600px, 100%);
+  margin: 0 auto;
+}
+.fib4-cutoff {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+}
+.fib4-cutoff-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--text-h3);
+  min-width: 8ch;
+}
+.fib4-cutoff-lbl {
+  font-size: var(--text-body);
+}
+.fib4-cutoff--safe    { background: oklch(from var(--safe) l c h / 0.15); border-left: 4px solid var(--safe); }
+.fib4-cutoff--warning { background: oklch(from var(--warning) l c h / 0.15); border-left: 4px solid var(--warning); }
+.fib4-cutoff--danger  { background: oklch(from var(--danger) l c h / 0.15); border-left: 4px solid var(--danger); }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    Elastography Pathway (.elasto-*)

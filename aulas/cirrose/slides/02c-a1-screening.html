@@ -1,16 +1,15 @@
 <!-- ============================================================
-     s-a1-screening — Rastreamento cACLD (state machine, 5 estados)
+     s-a1-classify — Classificar cedo (state machine, 4 estados)
      Archetype: flow  |  Timing: 90s
      States:
        0 = gancho narrativo (auto) — fecha loop com 01-hook.html
-       1 = dado quantitativo (click) — 83% novos diagnósticos (PMID 38934697)
-       2 = quem rastrear (click) — critérios + Antônio highlight
-       3 = preview ferramentas (click) — FIB-4 e elastografia
-       4 = conexão Antônio + PREDESCI (click) — PMID 30910320
+       1 = dado quantitativo (click) — 83% novos diagnosticos (PMID 38934697)
+       2 = quem rastrear (click) — criterios + Antonio highlight
+       3 = conexao Antonio + PREDESCI (click) — PMID 30910320
      PMID 38934697: Prince DS et al. Hepatol Commun. 2024. Verificado 2026-03-04.
      PMID 30910320: Villanueva C. PREDESCI. Lancet. 2019. (evidence-db.md)
      ============================================================ -->
-<section id="s-a1-screening"
+<section id="s-a1-classify"
          data-timing="90"
          data-panel-state="neutral">
   <div class="slide-inner archetype-flow">
@@ -19,7 +18,7 @@
 
     <!-- TÍTULO: afirmação verificável — Alley model obrigatório -->
     <h2 class="slide-headline">
-      Cirrose compensada é silenciosa — o rastreio chegou antes dos sintomas
+      Classificar cedo muda desfecho — HR 0,51
     </h2>
 
     <!-- ESTADO 0: gancho narrativo (visível automaticamente no slidechanged) -->
@@ -56,21 +55,7 @@
       </div>
     </div>
 
-    <!-- ESTADO 3: preview das ferramentas (sem cutoffs — próximos slides) -->
-    <div class="screening-tools">
-      <div class="screening-tool-card">
-        <span class="tool-label">FIB-4</span>
-        <span class="tool-role">Triagem populacional</span>
-        <span class="tool-next">→ próximo slide</span>
-      </div>
-      <div class="screening-tool-card">
-        <span class="tool-label">Elastografia</span>
-        <span class="tool-role">Confirmação + Rule-of-5</span>
-        <span class="tool-next">→ slide seguinte</span>
-      </div>
-    </div>
-
-    <!-- ESTADO 4: conexão Antônio + âncora PREDESCI -->
+    <!-- ESTADO 3: conexão Antônio + âncora PREDESCI -->
     <!-- PMID 30910320 — PREDESCI, Villanueva 2019, carvedilol vs placebo, HR 0,51 (IC 95% 0,26–0,97) -->
     <!-- HR = Hazard Ratio do endpoint composto de descompensação (NÃO RR) -->
     <p class="screening-predesci-pill">
@@ -106,18 +91,13 @@ Critérios aparecem em stagger sequencial.
 "Antônio tem três: MASLD por NAFLD, álcool acima do corte, DM2."
 "Ele é o paciente para o qual esse protocolo foi desenhado."
 
-[1:05-1:20] [CLICK → estado 3, ferramentas]
-"As ferramentas vêm agora — FIB-4 para triagem, elastografia para confirmar."
-Dois cards aparecem com flipIn.
-"Os próximos dois slides detalham os cutoffs. Ainda não mostro os números."
-
-[1:20-1:30] [CLICK → estado 4, Antônio + PREDESCI]
-"E por que isso importa? Porque classificar cedo muda o desfecho."
+[1:05-1:20] [CLICK → estado 3, Antônio + PREDESCI]
+"E por que classificar cedo importa? Porque muda o desfecho."
 Pill PREDESCI aparece.
-"PREDESCI mostrou HR 0,51 — redução de 49% na descompensação."
-"PMID 30910320 — Villanueva, Lancet 2019. HR, não RR."
-"Antônio chegou a tempo. Isso é o slide."
-→ AVANÇAR para FIB-4
+"PREDESCI mostrou HR 0,51 — reducao de 49% na descompensacao."
+"PMID 30910320 — Villanueva, Lancet 2019. HR, nao RR."
+"Antonio chegou a tempo. Classificamos antes da descompensacao."
+→ AVANCAR para CP1
 
 [DATA] Screening cACLD: PMID 38934697 | Prince DS, Hepatol Commun 2024 | n=179 | 83% novos diagnósticos | Verificado: 2026-03-04
 [DATA] PREDESCI: PMID 30910320 | Villanueva, Lancet 2019 | HR 0,51 (IC 95% 0,26–0,97) | carvedilol vs placebo | Verificado: evidence-db.md

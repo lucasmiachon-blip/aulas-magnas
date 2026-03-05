@@ -1,33 +1,56 @@
+<!-- ============================================================
+     s-a1-meld — MELD-Na: o GPS do cirrótico
+     Archetype: hero-stat (semáforo + inflection point)
+     Calc: sidebar panel (case-panel.js renderMeld)
+     ============================================================ -->
 <section id="s-a1-meld"
-        data-timing="150"
-        data-panel-state="neutral">
-    <div class="slide-inner archetype-interactive">
-      <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-      <h2 class="slide-headline">MELD-Na é o GPS do cirrótico — e tem um semáforo</h2>
+         data-timing="150"
+         data-panel-state="neutral">
 
-      <div class="interactive-area" data-interaction="meld-calc">
-        <!-- JS populates: 4 inputs (Bil, Cr, INR, Na) + result + semaphore bar -->
+  <div class="slide-inner archetype-hero-stat">
+    <p class="section-tag">ATO 1 — CLASSIFICAR</p>
+    <h2 class="slide-headline">MELD-Na é o GPS do cirrótico — e tem um semáforo</h2>
+
+    <div class="hero-block">
+      <div class="meld-semaphore">
+        <div class="meld-band meld-green">
+          <span class="meld-range">&lt; 15</span>
+          <span class="meld-action">&check; Acompanhar</span>
+        </div>
+        <div class="meld-band meld-yellow">
+          <span class="meld-range">15 &ndash; 19</span>
+          <span class="meld-action">&#x26A0; Encaminhar hepatologista</span>
+        </div>
+        <div class="meld-band meld-red">
+          <span class="meld-range">20 &ndash; 24</span>
+          <span class="meld-action">&#x2717; Planejar transplante</span>
+        </div>
+        <div class="meld-band meld-black">
+          <span class="meld-range">&ge; 25</span>
+          <span class="meld-action">&#x26A0;&#x26A0; URGÊNCIA</span>
+        </div>
       </div>
 
-      <div class="interactive-controls">
-        <button class="ctrl-btn ctrl-secondary" data-action="reset">Reset</button>
-        <button class="ctrl-btn ctrl-primary" data-action="load-case">Seu Antônio</button>
+      <div class="hero-context">
+        <strong>MELD &ge;18</strong> — ponto de inflexão para transplante
       </div>
-
-      <p class="source-tag">Mahmud et al. ACG 2025 [PMID TBD] · Northup Ann Surg 2005 PMID 16041215</p>
     </div>
-    <aside class="notes">
+
+    <p class="source-tag">Kamath PS Hepatology 2001 · Kim WR Hepatology 2008 · Mahmud et al. ACG 2025</p>
+  </div>
+
+  <aside class="notes">
 [0:00-0:30] "Vou mostrar a ferramenta que vocês vão usar toda semana."
 "O MELD-Na. Quatro variáveis: bilirrubina, creatinina, INR, sódio."
-[STAGING CUE: Apontar para os badges — pausar no sódio.]
+[STAGING CUE: Apontar para o painel lateral com a calculadora.]
 "O resultado é um número. E esse número é um semáforo."
 
-[0:30-1:00] [CLICAR "Seu Antônio"]
+[0:30-1:00] [CLICAR "Seu Antônio" NO PAINEL LATERAL]
 "Antônio: bilirrubina 1,8, creatinina 1,1, INR 1,3, sódio 136."
 "MELD-Na... 10. Semáforo verde. Acompanhar. Respira."
 PAUSA 3s — deixar o verde registrar.
 
-[1:00-1:30] [EDITAR Cr → 3,1]
+[1:00-1:30] [EDITAR Cr → 3,1 NO PAINEL]
 "Agora vou mudar UMA variável. Creatinina 3,1."
 "MELD-Na... 28. Semáforo vermelho. Planejar transplante."
 "UMA variável. É isso que a descompensação faz."
@@ -45,5 +68,5 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
 [DATA] MELD-Na: Kamath PS et al. Hepatology 2001; Kim WR et al. Hepatology 2008 (Na correction) | Verificado: 2026-03-04
 [DATA] Northup: Ann Surg 2005 (PMID 16041215) | MELD validation | Verificado: 2026-03-04
 [DATA] MELD ≥18 inflection: Mahmud et al. ACG 2025 [PMID TBD — buscar] | Verificado: pendente
-    </aside>
-  </section>
+  </aside>
+</section>

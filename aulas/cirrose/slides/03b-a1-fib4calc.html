@@ -1,0 +1,62 @@
+<!-- ============================================================
+     s-a1-fib4 — FIB-4: triagem com 4 variáveis do prontuário
+     Archetype: hero-stat (formula hero + cutoff zones)
+     Calc: sidebar panel (case-panel.js renderFib4)
+     ============================================================ -->
+<section id="s-a1-fib4"
+         data-timing="120"
+         data-panel-state="neutral">
+
+  <div class="slide-inner archetype-hero-stat">
+    <p class="section-tag">ATO 1 — CLASSIFICAR</p>
+    <h2 class="slide-headline">FIB-4 estratifica risco com 4 variáveis do prontuário</h2>
+
+    <div class="hero-block">
+      <div class="fib4s-formula">
+        <span class="fib4s-formula-text">(Idade &times; AST) / (PLQ &times; &radic;ALT)</span>
+      </div>
+
+      <div class="fib4-cutoffs">
+        <div class="fib4-cutoff fib4-cutoff--safe">
+          <span class="fib4-cutoff-val">&lt; 1,30</span>
+          <span class="fib4-cutoff-lbl">&check; Baixo risco — manter APS</span>
+        </div>
+        <div class="fib4-cutoff fib4-cutoff--warning">
+          <span class="fib4-cutoff-val">1,30 &ndash; 2,67</span>
+          <span class="fib4-cutoff-lbl">&#x26A0; Indeterminado — elastografia</span>
+        </div>
+        <div class="fib4-cutoff fib4-cutoff--danger">
+          <span class="fib4-cutoff-val">&gt; 2,67</span>
+          <span class="fib4-cutoff-lbl">&#x2717; Alto risco — encaminhar</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="source-tag">Sterling RK et al. Hepatology 2006 PMID 16729309 · Baveno VII PMID 35120736</p>
+  </div>
+
+  <aside class="notes">
+[0:00-0:30] "Antes da elastografia, antes de qualquer equipamento — FIB-4."
+"Quatro numeros que voces ja tem no prontuario: idade, AST, plaquetas, ALT."
+"A formula e simples: idade vezes AST, dividido por plaquetas vezes raiz de ALT."
+"Sterling publicou em 2006, e ate hoje e a triagem de primeira linha."
+
+[0:30-1:00] [APONTAR PARA PAINEL LATERAL — clicar "Seu Antonio"]
+"Antonio: 54 anos, AST 68, plaquetas 112 mil, ALT 45."
+"FIB-4... 4,89. Vermelho. Alto risco. Precisa de elastografia."
+PAUSA 2s — deixar o resultado registrar.
+
+[1:00-1:30] "Notem os cortes: abaixo de 1,30 — baixo risco, mantem na APS.
+Entre 1,30 e 2,67 — indeterminado, pedir elastografia.
+Acima de 2,67 — alto risco, encaminhar."
+"Antonio nao esta no 'talvez'. Esta muito acima do corte."
+
+[1:30-2:00] "FIB-4 nao da diagnostico. Mas faz a triagem que a biopsia nunca
+conseguiu fazer em escala populacional."
+→ avancar para elastografia
+
+[DATA] FIB-4: Sterling RK et al. Hepatology 2006 (PMID 16729309) | Formula original | Verificado: evidence-db.md
+[DATA] Baveno VII: PMID 35120736 | FIB-4 como triagem em cACLD | Verificado: 2026-03-04
+[DATA] Antonio: 54a, AST 68, PLQ 112k, ALT 45 → FIB-4 4,89 | Caso ficticio
+  </aside>
+</section>

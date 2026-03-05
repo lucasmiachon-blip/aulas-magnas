@@ -660,18 +660,124 @@
   color: var(--text-secondary, #555);
 }
 
-/* --- FIB-4 Calculator (panel-calc) --- */
-.panel-calc { border-top: 1px solid var(--border, oklch(88% 0.005 258)); padding-top: 6px; margin-top: 4px; }
-#panel-fib4 { display: none; }
-#panel-fib4.fib4-visible { display: block; }
-.fib4-toggle { width: 100%; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 11px; font-weight: 600; color: var(--text-secondary); padding: 2px 0; }
-.fib4-body { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
-.fib4-row { display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--text-muted); gap: 4px; }
-.fib4-input { width: 56px; padding: 2px 4px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-family: var(--font-mono); background: var(--bg-surface); color: var(--text-primary); }
-.fib4-result { display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; padding-top: 4px; border-top: 1px solid var(--border); }
-.fib4-label { font-weight: 600; color: var(--text-secondary); }
-.fib4-score { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); }
-.fib4-interp { font-size: 9.5px; font-weight: 600; }
+/* --- Calc Panel (sidebar calculator area) --- */
+
+.case-panel.has-calc {
+  width: 220px;
+}
+.reveal.has-panel.has-calc-panel {
+  --panel-width: 260px;
+}
+
+.panel-calc-area {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border, oklch(88% 0.005 258));
+  padding-top: 8px;
+  margin-top: 4px;
+}
+.panel-calc-area.active {
+  display: flex;
+}
+
+.panel-calc-area .pcalc-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.panel-calc-area .pcalc-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.panel-calc-area .pcalc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.panel-calc-area .pcalc-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+}
+
+.panel-calc-area .pcalc-input {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 8px);
+  font-size: 14px;
+  font-family: var(--font-mono);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+.panel-calc-area .pcalc-input:focus {
+  outline: none;
+  border-color: var(--ui-accent);
+}
+
+.panel-calc-area .pcalc-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0 4px;
+  border-top: 1px solid var(--border);
+}
+
+.panel-calc-area .pcalc-score {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.panel-calc-area .pcalc-action {
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Zone colors on pcalc-result */
+.panel-calc-area .pcalc-result[data-zone="safe"] .pcalc-score { color: var(--safe); }
+.panel-calc-area .pcalc-result[data-zone="safe"] .pcalc-action { color: var(--safe); }
+.panel-calc-area .pcalc-result[data-zone="warning"] .pcalc-score { color: var(--warning-on-light); }
+.panel-calc-area .pcalc-result[data-zone="warning"] .pcalc-action { color: var(--warning-on-light); }
+.panel-calc-area .pcalc-result[data-zone="danger"] .pcalc-score { color: var(--danger); }
+.panel-calc-area .pcalc-result[data-zone="danger"] .pcalc-action { color: var(--danger); }
+.panel-calc-area .pcalc-result[data-zone="urgent"] { background: var(--bg-deep); border-radius: var(--radius-sm); }
+.panel-calc-area .pcalc-result[data-zone="urgent"] .pcalc-score { color: var(--text-on-dark); }
+.panel-calc-area .pcalc-result[data-zone="urgent"] .pcalc-action { color: var(--danger-on-dark); }
+
+.panel-calc-area .pcalc-case-btn {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid var(--ui-accent);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--ui-accent-light);
+  color: var(--ui-accent);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.panel-calc-area .pcalc-case-btn:hover {
+  background: var(--ui-accent);
+  color: var(--text-on-dark);
+}
 
 /* --- Appendix slides: full width (no panel) --- */
 section[id^="s-app"] .slide-inner {
@@ -690,6 +796,10 @@ section[id^="s-app"] .slide-inner {
   }
 
   .case-panel {
+    display: none !important;
+  }
+
+  .panel-calc-area {
     display: none !important;
   }
 
