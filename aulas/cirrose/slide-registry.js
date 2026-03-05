@@ -8,6 +8,7 @@
  */
 
 import { panelStates } from './slides/_manifest.js';
+import { getCurrentSlide } from '../../shared/js/deck.js';
 import { SplitText } from 'gsap/SplitText';
 import { Flip } from 'gsap/Flip';
 
@@ -356,6 +357,8 @@ export const customAnimations = {
       const postAnim = eraAnimMap[state];
 
       // Capture Era 4 formula layout BEFORE showEra fades it out (needed for Flip.from in Era 5)
+      // captura pré-fade — crítico para Flip.from: executa sync no mesmo call stack do keydown,
+      // antes que slide:changed dispare e inicie qualquer transição CSS.
       let preFlipState = null;
       if (state === 5) {
         const formulaBlock = slide.querySelector('.scores-era[data-era="4"] .scores-formula');
@@ -415,7 +418,8 @@ export const customAnimations = {
       gsap.set(spectrum, { opacity: 0 });
       gsap.set(bavRef, { opacity: 0 });
 
-      const tl = gsap.timeline({ delay: 1.5 });
+      // calibrado para --duration-normal 400ms (deck.js transition); era 1.5s com Reveal fade 600ms
+      const tl = gsap.timeline({ delay: 1.3 });
       tl.to(splitInstance.chars, {
         opacity: 0, y: -20, rotationX: 90,
         stagger: { each: 0.06, from: 'random' },
@@ -652,8 +656,9 @@ export { panelStates };
 /**
  * Wire all systems: custom anims → case panel → click-reveal → interactions.
  * Deps injected to avoid circular imports and keep registry testable.
+ * Reveal removed — uses deck.js events (slide:changed, slide:entered).
  */
-export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal }) {
+export function wireAll(gsap, { anim, CasePanel, ClickReveal }) {
   for (const [id, fn] of Object.entries(customAnimations)) {
     anim.registerCustom(id, fn);
   }
@@ -664,32 +669,28 @@ export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal }) {
     for (const [id, state] of Object.entries(panelStates)) {
       panel.registerState(id, state);
     }
-    panel.connect(document.querySelector('.slides'));
-    Reveal.on('slidechanged', (e) => panel.onSlideChanged(e.currentSlide));
-    const currentSlide = Reveal.getCurrentSlide();
+    panel.connect(document.getElementById('slide-viewport'));
+    document.addEventListener('slide:changed', (e) => panel.onSlideChanged(e.detail.currentSlide));
+    const currentSlide = getCurrentSlide();
     if (currentSlide) panel.onSlideChanged(currentSlide);
   }
 
   const revealers = new Map();
-  document.querySelectorAll('.slides > section').forEach((section) => {
+  document.querySelectorAll('#slide-viewport > section').forEach((section) => {
     if (section.querySelectorAll('[data-reveal]').length > 0) {
-      revealers.set(section.id, new ClickReveal(section, gsap));
+      const revealer = new ClickReveal(section, gsap);
+      revealers.set(section.id, revealer);
+      // Attach __clickRevealNext to section for deck.js navigate() to call
+      section.__clickRevealNext = () => {
+        if (revealer.hasMore) { revealer.next(); return true; }
+        return false;
+      };
     }
   });
-  function tryRevealNext() {
-    const revealer = revealers.get(Reveal.getCurrentSlide()?.id);
-    if (revealer && revealer.hasMore) { revealer.next(); return true; }
-    return false;
-  }
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowDown' && e.key !== ' ') return;
-    if (tryRevealNext()) { e.preventDefault(); e.stopPropagation(); }
-  }, true);
-  document.querySelector('.reveal .slides')?.addEventListener('click', (e) => {
-    if (tryRevealNext()) { e.preventDefault(); e.stopPropagation(); }
-  });
-  Reveal.on('slidechanged', (e) => {
-    const id = e.currentSlide?.id;
+
+  // Reset revealer on slide change (equivalent to Reveal slidechanged)
+  document.addEventListener('slide:changed', (e) => {
+    const id = e.detail.currentSlide?.id;
     const r = revealers.get(id);
     if (r) r.reset();
   });

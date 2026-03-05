@@ -1,7 +1,10 @@
 /**
- * Aulas Magnas — Engine v5
+ * Aulas Magnas — Engine v6
  * Declarative animation. Print-safe. Stage-aware.
+ * Reveal.js removed — uses deck.js custom events (slide:changed, slide:entered).
  */
+
+import { getCurrentSlide } from './deck.js';
 
 // ============================================
 // PRINT-PDF DETECTION
@@ -13,32 +16,6 @@ function isPrintPdf() {
 
 function isQaMode() {
   return new URLSearchParams(window.location.search).get('qa') === '1';
-}
-
-// ============================================
-// REVEAL INIT
-// ============================================
-export function initReveal(Reveal, config = {}) {
-  const qa = isQaMode();
-  return Reveal.initialize({
-    hash: !qa,
-    transition: qa ? 'none' : 'fade',
-    transitionSpeed: qa ? 'fast' : 'default',
-    slideNumber: 'c/t',
-    controls: !qa,
-    progress: !qa,
-    center: false,
-    width: 1920,
-    height: 1080,
-    margin: 0,
-    minScale: 0.1,
-    maxScale: 2.0,
-    backgroundTransition: qa ? 'none' : 'fade',
-    pdfSeparateFragments: false,
-    pdfMaxPagesPerSlide: 1,
-    showNotes: isPrintPdf() ? 'separate-page' : false,
-    ...config,
-  });
 }
 
 // ============================================
@@ -186,7 +163,7 @@ function animateSlide(gsap, slide) {
   });
 }
 
-export function createAnimationDispatcher(Reveal, gsap) {
+export function createAnimationDispatcher(gsap) {
   const contexts = new Map();
   let activeTimers = [];
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -206,7 +183,6 @@ export function createAnimationDispatcher(Reveal, gsap) {
     if (prefersReduced || printing || qa) {
       if ((printing || qa) && slide) {
         forceAnimFinalState(slide);
-        // QA: re-reveal [data-reveal] after ClickReveal.reset() in slidechanged
         if (qa) {
           slide.querySelectorAll('[data-reveal]').forEach(el => {
             el.classList.add('revealed');
@@ -229,55 +205,49 @@ export function createAnimationDispatcher(Reveal, gsap) {
 
   return {
     connect() {
-      // Track which slide has been animated to prevent double-execution.
-      // slidetransitionend doesn't fire for hash jumps, refresh, or instant
-      // navigation — the fallback timer handles those cases.
       let animatedSlide = null;
-      let fallbackTimer = null;
 
-      Reveal.on('slidechanged', (e) => {
-        cleanup(e.previousSlide);
-        animatedSlide = null; // reset for incoming slide
+      // slide:changed — cleanup previous slide (equivalent to Reveal slidechanged)
+      document.addEventListener('slide:changed', (e) => {
+        cleanup(e.detail.previousSlide);
+        animatedSlide = null;
 
         if (qa) {
-          // QA mode: transition='none' → slidetransitionend never fires.
-          // Use rAF to run AFTER ClickReveal.reset() (also on slidechanged).
-          requestAnimationFrame(() => animate(e.currentSlide, e.indexh));
-          return;
+          // QA mode: transition='none' equivalent — use rAF
+          requestAnimationFrame(() => animate(e.detail.currentSlide, e.detail.indexh));
         }
-
-        // Fallback: if slidetransitionend doesn't fire within 800ms
-        // (hash jump, refresh, instant navigation), animate anyway.
-        clearTimeout(fallbackTimer);
-        fallbackTimer = setTimeout(() => {
-          if (animatedSlide !== e.currentSlide) {
-            animate(e.currentSlide, e.indexh);
-            animatedSlide = e.currentSlide;
-          }
-        }, 800);
       });
 
       if (!qa) {
-        // Primary trigger: fires after CSS fade transition ends (~600ms).
-        Reveal.on('slidetransitionend', (e) => {
-          clearTimeout(fallbackTimer);
-          if (animatedSlide !== e.currentSlide) {
-            animate(e.currentSlide, e.indexh);
-            animatedSlide = e.currentSlide;
+        // slide:entered — primary trigger after CSS transition (equivalent to Reveal slidetransitionend)
+        document.addEventListener('slide:entered', (e) => {
+          if (animatedSlide !== e.detail.currentSlide) {
+            animate(e.detail.currentSlide, e.detail.indexh);
+            animatedSlide = e.detail.currentSlide;
           }
         });
       }
 
-      Reveal.on('ready', (e) => {
-        if (printing) {
-          // Force all slides to final state for PDF
-          document.querySelectorAll('.slides section').forEach(s => forceAnimFinalState(s));
-        } else if (!qa) {
-          animate(Reveal.getCurrentSlide(), e.indexh);
-          animatedSlide = Reveal.getCurrentSlide();
-        }
-        // QA setup runs in initAula() — ready event fires before connect()
-      });
+      // Initial slide animation (equivalent to Reveal ready event)
+      const initialSlide = getCurrentSlide();
+      if (printing) {
+        // Force all slides to final state for PDF
+        document.querySelectorAll('#slide-viewport > section').forEach(s => forceAnimFinalState(s));
+      } else if (!qa && initialSlide) {
+        animate(initialSlide, 0);
+        animatedSlide = initialSlide;
+      }
+
+      if (qa) {
+        // QA: force final state + reveal all [data-reveal]
+        document.querySelectorAll('#slide-viewport > section').forEach(s => forceAnimFinalState(s));
+        document.querySelectorAll('[data-reveal]').forEach(el => {
+          el.classList.add('revealed');
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          el.style.pointerEvents = 'auto';
+        });
+      }
     },
 
     trackTimer(id) { activeTimers.push(id); },
@@ -316,12 +286,8 @@ export function startCheckpointTimer(seconds, ringEl, textEl) {
 // MODES
 // ============================================
 
-function initHighContrastToggle(Reveal) {
-  // Use Reveal.addKeyBinding to avoid conflicting with overlay close
-  Reveal.addKeyBinding(
-    { keyCode: 67, key: 'C', description: 'Toggle alto contraste' },
-    () => { document.documentElement.classList.toggle('high-contrast'); }
-  );
+function initHighContrastToggle() {
+  // Handled by deck.js keydown (C key)
 }
 
 function initResidenciaMode() {
@@ -341,49 +307,11 @@ function initNoJs() {
 // ============================================
 // INIT
 // ============================================
-export async function initAula(Reveal, gsap, config = {}) {
+export function initAula(gsap, config = {}) {
   initResidenciaMode();
-  const deck = await initReveal(Reveal, config);
-  // Remove no-js AFTER Reveal confirmed working.
+  // Remove no-js after JS confirmed working.
   // If module imports fail, initAula() never executes → no-js stays
   // → CSS fallback shows all content at opacity:1 (graceful degradation).
   initNoJs();
-  initHighContrastToggle(Reveal); // Must be after init
-
-  // ── Hook beat interception ──────────────────────────
-  // Advance: ArrowRight/Space/PageDown (ArrowDown removido — causava "texto desce")
-  // Retreat: ArrowLeft/ArrowUp quando currentBeat > 0
-  function tryHookAdvance() {
-    const currentSlide = Reveal.getCurrentSlide();
-    if (currentSlide && currentSlide.__hookAdvance) return currentSlide.__hookAdvance();
-    return false;
-  }
-  function tryHookRetreat() {
-    const currentSlide = Reveal.getCurrentSlide();
-    if (currentSlide && currentSlide.__hookRetreat) return currentSlide.__hookRetreat();
-    return false;
-  }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-      if (tryHookAdvance()) { e.preventDefault(); e.stopImmediatePropagation(); }
-    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      if (tryHookRetreat()) { e.preventDefault(); e.stopImmediatePropagation(); }
-    }
-  }, true);
-  document.querySelector('.reveal .slides')?.addEventListener('click', (e) => {
-    if (tryHookAdvance()) { e.preventDefault(); e.stopPropagation(); }
-  });
-
-  // QA mode: force final state AFTER Reveal is ready (ready event already fired)
-  if (isQaMode()) {
-    document.querySelectorAll('.slides section').forEach(s => forceAnimFinalState(s));
-    document.querySelectorAll('[data-reveal]').forEach(el => {
-      el.classList.add('revealed');
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-      el.style.pointerEvents = 'auto';
-    });
-  }
-
-  return deck;
+  initHighContrastToggle();
 }
