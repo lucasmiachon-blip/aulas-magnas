@@ -6,7 +6,7 @@
   <title>Cirrose — Plano C</title>
 </head>
 <body class="stage-c">
-<div class="reveal">
+<div id="deck">
   <div class="case-panel hidden" id="case-panel" data-severity="neutral">
     <div class="panel-header">
       <div class="panel-dot"></div>
@@ -17,30 +17,28 @@
     <div class="panel-calc-area"></div>
   </div>
 
-  <div class="slides">
+  <div id="slide-viewport">
 %%SLIDES%%
   </div>
 </div>
 <script type="module">
-  import Reveal from 'reveal.js';
-  import Notes from 'reveal.js/plugin/notes/notes.esm.js';
   import gsap from 'gsap';
   import { SplitText } from 'gsap/SplitText';
   import { Flip } from 'gsap/Flip';
   gsap.registerPlugin(SplitText, Flip);
-  import 'reveal.js/dist/reveal.css';
   import '../../shared/css/base.css';
   import './cirrose.css';
   import './archetypes.css';
   import { initAula, createAnimationDispatcher } from '../../shared/js/engine.js';
+  import { initDeck } from '../../shared/js/deck.js';
   import { ClickReveal } from '../../shared/js/click-reveal.js';
   import { CasePanel } from '../../shared/js/case-panel.js';
   import { wireAll } from './slide-registry.js';
 
-  const deck = await initAula(Reveal, gsap, { plugins: [Notes], width: 1280, height: 720 });
-  window.Reveal = Reveal;
-  const anim = createAnimationDispatcher(Reveal, gsap);
-  wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal });
+  initDeck('#slide-viewport');
+  initAula(gsap);
+  const anim = createAnimationDispatcher(gsap);
+  wireAll(gsap, { anim, CasePanel, ClickReveal });
   anim.connect();
 </script>
 </body>
