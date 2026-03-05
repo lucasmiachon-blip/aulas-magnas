@@ -53,12 +53,15 @@ Conteúdo em markdown...
 |------|-------|--------|-----|
 | core-constraints | — | Sim | Documentação, CSS, Git, refator |
 | medical-data | — | Sim | Dados clínicos, NNT, HR, RR |
-| slide-editing | **/slides/**/*.html | Não | Edição HTML Cirrose |
+| slide-editing | **/slides/**/*.html | Não | Edição HTML slides |
 | plan-mode | — | Não | Tarefas multi-step |
-| design-principles | **/*.html,**/*.css | Não | Miller, Gestalt, Mayer, Tufte |
+| design-principles | **/*.html,**/*.css | Não | Miller, Gestalt, Mayer, Tufte, Duarte |
 | cirrose-design | **/*.css,**/*.html | Não | Tokens, cores, fontes |
+| design-system | **/*.css | Não | OKLCH tokens, semântica cores, tipografia |
+| motion-qa | **/*.js | Não | Heurísticas GSAP, timing, validação |
+| reveal-patterns | **/*.html,**/*.js | Não | Reveal.js, fragments, speaker notes, PDF |
+| css-errors | **/*.css | Não | 32 erros em 5 clusters |
 | notion-mcp | — | Não | Notion MCP, specs |
-| css-errors | **/*.css | Não | Erros comuns CSS |
 
 ---
 

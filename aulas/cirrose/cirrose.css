@@ -1667,3 +1667,458 @@
   letter-spacing: 0.02em;
   margin-top: var(--space-lg, 40px);
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   s-a1-screening — Slide de Rastreamento cACLD
+   States: 0=gancho 1=dado 83% 2=criterios 3=ferramentas 4=Antonio+PREDESCI
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* justify-content:center (do .slide-inner global) empurraria conteúdo oculto
+   (opacity:0 ainda ocupa espaço) para fora do topo — override para flex-start */
+#s-a1-screening .archetype-flow {
+  justify-content: flex-start;
+}
+/* Elementos ocultos inicialmente: não tomam espaço de layout (display:none).
+   JS os torna visíveis no avanço. Plan B/no-js: override para visível. */
+#s-a1-screening .screening-hero,
+#s-a1-screening .screening-criteria,
+#s-a1-screening .screening-tools,
+#s-a1-screening .screening-predesci-pill,
+#s-a1-screening .source-tag {
+  display: none;
+}
+.stage-bad #s-a1-screening .screening-hero,
+.no-js #s-a1-screening .screening-hero,
+.stage-bad #s-a1-screening .screening-tools,
+.no-js #s-a1-screening .screening-tools {
+  display: flex !important;
+  opacity: 1 !important;
+}
+.stage-bad #s-a1-screening .screening-criteria,
+.no-js #s-a1-screening .screening-criteria,
+.stage-bad #s-a1-screening .screening-predesci-pill,
+.no-js #s-a1-screening .screening-predesci-pill,
+.stage-bad #s-a1-screening .source-tag,
+.no-js #s-a1-screening .source-tag {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.screening-anchor {
+  padding: var(--space-sm) 0;
+}
+.screening-anchor-text {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  color: var(--text-primary);
+  font-weight: 400;
+}
+.screening-anchor-sub {
+  display: block;
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+.screening-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) 0;
+}
+.screening-hero-stat {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  color: var(--ui-accent);
+  line-height: 1;
+}
+.screening-hero-pct {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  color: var(--ui-accent);
+  line-height: 1;
+  margin-left: 2px;
+}
+.screening-hero-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 36ch;
+}
+.screening-criteria {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+.screening-criterion {
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.screening-criterion[data-highlight="antonio"] {
+  background: var(--ui-accent-light);
+  border-color: var(--ui-accent);
+  border-left-width: 3px;
+  font-weight: 600;
+}
+.screening-tools {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+  justify-content: center;
+}
+.screening-tool-card {
+  flex: 1;
+  max-width: 220px;
+  padding: var(--space-sm);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.screening-tool-card .tool-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-body);
+  color: var(--text-primary);
+}
+.screening-tool-card .tool-role {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+}
+.screening-tool-card .tool-next {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.screening-predesci-pill {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--safe-light);
+  border: 1px solid var(--safe);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--space-sm);
+  align-self: flex-start;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   s-a1-damico (escores) — Era track + era state machine
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#s-a1-damico .archetype-flow {
+  grid-template-rows: auto auto 1fr auto;
+}
+.scores-era-track {
+  position: relative;
+  flex: 1;
+  min-height: 240px;
+}
+.scores-era {
+  position: absolute;
+  inset: 0;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+/* Era 0 visible by default (before JS runs) */
+.scores-era[data-era="0"] { opacity: 1; }
+.scores-era:not([data-era="0"]) { opacity: 0; }
+/* Plan B + no-js: all eras visible, stacked */
+.stage-bad .scores-era-track,
+.no-js .scores-era-track {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-height: unset;
+}
+.stage-bad .scores-era,
+.no-js .scores-era {
+  position: static;
+  opacity: 1 !important;
+}
+
+/* Era badge */
+.scores-era-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  color: var(--ui-accent);
+  background: var(--ui-accent-light);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
+.scores-era-badge--alert {
+  color: var(--warning-on-light);
+  background: var(--warning-light);
+}
+.scores-era-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Era boxes (Child/CTP criteria) */
+.scores-era-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+.scores-era-box {
+  padding: 4px var(--space-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+.scores-era-box--new {
+  background: var(--ui-accent-light);
+  border-color: var(--ui-accent);
+  color: var(--ui-accent);
+  font-weight: 600;
+}
+.scores-era-box--clinical {
+  background: var(--warning-light);
+  border-color: var(--warning);
+  color: var(--warning-on-light);
+}
+
+/* CTP classes */
+.scores-ctp-classes {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+.ctp-class {
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+.ctp-class--a { background: var(--safe-light); color: var(--safe); }
+.ctp-class--b { background: var(--warning-light); color: var(--warning-on-light); }
+.ctp-class--c { background: var(--danger-light); color: var(--danger); }
+
+/* Formula */
+.scores-formula {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  margin-top: var(--space-xs);
+}
+.formula-term {
+  padding: 3px var(--space-xs);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+}
+.formula-term--new {
+  background: var(--ui-accent-light);
+  border-color: var(--ui-accent);
+  color: var(--ui-accent);
+  font-weight: 600;
+}
+.formula-term--highlight {
+  background: var(--ui-accent-light);
+  border-color: var(--ui-accent);
+  border-radius: var(--radius-sm);
+  padding: 3px var(--space-xs);
+}
+.formula-op {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* c-statistic display */
+.scores-cstat-block {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+.scores-cstat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+}
+.scores-cstat-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  color: var(--ui-accent);
+}
+.scores-cstat-ctx {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+}
+
+/* c-stat comparative (MELD 3.0) */
+.scores-cstat-compare {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+.cstat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.cstat-label { font-family: var(--font-body); font-size: var(--text-caption); color: var(--text-secondary); }
+.cstat-value { font-family: var(--font-mono); font-size: var(--text-h3); font-weight: 700; color: var(--text-secondary); }
+.cstat-value--new { color: var(--ui-accent); font-size: var(--text-h2); }
+.cstat-vs { font-family: var(--font-body); font-size: var(--text-caption); color: var(--text-muted); }
+
+/* Era labels */
+.scores-era-tag {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: var(--space-xs);
+}
+.scores-era-tag--danger { color: var(--danger); font-style: normal; font-weight: 600; }
+.scores-era-limitation {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--warning-on-light);
+  margin-top: var(--space-xs);
+}
+.scores-era-source {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* Alert box */
+.scores-alert-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--warning-light);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--warning-on-light);
+  font-weight: 600;
+  margin-top: var(--space-xs);
+  width: fit-content;
+}
+
+/* D'Amico datasets (Era 5) */
+.damico-dataset {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.damico-dataset-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  color: var(--ui-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.damico-dataset-source {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+}
+/* Era 5 pathway track: flex row scoped for damico-dataset context (archetypes.css scopes only .archetype-pathway) */
+.damico-dataset .pathway-track {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+  margin-top: 4px;
+}
+.damico-dataset .pathway-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 4px var(--space-xs);
+  border-radius: var(--radius-sm);
+  min-width: 0;
+}
+/* Compact era 5 to fit both 2006 + 2014 datasets in 720px */
+.scores-era[data-era="5"] { gap: 4px; }
+.damico-dataset .pathway-value { font-size: var(--text-small); font-weight: 700; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CTP Limitações — Estado 1 do novo 02b
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.scores-limitations {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--space-xs);
+}
+.limitation {
+  padding: 4px var(--space-sm);
+  background: var(--warning-light);
+  border-left: 3px solid var(--warning);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.limitation-detail {
+  display: block;
+  font-weight: 400;
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.limitation-source {
+  font-family: var(--font-mono);
+  opacity: 0.7;
+}
+.scores-transition {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+  margin-top: var(--space-sm);
+}
+
+/* Failsafe Plan B + no-js (usa !important para override de GSAP inline styles) */
+.no-js .scores-limitations, .stage-bad .scores-limitations,
+.no-js .limitation, .stage-bad .limitation,
+.no-js .scores-transition, .stage-bad .scores-transition {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.no-js .screening-hero, .stage-bad .screening-hero,
+.no-js .screening-criteria, .stage-bad .screening-criteria,
+.no-js .screening-tool-card, .stage-bad .screening-tool-card,
+.no-js .screening-predesci-pill, .stage-bad .screening-predesci-pill {
+  opacity: 1 !important;
+  transform: none !important;
+}

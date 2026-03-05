@@ -55,7 +55,6 @@ Claude.ai usa `HANDOFF-CLAUDE-AI.md` (paths + pendências). Projeto usa `HANDOFF
 | Arquivo | Mode | Theme | Resolução | Animação |
 |---------|------|-------|-----------|----------|
 | index.html | Plan C (default) | Light | 1280×720 | GSAP |
-| index.stage-b.html | Plan B | Light | 1280×720 | Nenhuma |
 
 **index.html** = build de `slides/*` + template. Plan C default. PORT 3000.
 

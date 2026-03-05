@@ -23,7 +23,6 @@
     "build:grade": "powershell -ExecutionPolicy Bypass -File aulas/grade/scripts/build-html.ps1",
     "build:osteoporose": "powershell -ExecutionPolicy Bypass -File aulas/osteoporose/scripts/build-html.ps1",
     "dev:osteoporose": "vite --open /aulas/osteoporose/index.html",
-    "transcribe": "node scripts/transcribe-lecture.js",
     "zip:ia": "./scripts/build-zip-limpo-ia.ps1"
   },
   "devDependencies": {

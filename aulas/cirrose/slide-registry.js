@@ -9,6 +9,7 @@
 
 import { panelStates } from './slides/_manifest.js';
 import { SplitText } from 'gsap/SplitText';
+import { Flip } from 'gsap/Flip';
 
 /* ────────────────────────────────────────────
    Shared helper: countUp for inline elements
@@ -116,99 +117,274 @@ export const customAnimations = {
     slide.__hookCurrentBeat = () => state;
   },
 
-  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     s-a1-damico — D'Amico staging (2006→2014→2024)
-     States: 0=auto 4 stages, 1=+stage 5, 2=overlay, 3=source
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  's-a1-damico': (slide, gsap) => {
-    let state = 0;
-    const maxState = 3;
-    let busy = false;
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-screening — Rastreamento cACLD (5 estados)
+     Era 0: gancho Antônio (auto)
+     Era 1: dado 83% + CountUp (click)
+     Era 2: critérios em stagger (click)
+     Era 3: ferramentas FIB-4 / Elastografia (click)
+     Era 4: Antônio + PREDESCI pill (click)
+     Plan B: todos os estados visíveis via CSS failsafe — retorna cedo
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-screening': (slide, gsap) => {
+    if (document.body.classList.contains('stage-bad')) return;
 
-    const contextBadge = slide.querySelector('.damico-badge--context');
-    const stages = slide.querySelectorAll('.pathway-stage:not(.pathway-stage--collapsed)');
-    const stage5 = slide.querySelector('.pathway-stage--collapsed');
-    const further = slide.querySelector('.damico-further');
+    let state = 0;
+    const maxState = 4;
+
+    const hero = slide.querySelector('.screening-hero');
+    const criteria = slide.querySelector('.screening-criteria');
+    const tools = slide.querySelector('.screening-tools');
+    const pill = slide.querySelector('.screening-predesci-pill');
     const sourceTag = slide.querySelector('.source-tag');
 
-    // Auto-play: badge fades in, then stagger 4 stages + countUp
-    if (contextBadge) {
-      gsap.to(contextBadge, { opacity: 1, duration: 0.4, delay: 0.1, ease: 'power2.out' });
+    // Reset state on every slide entry (inline styles from prev visits override CSS)
+    [hero, criteria, tools, pill, sourceTag].forEach(el => {
+      if (!el) return;
+      el.style.display = 'none';
+      el.style.opacity = '';
+    });
+
+    // Helper: reveal an element that starts as display:none
+    // Justificativa: display:none elimina impacto no layout (não empurra conteúdo visível)
+    function showEl(el, displayVal, animFrom, animTo, onDone) {
+      if (!el) return;
+      el.style.display = displayVal;
+      gsap.fromTo(el, { opacity: 0, ...animFrom }, { opacity: 1, duration: 0.5, ease: 'power2.out', ...animTo, onComplete: onDone });
+    }
+    function hideEl(el) {
+      if (!el) return;
+      gsap.to(el, { opacity: 0, duration: 0.3, onComplete: () => { el.style.display = 'none'; } });
     }
 
-    const stageEls = Array.from(stages);
-    gsap.set(stageEls, { opacity: 0, y: 24 });
-    gsap.to(stageEls, {
-      opacity: 1, y: 0,
-      duration: 0.5,
-      stagger: 0.15,
-      delay: 0.2,
-      ease: 'power3.out',
-    });
-
-    // CountUp on mortality percentages in stages 1-4
-    stageEls.forEach((s, i) => {
-      const valEl = s.querySelector('[data-countup]');
-      if (!valEl) return;
-      const raw = (valEl.dataset.target || '').replace(',', '.');
-      const target = parseFloat(raw);
-      if (isNaN(target)) return;
-      inlineCountUp(gsap, valEl, target, 1, 0.4 + i * 0.15);
-    });
-
-    // Dividers animate in
-    const dividers = slide.querySelectorAll('.pathway-divider');
-    gsap.set(dividers, { scaleY: 0 });
-    gsap.to(dividers, { scaleY: 1, duration: 0.6, delay: 0.8, stagger: 0.2, ease: 'power2.out' });
+    // State 0: gancho narrativo — fadeUp (auto on slidechanged)
+    const anchor = slide.querySelector('.screening-anchor');
+    if (anchor) {
+      gsap.from(anchor, { opacity: 0, y: 16, duration: 0.6, delay: 0.3, ease: 'power2.out' });
+    }
 
     function advance() {
-      if (busy || state >= maxState) return false;
+      if (state >= maxState) return false;
       state++;
 
       if (state === 1) {
-        busy = true;
-        // Stage 5 grows from collapsed
-        gsap.to(stage5, {
-          flex: 1,
-          opacity: 1,
-          padding: 'var(--space-sm) var(--space-xs)',
-          duration: 0.7,
-          ease: 'power2.out',
-          onStart() {
-            stage5.style.overflow = 'visible';
-            stage5.style.width = 'auto';
-          },
-          onComplete() { busy = false; },
-        });
-        // CountUp on stage 5
-        const val5 = stage5.querySelector('[data-countup]');
-        if (val5) {
-          const raw = (val5.dataset.target || '').replace(',', '.');
-          inlineCountUp(gsap, val5, parseFloat(raw), 1, 0.4);
+        // CountUp justificativa: dado central da persuasão — número crescendo = impacto cognitivo
+        showEl(hero, 'flex', { y: 12 }, { y: 0 });
+        const statEl = hero?.querySelector('[data-target]');
+        if (statEl) {
+          statEl.textContent = '0';
+          inlineCountUp(gsap, statEl, parseFloat(statEl.dataset.target), 1.4, 0.3);
         }
       }
 
       if (state === 2) {
-        busy = true;
-        // Dim stages 1-2, glow stages 3-5
-        stageEls.slice(0, 2).forEach(s => {
-          gsap.to(s, { opacity: 0.4, duration: 0.5 });
-        });
-        stageEls.slice(2).forEach(s => {
-          s.style.animation = 'damico-danger-glow 2s ease infinite';
-        });
-        if (stage5) stage5.style.animation = 'damico-danger-glow 2s ease infinite';
-
-        // Further decompensation overlay
-        gsap.to(further, {
-          opacity: 1, duration: 0.5, delay: 0.2, ease: 'power2.out',
-          onComplete() { busy = false; },
-        });
+        // Stagger justificativa: cada critério é uma revelação separada — impede leitura antecipada
+        showEl(criteria, 'flex');
+        const items = criteria?.querySelectorAll('.screening-criterion');
+        if (items?.length) {
+          gsap.from(items, {
+            opacity: 0, y: 12, duration: 0.35, stagger: 0.18, delay: 0.15, ease: 'power3.out',
+          });
+        }
       }
 
       if (state === 3) {
-        gsap.to(sourceTag, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+        // flipIn justificativa: dois cards = dois atos narrativos, flip diferencia do stagger anterior
+        showEl(tools, 'flex');
+        const cards = tools?.querySelectorAll('.screening-tool-card');
+        if (cards?.length) {
+          gsap.from(cards, {
+            opacity: 0, rotationY: -25, duration: 0.45, stagger: 0.15, delay: 0.1, ease: 'power2.out',
+          });
+        }
       }
+
+      if (state === 4) {
+        showEl(pill, 'inline-block');
+        showEl(sourceTag, 'block', {}, { delay: 0.1 });
+      }
+
+      return true;
+    }
+
+    function retreat() {
+      if (state <= 0) return false;
+
+      if (state === 4) { hideEl(pill); hideEl(sourceTag); }
+      if (state === 3) hideEl(tools);
+      if (state === 2) hideEl(criteria);
+      if (state === 1) {
+        hideEl(hero);
+        const statEl = hero?.querySelector('[data-target]');
+        if (statEl) statEl.textContent = '0';
+      }
+
+      state--;
+      return true;
+    }
+
+    slide.__hookAdvance = advance;
+    slide.__hookRetreat = retreat;
+    slide.__hookCurrentBeat = () => state;
+  },
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-damico — Escores Prognósticos (6 eras)
+     Era 0: Child 1964 (auto) — boxes stagger
+     Era 1: CTP 1973 (click) — boxes + limitations stagger sequencial
+     Era 2: MELD 2001 (click) — formula stagger + c-stat CountUp
+     Era 3: MELD-Na 2006 (click) — highlight no termo sódio
+     Era 4: MELD 3.0 2021 (click) — dual CountUp c-stat
+     Era 5: D'Amico (click) — dois datasets, CountUp estágios
+     Plan B: todos eras visíveis via CSS failsafe — retorna cedo
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-damico': (slide, gsap) => {
+    if (document.body.classList.contains('stage-bad')) return;
+
+    let state = 0;
+    const maxState = 5;
+    let busy = false;
+
+    const eras = slide.querySelectorAll('.scores-era');
+    const sourceTag = slide.querySelector('.source-tag');
+
+    // Reset all eras on slide entry (GSAP inline opacity overrides CSS on re-entry)
+    eras.forEach((era, i) => gsap.set(era, { opacity: i === 0 ? 1 : 0 }));
+    if (sourceTag) gsap.set(sourceTag, { opacity: 0 });
+
+    // Helpers: swap visible era
+    function showEra(idx, onComplete) {
+      eras.forEach(e => {
+        if (parseFloat(getComputedStyle(e).opacity) > 0.01) {
+          gsap.to(e, { opacity: 0, duration: 0.3 });
+        }
+      });
+      const target = slide.querySelector(`.scores-era[data-era="${idx}"]`);
+      if (!target) { busy = false; return; }
+      gsap.to(target, {
+        opacity: 1, duration: 0.45, delay: 0.35, ease: 'power2.out',
+        onComplete: onComplete || (() => { busy = false; }),
+      });
+    }
+
+    // Era 0 auto: stagger boxes
+    const era0Boxes = slide.querySelectorAll('.scores-era[data-era="0"] .scores-era-box');
+    gsap.set(era0Boxes, { opacity: 0, y: 16 });
+    gsap.to(era0Boxes, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12, delay: 0.3, ease: 'power2.out' });
+
+    // Pre-set limitation elements for era 1 so they start hidden (Plan A/C only)
+    const limitations = slide.querySelectorAll('.scores-era[data-era="1"] .limitation');
+    gsap.set(limitations, { opacity: 0, x: -16 });
+
+    function runEra1Anims() {
+      // CTP boxes stagger
+      const ctp = slide.querySelectorAll('.scores-era[data-era="1"] .scores-era-box');
+      gsap.set(ctp, { opacity: 0, y: 12 });
+      gsap.to(ctp, { opacity: 1, y: 0, duration: 0.35, stagger: 0.1, delay: 0.1, ease: 'power2.out' });
+      // CTP classes
+      const classes = slide.querySelectorAll('.scores-era[data-era="1"] .ctp-class');
+      gsap.set(classes, { opacity: 0 });
+      gsap.to(classes, { opacity: 1, duration: 0.3, stagger: 0.12, delay: 0.6, ease: 'power2.out' });
+      // Limitations stagger: cada limitação é uma revelação pedagógica separada
+      // Justificativa: professor diz "quatro problemas" → lista aparece um a um, sem correr
+      gsap.to(limitations, {
+        opacity: 1, x: 0, duration: 0.4, stagger: 0.28, delay: 0.9, ease: 'power2.out',
+      });
+      // Transição narrativa no final
+      const transition = slide.querySelector('.scores-transition');
+      if (transition) {
+        gsap.to(transition, { opacity: 1, duration: 0.4, delay: 0.9 + limitations.length * 0.28 + 0.3 });
+      }
+    }
+
+    function runEra2Anims() {
+      const terms = slide.querySelectorAll('.scores-era[data-era="2"] .formula-term');
+      gsap.set(terms, { opacity: 0, y: 10 });
+      gsap.to(terms, { opacity: 1, y: 0, duration: 0.35, stagger: 0.15, delay: 0.1, ease: 'power2.out' });
+      const cstatEl = slide.querySelector('.scores-era[data-era="2"] .scores-cstat-value');
+      if (cstatEl) {
+        inlineCountUp(gsap, cstatEl, parseFloat(cstatEl.dataset.target), 1.2, 0.8);
+      }
+    }
+
+    function runEra3Anims() {
+      // Highlight no termo sódio: justificativa = o único termo NOVO no MELD-Na
+      const sodiumTerm = slide.querySelector('[data-meldna-sodium]');
+      if (sodiumTerm) {
+        gsap.fromTo(sodiumTerm,
+          { backgroundColor: 'transparent' },
+          { backgroundColor: 'var(--ui-accent-light)', color: 'var(--ui-accent)', duration: 0.6, delay: 0.4, ease: 'power2.out' }
+        );
+      }
+    }
+
+    function runEra4Anims() {
+      const terms = slide.querySelectorAll('.scores-era[data-era="4"] .formula-term--new');
+      gsap.set(terms, { opacity: 0, y: 10 });
+      gsap.to(terms, { opacity: 1, y: 0, duration: 0.35, stagger: 0.15, delay: 0.1, ease: 'power2.out' });
+      // Dual CountUp: MELD 3.0 vs MELD-Na — comparação visual simultânea
+      const cstatEls = slide.querySelectorAll('.scores-era[data-era="4"] .cstat-value');
+      cstatEls.forEach((el, i) => {
+        const t = parseFloat(el.dataset.target);
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: t, duration: 1.2, delay: 0.4 + i * 0.15, ease: 'power2.out',
+          onUpdate() {
+            el.textContent = obj.val.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+          },
+        });
+      });
+    }
+
+    function runEra5Anims(preFlipState) {
+      const datasets = slide.querySelectorAll('.scores-era[data-era="5"] .damico-dataset');
+
+      function fireCountUps() {
+        // CountUp em todos os pathway-value[data-target] da era 5
+        const vals = slide.querySelectorAll('.scores-era[data-era="5"] .pathway-value[data-target]');
+        vals.forEach((el, i) => {
+          inlineCountUp(gsap, el, parseFloat(el.dataset.target), 1, 0.15 + i * 0.08);
+        });
+        if (sourceTag) gsap.to(sourceTag, { opacity: 1, duration: 0.4, delay: 0.9 });
+      }
+
+      if (preFlipState) {
+        // Flip.from: datasets animam DE onde estava a fórmula do Era 4 PARA suas posições naturais
+        Flip.from(preFlipState, {
+          targets: datasets,
+          duration: 0.5,
+          ease: 'power2.inOut',
+          stagger: 0.15,
+          onComplete: fireCountUps,
+        });
+      } else {
+        // Fallback: stagger simples (Plan B retorna cedo, este branch é safety net para Plan C sem preFlipState)
+        gsap.from(datasets, {
+          opacity: 0, y: 20, stagger: 0.15, duration: 0.4, ease: 'power2.out',
+          onComplete: fireCountUps,
+        });
+      }
+    }
+
+    function advance() {
+      if (busy || state >= maxState) return false;
+      state++;
+      busy = true;
+
+      const eraAnimMap = [null, runEra1Anims, runEra2Anims, runEra3Anims, runEra4Anims, runEra5Anims];
+      const postAnim = eraAnimMap[state];
+
+      // Capture Era 4 formula layout BEFORE showEra fades it out (needed for Flip.from in Era 5)
+      let preFlipState = null;
+      if (state === 5) {
+        const formulaBlock = slide.querySelector('.scores-era[data-era="4"] .scores-formula');
+        if (formulaBlock) preFlipState = Flip.getState(formulaBlock);
+      }
+
+      showEra(state, () => {
+        busy = false;
+        if (postAnim) postAnim(preFlipState);
+      });
 
       return true;
     }
@@ -216,40 +392,14 @@ export const customAnimations = {
     function retreat() {
       if (busy || state <= 0) return false;
 
-      if (state === 3) {
-        gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
-      }
-
-      if (state === 2) {
-        busy = true;
-        // Restore all stages
-        stageEls.forEach(s => {
-          gsap.to(s, { opacity: 1, duration: 0.4 });
-          s.style.animation = '';
-        });
-        if (stage5) stage5.style.animation = '';
-        gsap.to(further, {
-          opacity: 0, duration: 0.3,
-          onComplete() { busy = false; },
-        });
-      }
-
-      if (state === 1) {
-        busy = true;
-        // Collapse stage 5
-        gsap.to(stage5, {
-          flex: 0, opacity: 0, padding: 0,
-          duration: 0.5,
-          ease: 'power2.in',
-          onComplete() {
-            stage5.style.overflow = 'hidden';
-            stage5.style.width = '0';
-            busy = false;
-          },
-        });
-      }
+      if (state === 5 && sourceTag) gsap.to(sourceTag, { opacity: 0, duration: 0.2 });
 
       state--;
+      busy = true;
+
+      // On retreat: show previous era (content stays at whatever opacity was achieved)
+      showEra(state, () => { busy = false; });
+
       return true;
     }
 

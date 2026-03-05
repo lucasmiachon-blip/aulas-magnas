@@ -38,6 +38,14 @@
 
 ---
 
+## Issues Sistêmicos (referência para seção de scoring)
+
+- **SYS-1: Case panel clipping** — Conteúdo clipado/truncado pelo case panel (14+ slides). Fix canônico: S1+S2.
+- **SYS-2: Fill ratio <60%** — Espaço vazio >40% (28+ slides). Fix canônico: S3.
+- **SYS-3: Hero typography undersized** — Número/dado hero em `--text-h1` em vez de `--text-hero` (8+ slides). Fix canônico: S4.
+
+---
+
 ## Rubrica de Scoring
 
 | Dim | Nome | 1 (Crítico) | 3 (Aceitável) | 5 (Referência AASLD) |
@@ -62,13 +70,9 @@
 | 2 | 3 | 2 | 3 | 1 | 3 | 2 | 3 | **2.4** |
 
 **Veredicto:** ⛔ FAIL
-**Issues:**
-1. [E] >55% espaço vazio — slide de título precisa de hero visual ou bg impactante, não cinza liso
-2. [V] Zero visuais — apenas texto em fundo cinza claro; sem imagem, ícone, gradiente ou qualquer elemento visual
-3. [H] Sem hierarquia clara — título e subtítulo competem em peso visual; falta Von Restorff
-4. [S] Parece slide genérico de template — sem identidade visual do evento/palestrante
-
-**Fix:** Adicionar bg-navy com gradiente sutil OU imagem de fundo (fígado estilizado). Título em --font-display hero size. Subtítulo menor, --text-on-dark-muted.
+1. [V] Zero visuais — fundo cinza liso sem imagem, ícone ou gradiente
+2. [H] Título e subtítulo competem; sem Von Restorff
+**Fix:** I1 (bg-navy + hero typography)
 
 ---
 
@@ -78,12 +82,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 3 | 4 | 4 | 3 | 4 | **3.4** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [H] Headline ocupa ~40% da largura; evidence card compete por atenção com a figure
-2. [E] Figura Villanueva bem posicionada mas margem direita perdida para case panel
-
-**Fix:** Expandir figure para usar largura total disponível. Evidence card pode ir abaixo da figure em vez de lateral.
+**Veredicto:** ⚠️ WARN — SYS-1 (figure margem perdida)
+1. [H] Headline ocupa ~40% largura; evidence card compete com figure
+**Fix:** S1+S2
 
 ---
 
@@ -94,11 +95,9 @@
 | 3 | 3 | 3 | 3 | 4 | 3 | 3 | 4 | **3.3** |
 
 **Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] Figura de paper densa — ocupação boa mas precisa de anotação/destaque para guiar olho
-2. [H] Headline em 2 linhas longas; poderia ser mais concisa
-
-**Fix:** Adicionar overlay highlight na parte relevante da figura. Considerar crop da figure para focar na seção CSPH.
+1. [V] Figura de paper densa — sem anotação/destaque para guiar olho
+2. [H] Headline 2 linhas longas; poderia ser mais concisa
+**Fix:** Overlay highlight na seção CSPH; crop da figure
 
 ---
 
@@ -111,9 +110,7 @@
 | 4 | 3 | 3 | 4 | 3 | 4 | 4 | 4 | **3.6** |
 
 **Veredicto:** ⚠️ WARN (melhorou)
-**Melhorias v4:** 3 estágios com sucesso, retreatBeat (ERRO-010), ArrowDown removido (ERRO-011), place-content center (ERRO-013), affordance de navegação.
-**Reconfig v4 (28/fev):** Título + progress no header; fill ratio beat 2 melhorado.
-**Issues pendentes:**
+**Melhorias v4:** 3 estágios com sucesso, retreatBeat (ERRO-010), ArrowDown removido (ERRO-011), place-content center (ERRO-013).
 1. [E] Case panel redundante (ERRO-008)
 
 ---
@@ -124,12 +121,8 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 2 | 4 | 4 | 4 | 4 | 4 | **3.5** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] **CRÍTICO** — Case panel clipando MELD calculator: "SÓDIO" cortado, barra de zonas cortada à direita
-2. [E] Interactive area não preenche largura disponível
-
-**Fix:** MELD calc max-width precisa respeitar a presença do case panel (calc(100% - 210px) ou similar). Ou esconder panel neste slide.
+**Veredicto:** ⚠️ WARN — SYS-1 (MELD calculator: "SÓDIO" cortado, barra de zonas truncada), SYS-2
+**Fix:** S1+S2
 
 ---
 
@@ -139,13 +132,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
 
-**Veredicto:** ⚠️ WARN (limite)
-**Issues:**
-1. [V] Apenas 2 de 3 barras PREDICT visíveis — barra "Álcool" ausente (stagger incompleto?)
-2. [E] >40% espaço vazio abaixo das barras
-3. [H] Barras pequenas demais para o espaço disponível — sem hero impact
-
-**Fix:** Garantir 3 barras renderizadas. Expandir barras para usar mais altura. Números em --font-mono hero size como overlay nas barras.
+**Veredicto:** ⚠️ WARN — SYS-2, SYS-3
+1. [V] Apenas 2 de 3 barras PREDICT visíveis — barra "Álcool" ausente (stagger incompleto)
+**Fix:** I3 + S3
 
 ---
 
@@ -155,13 +144,10 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
 
-**Veredicto:** ⚠️ WARN (limite)
-**Issues:**
+**Veredicto:** ⚠️ WARN — SYS-1 (coluna truncada)
 1. [V] Apenas 3 de 10 etiologias visíveis — tabela severamente incompleta
-2. [E] Texto "Resmetirom não cobre..." truncado pela borda direita/panel
-3. [M] Headline promete "10 doenças" mas corpo mostra apenas 3 — contradição
-
-**Fix:** Tabela precisa de layout compacto que mostre todas 10 etiologias. Considerar 2 colunas ou grid 2×5. Reduzir font-size se necessário.
+2. [M] Headline promete "10 doenças" mas corpo mostra apenas 3 — contradição
+**Fix:** I4 + S1
 
 ---
 
@@ -171,12 +157,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 3 | 3 | 4 | 3 | 4 | **3.3** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] Decision options text truncado pelo case panel — "Encefalopatia?" answer cortada
-2. [E] Case-expanded card com 2-column grid funciona, mas dados Na/MELD sem valores visíveis
-
-**Fix:** Checkpoint layout precisa de max-width que respeite panel. Decision options precisam de overflow-wrap.
+**Veredicto:** ⚠️ WARN — SYS-1 (decision options truncadas), SYS-2
+1. [E] Case card com Na/MELD-Na sem valores visíveis
+**Fix:** S1+S2
 
 ---
 
@@ -186,12 +169,8 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 2 | 3 | 3 | 4 | 3 | 4 | **3.1** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] **CRÍTICO** — Apenas 2 de 3 metric cards visíveis; 3º card (Dose) clipado pelo case panel
-2. [V] Metric cards são funcionais mas pequenos demais para o espaço — não "pop"
-
-**Fix:** Metric row precisa de max-width responsivo ao panel. Cards devem ser maiores com --text-hero no valor principal.
+**Veredicto:** ⚠️ WARN — SYS-1 (3º card Dose clipado), SYS-3
+**Fix:** S1 + S4
 
 ---
 
@@ -201,12 +180,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 3 | 4 | 3 | 3 | 4 | **3.3** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] Timeline 4 passos — um dos melhores layouts, mas ainda ~35% vazio abaixo
-2. [H] Timeline steps todos do mesmo tamanho — falta Von Restorff no "TIPS ≤72h"
-
-**Fix:** Destacar step "TIPS ≤72h" com tamanho 1.5× e cor --safe. Expandir timeline para usar mais espaço vertical.
+**Veredicto:** ⚠️ WARN — SYS-2 (~35% vazio)
+1. [H] Timeline steps mesmo tamanho — falta Von Restorff no "TIPS ≤72h"
+**Fix:** S3 + destacar "TIPS ≤72h" com 1.5× e --safe
 
 ---
 
@@ -216,13 +192,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 3 | 3 | 3 | 4 | **2.9** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] **CRÍTICO** — 4º card (ATTIRE "armadilha") ausente/clipado pelo case panel — perda de conteúdo clínico crítico
-2. [V] 3 cards visíveis OK (SBP, HRS, dose), mas headline promete "1 armadilha" que não aparece
-3. [M] Contradição: headline fala de 4 itens, corpo mostra 3
-
-**Fix:** 4 cards em grid 2×2 ao invés de row horizontal. Garantir ATTIRE card visível com --danger styling.
+**Veredicto:** ⚠️ WARN — SYS-1 (4º card ATTIRE ausente/clipado)
+1. [M] Headline fala em "1 armadilha" mas ATTIRE card não aparece — contradição
+**Fix:** I5 + S1
 
 ---
 
@@ -232,12 +204,8 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 2 | 3 | 3 | 3 | 3 | 4 | **3.0** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] 3º step do flow ("2ária: norfloxac...") truncado pelo case panel
-2. [E] Flow ocupa ~50% da largura disponível; muito vazio à direita e abaixo
-
-**Fix:** Flow steps precisam de max-width responsivo. Expandir para usar mais espaço.
+**Veredicto:** ⚠️ WARN — SYS-1 (3º step truncado), SYS-2
+**Fix:** S1 + S3
 
 ---
 
@@ -247,13 +215,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 4 | **3.1** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] 3 numbered items — layout funcional mas ~40% vazio abaixo
-2. [V] Items são texto puro em cards brancos — sem iconografia ou cor semântica
-3. [H] "Elastografia realizada" no case panel parece deslocado (overlapping com content area?)
-
-**Fix:** Items poderiam ter ícones (✓ gatilho, ? NTA, ✕ futilidade) e cores semânticas (safe/warning/danger). Expandir cards verticalmente.
+**Veredicto:** ⚠️ WARN — SYS-2 (~40% vazio)
+1. [V] Items texto puro em cards brancos — sem iconografia ou cor semântica (✓/⚠/✕)
+**Fix:** S3 + ícones semânticos (safe/warning/danger)
 
 ---
 
@@ -263,14 +227,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
 
-**Veredicto:** ⚠️ WARN (limite)
-**Issues:**
-1. [V] **CRÍTICO** — 3º pilar (Nutrição) completamente invisível — clipado pelo case panel
-2. [E] Apenas 2 cards visíveis de 3 prometidos na headline
-3. [M] Headline fala "lactulose + rifaximina + nutrição" mas nutrição não aparece
-4. [E] >45% espaço vazio
-
-**Fix:** 3 pilares em grid 1×3 com max-width responsivo. Ou empilhar 3 verticalmente.
+**Veredicto:** ⚠️ WARN — SYS-1 (3º pilar Nutrição completamente invisível), SYS-2
+1. [M] Headline fala "lactulose + rifaximina + nutrição" mas nutrição não aparece
+**Fix:** I6 + S1
 
 ---
 
@@ -280,13 +239,10 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 4 | 3 | 4 | 3 | 4 | **3.4** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [C] Danger red tinting funciona bem — semântica clara
-2. [E] Case card com Na e MELD-Na sem valores visíveis (campos vazios?)
-3. [E] Lower 40% vazio
-
-**Fix:** Preencher campos vazios no case card. Expandir layout para usar mais espaço vertical.
+**Veredicto:** ⚠️ WARN — SYS-2
+1. [C] Danger red tinting funciona bem — semântica clara ✓
+2. [E] Case card: campos Na e MELD-Na sem valores visíveis
+**Fix:** S3 + preencher campos case card
 
 ---
 
@@ -296,13 +252,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 4 | **3.1** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] 3 critérios numbered — layout OK mas ~40% vazio abaixo
-2. [V] Critérios são texto puro — falta iconografia ou visual
-3. [H] Todos 3 items mesmo tamanho — falta destaque no critério mais surpreendente
-
-**Fix:** Adicionar checkmarks verdes e visual de "timeline to recompensation". Items poderiam ser cards com ícones.
+**Veredicto:** ⚠️ WARN — SYS-2
+1. [V] Critérios são texto puro — sem checkmarks visuais ou timeline to recompensation
+**Fix:** S3 + checkmarks verdes animados
 
 ---
 
@@ -312,13 +264,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 3 | 3 | 3 | 4 | **2.9** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] **CRÍTICO** — 3º painel (MASLD) clipado pelo case panel — apenas HCV e Álcool visíveis
-2. [M] Headline fala de CSPH geral mas corpo mostra apenas 2 de 3 etiologias
-3. [E] ~40% vazio abaixo dos 2 painéis
-
-**Fix:** 3 painéis em grid responsivo. Ou stack vertical se largura insuficiente.
+**Veredicto:** ⚠️ WARN — SYS-1 (3º painel MASLD clipado), SYS-2
+1. [M] Headline fala CSPH geral mas apenas 2 de 3 etiologias visíveis
+**Fix:** I7 + S1
 
 ---
 
@@ -328,13 +276,10 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 4 | 3 | 3 | 4 | 4 | **3.4** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [V] Surveillance box centralizado funciona — um dos melhores slides; borda azul semântica
-2. [E] Box poderia ser maior; ~35% vazio
-3. [H] "a cada 6 meses" hero-sized funciona, mas "US ± AFP" compete
-
-**Fix:** Expandir box. "6 meses" em --text-hero com animação countUp. Reduzir peso de "US ± AFP".
+**Veredicto:** ⚠️ WARN — SYS-2 (~35% vazio)
+1. [V] Surveillance box bem posicionado — um dos melhores slides ✓
+2. [H] "a cada 6 meses" hero-sized funciona, mas "US ± AFP" compete em peso visual
+**Fix:** S3 + countUp "6 meses" em --text-hero
 
 ---
 
@@ -344,13 +289,10 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 4 | 3 | 4 | 3 | 4 | **3.4** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [C] Hope green tinting funciona bem — semântica clara, case panel "Recompensando" coerente
-2. [E] Case card funcional; ~35% vazio abaixo
-3. [V] Dados tabulares sem destaque visual — LSM "32→18" poderia ser hero
-
-**Fix:** "32 → 18" em --text-hero com animação de transição. Adicionar seta visual grande.
+**Veredicto:** ⚠️ WARN — SYS-2, SYS-3
+1. [C] Hope green tinting funciona — case panel "Recompensando" coerente ✓
+2. [V] "32→18" poderia ser hero animado
+**Fix:** S3 + S4 (hero "32→18")
 
 ---
 
@@ -360,14 +302,10 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 3 | 3 | 4 | 3 | 4 | **3.3** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [V] 3 take-homes em numbered cards — funcional mas genérico
-2. [H] Case panel timeline (resolved) é um bom touch narrativo
-3. [E] Cards usam ~55% da largura; espaço desperdiçado
-4. [S] Poderia ser mais impactante como slide de fechamento — CTA fraco
-
-**Fix:** Take-homes em cards maiores com ícones. Headline em --text-hero. Considerar bg-navy para contraste de fechamento.
+**Veredicto:** ⚠️ WARN — SYS-2
+1. [S] Take-homes genéricos em cards brancos — CTA fraco para slide de fechamento
+2. [H] Case panel timeline (resolved) é bom touch narrativo ✓
+**Fix:** S3 + hero headline + bg-navy opcional
 
 ---
 
@@ -377,13 +315,10 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 4 | 3 | 3 | 3 | 4 | **3.3** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [C] Grau 3 com borda danger red — semântica boa
-2. [E] 3 graus empilhados — funcional; ~30% vazio
-3. [V] Percentuais (~20%, ~30%, >70%) poderiam ser barras horizontais
-
-**Fix:** Adicionar barras de mortalidade coloridas (safe→warning→danger). ">70%" em hero size.
+**Veredicto:** ⚠️ WARN — SYS-2 (~30% vazio)
+1. [C] Grau 3 com borda danger red — semântica boa ✓
+2. [V] Percentuais (~20%, ~30%, >70%) poderiam ser barras horizontais coloridas
+**Fix:** S3 + barras safe→warning→danger; ">70%" em hero
 
 ---
 
@@ -393,13 +328,8 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
 
-**Veredicto:** ⚠️ WARN (limite)
-**Issues:**
-1. [E] **CRÍTICO** — "Early TIPS" box cortado pelo case panel — "Early TIP..." visível
-2. [V] Flow com seta → entre 2 boxes — segundo box ilegível
-3. [E] >50% vazio; flow minúsculo no meio da tela
-
-**Fix:** Flow precisa de max-width responsivo. Boxes maiores. NNT 4 como hero number.
+**Veredicto:** ⚠️ WARN — SYS-1 ("Early TIP..." cortado), SYS-2 (>50%), SYS-3
+**Fix:** S1 + S3 + S4
 
 ---
 
@@ -409,13 +339,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
 
-**Veredicto:** ⚠️ WARN (limite)
-**Issues:**
-1. [E] **CRÍTICO** — Coluna "Exame" severamente truncada: "ANA, a...", "Colang...", "Cerulo..." — informação clínica perdida
-2. [V] Tabela Tufte funcional mas sem col "Exame" legível perde propósito
-3. [E] Tabela estreita; ~35% vazio à esquerda
-
-**Fix:** Tabela precisa de max-width responsivo ao panel. Ou esconder panel em appendix. Reduzir font-size se necessário para caber.
+**Veredicto:** ⚠️ WARN — SYS-1 (col "Exame" severamente truncada: "ANA, a...", "Cerulo...")
+1. [M] Tabela perde propósito sem coluna de exames legível
+**Fix:** I8 + S1
 
 ---
 
@@ -425,13 +351,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.6** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] 3 text items empilhados — muito espaço vazio (>45%)
-2. [V] Sem visual — 3 frases em cards brancos genéricos
-3. [H] Nenhum item destaca mais que outro
-
-**Fix:** Transformar em comparação visual NSBB vs EVL (2 colunas). Ou metric cards com HR/NNT.
+**Veredicto:** ⚠️ WARN — SYS-2 (>45%)
+1. [V] 3 frases em cards brancos genéricos — sem comparação visual NSBB vs EVL
+**Fix:** S3 + layout 2-colunas comparativo com HR/NNT
 
 ---
 
@@ -441,13 +363,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.6** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [E] 3 items empilhados (Sistólica, Diastólica, Tratamento) — ~45% vazio
-2. [V] Critérios CCC são texto puro — sem visual
-3. [H] "48%" poderia ser hero number
-
-**Fix:** "48%" como countUp hero. Critérios em cards com ícones (coração, eco, Rx).
+**Veredicto:** ⚠️ WARN — SYS-2 (~45%), SYS-3
+1. [V] Critérios CCC texto puro — sem ícones (coração, eco)
+**Fix:** S3 + S4 + ícones
 
 ---
 
@@ -457,13 +375,9 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 1 | 3 | 2 | 3 | 2 | 3 | **2.4** |
 
-**Veredicto:** ⛔ FAIL
-**Issues:**
-1. [E] **CRÍTICO** — HPP panel completamente clipado: "Vasoconst..." "PDE5i +" — metade do conteúdo perdida
-2. [M] Headline promete "oposta" (comparação) mas só SHP é legível
-3. [V] 2-panel comparison é o layout correto mas inutilizado pelo clipping
-
-**Fix:** 2 panels DEVEM caber na tela. Max-width responsivo ao panel. Ou stack vertical.
+**Veredicto:** ⛔ FAIL — SYS-1 (HPP panel completamente clipado)
+1. [M] Headline promete "oposta" (comparação) mas só SHP é legível
+**Fix:** I9 + S1
 
 ---
 
@@ -473,13 +387,8 @@
 |---|---|---|---|---|---|---|---|-------|
 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
 
-**Veredicto:** ⚠️ WARN (limite)
-**Issues:**
-1. [E] **CRÍTICO** — LIVERHOPE box clipado: "LIVERHO..." "Sinvastatina +..." — trial name ilegível
-2. [V] 2 boxes lado a lado — layout correto mas segundo box cortado
-3. [E] >45% vazio
-
-**Fix:** Boxes precisam de max-width responsivo. "−2 mmHg" como hero metric.
+**Veredicto:** ⚠️ WARN — SYS-1 (LIVERHOPE box clipado: "LIVERHO..."), SYS-2 (>45%)
+**Fix:** I10 + S1
 
 ---
 
@@ -489,13 +398,10 @@
 |---|---|---|---|---|---|---|---|-------|
 | 3 | 3 | 3 | 3 | 2 | 3 | 3 | 4 | **3.0** |
 
-**Veredicto:** ⚠️ WARN
-**Issues:**
-1. [V] 3 text items — sem visual; poderia ter forest plot simplificado ou HR com CI
-2. [E] ~40% vazio
-3. [M] "p=0,058 NS" na headline é bom — comunica incerteza
-
-**Fix:** Adicionar visual: HR com IC (forest plot mini) ou p-value gauge. "0,058" em hero size.
+**Veredicto:** ⚠️ WARN — SYS-2 (~40%)
+1. [V] 3 text items sem visual — forest plot mini ou HR com CI faltando
+2. [M] "p=0,058 NS" na headline comunica incerteza bem ✓
+**Fix:** S3 + hero "0,058" + visual HR/CI
 
 ---
 

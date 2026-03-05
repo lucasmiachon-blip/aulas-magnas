@@ -22,7 +22,7 @@
 
 ### Ações executadas
 
-- [x] .cursor definido como fonte canônica
+- [x] .cursor definido como fonte canônica → **Revisado 04/mar:** complementares, não redundantes (ver `.claude/rules/README.md`)
 - [x] motion-qa, reveal-patterns, design-system migrados para .cursor
 - [x] .claude/rules/README.md criado com aviso de depreciação
 - [x] medical-data.mdc: adicionado versionamento e formato NNT

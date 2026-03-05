@@ -4,6 +4,33 @@
 
 ---
 
+## Sessão Flip + QA (2026-03-04)
+
+### CSS selector: `#id.class` ≠ `#id .class`
+- `#s-a1-damico.archetype-flow` = mesmo elemento com id E class → nunca casa (section tem id, div filho tem class)
+- `#s-a1-damico .archetype-flow` = descendente → correto
+- **Verificar sempre:** `document.querySelectorAll('seletor').length > 0` antes de assumir que uma rule aplica
+
+### Archetype scope: reutilizar elementos de um archetype em outro
+- `.archetype-pathway .pathway-track { display:flex }` → só funciona dentro de `archetype-pathway`
+- Se reutilizar `.pathway-track` em `archetype-flow`, re-declarar `display:flex` no novo contexto
+- Padrão: ao criar elementos de um archetype dentro de outro, sempre verificar se as regras de layout herdam corretamente
+
+### Panel overlap: `min()` cap vence o panel-width
+- `min(1120px, calc(100% - 140px - 1rem))` = 1120px (cap binding em viewport 1280px)
+- Com `margin:0 auto`, conteúdo se estende sobre o panel
+- Fix correto: `max-width: calc(100% - var(--panel-width) - 3rem)` + `margin: 0 0 0 2rem` quando panel visível
+
+### overflow-y em slides: sempre hidden
+- `overflow-y: auto` em eras = scrollbar no palco → inaceitável
+- Slides são canvas fixo. Conteúdo que não cabe = problema de design, não de CSS
+- Padrão: `.scores-era { overflow-y: hidden }`
+
+### GSAP Flip + crossfade: capturar estado ANTES da transição
+- `Flip.getState(formulaBlock)` DEVE ser chamado antes de `showEra(5)` (que faz opacity→0 no elemento)
+- Passar `preFlipState` como parâmetro para a função de animação pós-transição
+- Se `preFlipState = null` (era 4 não foi visitada antes), usar fallback `gsap.from`
+
 ## Auditoria Batches (2026-03)
 
 ### Rules: .cursor vs .claude

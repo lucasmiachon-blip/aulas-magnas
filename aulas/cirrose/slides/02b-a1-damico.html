@@ -1,117 +1,381 @@
 <!-- ============================================================
-     s-a1-damico — D'Amico staging (2006→2014→2024)
-     Archetype: pathway (4+1 blocos, state machine)
-     States: 0=auto 4 stages, 1=+stage 5, 2=overlay, 3=source
+     s-a1-damico — Escores Prognósticos (state machine, 6 eras)
+     Archetype: flow  |  Timing: 180s
+     Eras (controladas por data-era):
+       0 = Child-Turcotte 1964 (auto) — pioneiro, 5 critérios, sem PMID
+       1 = CTP 1973 (click 1) — padronização + 4 limitações em stagger
+       2 = MELD 2001 (click 2) — 1º score 100% laboratorial, c-stat 0,87
+       3 = MELD-Na 2006 (click 3) — adiciona sódio, highlight no termo
+       4 = MELD 3.0 2021 (click 4) — corrige sexo + albumina, dual CountUp
+       5 = D'Amico (click 5) — estágio ≠ score, 2 datasets com labels obrigatórios
+     REGRA: D'Amico 2006 (ANUAL) ≠ D'Amico 2014 (5 ANOS) — NÃO comparar diretamente.
+     PMIDs verificados: 4541913 · 11172350 · 16697729 · 34481845
+     PMIDs do evidence-db.md: 16298014 · 24654740 · 37916970
+     PMID CTP interobserver: [TBD — ver evidence-db.md]
      ============================================================ -->
 <section id="s-a1-damico"
-         data-timing="150"
+         data-timing="180"
          data-panel-state="neutral">
+  <div class="slide-inner archetype-flow">
 
-  <div class="slide-inner archetype-pathway">
     <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-    <h2 class="slide-headline">D'Amico redefiniu o prognóstico da cirrose 3 vezes em 18 anos</h2>
 
-    <span class="damico-badge damico-badge--context">D'Amico 2006 · 118 estudos · mortalidade/ano</span>
+    <!-- TÍTULO: afirmação verificável — Alley model obrigatório -->
+    <h2 class="slide-headline">
+      De Child a MELD 3.0 — cada geração corrigiu o que a anterior não via
+    </h2>
 
-    <div class="pathway-track">
+    <!-- ERA TRACK: state machine, uma era por vez (Plan A/C: absolute stacking) -->
+    <div class="scores-era-track">
 
-      <!-- Estádio 1: Compensado, sem CSPH -->
-      <div class="pathway-stage">
-        <span class="pathway-number">Estádio 1</span>
-        <span class="pathway-value" data-target="1" data-countup>0</span>
-        <span class="pathway-unit">%/ano</span>
-        <span class="pathway-label">Compensado sem varizes</span>
-        <div class="pathway-divider pathway-divider--csph" aria-hidden="true">
-          <span class="pathway-divider-label">CSPH</span>
+      <!-- ─── ERA 0: Child-Turcotte 1964 (auto) ─── -->
+      <!-- Sem PMID formal — livro: Child CG, Turcotte JG. Surgery. 1964 -->
+      <!-- Pedagógico: pioneiro — mas critérios sem padronização numérica -->
+      <div class="scores-era" data-era="0">
+        <span class="scores-era-badge">1964</span>
+        <h3 class="scores-era-title">Child-Turcotte</h3>
+        <div class="scores-era-boxes">
+          <div class="scores-era-box">Bilirrubina</div>
+          <div class="scores-era-box">Albumina</div>
+          <div class="scores-era-box">Estado Nutricional</div>
+          <div class="scores-era-box scores-era-box--clinical">⚠ Ascite</div>
+          <div class="scores-era-box scores-era-box--clinical">⚠ Encefalopatia</div>
         </div>
+        <span class="scores-era-tag">Pioneiro — mas sem padronização numérica</span>
+        <span class="scores-era-source">[sem PMID — livro: Child CG, Turcotte JG. Surgery of the Liver. 1964]</span>
       </div>
 
-      <!-- Estádio 2: Compensado, com CSPH -->
-      <div class="pathway-stage">
-        <span class="pathway-number">Estádio 2</span>
-        <span class="pathway-value" data-target="3.4" data-countup>0</span>
-        <span class="pathway-unit">%/ano</span>
-        <span class="pathway-label">Compensado com varizes</span>
-        <div class="pathway-divider" aria-hidden="true">
-          <span class="pathway-divider-label">Descompensação</span>
+      <!-- ─── ERA 1: Child-Turcotte-Pugh 1973 (click 1) ─── -->
+      <!-- PMID 4541913 — Pugh RNH et al. Br J Surg. 1973;60(8):646-9 -->
+      <!-- Pedagógico: padroniza escores 1-3, adiciona INR, cria classes A/B/C -->
+      <div class="scores-era" data-era="1">
+        <span class="scores-era-badge">1973</span>
+        <h3 class="scores-era-title">Child-Turcotte-Pugh (CTP)</h3>
+        <div class="scores-era-boxes">
+          <div class="scores-era-box">Bilirrubina</div>
+          <div class="scores-era-box scores-era-box--new">⊕ INR/TP</div>
+          <div class="scores-era-box">Albumina</div>
+          <div class="scores-era-box scores-era-box--clinical">⚠ Ascite</div>
+          <div class="scores-era-box scores-era-box--clinical">⚠ Encefalopatia</div>
         </div>
+        <div class="scores-ctp-classes">
+          <span class="ctp-class ctp-class--a">✓ A 5–6</span>
+          <span class="ctp-class ctp-class--b">⚠ B 7–9</span>
+          <span class="ctp-class ctp-class--c">✕ C 10–15</span>
+        </div>
+        <span class="scores-era-source">PMID 4541913 · Pugh RNH, Br J Surg 1973</span>
+
+        <!-- LIMITAÇÕES CTP — stagger sequencial. NÃO fadeUp genérico -->
+        <!-- Pedagógico: cada limitação motivou a geração seguinte -->
+        <div class="scores-limitations">
+
+          <!-- LIMITAÇÃO 1: Variabilidade interobservador -->
+          <!-- PMID: [TBD — buscar "Child-Pugh interobserver variability" — ver evidence-db.md] -->
+          <!-- Dado buscado: concordância ~60-70% ascite grau 1-2 + West Haven -->
+          <div class="limitation" data-limitation="interobserver">
+            ⚠ Variabilidade interobservador
+            <span class="limitation-detail">
+              Ascite leve e encefalopatia grau 1-2 — concordância estimada ~60–70%
+              entre examinadores
+              <span class="limitation-source">[TBD — PMID não verificado]</span>
+            </span>
+          </div>
+
+          <!-- LIMITAÇÃO 2: Colinearidade albumina × ascite -->
+          <!-- Princípio estatístico — sem PMID específico necessário -->
+          <!-- Pedagógico: hipoalbuminemia CAUSA ascite → penaliza 2× a mesma disfunção -->
+          <div class="limitation" data-limitation="collinearity">
+            ⚠ Colinearidade albumina × ascite
+            <span class="limitation-detail">
+              Hipoalbuminemia causa ascite — o score penaliza duas vezes
+              a mesma disfunção orgânica
+            </span>
+          </div>
+
+          <!-- LIMITAÇÃO 3: Variáveis ordinais somadas como intervalar -->
+          <!-- Pedagógico: A→B ≠ B→C em magnitude biológica real -->
+          <!-- Ordinal ≠ intervalar: aritmética do score assume espaçamento igual -->
+          <div class="limitation" data-limitation="discrete">
+            ⚠ Variáveis ordinais somadas como intervalar
+            <span class="limitation-detail">
+              Saltar de A para B não é o mesmo "tamanho" que B para C —
+              a aritmética do score assume que é
+            </span>
+          </div>
+
+          <!-- LIMITAÇÃO 4: Teto — não discrimina dentro da Classe C -->
+          <!-- Pedagógico: CTP-C 10 vs CTP-C 15 → mortalidades distintas, mesmo rótulo -->
+          <!-- MELD nasceu exatamente para resolver isso em lista de transplante -->
+          <div class="limitation" data-limitation="ceiling">
+            ⚠ Teto não discrimina dentro da Classe C
+            <span class="limitation-detail">
+              CTP-C 10 vs CTP-C 15: mortalidades distintas, mesmo rótulo —
+              MELD nasceu para resolver isso
+            </span>
+          </div>
+        </div>
+
+        <!-- Transição narrativa → motiva Era 2 (MELD) -->
+        <p class="scores-transition" style="opacity:0">
+          "Essas limitações não são trivia — cada uma forçou a geração seguinte."
+        </p>
       </div>
 
-      <!-- Estádio 3: Ascite (D'Amico 2006 separou de hemorragia) -->
-      <div class="pathway-stage">
-        <span class="pathway-number">Estádio 3</span>
-        <span class="pathway-value" data-target="20" data-countup>0</span>
-        <span class="pathway-unit">%/ano</span>
-        <span class="pathway-label">Ascite</span>
+      <!-- ─── ERA 2: MELD original 2001 (click 2) ─── -->
+      <!-- PMID 11172350 — Kamath PS et al. Hepatology. 2001;33(2):464-70 -->
+      <!-- Pedagógico: 1º score 100% laboratorial — elimina a subjetividade clínica -->
+      <div class="scores-era" data-era="2">
+        <span class="scores-era-badge">2001</span>
+        <h3 class="scores-era-title">MELD original</h3>
+        <div class="scores-formula">
+          <span class="formula-term">3,78 × ln(Bili)</span>
+          <span class="formula-op">+</span>
+          <span class="formula-term">11,2 × ln(INR)</span>
+          <span class="formula-op">+</span>
+          <span class="formula-term">9,57 × ln(Cr)</span>
+          <span class="formula-op">+</span>
+          <span class="formula-term">6,43</span>
+        </div>
+        <!-- c-stat 0,87: pacientes hospitalizados (Kamath 2001) — NÃO generalizar -->
+        <!-- NÃO é RR — é c-statistic (AUC da curva ROC) -->
+        <div class="scores-cstat-block">
+          <span class="scores-cstat-label">c-statistic</span>
+          <span class="scores-cstat-value" data-target="0.87">0</span>
+          <span class="scores-cstat-ctx">(pacientes hospitalizados)</span>
+        </div>
+        <span class="scores-era-tag">pela primeira vez — só laboratório</span>
+        <span class="scores-era-limitation">⚠ Ignora hiponatremia. Cr penaliza mulheres.</span>
+        <span class="scores-era-source">PMID 11172350 · Kamath PS, Hepatology 2001</span>
       </div>
 
-      <!-- Estádio 4: Hemorragia varicosa -->
-      <div class="pathway-stage">
-        <span class="pathway-number">Estádio 4</span>
-        <span class="pathway-value" data-target="57" data-countup>0</span>
-        <span class="pathway-unit">%/ano</span>
-        <span class="pathway-label">Hemorragia varicosa</span>
+      <!-- ─── ERA 3: MELD-Na 2006 (click 3) ─── -->
+      <!-- PMID 16697729 — Biggins SW et al. Gastroenterology. 2006;130(6):1652-60 -->
+      <!-- Pedagógico: adiciona sódio, melhora predição em pacientes com hiponatremia -->
+      <!-- Adotado pela UNOS em 2016 — padrão atual para alocação de transplante -->
+      <div class="scores-era" data-era="3">
+        <span class="scores-era-badge">2006 → adotado UNOS 2016</span>
+        <h3 class="scores-era-title">MELD-Na</h3>
+        <div class="scores-formula">
+          <span class="formula-term">MELD</span>
+          <span class="formula-op">+</span>
+          <!-- Termo sódio: highlight via GSAP no state 3 — data-meldna-sodium -->
+          <span class="formula-term" data-meldna-sodium>1,59 × (135 − Na)</span>
+        </div>
+        <span class="scores-era-limitation">⚠ Disparidade de sexo persiste.</span>
+        <span class="scores-era-source">PMID 16697729 · Biggins SW, Gastroenterology 2006</span>
       </div>
 
-      <!-- Estádio 5: collapsed, revealed on click 1 -->
-      <div class="pathway-stage pathway-stage--collapsed">
-        <span class="damico-badge">D'Amico 2014</span>
-        <span class="pathway-number">Estádio 5</span>
-        <span class="pathway-value" data-target="88" data-countup>0</span>
-        <span class="pathway-unit">%/5 anos</span>
-        <span class="pathway-label">Infecção ou AKI</span>
-        <span class="pathway-ref">PMID 24654740 · n=494</span>
+      <!-- ─── ERA 4: MELD 3.0 — 2021 (click 4) ─── -->
+      <!-- PMID 34481845 — Kim WR et al. Gastroenterology. 2021;161(5):1887-95 -->
+      <!-- Pedagógico: corrige disparidade de sexo (não existia no MELD original) -->
+      <!-- c-stat MELD 3.0: 0,869; c-stat MELD-Na: 0,862 — diferença pequena mas reclassifica -->
+      <!-- ALERTA: validação externa ainda em curso — EASL recomenda MELDNa em muitos contextos -->
+      <div class="scores-era" data-era="4">
+        <span class="scores-era-badge scores-era-badge--alert">2021 ⚠ validação externa em curso</span>
+        <h3 class="scores-era-title">MELD 3.0</h3>
+        <div class="scores-formula">
+          <span class="formula-term formula-term--new">+1,33 (sexo ♀)</span>
+          <span class="formula-op">+</span>
+          <span class="formula-term formula-term--new">albumina</span>
+          <span class="formula-op">+</span>
+          <span class="formula-term">Cr (cap 3,0)</span>
+          <span class="formula-op">+</span>
+          <span class="formula-term">ln(Bili) + ln(INR)</span>
+        </div>
+        <!-- Dual CountUp: MELD 3.0 vs MELD-Na — PMID 34481845 -->
+        <!-- NÃO é HR nem RR — é c-statistic de 90 dias de mortalidade -->
+        <div class="scores-cstat-compare">
+          <div class="cstat-item">
+            <span class="cstat-label">MELD 3.0</span>
+            <span class="cstat-value cstat-value--new" data-target="0.869">0</span>
+          </div>
+          <span class="cstat-vs">vs</span>
+          <div class="cstat-item">
+            <span class="cstat-label">MELD-Na</span>
+            <span class="cstat-value" data-target="0.862">0</span>
+          </div>
+        </div>
+        <!-- Reclassificação: 8,8% dos óbitos para tier mais alto — PMID 34481845 -->
+        <span class="scores-era-tag">reclassificou 8,8% dos óbitos para tier mais alto</span>
+        <div class="scores-alert-box">
+          <span aria-hidden="true">⚠</span>
+          EASL 2024 ainda recomenda MELDNa em muitos contextos — não adotar sem validação local
+        </div>
+        <!-- Conexão Antônio: MELD-Na ~10 → compensado, mas CSPH presente → PREDESCI elegível -->
+        <!-- PMID 30910320 — PREDESCI, Villanueva 2019, HR 0,51 (IC 95% 0,26–0,97) -->
+        <!-- HR = Hazard Ratio (NÃO RR) do endpoint composto de descompensação -->
+        <p class="screening-predesci-pill">
+          ✓ Antônio: MELD-Na ~10 → semáforo verde, CSPH → PREDESCI elegível (HR 0,51)
+        </p>
+        <span class="scores-era-source">PMID 34481845 · Kim WR, Gastroenterology 2021</span>
       </div>
 
-      <!-- Further decompensation overlay (state 2) -->
-      <div class="damico-further">
-        <span class="damico-further-stat">Ascite: pior prognóstico que HDA</span>
-        <span class="damico-further-detail">30% vs 20% em 5 anos (D'Amico 2014)</span>
-        <span class="damico-further-stat">60% progridem para further decompensation</span>
-        <span class="damico-further-hr">HR 1,46</span>
-        <span class="damico-further-ci">(IC 95%: 1,23–1,71)</span>
-        <span class="damico-further-ref">D'Amico 2024 · n=2.028 · PMID 37916970</span>
+      <!-- ─── ERA 5: D'Amico — estágio ≠ gravidade individual (click 5) ─── -->
+      <!-- Pedagógico: scores medem gravidade PONTUAL; D'Amico mede PROGRESSÃO no tempo -->
+      <!-- REGRA OBRIGATÓRIA: D'Amico 2006 = ANUAL; D'Amico 2014 = 5 ANOS — NÃO comparar -->
+      <div class="scores-era" data-era="5">
+        <h3 class="scores-era-title">D'Amico — estágio ≠ gravidade individual</h3>
+        <span class="scores-era-tag">scores medem gravidade pontual; D'Amico mede progressão no tempo</span>
+
+        <!-- DATASET 2006 — mortalidade ANUAL — PMID 16298014 -->
+        <!-- LABEL OBRIGATÓRIO: 2006 (ANUAL) — NÃO comparar com 2014 (5 anos) -->
+        <div class="damico-dataset" data-dataset="2006-anual">
+          <span class="damico-dataset-label">D'Amico 2006 · ANUAL</span>
+          <span class="damico-dataset-source">PMID 16298014</span>
+          <div class="pathway-track">
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="1">0</span>
+              <span class="pathway-unit">%/ano</span>
+              <span class="pathway-label">Est. 1<br>Comp. s/ varizes</span>
+            </div>
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="3.4">0</span>
+              <span class="pathway-unit">%/ano</span>
+              <span class="pathway-label">Est. 2<br>Comp. c/ varizes</span>
+            </div>
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="20">0</span>
+              <span class="pathway-unit">%/ano</span>
+              <span class="pathway-label">Est. 3<br>Ascite</span>
+            </div>
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="57">0</span>
+              <span class="pathway-unit">%/ano</span>
+              <span class="pathway-label">Est. 4<br>Hemorragia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DATASET 2014 — mortalidade em 5 ANOS — PMID 24654740 -->
+        <!-- LABEL OBRIGATÓRIO: 2014 (5 ANOS) — NÃO comparar com 2006 (anual) -->
+        <div class="damico-dataset" data-dataset="2014-5anos">
+          <span class="damico-dataset-label">D'Amico 2014 · 5 ANOS</span>
+          <span class="damico-dataset-source">PMID 24654740</span>
+          <div class="pathway-track">
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="1.5">0</span>
+              <span class="pathway-unit">%/5a</span>
+              <span class="pathway-label">Est. 1<br>Comp. s/ varizes</span>
+            </div>
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="10">0</span>
+              <span class="pathway-unit">%/5a</span>
+              <span class="pathway-label">Est. 2<br>Comp. c/ varizes</span>
+            </div>
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="20">0</span>
+              <span class="pathway-unit">%/5a</span>
+              <span class="pathway-label">Est. 3<br>Ascite</span>
+            </div>
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="30">0</span>
+              <span class="pathway-unit">%/5a</span>
+              <span class="pathway-label">Est. 4<br>Sangramento</span>
+            </div>
+            <div class="pathway-stage">
+              <span class="pathway-value" data-target="88">0</span>
+              <span class="pathway-unit">%/5a</span>
+              <span class="pathway-label">Est. 5<br>Infecção/AKI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aviso visual obrigatório: métricas diferentes, não comparar -->
+        <div class="scores-alert-box" role="note">
+          <span aria-hidden="true">⚠</span>
+          Métricas diferentes — não comparar 2006 (anual) com 2014 (5 anos)
+        </div>
+
+        <!-- Further decompensation 2024: HR = Hazard Ratio, não RR -->
+        <!-- PMID 37916970 — D'Amico 2024, J Hepatol, further decomp -->
+        <span class="scores-era-tag scores-era-tag--danger">
+          ✕ Further decompensation: ~60% progridem, dobra mortalidade ·
+          HR 1,46 (IC 95% 1,23–1,71) [PMID 37916970]
+        </span>
+        <span class="scores-era-source">
+          PMID 16298014 (D'Amico 2006) · PMID 24654740 (D'Amico 2014) · PMID 37916970 (D'Amico 2024)
+        </span>
       </div>
 
-    </div>
+    </div><!-- end .scores-era-track -->
 
-    <p class="source-tag" style="opacity:0">D'Amico G et al. J Hepatol 2006; Aliment Pharmacol Ther 2014; Hepatology 2024 · Baveno VII, J Hepatol 2022</p>
+    <!-- Source tag global — visível no estado final (Plan B: sempre visível) -->
+    <p class="source-tag" style="opacity:0">
+      Child-Turcotte 1964 [livro] · PMID 4541913 (Pugh 1973) · PMID 11172350 (Kamath 2001) ·
+      PMID 16697729 (Biggins 2006) · PMID 34481845 (Kim 2021) ·
+      PMID 16298014 + 24654740 + 37916970 (D'Amico 2006/2014/2024)
+    </p>
+
   </div>
 
   <aside class="notes">
-[0:00-0:40] D'Amico 2006 — blocos aparecem com stagger
-"4 estádios. D'Amico publicou em 2006 — uma meta-análise de 118 estudos, a maior da época."
-"Olhem as duas linhas. A primeira — CSPH, hipertensão portal clinicamente significativa.
-Baveno VII definiu os critérios não-invasivos pra essa fronteira."
-"A segunda — descompensação. Aqui D'Amico separou: ascite é estádio 3, hemorragia é estádio 4."
-"1% por ano à esquerda. 57% à direita. Essa é a escala de mortalidade."
-PAUSA 3s.
-
-[0:40-1:10] click → D'Amico 2014
-"8 anos depois, o mesmo D'Amico voltou — agora com dados de 494 pacientes acompanhados 25 anos."
-"Adicionou o 5º estádio: quando a descompensação se complica com infecção ou lesão renal aguda."
-"Mortalidade em 5 anos: 88%. Quase 9 em 10."
-ÊNFASE: "E fez uma mudança que poucos perceberam: reordenou os estádios.
-Na revisão de 2014, ascite isolada tem mortalidade PIOR que sangramento isolado.
-30% vs 20% em 5 anos. Ascite mata mais — e isso muda a prioridade clínica."
-
-[1:10-1:40] click → D'Amico 2024
-"E em 2024, D'Amico publicou o estudo mais recente — 2028 pacientes, multicêntrico."
-"60% dos que descompensam progridem para further decompensation.
-Isso DOBRA a mortalidade. HR 1,46 — e o intervalo de confiança não cruza 1."
+[0:00-0:40] [ERA 0 — auto, Child 1964]
+"1964. Child e Turcotte publicam um capítulo de livro."
+Boxes aparecem em stagger.
+"Cinco critérios — três laboratoriais, dois clínicos."
+"O problema: dois médicos examinam o mesmo paciente com ascite leve e chegam
+a scores diferentes. Mas foi pioneiro. Pela primeira vez, a gravidade tinha
+uma linguagem comum."
 PAUSA 2s.
-"Três publicações do mesmo autor, ao longo de 18 anos, redefiniram como a gente
-classifica e prognostica a cirrose. É essa evolução que sustenta o Baveno VII."
 
-[1:40-2:00] click → source
-Ponte para caso:
-"E o Seu Antônio? FIB-4 de 5,10, plaquetas 112k. Ele está do lado esquerdo ou direito dessas linhas?"
-"Precisamos de 3 exames pra responder."
-→ avançar para FIB-4/elastografia
+[0:40-1:30] [CLICK → era 1, CTP 1973]
+"Pugh padroniza. Adiciona o INR. Cria as classes A, B e C."
+Boxes CTP aparecem. Classes A/B/C surgem.
+"A lógica é elegante — um número integra cinco variáveis."
+PAUSA 2s. "Mas tem quatro problemas estruturais."
+Limitações aparecem uma a uma em stagger.
+"Primeiro: variabilidade. O mesmo paciente, dois médicos — scores diferentes."
+"Segundo: colinearidade. Albumina baixa causa ascite — penaliza duas vezes."
+"Terceiro: a aritmética assume que A→B é igual a B→C. Não é."
+"Quarto — e este motivou o MELD: Classe C tem 6 pontos de amplitude."
+"CTP-C 10 vs CTP-C 15: mortalidades muito diferentes, mesmo rótulo."
+Transição: "Essas limitações não são trivia — cada uma forçou a geração seguinte."
+PMID 4541913.
 
-[DATA] D'Amico 2006: J Hepatol (PMID 16298014) | 118 estudos | 4 estádios: 1=sem varizes 1%/a, 2=varizes 3.4%/a, 3=ascite 20%/a, 4=HDA 57%/a | Verificado: 2026-03-04
-[DATA] D'Amico 2014: Aliment Pharmacol Ther (PMID 24654740) | 494 pts | Estádio 5 (88%/5a), reordenação ascite>HDA (30% vs 20%/5a) | Verificado: 2026-03-04
-[DATA] D'Amico 2024: Hepatology (PMID 37916970) | 2028 pts | Further decomp 60%, HR 1.46 (1.23-1.71) | Verificado: 2026-03-04
-[DATA] Baveno VII: J Hepatol 2022 (PMID 35120736) | CSPH, cACLD, NITs | Verificado: 2026-03-04
+[1:30-2:00] [CLICK → era 2, MELD 2001]
+"2001. Kamath publica o MELD. Pela primeira vez — só laboratório."
+Termos da fórmula aparecem em stagger.
+"Sem ascite, sem encefalopatia, sem julgamento clínico."
+CountUp c-statistic: 0 → 0,87.
+"C-statistic de 0,87 em pacientes hospitalizados."
+"Duas limitações: ignora hiponatremia. E a creatinina penaliza mulheres."
+PMID 11172350.
+
+[2:00-2:20] [CLICK → era 3, MELD-Na 2006]
+"2006. Biggins adiciona o sódio."
+Fórmula aparece. Highlight no novo termo sódio.
+"Um ponto e vírgula: 1,59 vezes o déficit de sódio abaixo de 135."
+"Adotado pela UNOS em 2016. É o que usamos hoje para alocação."
+"A disparidade de sexo persiste."
+PMID 16697729.
+
+[2:20-2:50] [CLICK → era 4, MELD 3.0 2021]
+"2021. Kim publica o MELD 3.0."
+Termos novos destacados.
+"Dois avanços: ponto fixo para sexo feminino, albumina na fórmula."
+Dual CountUp: MELD 3.0 = 0,869 vs MELD-Na = 0,862.
+"Melhora modesta no c-stat. Mas reclassificou 8,8% dos óbitos para tier mais alto."
+ALERTA: "EASL 2024 ainda recomenda MELDNa em muitos contextos."
+"Antônio: MELD-Na ~10 — semáforo verde. Mas CSPH presente → PREDESCI."
+PMID 34481845. HR 0,51 = Hazard Ratio — não RR.
+
+[2:50-3:10] [CLICK → era 5, D'Amico]
+"Scores medem gravidade pontual. D'Amico mede progressão."
+Dois datasets aparecem com labels OBRIGATÓRIOS.
+"2006: mortalidade ANUAL. De 1% a 57%. PMID 16298014."
+"2014: mortalidade em 5 ANOS. De 1,5% a 88%. PMID 24654740."
+ATENÇÃO: "Métricas diferentes — não comparar diretamente."
+"2024: 60% progridem para further decompensation. HR 1,46 — não RR."
+PAUSA 2s. → avançar para screening e FIB-4.
+
+[DATA] Child-Turcotte 1964: livro [sem PMID] | 5 critérios | pioneiro
+[DATA] CTP 1973: PMID 4541913 | Pugh RNH, Br J Surg 1973 | Classes A/B/C | Verificado
+[DATA] CTP interobserver: [TBD] | concordância ~60-70% estimada | ver evidence-db.md
+[DATA] MELD 2001: PMID 11172350 | Kamath PS, Hepatology 2001 | c-stat 0.87 hospitalizados | Verificado
+[DATA] MELD-Na 2006: PMID 16697729 | Biggins SW, Gastroenterology 2006 | +1,59×(135-Na) | Verificado
+[DATA] MELD 3.0 2021: PMID 34481845 | Kim WR, Gastroenterology 2021 | c-stat 0.869 vs 0.862 | Verificado
+[DATA] D'Amico 2006: PMID 16298014 | 4 estágios ANUAIS | Verificado: evidence-db.md
+[DATA] D'Amico 2014: PMID 24654740 | 5 estágios 5 ANOS | Verificado: evidence-db.md
+[DATA] D'Amico 2024: PMID 37916970 | further decomp ~60%, HR 1,46 (IC 95% 1,23–1,71) | Verificado
   </aside>
 </section>

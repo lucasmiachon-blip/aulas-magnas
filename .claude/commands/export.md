@@ -26,11 +26,11 @@ Example: `/export cirrose`
      http://localhost:4173/aulas/[lecture]/index.html \
      /dev/null
    ```
-6. Export Plan B:
+6. Export Plan C (default — light 1280×720):
    ```bash
    npx decktape reveal --size 1280x720 \
-     http://localhost:4173/aulas/[lecture]/index.stage-b.html \
-     exports/[lecture]-plan-b.pdf
+     http://localhost:4173/aulas/[lecture]/index.html \
+     exports/[lecture]-plan-c.pdf
    ```
 7. Kill preview server
 8. Report file sizes and slide count

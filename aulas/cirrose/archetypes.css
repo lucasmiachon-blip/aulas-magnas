@@ -9,7 +9,13 @@
   --panel-width: 0px;
 }
 .reveal.has-panel {
-  --panel-width: 140px;
+  --panel-width: 200px;
+}
+
+/* When panel is visible, left-align archetype containers to avoid overlap */
+.reveal.has-panel .slide-inner {
+  max-width: calc(100% - var(--panel-width) - 3rem);
+  margin: 0 0 0 2rem;
 }
 
 /* ============================================
@@ -556,8 +562,9 @@
 .case-panel .panel-field-value {
   font-family: var(--font-mono, monospace);
   font-weight: 500;
-  font-size: 15px;
+  font-size: 13px;
   color: var(--text-primary, #222);
+  text-align: right;
 }
 
 .case-panel .panel-field-value.changed {

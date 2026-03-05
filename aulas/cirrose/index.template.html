@@ -25,7 +25,8 @@
   import Notes from 'reveal.js/plugin/notes/notes.esm.js';
   import gsap from 'gsap';
   import { SplitText } from 'gsap/SplitText';
-  gsap.registerPlugin(SplitText);
+  import { Flip } from 'gsap/Flip';
+  gsap.registerPlugin(SplitText, Flip);
   import 'reveal.js/dist/reveal.css';
   import '../../shared/css/base.css';
   import './cirrose.css';

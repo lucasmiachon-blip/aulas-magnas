@@ -229,7 +229,7 @@ Sala escura, projetor decente. Navy + texto claro + animações.
 
 ### Plano B (.stage-bad — light, 1280×720)
 Sala clara, projetor fraco. Fundo branco + texto preto + sem animação + fontes mais pesadas.
-Ativado via `index.stage-b.html` (entrada separada no Vite).
+Arquivo removido (deprecated). Se necessário no futuro, reconstruir a partir de `index.html` com classe `.stage-bad`.
 
 ### Residência (?mode=residencia)
 Remove `data-visibility="hidden"` dos apêndices antes do init.

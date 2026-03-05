@@ -27,8 +27,7 @@ Zero CDN. npm/ESM. Fontes WOFF2 self-hosted. Offline-first.
 shared/css/base.css       → design system (OKLCH tokens, tipografia, modos)
 shared/js/engine.js       → init Reveal + data-animate + modes
 shared/assets/fonts/      → WOFF2 self-hosted
-aulas/[nome]/index.html   → Plano A (dark, 1920×1080)
-aulas/[nome]/index.stage-b.html → Plano B (light, 1280×720, sem animação)
+aulas/[nome]/index.html   → Plano C default (light, 1280×720, GSAP ativo)
 docs/                     → narrativa, storyboard, referências (CSL-JSON)
 scripts/                  → lint, export, QA
 ```
@@ -46,13 +45,13 @@ npm run lint:slides  # Assertion-evidence linter
 
 | Pasta | Tema | Status |
 |-------|------|--------|
-| aulas/grade/ | Sistema GRADE | Framework pronto, conteúdo parcial |
+| aulas/grade/ | Sistema GRADE | 58/58 slides migrados (Aulas_core) |
 | aulas/cirrose/ | Cirrose: manejo global (70 min) | 28/28 slides HTML, QA visual OK, speaker notes PT pendente |
 | aulas/metanalise/ | Meta-análise (60 min) | Escopo definido, pesquisa a iniciar |
 
 ## Convenções
 
-- Slides: `S{NNN}_{kebab}.html`
+- Slides: `NN-slug.html` (ex: `00-title.html`, `08-a2-carvedilol.html`)
 - Commits: `[AULA] batch N — desc`
 - Plano A: dark, wide gamut. Plano B: light, sRGB fallback.
 - Chrome ≥111 (OKLCH). Fallback HEX em `@supports not`.

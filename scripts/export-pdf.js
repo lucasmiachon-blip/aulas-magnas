@@ -70,7 +70,6 @@ async function run() {
     for (const lecture of toExport) {
       for (const [plan, size, suffix] of [
         ['index.html', '1920x1080', 'plan-a'],
-        ['index.stage-b.html', '1280x720', 'plan-b'],
       ]) {
         const url = `http://localhost:${PORT}/aulas/${lecture}/${plan}`;
         const out = resolve(EXPORTS, `${lecture}-${suffix}.pdf`);

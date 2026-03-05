@@ -193,6 +193,23 @@
 | s-app-07 | Estatina adjuvante: HVPG −2 mmHg | LIVERHOPE |
 | s-app-08 | CIRROXABAN 2025: p=0,058 NS | CIRROXABAN |
 
+## Screening cACLD — Rastreamento Primário
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Prince DS, Hoque S et al. ("The Liver Toolkit") | **38934697** | Hepatol Commun 2024 | Screening >32k adultos (9 clínicas): **83% dos pacientes com cACLD tinham diagnóstico novo** (n=23/179 recalled). Etiologia MASLD: 83%. |
+
+> **Dado confirmado:** "the majority of patients are only diagnosed when they exhibit features of end-stage decompensated disease"
+> **Uso:** slide 02c-a1-screening.html, Estado 1 — percentual de pacientes assintomáticos/não diagnosticados.
+
+## [TBD] CTP Interobserver Variability
+
+- **Query:** "Child-Pugh interobserver variability" OR "Child-Pugh interobserver reliability"
+- **Dado buscado:** % concordância entre observadores em ascite grau 1-2 e encefalopatia West Haven
+- **Candidatos a verificar:** Christensen E 1984 (PMID 6546609); Cholongitas E 2005 (PMID 16305721)
+- **Uso:** 02b-a1-damico.html Estado 1, Limitação 1 — concordância ~60-70%
+- **Status:** PMID não verificado via PubMed — usar **[TBD]** no HTML até confirmar
+
 ## Notion References DB
 
 15 PMIDs pendentes. IDs: `docs/SYNC-NOTION-REPO.md`

@@ -79,7 +79,7 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 - **Arc:** Tensão máxima no Ato 2. Cada slide é uma intervenção urgente.
 - **s-a2-03 beat:** ATTIRE é o Chekhov's Gun — "albumina sempre funciona" é derrubado.
 - **CP2 beat:** Ponto mais baixo da narrativa. MELD salta de ~10 para 28. Paciente em perigo real. Audiência angustiada.
-- **CP2 dados:** Ascite, PBE, HRS-AKI, Cr 3,1 (ver panel states).
+- **CP2 dados:** Ascite, PBE, HRS-AKI, Cr 2,8 (ver panel states).
 
 ### ATO 3 — REVERTER (slides 15-19)
 
@@ -116,7 +116,7 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 ```
 s-hook    → neutral   (apresentação: FIB-4 3,2 · PLQ 118k · Alb 3,6)
 s-cp1     → caution   (LSM 21 kPa · MELD ~10 · cACLD→CSPH)
-s-cp2     → danger    (MELD 28 · Alb 2,4 · Cr 3,1 · Ascite/PBE/HRS-AKI)
+s-cp2     → danger    (MELD 28 · Alb 2,4 · Cr 2,8 · Ascite/PBE/HRS-AKI)
 s-cp3     → hope      (FIB-4 2,1 · LSM 18 · MELD 12 · Abstinente 10m · SVR)
 s-close   → resolved  (timeline completa dos 4 estados)
 ```

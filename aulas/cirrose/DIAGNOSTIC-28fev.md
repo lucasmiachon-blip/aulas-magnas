@@ -51,9 +51,11 @@
 
 ## 5. Prioridades
 
-| P | Item |
-|---|------|
-| P0 | ~~s-app-04 PMID~~ [pendente explícito]; ~~deprecar index.stage-c~~ ✓ |
-| P1 | vite.config (globSync, open); portas; PMID em source-tags |
-| P2 | archetypes base; regras; docs |
-| P3 | ERROR-LOG Raw; 15 PMIDs; template citações |
+| P | Item | Status (04/mar) |
+|---|------|-----------------|
+| P0 | ~~s-app-04 PMID~~ [pendente explícito]; ~~deprecar index.stage-c~~ | ✅ |
+| P1 | vite.config (globSync, open); portas; PMID em source-tags | Parcial (vite OK, PMIDs pendentes) |
+| P2 | archetypes base; regras; docs | ✅ Regras auditadas 04/mar |
+| P3 | ERROR-LOG Raw; 15 PMIDs; template citações | Pendente |
+
+> **Nota 04/mar:** Este diagnóstico está em grande parte resolvido. Itens restantes (PMIDs, archetypes base) migrados para HANDOFF.md.

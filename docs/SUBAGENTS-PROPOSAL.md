@@ -13,7 +13,7 @@
 | `docs/pipeline/` | 01-planner … 10-qa-engineer | Pipeline humano: handoffs, não subagents Cursor |
 | `docs/SUBAGENTS.md` | mcp_task types | Documentação tipos (explore, generalPurpose, etc.) |
 
-**Conflito:** agents/ tem nomes sobrepostos (qa-engineer, reference-manager, slide-builder) com .claude/agents/. Formato diferente: agents/ = pipeline; .claude/agents/ = subagents Claude Code.
+**Nota:** `docs/pipeline/` contém pipeline humano (handoffs, não subagents). `.claude/agents/` e `.cursor/agents/` contêm subagents reais. Sem conflito — formatos e propósitos diferentes.
 
 ---
 
@@ -54,7 +54,7 @@
 
 | Subagent | Local | Status |
 |----------|-------|--------|
-| **verifier** | .claude/agents/ | Implementado (batch 1, 2026-03-03). model: fast. Pipeline: git diff → build → lint → report. |
+| **verifier** | .claude/agents/ | Implementado (batch 1, 2026-03-03). model: sonnet (atualizado 04/mar). Pipeline: git diff → build → lint → report. |
 
 Nota: verifier só existe no Claude Code (precisa bash/build). Versão Cursor foi descartada por não ter acesso a terminal.
 

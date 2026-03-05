@@ -1,0 +1,126 @@
+<!-- ============================================================
+     s-a1-screening — Rastreamento cACLD (state machine, 5 estados)
+     Archetype: flow  |  Timing: 90s
+     States:
+       0 = gancho narrativo (auto) — fecha loop com 01-hook.html
+       1 = dado quantitativo (click) — 83% novos diagnósticos (PMID 38934697)
+       2 = quem rastrear (click) — critérios + Antônio highlight
+       3 = preview ferramentas (click) — FIB-4 e elastografia
+       4 = conexão Antônio + PREDESCI (click) — PMID 30910320
+     PMID 38934697: Prince DS et al. Hepatol Commun. 2024. Verificado 2026-03-04.
+     PMID 30910320: Villanueva C. PREDESCI. Lancet. 2019. (evidence-db.md)
+     ============================================================ -->
+<section id="s-a1-screening"
+         data-timing="90"
+         data-panel-state="neutral">
+  <div class="slide-inner archetype-flow">
+
+    <p class="section-tag">ATO 1 — CLASSIFICAR</p>
+
+    <!-- TÍTULO: afirmação verificável — Alley model obrigatório -->
+    <h2 class="slide-headline">
+      Cirrose compensada é silenciosa — o rastreio chegou antes dos sintomas
+    </h2>
+
+    <!-- ESTADO 0: gancho narrativo (visível automaticamente no slidechanged) -->
+    <!-- Pedagógico: fecha loop com 01-hook.html — Antônio sem queixas hepáticas -->
+    <div class="screening-anchor">
+      <p class="screening-anchor-text">
+        Antônio não tinha queixas quando chegou ao ambulatório.
+        <span class="screening-anchor-sub">
+          O diagnóstico não veio dos sintomas — veio do protocolo.
+        </span>
+      </p>
+    </div>
+
+    <!-- ESTADO 1: dado quantitativo -->
+    <!-- PMID 38934697 — Prince DS et al. Hepatol Commun 2024; n=179; Liver Toolkit; cACLD screening -->
+    <div class="screening-hero">
+      <span class="screening-hero-stat" data-target="83">83</span><span class="screening-hero-pct">%</span>
+      <span class="screening-hero-label">
+        dos pacientes com cACLD detectados por screening<br>
+        tinham diagnóstico novo ao chegar
+      </span>
+      <span class="scores-era-source">Prince DS et al. Hepatol Commun. 2024 · PMID 38934697</span>
+    </div>
+
+    <!-- ESTADO 2: quem rastrear -->
+    <!-- Critérios de rastreamento: DLD, labs sugestivos, síndrome metabólica -->
+    <div class="screening-criteria">
+      <div class="screening-criterion">Doença hepática crônica conhecida (VHC, VHB, MASLD, álcool)</div>
+      <div class="screening-criterion">Laboratório sugestivo — plaquetopenia, enzimas elevadas</div>
+      <div class="screening-criterion">Síndrome metabólica + risco MASLD</div>
+      <!-- Critério de Antônio — destaque clínico via data-highlight -->
+      <div class="screening-criterion" data-highlight="antonio">
+        ⚠ DM2 + obesidade + álcool ~60 g/dia → exatamente Antônio
+      </div>
+    </div>
+
+    <!-- ESTADO 3: preview das ferramentas (sem cutoffs — próximos slides) -->
+    <div class="screening-tools">
+      <div class="screening-tool-card">
+        <span class="tool-label">FIB-4</span>
+        <span class="tool-role">Triagem populacional</span>
+        <span class="tool-next">→ próximo slide</span>
+      </div>
+      <div class="screening-tool-card">
+        <span class="tool-label">Elastografia</span>
+        <span class="tool-role">Confirmação + Rule-of-5</span>
+        <span class="tool-next">→ slide seguinte</span>
+      </div>
+    </div>
+
+    <!-- ESTADO 4: conexão Antônio + âncora PREDESCI -->
+    <!-- PMID 30910320 — PREDESCI, Villanueva 2019, carvedilol vs placebo, HR 0,51 (IC 95% 0,26–0,97) -->
+    <!-- HR = Hazard Ratio do endpoint composto de descompensação (NÃO RR) -->
+    <p class="screening-predesci-pill">
+      ✓ Antônio: MELD-Na ~10 → compensado, mas CSPH → PREDESCI elegível
+    </p>
+
+    <!-- Source tag visível apenas no estado 4 (Plan B: sempre visível) -->
+    <p class="source-tag">
+      Prince DS et al. Hepatol Commun 2024 (PMID 38934697) ·
+      PREDESCI: Villanueva 2019 (PMID 30910320, HR 0,51) ·
+      Baveno VII 2022 (PMID 35120736)
+    </p>
+
+  </div>
+
+  <aside class="notes">
+[0:00-0:20] [ESTADO 0 — auto, gancho]
+"Antônio apareceu no ambulatório sem queixas hepáticas."
+"Diabetes, obesidade, álcool moderado — chegou por rotina."
+"Foi o protocolo que encontrou o problema, não o paciente."
+PAUSA 2s. "Isso não é exceção. É a regra."
+
+[0:20-0:45] [CLICK → estado 1, dado quantitativo]
+"Oitenta e três por cento."
+CountUp 0 → 83 dispara.
+"Dos pacientes com cACLD encontrados por screening, 83% tinham diagnóstico
+novo. Não sabiam que tinham. Prince DS et al., Hepatol Commun 2024 — 179
+pacientes, 9 clínicas, protocolo Liver Toolkit."
+
+[0:45-1:05] [CLICK → estado 2, critérios]
+"Quem rastrear? Quem tem fator de risco hepático."
+Critérios aparecem em stagger sequencial.
+"Antônio tem três: MASLD por NAFLD, álcool acima do corte, DM2."
+"Ele é o paciente para o qual esse protocolo foi desenhado."
+
+[1:05-1:20] [CLICK → estado 3, ferramentas]
+"As ferramentas vêm agora — FIB-4 para triagem, elastografia para confirmar."
+Dois cards aparecem com flipIn.
+"Os próximos dois slides detalham os cutoffs. Ainda não mostro os números."
+
+[1:20-1:30] [CLICK → estado 4, Antônio + PREDESCI]
+"E por que isso importa? Porque classificar cedo muda o desfecho."
+Pill PREDESCI aparece.
+"PREDESCI mostrou HR 0,51 — redução de 49% na descompensação."
+"PMID 30910320 — Villanueva, Lancet 2019. HR, não RR."
+"Antônio chegou a tempo. Isso é o slide."
+→ AVANÇAR para FIB-4
+
+[DATA] Screening cACLD: PMID 38934697 | Prince DS, Hepatol Commun 2024 | n=179 | 83% novos diagnósticos | Verificado: 2026-03-04
+[DATA] PREDESCI: PMID 30910320 | Villanueva, Lancet 2019 | HR 0,51 (IC 95% 0,26–0,97) | carvedilol vs placebo | Verificado: evidence-db.md
+[DATA] Baveno VII: PMID 35120736 | de Franchis 2022 | cACLD definição + NITs | Verificado: evidence-db.md
+  </aside>
+</section>

@@ -38,8 +38,8 @@
 
 | Trial | Autores | Ano | Journal | PMID | Tier | Evidence | Key Finding | PDF? |
 |-------|---------|-----|---------|------|------|----------|-------------|------|
-| **ANSWER** | Caraceni et al. | 2018 | Lancet | 29861076 | 1 | Ib — RCT | Albumina longo prazo em descompensada: reduz mortalidade 1 ano (38% vs 46%) | – |
-| **ATTIRE** | Thinking et al. | 2021 | NEJM | 33657293 | 1 | Ib — RCT | Albumina guiada por target: NÃO reduz mortalidade vs standard (twist narrativo) | – |
+| **ANSWER** | Caraceni et al. | 2018 | Lancet | 29861076 | 1 | Ib — RCT | Albumina longo prazo em descompensada: reduz mortalidade 1 ano (38% vs 46%) | – | <!-- [VERIFICAR] CLAUDE.md raiz lista PMID 29793859 — confirmar qual é o correto -->
+| **ATTIRE** | China L et al. | 2021 | NEJM | 33657293 | 1 | Ib — RCT | Albumina guiada por target: NÃO reduz mortalidade vs standard (twist narrativo) | – |
 
 ---
 

@@ -17,7 +17,7 @@ Example: `/new-slide cirrose "Carvedilol reduces first decompensation by 51%"`
     <div class="evidence" data-animate="fadeUp">
       <!-- Visual evidence here -->
     </div>
-    <footer class="citation">Author et al. Journal Year. PMID: XXXXX</footer>
+    <cite class="source-tag">Author et al. Journal Year. PMID: XXXXX</cite>
   </div>
   <aside class="notes">
     [TEMPO: ~90s]

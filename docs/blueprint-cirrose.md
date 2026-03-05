@@ -236,7 +236,7 @@ Micro-hook: "Homem, 55a. FIB-4 3,2. PLQ 118k. O que vocês fazem segunda-feira?"
 
 ## 🪡 Caso Clínico (fio condutor — Gagné eventos 1+6+7)
 
-**Paciente:** Homem, 55 anos, motorista de caminhão. Etiologia: álcool + MASLD (overlap — perfil típico Brasil). IMC 31, DM2, etilismo 40g/dia há 20 anos. Encaminhado pelo clínico geral após FIB-4 = 3.2.
+**Paciente:** Homem, 55 anos, motorista de caminhão. Etiologia: álcool + MASLD (overlap — perfil típico Brasil). IMC 31, DM2, etilismo ~60g/dia há 20 anos. Encaminhado pelo clínico geral após FIB-4 = 3.2.
 
 ### HOOK (início da aula)
 

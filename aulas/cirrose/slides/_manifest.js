@@ -8,7 +8,8 @@ export const slides = [
   { id: 's-title', file: '00-title.html', act: null, archetype: 'title', sectionTag: null, headline: 'Cirrose Hepática', panelState: 'hidden', clickReveals: 0, customAnim: null, timing: null, subItems: ['brasão', 'título', 'pilares'] },
   { id: 's-hook', file: '01-hook.html', act: null, archetype: 'hook', sectionTag: null, headline: 'Caso Antônio · Qual a próxima conduta?', panelState: 'neutral', clickReveals: 1, customAnim: 's-hook', timing: 90, subItems: [{ label: 'beat 0: Antônio', beat: 0 }, { label: 'beat 1: labs+pergunta', beat: 1 }] },
   { id: 's-a1-01', file: '02-a1-continuum.html', act: 'A1', archetype: 'hero-stat', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'Cirrose mata 1,32 milhão por ano — e a epidemia silenciosa está crescendo', panelState: 'neutral', clickReveals: 0, customAnim: 's-a1-01', timing: 90 },
-  { id: 's-a1-damico', file: '02b-a1-damico.html', act: 'A1', archetype: 'pathway', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'De 1% a 57%/ano — cada descompensação dobra a mortalidade', panelState: 'neutral', clickReveals: 0, customAnim: 's-a1-damico', timing: 150 },
+  { id: 's-a1-damico', file: '02b-a1-damico.html', act: 'A1', archetype: 'flow', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'De Child a MELD 3.0 — cada geração corrigiu o que a anterior não via', panelState: 'neutral', clickReveals: 5, customAnim: 's-a1-damico', timing: 180 },
+  { id: 's-a1-screening', file: '02c-a1-screening.html', act: 'A1', archetype: 'flow', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'Cirrose compensada é silenciosa — o rastreio chegou antes dos sintomas', panelState: 'neutral', clickReveals: 4, customAnim: 's-a1-screening', timing: 90 },
   { id: 's-a1-02', file: '03-a1-fib4.html', act: 'A1', archetype: 'flow', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'De "cirrose" a cACLD/dACLD — testes não invasivos substituem a biópsia', panelState: 'neutral', clickReveals: 0, customAnim: 's-a1-02', timing: 120 },
   { id: 's-a1-03', file: '04-a1-meld.html', act: 'A1', archetype: 'interactive', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'MELD-Na é o GPS do cirrótico — e tem um semáforo', panelState: null, clickReveals: 0, customAnim: null, timing: null },
   { id: 's-a1-04', file: '05-a1-infeccao.html', act: 'A1', archetype: 'bars', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'Infecção precipita 1 em 3 descompensações — e é a mais prevenível', panelState: null, clickReveals: 0, customAnim: null, timing: null },
@@ -44,13 +45,13 @@ export const panelStates = {
   },
   's-cp1': {
     severity: 'caution',
-    values: { fib4: '5,10', lsm: '21 kPa', plq: '118k', meld: '~10', albumin: '3,6', stage: 'cACLD → CSPH' },
+    values: { fib4: '5,10', lsm: '21 kPa', plq: '118k', meld: '~10', albumin: '3,6', stage: 'cACLD/CSPH' },
     events: ['Elastografia realizada'],
   },
   's-cp2': {
     severity: 'danger',
     values: { fib4: '3,2', lsm: '32 kPa', plq: '89k', meld: '28', albumin: '2,4', stage: 'dACLD' },
-    events: ['Ascite +++', 'PBE', 'HRS-AKI', 'Cr 3,1'],
+    events: ['Ascite +++', 'PBE', 'HRS-AKI', 'Cr 2,8'],
   },
   's-cp3': {
     severity: 'hope',

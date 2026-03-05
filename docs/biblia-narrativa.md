@@ -5,6 +5,18 @@
 > **Uso:** Referência obrigatória para speaker notes e conteúdo visual durante redesign
 > **Regra:** Nunca inventar dado. Se não está aqui ou nos papers, marcar [TBD].
 
+## Índice
+
+- [O Arco do Seu Antônio](#o-arco-do-seu-antônio)
+- [Ato 1 — Classificar (slides 1-8)](#ato-1--classificar-slides-1-8)
+- [Ato 2 — Intervir (slides 9-15)](#ato-2--intervir-slides-9-15)
+- [Ato 3 — Reverter (slides 16-20)](#ato-3--reverter-slides-16-20)
+- [Encefalopatia Hepática](#encefalopatia-hepática--pérolas-completas)
+- [TIPS — Compilado](#tips--compilado-transversal)
+- [Pérolas Avulsas](#pérolas-avulsas-sem-slide-fixo)
+- [Micro-narrativas](#micro-narrativas-duarte-sparkline)
+- [Números Práticos](#números-práticos--referência-rápida)
+
 ---
 
 # O ARCO DO SEU ANTÔNIO
@@ -21,7 +33,7 @@ Seu Antônio, 55 anos, motorista de caminhão, Ribeirão Preto. Etiologia dupla:
 |---------|----------|-------------|---------|
 | HOOK (slide 4) | Neutro (cinza) | FIB-4 3,2 · PLQ 118k · Alb 3,6 | — |
 | CP1 (slide 8) | Caution (amarelo) | +LSM 21 kPa · MELD ~10 · cACLD→CSPH | Elastografia realizada |
-| CP2 (slide 15) | Danger (vermelho) | LSM 32↑ · MELD 28↑ · Alb 2,4↓ · PLQ 89k↓ | Ascite · PBE · HRS-AKI · Cr 3,1 |
+| CP2 (slide 15) | Danger (vermelho) | LSM 32↑ · MELD 28↑ · Alb 2,4↓ · PLQ 89k↓ | Ascite · PBE · HRS-AKI · Cr 2,8 |
 | CP3 (slide 19) | Hope (verde) | FIB-4 2,1↓ · LSM 18↓ · MELD 12↓ · Alb 3,8↑ | Abstinente 10m · Sem ascite 8m · SVR |
 | CLOSE (slide 20) | Resolved | Timeline dos 4 estados | Arco completo |
 
@@ -151,7 +163,7 @@ Seu Antônio, 55 anos, motorista de caminhão, Ribeirão Preto. Etiologia dupla:
 - Se Cr >5 + falência multi-orgânica → NÃO usar
 - Midodrina + octreotide = "faz nos sentir melhor mas não funciona"
 
-## CP2 — "MELD 28, Cr 3,1, PBE. O que você faz AGORA?"
+## CP2 — "MELD 28, Cr 2,8, PBE. O que você faz AGORA?"
 Tudo converge: albumina PBE + avaliar HRS-AKI + considerar terlipressina + listar transplante AGORA.
 
 ---
@@ -280,53 +292,8 @@ Screening q6m pós-SVR se cirrose. Para sempre. DAAs não aumentam risco HCC.
 
 # TABELA DE EVIDÊNCIAS — Trials Tier-1
 
-> Dados verificados via PubMed 25/fev/2026. NNT/NNH calculados dos dados originais.
-> **Regra:** Se não está aqui, marcar [TBD] no slide.
-
-## PREDESCI — BB previne descompensação
-- **Citação:** Villanueva C et al. Lancet 2019;393:1597-1608. PMID 30910320
-- **Desenho:** RCT duplo-cego, multicêntrico (8 hospitais Espanha)
-- **n:** 201 (100 BB, 101 placebo)
-- **População:** Cirrose compensada + CSPH (HVPG ≥10) SEM varizes alto risco
-- **Resultado:** HR 0,51 (IC 95% 0,26-0,97; p=0,041)
-- **ARR:** 11% → **NNT 9** (tratar 9 para prevenir 1 descompensação em ~3 anos)
-- **GRADE:** ⊕⊕⊕◯ Moderada
-
-## Sort 1999 — Albumina na PBE
-- **Citação:** Sort P et al. NEJM 1999;341(6):403-9. PMID 10432325
-- **n:** 126
-- **Morte hospitalar:** 10% vs 29% → **NNT 5**
-- **GRADE:** ⊕⊕⊕⊕ Alta
-
-## CONFIRM — Terlipressina HRS-AKI
-- **Citação:** Wong F et al. NEJM 2021;384(9):818-828. PMID 33657294
-- **n:** 300
-- **Reversão HRS:** 32% vs 17% → **NNT 7**
-- **NNH insuf. respiratória:** ~11
-- **Mortalidade 90 dias:** NS
-- **GRADE:** ⊕⊕⊕◯ Moderada
-
-## ANSWER — Albumina manutenção
-- **Citação:** Caraceni P et al. Lancet 2018;391:2417-2429. PMID 29861076
-- **n:** 431
-- **HR mortalidade:** 0,62 (IC 0,40-0,95) → **NNT 9** em 18m
-- **GRADE:** ⊕⊕⊕◯ Moderada
-
-## ATTIRE — Albumina-alvo ≥30 (NEGATIVO)
-- **Citação:** China L et al. NEJM 2021;384(9):808-817. PMID 33657293
-- **n:** 777
-- **Resultado:** SEM diferença + MAIS EA
-- **GRADE:** ⊕⊕⊕⊕ Alta
-
-## Bass 2010 — Rifaximin na HE
-- **Citação:** Bass NM et al. NEJM 2010;362(12):1071-81. PMID 20335583
-- **n:** 299
-- **Breakthrough HE:** HR 0,42 → **NNT 4** em 6m
-- **GRADE:** ⊕⊕⊕⊕ Alta
-
-## Baveno VII — Consenso Portal HTN 2022
-- **Citação:** de Franchis R et al. J Hepatol 2022;76(4):959-974. PMID 35431106
-- **Tipo:** Consenso de experts
+> **Fonte canônica:** [evidence-db.md](../aulas/cirrose/references/evidence-db.md).
+> Não duplicar aqui — consultar evidence-db.md para dados completos de trials, NNT, HR e PMID.
 
 ---
 
@@ -357,40 +324,15 @@ Screening q6m pós-SVR se cirrose. Para sempre. DAAs não aumentam risco HCC.
 - **Lille ≥0,45 D7** → futilidade → parar corticoide
 
 ## Tabela NNT/NNH resumo
-- **Carvedilol (PREDESCI):** NNT 9 (descompensação ~3a)
-- **Albumina PBE (Sort):** NNT 5 (morte) / NNT 4 (renal)
-- **Terlipressina (CONFIRM):** NNT 7 (rim) / NNH 11 (resp)
-- **Albumina manut (ANSWER):** NNT 9 (morte 18m)
-- **Rifaximin (Bass):** NNT 4 (HE 6m) / NNT 11 (hospitalização)
-- **Albumina-alvo (ATTIRE):** NNT ∞ (NÃO funciona)
+
+> Tabela completa com IC 95%, GRADE e PMID em [evidence-db.md](../aulas/cirrose/references/evidence-db.md).
 
 ---
 
 # TBDs RESOLVIDOS — Trials Adicionais
 
-## Early TIPS — García-Pagán NEJM 2010
-- PMID 20573925. n=63. Sobrevida 1a: 86% vs 61%. NNT ~4.
-
-## DAA-SVR — Singal/Ioannou Gastro 2019
-- PMID 31374215. n=797. SVR: HR 0,29 (morte).
-
-## STOPAH — Thursz NEJM 2015
-- PMID 25901427. n=1053. Prednisolona 28d: OR 0,72 (NS). Pentoxifilina: NÃO funciona.
-
-## Rifaximin pré-TIPS — Bureau Ann Intern Med 2021
-- PMID 33524293. n=186. HE: 34% vs 53%. NNT ~5.
-
-## PEG-3350 — Rahimi JAMA Intern Med 2014 (HELP)
-- PMID 25243839. n=50. Melhora 24h: 91% vs 52%.
-
-## D'Amico staging — J Hepatol 2006
-- PMID 16298014. 4 estágios: 1% → 3-4% → ~20% → 57% mortalidade/ano.
-
-## Mathurin — Early transplant NEJM 2011
-- PMID 22070476. n=26. Sobrevida 6m: 77% vs 23%. Derrubou regra 6 meses.
-
-## Baveno VII — Recompensação
-- PMID 35431106. Sem descompensação ≥12m + melhora lab + causa tratada.
+> **Fonte canônica:** seção "Tier-2 Trials" em [evidence-db.md](../aulas/cirrose/references/evidence-db.md).
+> Não duplicar aqui — consultar evidence-db.md para Early TIPS, DAA-SVR, STOPAH, Rifaximin pré-TIPS, etc.
 
 ---
 

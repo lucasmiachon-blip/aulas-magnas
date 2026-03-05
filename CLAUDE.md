@@ -139,7 +139,7 @@ shared/js/interactions/meld-calc.js → MELD-Na calculator
 shared/assets/fonts/             → WOFF2 self-hosted (Instrument Serif, DM Sans, JetBrains Mono)
 aulas/cirrose/slides/            → 1 HTML per slide (source of truth: _manifest.js)
 aulas/cirrose/slide-registry.js  → Custom anims per slide + wiring
-aulas/cirrose/scripts/           → build-html.ps1, split-slides.js, qa-screenshots
+aulas/cirrose/scripts/           → build-html.ps1, qa-screenshots
 aulas/cirrose/HANDOFF.md         → Pendências projeto
 aulas/cirrose/HANDOFF-CLAUDE-AI.md → Claude.ai (paths + pendências)
 aulas/grade/slides/              → 58 slides (migrados de Aulas_core)
@@ -283,7 +283,6 @@ npm run build:cirrose    # Concatena slides → index.html via _manifest.js
 1. **case-panel.js:** `renderTimeline()` has hardcoded HEX colors — migrate to `var(--severity-*)` tokens.
 2. **meld-calc.js:** Literal `#1a1a2e` for bg — migrate to `var(--bg-navy)`. Missing null checks on inputs.
 3. **.gitignore:** `*.png` pattern ignores QA screenshots in `qa-screenshots/` dir.
-4. **index.stage-c.html:** Deprecated; index.html (modular) é fonte. qa-screenshots usa index.html + PORT 3000.
 
 ---
 

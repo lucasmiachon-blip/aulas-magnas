@@ -26,8 +26,8 @@ isProject: true
 | Princípio               | Regra                                                                                                 |
 | ----------------------- | ----------------------------------------------------------------------------------------------------- |
 | **Repositório**         | aulas-magnas (lucasmiachon-blip). Todas as aulas aqui.                                                |
-| **Claude Opus**         | Composer + Opus 4.6. Hub de pesquisa e narrativa. Construímos juntos — colaborativo, não só autônomo.  |
-| **Cursor MCP**          | Cursor + MCPs. Código, execução, scripts, ferramentas externas. Mesma hierarquia que Claude Opus.    |
+| **Claude Opus**         | Composer + Opus 4.6. Hub de pesquisa e narrativa. Construímos juntos — colaborativo, não só autônomo. |
+| **Cursor MCP**          | Cursor + MCPs. Código, execução, scripts, ferramentas externas. Mesma hierarquia que Claude Opus.     |
 | **JS**                  | Low code primeiro. Máxima interatividade — não abrir mão. Custom quando necessário.                   |
 | **Construir e ensinar** | Agentes, skills, rules produzem E explicam. Usuário roda com pouco conhecimento, aprende no processo. |
 | **Ecossistema**         | Manter docs/ECOSYSTEM.md atualizado. Busca semanal de atualizações.                                   |
@@ -262,16 +262,16 @@ flowchart TB
 
 ## 7. Fluxo Autônomo (sem Claude.ai)
 
-| Etapa           | Onde         | Ferramentas                                                          |
-| --------------- | ------------ | -------------------------------------------------------------------- |
-| Pesquisa        | Claude Opus  | PubMed, CrossRef, Zotero, Perplexity, Scite — **construímos juntos** |
-| Narrativa       | Claude Opus  | Notion MCP, narrative.md, Excalidraw — **construímos juntos**        |
-| Spec            | Cursor MCP   | specs-v6-ready, ORCHESTRATOR                                         |
-| Build slide     | Cursor MCP   | medical-slide skill, Slide Builder agent — **construir e explicar**   |
-| Verificação     | Cursor MCP   | visual-qa skill, Playwright, a11y                                    |
-| Assets visuais  | Canva Pro           | Diagramas, ícones (manual)                                           |
-| Conflitos       | Cursor MCP   | CANONICAL.md (prescrito)                                             |
-| Conflitos novos | Claude.ai           | Só quando CANONICAL não cobre                                        |
+| Etapa           | Onde        | Ferramentas                                                          |
+| --------------- | ----------- | -------------------------------------------------------------------- |
+| Pesquisa        | Claude Opus | PubMed, CrossRef, Zotero, Perplexity, Scite — **construímos juntos** |
+| Narrativa       | Claude Opus | Notion MCP, narrative.md, Excalidraw — **construímos juntos**        |
+| Spec            | Cursor MCP  | specs-v6-ready, ORCHESTRATOR                                         |
+| Build slide     | Cursor MCP  | medical-slide skill, Slide Builder agent — **construir e explicar**  |
+| Verificação     | Cursor MCP  | visual-qa skill, Playwright, a11y                                    |
+| Assets visuais  | Canva Pro   | Diagramas, ícones (manual)                                           |
+| Conflitos       | Cursor MCP  | CANONICAL.md (prescrito)                                             |
+| Conflitos novos | Claude.ai   | Só quando CANONICAL não cobre                                        |
 
 ---
 

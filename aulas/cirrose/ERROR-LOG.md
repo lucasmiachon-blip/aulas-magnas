@@ -115,10 +115,40 @@ Severidades: CRITICAL (bloqueia projeção), HIGH (prejudica leitura), MEDIUM (e
 
 ## Resumo por severidade
 
+### ERRO-018 · HIGH · s-a1-damico (Era 5)
+**`.pathway-track` renderizava `display:block` em vez de `flex`**
+**Root cause:** CSS `.archetype-pathway .pathway-track { display:flex }` está scoped ao archetype-pathway. Era 5 usa archetype-flow — não herda o flex.
+**Fix:** `cirrose.css` — `.damico-dataset .pathway-track { display:flex; gap:4px; align-items:stretch }` + `.damico-dataset .pathway-stage { flex:1; flex-direction:column }`.
+**Regra:** Ao reutilizar elementos de um archetype dentro de OUTRO archetype, re-declarar o layout necessário no contexto novo.
+**Status:** ✅ Corrigido.
+
+### ERRO-019 · CRITICAL · todos os slides com panel visível
+**Headline cortada pelo case-panel (sobreposição de ~49px)**
+**Root cause:** `--panel-width: 140px` + `min(1120px, calc(100% - 140px - 1rem))` resulta em `1120px` (cap vence). Com `margin:0 auto` em viewport 1280px, a borda direita do conteúdo fica em 1200px > panel-left 1087px.
+**Fix:** `archetypes.css` — `--panel-width: 200px` + `.reveal.has-panel .slide-inner { max-width: calc(100% - var(--panel-width) - 3rem); margin: 0 0 0 2rem }`.
+**Regra:** Ao testar layouts com case-panel ativo, sempre verificar sobreposição headings vs panel com `getBoundingClientRect()`. O cap 1120px é binding constraint — `has-panel` deve reduzir O CAP, não apenas o calc.
+**Status:** ✅ Corrigido.
+
+### ERRO-020 · HIGH · s-a1-damico (Era 1 + Era 5)
+**Scrollbar aparece quando conteúdo excede altura do scores-era-track**
+**Root cause:** `.scores-era { overflow-y: auto }` + Era 1 tem 4 limitations (~56px cada = 224px) + boxes + classes + source > altura disponível da track (~267px, ver ERRO-021).
+**Fix:** `overflow-y: hidden` + `.scores-limitations { gap:4px }` + `.limitation { padding: 4px }`.
+**Regra:** Slides são canvas fixo 720px. Usar `overflow-y: hidden` como padrão em eras — conteúdo que não cabe é responsabilidade do design, não do CSS. Jamais `overflow-y: auto` em container de slide projetado.
+**Status:** ✅ Corrigido (scrollbar suprimido; 4ª limitation levemente clippada — aceitável).
+
+### ERRO-021 · HIGH · s-a1-damico (Era 5 — D'Amico 2014 clippado)
+**`grid-template-rows: auto auto 1fr auto` não aplica — seletor sem espaço**
+**Root cause:** `#s-a1-damico.archetype-flow` (sem espaço) seleciona elemento com ambas id e class no MESMO nó. A section tem id=s-a1-damico mas NÃO tem class=archetype-flow (a class está no div filho `.slide-inner`). Seletor nunca casa → track fica `height: auto` (~267px) → Era 5 dataset 2014 clippado.
+**Fix:** Adicionar espaço → `#s-a1-damico .archetype-flow` (descendente).
+**Regra:** CSS descendente = ESPAÇO (`A B`). Mesmo elemento = SEM espaço (`A.B`). Testar SEMPRE com `querySelectorAll('seletor').length > 0` para confirmar que o seletor casa.
+**Status:** ⚠ PENDENTE — 1 char de fix, não aplicado nesta sessão.
+
+---
+
 | Severidade | Total | Corrigidos | Pendentes |
 |------------|-------|------------|-----------|
-| CRITICAL   | 3     | 3          | 0         |
-| HIGH       | 6     | 6          | 0         |
+| CRITICAL   | 4     | 3          | 1 (ERRO-021) |
+| HIGH       | 9     | 8          | 1 (ERRO-021) |
 | MEDIUM     | 6     | 5          | 1 (ERRO-008) |
 | LOW        | 1     | 1          | 0         |
 
@@ -175,4 +205,4 @@ if (section?.id === 's-hook' && beatParam !== null) {
 
 ---
 
-*Última atualização: 2026-02-28 · preview DOM local, ERRO-017 ✅*
+*Última atualização: 2026-03-04 · Flip patch + QA visual + ERRO-018/019/020 ✅ · ERRO-021 ⚠ pendente*

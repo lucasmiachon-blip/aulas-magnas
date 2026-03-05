@@ -8,8 +8,8 @@
 - **Duração:** 70 minutos
 - **Público:** Hepatologistas e gastroenterologistas seniores (congresso internacional)
 - **Formato:** Assertion-evidence, Reveal.js
-- **Idioma:** PT (slides), EN (speaker notes)
-- **Tom:** Acadêmico-prático, baseado em evidência (Baveno VII + EASL + AASLD)
+- **Idioma:** PT (slides e speaker notes)
+- **Tom:** Acadêmico-prático, baseado em evidência (Baveno VII + EASL 2024 + AASLD 2024)
 
 ### Objetivo central
 Apresentar o manejo evidence-based da cirrose como espectro contínuo

@@ -34,18 +34,19 @@
 - [ ] Figura densa com highlight/anotação na área relevante
 - [ ] Headline ≤ 2 linhas
 
-### s-hook (custom)
-- [ ] "5 números" e "3 decisões" ambos visíveis (stagger completo)
-- [ ] "Albumina 3,6" com espaço correto (não "Albumina3,6")
-- [ ] Framework items (Classificar/Intervir/Reverter) diferenciados visualmente
-- [ ] Case card visível e funcional
+### s-hook (custom — v5, 2 beats)
+- [ ] Beat 0: Antônio + história centrados, legíveis
+- [ ] Beat 1: 5 labs visíveis (grid 5 col), lead + pergunta abaixo
+- [ ] Navegação bidirecional: click/→ avança, ←/↑ retorna
+- [ ] Contraste OK em stage-c (cores literais, não tokens dark)
 - [ ] CasePanel state = neutral
+- [ ] Fill ratio beat 1 ≥ 25%
 
 ### s-a1-03 (interactive)
 - [ ] MELD calculator: 4 inputs renderizados
 - [ ] Barra de zonas coloridas visível (não clipada pelo panel)
 - [ ] Botão calcular e reset funcionais
-- [ ] "Seu Antônio" dados carregados
+- [ ] Dados de Antônio carregados (MELD-Na ~10)
 
 ### s-a1-04 (bars)
 - [ ] 3 barras PREDICT visíveis (Infecção, Hemorragia, Álcool)

@@ -49,6 +49,9 @@ docs/transcripts/*.analysis.json
 # Exceção: figuras de papers (assets de aula)
 !aulas/cirrose/assets/*.png
 
+# Playwright MCP artifacts (screenshots, logs — gerados localmente)
+.playwright-mcp/
+
 # Audit export (temporary, for Claude.ai upload)
 audit-export/
 
