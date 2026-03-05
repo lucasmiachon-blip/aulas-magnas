@@ -869,11 +869,11 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
   </section>
 
 <section id="s-a1-04">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-metrics">
       <p class="section-tag">ATO 1 — CLASSIFICAR</p>
       <h2 class="slide-headline">Infecção precipita 1 em 3 descompensações — e é a mais prevenível</h2>
 
-      <div class="predict-bars" data-animate="stagger" data-stagger="0.3">
+      <div class="predict-bars" data-animate="stagger" data-stagger="0.2">
         <div class="predict-bar">
           <span class="predict-label">Infecção</span>
           <div class="predict-fill" style="--bar-pct: 33%; --bar-color: var(--danger)"></div>
@@ -907,21 +907,54 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
   </section>
 
 <section id="s-a1-05">
-    <div class="slide-inner">
+    <div class="slide-inner archetype-metrics">
       <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-      <h2 class="slide-headline">"Cirrose" não é uma doença — são 10 doenças com final comum</h2>
+      <h2 class="slide-headline">"Cirrose" não é uma doença — são 10 doenças com um final comum</h2>
 
-      <table class="etiology-table" data-animate="stagger" data-stagger="0.25">
-        <thead>
-          <tr><th>Etiologia</th><th>Tratamento-chave</th><th>Nota</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Álcool</td><td>Abstinência + baclofen (SUS)</td><td>Early Tx selecionado</td></tr>
-          <tr><td>MASLD</td><td>Lifestyle (zero droga F4)</td><td>Resmetirom não cobre cirrose</td></tr>
-          <tr><td>HCV</td><td>SVR (DAAs SUS)</td><td>CSPH persiste 53% — vigilância</td></tr>
-        </tbody>
-      </table>
-      <p class="source-tag">EASL CPG Cirrhosis, J Hepatol 2024 · AASLD Practice Guidance 2024</p>
+      <div class="etio-grid" data-animate="stagger" data-stagger="0.06">
+        <div class="etio-item etio-item--major">
+          <span class="etio-name">⚠ Álcool</span>
+          <span class="etio-tx">Abstinência + baclofen</span>
+        </div>
+        <div class="etio-item etio-item--major">
+          <span class="etio-name">⚠ MASLD</span>
+          <span class="etio-tx">Lifestyle · zero droga para F4</span>
+        </div>
+        <div class="etio-item etio-item--major">
+          <span class="etio-name">⚠ HCV</span>
+          <span class="etio-tx">SVR (DAAs SUS) · CSPH persiste 53%</span>
+        </div>
+        <div class="etio-item">
+          <span class="etio-name">HBV</span>
+          <span class="etio-tx">Tenofovir / entecavir</span>
+        </div>
+        <div class="etio-item">
+          <span class="etio-name">AIH</span>
+          <span class="etio-tx">Prednisona + azatioprina</span>
+        </div>
+        <div class="etio-item">
+          <span class="etio-name">CBP (PBC)</span>
+          <span class="etio-tx">AUDC (SUS) · AMA positivo</span>
+        </div>
+        <div class="etio-item">
+          <span class="etio-name">CEP (PSC)</span>
+          <span class="etio-tx">Transplante · DII em 75%</span>
+        </div>
+        <div class="etio-item">
+          <span class="etio-name">Hemocromatose</span>
+          <span class="etio-tx">Flebotomia</span>
+        </div>
+        <div class="etio-item">
+          <span class="etio-name">Wilson</span>
+          <span class="etio-tx">Penicilamina / trientina</span>
+        </div>
+        <div class="etio-item">
+          <span class="etio-name">DILI / Criptogênica</span>
+          <span class="etio-tx">Suspender agente</span>
+        </div>
+      </div>
+
+      <p class="source-tag">EASL CPG Cirrhosis J Hepatol 2024 · AASLD Practice Guidance 2024</p>
     </div>
     <aside class="notes">
 [0:00-1:00 DIVERSIDADE]
@@ -929,13 +962,16 @@ Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhor
 "Cirrose não é o diagnóstico final — é o ponto de partida para investigar a causa."
 
 [1:00-2:00 TRÊS GRANDES]
-"Álcool: abstinência é a intervenção #1. Baclofen disponibilização SUS. Early Tx selecionado."
+"⚠ Os três com borda: responsáveis por ~80% dos casos no Brasil."
+"Álcool: abstinência é a intervenção #1. Baclofen disponível no SUS. Early Tx selecionado em pacientes motivados."
 "MASLD: NENHUMA droga aprovada para F4. Lifestyle é a única opção. Resmetirom não cobre cirrose."
-"HCV: SVR ≠ alta. CSPH persiste em 53%. Vigilância continua."
+"HCV: SVR ≠ alta. CSPH persiste em 53% após cura. Vigilância continua."
 
 [2:00-3:00 ETIOLOGIA MISTA]
 "Seu Antônio: álcool + MASLD. Overlap é a regra no Brasil, não a exceção."
 "Tratar as DUAS causas: abstinência + perda peso + controle metabólico."
+"HBV: sempre rastrear antes de imunossupressão — reativação é fatal e prevenível."
+"AIH, PBC, PSC, Wilson: ver slide do apêndice para detalhes de investigação."
     </aside>
   </section>
 

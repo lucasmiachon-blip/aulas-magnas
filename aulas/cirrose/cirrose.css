@@ -328,7 +328,7 @@
 }
 
 /* ============================================
-   ETIOLOGY TABLE (A1-05)
+   ETIOLOGY TABLE (A1-05) — legacy, preserved for ref
    ============================================ */
 .etiology-table {
   width: 100%;
@@ -348,6 +348,33 @@
   font-size: var(--text-body);
   border-bottom: 1px solid oklch(0% 0 0 / 0.06);
 }
+
+/* ============================================
+   ETIO GRID — 10 etiologias 2×5 compacto (I4)
+   ============================================ */
+.etio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1.25rem;
+  margin: var(--space-sm) 0;
+  align-self: start;
+}
+.etio-item {
+  display: grid;
+  grid-template-columns: minmax(6rem, auto) 1fr;
+  gap: 0 0.5rem;
+  align-items: baseline;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: var(--text-small);
+  font-family: var(--font-body);
+}
+.etio-item--major {
+  background: var(--bg-card);
+  border-left: 3px solid var(--ui-accent);
+}
+.etio-name { font-weight: 600; color: var(--text-primary); }
+.etio-tx { color: var(--text-secondary); }
 
 /* ============================================
    TRIAL RESULT (A2-01)

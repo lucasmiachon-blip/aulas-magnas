@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Fixed (2026-03-05 — Bloco 1 HTML fixes)
+- `aulas/cirrose/slides/06-a1-etiologias.html` (I4): redesign completo — tabela 3→10 etiologias em grid 2×5 compacto com `etio-grid`; Álcool/MASLD/HCV destacados; `archetype-metrics` adicionado
+- `aulas/cirrose/slides/05-a1-infeccao.html` (I3+S3): `archetype-metrics` adicionado para fill ratio; stagger delay 0.3→0.2
+- `aulas/cirrose/cirrose.css` (I4): adicionado `.etio-grid` + `.etio-item` + `.etio-item--major` + `.etio-name` + `.etio-tx` (grid 2×5 compacto)
+- `.gitignore`: adicionado `.playwright-mcp/`
+
 ### Fixed (2026-03-05 — Docs cleanup + D'Amico CSS bug)
 - `aulas/cirrose/cirrose.css`: 1-char CSS bug `#s-a1-damico.archetype-flow` → `#s-a1-damico .archetype-flow` (descendant selector was broken — grid-template-rows never applied to D'Amico slide)
 - `aulas/cirrose/AUDIT-VISUAL.md`: trimmed 574→479 lines — added SYS-1/2/3 systemic issues block; condensed 28 per-slide sections to use SYS-N references and backlog IDs instead of verbose repetitions
