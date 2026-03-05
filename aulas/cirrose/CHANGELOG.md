@@ -4,6 +4,43 @@
 
 ---
 
+## 2026-03-05 — Calc redesign: split layout, hero score, shared CSS
+
+- **Layout split**: calculadoras FIB-4 e MELD-Na redesenhadas — 2 colunas (inputs 2x2 grid | hero score panel)
+- **CSS consolidado**: `.meld-*` (archetypes.css ~130 linhas) + `.fib4s-*` (cirrose.css ~105 linhas) + `.meld-context/.meld-badge` (~25 linhas) → `.calc-*` shared (~100 linhas em archetypes.css). Net: -160 linhas
+- **Score hero**: `--text-hero` (56-86px), font-display. Panel muda cor/bg por zona via `data-zone` attr
+- **4 zonas MELD**: safe (<15) / warning (15-19) / danger (20-24) / urgent (>=25, bg-deep dark)
+- **3 zonas FIB-4**: safe (<1,30) / warning (1,30-2,67) / danger (>2,67)
+- **Zone chips**: referencia visual permanente no bottom (safe/warning/danger labels)
+- **HTML**: removido `.meld-context` badges div de 04-a1-meld.html (info agora nos input labels)
+- **Failsafe**: `.no-js` e `.stage-bad` forçam resultado neutro
+- **Testado**: FIB-4 Antonio=4,89 danger | MELD Antonio=14 safe | MELD Cr 3.1→23 danger
+
+---
+
+## 2026-03-05 — Restructure Act 1: split mega-slide, relocate infeccao/etiologias
+
+- **Mega-slide `s-a1-02` eliminado**: conteudo distribuido em `s-a1-baveno` (SplitText dissolve) e `s-a1-rule5` (Rule-of-5 + Antonio)
+- **Novos slides**: `s-a1-fib4` (calculadora FIB-4 full-slide, classe Fib4CalcSlide seguindo MeldCalc), `s-a1-elasto` (pathway vertical FIB-4→Elasto→Rule-of-5)
+- **Relocacoes**: infeccao → `s-a2-infec` (Act 2, antes de PBE); etiologias → `s-app-etio` (Appendix, data-visibility="hidden")
+- **Renames**: `s-a1-03` → `s-a1-meld`; `s-a1-screening` → `s-a1-classify` (5→4 estados, tools preview removido)
+- **Titulos v2** (aprovados pelo Lucas): "Baveno VII e o novo paradigma de classificacao", "FIB-4 e outras ferramentas", "Hoje biopsia e a excecao", "Rule-of-5: cada 5 kPa muda a conduta", "Classificar cedo muda desfecho — HR 0,51"
+- **CSS**: +~140 linhas (.fib4s-*, .elasto-*, .paradigm-expert, failsafes); ID selectors renomeados (#s-a1-screening → #s-a1-classify)
+- **JS**: slide-registry.js — s-a1-02 anim removida, adicionadas s-a1-baveno + s-a1-rule5 + s-a1-classify; FIB4_SLIDE → 's-a1-fib4'; wireAll aceita Fib4CalcSlide
+- **Panel states**: novos entries para baveno, fib4, elasto, rule5, meld, classify com visibleFields progressivos
+- **CP2 speaker notes**: callback MELD adicionado ("Lembram do semaforo? MELD 10 → 28")
+- **Build**: 30 → 33 slides. Lint clean. Vite clean.
+
+---
+
+## 2026-03-05 — s-a1-02 + s-a1-03: redesign visual FIB-4 e MELD
+
+- **s-a1-02 (Rule-of-5)**: hero-sized kPa thresholds (font-display, text-h3), ícones semânticos de acessibilidade (✓/⚠/✕) por zona, diretivas clínicas por zona ("Manter na APS", "NSBB · Rastreio HCC", etc.), min-height aumentada para 110px
+- **s-a1-03 (MELD-Na)**: badges contextuais das 4 variáveis acima da calculadora, Sódio destacado (meld-badge--key), semáforo bar com ícones ✓/⚠/✕/⬛ nas zonas, classes CSS semânticas (meld-fill-safe/warning/danger/urgent) substituem inline style no bar-fill
+- **Case panel progressivo**: campos FIB-4/LSM aparecem só a partir de s-a1-02, MELD a partir de s-a1-03 (antes: todos visíveis desde s-hook como spoiler cognitivo). Implementado via `visibleFields` em panelStates + filtro em `case-panel.js renderFields()`
+- **PMIDs**: Sterling 2024 AASLD NILDA → PMID 38489521 (Duarte-Rojo & Sterling, Hepatology 2025); Mahmud ACG 2025 permanece [TBD]
+- **Speaker notes**: staging cues melhorados em ambos os slides
+
 ## 2026-03-05 — s-a1-01: bug fix animação + dados GBD atualizados
 
 - **Bug transição**: `burden-hero--compact` agora aplicado ANTES do `gsap.to` (antes: `onComplete` causava jump de layout column→row após a animação); removido `scale: 0.6`, y reduzido para -60

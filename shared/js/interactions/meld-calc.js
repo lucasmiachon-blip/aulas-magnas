@@ -1,6 +1,6 @@
 /**
- * MELD-Na Calculator — Interactive slide module
- * Renders 4 inputs + score display + semaphore bar
+ * MELD-Na Calculator — Split-layout interactive module
+ * 4 inputs (Bil, Cr, INR, Na) + hero score panel + zone chips
  */
 
 export class MeldCalc {
@@ -15,45 +15,41 @@ export class MeldCalc {
 
   render() {
     this.container.innerHTML = `
-      <div class="meld-inputs">
-        <label class="meld-input-group">
-          <span class="meld-input-label">Bilirrubina</span>
-          <input type="number" class="meld-input" data-field="bil" value="" step="0.1" min="0.1" placeholder="mg/dL">
-        </label>
-        <label class="meld-input-group">
-          <span class="meld-input-label">Creatinina</span>
-          <input type="number" class="meld-input" data-field="cr" value="" step="0.1" min="0.1" placeholder="mg/dL">
-        </label>
-        <label class="meld-input-group">
-          <span class="meld-input-label">INR</span>
-          <input type="number" class="meld-input" data-field="inr" value="" step="0.1" min="0.1" placeholder="">
-        </label>
-        <label class="meld-input-group">
-          <span class="meld-input-label">Sódio</span>
-          <input type="number" class="meld-input" data-field="na" value="" step="1" min="100" max="160" placeholder="mEq/L">
-        </label>
-      </div>
-      <div class="meld-result">
-        <div class="meld-score-display">
-          <span class="meld-score-label">MELD-Na</span>
-          <span class="meld-score-value">\u2014</span>
-        </div>
-        <div class="meld-bar">
-          <div class="meld-bar-fill"></div>
-          <div class="meld-bar-zones">
-            <span class="meld-zone meld-zone-safe" style="width:37.5%">&lt;15 Acompanhar</span>
-            <span class="meld-zone meld-zone-warning" style="width:12.5%">15-19</span>
-            <span class="meld-zone meld-zone-danger" style="width:12.5%">20-24</span>
-            <span class="meld-zone meld-zone-urgent" style="width:37.5%">\u226525 Urg\u00eancia</span>
+      <div class="calc-split">
+        <div class="calc-inputs-panel">
+          <div class="calc-input-card">
+            <input type="number" data-field="bil" placeholder="--" step="0.1" min="0.1">
+            <span class="calc-input-label">Bilirrubina</span>
+          </div>
+          <div class="calc-input-card">
+            <input type="number" data-field="cr" placeholder="--" step="0.1" min="0.1">
+            <span class="calc-input-label">Creatinina</span>
+          </div>
+          <div class="calc-input-card">
+            <input type="number" data-field="inr" placeholder="--" step="0.1" min="0.1">
+            <span class="calc-input-label">INR</span>
+          </div>
+          <div class="calc-input-card">
+            <input type="number" data-field="na" placeholder="--" step="1" min="100" max="160">
+            <span class="calc-input-label">S\u00f3dio (Na\u207a)</span>
           </div>
         </div>
-        <div class="meld-action-text"></div>
+        <div class="calc-result-panel">
+          <span class="calc-score-name">MELD-Na</span>
+          <span class="calc-score-value">---</span>
+          <span class="calc-action-line"></span>
+        </div>
       </div>
-    `;
+      <div class="calc-zones-ref">
+        <span class="calc-zone-chip" style="background:var(--safe-light);color:var(--safe)">\u2713 &lt;15</span>
+        <span class="calc-zone-chip" style="background:var(--warning-light);color:var(--warning-on-light)">\u26a0 15\u201319</span>
+        <span class="calc-zone-chip" style="background:var(--danger-light);color:var(--danger)">\u2717 20\u201324</span>
+        <span class="calc-zone-chip" style="background:var(--bg-deep);color:var(--text-on-dark)">\u26a0\u26a0 \u226525</span>
+      </div>`;
   }
 
   bindEvents() {
-    this.container.querySelectorAll('.meld-input').forEach(input => {
+    this.container.querySelectorAll('.calc-input-card input').forEach(input => {
       input.addEventListener('input', () => this.calculate());
     });
 
@@ -80,13 +76,13 @@ export class MeldCalc {
   }
 
   reset() {
-    this.container.querySelectorAll('.meld-input').forEach(i => { i.value = ''; });
-    const scoreEl = this.container.querySelector('.meld-score-value');
-    if (scoreEl) scoreEl.textContent = '\u2014';
-    const barFill = this.container.querySelector('.meld-bar-fill');
-    if (barFill) barFill.style.width = '0%';
-    const actionEl = this.container.querySelector('.meld-action-text');
+    this.container.querySelectorAll('.calc-input-card input').forEach(i => { i.value = ''; });
+    const scoreEl = this.container.querySelector('.calc-score-value');
+    if (scoreEl) scoreEl.textContent = '---';
+    const actionEl = this.container.querySelector('.calc-action-line');
     if (actionEl) actionEl.textContent = '';
+    const panel = this.container.querySelector('.calc-result-panel');
+    if (panel) delete panel.dataset.zone;
   }
 
   calculate() {
@@ -138,37 +134,32 @@ export class MeldCalc {
   }
 
   displayResult(score) {
-    const display = this.container.querySelector('.meld-score-value');
-    const bar = this.container.querySelector('.meld-bar-fill');
-    const actionText = this.container.querySelector('.meld-action-text');
+    const display = this.container.querySelector('.calc-score-value');
+    const actionEl = this.container.querySelector('.calc-action-line');
+    const panel = this.container.querySelector('.calc-result-panel');
 
     if (display) display.textContent = score;
-    if (bar) bar.style.width = `${(score / 40) * 100}%`;
 
+    let zone, icon, text;
     if (score < 15) {
-      if (bar) bar.style.background = 'var(--safe)';
-      if (actionText) {
-        actionText.textContent = '\u2713 Acompanhar ambulatorialmente';
-        actionText.style.color = 'var(--safe)';
-      }
+      zone = 'safe';
+      icon = '\u2713';
+      text = 'Acompanhar ambulatorialmente';
     } else if (score < 20) {
-      if (bar) bar.style.background = 'var(--warning)';
-      if (actionText) {
-        actionText.textContent = '\u26a0 Encaminhar para hepatologista';
-        actionText.style.color = 'var(--warning-on-light)';
-      }
+      zone = 'warning';
+      icon = '\u26a0';
+      text = 'Encaminhar para hepatologista';
     } else if (score < 25) {
-      if (bar) bar.style.background = 'var(--danger)';
-      if (actionText) {
-        actionText.textContent = '\u2717 Planejar transplante';
-        actionText.style.color = 'var(--danger)';
-      }
+      zone = 'danger';
+      icon = '\u2717';
+      text = 'Planejar transplante';
     } else {
-      if (bar) bar.style.background = 'var(--bg-navy)';
-      if (actionText) {
-        actionText.textContent = '\u2b1b Janela curta \u2014 URG\u00caNCIA';
-        actionText.style.color = 'var(--bg-navy)';
-      }
+      zone = 'urgent';
+      icon = '\u26a0\u26a0';
+      text = 'Janela curta \u2014 URG\u00caNCIA';
     }
+
+    if (panel) panel.dataset.zone = zone;
+    if (actionEl) actionEl.textContent = `${icon} ${text}`;
   }
 }

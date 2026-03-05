@@ -1330,7 +1330,7 @@
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   s-a1-02 — PARADIGMA cACLD/dACLD (SplitText + Rule-of-5)
+   s-a1-baveno + s-a1-rule5 — PARADIGMA cACLD/dACLD (SplitText + Rule-of-5)
    States: 0=dissolve, 1=rule-of-5, 2=Antônio, 3=source
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
@@ -1404,6 +1404,14 @@
 .stage-bad .paradigm-ref {
   opacity: 1;
 }
+.paradigm-expert {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: var(--space-sm);
+  max-width: 600px;
+}
 
 /* Rule-of-5 scale — 5 zones grid */
 .rule-of-5 {
@@ -1428,7 +1436,7 @@
   padding: var(--space-sm) var(--space-xs);
   border-radius: var(--radius-sm);
   text-align: center;
-  min-height: 80px;
+  min-height: 110px;
   position: relative;
   transition: box-shadow 0.4s ease;
 }
@@ -1440,19 +1448,39 @@
 .rule-zone:nth-child(4) { background: oklch(from var(--warning) l c h / 0.20); border-bottom: 3px solid var(--warning-on-light); }
 .rule-zone:nth-child(5) { background: var(--danger-light); border-bottom: 3px solid var(--danger); }
 
+.rule-zone-icon {
+  font-size: var(--text-small);
+  line-height: 1;
+}
+.rule-zone:nth-child(1) .rule-zone-icon { color: var(--safe); }
+.rule-zone:nth-child(2) .rule-zone-icon { color: var(--text-muted); }
+.rule-zone:nth-child(3) .rule-zone-icon { color: var(--warning-on-light); }
+.rule-zone:nth-child(4) .rule-zone-icon { color: var(--danger); }
+.rule-zone:nth-child(5) .rule-zone-icon { color: var(--danger); }
+
 .rule-zone-range {
-  font-family: var(--font-mono);
-  font-size: var(--text-body);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 400;
   color: var(--text-primary);
+  line-height: 1;
 }
 
 .rule-zone-label {
   font-family: var(--font-body);
   font-size: var(--text-caption);
   color: var(--text-secondary);
+  font-weight: 600;
   line-height: 1.3;
-  max-width: 12ch;
+  max-width: 14ch;
+}
+
+.rule-zone-directive {
+  font-family: var(--font-body);
+  font-size: clamp(9px, 0.6vw, 11px);
+  color: var(--text-muted);
+  line-height: 1.3;
+  max-width: 14ch;
 }
 
 .rule-axis-label {
@@ -1515,6 +1543,8 @@
 .stage-bad .antonio-plot {
   opacity: 1;
 }
+
+/* (MELD badges removed — info now in calc input labels) */
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    s-hook v5 — Caso Antônio (congresso, formal)
@@ -1738,37 +1768,37 @@
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   s-a1-screening — Slide de Rastreamento cACLD
+   s-a1-classify — Classificar cedo (ex-screening)
    States: 0=gancho 1=dado 83% 2=criterios 3=ferramentas 4=Antonio+PREDESCI
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* justify-content:center (do .slide-inner global) empurraria conteúdo oculto
    (opacity:0 ainda ocupa espaço) para fora do topo — override para flex-start */
-#s-a1-screening .archetype-flow {
+#s-a1-classify .archetype-flow {
   justify-content: flex-start;
 }
 /* Elementos ocultos inicialmente: não tomam espaço de layout (display:none).
    JS os torna visíveis no avanço. Plan B/no-js: override para visível. */
-#s-a1-screening .screening-hero,
-#s-a1-screening .screening-criteria,
-#s-a1-screening .screening-tools,
-#s-a1-screening .screening-predesci-pill,
-#s-a1-screening .source-tag {
+#s-a1-classify .screening-hero,
+#s-a1-classify .screening-criteria,
+#s-a1-classify .screening-tools,
+#s-a1-classify .screening-predesci-pill,
+#s-a1-classify .source-tag {
   display: none;
 }
-.stage-bad #s-a1-screening .screening-hero,
-.no-js #s-a1-screening .screening-hero,
-.stage-bad #s-a1-screening .screening-tools,
-.no-js #s-a1-screening .screening-tools {
+.stage-bad #s-a1-classify .screening-hero,
+.no-js #s-a1-classify .screening-hero,
+.stage-bad #s-a1-classify .screening-tools,
+.no-js #s-a1-classify .screening-tools {
   display: flex !important;
   opacity: 1 !important;
 }
-.stage-bad #s-a1-screening .screening-criteria,
-.no-js #s-a1-screening .screening-criteria,
-.stage-bad #s-a1-screening .screening-predesci-pill,
-.no-js #s-a1-screening .screening-predesci-pill,
-.stage-bad #s-a1-screening .source-tag,
-.no-js #s-a1-screening .source-tag {
+.stage-bad #s-a1-classify .screening-criteria,
+.no-js #s-a1-classify .screening-criteria,
+.stage-bad #s-a1-classify .screening-predesci-pill,
+.no-js #s-a1-classify .screening-predesci-pill,
+.stage-bad #s-a1-classify .source-tag,
+.no-js #s-a1-classify .source-tag {
   display: block !important;
   opacity: 1 !important;
 }
@@ -2188,6 +2218,88 @@
 .no-js .screening-criteria, .stage-bad .screening-criteria,
 .no-js .screening-tool-card, .stage-bad .screening-tool-card,
 .no-js .screening-predesci-pill, .stage-bad .screening-predesci-pill {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* (FIB-4 old styles removed — now uses shared .calc-* in archetypes.css) */
+
+/* FIB-4 formula line (kept — above the calc-split) */
+.fib4s-formula {
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+.fib4s-formula-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Elastography Pathway (.elasto-*)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.elasto-pathway {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 700px;
+  margin: 0 auto;
+}
+.elasto-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border-left: 4px solid var(--border);
+}
+.elasto-step--triagem { border-left-color: var(--ui-accent); }
+.elasto-step--confirma { border-left-color: var(--safe); }
+.elasto-step--estadia { border-left-color: var(--warning); }
+.elasto-step-num {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  color: var(--text-muted);
+  min-width: 36px;
+  text-align: center;
+}
+.elasto-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.elasto-step-title {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.elasto-step-detail {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+.elasto-step-arrow {
+  font-size: var(--text-h3);
+  color: var(--text-muted);
+}
+.elasto-caveats {
+  margin-top: var(--space-xs);
+  text-align: center;
+}
+.elasto-caveat {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Failsafe Plan B + no-js: new slides */
+.no-js .elasto-step, .stage-bad .elasto-step,
+.no-js .rule-zone, .stage-bad .rule-zone,
+.no-js .antonio-plot, .stage-bad .antonio-plot {
   opacity: 1 !important;
   transform: none !important;
 }
