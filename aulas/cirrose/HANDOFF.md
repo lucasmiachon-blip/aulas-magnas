@@ -32,25 +32,64 @@ JS funciona (confirmado no browser). Redundâncias visuais e CSS ainda presentes
 
 ---
 
+## QA REPORT — Bloco 1 (rodado 2026-03-05, qa-engineer subagent)
+
+**Resultado geral: NENHUM SLIDE PASSOU** — todos têm issues a corrigir.
+
+### FAIL — merge bloqueado (1)
+
+| Slide | Problema | Fix |
+|-------|---------|-----|
+| `s-a1-damico` | `<h2>Três gerações de escores</h2>` é rótulo/categoria, não afirmação clínica (viola Hard Constraint #1) | Trocar por ex: "MELD-Na supera CTP na predição de mortalidade a 90d" |
+
+### WARN — deve corrigir antes de usar em congresso (10)
+
+| Slide | Problema | Fix |
+|-------|---------|-----|
+| `s-hook` | Sem `<h2>` — viola Hard Constraint #1 | Adicionar `<h2 aria-hidden>` invisível ou registrar exceção formal |
+| `s-a1-vote` | `<h2>` é pergunta, não afirmação | Reformular: "FIB-4 5,91 classifica cirrose mesmo sem sintomas" |
+| `s-a1-fib4` | `<h2>` é slogan motivacional | Reformular: "FIB-4 > 2,67 indica elastografia obrigatória" |
+| `s-a1-rule5` | `<h2>` é pergunta | Reformular: "LSM 21 kPa confirma cACLD e não descarta CSPH" |
+| `s-a1-meld` | `<h2>` é metáfora/label | Reformular: "MELD-Na ≥18 — ponto de inflexão para referenciar TX" |
+| `s-a1-meld` | `[LUCAS DECIDE]` MELD≥18 sem PMID verificado nas notes | Resolver: buscar PMID Mahmud ou citar UNOS/OPTN |
+| `cirrose.css` | `@keyframes zone-highlight` usa OKLCH literal, não token | Usar `oklch(from var(--warning) l c h / 0.4)` |
+| `cirrose.css` | `.vote-option--correct` usa OKLCH literal | Usar `oklch(from var(--safe) l c h / 0.08)` |
+| `02c-a1-screening.html` | Filename não bate com section ID `s-a1-classify` | Renomear para `02c-a1-classify.html` + atualizar `_manifest.js` |
+| `s-a1-classify` | `.classify-card` animado só via `gsap.set()`, sem `opacity:0` em CSS | Adicionar CSS failsafe: `.no-js .classify-card, .stage-bad .classify-card { opacity:1 }` |
+
+### OK — passou
+
+- `npm run lint:slides` ✅ clean
+- `npm run build:cirrose` ✅ 33 slides, zero erros
+- `<aside class="notes">` presente em todos os 9 slides ✅
+- Nenhum `<ul>`/`<ol>` no corpo dos slides ✅
+- Nenhum HEX inline (exceto `data-background-color`) ✅
+- Labs Antônio batem com CASE.md ✅
+- ERRO-021 (seletor CSS s-a1-damico): **não existe** no código atual ✅
+
+---
+
 ## Prioridades — PROXIMA SESSAO
 
-### 🔴 QA LOOP — PRIORIDADE MAXIMA
+### 🔴 IMEDIATO — Fixes QA Bloco 1
 
-**Objetivo:** QA total slide por slide — conteúdo, CSS, interações — até atingir perfeição.
-**Estratégia:** subagente dedicado só para QA (visual-qa skill + Playwright screenshots).
-**Escopo:** todos os slides do Bloco 1 (s-hook → s-a1-classify), um por um.
+**Objetivo:** corrigir todos os 11 issues (1 FAIL + 10 WARN) do relatório QA acima.
+**Estratégia:** slide-builder subagent para os fixes de assertion, main agent para CSS tokens.
+**Ordem de execução sugerida (impacto máximo primeiro):**
 
-Problemas conhecidos antes do QA:
-- Redundâncias de conteúdo entre slides (ex: ALT trap aparece 3x — hook, vote, fib4 — checar se intencional)
-- CSS failsafe não testado em todos os novos elementos (`.classify-card`, `.fib4-inputs`, `.rule-gray-zone`)
-- `s-a1-vote`: botão de reveal nunca foi testado com click real
-- `s-a1-damico` Era 2 D'Amico pathway: valores `1%/5%/20%/57%` — confirmar fonte (ver [LUCAS DECIDE] abaixo)
+1. **Assertions h2 (5 slides):** s-a1-damico (FAIL), s-hook, s-a1-vote, s-a1-fib4, s-a1-rule5, s-a1-meld
+2. **Rename arquivo:** `02c-a1-screening.html` → `02c-a1-classify.html`
+3. **CSS tokens:** 2 literals em cirrose.css
+4. **Failsafe `.classify-card`:** 2 linhas CSS
+
+Depois dos fixes: re-rodar qa-engineer para confirmar zero FAIL/WARN.
 
 ### 🟡 DECISOES CLINICAS PENDENTES [LUCAS DECIDE]
 
-1. **Burden headline:** usa `1,43M` (GBD 2021) — confirmar ou trocar por `1,32M` (GBD 2017)
-2. **D'Amico pathway %:** `Comp(1%) → 1ºDescomp(5%) → 2ºDescomp(20%) → Óbito(57%)` — confirmar paper e IC95%
-3. **PREDESCI HR 0,51:** Villanueva 2019? Confirmar se IC95% vai no slide ou só nas notes
+1. **Assertions h2 novas:** sugestões acima são provisórias — Lucas valida o enunciado clínico final de cada slide
+2. **MELD≥18 fonte:** PMID Mahmud ACG 2025 ainda não encontrado — confirmar fonte alternativa
+3. **D'Amico pathway %:** `Comp(1%) → 1ºDescomp(5%) → 2ºDescomp(20%) → Óbito(57%)` — confirmar paper
+4. **PREDESCI HR 0,51:** Villanueva 2019? IC95% vai no slide ou só nas notes?
 
 ### 🟡 MEDIA
 
