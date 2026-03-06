@@ -539,17 +539,27 @@ export const customAnimations = {
     let state = 0;
     const maxState = 2;
 
+    const ruleOf5 = slide.querySelector('.rule-of-5');
     const zones = slide.querySelectorAll('.rule-zone');
+    const grayZone = slide.querySelector('.rule-gray-zone');
     const antonioPlot = slide.querySelector('.antonio-plot');
+    const antonioPin = slide.querySelector('.antonio-pin');
+    const caveats = slide.querySelector('.rule-caveats');
+    const banner = slide.querySelector('.rule-conclusion-banner');
     const sourceTag = slide.querySelector('.source-tag');
 
-    // Auto: stagger zones on entry
-    gsap.set(zones, { opacity: 0, y: 16 });
+    gsap.set(zones, { scaleY: 0, opacity: 1 });
+    if (ruleOf5) gsap.set(ruleOf5, { opacity: 1 });
+
     gsap.to(zones, {
-      opacity: 1, y: 0,
-      duration: 0.4, stagger: 0.12, delay: 0.4,
-      ease: 'power3.out',
+      scaleY: 1,
+      duration: 0.5, stagger: 0.15, delay: 0.4,
+      ease: 'power2.out',
     });
+
+    if (grayZone) {
+      gsap.to(grayZone, { opacity: 1, duration: 0.5, delay: 0.4 + zones.length * 0.15 + 0.3 });
+    }
 
     function advance() {
       if (state >= maxState) return false;
@@ -558,11 +568,22 @@ export const customAnimations = {
       if (state === 1) {
         const targetZone = slide.querySelector('[data-zone-idx="3"]');
         if (targetZone) targetZone.classList.add('rule-zone--highlighted');
-        gsap.to(antonioPlot, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+
+        gsap.to(antonioPlot, { opacity: 1, duration: 0.4 });
+
+        if (antonioPin) {
+          gsap.fromTo(antonioPin,
+            { y: -40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, delay: 0.2, ease: 'back.out(1.4)' }
+          );
+        }
+
+        if (caveats) gsap.to(caveats, { opacity: 1, duration: 0.4, delay: 0.8 });
+        if (banner) gsap.to(banner, { opacity: 1, duration: 0.4, delay: 1.2 });
       }
 
       if (state === 2) {
-        gsap.to(sourceTag, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4 });
       }
 
       return true;
@@ -579,6 +600,8 @@ export const customAnimations = {
         const targetZone = slide.querySelector('[data-zone-idx="3"]');
         if (targetZone) targetZone.classList.remove('rule-zone--highlighted');
         gsap.to(antonioPlot, { opacity: 0, duration: 0.3 });
+        if (caveats) gsap.to(caveats, { opacity: 0, duration: 0.3 });
+        if (banner) gsap.to(banner, { opacity: 0, duration: 0.3 });
       }
 
       state--;
