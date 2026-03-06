@@ -11,6 +11,23 @@
         "NCBI_API_KEY": "${NCBI_API_KEY}"
       }
     },
+    "pubmed-simple": {
+      "command": "uvx",
+      "args": ["mcp-simple-pubmed"],
+      "env": {
+        "PUBMED_EMAIL": "${PUBMED_EMAIL}",
+        "PUBMED_API_KEY": "${NCBI_API_KEY}"
+      }
+    },
+    "zotero": {
+      "command": "uvx",
+      "args": ["--upgrade", "zotero-mcp"],
+      "env": {
+        "ZOTERO_LOCAL": "true",
+        "ZOTERO_API_KEY": "${ZOTERO_API_KEY}",
+        "ZOTERO_LIBRARY_ID": "${ZOTERO_LIBRARY_ID}"
+      }
+    },
     "crossref": {
       "command": "npx",
       "args": ["-y", "@botanicastudios/crossref-mcp"]
@@ -25,6 +42,25 @@
       "env": {
         "SEMANTIC_SCHOLAR_API_KEY": "${SEMANTIC_SCHOLAR_API_KEY}"
       }
+    },
+    "arxiv": {
+      "command": "uvx",
+      "args": ["arxiv-paper-mcp-server"]
+    },
+    "perplexity": {
+      "command": "npx",
+      "args": ["-y", "@perplexity-ai/mcp-server"],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+      }
+    },
+    "google-scholar": {
+      "command": "npx",
+      "args": ["-y", "@JackKuo666/google-scholar-mcp-server"]
+    },
+    "scite": {
+      "type": "streamableHttp",
+      "url": "https://api.scite.ai/mcp"
     },
     "filesystem": {
       "command": "npx",
