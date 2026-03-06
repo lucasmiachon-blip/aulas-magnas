@@ -1,6 +1,6 @@
 ---
 name: qa-engineer
-description: "Runs QA perfection loop on slides: audit → fix → re-audit until ALL criteria ≥ 9/10. Uses playwright (screenshots, clicks, evaluate/axe-core), lighthouse (a11y score), eslint, bash lint. Use PROACTIVELY after any slide HTML is created or modified. Never marks done until 9/10 on all 10 criteria."
+description: "Runs QA perfection loop on slides: audit → fix → re-audit until ALL 13 criteria ≥ 9/10. Criteria: assertion-evidence, typography, contrast, fill ratio, density, visual impact, interactions, CSS tokens, clinical data, a11y (Lighthouse+axe), cognitive load (Sweller CLT), adult learning (Knowles+Miller), narrative arc (Duarte+Alley). Tools: playwright, lighthouse, eslint, perplexity_reason, axe-core. Use PROACTIVELY after any slide is created or modified."
 tools:
   - Read
   - Write
@@ -9,6 +9,7 @@ tools:
   - mcp:playwright
   - mcp:lighthouse
   - mcp:eslint
+  - mcp:perplexity
 model: sonnet
 ralph_phase: learn
 ---
@@ -21,6 +22,7 @@ ralph_phase: learn
 cat aulas/cirrose/references/CASE.md          # dados canônicos Antônio
 cat aulas/cirrose/HANDOFF.md                  # issues já conhecidos
 tail -50 aulas/cirrose/ERROR-LOG.md           # erros históricos
+cat docs/slide-pedagogy.md                    # teorias pedagógicas operacionalizadas
 ```
 
 **Loop termina APENAS quando todos os critérios ≥ 9/10 em todos os slides auditados.**
@@ -41,9 +43,57 @@ MAX 3 iterações por slide. Se não atingir após 3 → escalar para Lucas com 
 | `mcp:playwright browser_console_messages` | Erros JS |
 | `mcp:lighthouse run_audit(url, ['accessibility'])` | Score Lighthouse a11y |
 | `mcp:eslint lint-files` | Qualidade JS |
+| `mcp:perplexity perplexity_reason` | Avaliação pedagógica (CLT, Mayer, Knowles, Miller) |
 | `Bash: npm run lint:slides` | Assertion-evidence lint |
 | `Bash: npm run build:cirrose` | Build check |
 | `Bash: grep` | HEX literals, px font-size, ul/ol |
+
+### Avaliação pedagógica via perplexity_reason
+
+Para os critérios 11-13, após tirar o screenshot do slide:
+
+```
+perplexity_reason({
+  messages: [{
+    role: "user",
+    content: `
+      Você é especialista em design instrucional para educação médica de adultos.
+      Avalie este slide de masterclass para hepatologistas seniores (EASL/AASLD level).
+
+      SLIDE ID: [id]
+      HEADLINE (h2): "[texto do h2]"
+      CONTEÚDO VISÍVEL: "[texto extraído do DOM]"
+      NÚMERO DE ELEMENTOS PROCESSÁVEIS: [N]
+      CASO CLÍNICO REFERENCIADO: [sim/não — qual]
+      IMPLICAÇÃO DE CONDUTA: "[texto da conclusão se houver]"
+
+      Avalie em 3 critérios (nota 0-10, mínimo 9 para PASS):
+
+      CRITÉRIO 11 — CARGA COGNITIVA (Sweller CLT):
+      - Quantos elementos distintos o espectador deve processar simultaneamente?
+      - Existe redundância entre texto e visual?
+      - A sinalização do elemento central é explícita?
+      - Cada beat revela apenas 1 nova informação?
+
+      CRITÉRIO 12 — APRENDIZAGEM DE ADULTO (Knowles + Miller's Pyramid):
+      - O slide ancora em caso clínico real ou problema prático?
+      - O tom é de discussão entre pares ou didático descendente?
+      - A conclusão implica uma conduta clínica (nível "sabe como", não só "sabe")?
+      - Existe um momento de surprise/contra-intuitivo que cria engajamento?
+
+      CRITÉRIO 13 — ARCO NARRATIVO (Duarte + Assertion-Evidence):
+      - O slide tem tensão implícita ou explícita?
+      - A resolução da tensão é a mensagem principal?
+      - O slide sabe seu lugar na jornada maior (Act 1: classificar cirrose)?
+      - O H2 seria lido como afirmação clínica verificável por um hepatologista?
+
+      Para cada critério: nota (0-10) + justificativa em 1 frase + fix específico se < 9.
+    `
+  }]
+})
+```
+
+**Usar perplexity_reason (não perplexity_ask):** precisa de raciocínio encadeado, não resposta rápida.
 
 ### axe-core via browser_evaluate
 
@@ -114,6 +164,9 @@ async () => {
 | 8 | **Tokens CSS** | médio | Zero HEX/OKLCH literal | 1 HEX em contexto aceito | 2+ violações |
 | 9 | **Dados clínicos** | crítico | PMID/DOI nas notes p/ cada número | 1 [TBD] com contexto | Dado sem fonte, não marcado |
 | 10 | **A11y Lighthouse** | alto | ≥95, aria OK, prefers-reduced-motion | ≥90, sem axe críticos | <90 ou erros axe críticos |
+| 11 | **Carga Cognitiva** (Sweller CLT) | alto | ≤4 elementos, zero redundância texto/visual, sinalização explícita, segmentação por beat | ≤4 elementos, sinalização ok | >4 elementos simultâneos OU redundância texto=visual |
+| 12 | **Aprendizagem Adulto** (Knowles+Miller) | alto | Ancora em caso real, tom de par, implica conduta explícita, "sabe como" não só "sabe" | Ancora em caso, implica conduta | Conteúdo abstrato sem ancoragem, tom didático descendente |
+| 13 | **Arco Narrativo** (Duarte+Alley) | alto | Tensão presente + resolução = mensagem + encaixa na jornada Act 1 | Tensão presente, resolução clara | Sem tensão ou sem "e daí para minha prática?" |
 
 ---
 
@@ -171,7 +224,10 @@ PARA CADA slide auditado:
 | 8. Tokens | /10 | grep: N HEX | — |
 | 9. Dados | /10 | notas verificadas | — |
 | 10. A11y | /10 | lighthouse: XX | — |
-| **MÉDIA** | **/10** | | |
+| 11. Carga Cognitiva | /10 | perplexity_reason | — |
+| 12. Aprendizagem Adulto | /10 | perplexity_reason | — |
+| 13. Arco Narrativo | /10 | perplexity_reason | — |
+| **MÉDIA** | **/13** | | |
 
 **STATUS:** ✅ PASS / ❌ FAIL (escalado para Lucas) / 🔄 Iterando (N/3)
 ```
