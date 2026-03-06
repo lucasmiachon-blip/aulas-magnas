@@ -65,7 +65,9 @@
 | Niu X et al. | **37170239** | BMC Public Health 2023 | Meta-análise global ALD: prevalência, incidência, desfechos — maior síntese recente |
 | Llamosas-Falcón L et al. | **37684424** | Hepatol Int 2023 | Dose-resposta álcool → cirrose: cada 12g/dia ↑ risco 26% |
 
-> **Antônio:** 60g/dia = ~4× acima do limiar MetALD (♂ ≥20g/dia MASLD+álcool). Classifica como ALD/MetALD, não MASLD pura.
+> **Antônio:** 60g/dia (5 latas/dia) = ~4× acima do limiar MetALD (♂ ≥20g/dia MASLD+álcool). Classifica como ALD/MetALD, não MASLD pura.
+> Labs canônicos: AST 67 / ALT 31 (ratio 2,16 — padrão alcoólico), PLQ 112k, GGT 210, Alb 3,6, Bili 1,3, INR 1,2, FIB-4 5,91.
+> Armadilha: ALT 31 "normal" — hepatócito burnt-out normaliza ALT em doença avançada.
 
 ### MASLD — Progressão para Cirrose (Tier-2)
 

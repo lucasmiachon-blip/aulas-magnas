@@ -23,16 +23,21 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 | Nome | Antônio, 55a | Humaniza; audiência se conecta |
 | Profissão | Caminhoneiro | Risco ocupacional → encefalopatia = não pode dirigir |
 | IMC | 31 | DM2, síndrome metabólica |
-| Etiologia | Etilismo 60g/dia há 20a | Fator reversível (abstinência) |
-| FIB-4 | 3,2 | Descoberta na UBS, gatilho do encaminhamento |
-| AST/ALT | 58/42 | AST>ALT = pista alcoólica |
-| PLQ | 118k | Marcador de hipertensão portal |
-| Albumina | 3,6 | Função hepática limítrofe |
+| Etiologia | Etilismo 60g/dia (5 latas/dia) há 20a | Fator reversível (abstinência) |
+| AST | 67 U/L | AST/ALT = 2,16 → padrão alcoólico avançado |
+| ALT | 31 U/L | "Normal" — armadilha: hepatócito burnt-out normaliza ALT |
+| PLQ | 112k | Marcador de hipertensão portal |
+| GGT | 210 U/L | Marcador de uso crônico de álcool |
+| Albumina | 3,6 g/dL | Função hepática limítrofe |
+| Bilirrubina | 1,3 mg/dL | Ainda normal — muda na descompensação |
+| INR | 1,2 | Discretamente alargado |
+| FIB-4 | 5,91 | (55×67)/(112×√31) — alto risco, elastografia obrigatória |
 | MELD-Na | ~10 (inicial) | "Lembrem desse número. Vai mudar." → evolui até 28 |
 | Entrada | Assintomático, FIB-4 na UBS | Screening = a promessa da aula |
 
-> **Nota:** Notion (Bíblia Narrativa) tem dados diferentes (MetALD, ~60g/dia, IMC 32, AST 52/ALT 38).
-> **Repo prevalece.** Se Bíblia for atualizada, este arquivo deve refletir.
+> **Nota:** Dados canônicos atualizados 2026-03-05. Repo prevalece sobre Notion.
+> FIB-4 calculado: (55 × 67) / (112 × √31) = 5,91.
+> Armadilha clínica: ALT 31 parece normal → residente ignora → hepatócito burnt-out.
 
 ## Mapa Narrativo (28 slides)
 
@@ -41,7 +46,7 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 | # | Slide | Headline | Propósito narrativo | Tensão |
 |---|-------|----------|---------------------|--------|
 | 0 | s-title | *Cirrose Hepática* | Âncora visual, identidade | ○○○○○ |
-| 1 | s-hook | *Classifique com 5 números...* | **Inciting incident**: Seu Antônio, assintomático, FIB-4 3,2. Framework revelado. | ●●●○○ |
+| 1 | s-hook | *Caso Antônio — labs + FIB-4* | **Inciting incident**: Seu Antônio, assintomático, ALT "normal", FIB-4 5,91. | ●●●○○ |
 
 - **Panel:** neutral (apresentação do caso)
 - **Beat:** "5 números, 3 decisões" é a promessa da aula. Audiência recebe o framework.
@@ -114,7 +119,7 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 ## Case Panel — Evolução
 
 ```
-s-hook    → neutral   (apresentação: FIB-4 3,2 · PLQ 118k · Alb 3,6)
+s-hook    → neutral   (apresentação: AST 67 · ALT 31 · PLQ 112k · Alb 3,6 · FIB-4 5,91)
 s-cp1     → caution   (LSM 21 kPa · MELD ~10 · cACLD→CSPH)
 s-cp2     → danger    (MELD 28 · Alb 2,4 · Cr 2,8 · Ascite/PBE/HRS-AKI)
 s-cp3     → hope      (FIB-4 2,1 · LSM 18 · MELD 12 · Abstinente 10m · SVR)
@@ -135,4 +140,4 @@ Ex: s-a2-01 a s-a2-06 mantêm `caution` (herdado do CP1).
    - "LSM 32→18" → recompensação (s-cp3) é o arco completo do Seu Antônio
 5. **Cinematic blackouts** (planejados, não implementados): slides navy puro com 1 pergunta, zero UI. Candidatos: antes de cada checkpoint.
 6. **Dados clínicos são sagrados.** Antes de refatorar qualquer slide com NNT, HR, ou p-value, executar `grep "s-{id}" references/evidence-db.md` e verificar PMID. Nunca arredondar, inventar, ou omitir IC 95%.
-7. **Dados do Antônio são canônicos no repo.** Idade 55a, IMC 31, AST 58/ALT 42, PLQ 118k, Alb 3,6, etilismo 60g/dia há 20a. Não usar dados da Bíblia Narrativa Notion quando divergirem.
+7. **Dados do Antônio são canônicos no repo.** Idade 55a, IMC 31, AST 67/ALT 31 (ratio 2,16), PLQ 112k, GGT 210, Alb 3,6, Bili 1,3, INR 1,2, FIB-4 5,91, etilismo 60g/dia (5 latas) há 20a. Não usar dados da Bíblia Narrativa Notion quando divergirem.

@@ -13,7 +13,8 @@
 Masterclass "Cirrose Hepática: Classificar, Intervir, Reverter" — 70 min.
 Reveal.js 5.x · GSAP 3.12 · Vite 6.x · Vanilla HTML/CSS/JS · OKLCH · Zero CDN · Offline-first.
 Público: hepatologistas seniores (Brasil). Conteúdo PT-BR, termos técnicos EN.
-Caso clínico: Seu Antônio, 54a, caminhoneiro, etilista, cACLD → descompensação.
+Caso clínico: Seu Antônio, 55a, caminhoneiro, obeso (IMC 31), DM2, etilista 60g/dia, cACLD → descompensação.
+Labs canônicos: AST 67 / ALT 31 (ratio 2,16) / PLQ 112k / GGT 210 / Alb 3,6 / Bili 1,3 / INR 1,2 / FIB-4 5,91.
 Plan C = default (light, 1280×720, GSAP ativo).
 
 ---
