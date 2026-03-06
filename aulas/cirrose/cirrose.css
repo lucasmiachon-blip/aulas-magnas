@@ -2490,6 +2490,77 @@
 .fib4-cutoff--warning { background: oklch(from var(--warning) l c h / 0.15); border-left: 4px solid var(--warning); }
 .fib4-cutoff--danger  { background: oklch(from var(--danger) l c h / 0.15); border-left: 4px solid var(--danger); }
 
+/* Antonio inputs + hero result */
+.fib4-inputs {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+.fib4-input-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.fib4-input-label {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.fib4-input-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.fib4-input-card--trap {
+  border-color: var(--safe);
+}
+.fib4-input-tag {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--safe);
+}
+.fib4-hero-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+.fib4-hero-result .hero-number {
+  font-size: var(--text-hero);
+}
+.fib4-hero-result .hero-unit {
+  font-size: var(--text-body);
+}
+.fib4-mandate {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  color: var(--danger);
+  text-align: center;
+  margin: var(--space-xs) 0 0;
+  opacity: 0;
+}
+
+/* Failsafe */
+.no-js .fib4-antonio,
+.stage-bad .fib4-antonio {
+  opacity: 1 !important;
+}
+.no-js .fib4-mandate,
+.stage-bad .fib4-mandate {
+  opacity: 1 !important;
+}
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    Elastography Pathway (.elasto-*)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

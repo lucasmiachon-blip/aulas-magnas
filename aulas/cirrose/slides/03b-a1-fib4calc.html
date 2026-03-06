@@ -1,6 +1,7 @@
 <!-- ============================================================
-     s-a1-fib4 — FIB-4: triagem com 4 variáveis do prontuário
-     Archetype: hero-stat (formula hero + cutoff zones)
+     s-a1-fib4 — "4 dados. 1 número. 1 decisão."
+     Archetype: hero-stat (state machine)
+     States: 0=formula+cutoffs, 1=Antonio's inputs+hero countUp, 2=source
      Calc: sidebar panel (case-panel.js renderFib4)
      ============================================================ -->
 <section id="s-a1-fib4"
@@ -9,9 +10,10 @@
 
   <div class="slide-inner archetype-hero-stat">
     <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-    <h2 class="slide-headline">FIB-4 estratifica risco com 4 variáveis do prontuário</h2>
+    <h2 class="slide-headline">4 dados. 1 número. 1 decisão.</h2>
 
-    <div class="hero-block">
+    <!-- State 0: formula + cutoff zones -->
+    <div class="fib4-formula-block">
       <div class="fib4s-formula">
         <span class="fib4s-formula-text">(Idade &times; AST) / (PLQ &times; &radic;ALT)</span>
       </div>
@@ -19,44 +21,72 @@
       <div class="fib4-cutoffs">
         <div class="fib4-cutoff fib4-cutoff--safe">
           <span class="fib4-cutoff-val">&lt; 1,30</span>
-          <span class="fib4-cutoff-lbl">&check; Baixo risco — manter APS</span>
+          <span class="fib4-cutoff-lbl">✓ Baixo risco</span>
         </div>
         <div class="fib4-cutoff fib4-cutoff--warning">
-          <span class="fib4-cutoff-val">1,30 &ndash; 2,67</span>
-          <span class="fib4-cutoff-lbl">&#x26A0; Indeterminado — elastografia</span>
+          <span class="fib4-cutoff-val">1,30 – 2,67</span>
+          <span class="fib4-cutoff-lbl">⚠ Indeterminado</span>
         </div>
         <div class="fib4-cutoff fib4-cutoff--danger">
           <span class="fib4-cutoff-val">&gt; 2,67</span>
-          <span class="fib4-cutoff-lbl">&#x2717; Alto risco — encaminhar</span>
+          <span class="fib4-cutoff-lbl">✕ Alto risco</span>
         </div>
       </div>
     </div>
 
-    <p class="source-tag">Sterling RK et al. Hepatology 2006 PMID 16729309 · Baveno VII PMID 35120736</p>
+    <!-- State 1: Antonio's inputs + hero result (click 1) -->
+    <div class="fib4-antonio" style="opacity:0">
+      <div class="fib4-inputs">
+        <div class="fib4-input-card">
+          <span class="fib4-input-label">Idade</span>
+          <span class="fib4-input-value">55</span>
+        </div>
+        <div class="fib4-input-card">
+          <span class="fib4-input-label">AST</span>
+          <span class="fib4-input-value">67</span>
+        </div>
+        <div class="fib4-input-card">
+          <span class="fib4-input-label">PLQ</span>
+          <span class="fib4-input-value">112k</span>
+        </div>
+        <div class="fib4-input-card fib4-input-card--trap">
+          <span class="fib4-input-label">ALT</span>
+          <span class="fib4-input-value">31</span>
+          <span class="fib4-input-tag">normal ✓</span>
+        </div>
+      </div>
+
+      <div class="fib4-hero-result">
+        <span class="hero-number" data-color="danger" data-countup-target="5.91">0</span>
+        <span class="hero-unit">FIB-4</span>
+      </div>
+      <p class="fib4-mandate">Elastografia obrigatória</p>
+    </div>
+
+    <p class="source-tag" style="opacity:0">Sterling RK et al. Hepatology 2006 (PMID 16729309) · Baveno VII (PMID 35120736)</p>
   </div>
 
   <aside class="notes">
-[0:00-0:30] "Antes da elastografia, antes de qualquer equipamento — FIB-4."
-"Quatro numeros que voces ja tem no prontuario: idade, AST, plaquetas, ALT."
-"A formula e simples: idade vezes AST, dividido por plaquetas vezes raiz de ALT."
-"Sterling publicou em 2006, e ate hoje e a triagem de primeira linha."
+[0:00-0:30] Auto: fórmula fadeUp. Cutoff zones stagger top→bottom.
+"Quatro variáveis do prontuário: idade, AST, plaquetas, ALT."
+"A fórmula é simples. Os cortes também."
+"Abaixo de 1,30: baixo risco, fica na APS. Indeterminado: elastografia. Acima de 2,67: alto risco."
 
-[0:30-1:00] [APONTAR PARA PAINEL LATERAL — clicar "Seu Antonio"]
-"Antonio: 54 anos, AST 68, plaquetas 112 mil, ALT 45."
-"FIB-4... 4,89. Vermelho. Alto risco. Precisa de elastografia."
-PAUSA 2s — deixar o resultado registrar.
+[0:30-1:00] Click 1 → Antonio's numbers
+"Agora Antônio." 4 input cards aparecem.
+"Idade 55. AST 67. Plaquetas 112 mil. E ALT..."
+PAUSA 2s — "31. Normal."
+Hero countUp 0 → 5,91.
+"FIB-4 = 5,91. Vermelho escuro. Muito acima do corte."
+"Notem: a ALT está no denominador. Quanto mais baixa — pior o FIB-4."
+"Hepatócito burnt-out: normaliza ALT porque parou de inflamar."
+PAUSA 3s — zona vermelha pulsa.
 
-[1:00-1:30] "Notem os cortes: abaixo de 1,30 — baixo risco, mantem na APS.
-Entre 1,30 e 2,67 — indeterminado, pedir elastografia.
-Acima de 2,67 — alto risco, encaminhar."
-"Antonio nao esta no 'talvez'. Esta muito acima do corte."
+[1:00-1:30] Click 2 → source
+"Elastografia obrigatória. Não tem discussão com esse FIB-4."
+→ avançar para Rule-of-5
 
-[1:30-2:00] "FIB-4 nao da diagnostico. Mas faz a triagem que a biopsia nunca
-conseguiu fazer em escala populacional."
-→ avancar para elastografia
-
-[DATA] FIB-4: Sterling RK et al. Hepatology 2006 (PMID 16729309) | Formula original | Verificado: evidence-db.md
-[DATA] Baveno VII: PMID 35120736 | FIB-4 como triagem em cACLD | Verificado: 2026-03-04
-[DATA] Antonio: 54a, AST 68, PLQ 112k, ALT 45 → FIB-4 4,89 | Caso ficticio
+[DATA] FIB-4 calculado: (55 × 67) / (112 × √31) = 5,91 | Verificado: 2026-03-05
+[DATA] Sterling RK et al. Hepatology 2006 (PMID 16729309) | Verificado: evidence-db.md
   </aside>
 </section>

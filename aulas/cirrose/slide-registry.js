@@ -456,6 +456,82 @@ export const customAnimations = {
   },
 
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-fib4 — Hero number Antonio + ALT trap
+     States: 0=formula+cutoffs (auto), 1=Antonio inputs+hero, 2=source
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-fib4': (slide, gsap) => {
+    let state = 0;
+    const maxState = 2;
+
+    const formulaBlock = slide.querySelector('.fib4-formula-block');
+    const cutoffs = slide.querySelectorAll('.fib4-cutoff');
+    const antonio = slide.querySelector('.fib4-antonio');
+    const inputCards = slide.querySelectorAll('.fib4-input-card');
+    const heroNum = slide.querySelector('[data-countup-target="5.91"]');
+    const mandate = slide.querySelector('.fib4-mandate');
+    const dangerZone = slide.querySelector('.fib4-cutoff--danger');
+    const sourceTag = slide.querySelector('.source-tag');
+
+    gsap.set(cutoffs, { opacity: 0, y: 8 });
+    gsap.to(cutoffs, { opacity: 1, y: 0, duration: 0.35, stagger: 0.15, delay: 0.3, ease: 'power2.out' });
+
+    function advance() {
+      if (state >= maxState) return false;
+      state++;
+
+      if (state === 1) {
+        gsap.to(antonio, { opacity: 1, duration: 0.4, delay: 0.1 });
+
+        gsap.set(inputCards, { opacity: 0, y: 10 });
+        gsap.to(inputCards, { opacity: 1, y: 0, duration: 0.35, stagger: 0.12, delay: 0.2, ease: 'power2.out' });
+
+        if (heroNum) {
+          const obj = { val: 0 };
+          const totalDelay = 0.2 + inputCards.length * 0.12 + 0.3;
+          gsap.to(obj, {
+            val: 5.91,
+            duration: 1.4,
+            delay: totalDelay,
+            ease: 'power1.out',
+            onUpdate() { heroNum.textContent = obj.val.toFixed(2).replace('.', ','); }
+          });
+        }
+
+        if (dangerZone) {
+          gsap.fromTo(dangerZone,
+            { boxShadow: '0 0 0px oklch(50% 0.18 25 / 0)' },
+            { boxShadow: '0 0 16px oklch(50% 0.18 25 / 0.3)', duration: 0.4,
+              delay: 1.5, yoyo: true, repeat: 1, ease: 'power2.inOut' }
+          );
+        }
+
+        if (mandate) gsap.fromTo(mandate, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, delay: 2.0 });
+      }
+
+      if (state === 2) {
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4 });
+      }
+
+      return true;
+    }
+
+    function retreat() {
+      if (state <= 0) return false;
+      if (state === 2) gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
+      if (state === 1) {
+        gsap.to(antonio, { opacity: 0, duration: 0.3 });
+        if (heroNum) { gsap.killTweensOf(heroNum); heroNum.textContent = '0'; }
+      }
+      state--;
+      return true;
+    }
+
+    slide.__hookAdvance = advance;
+    slide.__hookRetreat = retreat;
+    slide.__hookCurrentBeat = () => state;
+  },
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      s-a1-rule5 — Rule-of-5 + Antonio plotado
      States: 0=zones stagger (auto), 1=Antonio highlight, 2=source
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
