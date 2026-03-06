@@ -6,33 +6,51 @@
 
 ## Estado atual — 2026-03-05
 
-**Branch:** `restructure/act1` (uncommitted)
-**Slides:** 33/33 buildados
-**Build:** `npm run build:cirrose` ✅ | `npm run lint:slides` ✅ | `npm run build` (Vite) ✅
+**Branch:** `restructure/act1` — **PUSHED** (`79f465d`)
+**Slides:** 33/33 buildados e commitados
+**Build:** `npm run build:cirrose` ✅ zero erros
 
-### Calc redesign (sessao atual)
+### Restructure Act 1 — CONCLUIDO (esta sessao)
 
-FIB-4 e MELD-Na redesenhadas: layout split 2 colunas (inputs 2x2 | hero score panel).
-- CSS consolidado: `.meld-*` + `.fib4s-*` (235 linhas) → `.calc-*` shared (100 linhas) em archetypes.css
-- Score em `--text-hero` (56-86px), panel muda cor por zona (safe/warning/danger/urgent)
-- Zone chips de referencia no bottom
-- Testado: FIB-4 Antonio=4,89 danger ✅ | MELD Antonio=14 safe ✅ | MELD Cr 3.1→23 danger ✅
-- Removido: `.meld-context` badges (info agora nos input labels)
+Todos os 9 slides do Bloco 1 reestruturados + dados canônicos aplicados:
 
-### Restructure Act 1 (sessao anterior)
+| Commit | Slide | O que mudou |
+|--------|-------|-------------|
+| `8058052` | canonical data | Labs Antônio: ALT 31, AST 67, PLQ 112k, FIB-4 5,91 |
+| `2c116b1` | s-hook | 8-card lab grid, FIB-4 armadilha, punchline hero |
+| `0102bf0` | s-a1-01 | Iceberg invertido, trend badge +18% MASH |
+| `563af33` | s-a1-vote | Slide votação interativa (NOVO), reveal FIB-4 5,91 |
+| `07db52a` | s-a1-damico | 3 eras (CTP→MELD-Na→D'Amico), PREDESCI removido |
+| `6804609` | s-a1-baveno | Fundido com elasto, pathway 3-step pós-dissolve |
+| `581106e` | s-a1-fib4 | Hero number 5,91 countUp, ALT trap, hero-stat archetype |
+| `2c4893b` | s-a1-rule5 | Gray zone 10-25 kPa, pin Antônio, nuances CSPH |
+| `d243fb2` | s-a1-meld | Threshold MELD≥18 animado, emojis urgência, bandas stagger |
+| `55b10c7` | s-a1-classify | Assertion cards, PREDESCI HR 0,51 hero countUp |
+| `04d358b` | build | index.html regenerado (33 slides) |
 
-Mega-slide `s-a1-02` eliminado — conteudo distribuido em 4 novos slides.
-Ordem Act 1: title → hook → burden → damico → baveno → fib4 → elasto → rule5 → meld → classify → CP1
+JS funciona (confirmado no browser). Redundâncias visuais e CSS ainda presentes.
 
 ---
 
 ## Prioridades — PROXIMA SESSAO
 
-### 🔴 IMEDIATO
+### 🔴 QA LOOP — PRIORIDADE MAXIMA
 
-1. **Calc como painel lateral** — Lucas sugere: calculadoras como widget lateral (tipo case-panel), slide mantem conteudo clinico A-E. Redesign arquitetural: calc-panel.js persistente, slide tem evidencia.
-2. **Revisao slide por slide Act 1** — titulos PRE-EXISTENTES (burden, damico, hook) + conteudo expert-level + tamanho tipografia
-3. **Commit + merge** da restructure depois da revisao
+**Objetivo:** QA total slide por slide — conteúdo, CSS, interações — até atingir perfeição.
+**Estratégia:** subagente dedicado só para QA (visual-qa skill + Playwright screenshots).
+**Escopo:** todos os slides do Bloco 1 (s-hook → s-a1-classify), um por um.
+
+Problemas conhecidos antes do QA:
+- Redundâncias de conteúdo entre slides (ex: ALT trap aparece 3x — hook, vote, fib4 — checar se intencional)
+- CSS failsafe não testado em todos os novos elementos (`.classify-card`, `.fib4-inputs`, `.rule-gray-zone`)
+- `s-a1-vote`: botão de reveal nunca foi testado com click real
+- `s-a1-damico` Era 2 D'Amico pathway: valores `1%/5%/20%/57%` — confirmar fonte (ver [LUCAS DECIDE] abaixo)
+
+### 🟡 DECISOES CLINICAS PENDENTES [LUCAS DECIDE]
+
+1. **Burden headline:** usa `1,43M` (GBD 2021) — confirmar ou trocar por `1,32M` (GBD 2017)
+2. **D'Amico pathway %:** `Comp(1%) → 1ºDescomp(5%) → 2ºDescomp(20%) → Óbito(57%)` — confirmar paper e IC95%
+3. **PREDESCI HR 0,51:** Villanueva 2019? Confirmar se IC95% vai no slide ou só nas notes
 
 ### 🟡 MEDIA
 
