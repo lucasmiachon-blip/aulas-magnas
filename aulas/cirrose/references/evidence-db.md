@@ -1,7 +1,7 @@
 # Evidence DB — Cirrose Masterclass
 
 > Dados clínicos canônicos. NUNCA modificar sem PMID verificado.
-> Atualizado: 03/mar/2026 — tier classification + GBD refs completos + BAVENO VII PMID corrigido (35120736).
+> Atualizado: 05/mar/2026 — 9 refs tier-1 bloco 1 verificadas via PubMed MCP (GBD 2021, Baveno VII, LiverPRO, He 2024, Villanueva 2025, PREDESCI, Larrue 2023, Lee 2024, Marek 2024).
 
 ---
 
@@ -22,6 +22,7 @@
 | Paper | PMID | Journal/Ano | Dado-chave |
 |-------|------|-------------|-----------|
 | GBD 2017 Cirrhosis Collaborators | **31981519** | Lancet Gastroenterol Hepatol 2020 | **1,32M mortes/ano** · 8ª causa global · trajetória 1990-2017 por etiologia |
+| GBD 2021 Diseases and Injuries Collaborators | **38642570** | Lancet 2024 | DALYs 2021 todas causas (371 doenças, 204 países); 2,88 bilhões DALYs totais — referência contextual burden global NCD |
 | GBD 2021 — Tham EKJ et al. | **39927433** | Liver Int 2025 | Cirrose + outras DRC crónicas: dados GBD 2021 |
 | GBD 2021 — Feng G et al. | **40062742** | Liver Int 2025 | Major chronic liver diseases 2021 — confirmar sobreposição com 39927433 |
 | GBD 2023 Causes of Death | **41092928** | Lancet 2025 | 292 causas · 204 países · 1990-2023 (mais recente) |
@@ -77,7 +78,14 @@
 
 ### MetALD — Status atual
 
-> MetALD é definição de 2023 (Rinella). **Sem estudos epidemiológicos específicos ainda** — dados virão nos próximos anos. Para slides: usar ALD + MASLD separados com nota de sobreposição MetALD.
+> MetALD é definição de 2023 (Rinella). **Primeiros dados epidemiológicos disponíveis (Lee 2024, NHANES EUA)**. Para slides: MetALD = 2% prevalência EUA; lacuna terapêutica com GLP-1 RA promissor.
+
+### MetALD — Dados Epidemiológicos e Terapêuticos (Tier-1)
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Lee BP, Dodge JL, Terrault NA | **37732946** | Hepatology 2024 | MetALD prevalência **2% (IC 1,6–2,9%)** EUA (NHANES 2017-2020, n=7367); ⚠️ [DIVERGE: "pior prognóstico que MASLD" não afirmado diretamente — paper mostra associação fibrose avançada ↔ maior uso álcool] |
+| Marek GW, Malhi H | **38820071** | Hepatology 2024 | MetALD: lacuna terapêutica — GLP-1 RA maior evidência disponível (MASLD); sem RCTs específicos MetALD; FGF21, THR-β, SGLT2i também promissores |
 
 ---
 
@@ -91,7 +99,7 @@
 | ANSWER | Caraceni | Lancet 2018 | 29861076 | Albumina longo prazo em ascite | 9 (morte 18m) | ⊕⊕⊕◯ |
 | ATTIRE | China | NEJM 2021 | 33657293 | Albumina em ACLF — **NÃO funciona** | ∞ | ⊕⊕⊕⊕ |
 | Bass | Bass | NEJM 2010 | 20335583 | Rifaximina previne HE recorrente | 4 (HE 6m) | ⊕⊕⊕⊕ |
-| Baveno VII | de Franchis | J Hepatol 2022 | 35120736 | Consensus: CSPH, recompensação | — | ⊕⊕⊕◯ |
+| Baveno VII | de Franchis | J Hepatol 2022 | 35120736 | Consensus: CSPH, recompensação; Rule of 5 cACLD→dACLD; NITs (LSM+PLQ); NSBB | — | ⊕⊕⊕◯ |
 
 ## D'Amico Staging — 6 DOIs verificados (PubMed)
 
@@ -102,6 +110,7 @@
 | D'Amico 2018 | D'Amico G | J Hepatol | `10.1016/j.jhep.2017.10.020` | 29111320 | 6 states multistate. ACLF em qualquer fase |
 | D'Amico 2022 | D'Amico G | J Hepatol | `10.1016/j.jhep.2021.06.018` | — | NAD vs AD. Redefine descompensação |
 | D'Amico 2024 | D'Amico G | Hepatology | `10.1097/HEP.0000000000000652` | 37916970 | 2028 pts. Further decomp ~60%, dobra mortalidade |
+| Larrue 2023 | Larrue H, D'Amico G et al. | J Hepatol | `10.1016/j.jhep.2023.04.028` | 37141993 | IPD meta-análise TIPS vs SOC (n=2338): further decomp 48% vs 63% (2a); sobrevida 71% vs 63% (p=0,0001) |
 | Garcia-Guix 2024 | Garcia-Guix I | Liver Int | `10.1111/liv.15937` | 38634685 | HVPG non-response prediz further decomp |
 
 ### D'Amico Staging — Resumo evolutivo
@@ -158,7 +167,7 @@
 |-----|-----|
 | D'Amico 2006/2014/2018/2022/2024 | Stages, mortalidade, further decomp |
 | Garcia-Guix 2024 | HVPG non-response → further decomp |
-| Villanueva 2025 (Nat Rev) | Referência-mestra (Fig 1 = stages ACLD) |
+| Villanueva 2025 (Nat Rev) · **PMID 39870944** | Referência-mestra (Fig 1 = stages ACLD); CSPH, NITs, gray zone, NSBB prevenção |
 | Baveno VII 2022 | cACLD, CSPH, NITs, NSBB, recompensação |
 | Tonon 2025 | Recompensação: 7% strict, 37,6% expanded |
 | Villanueva 2019 (PREDESCI) | Carvedilol NNT 9, HR 0,51 |
@@ -175,6 +184,7 @@
 | s-a1-03 | MELD-Na: semáforo da cirrose | Fórmula UNOS padrão |
 | s-a1-04 | Infecção = 33% das internações | PREDICT study |
 | s-a1-05 | 10 etiologias em 3 perguntas | EASL CPG 2024 + AASLD 2024 |
+| s-a1-classify | Carvedilol HR 0,51 (IC 0,26–0,97) descomp/morte; HR 0,44 (IC 0,20–0,97) ascite (3 anos, n=201) | PREDESCI (PMID 30910320) |
 | s-a2-01 | Carvedilol HR 0,51, NNT 9, dose 6,25→12,5 mg | PREDESCI (PMID 30910320) |
 | s-a2-02 | Early TIPS 72h: sobrevida 86% vs 61% | García-Pagán (PMID 20573925) |
 | s-a2-03 | Albumina: Sort NNT 5, ANSWER NNT 9, ATTIRE NNT ∞ | PMIDs 10432325, 29861076, 33657293 |
@@ -201,6 +211,28 @@
 
 > **Dado confirmado:** "the majority of patients are only diagnosed when they exhibit features of end-stage decompensated disease"
 > **Uso:** slide 02c-a1-screening.html, Estado 1 — percentual de pacientes assintomáticos/não diagnosticados.
+
+### FIB-4 — Cutoffs e Performance Diagnóstica (Tier-1)
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Lindvig KP et al. (LiverPRO) | **39674225** | Lancet Gastroenterol Hepatol 2025 | FIB-4 rule-in ≥2,67: especificidade **98,7%** (PPV 35,6%); rule-out <1,3: sensibilidade **53,8%** (NPV 95,8%) — validação DECIDE cohort (n=6468) |
+
+---
+
+## CSPH — Rule of 5 e Gray Zone (Tier-1)
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| Villanueva C, Tripathi D, Bosch J | **39870944** | Nat Rev Gastroenterol Hepatol 2025 | CSPH HVPG≥10 mmHg: limiar descompensação; gray zone NITs; NSBB previnem primeira descomp em cACLD+CSPH — revisão mestra estratégias |
+
+### Baveno VII — Validação NITs
+
+| Paper | PMID | Journal/Ano | Dado-chave |
+|-------|------|-------------|-----------|
+| He R et al. | **38740698** | Hepatol Int 2024 | 2D-SWE: LSM≥25 kPa (ou SSM≥50 kPa) PPV **100%** para CSPH; especificidade 100% — validação multicêntrica (n=118 cACLD, China+Croácia) |
+
+---
 
 ## [TBD] CTP Interobserver Variability
 
