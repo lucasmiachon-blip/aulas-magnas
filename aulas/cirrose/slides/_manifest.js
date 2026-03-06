@@ -16,7 +16,7 @@ export const slides = [
   { id: 's-a1-baveno', file: '03-a1-baveno.html', act: 'A1', archetype: 'hero-stat', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'Baveno VII redefiniu classificacao', panelState: 'neutral', clickReveals: 2, customAnim: 's-a1-baveno', timing: 120 },
   { id: 's-a1-fib4', file: '03b-a1-fib4calc.html', act: 'A1', archetype: 'hero-stat', sectionTag: 'ATO 1 — CLASSIFICAR', headline: '4 dados. 1 numero. 1 decisao.', panelState: 'neutral', clickReveals: 2, customAnim: 's-a1-fib4', timing: 120 },
   { id: 's-a1-rule5', file: '03d-a1-rule5.html', act: 'A1', archetype: 'flow', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'Onde esta o Antonio?', panelState: 'neutral', clickReveals: 2, customAnim: 's-a1-rule5', timing: 120 },
-  { id: 's-a1-meld', file: '04-a1-meld.html', act: 'A1', archetype: 'hero-stat', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'MELD-Na e o GPS do cirrotico — e tem um semaforo', panelState: 'neutral', clickReveals: 0, customAnim: null, timing: 150 },
+  { id: 's-a1-meld', file: '04-a1-meld.html', act: 'A1', archetype: 'hero-stat', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'MELD-Na: o GPS da fila', panelState: 'neutral', clickReveals: 2, customAnim: 's-a1-meld', timing: 150 },
   { id: 's-a1-classify', file: '02c-a1-screening.html', act: 'A1', archetype: 'flow', sectionTag: 'ATO 1 — CLASSIFICAR', headline: 'Classificar cedo muda desfecho — HR 0,51', panelState: 'neutral', clickReveals: 3, customAnim: 's-a1-classify', timing: 90 },
   { id: 's-cp1', file: '07-cp1.html', act: 'CP', archetype: 'checkpoint', sectionTag: null, headline: 'LSM 21 kPa, plaquetas 118k. Como voce estadia?', panelState: 'caution', clickReveals: 3, customAnim: null, timing: 180 },
 

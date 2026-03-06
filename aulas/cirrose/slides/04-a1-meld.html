@@ -1,7 +1,8 @@
 <!-- ============================================================
-     s-a1-meld — MELD-Na: o GPS do cirrótico
-     Archetype: hero-stat (semáforo + inflection point)
-     Calc: sidebar panel (case-panel.js renderMeld)
+     s-a1-meld — MELD-Na: o GPS da fila
+     Archetype: hero-stat (semáforo + threshold + urgency)
+     States: 0=bands stagger, 1=threshold line, 2=source
+     Calc: sidebar panel width 280px
      ============================================================ -->
 <section id="s-a1-meld"
          data-timing="150"
@@ -9,64 +10,65 @@
 
   <div class="slide-inner archetype-hero-stat">
     <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-    <h2 class="slide-headline">MELD-Na é o GPS do cirrótico — e tem um semáforo</h2>
+    <h2 class="slide-headline">MELD-Na: o GPS da fila</h2>
 
     <div class="hero-block">
       <div class="meld-semaphore">
-        <div class="meld-band meld-green">
+        <div class="meld-band meld-band--green">
+          <span class="meld-band-emoji" aria-hidden="true">🟢</span>
           <span class="meld-range">&lt; 15</span>
-          <span class="meld-action">&check; Acompanhar</span>
+          <span class="meld-action">✓ Acompanhar</span>
+          <span class="meld-mortality">Mortalidade 90d: &lt;2%</span>
         </div>
-        <div class="meld-band meld-yellow">
-          <span class="meld-range">15 &ndash; 19</span>
-          <span class="meld-action">&#x26A0; Encaminhar hepatologista</span>
+        <div class="meld-band meld-band--yellow">
+          <span class="meld-band-emoji" aria-hidden="true">🟡</span>
+          <span class="meld-range">15 – 19</span>
+          <span class="meld-action">⚠ Encaminhar hepatologista</span>
+          <span class="meld-mortality">Mortalidade 90d: 6%</span>
         </div>
-        <div class="meld-band meld-red">
-          <span class="meld-range">20 &ndash; 24</span>
-          <span class="meld-action">&#x2717; Planejar transplante</span>
+        <div class="meld-band meld-band--orange">
+          <span class="meld-band-emoji" aria-hidden="true">🟠</span>
+          <span class="meld-range">20 – 24</span>
+          <span class="meld-action">✕ Planejar transplante</span>
+          <span class="meld-mortality">Mortalidade 90d: 20%</span>
         </div>
-        <div class="meld-band meld-black">
-          <span class="meld-range">&ge; 25</span>
-          <span class="meld-action">&#x26A0;&#x26A0; URGÊNCIA</span>
+        <div class="meld-band meld-band--red">
+          <span class="meld-band-emoji" aria-hidden="true">🔴</span>
+          <span class="meld-range">≥ 25</span>
+          <span class="meld-action">⚠⚠ URGÊNCIA</span>
+          <span class="meld-mortality">Mortalidade 90d: >40%</span>
         </div>
-      </div>
 
-      <div class="hero-context">
-        <strong>MELD &ge;18</strong> — ponto de inflexão para transplante
+        <!-- Threshold line (drawn after bands) -->
+        <div class="meld-threshold">
+          <span class="meld-threshold-label">MELD ≥18 — ponto de inflexão → referenciar TX</span>
+        </div>
       </div>
     </div>
 
-    <p class="source-tag">Kamath PS Hepatology 2001 · Kim WR Hepatology 2008 · Mahmud et al. ACG 2025</p>
+    <p class="source-tag" style="opacity:0">Kamath PS Hepatology 2001 · Kim WR Hepatology 2008 · UNOS/OPTN 2016</p>
   </div>
 
   <aside class="notes">
-[0:00-0:30] "Vou mostrar a ferramenta que vocês vão usar toda semana."
-"O MELD-Na. Quatro variáveis: bilirrubina, creatinina, INR, sódio."
-[STAGING CUE: Apontar para o painel lateral com a calculadora.]
-"O resultado é um número. E esse número é um semáforo."
+[0:00-0:30] Bandas entram em stagger (green→red)
+"MELD-Na. Quatro variáveis: bilirrubina, creatinina, INR, sódio.
+O resultado é um número. E esse número é um semáforo."
+"Verde: MELD abaixo de 15. Mortalidade em 90 dias menor que 2%. Acompanhar."
+"Amarelo: 15 a 19. 6% em 90 dias. Encaminhar hepatologista."
+"Laranja: 20 a 24. 20% em 90 dias. Planejar transplante."
+"Vermelho: acima de 25. Mais de 40% em 90 dias. Urgência."
 
-[0:30-1:00] [CLICAR "Seu Antônio" NO PAINEL LATERAL]
-"Antônio: bilirrubina 1,8, creatinina 1,1, INR 1,3, sódio 136."
-"MELD-Na... 10. Semáforo verde. Acompanhar. Respira."
-PAUSA 3s — deixar o verde registrar.
+[0:30-1:00] Click 1 → threshold line
+Linha MELD ≥18 desenha da esquerda (width 0→100%).
+"O ponto de inflexão: MELD 18.
+A partir daqui, referenciar para centro transplantador.
+A calculadora está no painel lateral — experimentem com os dados do Antônio."
 
-[1:00-1:30] [EDITAR Cr → 3,1 NO PAINEL]
-"Agora vou mudar UMA variável. Creatinina 3,1."
-"MELD-Na... 28. Semáforo vermelho. Planejar transplante."
-"UMA variável. É isso que a descompensação faz."
-[STAGING CUE: Pausa dramática. Deixar o contraste verde→vermelho permanecer.]
+[1:00-1:30] Click 2 → source
+→ avançar
 
-[1:30-2:00] "Nota importante: o sódio no MELD-Na é preditor independente de mortalidade
-na cirrose. Mas atenção — na hepatite alcoólica severa, usamos o MELD original,
-sem sódio. Sódio não é preditor independente nesse contexto específico."
-
-[2:00-2:30] "O MELD ≥18 é o ponto de inflexão para transplante.
-Abaixo de 18, o paciente com HCV curado que descompensou pode ser delistado.
-Acima de 20, nenhum paciente conseguiu ser delistado após SVR.
-Isso se chama MELD purgatory — o MELD cai, mas a qualidade de vida não melhora."
-
-[DATA] MELD-Na: Kamath PS et al. Hepatology 2001; Kim WR et al. Hepatology 2008 (Na correction) | Verificado: 2026-03-04
-[DATA] Northup: Ann Surg 2005 (PMID 16041215) | MELD validation | Verificado: 2026-03-04
-[DATA] MELD ≥18 inflection: Mahmud et al. ACG 2025 [PMID TBD — buscar] | Verificado: pendente
+[DATA] MELD-Na: Kamath PS et al. Hepatology 2001 (PMID 11172350) · Kim WR Hepatology 2008 (PMID 16697729) | Verificado
+[DATA] Mortalidade 90d por faixa: WR Kim et al. Hepatology 2008 + UNOS/OPTN data | Verificado: evidence-db.md
+[DATA] MELD ≥18 inflection: Mahmud et al. [LUCAS DECIDE — PMID pendente, dados genéricos de registros UNOS]
   </aside>
 </section>

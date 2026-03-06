@@ -270,15 +270,20 @@
   flex-direction: column;
   gap: var(--space-sm);
   max-width: min(600px, 100%);
-  margin: var(--space-lg) auto;
+  margin: var(--space-md) auto;
+  position: relative;
 }
 .meld-band {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2rem auto 1fr auto;
+  gap: var(--space-xs);
   align-items: center;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
   font-family: var(--font-body);
+}
+.meld-band-emoji {
+  font-size: var(--text-body);
 }
 .meld-range {
   font-family: var(--font-mono);
@@ -289,10 +294,38 @@
 .meld-action {
   font-size: var(--text-body);
 }
-.meld-green { background: oklch(from var(--safe) l c h / 0.15); border-left: 4px solid var(--safe); }
-.meld-yellow { background: oklch(from var(--warning) l c h / 0.15); border-left: 4px solid var(--warning); }
-.meld-red { background: oklch(from var(--danger) l c h / 0.15); border-left: 4px solid var(--danger); }
-.meld-black { background: oklch(20% 0 0 / 0.08); border-left: 4px solid var(--text-primary); color: var(--text-primary); font-weight: 700; }
+.meld-mortality {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  text-align: right;
+}
+.meld-band--green  { background: oklch(from var(--safe) l c h / 0.15); border-left: 4px solid var(--safe); }
+.meld-band--yellow { background: oklch(from var(--warning) l c h / 0.15); border-left: 4px solid var(--warning); }
+.meld-band--orange { background: oklch(from var(--danger) l c h / 0.20); border-left: 4px solid oklch(55% 0.16 40); }
+.meld-band--red    { background: oklch(from var(--danger) l c h / 0.15); border-left: 4px solid var(--danger); font-weight: 700; }
+
+.meld-threshold {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-top: 2px solid var(--danger);
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.meld-threshold-label {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.no-js .meld-threshold,
+.stage-bad .meld-threshold {
+  width: 100%;
+}
 
 /* ============================================
    PREDICT BARS (A1-04)

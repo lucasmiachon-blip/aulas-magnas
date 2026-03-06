@@ -613,6 +613,46 @@ export const customAnimations = {
     slide.__hookCurrentBeat = () => state;
   },
 
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-meld — MELD-Na semáforo + threshold
+     States: 0=bands stagger (auto), 1=threshold line, 2=source
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-meld': (slide, gsap) => {
+    let state = 0;
+    const maxState = 2;
+
+    const bands = slide.querySelectorAll('.meld-band');
+    const threshold = slide.querySelector('.meld-threshold');
+    const sourceTag = slide.querySelector('.source-tag');
+
+    gsap.set(bands, { opacity: 0, y: 12 });
+    gsap.to(bands, { opacity: 1, y: 0, duration: 0.4, stagger: 0.15, delay: 0.3, ease: 'power2.out' });
+
+    function advance() {
+      if (state >= maxState) return false;
+      state++;
+      if (state === 1 && threshold) {
+        gsap.to(threshold, { width: '100%', duration: 0.8, ease: 'power2.out' });
+      }
+      if (state === 2) {
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4 });
+      }
+      return true;
+    }
+
+    function retreat() {
+      if (state <= 0) return false;
+      if (state === 2) gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
+      if (state === 1 && threshold) gsap.to(threshold, { width: 0, duration: 0.3 });
+      state--;
+      return true;
+    }
+
+    slide.__hookAdvance = advance;
+    slide.__hookRetreat = retreat;
+    slide.__hookCurrentBeat = () => state;
+  },
+
   's-hook': (slide, gsap) => {
     const beats = slide.querySelectorAll('.hook-beat');
     if (beats.length < 2) return;
