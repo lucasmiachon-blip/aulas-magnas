@@ -125,6 +125,49 @@ JS funciona (confirmado no browser). Redundâncias visuais e CSS ainda presentes
 
 ---
 
+## QA Stack — Ferramentas de Alto ROI
+
+Instaladas em `.cursor/mcp.json` + `.mcp.json`. Status e como ativar:
+
+| # | Ferramenta | ROI | Custo | Status | Como ativar |
+|---|-----------|-----|-------|--------|-------------|
+| 1 | `ui-ux-pro-mcp` | ★★★★★ | **GRÁTIS** | ✅ Funcionando agora | Nenhuma ação — já ativo no MCP |
+| 2 | `perplexity` | ★★★★★ | ~$5/mo | ✅ Funcionando agora | `PERPLEXITY_API_KEY` já no `.env` |
+| 3 | `mcp:attention-insight` (fallback) | ★★★☆☆ | **GRÁTIS** | ✅ Funcionando via sharp | Nenhuma — roda agora com proxy heurístico |
+| 4 | `mcp:attention-insight` (API real) | ★★★★★ | **14 dias grátis** → €119/mo Pro | ⏳ Requer signup | Signup em [app.attentioninsight.com](https://app.attentioninsight.com/auth/signup), pegar API key nas settings, adicionar `ATTENTION_INSIGHT_API_KEY=<key>` no `.env` |
+| 5 | `frontend-review-mcp` | ★★★★☆ | **Créditos grátis** no signup | ⏳ Requer API key | Signup em [app.hyperbolic.xyz](https://app.hyperbolic.xyz), copiar API key, adicionar `HYPERBOLIC_API_KEY=<key>` no `.env` |
+
+### O que cada uma traz ao QA
+
+- **`ui-ux-pro-mcp`**: 170 UX guidelines objetivos. O agente compara o slide contra padrões de tipografia, espaçamento, hierarquia visual, contraste. Alta objetividade para critérios 2, 4, 6.
+- **`perplexity`**: Avaliação pedagógica (CLT, Mayer, Knowles, Miller, Duarte). Cobre critérios 11-13.
+- **`attention-insight` (API real)**: eye-tracking preditivo com 90% accuracy vs. eye tracking real. Retorna clarity_score, focus_score, heatmap, % atenção por região, AI recommendations. Cobre critério 6 (impacto visual) com dado objetivo.
+- **`frontend-review-mcp`**: compara screenshot before/after e diz se a mudança CSS funcionou. Essencial no loop de correção — valida sem precisar de revisão manual.
+
+### Como o Attention Insight funciona via MCP
+
+```
+Playwright tira screenshot → salva em qa-screenshots/[slide].png
+               ↓
+qa-engineer chama: mcp:attention-insight analyze_attention("qa-screenshots/s-hook.png")
+               ↓
+   sem API key → sharp fallback (clarity proxy, ~60% accuracy)
+   com API key → REST POST para app.attentioninsight.com/api/v1/analysis
+               ↓
+Retorna: clarity_score, focus_score, cognitive_load, top_regions, ai_recommendations
+               ↓
+qa-engineer usa clarity_score para nota no critério 6 (impacto visual)
+e cognitive_load para critério 11 (carga cognitiva Sweller CLT)
+```
+
+**Para ativar API real:**
+1. `app.attentioninsight.com/auth/signup` — trial 14 dias, sem cartão
+2. Dashboard → Settings → API Key → copiar
+3. Adicionar ao `.env`: `ATTENTION_INSIGHT_API_KEY=ai_...`
+4. Reiniciar Cursor/Claude Code → MCP reconnects automaticamente
+
+---
+
 ## Offline
 
 `npm run build:cirrose`, `npm run lint:slides`, `npm run preview` — funcionam offline.

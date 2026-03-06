@@ -29,6 +29,7 @@
     "@anthropic-ai/sdk": "^0.39.0",
     "@axe-core/playwright": "^4.11.1",
     "@google/generative-ai": "^0.24.1",
+    "@modelcontextprotocol/sdk": "^1.27.1",
     "@notionhq/client": "^2.3.0",
     "axe-core": "^4.11.1",
     "decktape": "^3.14.0",
