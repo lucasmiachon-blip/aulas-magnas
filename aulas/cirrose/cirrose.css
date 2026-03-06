@@ -1557,21 +1557,21 @@
   color: #e8ecf1;
 }
 
-/* Override stage-c token remap: .slide-navy uses var(--text-on-dark) which
-   in stage-c = dark. Force light colors for legibility on navy. */
-/* stage-c remap --text-on-dark → dark; hook forces navy, so explicit OKLCH needed */
+/* ── s-hook scoped design tokens (navy bg, force light) ── */
+#s-hook {
+  --hook-text-bright: oklch(95% 0.005 258);
+  --hook-text-mid: oklch(79% 0.018 258);
+  --hook-text-dim: oklch(63% 0.02 258);
+  --hook-lab-label-color: oklch(62% 0.022 258);
+  --hook-lab-value-color: oklch(95% 0.005 258);
+  --hook-lab-ref-color: oklch(57% 0.018 258);
+  --hook-card-bg: oklch(25% 0.02 258 / 0.5);
+  --hook-card-border: oklch(70% 0.01 258 / 0.2);
+}
 #s-hook .hook-patient-name,
-#s-hook .hook-question,
-#s-hook .hook-punchline { color: oklch(95% 0.005 258); }
-#s-hook .hook-patient-desc,
-#s-hook .hook-question-lead { color: oklch(79% 0.018 258); }
-#s-hook .hook-patient-ref { color: oklch(63% 0.02 258); }
-#s-hook .hook-lab-label { color: oklch(62% 0.022 258); }
-#s-hook .hook-lab-value { color: oklch(95% 0.005 258); }
-#s-hook .hook-lab-ref { color: oklch(57% 0.018 258); }
-#s-hook .hook-lab--flag .hook-lab-label { color: #e8b84d; }
-#s-hook .hook-lab--flag .hook-lab-value { color: #f5d88a; }
-#s-hook .hook-lab--flag .hook-lab-ref { color: #d4a84d; }
+#s-hook .hook-punchline { color: var(--hook-text-bright); }
+#s-hook .hook-patient-desc { color: var(--hook-text-mid); }
+#s-hook .hook-patient-ref { color: var(--hook-text-dim); }
 
 /* ── Stage container (centro, sem header) ── */
 .hook-stage {
@@ -1586,7 +1586,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 2rem;
   width: 100%;
   position: absolute;
   inset: 0;
@@ -1608,7 +1608,6 @@
   z-index: 1;
 }
 
-/* failsafe: if JS never runs, show everything */
 .failsafe-gsap .hook-beat--hidden,
 .no-js .hook-beat--hidden {
   opacity: 1;
@@ -1618,21 +1617,15 @@
   inset: auto;
 }
 
-/* Beat 1: labs e punchline invisíveis até a animação (evita sombra pré-stagger) */
+/* Beat 1: invisible until GSAP stagger */
 .hook-beat[data-hook-beat="1"] .hook-lab,
-.hook-beat[data-hook-beat="1"] .hook-question-lead,
-.hook-beat[data-hook-beat="1"] .hook-question,
 .hook-beat[data-hook-beat="1"] .hook-punchline {
   opacity: 0;
   visibility: hidden;
 }
 .failsafe-gsap .hook-beat[data-hook-beat="1"] .hook-lab,
-.failsafe-gsap .hook-beat[data-hook-beat="1"] .hook-question-lead,
-.failsafe-gsap .hook-beat[data-hook-beat="1"] .hook-question,
 .failsafe-gsap .hook-beat[data-hook-beat="1"] .hook-punchline,
 .no-js .hook-beat[data-hook-beat="1"] .hook-lab,
-.no-js .hook-beat[data-hook-beat="1"] .hook-question-lead,
-.no-js .hook-beat[data-hook-beat="1"] .hook-question,
 .no-js .hook-beat[data-hook-beat="1"] .hook-punchline {
   opacity: 1;
   visibility: visible;
@@ -1645,37 +1638,34 @@
 }
 
 .hook-patient-name {
-  font-family: var(--font-display, 'Instrument Serif', serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
   font-weight: 400;
-  color: #f0f2f5;
   margin: 0 0 0.6rem 0;
   letter-spacing: 0.01em;
 }
 
 .hook-patient-desc {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-  color: #b8c4d4;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
   line-height: 1.6;
   margin: 0 0 0.5rem 0;
 }
 
 .hook-patient-ref {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
-  color: #9aa8bc;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
   margin: 0;
   font-style: italic;
 }
 
-/* ── Labs row (always single line) ── */
-.hook-labs-row {
+/* ── Labs grid (4×2 for 8 cards) ── */
+.hook-labs-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.65rem;
   width: 100%;
-  max-width: 880px;
+  max-width: 780px;
 }
 
 .hook-lab {
@@ -1683,42 +1673,46 @@
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-  padding: 1rem 0.5rem;
-  border-radius: 0.6rem;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--hook-card-bg);
+  border: 1px solid var(--hook-card-border);
+  position: relative;
 }
 
-.hook-lab--flag {
-  border-color: var(--warning, oklch(0.78 0.14 75));
-  background: rgba(255, 180, 50, 0.06);
-  box-shadow: 0 0 12px rgba(255, 180, 50, 0.08);
+.hook-lab--success {
+  border-color: var(--safe-on-dark, oklch(55% 0.12 170));
+  background: oklch(40% 0.08 170 / 0.1);
+}
+
+.hook-lab--warning {
+  border-color: var(--warning-on-dark, oklch(78% 0.14 75));
+  background: oklch(60% 0.10 75 / 0.1);
+  box-shadow: 0 0 12px oklch(60% 0.10 75 / 0.12);
 }
 
 .hook-lab-label {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
   font-weight: 500;
-  color: oklch(62% 0.022 258);
+  color: var(--hook-lab-label-color);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.hook-lab--flag .hook-lab-label {
-  color: var(--warning, oklch(0.78 0.14 75));
-}
+.hook-lab--success .hook-lab-label { color: var(--safe-on-dark, oklch(55% 0.12 170)); }
+.hook-lab--warning .hook-lab-label { color: var(--warning-on-dark, oklch(78% 0.14 75)); }
 
 .hook-lab-value {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
   font-weight: 700;
-  color: #e8ecf1;
+  color: var(--hook-lab-value-color);
   line-height: 1;
 }
 
-.hook-lab--flag .hook-lab-value {
-  color: var(--warning-on-dark, oklch(0.88 0.14 75));
-}
+.hook-lab--success .hook-lab-value { color: var(--safe-on-dark, oklch(65% 0.12 170)); }
+.hook-lab--warning .hook-lab-value { color: var(--warning-on-dark, oklch(88% 0.14 75)); }
 
 .hook-lab-value small {
   font-size: 0.65em;
@@ -1726,44 +1720,34 @@
 }
 
 .hook-lab-ref {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.85rem;
-  color: oklch(57% 0.018 258);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--hook-lab-ref-color);
 }
 
-.hook-lab--flag .hook-lab-ref {
-  color: var(--warning, oklch(0.72 0.12 75));
-}
+.hook-lab--success .hook-lab-ref { color: var(--safe-on-dark, oklch(50% 0.10 170)); }
+.hook-lab--warning .hook-lab-ref { color: var(--warning-on-dark, oklch(72% 0.12 75)); }
 
-/* ── Question (Beat 2) — fill ratio melhorado ── */
-.hook-question-lead {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-  color: #b8c4d4;
-  letter-spacing: 0.03em;
-  margin: 0 0 1.25rem 0;
+/* Tag below card (e.g. "normal ✓", "calculado") */
+.hook-lab-tag {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 0.15rem;
 }
+.hook-lab--success .hook-lab-tag { color: var(--safe-on-dark, oklch(55% 0.12 170)); }
+.hook-lab--warning .hook-lab-tag { color: var(--warning-on-dark, oklch(78% 0.14 75)); }
 
-.hook-question {
-  font-family: var(--font-display, 'Instrument Serif', serif);
-  font-size: clamp(3.5rem, 7vw, 5.5rem);
-  font-weight: 400;
-  color: #f0f2f5;
-  text-align: center;
-  line-height: 1.15;
-  margin: 0;
-  max-width: 90%;
-}
-
-/* ── Punchline (Beat 1 — replaces question when no pergunta) ── */
+/* ── Punchline (hero assertion after labs) ── */
 .hook-punchline {
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: var(--text-h3, 1.5rem);
-  font-weight: 500;
-  color: #f0f2f5;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  color: var(--hook-text-bright);
   text-align: center;
   letter-spacing: 0.02em;
-  margin-top: var(--space-lg, 40px);
+  margin: 0;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

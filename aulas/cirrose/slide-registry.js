@@ -520,13 +520,13 @@ export const customAnimations = {
     if (beats.length < 2) return;
 
     let currentBeat = 0;
-    const fib4El = slide.querySelector('[data-target="3.2"]');
+    const fib4El = slide.querySelector('[data-target="5.91"]');
+    const fib4Card = fib4El?.closest('.hook-lab');
 
     function setBeat(idx) {
       beats.forEach((b, i) => {
-        const active = i === idx;
-        b.classList.toggle('hook-beat--active', active);
-        b.classList.toggle('hook-beat--hidden', !active);
+        b.classList.toggle('hook-beat--active', i === idx);
+        b.classList.toggle('hook-beat--hidden', i !== idx);
       });
     }
 
@@ -535,51 +535,66 @@ export const customAnimations = {
     setBeat(initialBeat);
     if (initialBeat === 1) {
       const labs = slide.querySelectorAll('.hook-lab');
-      const question = slide.querySelector('.hook-question');
-      const lead = slide.querySelector('.hook-question-lead');
       const punchline = slide.querySelector('.hook-punchline');
-      [...labs, lead, question, punchline].filter(Boolean).forEach(el => {
+      [...labs, punchline].filter(Boolean).forEach(el => {
         el.style.opacity = '1';
         el.style.visibility = 'visible';
-        if (el.style.transform) el.style.transform = 'translateY(0)';
       });
-      if (fib4El) fib4El.textContent = '3,2';
+      if (fib4El) fib4El.textContent = '5,91';
     }
 
     function resetBeat1Content() {
       const labs = slide.querySelectorAll('.hook-lab');
-      const question = slide.querySelector('.hook-question');
-      const lead = slide.querySelector('.hook-question-lead');
       const punchline = slide.querySelector('.hook-punchline');
       if (gsap) {
-        gsap.set([...labs, lead, question, punchline].filter(Boolean), { opacity: 0, visibility: 'hidden' });
+        gsap.set([...labs, punchline].filter(Boolean), { opacity: 0, visibility: 'hidden' });
       }
     }
 
     function runLabsStagger() {
-      const labs = slide.querySelectorAll('.hook-lab');
-      const question = slide.querySelector('.hook-question');
-      const lead = slide.querySelector('.hook-question-lead');
+      const labs = [...slide.querySelectorAll('.hook-lab')];
       const punchline = slide.querySelector('.hook-punchline');
-      if (gsap) {
-        gsap.fromTo(labs,
-          { opacity: 0, visibility: 'visible', y: 12 },
-          { opacity: 1, y: 0, duration: 0.35, stagger: 0.12, delay: 0.05, ease: 'power2.out' }
+      if (!gsap) return;
+
+      const regularLabs = labs.slice(0, -1);
+      const lastCard = labs[labs.length - 1];
+
+      gsap.fromTo(regularLabs,
+        { opacity: 0, visibility: 'visible', y: 12 },
+        { opacity: 1, y: 0, duration: 0.35, stagger: 0.12, delay: 0.05, ease: 'power2.out' }
+      );
+
+      const lastDelay = 0.05 + regularLabs.length * 0.12 + 0.3;
+      gsap.fromTo(lastCard,
+        { opacity: 0, visibility: 'visible', y: 12 },
+        { opacity: 1, y: 0, duration: 0.45, delay: lastDelay, ease: 'back.out(1.4)' }
+      );
+
+      if (fib4Card) {
+        gsap.fromTo(fib4Card,
+          { boxShadow: '0 0 0px oklch(60% 0.10 75 / 0)' },
+          { boxShadow: '0 0 20px oklch(60% 0.10 75 / 0.3)', duration: 0.4, delay: lastDelay + 0.3,
+            yoyo: true, repeat: 1, ease: 'power2.inOut' }
         );
-        if (lead) gsap.fromTo(lead, { opacity: 0, visibility: 'visible' }, { opacity: 1, duration: 0.3, delay: 0.5 });
-        if (question) gsap.fromTo(question, { opacity: 0, visibility: 'visible', y: 8 }, { opacity: 1, y: 0, duration: 0.4, delay: 0.65, ease: 'power2.out' });
-        if (punchline) gsap.fromTo(punchline, { opacity: 0, visibility: 'visible', y: 8 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.7, ease: 'power2.out' });
       }
-      if (fib4El && gsap) {
+
+      if (fib4El) {
         const obj = { val: 0 };
         gsap.to(obj, {
-          val: 3.2,
-          duration: 1.2,
-          delay: 0.2,
+          val: 5.91,
+          duration: 1.4,
+          delay: lastDelay,
           ease: 'power1.out',
-          onUpdate() { fib4El.textContent = obj.val.toFixed(1).replace('.', ','); }
+          onUpdate() { fib4El.textContent = obj.val.toFixed(2).replace('.', ','); }
         });
-      } else if (fib4El) fib4El.textContent = '3,2';
+      }
+
+      if (punchline) {
+        gsap.fromTo(punchline,
+          { opacity: 0, visibility: 'visible', y: 10 },
+          { opacity: 1, y: 0, duration: 0.6, delay: lastDelay + 0.5, ease: 'power2.out' }
+        );
+      }
     }
 
     function advanceBeat() {

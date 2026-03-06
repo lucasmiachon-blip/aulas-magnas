@@ -615,10 +615,10 @@
 /* --- Calc Panel (sidebar calculator area) --- */
 
 .case-panel.has-calc {
-  width: 220px;
+  width: 280px;
 }
 #deck.has-panel.has-calc-panel {
-  --panel-width: 260px;
+  --panel-width: 320px;
 }
 
 .panel-calc-area {
