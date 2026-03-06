@@ -73,16 +73,16 @@ JS funciona (confirmado no browser). Redundâncias visuais e CSS ainda presentes
 
 ### 🔴 IMEDIATO — Fixes QA Bloco 1
 
-**Objetivo:** corrigir todos os 11 issues (1 FAIL + 10 WARN) do relatório QA acima.
-**Estratégia:** slide-builder subagent para os fixes de assertion, main agent para CSS tokens.
-**Ordem de execução sugerida (impacto máximo primeiro):**
+**Objetivo:** atingir nota ≥ 9/10 em todos os 10 critérios, em todos os 9 slides.
+**Padrão:** qa-engineer atualizado com rubrica 0-10 (mínimo 9 = PASS). Ver `.claude/agents/qa-engineer.md`.
+**Stack:** mcp:playwright (screenshots + interações) + mcp:a11y + mcp:lighthouse + Bash lint.
 
-1. **Assertions h2 (5 slides):** s-a1-damico (FAIL), s-hook, s-a1-vote, s-a1-fib4, s-a1-rule5, s-a1-meld
-2. **Rename arquivo:** `02c-a1-screening.html` → `02c-a1-classify.html`
-3. **CSS tokens:** 2 literals em cirrose.css
-4. **Failsafe `.classify-card`:** 2 linhas CSS
-
-Depois dos fixes: re-rodar qa-engineer + browser-use para confirmar zero FAIL/WARN.
+**Ordem de execução:**
+1. **Lucas decide** assertions clínicas finais dos 6 slides com h2 ruim (sem isso nada avança)
+2. **Fixes técnicos rápidos:** rename `screening→classify`, tokens OKLCH, failsafe `.classify-card`
+3. **Altura inconsistente entre slides:** investigar `min-height` archetypes + viewport deck fixo 720px
+4. **Re-rodar qa-engineer** com nova rubrica → scorecard completo por slide
+5. **Iterar** até todos os slides ≥ 9/10 em todos os critérios
 
 ### Observações visuais de Lucas (review manual 2026-03-05)
 - **Títulos ruins** — confirma o FAIL/WARN das assertions. Todos os h2 precisam de revisão clínica.
