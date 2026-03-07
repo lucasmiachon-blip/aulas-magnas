@@ -91,15 +91,18 @@ prev_screenshots = null
 prev_issues = []
 
 WHILE gemini.verdict != PASS AND iteration < 10:
-  # Capturar cada slide em 3 estados distintos
+  # Capturar cada slide em todos os estados (dinâmico — N fragments = N+1 estados)
   screenshots = {}
   FOR each slide IN [slide-a, slide-b, slide-c]:
     playwright.navigate(slide)
-    screenshots[slide].initial  = playwright.capture()         # estado 0 — sem animação
-    playwright.trigger_fragments(1)                            # 1º click/reveal
-    screenshots[slide].mid      = playwright.capture()         # estado intermediário
-    playwright.trigger_fragments("all")                        # todos os fragments
-    screenshots[slide].final    = playwright.capture()         # estado final completo
+    n_fragments = playwright.count_fragments()                 # quantos fragments/reveals tem o slide
+    screenshots[slide] = []
+    screenshots[slide].append(playwright.capture())            # estado 0 — sem animação
+    FOR step IN range(1, n_fragments + 1):
+      playwright.trigger_fragment(step)                        # avançar 1 fragment
+      screenshots[slide].append(playwright.capture())          # capturar estado N
+    # resultado: screenshots[slide] = [s0, s1, s2, ..., sN]
+    # s0 = inicial, sN = final, intermediários conforme existirem
 
   html_sources = read([slide-a.html, slide-b.html, slide-c.html])
 
@@ -167,22 +170,27 @@ ITERAÇÃO ANTERIOR:
 Para cada issue anterior: confirmar se foi resolvido, piorou ou persiste.
 Se persistiu 3x sem melhora → marcar como "BLOQUEADO" (root cause humano).
 
-ITERAÇÃO ATUAL — para cada slide você recebe 3 imagens:
-  [INICIAL]  estado 0 — antes de qualquer animação ou click
-  [MID]      após 1º fragment/reveal
-  [FINAL]    todos os fragments revelados — estado completo
+ITERAÇÃO ATUAL — para cada slide você recebe N imagens (1 por estado):
+  [S0]      estado 0 — antes de qualquer animação ou click
+  [S1]      após 1º fragment/reveal
+  [S2]      após 2º fragment/reveal
+  ...
+  [SN]      estado final — todos os fragments revelados
+
+Número de estados varia por slide (slides simples: 1-2; checkpoints: 4-6).
 
 Avaliar cada estado onde relevante:
 
-1. HIERARQUIA VISUAL (avaliar em [INICIAL] e [FINAL])
+1. HIERARQUIA VISUAL (avaliar em [S0] e [SN])
    - Dado mais importante visualmente dominante?
    - Hero element ≥2x maior que corpo?
    - Ordem de leitura segue F-pattern natural?
-   - [INICIAL]: elemento principal visível ou escondido indevidamente?
+   - [S0]: elemento principal visível ou escondido indevidamente?
 
-2. FLOW NARRATIVO (comparar [INICIAL] → [MID] → [FINAL])
+2. FLOW NARRATIVO (comparar [S0] → [S1] → ... → [SN])
    - Ordem de reveal segue a lógica clínica?
    - Cada reveal adiciona chunk cognitivo completo (não meio dado)?
+   - Algum estado intermediário está vazio, confuso ou sem contexto?
    - Transição entre estados é clara e sem saltos abruptos?
 
 3. LEGIBILIDADE (avaliar em [FINAL] — estado que audiência mais vê)
@@ -200,7 +208,7 @@ Avaliar cada estado onde relevante:
 Para cada issue novo ou persistente, retornar JSON:
 {
   "slide": "[nome do arquivo]",
-  "state": "initial" | "mid" | "final" | "transition",
+  "state": "S0" | "S1" | "S2" | ... | "SN" | "transition(S1→S2)",
   "line_hint": [linha aproximada no HTML],
   "confidence": [0-100],
   "issue": "[descrição exata do problema visual]",
