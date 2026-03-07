@@ -4,6 +4,72 @@
 
 ---
 
+## 2026-03-07 — Doc graph cleanup + operational records
+
+Branch: `claude/diagnose-branch-commits-7twpK`
+
+| Item | Detalhe |
+|------|---------|
+| CLAUDE.md reescrito | 397→111 linhas (Anthropic best practices, @imports) |
+| AGENTS.md arquivado | `docs/archive/` (absorvido por CLAUDE.md) |
+| 5 links mortos corrigidos | HANDOFF.md, SUBAGENTS-PROPOSAL.md |
+| 4 orphans registrados/arquivados | — |
+| Gemini Flash atualizado | → 3.1 Flash-Lite no ECOSYSTEM.md |
+| XREF.md reconstruído | Todas refs verificadas |
+| Operational Records | Tabela explícita em CLAUDE.md (HANDOFF/CHANGELOG/ERROR-LOG/NOTES) |
+| Hierarquia de autoridade | Explícita em todos os docs |
+
+---
+
+## 2026-03-06 — Skills unificação + MCPs QA stack
+
+### Skills — unificação de redundâncias (`d2b6d16`)
+
+| Skill | Antes | Depois |
+|-------|-------|--------|
+| `medical-slide` | 84 linhas, duplicava assertion-evidence + tokens + checklist | 44 linhas: só workflow Notion MCP, delega para `slide-frontend-ux` |
+| `visual-qa` | 7 checks básicos antigos | Redirect para `qa-engineer` agent (13 critérios) |
+| `assertion-evidence` | Mantido | Validator focado (não cria, só valida) |
+| `medical-data` | Mantido | Verifier de dados clínicos autônomo |
+
+### MCPs instalados — stack QA completo (`0d75469`, `d3abf4d`, `42d6e9c`)
+
+**Funcionando (GRÁTIS, zero config):**
+
+| MCP | O que faz | Critérios QA |
+|-----|-----------|-------------|
+| `ui-ux-pro-mcp` | 170 UX guidelines, typography, colors, patterns | 2, 4, 6 |
+| `clinicaltrials` | ClinicalTrials.gov v2 — NCT ID, outcomes, patient match | 9 (resolve [TBD]s) |
+| `design-comparison` | Pixel diff before/after CSS — valida se fix funcionou | 4, 6 |
+| `page-design-guide` | Typography, layout F/Z/Bento, animation principles | 2, 6 |
+| `attention-insight` (sharp) | Clarity + focus score proxy, ~60% accuracy | 6, 11 |
+
+**Requer signup (free credits):**
+
+| MCP | Custo | Como ativar |
+|-----|-------|-------------|
+| `attention-insight` API real | 14 dias grátis → €119/mo | [app.attentioninsight.com/auth/signup](https://app.attentioninsight.com/auth/signup) → `.env`: `ATTENTION_INSIGHT_API_KEY=` |
+| `floto` | 1.000 créditos grátis | [test-app.floto.ai](https://test-app.floto.ai) → `.env`: `FLOTO_API_KEY=` |
+| `frontend-review-mcp` | Créditos grátis | [app.hyperbolic.xyz](https://app.hyperbolic.xyz) → `.env`: `HYPERBOLIC_API_KEY=` |
+
+**Mapeamento ferramentas → critérios qa-engineer:**
+
+| Critério | Ferramentas |
+|---------|-------------|
+| 1. Assertion-Evidence | `npm run lint:slides`, `playwright` DOM |
+| 2. Tipografia | `ui-ux-pro`, `page-design-guide` |
+| 3. Contraste WCAG | `a11y-mcp`, `playwright` axe-core, `lighthouse` |
+| 4. Fill ratio | `playwright` screenshot 1280×720 |
+| 5. Densidade | `playwright` word count DOM |
+| 6. Impacto visual | `attention-insight`, `floto` |
+| 7. Interações | `playwright` Space/Arrow + hook check |
+| 8. CSS tokens | `grep` HEX/px literals |
+| 9. Dados clínicos | `scite`, `biomcp`, `clinicaltrials` |
+| 10. a11y Lighthouse | `lighthouse`, `a11y-mcp` |
+| 11-13. Pedagogia | `perplexity_reason` (CLT+Mayer+Knowles+Duarte) |
+
+---
+
 ## 2026-03-05 — Restructure Act 1: dados canônicos + 9 slides reestruturados (branch restructure/act1)
 
 Branch: `restructure/act1` · Commits: `8058052`→`3b71873` · Build: 33 slides ✅
