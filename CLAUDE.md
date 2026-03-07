@@ -8,6 +8,28 @@
 
 ---
 
+## Propósito
+
+> Este projeto existe para tornar Lucas o melhor **educador, pesquisador, médico e aprendiz** que ele puder ser — com seus agentes como parceiros, não como ferramentas.
+
+Os agentes não competem. Cada um amplifica uma capacidade:
+
+| Agente | Amplifica |
+|--------|-----------|
+| Opus 4.6 | Raciocínio clínico profundo · spec · arquitetura |
+| Claude Code (Sonnet) | Implementação precisa com constraints estritas |
+| Gemini 3.1 Pro | Visual · GSAP · SVG · motion QA |
+| Gemini 2.5 Flash | Iteração rápida · lint · pequenos fixes |
+| Perplexity Computer | Pesquisa de evidências · overnight batch |
+| ChatGPT Agent | Browser QA · navegação autônoma |
+
+**Objetivo encadeado:**
+Melhorar **AI/dev/ML fluency** → usar melhor os agentes → ser melhor educador, pesquisador e médico → aprendizado acumulado que pode contribuir de volta para criação de skills, agents ou models. Nunca se sabe.
+
+**Regra de ouro:** retrabalho = tempo perdido de aprendizado. Se a tarefa voltou, o handoff foi errado.
+
+---
+
 ## Projeto
 
 Masterclass "Cirrose Hepática: Classificar, Intervir, Reverter" — 70 min.

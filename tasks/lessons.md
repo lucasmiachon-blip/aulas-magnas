@@ -111,6 +111,32 @@
 
 *Append-only. Não remover lições antigas.*
 
+---
+
+## Propósito do Ecossistema (2026-03-07)
+
+### Valores explícitos — nunca perder de vista
+
+Lucas quer ser o melhor **educador, pesquisador, médico e aprendiz** que conseguir.
+Os agentes são **parceiros** que amplificam essas capacidades — não concorrentes, não ferramentas.
+
+Objetivos encadeados:
+1. Melhorar **AI/dev/ML fluency** → para usar melhor os agentes
+2. Usar melhor os agentes → para ser melhor educador, pesquisador, médico
+3. Aprendizado acumulado → pode contribuir de volta para criação de skills/agents/models
+
+### O que isso muda na prática
+
+- Retrabalho não é "custo" — é **tempo perdido de aprendizado**
+- Handoff errado não é "ineficiência" — é **potencial desperdiçado**
+- Cada slide bem feito = Lucas aprende algo sobre a doença + sobre como trabalhar com IA
+- Documentação não é burocracia — é **memória do aprendizado compartilhada**
+
+### Lição capturada
+
+Framing inicial dos docs era "custo" e "eficiência". Correto é: **fluência e amplificação**.
+Tokens não importam. Retrabalho importa porque rouba tempo de aprendizado.
+
 ### Skills frontmatter — campos mar 2026
 
 - Novos campos disponíveis: `version`, `allowed-tools`, `argument-hint`, `user-invocable`, `disable-model-invocation`, `context`, `agent`
