@@ -16,6 +16,7 @@
 | **Gemini 3.1 Pro** | APEX Agents #1 | 80.6% | **94.3%** | — | ARC-AGI-2 77.1% (2× 3 Pro) · LiveCode Elo 2887 · SVG animado |
 | ~~**Gemini 3 Pro**~~ | ~~1487 #1~~ | ~~76.2%~~ | — | — | ⚠️ **Encerra 9 mar 2026** → migrar para 3.1 Pro |
 | **Gemini 3 Flash** | 1416 (#8, ↑↑↑) | **78%** (> 3 Pro) | 90.4% | — | 3× mais rápido · $0.50/M · SWE > Pro |
+| **Gemini 3.1 Flash-Lite** | — | — | 86.9% | — | 382 tok/s · $0.25/M input · 2.5× faster TTFA vs 2.5 Flash · lançado 3 mar 2026 |
 | **Claude Opus 4.6** | — | 80.8% | 91.3% | 72.7% | τ²-bench Telecom 99.3% · MRCR 76% · 1M ctx |
 | **Claude Sonnet 4.6** | — | 79.6% | 74.1% | 72.5% | 5× mais barato que Opus · ARC-AGI-2 +4.3× |
 | **GPT-5.4** | — | — | — | **75%** (> humano 72.4%) | Native computer use · lançado 5 mar 2026 |
@@ -34,7 +35,7 @@
 | **Claude Opus 4.6** (claude.ai chat) | Arquitetura · spec clínica · decisões CLAUDE.md · diagnóstico UI/UX | GPQA 91.3% · METR horizon 14.5h · τ²-bench 99.3% |
 | **Claude Code** (Sonnet 4.6) | **Geração de HTML de slides** · build · git · lint | SWE 79.6% · melhor em seguir constraints estritas (assertion-evidence, archetypes, token system) |
 | **Gemini 3.1 Pro** | Debug CSS/GSAP orientado por spec · SVG animado · **video QA (motion tier 5)** | SWE 80.6% · APEX Agents #1 · VideoMME 84.8% · $2/M |
-| **Gemini 2.5 Flash** | Lint rápido · small fixes · batch protótipos | 236 tok/s · $0.30/M · SWE 67.2% — velocidade é o KPI |
+| **Gemini 3.1 Flash-Lite** | Lint rápido · small fixes · batch protótipos | 382 tok/s · $0.25/M · GPQA 86.9% · 2.5× faster TTFA vs 2.5 Flash |
 | **Perplexity Computer** | Pesquisa clínica longa (overnight) · verificação 28 slides vs EASL/BAVENO | 19 modelos · roda horas · GitHub/Notion — não é para edição real-time |
 | **ChatGPT Agent (GPT-5.4)** | QA browser · navegar localhost:3000 · screenshots de layout | 75% OSWorld (> humano 72.4%) · BrowseComp 82.7% |
 | **Perplexity Ultra** (MCP) | Pesquisa em tempo real | Acesso web em tempo real |
@@ -50,7 +51,7 @@
 | **Claude Opus 4.6** (claude.ai) | Design decisions · spec · clinical | — | ✅ Ativo |
 | **Claude Code** (Sonnet 4.6) | Implementação · build | — | ✅ Esta sessão |
 | **Gemini 3.1 Pro** | CSS/GSAP debug · SVG · video QA | → MCP planejado | ⏳ Setup pendente |
-| **Gemini 3 Flash** | Lint · quick fix | → MCP planejado | ⏳ Setup pendente |
+| **Gemini 3.1 Flash-Lite** | Lint · quick fix · batch | → MCP planejado | ⏳ Setup pendente |
 | **Perplexity Computer** | Orquestração multi-agente | — | ⏳ $200/mês Max |
 | **ChatGPT Agent** (GPT-5.4) | Browser automation · computer use | — | ✅ Disponível |
 | **Perplexity Ultra** | Pesquisa em tempo real | Sim | ✅ Ativo |
