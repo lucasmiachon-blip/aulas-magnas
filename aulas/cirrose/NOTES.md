@@ -388,3 +388,7 @@ EOF
 [2026-03-07 21:21] [Explore:a9d99bed] — concluído. Status: PASS
 
 [2026-03-07 21:21] [Explore:a4c25418] — concluído. Status: PASS
+
+[2026-03-07 21:53] [Explore:a11507e8] — concluído. Status: PARTIAL
+
+[2026-03-07 21:54] [Explore:a92f3cb6] — concluído. Status: PARTIAL

@@ -49,7 +49,7 @@ Subagents são agentes especializados com contexto próprio. Cursor: `.cursor/ag
 - **Auditar docs:** "audite os docs" → skill docs-audit + generalPurpose/qa-engineer
 - **Criar:** Slide especificado → slide-builder
 
-Proposta completa: `docs/SUBAGENTS-PROPOSAL.md`
+Proposta original arquivada em `docs/archive/`. Regras operacionais estão acima.
 
 ---
 

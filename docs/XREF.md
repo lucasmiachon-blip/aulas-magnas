@@ -2,7 +2,7 @@
 
 > Mapa canônico de dependências entre documentos do projeto.
 > Atualizar ao criar, mover ou deletar qualquer .md.
-> Gerado: 2026-03-06. Última revisão manual: idem.
+> Gerado: 2026-03-07. Última revisão: idem.
 
 ---
 
@@ -11,18 +11,17 @@
 - **Canônico** = fonte da verdade para aquele assunto
 - **→** = "referencia" ou "depende de"
 - **←** = "é referenciado por"
-- **⊃** = "contém seção que substitui/absorve"
 
 ---
 
 ## Hierarquia de Autoridade
 
 ```
-CLAUDE.md (root)          ← ponto de entrada para Claude Code / Claude.ai
-├── .claude/rules/*.md    ← regras detalhadas (prevalecem sobre .cursor se mais completas)
-├── .cursor/rules/*.mdc   ← regras Cursor (quick-ref com globs)
-├── docs/*.md             ← referência expandida
-└── aulas/*/HANDOFF.md    ← estado por aula
+CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.md)
+├── .claude/rules/*.md        ← regras detalhadas (prevalecem sobre .cursor se mais completas)
+├── .cursor/rules/*.mdc       ← regras Cursor (quick-ref com globs)
+├── docs/*.md                 ← referência expandida
+└── aulas/*/HANDOFF.md        ← estado por aula
 ```
 
 **Conflito:** conteúdo mais detalhado prevalece, independente do diretório.
@@ -31,7 +30,7 @@ CLAUDE.md (root)          ← ponto de entrada para Claude Code / Claude.ai
 
 ## Mapa de Referências
 
-### CLAUDE.md (root)
+### CLAUDE.md (root) — canônico operacional
 | Referencia | Tipo |
 |-----------|------|
 | → docs/RULES.md | Extensão |
@@ -41,7 +40,6 @@ CLAUDE.md (root)          ← ponto de entrada para Claude Code / Claude.ai
 | → aulas/cirrose/HANDOFF-CLAUDE-AI.md | Estado |
 | → tasks/todo.md | Workflow |
 | → tasks/lessons.md | Self-improvement |
-| ⊃ AGENTS.md | Absorvido |
 
 ### .claude/rules/
 
@@ -61,28 +59,42 @@ CLAUDE.md (root)          ← ponto de entrada para Claude Code / Claude.ai
 |---------|-----------|-----------------|
 | README.md | → todos docs/*.md | (índice) |
 | XREF.md | (este arquivo) | ← README.md |
-| ECOSYSTEM.md | → SKILLS.md, RULES.md | ← CLAUDE.md |
+| ECOSYSTEM.md | → SKILLS.md, RULES.md, KPIs.md | ← CLAUDE.md |
+| KPIs.md | (autônomo) | ← ECOSYSTEM.md, README.md |
 | RULES.md | → SUBAGENTS.md, .cursor/rules/*.mdc | ← CLAUDE.md, ECOSYSTEM.md |
 | SKILLS.md | → .cursor/skills/, .claude/skills/ | ← CLAUDE.md, ECOSYSTEM.md |
-| SUBAGENTS.md | → .cursor/rules/core-constraints.mdc, SUBAGENTS-PROPOSAL.md | ← CLAUDE.md, RULES.md |
-| SUBAGENTS-PROPOSAL.md | (autônomo) | ← SUBAGENTS.md |
+| SUBAGENTS.md | → .cursor/rules/core-constraints.mdc | ← CLAUDE.md, RULES.md |
 | SYNC-NOTION-REPO.md | (autônomo — IDs Notion canônicos) | ← CLAUDE.md |
 | blueprint-cirrose.md | (autônomo) | ← aulas/cirrose/HANDOFF.md |
 | biblia-narrativa.md | (autônomo) | ← aulas/cirrose/HANDOFF.md |
-| HANDOFF.md | → aulas/*/HANDOFF.md | ← CLAUDE.md |
+| slide-pedagogy.md | (autônomo — teorias pedagógicas) | ← README.md |
+| insights-html-cirrose-2026.md | (autônomo — análise Gemini HTML) | ← README.md |
 | MCP-ACADEMICOS.md | (autônomo) | ← ECOSYSTEM.md |
 | MCP-ENV-VARS.md | (autônomo) | ← ECOSYSTEM.md |
 | SETUP.md | → ECOSYSTEM.md | ← README.md |
 | ZIP-LIMPO-PROTOCOLO.md | (autônomo) | ← README.md |
 | metanalise-scope.md | (autônomo) | ← README.md |
+| pipeline/README.md | (pipeline humano) | ← SUBAGENTS.md |
 
 ### aulas/cirrose/
 
 | Arquivo | Referencia | Referenciado por |
 |---------|-----------|-----------------|
-| HANDOFF.md | → blueprint-cirrose.md, biblia-narrativa.md | ← CLAUDE.md, docs/HANDOFF.md |
+| HANDOFF.md | → blueprint-cirrose.md, biblia-narrativa.md | ← CLAUDE.md |
 | HANDOFF-CLAUDE-AI.md | → HANDOFF.md | ← CLAUDE.md |
 | NOTES.md | (log de decisões) | ← CLAUDE.md |
+
+### Arquivados (docs/archive/)
+
+| Arquivo | Motivo |
+|---------|--------|
+| AGENTS.md | Absorvido por CLAUDE.md (mar/2026) |
+| REPO-DIAGNOSTIC.md | Superseded |
+| DIAGNOSTIC-27fev.md | Superseded |
+| HANDOFF-geral-2026-03-04.md | Estado distribuído por aula |
+| HANDOFF_SYNC-CURSOR-2026-02-26.md | One-shot |
+| cirrose-scope.md | Superseded por blueprint-cirrose.md |
+| AUDIT-BATCHES.md | One-shot |
 
 ---
 
@@ -106,6 +118,7 @@ CLAUDE.md (root)          ← ponto de entrada para Claude Code / Claude.ai
 
 | Assunto | Arquivo canônico | Fallback |
 |---------|-----------------|----------|
+| Operacional (stack, regras, workflow) | CLAUDE.md | — |
 | Tokens OKLCH | .claude/rules/design-system.md | base.css :root |
 | Erros CSS | .claude/rules/css-errors.md | — |
 | Dados médicos | .claude/rules/medical-data.md | — |
@@ -114,10 +127,12 @@ CLAUDE.md (root)          ← ponto de entrada para Claude Code / Claude.ai
 | Assertion-Evidence | .claude/rules/slide-editing.md | design-principles.md §1 |
 | Notion IDs | docs/SYNC-NOTION-REPO.md | — |
 | Estado Cirrose | aulas/cirrose/HANDOFF.md | — |
-| Estado geral | docs/HANDOFF.md | — |
 | Context window | docs/SUBAGENTS.md | .cursor/rules/core-constraints.mdc |
 | Manifesto slides | aulas/cirrose/slides/_manifest.js | CLAUDE.md tabela |
 | Pipeline humano | docs/pipeline/README.md | — |
+| Pedagogia | docs/slide-pedagogy.md | .claude/rules/design-principles.md |
+| KPIs multiagente | docs/KPIs.md | — |
+| Benchmarks modelos | docs/ECOSYSTEM.md | — |
 
 ---
 
