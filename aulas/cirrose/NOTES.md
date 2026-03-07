@@ -378,3 +378,14 @@ EOF
 [2026-03-07 19:20] [Explore:a8a6a347] — concluído. Status: PARTIAL
 
 [2026-03-07 19:21] [Explore:aba8ef9f] — concluído. Status: PARTIAL
+
+[2026-03-07 19:32] [BUILD] OK — git commit -m "$(cat <<'EOF'
+ci: GitHub Actions QA + pre-commit hook para lint:slides
+
+- .github/workflows/qa.yml: roda lint:slides + build:cirrose/grade/osteoporose em push para slides/* e shared/*
+- scripts/install-hooks.sh: instala pre-commit local que bloqueia commit se lint falhar em slides HTML modificados
+- Hook já instalado em .git/hooks/pre-commit
+
+https://claude.ai/code/session_01LxhgY4brRhKhLZG4QMa5w2
+EOF
+)"
