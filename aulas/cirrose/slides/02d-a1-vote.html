@@ -1,0 +1,77 @@
+<!-- ============================================================
+     s-a1-vote — Votação interativa: "Esse paciente tem cirrose?"
+     Archetype: poll (custom, based on hero-stat)
+     States: 0=pergunta+labs+3 opções, 1=reveal FIB-4 + resposta
+     ============================================================ -->
+<section id="s-a1-vote"
+         data-timing="120"
+         data-panel-state="neutral">
+
+  <div class="slide-inner archetype-hero-stat">
+    <p class="section-tag">ATO 1 — CLASSIFICAR</p>
+    <h2 class="slide-headline">Esse paciente tem cirrose?</h2>
+
+    <div class="vote-patient-summary">
+      <span class="vote-bio">Caminhoneiro · 55a · obeso · DM2</span>
+      <div class="vote-labs-row">
+        <span class="vote-lab">AST 67</span>
+        <span class="vote-lab vote-lab--success">ALT 31 <small>normal ✓</small></span>
+        <span class="vote-lab">PLQ 112k</span>
+        <span class="vote-lab">GGT 210</span>
+        <span class="vote-lab">Alb 3,6</span>
+        <span class="vote-lab">Bili 1,3</span>
+        <span class="vote-lab">INR 1,2</span>
+      </div>
+    </div>
+
+    <div class="vote-options">
+      <button class="vote-option" data-vote="A">
+        <span class="vote-option-letter">A</span>
+        <span class="vote-option-text">Não — assintomático, ALT normal</span>
+      </button>
+      <button class="vote-option" data-vote="B">
+        <span class="vote-option-letter">B</span>
+        <span class="vote-option-text">Sim — suspeita clínica alta</span>
+      </button>
+      <button class="vote-option" data-vote="C">
+        <span class="vote-option-letter">C</span>
+        <span class="vote-option-text">Preciso de mais dados</span>
+      </button>
+    </div>
+
+    <p class="vote-instruction">Levante a mão para sua resposta</p>
+
+    <!-- Reveal: shown after click -->
+    <div class="vote-reveal">
+      <div class="vote-hero-fib4">
+        <span class="vote-hero-label">FIB-4</span>
+        <span class="vote-hero-number" data-countup-target="5.91">0</span>
+      </div>
+      <p class="vote-verdict">A maioria errou. Ele também.</p>
+      <p class="vote-explanation">ALT normal em doença avançada — hepatócito burnt-out</p>
+    </div>
+  </div>
+
+  <aside class="notes">
+[0:00-0:30] "Vou fazer uma pergunta. E quero ver as mãos."
+"Esse paciente: caminhoneiro, 55 anos, obeso, diabético.
+Olhem os exames. ALT 31, normal.
+Ele tem cirrose?"
+PAUSA 10s — esperar plateia votar.
+
+[0:30-1:00] click → reveal
+"A maioria escolheu A — não, assintomático, ALT normal.
+Vocês não estão sozinhos. O residente da UBS também não pediu mais.
+Mas olhem: FIB-4 = 5,91.
+Calculado com os mesmos números que vocês acabaram de ver.
+A ALT no denominador — quanto mais baixa, maior o FIB-4.
+Ele não sente nada. O fígado já parou de gritar."
+
+[1:00-2:00] ponte
+"Quem calculou mentalmente? Ninguém. É isso.
+Sem rastreamento automatizado, esse paciente fica invisível."
+→ avançar
+
+[DATA] FIB-4 calculado: (55 × 67) / (112 × √31) = 5,91 | Verificado: 2026-03-05
+  </aside>
+</section>

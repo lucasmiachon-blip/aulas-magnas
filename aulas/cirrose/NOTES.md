@@ -315,77 +315,70 @@ EOF
 
 [2026-03-04 15:31] [:aad6ce33] — concluído. Status: PASS
 
-[2026-03-06 23:41] [claude-code-guide:a1ef68fb] — concluído. Status: PARTIAL
+[2026-03-05 14:46] [:a8786bcb] — concluído. Status: PARTIAL
 
-[2026-03-07 00:09] [claude-code-guide:a3c35bc9] — concluído. Status: PASS
+[2026-03-05 14:46] [Explore:ae96a4a0] — concluído. Status: FAIL
 
-[2026-03-07 00:37] [BUILD] OK — cat > tasks/todo.md << 'ENDOFFILE'
-# Todo
+[2026-03-05 15:22] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
 
-> Pendências de infraestrutura e metadados. Conteúdo Cirrose → `aulas/cirrose/HANDOFF.md`
+[2026-03-05 16:43] [:a344012c] — concluído. Status: PARTIAL
 
----
+[2026-03-05 16:43] [Explore:a542082c] — concluído. Status: PARTIAL
 
-## 🔴 ALTA
+[2026-03-05 16:53] [:a35a1753] — concluído. Status: PARTIAL
 
-*(vazio)*
+[2026-03-05 16:55] [:a9af32dd] — concluído. Status: PARTIAL
 
----
+[2026-03-05 16:55] [:aa08cb61] — concluído. Status: PARTIAL
 
-## 🟡 MÉDIA — Próxima sessão
+[2026-03-05 16:55] [Explore:a00092b7] — concluído. Status: PASS
 
-- [ ] **MCP Gemini:** integrar Gemini como MCP (pesquisa alternativa + video review de animações). Ver `docs/ECOSYSTEM.md` — Gemini Ultra sem MCP ainda.
+[2026-03-05 16:55] [:ae0af854] — concluído. Status: PARTIAL
 
----
+[2026-03-05 16:55] [Explore:a4b36093] — concluído. Status: PASS
 
-## 🟢 BAIXA — Backlog infra
+[2026-03-05 16:56] [Explore:a45c5d19] — concluído. Status: PARTIAL
 
-- [ ] Batch 1: `.cursor/rules/*.mdc` vs `.claude/rules/*.md` — redundâncias remanescentes
-- [ ] Batch 2: `.cursor/skills/*` vs `.claude/skills/*` — verificar alinhamento pós-update mar 2026
-- [ ] Batch 3: `docs/*.md` — sobreposição, links quebrados (rodar `/docs-audit`)
+[2026-03-05 17:02] [BUILD] OK — cat "C:/Dev/Projetos/aulas-magnas/aulas/cirrose/scripts/build-html.ps1" 2>/dev/null || cat "C:/Dev/Projetos/aulas-magnas/scripts/build-cirrose.js" 2>/dev/null || grep -r "build:cirrose" "C:/Dev/Projetos/aulas-magnas/package.json"
 
----
+[2026-03-05 17:04] [Plan:ae2cfc3a] — concluído. Status: PARTIAL
 
-## ✅ Concluído nesta sessão (2026-03-07)
+[2026-03-05 17:50] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1 | tail -5
 
-- [x] Skills `.claude` atualizadas para padrões mar 2026 (version, allowed-tools, argument-hint, context:fork)
-- [x] `docs/SKILLS.md` atualizado: tabela completa + frontmatter + bug Issue #17283
-- [x] `docs/ECOSYSTEM.md`: link `MCP-FIXES.md` (não existia) → `MCP-ENV-VARS.md`
-- [x] `slide-builder.md`: workflow atualizado para arquitetura modular (slides/*.html + build:cirrose)
-- [x] `tasks/lessons.md`: append campos mar 2026 + bug context:fork
-ENDOFFILE
+[2026-03-05 17:56] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
 
-[2026-03-07 00:37] [BUILD] OK — git add docs/ECOSYSTEM.md .claude/agents/slide-builder.md tasks/todo.md && git commit -m "$(cat <<'EOF'
-fix(docs): corrigir discrepâncias cross-docs + task Gemini MCP
+[2026-03-05 18:01] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1 && npm run lint:slides 2>&1
 
-- docs/ECOSYSTEM.md: MCP-FIXES.md (404) → MCP-ENV-VARS.md
-- .claude/agents/slide-builder.md: workflow monolito → modular
-  (slides/NN.html + build:cirrose, nunca editar index.html direto)
-- tasks/todo.md: Gemini MCP como próxima sessão + concluídos da sessão
+[2026-03-05 18:01] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build 2>&1 | tail -15
 
-https://claude.ai/code/session_01LxhgY4brRhKhLZG4QMa5w2
-EOF
-)" && git push -u origin claude/check-updates-last-branch-i6nWS
+[2026-03-05 18:19] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1 && npm run lint:slides 2>&1
 
-[2026-03-07 01:00] [general-purpose:a201685b] — concluído. Status: PASS
+[2026-03-05 18:28] [:a62c3c59] — concluído. Status: PARTIAL
 
-[2026-03-07 01:06] [general-purpose:abb79258] — concluído. Status: PARTIAL
+[2026-03-05 18:32] [BUILD] OK — cd "C:\Dev\Projetos\aulas-magnas" && npm run build:cirrose 2>&1 | tail -5
 
-[2026-03-07 17:30] [general-purpose:aa0c7e98] — concluído. Status: PARTIAL
+[2026-03-05 18:48] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
 
-[2026-03-07 18:07] [general-purpose:a15a82ce] — concluído. Status: PARTIAL
+[2026-03-05 19:11] [BUILD] OK — cd "C:/Dev/Projetos/aulas-magnas" && npm run build:cirrose 2>&1 | tail -5
 
-[2026-03-07 19:20] [Explore:a8a6a347] — concluído. Status: PARTIAL
+[2026-03-05 19:16] [:ab78edec] — concluído. Status: PASS
 
-[2026-03-07 19:21] [Explore:aba8ef9f] — concluído. Status: PARTIAL
+[2026-03-05 19:16] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
 
-[2026-03-07 19:32] [BUILD] OK — git commit -m "$(cat <<'EOF'
-ci: GitHub Actions QA + pre-commit hook para lint:slides
+[2026-03-05 19:17] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
 
-- .github/workflows/qa.yml: roda lint:slides + build:cirrose/grade/osteoporose em push para slides/* e shared/*
-- scripts/install-hooks.sh: instala pre-commit local que bloqueia commit se lint falhar em slides HTML modificados
-- Hook já instalado em .git/hooks/pre-commit
+[2026-03-05 19:21] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
 
-https://claude.ai/code/session_01LxhgY4brRhKhLZG4QMa5w2
-EOF
-)"
+[2026-03-05 19:23] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 19:46] [Explore:acff9b35] — concluído. Status: PASS
+
+[2026-03-05 19:47] [:ad6acebe] — concluído. Status: PARTIAL
+
+[2026-03-05 19:47] [:a1acbe50] — concluído. Status: PARTIAL
+
+[2026-03-05 19:48] [Explore:a31548d4] — concluído. Status: PARTIAL
+
+[2026-03-05 19:49] [Explore:aab7ec1c] — concluído. Status: PARTIAL
+
+[2026-03-07 20:16] [BUILD] OK — npm run build:cirrose 2>&1 | tail -3

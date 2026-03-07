@@ -200,17 +200,16 @@
   --border-navy:        oklch(35% 0.02 258);
   --ui-accent:          oklch(75% 0.14 258);
 }
-.stage-a.reveal-viewport,
-.stage-a .reveal {
+.stage-a #deck {
   background: var(--bg-surface);
 }
-.stage-a .reveal h1,
-.stage-a .reveal h2 {
+.stage-a #deck h1,
+.stage-a #deck h2 {
   font-family: var(--font-body);
   font-weight: 600;
   color: var(--text-on-dark);
 }
-.stage-a .reveal p {
+.stage-a #deck p {
   color: var(--text-on-dark-muted);
   font-weight: 450;
 }
@@ -234,13 +233,13 @@
   --text-on-dark-muted: oklch(15% 0 0);
   --border:         oklch(0% 0 0 / 0.25);
 }
-.stage-bad .reveal h1,
-.stage-bad .reveal h2 {
+.stage-bad #deck h1,
+.stage-bad #deck h2 {
   font-family: var(--font-body);
   font-weight: 700;
   letter-spacing: -0.015em;
 }
-.stage-bad .reveal p {
+.stage-bad #deck p {
   font-weight: 500;
   line-height: 1.35;
   max-width: 56ch;
@@ -289,22 +288,20 @@
   --text-caption: clamp(14px, 0.85vw, 15px);
 }
 
-/* Background: override Reveal's white default */
-.stage-c.reveal-viewport {
-  background: var(--bg-surface);
-}
-.stage-c .reveal {
+/* Background: deck surface */
+.stage-c,
+.stage-c #deck {
   background: var(--bg-surface);
 }
 
 /* Typography: DM Sans 600 headlines, 450 body */
-.stage-c .reveal h1,
-.stage-c .reveal h2 {
+.stage-c #deck h1,
+.stage-c #deck h2 {
   font-family: var(--font-body);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
-.stage-c .reveal p {
+.stage-c #deck p {
   font-weight: 450;
   line-height: 1.4;
   max-width: 56ch;
@@ -318,6 +315,7 @@
 /* Source tag */
 .stage-c .source-tag {
   color: var(--text-muted);
+  font-size: clamp(10px, 0.55vw, 11px);
 }
 
 /* Cards — subtle elevation */
@@ -374,22 +372,48 @@
 }
 
 /* ============================================
-   REVEAL.JS OVERRIDES
+   DECK CONTAINER + TYPOGRAPHY
    ============================================ */
-.reveal {
+
+/* Responsive scale: zoom is broadly supported in modern browsers */
+body { zoom: calc(100vw / 1280px); }
+
+#deck {
+  width: 1280px;
+  height: 720px;
+  position: relative;
+  overflow: hidden;
   font-family: var(--font-body);
   color: var(--text-primary);
 }
 
-.reveal .slides { text-align: left; }
-
-.reveal .slides section {
-  padding: 0;
-  box-sizing: border-box;
+#slide-viewport {
+  position: relative;
+  width: 100%;
   height: 100%;
+  text-align: left;
 }
 
-.reveal .slides section .slide-inner {
+#slide-viewport > section {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal);
+}
+
+#slide-viewport > section.slide-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#slide-viewport > section {
+  padding: 0;
+  box-sizing: border-box;
+  /* height/position/opacity/transition set in deck layout block above */
+}
+
+#slide-viewport > section .slide-inner {
   width: 100%; height: 100%;
   padding: 60px 80px;
   display: flex; flex-direction: column; justify-content: center;
@@ -397,7 +421,7 @@
 }
 
 /* --- Typography --- */
-.reveal h1, .reveal h2 {
+#deck h1, #deck h2 {
   font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -405,10 +429,10 @@
   color: var(--text-primary);
   text-transform: none;
 }
-.reveal h1 { font-size: var(--text-h1); }
-.reveal h2 { font-size: var(--text-h2); }
+#deck h1 { font-size: var(--text-h1); }
+#deck h2 { font-size: var(--text-h2); }
 
-.reveal h3 {
+#deck h3 {
   font-family: var(--font-body);
   font-size: var(--text-h3);
   font-weight: 600;
@@ -418,7 +442,7 @@
   text-transform: none;
 }
 
-.reveal p {
+#deck p {
   font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.45;
@@ -428,16 +452,6 @@
 
 .data-number {
   font-variant-numeric: tabular-nums lining-nums;
-}
-
-/* --- Controls (UI accent, NOT clinical) --- */
-.reveal .progress span { background: var(--ui-accent); }
-.reveal .controls { color: var(--text-muted); }
-.reveal .slide-number {
-  font-family: var(--font-mono);
-  font-size: var(--text-caption);
-  color: var(--text-muted);
-  background: none;
 }
 
 /* --- Dark slides --- */
@@ -552,9 +566,16 @@
    PRINT / EXPORT
    ============================================ */
 @media print {
-  .reveal .slides section {
+  body { zoom: 1 !important; }
+  #deck { transform: none !important; width: 1280px; height: auto; overflow: visible; }
+  #slide-viewport { position: static; }
+  #slide-viewport > section {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    position: relative !important;
     overflow: hidden !important;
     page-break-after: always;
+    height: 720px;
   }
   .fragment { opacity: 1 !important; visibility: visible !important; }
   .checkpoint-timer, .pulse-dot { display: none; }

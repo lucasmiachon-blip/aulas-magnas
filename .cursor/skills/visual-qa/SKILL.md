@@ -5,74 +5,55 @@ description: Use when testing, reviewing, or doing QA on slides. Runs visual che
 
 # Visual QA for Slides
 
+> **Fonte canônica:** `.claude/agents/qa-engineer.md` — este arquivo é redirect + trigger guide.
+> O agente `qa-engineer` cobre todos os critérios abaixo + 13 critérios com nota 0-10.
+
 ## When to use
-- User says "QA", "revise", "teste o slide", "verifique", "screenshot"
-- After implementing a batch of slides
-- Before marking any slide as "ready" or updating Notion status
 
-## Workflow
+- User says "QA", "revise", "teste o slide", "verifique", "screenshot", "auditoria"
+- Após implementar um batch de slides
+- Antes de marcar qualquer slide como "ready" ou atualizar Notion status
 
-### Step 1: Open slide in browser
-Use Playwright MCP to:
-1. Navigate to the slide URL (local dev server or file://)
-2. Wait for full render (fonts, images, CSS loaded)
+## Como executar
 
-### Step 2: Screenshot
-Take screenshot at relevant resolutions:
-- 1920×1080 (Plan A: dark/OLED)
-- 1280×720 (Plan C: light/animated — default)
-- Show screenshot to user for visual review
+**Para Cursor:** delegar para o subagent `qa-engineer` via Task tool:
 
-### Step 3: Accessibility check
-Use a11y MCP to verify:
-- [ ] Color contrast ratios ≥ 4.5:1 for body text (WCAG AA)
-- [ ] All text is readable (no text-on-similar-background)
-- [ ] Focus indicators visible for interactive elements
-- [ ] Keyboard navigation works (arrows, Enter, Esc)
-
-### Step 4: Specific checks per slide type
-**For all slides:**
-- [ ] Title is readable from 5m distance (Tier A ≥ 0.97vw)
-- [ ] Body text meets Tier B minimum (≥ 0.78vw)
-- [ ] References/footnotes meet Tier C minimum (≥ 0.65vw)
-- [ ] No overflow/clipping of content
-- [ ] Fill ratio matches expected type (data-heavy 75-90%, concept 65-80%)
-
-**For interactive slides (GRADE):**
-- [ ] Forward navigation: each click reveals next step
-- [ ] Backward navigation: each click hides last step
-- [ ] Reset on slide change: all steps cleared
-- [ ] Screen-boost (C key): still legible with high-contrast
-- [ ] dim-group: previous items fade, restore on backward
-
-**For Cirrose (tri-mode):**
-- [ ] Plan A (dark): contrast OK on true black?
-- [ ] Plan B (light, no animation): content fully visible?
-- [ ] Plan C (light, animated): animations work on light background?
-
-### Step 5: Report
-Format findings as:
 ```
-## QA Report — Slide [ID]
-
-### ✅ PASS
-- [list what's OK]
-
-### ⚠️ WARN
-- [issues that should be fixed but aren't blockers]
-
-### ❌ FAIL
-- [must-fix before marking ready]
-
-### Screenshot
-[attach or reference screenshot]
+Siga .claude/agents/qa-engineer.md. Auditar slide [ID].
+URL local: http://localhost:3000/aulas/cirrose/
+Viewport: 1280x720. Reportar com scorecard 13 critérios.
 ```
 
-### Step 6: Update Notion (if MCP available)
-If issues found: update Pipeline Status to "needs-fix" with comment
-If all pass: update Pipeline Status to "qa-passed"
+**Para revisão rápida manual:**
 
-## What NOT to do
-- Don't change code during QA — only report issues
-- Don't skip Plan B check for Cirrose (projection conditions vary)
-- Don't mark as passed if any ❌ FAIL items remain
+| Check | Critério |
+|-------|----------|
+| Screenshot 1280×720 | Fill ratio 65-90%, sem overflow |
+| a11y contraste | ≥ 4.5:1 body, ≥ 3:1 hero numbers |
+| Interactions | `advance()` + `retreat()` testados |
+| JS console | Zero erros |
+| Plan B (sem JS) | Todo conteúdo visível com `.stage-bad` |
+
+## Critérios do qa-engineer (referência rápida)
+
+| # | Critério | Nota mín |
+|---|---------|---------|
+| 1 | Assertion-Evidence | 9/10 |
+| 2 | Tipografia | 9/10 |
+| 3 | Contraste WCAG | 9/10 |
+| 4 | Fill ratio | 9/10 |
+| 5 | Densidade informacional | 9/10 |
+| 6 | Impacto visual | 9/10 |
+| 7 | Interações | 9/10 |
+| 8 | CSS tokens | 9/10 |
+| 9 | Dados clínicos | 9/10 |
+| 10 | a11y Lighthouse | 9/10 |
+| 11 | Carga cognitiva (Sweller CLT) | 9/10 |
+| 12 | Aprendizagem adulto (Knowles+Miller) | 9/10 |
+| 13 | Arco narrativo (Duarte+Assertion-Evidence) | 9/10 |
+
+## O que NÃO fazer
+
+- Não alterar código durante QA — só reportar
+- Não marcar como PASS se qualquer critério < 9
+- Não pular Plan B (condições de projeção variam)

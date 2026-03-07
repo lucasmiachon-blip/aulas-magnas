@@ -4,6 +4,126 @@
 
 ---
 
+## 2026-03-05 — Restructure Act 1: dados canônicos + 9 slides reestruturados (branch restructure/act1)
+
+Branch: `restructure/act1` · Commits: `8058052`→`3b71873` · Build: 33 slides ✅
+
+### Dados canônicos Antônio (commit `8058052`)
+- Labs definidos uma vez: ALT 31 U/L · AST 67 · PLQ 112k · GGT 210 · Alb 3,6 · Bili 1,3 · INR 1,2 · FIB-4 5,91
+- FIB-4 calculado: `(55 × 67) / (112 × √31) = 5,91` — documentado em narrative.md + evidence-db.md
+- Armadilha clínica registrada: ALT normal em hepatócito burnt-out; AST/ALT = 2,16 padrão alcoólico avançado
+
+### s-hook (`2c116b1`)
+- 8-card lab grid (7 labs + FIB-4 como último card)
+- FIB-4 card: borda warning, label "calculado"
+- ALT card: borda success, label "normal ✓" — armadilha pedagógica
+- `.hook-punchline` "Sem queixas." fadeUp após stagger, font-display, centralizado
+- HEX literals substituídos por custom properties scoped `#s-hook { --hook-* }`
+
+### s-a1-01 Burden (`0102bf0`)
+- Headline: "1,43 milhão morre por ano" (GBD 2021, PMID 39927433)
+- Iceberg invertido: barra comp cinza primeiro → barra decomp cresce via scaleX(0→1)
+- `.burden-badge` "+18% MASH": background + border-left warning (não texto solto)
+
+### s-a1-vote — NOVO (`563af33`)
+- Slide de votação interativa: "Esse paciente tem cirrose?"
+- 3 opções clicáveis (A/B/C); click em qualquer opção → reveal FIB-4 5,91 countUp
+- Cards A e C escurecem; card B recebe borda success + checkmark
+- Adicionado ao `_manifest.js` após s-a1-01
+
+### s-a1-damico (`07db52a`)
+- Cortado de 6 eras para 3: CTP → MELD-Na → D'Amico pathway
+- PREDESCI removido daqui → migrado para s-a1-classify
+- MELD 3.0 removido → mover para apêndice se necessário
+- Era 0: pills A/B/C stagger. Era 1: fórmula termo a termo + c-stat countUp. Era 2: pathway scaleX
+
+### s-a1-baveno + s-a1-elasto fundidos (`6804609`)
+- `s-a1-elasto.html` deletado, removido do manifest
+- Conteúdo fundido em `s-a1-baveno.html`: dissolve "Cirrose"→espectro + pathway 3-step
+- Pathway: [FIB-4] → [Elastografia] (AUROC 0,90 badge) → [Rule of 5], stagger vertical
+
+### s-a1-fib4 (`581106e`)
+- H2 novo: "4 dados. 1 número. 1 decisão."
+- Hero number 5,91 countUp, cor danger, font-size var(--text-display)
+- 4 input cards: Idade 55 / AST 67 / PLQ 112k / ALT 31✓ (armadilha de novo)
+- Archetype trocado para hero-stat; calculadora panel width 280px
+
+### s-a1-rule5 (`2c4893b`)
+- Gray zone 10-25 kPa: label explícito + borda tracejada warning
+- Pin Antônio: translateY(-40px→0) + bounce
+- Nuances CSPH: 2 linhas ("inflamação aguda, ICC, obesidade" / "Jejum 2h, IQR/mediana")
+- Zonas entram com scaleY(0→1), transform-origin: bottom
+
+### s-a1-meld (`d243fb2`)
+- H2: "MELD-Na: o GPS da fila"
+- Emojis 🟢🟡🟠🔴 nas bandas (funcionais, não decorativos)
+- `.meld-threshold` "MELD ≥18" anima width 0→100% após bandas
+
+### s-a1-classify (`55b10c7`)
+- Estado 0 removido (redundante com hook)
+- H2: "Classificar muda conduta"
+- 3 assertion cards com dado de desfecho (compensado / 1ª descomp / 2ª descomp)
+- PREDESCI HR 0,51 countUp hero centralizado aqui
+
+---
+
+## 2026-03-05 — Calc redesign: split layout, hero score, shared CSS
+
+- **Layout split**: calculadoras FIB-4 e MELD-Na redesenhadas — 2 colunas (inputs 2x2 grid | hero score panel)
+- **CSS consolidado**: `.meld-*` (archetypes.css ~130 linhas) + `.fib4s-*` (cirrose.css ~105 linhas) + `.meld-context/.meld-badge` (~25 linhas) → `.calc-*` shared (~100 linhas em archetypes.css). Net: -160 linhas
+- **Score hero**: `--text-hero` (56-86px), font-display. Panel muda cor/bg por zona via `data-zone` attr
+- **4 zonas MELD**: safe (<15) / warning (15-19) / danger (20-24) / urgent (>=25, bg-deep dark)
+- **3 zonas FIB-4**: safe (<1,30) / warning (1,30-2,67) / danger (>2,67)
+- **Zone chips**: referencia visual permanente no bottom (safe/warning/danger labels)
+- **HTML**: removido `.meld-context` badges div de 04-a1-meld.html (info agora nos input labels)
+- **Failsafe**: `.no-js` e `.stage-bad` forçam resultado neutro
+- **Testado**: FIB-4 Antonio=4,89 danger | MELD Antonio=14 safe | MELD Cr 3.1→23 danger
+
+---
+
+## 2026-03-05 — Restructure Act 1: split mega-slide, relocate infeccao/etiologias
+
+- **Mega-slide `s-a1-02` eliminado**: conteudo distribuido em `s-a1-baveno` (SplitText dissolve) e `s-a1-rule5` (Rule-of-5 + Antonio)
+- **Novos slides**: `s-a1-fib4` (calculadora FIB-4 full-slide, classe Fib4CalcSlide seguindo MeldCalc), `s-a1-elasto` (pathway vertical FIB-4→Elasto→Rule-of-5)
+- **Relocacoes**: infeccao → `s-a2-infec` (Act 2, antes de PBE); etiologias → `s-app-etio` (Appendix, data-visibility="hidden")
+- **Renames**: `s-a1-03` → `s-a1-meld`; `s-a1-screening` → `s-a1-classify` (5→4 estados, tools preview removido)
+- **Titulos v2** (aprovados pelo Lucas): "Baveno VII e o novo paradigma de classificacao", "FIB-4 e outras ferramentas", "Hoje biopsia e a excecao", "Rule-of-5: cada 5 kPa muda a conduta", "Classificar cedo muda desfecho — HR 0,51"
+- **CSS**: +~140 linhas (.fib4s-*, .elasto-*, .paradigm-expert, failsafes); ID selectors renomeados (#s-a1-screening → #s-a1-classify)
+- **JS**: slide-registry.js — s-a1-02 anim removida, adicionadas s-a1-baveno + s-a1-rule5 + s-a1-classify; FIB4_SLIDE → 's-a1-fib4'; wireAll aceita Fib4CalcSlide
+- **Panel states**: novos entries para baveno, fib4, elasto, rule5, meld, classify com visibleFields progressivos
+- **CP2 speaker notes**: callback MELD adicionado ("Lembram do semaforo? MELD 10 → 28")
+- **Build**: 30 → 33 slides. Lint clean. Vite clean.
+
+---
+
+## 2026-03-05 — s-a1-02 + s-a1-03: redesign visual FIB-4 e MELD
+
+- **s-a1-02 (Rule-of-5)**: hero-sized kPa thresholds (font-display, text-h3), ícones semânticos de acessibilidade (✓/⚠/✕) por zona, diretivas clínicas por zona ("Manter na APS", "NSBB · Rastreio HCC", etc.), min-height aumentada para 110px
+- **s-a1-03 (MELD-Na)**: badges contextuais das 4 variáveis acima da calculadora, Sódio destacado (meld-badge--key), semáforo bar com ícones ✓/⚠/✕/⬛ nas zonas, classes CSS semânticas (meld-fill-safe/warning/danger/urgent) substituem inline style no bar-fill
+- **Case panel progressivo**: campos FIB-4/LSM aparecem só a partir de s-a1-02, MELD a partir de s-a1-03 (antes: todos visíveis desde s-hook como spoiler cognitivo). Implementado via `visibleFields` em panelStates + filtro em `case-panel.js renderFields()`
+- **PMIDs**: Sterling 2024 AASLD NILDA → PMID 38489521 (Duarte-Rojo & Sterling, Hepatology 2025); Mahmud ACG 2025 permanece [TBD]
+- **Speaker notes**: staging cues melhorados em ambos os slides
+
+## 2026-03-05 — s-a1-01: bug fix animação + dados GBD atualizados
+
+- **Bug transição**: `burden-hero--compact` agora aplicado ANTES do `gsap.to` (antes: `onComplete` causava jump de layout column→row após a animação); removido `scale: 0.6`, y reduzido para -60
+- **GBD 2021**: mortes 1,32M → **1,43M** (Tham et al. PMID 39927433, Liver Int 2025); incidência +17% → **+18%** (2010–2021); hero-label "8ª causa" → "Top 10 causas"; trend-label atualizado com "MASH lidera"
+- **Fonte padrão referências**: `"Author Journal Year · Dataset · n países · PMID XXXXXXX"` — PMID ao final, sem parênteses no meio. Aplicar como padrão em todos os slides.
+
+## 2026-03-05 — s-hook: contraste fix + FIB-4 visibility
+
+- **Contraste**: `var(--text-on-dark/muted)` → OKLCH explícito no `#s-hook` (tokens stage-c remapeiam para escuro — variáveis não podem ser usadas em slides que forçam navy no stage-c)
+- **FIB-4 visibilidade**: `#panel-fib4` oculto por padrão (`display:none`); `syncFib4Visibility()` em `slide-registry.js` mostra apenas em `s-a1-02` via `fib4-visible` class + `slidechanged` listener
+
+## 2026-03-05 — s-hook: grid fix + cor + flagging clínico
+
+- **Grid**: `repeat(5, 1fr)` → `repeat(7, 1fr)` + `max-width: 880px` — 7 labs em linha única (antes: 5+2, segunda linha desalinhada)
+- **Cards**: `rgba(255,255,255,0.04→0.07)` bg + `0.08→0.15` border — mais visíveis no navy
+- **Cores**: hex frios substituídos por OKLCH tokens (`var(--text-on-dark)`, `var(--text-on-dark-muted)`, `oklch(62% 0.022 258)`) — hierarquia clara: valores brancos, labels médio, refs dim
+- **Flagging**: PLQ 112k + HbA1c 7.0 com `hook-lab--flag` — achados clínicos centrais em âmbar
+
+---
+
 ## 2026-03-03 — Etapa 2: fix PMIDs + Case Antônio 60g/dia
 
 - **evidence-db.md**: BAVENO VII `35431106` → `35120736` (artigo original; 35431106 era errata) — 4 ocorrências

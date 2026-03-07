@@ -35,8 +35,21 @@ Melhorar **AI/dev/ML fluency** → usar melhor os agentes → ser melhor educado
 Masterclass "Cirrose Hepática: Classificar, Intervir, Reverter" — 70 min.
 Reveal.js 5.x · GSAP 3.12 · Vite 6.x · Vanilla HTML/CSS/JS · OKLCH · Zero CDN · Offline-first.
 Público: hepatologistas seniores (Brasil). Conteúdo PT-BR, termos técnicos EN.
-Caso clínico: Seu Antônio, 54a, caminhoneiro, etilista, cACLD → descompensação.
+Caso clínico: Seu Antônio, 55a, caminhoneiro, obeso (IMC 31), DM2, etilista 60g/dia, cACLD → descompensação.
+Labs canônicos: AST 67 / ALT 31 (ratio 2,16) / PLQ 112k / GGT 210 / Alb 3,6 / Bili 1,3 / INR 1,2 / FIB-4 5,91.
 Plan C = default (light, 1280×720, GSAP ativo).
+
+## Hierarquia de Referências (ordem de autoridade)
+
+| # | Arquivo | Responsabilidade |
+|---|---------|-----------------|
+| 1 | `aulas/cirrose/references/CASE.md` | Dados do paciente (Seu Antônio) — labs, evolução, armadilhas |
+| 2 | `aulas/cirrose/references/evidence-db.md` | Literatura e trials — PMIDs, NNTs, tier |
+| 3 | `aulas/cirrose/references/narrative.md` | Arco narrativo — pacing, emoção, Chekhov's guns |
+| 4 | `aulas/cirrose/slides/_manifest.js` | Estrutura de slides — ordem, archetypes, panel states |
+
+**Regra de conflito:** o arquivo de maior autoridade (# menor) prevalece.
+**Duplicação proibida:** dados do paciente só em CASE.md. Outros arquivos referenciam com `ver CASE.md`.
 
 ---
 
@@ -322,10 +335,10 @@ npm run lint:slides      # Assertion-evidence linter
 npm run build:cirrose    # Concatena slides → index.html via _manifest.js
 ```
 
-## Known Issues (Atualizado recentemente)
+## Known Issues (Atualizado 2026-03-05)
 
-1. **case-panel.js:** `renderTimeline()` has hardcoded HEX colors — migrate to `var(--severity-*)` tokens.
-2. **meld-calc.js:** Literal `#1a1a2e` for bg — migrate to `var(--bg-navy)`. Missing null checks on inputs.
+1. ~~**case-panel.js:** hardcoded HEX~~ — Verified: no HEX colors found. Already uses CSS tokens.
+2. ~~**meld-calc.js:** hardcoded colors~~ — Fixed: zone classes renamed to semantic (`-safe/-warning/-danger/-urgent`), CSS migrated to `var(--text-muted)`/`var(--divider)`.
 3. **.gitignore:** `*.png` pattern ignores QA screenshots in `qa-screenshots/` dir.
 
 ---

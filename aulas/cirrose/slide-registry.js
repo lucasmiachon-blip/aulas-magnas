@@ -8,6 +8,7 @@
  */
 
 import { panelStates } from './slides/_manifest.js';
+import { getCurrentSlide } from '../../shared/js/deck.js';
 import { SplitText } from 'gsap/SplitText';
 import { Flip } from 'gsap/Flip';
 
@@ -47,7 +48,8 @@ export const customAnimations = {
     const decompFill = slide.querySelector('.burden-bar-fill--decomp');
     const compNum = slide.querySelector('[data-countup-target="112"]');
     const decompNum = slide.querySelector('[data-countup-target="10.6"]');
-    const trend = slide.querySelector('.burden-trend');
+    const badge = slide.querySelector('.burden-badge');
+    const asymmetry = slide.querySelector('.burden-asymmetry');
     const sourceTag = slide.querySelector('.source-tag');
 
     function advance() {
@@ -55,28 +57,19 @@ export const customAnimations = {
       state++;
 
       if (state === 1) {
-        // Hero compresses to top, iceberg appears
-        gsap.to(hero, {
-          scale: 0.6,
-          y: -80,
-          duration: 0.6,
-          ease: 'power2.out',
-          onComplete() { hero.classList.add('burden-hero--compact'); }
-        });
-        if (pulse) gsap.to(pulse, { opacity: 0, duration: 0.3 });
-
+        hero.classList.add('burden-hero--compact');
+        if (pulse) gsap.to(pulse, { opacity: 0, duration: 0.2, onComplete() { pulse.style.display = 'none'; } });
+        gsap.to(hero, { y: -60, duration: 0.5, ease: 'power2.out' });
         gsap.to(iceberg, { opacity: 1, duration: 0.4, delay: 0.3 });
 
-        // Bars grow
-        gsap.to(compFill, { width: '91%', duration: 1, delay: 0.5, ease: 'power2.out' });
-        gsap.to(decompFill, { width: '9%', duration: 1, delay: 0.6, ease: 'power2.out' });
+        gsap.to(compFill, { width: '100%', duration: 0.8, delay: 0.5, ease: 'power2.out' });
+        if (compNum) inlineCountUp(gsap, compNum, 112, 1.0, 0.5);
 
-        // CountUp on bar values
-        if (compNum) inlineCountUp(gsap, compNum, 112, 1.2, 0.5);
-        if (decompNum) inlineCountUp(gsap, decompNum, 10.6, 1.2, 0.6);
+        gsap.to(decompFill, { scaleX: 1, duration: 1.0, delay: 1.0, ease: 'power2.out' });
+        if (decompNum) inlineCountUp(gsap, decompNum, 10.6, 1.0, 1.0);
 
-        // Trend fadeUp
-        gsap.to(trend, { opacity: 1, y: 0, duration: 0.5, delay: 1.2, ease: 'power2.out' });
+        if (badge) gsap.to(badge, { opacity: 1, y: 0, duration: 0.5, delay: 1.8, ease: 'power2.out' });
+        if (asymmetry) gsap.to(asymmetry, { opacity: 1, y: 0, duration: 0.6, delay: 2.2, ease: 'power2.out' });
       }
 
       if (state === 2) {
@@ -95,12 +88,13 @@ export const customAnimations = {
 
       if (state === 1) {
         hero.classList.remove('burden-hero--compact');
-        gsap.to(hero, { scale: 1, y: 0, duration: 0.5, ease: 'power2.out' });
-        if (pulse) gsap.to(pulse, { opacity: 1, duration: 0.3, delay: 0.3 });
+        gsap.to(hero, { y: 0, duration: 0.5, ease: 'power2.out' });
+        if (pulse) { pulse.style.display = ''; gsap.to(pulse, { opacity: 1, duration: 0.3, delay: 0.3 }); }
         gsap.to(iceberg, { opacity: 0, duration: 0.3 });
         gsap.to(compFill, { width: '0%', duration: 0.3 });
-        gsap.to(decompFill, { width: '0%', duration: 0.3 });
-        gsap.to(trend, { opacity: 0, duration: 0.3 });
+        gsap.to(decompFill, { scaleX: 0, duration: 0.3 });
+        if (badge) gsap.to(badge, { opacity: 0, duration: 0.3 });
+        if (asymmetry) gsap.to(asymmetry, { opacity: 0, duration: 0.3 });
         if (compNum) compNum.textContent = '0';
         if (decompNum) decompNum.textContent = '0';
       }
@@ -109,8 +103,7 @@ export const customAnimations = {
       return true;
     }
 
-    // Initial state
-    gsap.set(trend, { y: 12 });
+    gsap.set([badge, asymmetry].filter(Boolean), { y: 12 });
 
     slide.__hookAdvance = advance;
     slide.__hookRetreat = retreat;
@@ -118,90 +111,116 @@ export const customAnimations = {
   },
 
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     s-a1-screening — Rastreamento cACLD (5 estados)
-     Era 0: gancho Antônio (auto)
-     Era 1: dado 83% + CountUp (click)
-     Era 2: critérios em stagger (click)
-     Era 3: ferramentas FIB-4 / Elastografia (click)
-     Era 4: Antônio + PREDESCI pill (click)
-     Plan B: todos os estados visíveis via CSS failsafe — retorna cedo
+     s-a1-vote — Audience poll with FIB-4 reveal
+     State 0: question visible. State 1: reveal FIB-4 + verdict
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  's-a1-screening': (slide, gsap) => {
+  's-a1-vote': (slide, gsap) => {
+    let revealed = false;
+    const options = slide.querySelectorAll('.vote-option');
+    const reveal = slide.querySelector('.vote-reveal');
+    const instruction = slide.querySelector('.vote-instruction');
+    const heroNum = slide.querySelector('.vote-hero-number');
+    const verdict = slide.querySelector('.vote-verdict');
+    const explanation = slide.querySelector('.vote-explanation');
+
+    function doReveal() {
+      if (revealed) return false;
+      revealed = true;
+
+      options.forEach(btn => {
+        const vote = btn.dataset.vote;
+        if (vote === 'B') {
+          btn.classList.add('vote-option--correct');
+        } else {
+          btn.classList.add('vote-option--dimmed');
+        }
+      });
+
+      if (instruction) gsap.to(instruction, { opacity: 0, duration: 0.3 });
+
+      gsap.to(reveal, { opacity: 1, visibility: 'visible', duration: 0.4, delay: 0.3 });
+
+      if (heroNum) {
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: 5.91,
+          duration: 1.4,
+          delay: 0.5,
+          ease: 'power1.out',
+          onUpdate() { heroNum.textContent = obj.val.toFixed(2).replace('.', ','); }
+        });
+      }
+
+      if (verdict) gsap.fromTo(verdict, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, delay: 1.2 });
+      if (explanation) gsap.fromTo(explanation, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, delay: 1.5 });
+
+      return true;
+    }
+
+    function undoReveal() {
+      if (!revealed) return false;
+      revealed = false;
+
+      options.forEach(btn => {
+        btn.classList.remove('vote-option--correct', 'vote-option--dimmed');
+      });
+
+      if (instruction) gsap.to(instruction, { opacity: 1, duration: 0.3 });
+      gsap.to(reveal, { opacity: 0, duration: 0.3, onComplete() { reveal.style.visibility = 'hidden'; } });
+      if (heroNum) heroNum.textContent = '0';
+
+      return true;
+    }
+
+    options.forEach(btn => btn.addEventListener('click', doReveal));
+
+    slide.__hookAdvance = doReveal;
+    slide.__hookRetreat = undoReveal;
+    slide.__hookCurrentBeat = () => revealed ? 1 : 0;
+  },
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-classify — Classificar muda conduta (3 estados)
+     State 0: assertion cards stagger (auto)
+     State 1: PREDESCI HR countUp (click)
+     State 2: source (click)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-classify': (slide, gsap) => {
     if (document.body.classList.contains('stage-bad')) return;
 
     let state = 0;
-    const maxState = 4;
+    const maxState = 2;
 
-    const hero = slide.querySelector('.screening-hero');
-    const criteria = slide.querySelector('.screening-criteria');
-    const tools = slide.querySelector('.screening-tools');
-    const pill = slide.querySelector('.screening-predesci-pill');
+    const cards = slide.querySelectorAll('.classify-card');
+    const predesci = slide.querySelector('.classify-predesci');
+    const predesciValue = slide.querySelector('.classify-predesci-value');
     const sourceTag = slide.querySelector('.source-tag');
 
-    // Reset state on every slide entry (inline styles from prev visits override CSS)
-    [hero, criteria, tools, pill, sourceTag].forEach(el => {
-      if (!el) return;
-      el.style.display = 'none';
-      el.style.opacity = '';
-    });
-
-    // Helper: reveal an element that starts as display:none
-    // Justificativa: display:none elimina impacto no layout (não empurra conteúdo visível)
-    function showEl(el, displayVal, animFrom, animTo, onDone) {
-      if (!el) return;
-      el.style.display = displayVal;
-      gsap.fromTo(el, { opacity: 0, ...animFrom }, { opacity: 1, duration: 0.5, ease: 'power2.out', ...animTo, onComplete: onDone });
-    }
-    function hideEl(el) {
-      if (!el) return;
-      gsap.to(el, { opacity: 0, duration: 0.3, onComplete: () => { el.style.display = 'none'; } });
-    }
-
-    // State 0: gancho narrativo — fadeUp (auto on slidechanged)
-    const anchor = slide.querySelector('.screening-anchor');
-    if (anchor) {
-      gsap.from(anchor, { opacity: 0, y: 16, duration: 0.6, delay: 0.3, ease: 'power2.out' });
-    }
+    gsap.set(cards, { opacity: 0, y: 12 });
+    gsap.to(cards, { opacity: 1, y: 0, duration: 0.4, stagger: 0.2, delay: 0.3, ease: 'power2.out' });
 
     function advance() {
       if (state >= maxState) return false;
       state++;
 
       if (state === 1) {
-        // CountUp justificativa: dado central da persuasão — número crescendo = impacto cognitivo
-        showEl(hero, 'flex', { y: 12 }, { y: 0 });
-        const statEl = hero?.querySelector('[data-target]');
-        if (statEl) {
-          statEl.textContent = '0';
-          inlineCountUp(gsap, statEl, parseFloat(statEl.dataset.target), 1.4, 0.3);
+        gsap.to(predesci, { opacity: 1, visibility: 'visible', duration: 0.5 });
+        if (predesciValue) {
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: 0.51,
+            duration: 1.2,
+            delay: 0.3,
+            ease: 'power1.out',
+            onUpdate() {
+              predesciValue.textContent = obj.val.toFixed(2).replace('.', ',');
+            }
+          });
         }
       }
 
       if (state === 2) {
-        // Stagger justificativa: cada critério é uma revelação separada — impede leitura antecipada
-        showEl(criteria, 'flex');
-        const items = criteria?.querySelectorAll('.screening-criterion');
-        if (items?.length) {
-          gsap.from(items, {
-            opacity: 0, y: 12, duration: 0.35, stagger: 0.18, delay: 0.15, ease: 'power3.out',
-          });
-        }
-      }
-
-      if (state === 3) {
-        // flipIn justificativa: dois cards = dois atos narrativos, flip diferencia do stagger anterior
-        showEl(tools, 'flex');
-        const cards = tools?.querySelectorAll('.screening-tool-card');
-        if (cards?.length) {
-          gsap.from(cards, {
-            opacity: 0, rotationY: -25, duration: 0.45, stagger: 0.15, delay: 0.1, ease: 'power2.out',
-          });
-        }
-      }
-
-      if (state === 4) {
-        showEl(pill, 'inline-block');
-        showEl(sourceTag, 'block', {}, { delay: 0.1 });
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4 });
       }
 
       return true;
@@ -209,16 +228,11 @@ export const customAnimations = {
 
     function retreat() {
       if (state <= 0) return false;
-
-      if (state === 4) { hideEl(pill); hideEl(sourceTag); }
-      if (state === 3) hideEl(tools);
-      if (state === 2) hideEl(criteria);
+      if (state === 2) gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
       if (state === 1) {
-        hideEl(hero);
-        const statEl = hero?.querySelector('[data-target]');
-        if (statEl) statEl.textContent = '0';
+        gsap.to(predesci, { opacity: 0, duration: 0.3, onComplete() { predesci.style.visibility = 'hidden'; } });
+        if (predesciValue) predesciValue.textContent = '0';
       }
-
       state--;
       return true;
     }
@@ -242,17 +256,15 @@ export const customAnimations = {
     if (document.body.classList.contains('stage-bad')) return;
 
     let state = 0;
-    const maxState = 5;
+    const maxState = 2;
     let busy = false;
 
     const eras = slide.querySelectorAll('.scores-era');
     const sourceTag = slide.querySelector('.source-tag');
 
-    // Reset all eras on slide entry (GSAP inline opacity overrides CSS on re-entry)
     eras.forEach((era, i) => gsap.set(era, { opacity: i === 0 ? 1 : 0 }));
     if (sourceTag) gsap.set(sourceTag, { opacity: 0 });
 
-    // Helpers: swap visible era
     function showEra(idx, onComplete) {
       eras.forEach(e => {
         if (parseFloat(getComputedStyle(e).opacity) > 0.01) {
@@ -267,143 +279,68 @@ export const customAnimations = {
       });
     }
 
-    // Era 0 auto: stagger boxes
-    const era0Boxes = slide.querySelectorAll('.scores-era[data-era="0"] .scores-era-box');
-    gsap.set(era0Boxes, { opacity: 0, y: 16 });
-    gsap.to(era0Boxes, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12, delay: 0.3, ease: 'power2.out' });
-
-    // Pre-set limitation elements for era 1 so they start hidden (Plan A/C only)
-    const limitations = slide.querySelectorAll('.scores-era[data-era="1"] .limitation');
-    gsap.set(limitations, { opacity: 0, x: -16 });
+    // Era 0 auto: CTP classes stagger
+    const ctpClasses = slide.querySelectorAll('.scores-era[data-era="0"] .ctp-class');
+    gsap.set(ctpClasses, { opacity: 0, y: 12 });
+    gsap.to(ctpClasses, { opacity: 1, y: 0, duration: 0.35, stagger: 0.15, delay: 0.4, ease: 'power2.out' });
 
     function runEra1Anims() {
-      // CTP boxes stagger
-      const ctp = slide.querySelectorAll('.scores-era[data-era="1"] .scores-era-box');
-      gsap.set(ctp, { opacity: 0, y: 12 });
-      gsap.to(ctp, { opacity: 1, y: 0, duration: 0.35, stagger: 0.1, delay: 0.1, ease: 'power2.out' });
-      // CTP classes
-      const classes = slide.querySelectorAll('.scores-era[data-era="1"] .ctp-class');
-      gsap.set(classes, { opacity: 0 });
-      gsap.to(classes, { opacity: 1, duration: 0.3, stagger: 0.12, delay: 0.6, ease: 'power2.out' });
-      // Limitations stagger: cada limitação é uma revelação pedagógica separada
-      // Justificativa: professor diz "quatro problemas" → lista aparece um a um, sem correr
-      gsap.to(limitations, {
-        opacity: 1, x: 0, duration: 0.4, stagger: 0.28, delay: 0.9, ease: 'power2.out',
-      });
-      // Transição narrativa no final
-      const transition = slide.querySelector('.scores-transition');
-      if (transition) {
-        gsap.to(transition, { opacity: 1, duration: 0.4, delay: 0.9 + limitations.length * 0.28 + 0.3 });
-      }
-    }
-
-    function runEra2Anims() {
-      const terms = slide.querySelectorAll('.scores-era[data-era="2"] .formula-term');
+      const terms = slide.querySelectorAll('.scores-era[data-era="1"] .formula-term');
       gsap.set(terms, { opacity: 0, y: 10 });
       gsap.to(terms, { opacity: 1, y: 0, duration: 0.35, stagger: 0.15, delay: 0.1, ease: 'power2.out' });
-      const cstatEl = slide.querySelector('.scores-era[data-era="2"] .scores-cstat-value');
+
+      const sodiumTerm = slide.querySelector('[data-meldna-sodium]');
+      if (sodiumTerm) {
+        gsap.fromTo(sodiumTerm,
+          { backgroundColor: 'transparent' },
+          { backgroundColor: 'var(--ui-accent-light)', color: 'var(--ui-accent)', duration: 0.6, delay: 0.8, ease: 'power2.out' }
+        );
+      }
+
+      const cstatEl = slide.querySelector('.scores-era[data-era="1"] .scores-cstat-value');
       if (cstatEl) {
         inlineCountUp(gsap, cstatEl, parseFloat(cstatEl.dataset.target), 1.2, 0.8);
       }
     }
 
-    function runEra3Anims() {
-      // Highlight no termo sódio: justificativa = o único termo NOVO no MELD-Na
-      const sodiumTerm = slide.querySelector('[data-meldna-sodium]');
-      if (sodiumTerm) {
-        gsap.fromTo(sodiumTerm,
-          { backgroundColor: 'transparent' },
-          { backgroundColor: 'var(--ui-accent-light)', color: 'var(--ui-accent)', duration: 0.6, delay: 0.4, ease: 'power2.out' }
-        );
-      }
-    }
+    function runEra2Anims() {
+      const stages = slide.querySelectorAll('.scores-era[data-era="2"] .pathway-stage');
+      gsap.set(stages, { scaleX: 0, transformOrigin: 'left' });
+      gsap.to(stages, { scaleX: 1, duration: 0.6, stagger: 0.15, delay: 0.2, ease: 'power2.out' });
 
-    function runEra4Anims() {
-      const terms = slide.querySelectorAll('.scores-era[data-era="4"] .formula-term--new');
-      gsap.set(terms, { opacity: 0, y: 10 });
-      gsap.to(terms, { opacity: 1, y: 0, duration: 0.35, stagger: 0.15, delay: 0.1, ease: 'power2.out' });
-      // Dual CountUp: MELD 3.0 vs MELD-Na — comparação visual simultânea
-      const cstatEls = slide.querySelectorAll('.scores-era[data-era="4"] .cstat-value');
-      cstatEls.forEach((el, i) => {
-        const t = parseFloat(el.dataset.target);
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: t, duration: 1.2, delay: 0.4 + i * 0.15, ease: 'power2.out',
-          onUpdate() {
-            el.textContent = obj.val.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-          },
-        });
+      const vals = slide.querySelectorAll('.scores-era[data-era="2"] .pathway-value[data-target]');
+      vals.forEach((el, i) => {
+        inlineCountUp(gsap, el, parseFloat(el.dataset.target), 1, 0.4 + i * 0.15);
       });
-    }
 
-    function runEra5Anims(preFlipState) {
-      const datasets = slide.querySelectorAll('.scores-era[data-era="5"] .damico-dataset');
+      const further = slide.querySelector('.damico-further-decomp');
+      if (further) gsap.fromTo(further, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, delay: 1.2, ease: 'power2.out' });
 
-      function fireCountUps() {
-        // CountUp em todos os pathway-value[data-target] da era 5
-        const vals = slide.querySelectorAll('.scores-era[data-era="5"] .pathway-value[data-target]');
-        vals.forEach((el, i) => {
-          inlineCountUp(gsap, el, parseFloat(el.dataset.target), 1, 0.15 + i * 0.08);
-        });
-        if (sourceTag) gsap.to(sourceTag, { opacity: 1, duration: 0.4, delay: 0.9 });
-      }
-
-      if (preFlipState) {
-        // Flip.from: datasets animam DE onde estava a fórmula do Era 4 PARA suas posições naturais
-        Flip.from(preFlipState, {
-          targets: datasets,
-          duration: 0.5,
-          ease: 'power2.inOut',
-          stagger: 0.15,
-          onComplete: fireCountUps,
-        });
-      } else {
-        // Fallback: stagger simples (Plan B retorna cedo, este branch é safety net para Plan C sem preFlipState)
-        gsap.from(datasets, {
-          opacity: 0, y: 20, stagger: 0.15, duration: 0.4, ease: 'power2.out',
-          onComplete: fireCountUps,
-        });
-      }
+      if (sourceTag) gsap.to(sourceTag, { opacity: 1, duration: 0.4, delay: 1.5 });
     }
 
     function advance() {
       if (busy || state >= maxState) return false;
       state++;
       busy = true;
-
-      const eraAnimMap = [null, runEra1Anims, runEra2Anims, runEra3Anims, runEra4Anims, runEra5Anims];
-      const postAnim = eraAnimMap[state];
-
-      // Capture Era 4 formula layout BEFORE showEra fades it out (needed for Flip.from in Era 5)
-      let preFlipState = null;
-      if (state === 5) {
-        const formulaBlock = slide.querySelector('.scores-era[data-era="4"] .scores-formula');
-        if (formulaBlock) preFlipState = Flip.getState(formulaBlock);
-      }
-
+      const postAnim = state === 1 ? runEra1Anims : state === 2 ? runEra2Anims : null;
       showEra(state, () => {
         busy = false;
-        if (postAnim) postAnim(preFlipState);
+        if (postAnim) postAnim();
       });
-
       return true;
     }
 
     function retreat() {
       if (busy || state <= 0) return false;
-
-      if (state === 5) {
+      if (state === 2) {
         if (sourceTag) gsap.to(sourceTag, { opacity: 0, duration: 0.2 });
-        // Reset pathway values so CountUp re-animates correctly on next advance
-        slide.querySelectorAll('.scores-era[data-era="5"] .pathway-value[data-target]')
+        slide.querySelectorAll('.scores-era[data-era="2"] .pathway-value[data-target]')
           .forEach(el => { gsap.killTweensOf(el); el.textContent = '0'; });
       }
-
       state--;
       busy = true;
-
       showEra(state, () => { busy = false; });
-
       return true;
     }
 
@@ -413,55 +350,44 @@ export const customAnimations = {
   },
 
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     s-a1-02 — PARADIGMA cACLD/dACLD
-     States: 0=auto dissolve, 1=Rule-of-5, 2=Antônio, 3=source
+     s-a1-baveno — Paradigma Baveno VII (SplitText dissolve)
+     States: 0=auto dissolve, 1=source
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  's-a1-02': (slide, gsap) => {
+  's-a1-baveno': (slide, gsap) => {
     let state = 0;
-    const maxState = 3;
+    const maxState = 2;
 
     const oldTerm = slide.querySelector('.paradigm-old');
     const spectrum = slide.querySelector('.paradigm-spectrum');
     const bavRef = slide.querySelector('.paradigm-ref');
-    const rule5 = slide.querySelector('.rule-of-5');
-    const zones = slide.querySelectorAll('.rule-zone');
-    const antonioPlot = slide.querySelector('.antonio-plot');
+    const question = slide.querySelector('.paradigm-question');
+    const pathway = slide.querySelector('.elasto-pathway');
+    const pathSteps = slide.querySelectorAll('.elasto-step');
     const sourceTag = slide.querySelector('.source-tag');
 
-    // Auto-play: SplitText dissolve → spectrum emerges
+    if (question) gsap.set(question, { opacity: 0, y: 8 });
+    if (pathway) gsap.set(pathway, { opacity: 0 });
+    gsap.set(pathSteps, { opacity: 0, y: 12 });
+
     let splitInstance = null;
 
     if (oldTerm && oldTerm.textContent.trim()) {
       splitInstance = new SplitText(oldTerm, { type: 'chars' });
 
-      // Initial state: old term visible
       gsap.set(oldTerm, { opacity: 1 });
       gsap.set(spectrum, { opacity: 0 });
       gsap.set(bavRef, { opacity: 0 });
 
-      // Timeline: dissolve chars → show spectrum
-      const tl = gsap.timeline({ delay: 1.5 });
+      const tl = gsap.timeline({ delay: 1.3 });
       tl.to(splitInstance.chars, {
-        opacity: 0,
-        y: -20,
-        rotationX: 90,
+        opacity: 0, y: -20, rotationX: 90,
         stagger: { each: 0.06, from: 'random' },
-        duration: 0.5,
-        ease: 'power2.in',
+        duration: 0.5, ease: 'power2.in',
       });
       tl.set(oldTerm, { display: 'none' });
-      tl.to(spectrum, {
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-      });
-      tl.to(bavRef, {
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power2.out',
-      }, '-=0.2');
+      tl.to(spectrum, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+      tl.to(bavRef, { opacity: 1, duration: 0.4, ease: 'power2.out' }, '-=0.2');
     } else {
-      // Failsafe: no SplitText, just show spectrum
       gsap.set(spectrum, { opacity: 1 });
       gsap.set(bavRef, { opacity: 1 });
     }
@@ -469,34 +395,165 @@ export const customAnimations = {
     function advance() {
       if (state >= maxState) return false;
       state++;
+      if (state === 1) {
+        if (question) gsap.to(question, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+        if (pathway) gsap.to(pathway, { opacity: 1, duration: 0.3, delay: 0.2 });
+        gsap.to(pathSteps, { opacity: 1, y: 0, duration: 0.4, stagger: 0.2, delay: 0.3, ease: 'power2.out' });
+      }
+      if (state === 2) {
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+      }
+      return true;
+    }
+
+    function retreat() {
+      if (state <= 0) return false;
+      if (state === 2) {
+        gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
+      }
+      if (state === 1) {
+        if (question) gsap.to(question, { opacity: 0, y: 8, duration: 0.3 });
+        if (pathway) gsap.to(pathway, { opacity: 0, duration: 0.3 });
+        gsap.to(pathSteps, { opacity: 0, y: 12, duration: 0.3 });
+      }
+      state--;
+      return true;
+    }
+
+    slide.__hookAdvance = advance;
+    slide.__hookRetreat = retreat;
+    slide.__hookCurrentBeat = () => state;
+  },
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-fib4 — Hero number Antonio + ALT trap
+     States: 0=formula+cutoffs (auto), 1=Antonio inputs+hero, 2=source
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-fib4': (slide, gsap) => {
+    let state = 0;
+    const maxState = 2;
+
+    const formulaBlock = slide.querySelector('.fib4-formula-block');
+    const cutoffs = slide.querySelectorAll('.fib4-cutoff');
+    const antonio = slide.querySelector('.fib4-antonio');
+    const inputCards = slide.querySelectorAll('.fib4-input-card');
+    const heroNum = slide.querySelector('[data-countup-target="5.91"]');
+    const mandate = slide.querySelector('.fib4-mandate');
+    const dangerZone = slide.querySelector('.fib4-cutoff--danger');
+    const sourceTag = slide.querySelector('.source-tag');
+
+    gsap.set(cutoffs, { opacity: 0, y: 8 });
+    gsap.to(cutoffs, { opacity: 1, y: 0, duration: 0.35, stagger: 0.15, delay: 0.3, ease: 'power2.out' });
+
+    function advance() {
+      if (state >= maxState) return false;
+      state++;
 
       if (state === 1) {
-        // Compress spectrum up, show Rule-of-5
-        gsap.to(spectrum, { y: -20, scale: 0.85, duration: 0.5, ease: 'power2.out' });
-        gsap.to(bavRef, { opacity: 0, duration: 0.3 });
-        gsap.to(rule5, { opacity: 1, duration: 0.5, delay: 0.2, ease: 'power2.out' });
+        gsap.to(antonio, { opacity: 1, duration: 0.4, delay: 0.1 });
 
-        // Stagger zones L→R
-        gsap.set(zones, { opacity: 0, y: 16 });
-        gsap.to(zones, {
-          opacity: 1, y: 0,
-          duration: 0.4,
-          stagger: 0.1,
-          delay: 0.3,
-          ease: 'power3.out',
-        });
+        gsap.set(inputCards, { opacity: 0, y: 10 });
+        gsap.to(inputCards, { opacity: 1, y: 0, duration: 0.35, stagger: 0.12, delay: 0.2, ease: 'power2.out' });
+
+        if (heroNum) {
+          const obj = { val: 0 };
+          const totalDelay = 0.2 + inputCards.length * 0.12 + 0.3;
+          gsap.to(obj, {
+            val: 5.91,
+            duration: 1.4,
+            delay: totalDelay,
+            ease: 'power1.out',
+            onUpdate() { heroNum.textContent = obj.val.toFixed(2).replace('.', ','); }
+          });
+        }
+
+        if (dangerZone) {
+          gsap.fromTo(dangerZone,
+            { boxShadow: '0 0 0px oklch(50% 0.18 25 / 0)' },
+            { boxShadow: '0 0 16px oklch(50% 0.18 25 / 0.3)', duration: 0.4,
+              delay: 1.5, yoyo: true, repeat: 1, ease: 'power2.inOut' }
+          );
+        }
+
+        if (mandate) gsap.fromTo(mandate, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, delay: 2.0 });
       }
 
       if (state === 2) {
-        // Highlight zone 4 (20-25) and show Antônio
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4 });
+      }
+
+      return true;
+    }
+
+    function retreat() {
+      if (state <= 0) return false;
+      if (state === 2) gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
+      if (state === 1) {
+        gsap.to(antonio, { opacity: 0, duration: 0.3 });
+        if (heroNum) { gsap.killTweensOf(heroNum); heroNum.textContent = '0'; }
+      }
+      state--;
+      return true;
+    }
+
+    slide.__hookAdvance = advance;
+    slide.__hookRetreat = retreat;
+    slide.__hookCurrentBeat = () => state;
+  },
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-rule5 — Rule-of-5 + Antonio plotado
+     States: 0=zones stagger (auto), 1=Antonio highlight, 2=source
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-rule5': (slide, gsap) => {
+    let state = 0;
+    const maxState = 2;
+
+    const ruleOf5 = slide.querySelector('.rule-of-5');
+    const zones = slide.querySelectorAll('.rule-zone');
+    const grayZone = slide.querySelector('.rule-gray-zone');
+    const antonioPlot = slide.querySelector('.antonio-plot');
+    const antonioPin = slide.querySelector('.antonio-pin');
+    const caveats = slide.querySelector('.rule-caveats');
+    const banner = slide.querySelector('.rule-conclusion-banner');
+    const sourceTag = slide.querySelector('.source-tag');
+
+    gsap.set(zones, { scaleY: 0, opacity: 1 });
+    if (ruleOf5) gsap.set(ruleOf5, { opacity: 1 });
+
+    gsap.to(zones, {
+      scaleY: 1,
+      duration: 0.5, stagger: 0.15, delay: 0.4,
+      ease: 'power2.out',
+    });
+
+    if (grayZone) {
+      gsap.to(grayZone, { opacity: 1, duration: 0.5, delay: 0.4 + zones.length * 0.15 + 0.3 });
+    }
+
+    function advance() {
+      if (state >= maxState) return false;
+      state++;
+
+      if (state === 1) {
         const targetZone = slide.querySelector('[data-zone-idx="3"]');
         if (targetZone) targetZone.classList.add('rule-zone--highlighted');
 
-        gsap.to(antonioPlot, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+        gsap.to(antonioPlot, { opacity: 1, duration: 0.4 });
+
+        if (antonioPin) {
+          gsap.fromTo(antonioPin,
+            { y: -40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, delay: 0.2, ease: 'back.out(1.4)' }
+          );
+        }
+
+        if (caveats) gsap.to(caveats, { opacity: 1, duration: 0.4, delay: 0.8 });
+        if (banner) gsap.to(banner, { opacity: 1, duration: 0.4, delay: 1.2 });
       }
 
-      if (state === 3) {
-        gsap.to(sourceTag, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+      if (state === 2) {
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4 });
       }
 
       return true;
@@ -505,22 +562,58 @@ export const customAnimations = {
     function retreat() {
       if (state <= 0) return false;
 
-      if (state === 3) {
+      if (state === 2) {
         gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
       }
 
-      if (state === 2) {
+      if (state === 1) {
         const targetZone = slide.querySelector('[data-zone-idx="3"]');
         if (targetZone) targetZone.classList.remove('rule-zone--highlighted');
         gsap.to(antonioPlot, { opacity: 0, duration: 0.3 });
+        if (caveats) gsap.to(caveats, { opacity: 0, duration: 0.3 });
+        if (banner) gsap.to(banner, { opacity: 0, duration: 0.3 });
       }
 
-      if (state === 1) {
-        gsap.to(spectrum, { y: 0, scale: 1, duration: 0.4, ease: 'power2.out' });
-        gsap.to(bavRef, { opacity: 1, duration: 0.3, delay: 0.2 });
-        gsap.to(rule5, { opacity: 0, duration: 0.3 });
-      }
+      state--;
+      return true;
+    }
 
+    slide.__hookAdvance = advance;
+    slide.__hookRetreat = retreat;
+    slide.__hookCurrentBeat = () => state;
+  },
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     s-a1-meld — MELD-Na semáforo + threshold
+     States: 0=bands stagger (auto), 1=threshold line, 2=source
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  's-a1-meld': (slide, gsap) => {
+    let state = 0;
+    const maxState = 2;
+
+    const bands = slide.querySelectorAll('.meld-band');
+    const threshold = slide.querySelector('.meld-threshold');
+    const sourceTag = slide.querySelector('.source-tag');
+
+    gsap.set(bands, { opacity: 0, y: 12 });
+    gsap.to(bands, { opacity: 1, y: 0, duration: 0.4, stagger: 0.15, delay: 0.3, ease: 'power2.out' });
+
+    function advance() {
+      if (state >= maxState) return false;
+      state++;
+      if (state === 1 && threshold) {
+        gsap.to(threshold, { width: '100%', duration: 0.8, ease: 'power2.out' });
+      }
+      if (state === 2) {
+        gsap.to(sourceTag, { opacity: 1, duration: 0.4 });
+      }
+      return true;
+    }
+
+    function retreat() {
+      if (state <= 0) return false;
+      if (state === 2) gsap.to(sourceTag, { opacity: 0, duration: 0.3 });
+      if (state === 1 && threshold) gsap.to(threshold, { width: 0, duration: 0.3 });
       state--;
       return true;
     }
@@ -535,13 +628,13 @@ export const customAnimations = {
     if (beats.length < 2) return;
 
     let currentBeat = 0;
-    const fib4El = slide.querySelector('[data-target="3.2"]');
+    const fib4El = slide.querySelector('[data-target="5.91"]');
+    const fib4Card = fib4El?.closest('.hook-lab');
 
     function setBeat(idx) {
       beats.forEach((b, i) => {
-        const active = i === idx;
-        b.classList.toggle('hook-beat--active', active);
-        b.classList.toggle('hook-beat--hidden', !active);
+        b.classList.toggle('hook-beat--active', i === idx);
+        b.classList.toggle('hook-beat--hidden', i !== idx);
       });
     }
 
@@ -550,51 +643,66 @@ export const customAnimations = {
     setBeat(initialBeat);
     if (initialBeat === 1) {
       const labs = slide.querySelectorAll('.hook-lab');
-      const question = slide.querySelector('.hook-question');
-      const lead = slide.querySelector('.hook-question-lead');
       const punchline = slide.querySelector('.hook-punchline');
-      [...labs, lead, question, punchline].filter(Boolean).forEach(el => {
+      [...labs, punchline].filter(Boolean).forEach(el => {
         el.style.opacity = '1';
         el.style.visibility = 'visible';
-        if (el.style.transform) el.style.transform = 'translateY(0)';
       });
-      if (fib4El) fib4El.textContent = '3,2';
+      if (fib4El) fib4El.textContent = '5,91';
     }
 
     function resetBeat1Content() {
       const labs = slide.querySelectorAll('.hook-lab');
-      const question = slide.querySelector('.hook-question');
-      const lead = slide.querySelector('.hook-question-lead');
       const punchline = slide.querySelector('.hook-punchline');
       if (gsap) {
-        gsap.set([...labs, lead, question, punchline].filter(Boolean), { opacity: 0, visibility: 'hidden' });
+        gsap.set([...labs, punchline].filter(Boolean), { opacity: 0, visibility: 'hidden' });
       }
     }
 
     function runLabsStagger() {
-      const labs = slide.querySelectorAll('.hook-lab');
-      const question = slide.querySelector('.hook-question');
-      const lead = slide.querySelector('.hook-question-lead');
+      const labs = [...slide.querySelectorAll('.hook-lab')];
       const punchline = slide.querySelector('.hook-punchline');
-      if (gsap) {
-        gsap.fromTo(labs,
-          { opacity: 0, visibility: 'visible', y: 12 },
-          { opacity: 1, y: 0, duration: 0.35, stagger: 0.12, delay: 0.05, ease: 'power2.out' }
+      if (!gsap) return;
+
+      const regularLabs = labs.slice(0, -1);
+      const lastCard = labs[labs.length - 1];
+
+      gsap.fromTo(regularLabs,
+        { opacity: 0, visibility: 'visible', y: 12 },
+        { opacity: 1, y: 0, duration: 0.35, stagger: 0.12, delay: 0.05, ease: 'power2.out' }
+      );
+
+      const lastDelay = 0.05 + regularLabs.length * 0.12 + 0.3;
+      gsap.fromTo(lastCard,
+        { opacity: 0, visibility: 'visible', y: 12 },
+        { opacity: 1, y: 0, duration: 0.45, delay: lastDelay, ease: 'back.out(1.4)' }
+      );
+
+      if (fib4Card) {
+        gsap.fromTo(fib4Card,
+          { boxShadow: '0 0 0px oklch(60% 0.10 75 / 0)' },
+          { boxShadow: '0 0 20px oklch(60% 0.10 75 / 0.3)', duration: 0.4, delay: lastDelay + 0.3,
+            yoyo: true, repeat: 1, ease: 'power2.inOut' }
         );
-        if (lead) gsap.fromTo(lead, { opacity: 0, visibility: 'visible' }, { opacity: 1, duration: 0.3, delay: 0.5 });
-        if (question) gsap.fromTo(question, { opacity: 0, visibility: 'visible', y: 8 }, { opacity: 1, y: 0, duration: 0.4, delay: 0.65, ease: 'power2.out' });
-        if (punchline) gsap.fromTo(punchline, { opacity: 0, visibility: 'visible', y: 8 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.7, ease: 'power2.out' });
       }
-      if (fib4El && gsap) {
+
+      if (fib4El) {
         const obj = { val: 0 };
         gsap.to(obj, {
-          val: 3.2,
-          duration: 1.2,
-          delay: 0.2,
+          val: 5.91,
+          duration: 1.4,
+          delay: lastDelay,
           ease: 'power1.out',
-          onUpdate() { fib4El.textContent = obj.val.toFixed(1).replace('.', ','); }
+          onUpdate() { fib4El.textContent = obj.val.toFixed(2).replace('.', ','); }
         });
-      } else if (fib4El) fib4El.textContent = '3,2';
+      }
+
+      if (punchline) {
+        gsap.fromTo(punchline,
+          { opacity: 0, visibility: 'visible', y: 10 },
+          { opacity: 1, y: 0, duration: 0.6, delay: lastDelay + 0.5, ease: 'power2.out' }
+        );
+      }
     }
 
     function advanceBeat() {
@@ -671,8 +779,9 @@ export { panelStates };
 /**
  * Wire all systems: custom anims → case panel → click-reveal → interactions.
  * Deps injected to avoid circular imports and keep registry testable.
+ * Reveal removed — uses deck.js events (slide:changed, slide:entered).
  */
-export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, Fib4Calc }) {
+export function wireAll(gsap, { anim, CasePanel, ClickReveal }) {
   for (const [id, fn] of Object.entries(customAnimations)) {
     anim.registerCustom(id, fn);
   }
@@ -683,35 +792,29 @@ export function wireAll(Reveal, gsap, { anim, CasePanel, ClickReveal, MeldCalc, 
     for (const [id, state] of Object.entries(panelStates)) {
       panel.registerState(id, state);
     }
-    panel.connect(document.querySelector('.slides'));
-    Reveal.on('slidechanged', (e) => panel.onSlideChanged(e.currentSlide));
-    const currentSlide = Reveal.getCurrentSlide();
+    panel.connect(document.getElementById('slide-viewport'));
+    document.addEventListener('slide:changed', (e) => panel.onSlideChanged(e.detail.currentSlide));
+    const currentSlide = getCurrentSlide();
     if (currentSlide) panel.onSlideChanged(currentSlide);
   }
 
   const revealers = new Map();
-  document.querySelectorAll('.slides > section').forEach((section) => {
+  document.querySelectorAll('#slide-viewport > section').forEach((section) => {
     if (section.querySelectorAll('[data-reveal]').length > 0) {
-      revealers.set(section.id, new ClickReveal(section, gsap));
+      const revealer = new ClickReveal(section, gsap);
+      revealers.set(section.id, revealer);
+      // Attach __clickRevealNext to section for deck.js navigate() to call
+      section.__clickRevealNext = () => {
+        if (revealer.hasMore) { revealer.next(); return true; }
+        return false;
+      };
     }
   });
-  function tryRevealNext() {
-    const revealer = revealers.get(Reveal.getCurrentSlide()?.id);
-    if (revealer && revealer.hasMore) { revealer.next(); return true; }
-    return false;
-  }
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowDown' && e.key !== ' ') return;
-    if (tryRevealNext()) { e.preventDefault(); e.stopPropagation(); }
-  }, true);
-  document.querySelector('.reveal .slides')?.addEventListener('click', (e) => {
-    if (tryRevealNext()) { e.preventDefault(); e.stopPropagation(); }
+
+  // Reset revealer on slide change (equivalent to Reveal slidechanged)
+  document.addEventListener('slide:changed', (e) => {
+    const id = e.detail.currentSlide?.id;
+    const r = revealers.get(id);
+    if (r) r.reset();
   });
-  Reveal.on('slidechanged', (e) => { const r = revealers.get(e.currentSlide?.id); if (r) r.reset(); });
-
-  const meldContainer = document.querySelector('[data-interaction="meld-calc"]');
-  if (meldContainer) new MeldCalc(meldContainer);
-
-  const fib4Container = document.getElementById('panel-fib4');
-  if (fib4Container) new Fib4Calc(fib4Container);
 }

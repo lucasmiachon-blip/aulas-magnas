@@ -18,6 +18,8 @@ ralph_phase: act
 
 ## RALPH Gate (Act)
 
+Antes de qualquer tarefa: ler `aulas/cirrose/references/CASE.md` para obter dados canônicos do paciente (Seu Antônio).
+
 PMID inválido → STOP, flag + reportar ao Lucas. Retração → remoção imediata + alerta ao Lucas. Escolha de papers → NÃO. Só valida e organiza o que recebe.
 **NUNCA verificar de memória. SEMPRE via MCP.**
 

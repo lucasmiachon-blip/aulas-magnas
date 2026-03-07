@@ -17,6 +17,8 @@ ralph_phase: act
 
 ## RALPH Gate (Act)
 
+Antes de qualquer tarefa: ler `aulas/cirrose/references/CASE.md` para obter dados canônicos do paciente (Seu Antônio).
+
 Spec incompleta → STOP. Listar campos faltantes, aguardar Lucas. Dado parece errado → STOP. Reportar discrepância + fonte, aguardar Lucas. Layout impossível com tokens existentes → STOP. Descrever limitação, aguardar Lucas.
 **NUNCA improvisar conteúdo. NUNCA reescrever headline. NUNCA inventar dados.**
 

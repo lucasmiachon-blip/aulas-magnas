@@ -2,18 +2,20 @@
  * Archetypes CSS — Batch 0 Foundation
  * 4 reusable slide layouts + case panel + click-reveal states
  * Imports AFTER cirrose.css (overrides where archetype class present)
+ *
+ * Z-INDEX MAP: case-panel=20 | burden=3 | scoring-badge/panel-tab=2 | badge-focus=1
  */
 
 /* --- Panel-aware layout --- */
 :root {
   --panel-width: 0px;
 }
-.reveal.has-panel {
+#deck.has-panel {
   --panel-width: 200px;
 }
 
 /* When panel is visible, left-align archetype containers to avoid overlap */
-.reveal.has-panel .slide-inner {
+#deck.has-panel .slide-inner {
   max-width: calc(100% - var(--panel-width) - 3rem);
   margin: 0 0 0 2rem;
 }
@@ -24,7 +26,6 @@
 
 .archetype-figure,
 .archetype-metrics,
-.archetype-interactive,
 .archetype-checkpoint,
 .archetype-pathway,
 .archetype-flow,
@@ -227,58 +228,9 @@
 }
 
 /* ============================================
-   ARCHETYPE 3: INTERACTIVE — Assertion + Area
+   ARCHETYPE 3 (removed): archetype-interactive retired 2026-03-05
+   MELD calc moved to case-panel sidebar (renderMeld)
    ============================================ */
-
-.archetype-interactive {
-  grid-template-rows: auto auto 1fr auto auto;
-}
-
-.archetype-interactive .interactive-area {
-  background: var(--bg-surface, oklch(95% 0.005 258));
-  border-radius: var(--radius-sm, 8px);
-  padding: 20px;
-  min-height: 280px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.archetype-interactive .interactive-controls {
-  display: flex;
-  gap: 8px;
-  justify-content: flex-end;
-}
-
-.archetype-interactive .ctrl-btn {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.archetype-interactive .ctrl-primary {
-  background: var(--ui-accent, oklch(35% 0.12 258));
-  color: #fff;
-}
-
-.archetype-interactive .ctrl-primary:hover {
-  background: oklch(30% 0.12 258);
-}
-
-.archetype-interactive .ctrl-secondary {
-  background: transparent;
-  border: 1px solid var(--border, oklch(88% 0.005 258));
-  color: var(--text-secondary);
-}
-
-.archetype-interactive .ctrl-secondary:hover {
-  background: oklch(93% 0.005 258);
-}
 
 /* ============================================
    ARCHETYPE 4: CHECKPOINT — Case + Decision
@@ -366,122 +318,158 @@
 }
 
 /* ============================================
-   MELD CALCULATOR (inside interactive-area)
+   SHARED CALCULATOR — Split layout (FIB-4 + MELD)
    ============================================ */
 
-.meld-inputs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.calc-split {
+  display: grid;
+  grid-template-columns: 45% 1fr;
+  gap: var(--space-md);
+  align-items: stretch;
 }
 
-.meld-input-group {
+.calc-inputs-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.calc-input-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  flex: 1;
-  min-width: 120px;
+  align-items: center;
+  gap: 2px;
 }
 
-.meld-input-label {
+.calc-input-card input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  padding: 4px 0;
+}
+
+.calc-input-card input:focus {
+  outline: none;
+}
+
+.calc-input-card:focus-within {
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 0 2px oklch(from var(--ui-accent) l c h / 0.15);
+}
+
+.calc-input-label {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: var(--text-small);
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.meld-input {
-  font-family: var(--font-mono, monospace);
-  font-size: 1.1rem;
-  padding: 8px 10px;
-  border: 1px solid var(--border, oklch(88% 0.005 258));
-  border-radius: 6px;
-  background: var(--bg-elevated, #fff);
-  color: var(--text-primary);
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.meld-input:focus {
-  outline: 2px solid var(--ui-accent, oklch(35% 0.12 258));
-  outline-offset: -1px;
-}
-
-.meld-result {
+.calc-result-panel {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border-left: 5px solid var(--border);
+  padding: var(--space-lg) var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.meld-score-display {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.meld-score-label {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.meld-score-value {
-  font-family: var(--font-mono, monospace);
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.meld-bar {
-  position: relative;
-  height: 32px;
-  border-radius: 6px;
-  overflow: hidden;
-  background: oklch(92% 0.005 258);
-}
-
-.meld-bar-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  border-radius: 6px;
-  transition: width 0.4s ease, background 0.4s ease;
-  width: 0%;
-}
-
-.meld-bar-zones {
-  position: relative;
-  display: flex;
-  height: 100%;
-  z-index: 1;
-}
-
-.meld-zone {
-  display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.5);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  gap: var(--space-sm);
+  transition: border-color 0.4s, background-color 0.4s;
 }
 
-.meld-zone:last-child {
-  border-right: none;
+.calc-score-name {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.meld-action-text {
+.calc-score-value {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  color: var(--text-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  transition: color 0.3s;
+}
+
+.calc-action-line {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--text-body);
   font-weight: 600;
-  min-height: 1.4em;
+  text-align: center;
+  min-height: 1.5em;
+}
+
+/* Zone states via data-zone attr on .calc-result-panel */
+.calc-result-panel[data-zone="safe"] {
+  border-left-color: var(--safe);
+  background: var(--safe-light);
+}
+.calc-result-panel[data-zone="safe"] .calc-score-value { color: var(--safe); }
+.calc-result-panel[data-zone="safe"] .calc-action-line { color: var(--safe); }
+
+.calc-result-panel[data-zone="warning"] {
+  border-left-color: var(--warning);
+  background: var(--warning-light);
+}
+.calc-result-panel[data-zone="warning"] .calc-score-value { color: var(--warning-on-light); }
+.calc-result-panel[data-zone="warning"] .calc-action-line { color: var(--warning-on-light); }
+
+.calc-result-panel[data-zone="danger"] {
+  border-left-color: var(--danger);
+  background: var(--danger-light);
+}
+.calc-result-panel[data-zone="danger"] .calc-score-value { color: var(--danger); }
+.calc-result-panel[data-zone="danger"] .calc-action-line { color: var(--danger); }
+
+.calc-result-panel[data-zone="urgent"] {
+  border-left-color: var(--text-primary);
+  background: var(--bg-deep);
+}
+.calc-result-panel[data-zone="urgent"] .calc-score-value { color: var(--text-on-dark); }
+.calc-result-panel[data-zone="urgent"] .calc-action-line { color: var(--danger-on-dark); }
+
+/* Zone reference chips (bottom) */
+.calc-zones-ref {
+  display: flex;
+  gap: 2px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: var(--space-xs);
+}
+.calc-zone-chip {
+  flex: 1;
+  padding: 6px 8px;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  text-align: center;
+  border-radius: var(--radius-sm);
+}
+
+/* Failsafe: .no-js / .stage-bad */
+.no-js .calc-result-panel,
+.stage-bad .calc-result-panel {
+  border-left-color: var(--border);
+  background: var(--bg-card);
+}
+.no-js .calc-score-value,
+.stage-bad .calc-score-value {
+  color: var(--text-primary);
 }
 
 /* ============================================
@@ -624,16 +612,124 @@
   color: var(--text-secondary, #555);
 }
 
-/* --- FIB-4 Calculator (panel-calc) --- */
-.panel-calc { border-top: 1px solid var(--border, oklch(88% 0.005 258)); padding-top: 6px; margin-top: 4px; }
-.fib4-toggle { width: 100%; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 11px; font-weight: 600; color: var(--text-secondary); padding: 2px 0; }
-.fib4-body { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
-.fib4-row { display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--text-muted); gap: 4px; }
-.fib4-input { width: 56px; padding: 2px 4px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-family: var(--font-mono); background: var(--bg-surface); color: var(--text-primary); }
-.fib4-result { display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; padding-top: 4px; border-top: 1px solid var(--border); }
-.fib4-label { font-weight: 600; color: var(--text-secondary); }
-.fib4-score { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); }
-.fib4-interp { font-size: 9.5px; font-weight: 600; }
+/* --- Calc Panel (sidebar calculator area) --- */
+
+.case-panel.has-calc {
+  width: 280px;
+}
+#deck.has-panel.has-calc-panel {
+  --panel-width: 320px;
+}
+
+.panel-calc-area {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border, oklch(88% 0.005 258));
+  padding-top: 8px;
+  margin-top: 4px;
+}
+.panel-calc-area.active {
+  display: flex;
+}
+
+.panel-calc-area .pcalc-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.panel-calc-area .pcalc-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.panel-calc-area .pcalc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.panel-calc-area .pcalc-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+}
+
+.panel-calc-area .pcalc-input {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 8px);
+  font-size: 14px;
+  font-family: var(--font-mono);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+.panel-calc-area .pcalc-input:focus {
+  outline: none;
+  border-color: var(--ui-accent);
+}
+
+.panel-calc-area .pcalc-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0 4px;
+  border-top: 1px solid var(--border);
+}
+
+.panel-calc-area .pcalc-score {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.panel-calc-area .pcalc-action {
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Zone colors on pcalc-result */
+.panel-calc-area .pcalc-result[data-zone="safe"] .pcalc-score { color: var(--safe); }
+.panel-calc-area .pcalc-result[data-zone="safe"] .pcalc-action { color: var(--safe); }
+.panel-calc-area .pcalc-result[data-zone="warning"] .pcalc-score { color: var(--warning-on-light); }
+.panel-calc-area .pcalc-result[data-zone="warning"] .pcalc-action { color: var(--warning-on-light); }
+.panel-calc-area .pcalc-result[data-zone="danger"] .pcalc-score { color: var(--danger); }
+.panel-calc-area .pcalc-result[data-zone="danger"] .pcalc-action { color: var(--danger); }
+.panel-calc-area .pcalc-result[data-zone="urgent"] { background: var(--bg-deep); border-radius: var(--radius-sm); }
+.panel-calc-area .pcalc-result[data-zone="urgent"] .pcalc-score { color: var(--text-on-dark); }
+.panel-calc-area .pcalc-result[data-zone="urgent"] .pcalc-action { color: var(--danger-on-dark); }
+
+.panel-calc-area .pcalc-case-btn {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid var(--ui-accent);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--ui-accent-light);
+  color: var(--ui-accent);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.panel-calc-area .pcalc-case-btn:hover {
+  background: var(--ui-accent);
+  color: var(--text-on-dark);
+}
 
 /* --- Appendix slides: full width (no panel) --- */
 section[id^="s-app"] .slide-inner {
@@ -645,7 +741,10 @@ section[id^="s-app"] .slide-inner {
    ============================================ */
 
 @media print {
-  [data-reveal] {
+  [data-reveal],
+  .archetype-pathway [data-animate] > *,
+  .archetype-hero-stat [data-animate],
+  .archetype-checklist .checklist-item {
     opacity: 1 !important;
     transform: none !important;
     pointer-events: auto !important;
@@ -655,7 +754,11 @@ section[id^="s-app"] .slide-inner {
     display: none !important;
   }
 
-  .reveal.panel-active {
+  .panel-calc-area {
+    display: none !important;
+  }
+
+  #deck.panel-active {
     grid-template-columns: 1fr !important;
   }
 }
@@ -800,7 +903,7 @@ section[id^="s-app"] .slide-inner {
 /* ============================================
    ARCHETYPE 6: FLOW — Vertical Diagnostic
    FIB-4 → LSM → CSPH cascade with cut-offs
-   Used: s-a1-02
+   Used: s-a1-baveno, s-a1-elasto, s-a1-rule5, s-a1-classify
    ============================================ */
 
 .archetype-flow {
@@ -892,10 +995,12 @@ section[id^="s-app"] .slide-inner {
 
 .archetype-hero-stat {
   grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
   text-align: center;
 }
+.archetype-hero-stat .source-tag { justify-self: stretch; }
 
 .archetype-hero-stat .hero-block {
   display: flex;
@@ -1242,7 +1347,7 @@ section[id^="s-app"] .slide-inner {
 /* ============================================
    ARCHETYPE 11: COMPARISON — Side-by-Side
    Matrix with visual weight encoding
-   Used: s-a1-05, s-a3-02
+   Used: s-app-etio, s-a3-02
    ============================================ */
 
 .archetype-comparison {
@@ -1489,19 +1594,6 @@ section[id^="s-app"] .slide-inner {
    PRINT-PDF: New archetypes
    ============================================ */
 @media print {
-  .archetype-pathway [data-animate] > *,
-  .archetype-flow [data-reveal],
-  .archetype-hero-stat [data-animate],
-  .archetype-timeline [data-reveal],
-  .archetype-decision-tree [data-reveal],
-  .archetype-comparison [data-reveal],
-  .archetype-checklist [data-reveal],
-  .archetype-checklist .checklist-item {
-    opacity: 1 !important;
-    transform: none !important;
-    pointer-events: auto !important;
-  }
-
   .archetype-checklist .checklist-check {
     border-color: var(--safe) !important;
     color: var(--safe) !important;

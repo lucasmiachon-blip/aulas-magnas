@@ -148,9 +148,25 @@ Severidades: CRITICAL (bloqueia projeção), HIGH (prejudica leitura), MEDIUM (e
 | Severidade | Total | Corrigidos | Pendentes |
 |------------|-------|------------|-----------|
 | CRITICAL   | 4     | 3          | 1 (ERRO-021) |
-| HIGH       | 9     | 8          | 1 (ERRO-021) |
-| MEDIUM     | 6     | 5          | 1 (ERRO-008) |
+| HIGH       | 10    | 8          | 2 (ERRO-021, ERRO-022) |
+| MEDIUM     | 7     | 5          | 2 (ERRO-008, ERRO-023) |
 | LOW        | 1     | 1          | 0         |
+
+---
+
+## Erros registrados — sessão restructure/act1 (2026-03-05)
+
+### ERRO-022 · HIGH · s-a1-vote
+**Interação nunca testada com click real no browser**
+**Root cause:** Slide criado inteiramente em código sem QA visual/interação. `doReveal()` disparado por click em `.vote-option`, mas comportamento real (CSS transitions, opacity, countUp) não verificado.
+**Regra:** Todo slide com interação JS deve ter ao menos 1 screenshot de cada estado (antes/depois do reveal) antes de commitar como concluído.
+**Status:** ⚠ PENDENTE — QA loop próxima sessão.
+
+### ERRO-023 · MEDIUM · múltiplos slides do Bloco 1
+**CSS failsafe não testado em novos elementos**
+**Root cause:** Novos elementos (`.classify-card`, `.fib4-inputs`, `.fib4-hero-result`, `.rule-gray-zone`, `.antonio-pin`, `.meld-threshold`) têm `opacity:0` em CSS para GSAP, mas `.no-js` e `.stage-bad` overrides não foram verificados em browser.
+**Regra:** Após adicionar qualquer elemento animado novo, verificar que `.no-js .elemento { opacity: 1; visibility: visible }` existe em cirrose.css E que funciona em stage-bad (sem GSAP).
+**Status:** ⚠ PENDENTE — QA loop próxima sessão.
 
 ---
 
@@ -205,4 +221,4 @@ if (section?.id === 's-hook' && beatParam !== null) {
 
 ---
 
-*Última atualização: 2026-03-04 · Flip patch + QA visual + ERRO-018/019/020 ✅ · ERRO-021 ⚠ pendente*
+*Última atualização: 2026-03-05 · restructure/act1 concluído · ERRO-022/023 adicionados ⚠ · ERRO-021/008 ainda pendentes*
