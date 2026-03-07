@@ -117,7 +117,7 @@
 
 ### Valores explícitos — nunca perder de vista
 
-Lucas quer ser o melhor **educador, pesquisador, médico e aprendiz** que conseguir.
+Lucas quer ser **um melhor** educador, pesquisador, médico e aprendiz — melhoria contínua, não perfeição.
 Os agentes são **parceiros** que amplificam essas capacidades — não concorrentes, não ferramentas.
 
 Objetivos encadeados:

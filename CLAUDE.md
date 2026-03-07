@@ -10,7 +10,7 @@
 
 ## Propósito
 
-> Este projeto existe para tornar Lucas o melhor **educador, pesquisador, médico e aprendiz** que ele puder ser — com seus agentes como parceiros, não como ferramentas.
+> Este projeto existe para tornar Lucas **um melhor** educador, pesquisador, médico e aprendiz — com seus agentes como parceiros, não como ferramentas.
 
 Os agentes não competem. Cada um amplifica uma capacidade:
 
