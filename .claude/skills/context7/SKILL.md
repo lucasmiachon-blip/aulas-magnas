@@ -1,7 +1,7 @@
 ---
 name: context7
 description: Injeta documentação atualizada de bibliotecas no contexto. Ativar automaticamente quando o usuário trabalhar com GSAP, Reveal.js, Vite, OKLCH, ou qualquer lib do projeto. Resolve hallucination de APIs desatualizadas. Usar "/context7 [library]" para busca manual.
-version: 1.0.0
+version: 2.0.0
 context: lazy
 agent: general-purpose
 allowed-tools: Read, WebSearch, WebFetch
@@ -12,78 +12,242 @@ triggers:
   - vite
   - oklch
   - postcss
-  - decktape
   - data-animate
 ---
 
-# Context7 — Docs on Demand
+# Context7 — Docs Verificadas (atualizado 2026-03-07)
 
-Busca documentação real e versionada para: `$ARGUMENTS`
+Referência canônica para GSAP 3.14, Reveal.js 5.1, Vite 6.3.
+Verificado via WebSearch + WebFetch por subagent. Substituir se libs atualizarem.
 
-## Como funciona
+---
 
-Context7 (Upstash) resolve o problema de Claude gerar código contra APIs desatualizadas.
-Em vez de depender do training-data (pode ter 1-2 anos de defasagem), busca a doc oficial atual.
+## GSAP — versão atual: 3.14.2
 
-## Uso
+Projeto pina 3.12 — **upgrade para 3.14 é seguro**, sem breaking changes na API de tweens.
 
-### Via MCP (se configurado)
-```json
-// .claude/settings.json
+### Atenção (3.13): registry privado morto
+Se `package.json` ou `.npmrc` referenciar `npm.greensock.com` → **remover imediatamente**.
+Todos os plugins (SplitText, MorphSVG etc.) agora são gratuitos no npm público.
+
+### Assinaturas core (estáveis desde 3.0, inalteradas em 3.14)
+```js
+gsap.to(targets, vars)
+gsap.from(targets, vars)
+gsap.fromTo(targets, fromVars, toVars)
+```
+
+**vars mais usados:**
+```js
 {
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
-    }
-  }
+  duration: 0.4,          // segundos (default 0.5)
+  ease: "power2.out",     // PROIBIDO: bounce, elastic, back (frívolo)
+  delay: 0,
+  stagger: 0.15,          // ou objeto — ver abaixo
+  onComplete: fn,
+  overwrite: "auto",
+  immediateRender: false,
 }
 ```
 
-Ferramentas disponíveis via MCP:
-1. `resolve-library-id` — mapeia nome → ID estável do Context7
-2. `query-docs` — busca seções de documentação pelo ID
-
-### Fallback (sem MCP — WebSearch)
-
-Se MCP não disponível, buscar diretamente:
-
-```
-1. Identificar biblioteca + versão do package.json
-2. WebSearch: "[library] [version] official docs [specific-api]"
-3. WebFetch: URL da doc oficial
-4. Extrair apenas a seção relevante (não toda a doc)
+**Stagger objeto:**
+```js
+stagger: {
+  each: 0.15,             // ou amount: total_time
+  from: "start",          // start|center|edges|end|random|index
+  ease: "power2.in",
+}
 ```
 
-## Bibliotecas deste projeto
-
-| Lib | Versão | URL prioritária |
-|-----|--------|----------------|
-| GSAP | 3.12.x | gsap.com/docs/v3/ |
-| Reveal.js | 5.x | revealjs.com/api/ |
-| Vite | 6.x | vitejs.dev/guide/ |
-| PostCSS | latest | postcss.org/api/ |
-
-## Quando ativar
-
-- Usuário menciona uma dessas libs + vai escrever/editar código
-- Erro inesperado que pode ser API mismatch ("method undefined", "option removed")
-- Antes de usar feature nova que pode ter mudado entre versões
-
-## Output
-
-Retornar apenas o trecho relevante da doc (não a página inteira):
-```
-## [Library] v[X.Y] — [API específica]
-Fonte: [URL] | Verificado: [data]
-
-[Trecho da doc oficial]
-
-### Diferença do training-data (se relevante):
-⚠ API X foi removida em v[Y] — usar Y em vez disso
+⚠ **Quirk (todas as 3.x):** `stagger` no topo é ignorado com `keyframes`. Mover para `defaults`:
+```js
+gsap.to(els, { defaults: { stagger: 0.15 }, keyframes: [...] })
 ```
 
-## Token efficiency
+**Novo em 3.13:** animar para CSS variable:
+```js
+gsap.to(".box", { x: "var(--space-lg)" })  // útil com nossos tokens
+```
 
-Este skill é lazy-loaded: Claude lê só o frontmatter YAML no startup (~50 tokens).
-O corpo completo só é carregado quando ativado — redução de ~77% vs SessionStart hook.
+### Timeline
+```js
+const tl = gsap.timeline({
+  paused: true,
+  defaults: { duration: 0.4, ease: "power2.out" },
+  onComplete: fn,
+})
+tl.to(el, vars, positionParam)   // "<" start anterior · ">" end anterior
+tl.from(el, vars, positionParam)
+tl.set(el, vars, positionParam)
+tl.addLabel("name", positionParam)
+tl.play() / tl.pause() / tl.reverse() / tl.restart()
+tl.seek(timeOrLabel)
+tl.revert()   // reverte estado original + mata
+```
+
+### gsap.context() — cleanup no slidechanged
+```js
+let ctx = gsap.context(() => {
+  gsap.to(el, { x: 100 })
+  return () => { /* cleanup custom */ }
+}, containerEl)
+
+// No slidechanged handler:
+ctx.revert()   // reverte tudo + cleanup
+```
+
+### gsap.matchMedia() — reduced motion
+```js
+let mm = gsap.matchMedia()
+mm.add({
+  animate: "(prefers-reduced-motion: no-preference)",
+  reduce:  "(prefers-reduced-motion: reduce)"
+}, (ctx) => {
+  let { animate } = ctx.conditions
+  if (animate) gsap.to(el, { y: -20 })
+})
+```
+⚠ Não aninhar `gsap.matchMedia()` dentro de `gsap.context()` — são equivalentes internamente.
+
+### Fix relevante (3.13)
+Bug corrigido: `from()` tweens dentro de timeline que não renderizaram não revertiam corretamente.
+Afeta `engine.js` cleanup no `slidechanged` → motivo adicional para upgrade 3.12 → 3.14.
+
+---
+
+## Reveal.js — versão atual: 5.1.0
+
+### Reveal.initialize() — opções relevantes
+```js
+Reveal.initialize({
+  // Novo em v5 — ATENÇÃO
+  view: "scroll",              // auto-ativa abaixo de 435px viewport
+  scrollActivationWidth: null, // null = DESABILITAR (recomendado para congresso)
+  jumpToSlide: true,           // v5.1: menu jump; false para desativar
+
+  // Estáveis
+  width: 1280, height: 720,    // nosso target
+  margin: 0.04,
+  controls: false, progress: true,
+  hash: true, history: false,
+  center: false,               // nosso layout usa align-content:start
+  transition: "fade",
+  transitionSpeed: "fast",
+  backgroundTransition: "fade",
+
+  // PDF
+  pdfSeparateFragments: false,
+  pdfMaxPagesPerSlide: 1,
+  showNotes: "separate-page",
+
+  plugins: [Notes, Highlight],
+})
+```
+
+⚠ **Novo em v5:** `scrollActivationWidth: 435` ativa scroll-view em viewports < 435px.
+Para congresso: adicionar `scrollActivationWidth: null` em `engine.js`.
+
+### Eventos (assinaturas inalteradas v4→v5)
+```js
+Reveal.on("ready", ({ currentSlide, indexh, indexv }) => { })
+
+// Início da transição → cleanup GSAP aqui
+Reveal.on("slidechanged", ({ previousSlide, currentSlide, indexh, indexv }) => {
+  ctx.revert()   // cleanup gsap.context do slide anterior
+})
+
+// Fim da transição → iniciar animações aqui (slide visível, bounding boxes disponíveis)
+Reveal.on("slidetransitionend", ({ currentSlide, indexh, indexv }) => {
+  // gsap.to(), tl.play() etc.
+})
+
+Reveal.on("fragmentshown", ({ fragment }) => { })
+Reveal.on("fragmenthidden", ({ fragment }) => { })
+```
+
+### Keyboard bindings
+```js
+Reveal.addKeyBinding(
+  { keyCode: 84, key: "T", description: "Start timer" },
+  () => { /* handler */ }
+)
+Reveal.removeKeyBinding(keyCode)
+```
+
+### data-visibility
+```html
+<!-- USAR para apêndice (remove do DOM, não navegável) -->
+<section data-visibility="hidden">...</section>
+
+<!-- NÃO usar para apêndice — só funciona no final do deck -->
+<section data-visibility="uncounted">...</section>
+```
+Regra do projeto: **sempre `hidden`**, nunca `uncounted` para apêndice.
+
+### Breaking changes v4→v5
+| Mudança | Ação |
+|---------|------|
+| `?print-pdf` → `?view=print` | Antigo ainda funciona (backwards-compat) |
+| scroll-view auto <435px | `scrollActivationWidth: null` em engine.js |
+| `initialize()` não pode ser chamado 2x | Proteção — sem ação |
+| iOS usa `100dvh` agora | Monitorar em iPad de congresso |
+
+---
+
+## Vite — versão atual: 6.3.x
+
+### Breaking changes v5→v6 relevantes para este projeto
+
+| Mudança | Impacto | Ação |
+|---------|---------|------|
+| Sass API moderna como default | Médio se usar SCSS | `css.preprocessorOptions.scss.api: "legacy"` (removido no v7) |
+| `postcss-load-config` v4→v6 | **Baixo** — só afeta config TS/YAML | `postcss.config.js` como JS puro → zero ação |
+| `commonjsOptions.strictRequires` default `true` | Baixo | Build mais determinístico |
+| Glob `{01..03}` não suportado | Baixo | Atualizar padrões glob se usar |
+
+### Config Vite 6 — o que mudou para nós
+```js
+// vite.config.js
+export default defineConfig({
+  css: {
+    // postcss.config.js como JS puro → sem mudança necessária
+    // postcss-oklab-function continua funcionando
+    preprocessorOptions: {
+      scss: { api: "modern-compiler" }  // se usar SCSS
+    }
+  },
+  build: {
+    lib: {
+      cssFileName: "style",  // explícito para manter nome estável
+    }
+  },
+  server: { port: 3000 },
+  preview: { port: 4173 },
+})
+```
+
+### postcss-oklab-function — status
+✓ **Sem breaking changes.** `postcss.config.js` como JS puro não é afetado pela migração
+`postcss-load-config` v4→v6. Plugin continua gerando fallbacks sRGB automaticamente.
+
+---
+
+## Action items para este projeto
+
+| Item | Prioridade | O que fazer |
+|------|-----------|-------------|
+| `.npmrc` com `npm.greensock.com` | **URGENTE** | Remover se existir |
+| GSAP 3.12 → 3.14 | Alta | `npm i gsap@latest` — zero breaking changes |
+| `scrollActivationWidth: null` | Média | Adicionar em `engine.js` → `Reveal.initialize()` |
+| `from()` revert fix (3.13) | Alta | Resolvido com upgrade GSAP |
+
+---
+
+## Fallback (se docs ficarem desatualizadas)
+
+```
+1. Verificar versão atual: cat package.json | grep -E "gsap|reveal|vite"
+2. WebSearch: "[lib] [versão] changelog breaking changes"
+3. WebFetch: URL oficial de release notes
+4. Atualizar esta seção com data
+```
