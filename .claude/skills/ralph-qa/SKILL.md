@@ -82,21 +82,46 @@ IF iteration == 10:
 
 **Agente:** Gemini 3.1 Pro via Agent tool (subagent_type=qa-engineer ou general-purpose)
 **Responsabilidade:** visual, layout, percepção, acessibilidade
+**Protocolo:** Gemini retorna **especificação estruturada** → Opus lê o arquivo e executa o fix
 
 ```
 WHILE gemini.verdict != PASS AND iteration < 10:
   screenshots = playwright.capture([slide-a, slide-b, slide-c])
-  result = gemini.audit(screenshots, prompt_contextual)
-  issues = result.filter(confidence >= 80)
+  specs = gemini.audit(screenshots, prompt_contextual)
+  issues = specs.filter(confidence >= 80)
   IF issues.length == 0:
     output "GEMINI-PASS" → exit loop
   ELSE:
-    opus.fix(issues) — cirúrgico
+    FOR each issue IN issues:
+      opus.read(issue.slide)           # lê o arquivo
+      opus.grep(issue.line_hint)       # localiza o ponto exato
+      opus.edit(issue.fix)             # aplica cirurgicamente
     iteration++
 
 IF iteration == 10:
   output "GEMINI-BLOCKED: [issue persistente]" → PARAR
 ```
+
+### Por que especificação estruturada (não old_string/new_string)
+
+Gemini é excelente em percepção visual mas pode errar strings HTML exatas
+(whitespace, ordem de atributos, indentação). `old_string` errado → Edit falha silenciosamente.
+
+Solução: Gemini especifica **o quê** e **onde**, Opus executa o **como**:
+
+```json
+// Output esperado do Gemini por issue
+{
+  "slide": "08-a2-01.html",
+  "line_hint": 23,
+  "confidence": 91,
+  "issue": "hero-number usa color: #cc4a3a hardcoded",
+  "fix": "substituir color: #cc4a3a por color: var(--danger)"
+}
+```
+
+Opus recebe isso, faz `Grep` no arquivo com `line_hint` como anchor, localiza a string exata
+e executa `Edit`. Zero ambiguidade, zero string mismatch.
 
 **Prompt para Gemini 3.1 Pro:**
 ```
@@ -124,14 +149,18 @@ Para cada slide do batch (3 slides), avaliar:
    - Corpo ≤30 palavras?
    - Slide congestionado?
 
-Retornar por slide:
-  verdict: PASS | WARN | FAIL
-  confidence: 0-100
-  issue: [descrição exata] (só se WARN/FAIL)
-  fix: [ação em 1 linha] (só se WARN/FAIL)
+Para cada issue encontrado, retornar JSON:
+{
+  "slide": "[nome do arquivo]",
+  "line_hint": [número aproximado da linha no HTML],
+  "confidence": [0-100],
+  "issue": "[descrição exata do problema visual]",
+  "fix": "[instrução de 1 linha: o que substituir por quê]"
+}
 
-Reportar apenas issues com confidence ≥ 80.
-Se nenhum issue ≥ 80: retornar PASS.
+Reportar APENAS issues com confidence ≥ 80.
+Se nenhum issue ≥ 80: retornar {"verdict": "PASS"}.
+NÃO retornar HTML corrigido — apenas a especificação do fix.
 ```
 
 ## Separação dos loops — por que importa
