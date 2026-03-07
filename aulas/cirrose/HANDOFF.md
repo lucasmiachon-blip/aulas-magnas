@@ -8,6 +8,15 @@
 
 **Slides:** 28/28 buildados · **Build:** ✅ · **Lint:** ✅
 
+### 🎯 META DA SEMANA (08-14 mar)
+
+**Terminar o monólito Cirrose.** KPIs em ação:
+1. h2 assertivos decididos e aplicados (Lucas vê no browser → decide)
+2. Fixes técnicos (ERRO-021, OKLCH, rename, failsafe)
+3. 7 PMIDs CANDIDATE verificados via MCP
+4. QA 13 critérios ≥ 9/10 em todos
+5. GPT-5.4 audita tom/narrativa (primeiro teste do protocolo de aliança)
+
 ### ⚡ AÇÃO NECESSÁRIA — executar localmente
 
 ```bash
@@ -22,11 +31,12 @@ git push origin main  # agente só pushea em branches claude/*
 
 ### 🔴 IMEDIATO
 
-1. **`[LUCAS DECIDE]`** — validar 6 h2 com propostas abaixo (sem isso o QA não avança)
-2. Fixes técnicos rápidos: OKLCH literals em `cirrose.css`, rename `screening→classify`, failsafe `.classify-card`
-3. Altura inconsistente: `min-height` archetypes + viewport deck 720px fixo
-4. **Re-rodar qa-engineer** com rubrica 13 critérios + nova stack MCP
-5. Iterar até ≥ 9/10 em todos os critérios
+1. **`[LUCAS DECIDE]`** — ver slides no browser → decidir 6 h2 (tom: factual, par-a-par, sem manchete)
+2. ERRO-021 — fix 1 char CSS (5 dias parado)
+3. Fixes técnicos: OKLCH literals em `cirrose.css`, rename `screening→classify`, failsafe `.classify-card`
+4. Verificar 7 PMIDs CANDIDATE via PubMed MCP
+5. **Re-rodar qa-engineer** com rubrica 13 critérios + nova stack MCP
+6. Iterar até ≥ 9/10 em todos os critérios
 
 ### 🟡 DECISÕES CLÍNICAS [LUCAS DECIDE]
 
@@ -46,7 +56,7 @@ Outras decisões pendentes:
 
 ### 🟡 MÉDIA
 
-- 21 referências [TBD] — usar `clinicaltrials` MCP para PREDESCI/CANONIC/ANSWER
+- 21 referências [TBD] — 7 CANDIDATE, 12 NOT INDEXED (2025-2026). Ver NOTES.md §Reference Manager
 - CTP interobserver variability — PMID 6546609 ou 16305721
 - burden-iceberg prevalência — GBD 2017 (manter com anotação)
 
