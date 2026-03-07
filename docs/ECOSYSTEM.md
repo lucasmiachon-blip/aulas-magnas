@@ -37,10 +37,31 @@
 | **Gemini 3.1 Pro** | Debug CSS/GSAP orientado por spec · SVG animado · **video QA (motion tier 5)** | SWE 80.6% · APEX Agents #1 · VideoMME 84.8% · $2/M |
 | **Gemini 3.1 Flash-Lite** | Lint rápido · small fixes · batch protótipos | 382 tok/s · $0.25/M · GPQA 86.9% · 2.5× faster TTFA vs 2.5 Flash |
 | **Perplexity Computer** | Pesquisa clínica longa (overnight) · verificação 28 slides vs EASL/BAVENO | 19 modelos · roda horas · GitHub/Notion — não é para edição real-time |
-| **ChatGPT Agent (GPT-5.4)** | QA browser · navegar localhost:3000 · screenshots de layout | 75% OSWorld (> humano 72.4%) · BrowseComp 82.7% |
+| **ChatGPT Agent (GPT-5.4)** | QA browser · auditor clínico/narrativo · impressões de tom e adequação ao público | 75% OSWorld (> humano 72.4%) · BrowseComp 82.7% · **nunca edita, só audita** |
 | **Perplexity Ultra** (MCP) | Pesquisa em tempo real | Acesso web em tempo real |
 | **Scite** (MCP) | Supporting/contradicting por artigo | Verificação de citações |
 | **Zotero** (MCP) | Biblioteca de referências · DOIs | Gestão bibliográfica |
+
+---
+
+## Protocolo de Aliança — Quem Faz o Quê
+
+> Modelos são aliados, não competidores. Cada um no que é melhor por benchmark.
+
+| Papel | Modelo | Superpoder (benchmark) | Edita repo? |
+|-------|--------|----------------------|-------------|
+| **Implementador** | Claude Code (Opus/Sonnet 4.6) | SWE-bench 80.8% · τ²-bench 99.3% · segue constraints | ✅ Único que commita |
+| **Arquiteto clínico** | Claude Opus 4.6 (claude.ai) | GPQA 91.3% · raciocínio longo (METR 14.5h) | ❌ Specs e decisões |
+| **Visual QA** | Gemini 3.1 Pro | VideoMME 84.8% · APEX Agents #1 · SVG | ❌ Relatório visual |
+| **Auditor narrativo** | GPT-5.4 (ChatGPT Agent) | OSWorld 75% · BrowseComp 82.7% · navega produto real | ❌ Impressões e tom |
+| **Pesquisador** | Perplexity Ultra / Computer | Web real-time · roda horas overnight | ❌ Dados e PMIDs |
+| **Verificador de citações** | Scite MCP | Supporting/contradicting por artigo | ❌ Score de evidência |
+
+### Regras da aliança
+1. **Só Claude Code edita e commita** — todos os outros produzem relatórios
+2. **Lucas arbitra** — quando dois modelos divergem, Lucas decide
+3. **Handoff claro** — código→visual = Gemini. Visual→clínico = Opus/GPT. Nunca pular etapa
+4. **Sem redundância** — se Gemini já auditou visual, GPT não repete. GPT foca em tom/narrativa/adequação
 
 ---
 
@@ -53,7 +74,7 @@
 | **Gemini 3.1 Pro** | CSS/GSAP debug · SVG · video QA | → MCP planejado | ⏳ Setup pendente |
 | **Gemini 3.1 Flash-Lite** | Lint · quick fix · batch | → MCP planejado | ⏳ Setup pendente |
 | **Perplexity Computer** | Orquestração multi-agente | — | ⏳ $200/mês Max |
-| **ChatGPT Agent** (GPT-5.4) | Browser automation · computer use | — | ✅ Disponível |
+| **ChatGPT Agent** (GPT-5.4) | Browser QA · auditor clínico/narrativo (nunca edita) | — | ✅ Disponível |
 | **Perplexity Ultra** | Pesquisa em tempo real | Sim | ✅ Ativo |
 | **Scite** | Citações | Sim | ✅ MCP streamableHttp |
 | **Consensus** | Meta-análises | — | Manual |
