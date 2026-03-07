@@ -1,54 +1,95 @@
 ---
 name: review
 description: Audita slides médicos — assertion-evidence, acessibilidade, dados clínicos e design system. Ativar quando o usuário pedir "revise", "audite", "review", "verifique slides" ou "check slides". Reporta PASS/WARN/FAIL por slide.
-version: 0.2.0
+version: 0.3.0
 context: fork
-agent: Explore
-allowed-tools: Read, Grep, Glob
+agent: general-purpose
+allowed-tools: Read, Grep, Glob, Agent
 argument-hint: "[lecture] [slide-number?]"
 ---
 
-# Review Slide
+# Review Slides — Multi-Agent
 
-Audite `$ARGUMENTS` usando os checklists abaixo. Se nenhum argumento: audite `aulas/cirrose/`.
+Audite `$ARGUMENTS`. Se nenhum argumento: audite `aulas/cirrose/`.
 
-## Checklist por slide
+## Arquitetura (inspirada em code-review-agents, Anthropic 2026)
 
-### Assertion-Evidence
-- [ ] `<h2>` é frase completa com claim verificável (não rótulo)
-- [ ] Corpo ≤ 30 palavras de texto
-- [ ] Zero `<ul>` ou `<ol>` no slide (só em `<aside class="notes">`)
-- [ ] Evidência visual presente (gráfico/tabela/diagrama/número)
-- [ ] Citação com PMID no footer
+### Phase 1 — Subagents paralelos (Explore, read-only)
 
-### Acessibilidade
-- [ ] Contraste ≥ 4.5:1 (texto sobre fundo)
-- [ ] Cor não é único canal de significado (ícone junto)
-- [ ] Alt text em imagens/SVGs
-- [ ] Font size efetivo ≥ 18px
-- [ ] `data-animate` funciona sem animação (graceful degradation)
+Lançar 4 subagents simultaneamente, cada um com foco único:
 
-### Dados Clínicos
-- [ ] Números têm fonte (trial/PMID)
-- [ ] Effect sizes com IC 95%
-- [ ] Guideline citada é versão vigente
-- [ ] Dados incertos marcados `<!-- DATA: VERIFY -->`
+**Agent A — Assertion-Evidence**
+- `<h2>` é frase completa com claim verificável (não rótulo)?
+- Corpo ≤ 30 palavras de texto?
+- Zero `<ul>` ou `<ol>` no corpo do slide?
+- Evidência visual presente (gráfico/tabela/diagrama/número-chave)?
 
-### Design System
-- [ ] Cores usam tokens OKLCH (zero hardcoded)
-- [ ] Tipografia usa escala `--text-h1`, `--text-body`
-- [ ] Espaçamento usa `--space-*`
-- [ ] `.slide-inner` wrapper presente
-- [ ] Slides escuros usam `.slide-navy`
-- [ ] Background via `data-background-color` com HEX literal
+**Agent B — Medical Data**
+- Números têm fonte (trial/PMID)?
+- Effect sizes com IC 95%?
+- Guideline citada é versão vigente?
+- Dados incertos marcados `<!-- DATA: VERIFY -->`?
+- HR ≠ RR (não misturado)?
 
-### Speaker Notes
-- [ ] `<aside class="notes">` presente com timing
-- [ ] Pontos de ênfase marcados
-- [ ] Transição para próximo slide descrita
+**Agent C — Design System**
+- Cores usam tokens OKLCH (zero hardcoded)?
+- Tipografia usa escala `--text-h1`, `--text-body`?
+- Espaçamento usa `--space-*`?
+- `.slide-inner` wrapper presente?
+- Slides escuros usam `.slide-navy`?
+- Background via `data-background-color` com HEX literal?
+- Sem `display` inline no `<section>` (E07)?
+
+**Agent D — Acessibilidade + Speaker Notes**
+- Contraste ≥ 4.5:1 (texto sobre fundo)?
+- Cor não é único canal de significado (ícone junto)?
+- Font size efetivo ≥ 18px?
+- `data-animate` funciona sem animação (graceful degradation)?
+- `<aside class="notes">` presente com timing?
+- Transição para próximo slide descrita?
+
+### Phase 2 — Validation (por issue, paralelo)
+
+Para cada issue flagado pelos agentes:
+- Confirmar que o issue está genuinamente presente (não falso positivo)
+- Avaliar severidade: FAIL (bloqueia apresentação) vs WARN (degradação) vs INFO
+- Issues que não confirmam → descartar
+
+### Phase 3 — Confidence scoring + output
+
+Cada finding recebe score 0–100:
+- **≥ 80** → reportar (threshold padrão)
+- **< 80** → descartar como noise
+
+**Critérios de alta confiança (80+):**
+- `<ul>`/`<ol>` presente no corpo do slide → 100 (violação hard constraint)
+- Título genérico sem claim → 90 (clara violação Alley model)
+- Número sem PMID → 85 (violação E21)
+- Cor hardcoded → 90 (violação token system)
+- `<aside class="notes">` ausente → 95 (violação constraint #3)
+- Contraste provavelmente baixo (cor muted sobre fundo muted) → 75 (WARN)
 
 ## Output
 
-Para cada slide: `PASS` / `WARN — [fix]` / `FAIL — [fix]`
+```
+## Review: aulas/[lecture]/ — [N] slides auditados
 
-Resumo final: total de slides, taxa de PASS, top 3 issues.
+### FAIL (bloqueia apresentação)
+- [slide-file] L[N]: [descrição do issue] — confiança 95%
+  Fix: [ação específica]
+
+### WARN (degradação, corrigir antes do congresso)
+- [slide-file] L[N]: [descrição] — confiança 82%
+
+### Resumo
+Slides: X/N PASS | Y WARN | Z FAIL
+Top issues: [top 3 padrões recorrentes]
+Prioridade: [o que corrigir primeiro]
+```
+
+## Regras do reviewer
+
+- Reportar APENAS issues confirmados com confiança ≥ 80
+- Citar linha exata (`L42`) e arquivo
+- Fix deve ser acionável em < 2min
+- NUNCA reportar preferências estéticas — apenas violações de constraints
