@@ -76,12 +76,13 @@ aulas/cirrose/slides/         → 1 HTML per slide (truth: _manifest.js)
 
 ## Workflow
 
-1. Plan mode para tarefas ≥3 steps. Spec antes de implementar.
-2. Subagents para pesquisa — manter contexto principal limpo.
-3. Verificar antes de declarar done: `npm run lint:slides`, demonstrar correctness.
-4. Handoff: código → visual = Gemini. Visual → clínico = Opus. Parar e transferir.
-5. Após correção do usuário → atualizar `tasks/lessons.md`.
-6. Sessão termina → atualizar registros operacionais (abaixo).
+1. **Anti-drift:** Ler HANDOFF → identificar caminho crítico → propor ao usuário. Ver @.claude/rules/anti-drift.md
+2. Plan mode para tarefas ≥3 steps. Spec antes de implementar.
+3. Subagents para pesquisa — manter contexto principal limpo.
+4. Verificar antes de declarar done: `npm run lint:slides`, demonstrar correctness.
+5. Handoff: código → visual = Gemini. Visual → clínico = Opus. Parar e transferir.
+6. Após correção do usuário → atualizar `tasks/lessons.md`.
+7. Sessão termina → atualizar registros operacionais (abaixo).
 
 ## Operational Records (NUNCA deletar — append-only)
 
@@ -113,6 +114,7 @@ Se algo não bater → PARAR e perguntar.
 
 ## Detailed Rules (loaded on demand by .claude/rules/)
 
+- **Anti-drift protocol: @.claude/rules/anti-drift.md**
 - CSS errors & flexbox: @.claude/rules/css-errors.md
 - Design tokens & OKLCH: @.claude/rules/design-system.md
 - Design principles (Duarte, Tufte, Sweller): @.claude/rules/design-principles.md
