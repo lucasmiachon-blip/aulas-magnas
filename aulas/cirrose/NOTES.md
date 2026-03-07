@@ -392,3 +392,29 @@ EOF
 [2026-03-07 21:53] [Explore:a11507e8] — concluído. Status: PARTIAL
 
 [2026-03-07 21:54] [Explore:a92f3cb6] — concluído. Status: PARTIAL
+
+---
+
+## [07/03] Decisões narrativas Act 1 — Lucas (mobile, sem computador até segunda)
+
+### Contexto
+Lucas sem computador até segunda. Decisões clínicas/narrativas são o trabalho de maior valor.
+
+### Arco narrativo Act 1 decidido pelo Lucas
+
+| Pos | Slide | h2 / tema | Status |
+|-----|-------|-----------|--------|
+| 1 | s-a1-01 (burden) | mantém | ✅ |
+| 2 | s-a1-damico | "A evolução do prognóstico" | ⚠ rótulo, não asserção — propor versão assertiva |
+| 3 | s-a1-fib4 | FIB-4 e outros modelos não-invasivos | ⚠ precisa h2 assertivo |
+| 4 | ?? | idem (continuação FIB-4) | ❓ qual slide? s-a1-vote? novo? |
+| 5 | s-a1-rule5 | Rule of 5 e elastografia | ⚠ precisa h2 assertivo |
+| novo | ?? | Novo paradigma: cirrose → cACLD / dACLD | ❓ é o s-a1-baveno? slide novo? |
+| último | s-a1-meld | "MELD e Child ainda são portos seguros" | ⚠ precisa assertividade |
+
+### Pendências para segunda (com computador)
+1. Resolver "4 idem" — qual slide é esse?
+2. "Novo paradigma" — usar baveno existente ou criar slide?
+3. Converter todos h2 de rótulo → asserção clínica verificável
+4. Aplicar h2 nos HTMLs + rebuild + lint
+5. s-a1-classify fica onde nesse arco? antes do CP1?
