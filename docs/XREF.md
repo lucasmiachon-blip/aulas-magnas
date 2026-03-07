@@ -80,9 +80,11 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 
 | Arquivo | Referencia | Referenciado por |
 |---------|-----------|-----------------|
-| HANDOFF.md | → blueprint-cirrose.md, biblia-narrativa.md | ← CLAUDE.md |
+| HANDOFF.md | → blueprint-cirrose.md, biblia-narrativa.md | ← CLAUDE.md (operational record) |
 | HANDOFF-CLAUDE-AI.md | → HANDOFF.md | ← CLAUDE.md |
-| NOTES.md | (log de decisões) | ← CLAUDE.md |
+| CHANGELOG.md | (append-only — histórico de batches) | ← CLAUDE.md (operational record) |
+| ERROR-LOG.md | (append-only — erros → regras) | ← CLAUDE.md (operational record) |
+| NOTES.md | (log de decisões entre agentes) | ← CLAUDE.md (operational record) |
 
 ### Arquivados (docs/archive/)
 

@@ -81,7 +81,19 @@ aulas/cirrose/slides/         → 1 HTML per slide (truth: _manifest.js)
 3. Verificar antes de declarar done: `npm run lint:slides`, demonstrar correctness.
 4. Handoff: código → visual = Gemini. Visual → clínico = Opus. Parar e transferir.
 5. Após correção do usuário → atualizar `tasks/lessons.md`.
-6. Sessão termina → atualizar `aulas/cirrose/HANDOFF.md`.
+6. Sessão termina → atualizar registros operacionais (abaixo).
+
+## Operational Records (NUNCA deletar — append-only)
+
+| Arquivo | Função | Atualizar quando |
+|---------|--------|-----------------|
+| `aulas/cirrose/HANDOFF.md` | Pendências ativas — próximo agente lê primeiro | Final de toda sessão |
+| `aulas/cirrose/CHANGELOG.md` | Histórico de batches — o que foi feito | Após cada batch de commits |
+| `aulas/cirrose/ERROR-LOG.md` | Erros → regras que previnem repetição | Quando encontrar erro novo |
+| `aulas/cirrose/NOTES.md` | Decisões e achados entre agentes | Durante a sessão |
+| `tasks/lessons.md` | Padrões de auto-correção | Após correção do usuário |
+
+Estes NÃO são entulho — são a memória operacional do projeto entre sessões.
 
 ## Session Start
 

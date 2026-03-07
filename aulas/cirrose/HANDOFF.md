@@ -6,30 +6,28 @@
 
 ## Estado atual — 2026-03-07
 
-**Branch local:** `main` — pronto para push (`8276721`)
-**Branch remota:** `origin/claude/check-updates-last-branch-i6nWS` — **PUSHED** (idêntica ao main local)
+**Branch ativa:** `claude/diagnose-branch-commits-7twpK`
 **Slides:** 28/28 buildados · **Build:** ✅ · **Lint:** ✅
+
+### Sessão atual — Doc graph cleanup
+
+| Item | Status |
+|------|--------|
+| CLAUDE.md reescrito: 397→111 linhas (Anthropic best practices, @imports) | ✅ |
+| AGENTS.md arquivado em `docs/archive/` (absorvido por CLAUDE.md) | ✅ |
+| 5 links mortos corrigidos (HANDOFF.md, SUBAGENTS-PROPOSAL.md) | ✅ |
+| 4 orphans registrados ou arquivados | ✅ |
+| Gemini Flash atualizado → 3.1 Flash-Lite no ECOSYSTEM.md | ✅ |
+| XREF.md reconstruído com todas refs verificadas | ✅ |
+| Hierarquia de autoridade explícita em todos os docs | ✅ |
 
 ### ⚡ AÇÃO NECESSÁRIA — executar localmente
 
 ```bash
 git checkout main
-git pull origin main  # garante que está atualizado
-git push origin main  # requer sua autenticação (agente não pode fazer)
+git pull origin main
+git push origin main  # agente só pushea em branches claude/*
 ```
-
-> Por quê: o agente só pode pushear em branches `claude/*`. O `main` remoto ainda está em `2190229` (archive de HANDOFFs). O `main` local tem mais 80 commits — tudo de `restructure/act1` + sessão de hoje.
-
-### O que está no main local (resumo desta sessão)
-
-| Item | Status |
-|------|--------|
-| Merge completo `restructure/act1` → `main` | ✅ |
-| CI: `.github/workflows/qa.yml` (lint + build on push) | ✅ |
-| Pre-commit hook: `scripts/install-hooks.sh` | ✅ |
-| Fix: `gsap.fromTo` inline → CSS `@keyframes` em `18-cp3.html` | ✅ |
-| Archive: HANDOFFs obsoletos → `docs/archive/` | ✅ |
-| Lint: zero erros | ✅ |
 
 ---
 

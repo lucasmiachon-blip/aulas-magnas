@@ -1,6 +1,6 @@
 # CLAUDE.md — Cirrose Masterclass
 
-> Contexto Cirrose. Hierarquia: AGENTS.md → CLAUDE.md (root) → **este arquivo** (cirrose-specific).
+> Contexto Cirrose. Hierarquia: CLAUDE.md (root) → **este arquivo** (cirrose-specific).
 
 ## Projeto
 
