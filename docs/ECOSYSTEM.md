@@ -26,15 +26,17 @@
 
 ## Pipeline Multimodal — Papel de Cada Modelo
 
+> Roteamento calibrado por benchmark. Ver `docs/KPIs.md` para decisão rápida por tarefa.
+
 | Modelo / Ferramenta | Papel neste projeto | Por quê |
 |--------------------|--------------------|---------|
-| **Claude Opus 4.6** (claude.ai chat) | Design de slides · diagnóstico UI/UX · decisões clínicas · spec para Gemini | GPQA 91.3% · raciocínio profundo · τ²-bench 91.9% |
-| **Claude Code** (Sonnet 4.6, esta sessão) | Implementação · debug · build · git | SWE 79.6% · 5× mais barato · OSWorld 72.5% |
-| **Gemini 3.1 Pro** | Debug CSS/JS/GSAP orientado por Opus · SVG animado · QA visual de vídeo | SWE 80.6% · SVG nativo · APEX Agents #1 · $2/M |
-| **Gemini 3 Flash** | Iterações rápidas · lint · small fixes · protótipos | 3× mais rápido · $0.50/M · SWE 78% (> Gemini 3 Pro) |
-| **Perplexity Computer** | Pesquisa clínica multi-modelo · workflows longos · orquestração | Coordena 19 modelos · roda horas · Notion/GitHub/Slack |
-| **ChatGPT Agent (GPT-5.4)** | QA browser automation · computer use · OSWorld tasks | 75% OSWorld (> humano médio 72.4%) · native computer use |
-| **Perplexity Ultra** (MCP) | Pesquisa em tempo real · verificação de dados clínicos | Acesso web em tempo real |
+| **Claude Opus 4.6** (claude.ai chat) | Arquitetura · spec clínica · decisões CLAUDE.md · diagnóstico UI/UX | GPQA 91.3% · METR horizon 14.5h · τ²-bench 99.3% |
+| **Claude Code** (Sonnet 4.6) | **Geração de HTML de slides** · build · git · lint | SWE 79.6% · melhor em seguir constraints estritas (assertion-evidence, archetypes, token system) |
+| **Gemini 3.1 Pro** | Debug CSS/GSAP orientado por spec · SVG animado · **video QA (motion tier 5)** | SWE 80.6% · APEX Agents #1 · VideoMME 84.8% · $2/M |
+| **Gemini 2.5 Flash** | Lint rápido · small fixes · batch protótipos | 236 tok/s · $0.30/M · SWE 67.2% — velocidade é o KPI |
+| **Perplexity Computer** | Pesquisa clínica longa (overnight) · verificação 28 slides vs EASL/BAVENO | 19 modelos · roda horas · GitHub/Notion — não é para edição real-time |
+| **ChatGPT Agent (GPT-5.4)** | QA browser · navegar localhost:3000 · screenshots de layout | 75% OSWorld (> humano 72.4%) · BrowseComp 82.7% |
+| **Perplexity Ultra** (MCP) | Pesquisa em tempo real | Acesso web em tempo real |
 | **Scite** (MCP) | Supporting/contradicting por artigo | Verificação de citações |
 | **Zotero** (MCP) | Biblioteca de referências · DOIs | Gestão bibliográfica |
 

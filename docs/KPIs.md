@@ -84,19 +84,21 @@ Multi-agent workflows falham silenciosamente. Sem KPIs, não sabe se:
 ## Roteamento por Tarefa (Decisão Rápida)
 
 ```
-TAREFA                          → MODELO
-─────────────────────────────────────────
-Design do slide (do zero)       → Opus 4.6 (chat)
-Spec clínica / evidence         → Opus 4.6 + Perplexity
-HTML do slide                   → Gemini 3.1 Pro (orientado por spec Opus)
-CSS fix / debug layout          → Gemini 3 Flash (iteração rápida)
-GSAP animation debug            → Gemini 3.1 Pro (1M ctx, código)
-Motion QA (vídeo)               → Gemini 3.1 Pro (multimodal)
-Browser automation / QA         → ChatGPT Agent (GPT-5.4) ou Playwright MCP
-Lint / assertion-evidence       → Claude Code (Sonnet 4.6, esta sessão)
-Git / build / deploy            → Claude Code (Sonnet 4.6)
-Pesquisa clínica profunda       → Perplexity Computer (19 modelos)
-Referências / PMIDs             → PubMed MCP + Scite MCP
+TAREFA                          → MODELO                    RAZÃO
+──────────────────────────────────────────────────────────────────────
+Design do slide (do zero)       → Opus 4.6 (chat)           GPQA 91.3%, arquitetura
+Spec clínica / evidence         → Opus 4.6 + Perplexity     Clinical Sanctity rule
+HTML do slide (constraints)     → Claude Code (Sonnet 4.6)  Melhor em seguir assertion-evidence + archetypes
+CSS fix / debug layout          → Gemini 2.5 Flash          236 tok/s · $0.30/M · rápido
+GSAP animation debug            → Gemini 3.1 Pro            SWE 80.6%, 1M ctx
+Motion QA (vídeo .mp4)          → Gemini 3.1 Pro            VideoMME 84.8%, multimodal
+Browser automation / QA         → ChatGPT Agent (GPT-5.4)   OSWorld 75% > humano
+Lint / assertion-evidence       → Claude Code (Sonnet 4.6)  Esta sessão
+Git / build / deploy            → Claude Code (Sonnet 4.6)  Esta sessão
+Pesquisa clínica longa          → Perplexity Computer        overnight, 19 modelos
+Pesquisa em tempo real          → Perplexity Ultra (MCP)    real-time search
+Referências / PMIDs             → PubMed MCP + Scite MCP    verificação direta
+SVG animado (novo)              → Gemini 3.1 Pro            SVG nativo a partir de texto
 ```
 
 ---
@@ -105,11 +107,16 @@ Referências / PMIDs             → PubMed MCP + Scite MCP
 
 | Anti-padrão | Impacto | Fix |
 |-------------|---------|-----|
-| Usar Opus 4.6 para lint/CSS fix | ~5× custo desnecessário | Usar Flash |
-| Usar Gemini Flash para spec clínica | Risco de erro clínico | Usar Opus |
-| Iterar HTML no chat Opus (não no IDE) | Lento + caro | Handoff para Gemini |
-| Não usar MCP PubMed para dados | Risco de dado inventado | Always MCP first |
-| Sessão >80% contexto sem /compact | Perda de detalhes + erro | Compactar antes |
+| Usar Opus 4.6 para lint/CSS fix | ~17× custo vs Flash ($5 vs $0.30/M) | Usar Gemini 2.5 Flash |
+| Usar Flash para spec clínica | Risco de erro clínico | Usar Opus 4.6 |
+| Gerar HTML no chat Opus (não Claude Code) | Lento + caro + sem constraints | Claude Code segue melhor assertion-evidence |
+| Usar Perplexity Computer para edição real-time | Latência alta, não é para isso | Apenas para workflows longos/overnight |
+| Não usar MCP PubMed para dados | Risco de dado inventado (Clinical Sanctity) | Always MCP first |
+| Sessão >80% contexto sem /compact | Perda de detalhes + erro silencioso | Compactar antes dos 70% |
+| Usar Gemini para HTML com constraints estritas | Pode ignorar assertion-evidence, archetype rules | Sonnet 4.6 + Claude Code para HTML |
+
+> **Contra-dado METR RCT (2025):** Desenvolvedores experientes foram 19% **mais lentos** com AI
+> em tarefas reais — design do workflow importa tanto quanto o modelo. Medir antes/depois.
 
 ---
 
