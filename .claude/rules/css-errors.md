@@ -1,7 +1,7 @@
 # CSS Errors — Registry & Prevention
 
-> 32 erros em 5 clusters. Este arquivo é canônico para erros e prevenção.
-> Semântica de cores → ver `design-system.md`
+> 32 erros em 5 clusters. Canônico para erros e prevenção.
+> Relacionados: [design-system](design-system.md) · [medical-data](medical-data.md) · [slide-editing](slide-editing.md)
 > Prioridade: MUST = fatal/bloqueante | SHOULD = alta | MAY = nice-to-have
 
 ---

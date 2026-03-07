@@ -27,7 +27,6 @@
 | [HANDOFF.md](HANDOFF.md) | Estado geral (Cirrose, GRADE, Osteoporose) |
 | [aulas/cirrose/HANDOFF.md](../aulas/cirrose/HANDOFF.md) | Pendências Cirrose |
 | [aulas/cirrose/HANDOFF-CLAUDE-AI.md](../aulas/cirrose/HANDOFF-CLAUDE-AI.md) | Claude.ai (paths, pendências) |
-| [AUDIT-BATCHES.md](AUDIT-BATCHES.md) | Relatório auditoria batches |
 
 ### MCPs e integrações
 | Doc | Uso |
@@ -40,16 +39,20 @@
 ### Conteúdo e escopo
 | Doc | Uso |
 |-----|-----|
-| [cirrose-scope.md](cirrose-scope.md) | Escopo Cirrose |
 | [metanalise-scope.md](metanalise-scope.md) | Escopo Meta-análise |
 | [blueprint-cirrose.md](blueprint-cirrose.md) | Blueprint Cirrose |
 | [biblia-narrativa.md](biblia-narrativa.md) | Narrativa |
+
+### Referência cruzada
+| Doc | Uso |
+|-----|-----|
+| [XREF.md](XREF.md) | Mapa canônico de dependências entre docs |
 
 ### Outros
 | Doc | Uso |
 |-----|-----|
 | [ZIP-LIMPO-PROTOCOLO.md](ZIP-LIMPO-PROTOCOLO.md) | Protocolo export ZIP |
-| [archive/](archive/README.md) | Diagnósticos antigos (REPO-DIAGNOSTIC, DIAGNOSTIC-27fev) |
+| [archive/](archive/README.md) | Docs arquivados (superseded, one-shot) |
 
 ---
 

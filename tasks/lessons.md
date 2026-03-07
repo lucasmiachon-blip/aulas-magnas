@@ -96,7 +96,7 @@
 ### Agents — Problemas Corrigidos
 
 - **verifier:** model fast→sonnet (Haiku fraco demais para git diff + julgamento)
-- **reference-checker → reference-manager:** Definido formato de handoff via `tasks/reference-check-report.md`
+- **reference-checker → reference-manager:** Definido formato de handoff (report inline no NOTES.md)
 - **slide-builder vs medical-slide:** NÃO são duplicatas — ambientes diferentes (Claude Code vs Cursor). Cross-references adicionadas
 - **docs-audit .claude:** Clarificado como redirect para .cursor/skills/docs-audit/
 - **assertion-evidence:** Descrição corrigida "Cria" → "Valida"

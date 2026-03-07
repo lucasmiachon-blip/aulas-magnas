@@ -1,5 +1,7 @@
 # Slide Editing Rules
 
+> Relacionados: [css-errors](css-errors.md) · [design-system](design-system.md) · [reveal-patterns](reveal-patterns.md) · [medical-data](medical-data.md)
+
 ## Checklist Pré-Edição (OBRIGATÓRIO)
 
 Antes de editar QUALQUER slide:

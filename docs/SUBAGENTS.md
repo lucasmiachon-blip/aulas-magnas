@@ -1,6 +1,7 @@
 # Subagents — Melhores Práticas
 
-> Baseado em: Cursor Docs, Anthropic Claude Code, mcp_task. Subagents = subprocessos autônomos com contexto isolado.
+> Baseado em: Cursor Docs, Anthropic Claude Code, mcp_task.
+> Ver também: [RULES.md](RULES.md) · [SKILLS.md](SKILLS.md) · [XREF.md](XREF.md)
 
 ---
 

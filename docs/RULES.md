@@ -1,6 +1,7 @@
 # Rules — Melhores Práticas
 
-> Baseado em: [Cursor Docs — Rules](https://cursor.com/docs/context/rules), Cursor Docs — Rules (rules globais opcionais), plano v6.
+> Baseado em: [Cursor Docs — Rules](https://cursor.com/docs/context/rules), plano v6.
+> Ver também: [SKILLS.md](SKILLS.md) · [SUBAGENTS.md](SUBAGENTS.md) · [XREF.md](XREF.md)
 
 ---
 
@@ -67,14 +68,8 @@ Conteúdo em markdown...
 
 ## Context Window (core-constraints)
 
-| Momento | Ação |
-|---------|------|
-| Em cada output | Informar "Contexto ~X%." (quando a plataforma expuser) |
-| ≥70% | Manter aviso em todo output |
-| ≥85% | Recomendar subagent ou novo chat |
-| ≥95% | Parar e recomendar novo chat |
-
-Regra em `.cursor/rules/core-constraints.mdc`. Referência cruzada: `docs/SUBAGENTS.md`.
+Ver tabela canônica em `docs/SUBAGENTS.md` § Context Window.
+Regra em `.cursor/rules/core-constraints.mdc`.
 
 ## Manutenção
 
