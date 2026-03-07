@@ -1,8 +1,10 @@
 ---
 name: evidence
 description: Busca evidências clínicas no PubMed para slides. Use quando o usuário pedir "buscar evidência", "pesquisar trial", "search evidence", "achar estudo sobre", "preciso de PMID para". Retorna citação AMA + números prontos para slide.
+version: 0.2.0
 context: fork
 agent: general-purpose
+allowed-tools: Read, WebSearch
 argument-hint: "[query clínica]"
 ---
 

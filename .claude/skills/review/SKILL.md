@@ -1,8 +1,10 @@
 ---
 name: review
 description: Audita slides médicos — assertion-evidence, acessibilidade, dados clínicos e design system. Ativar quando o usuário pedir "revise", "audite", "review", "verifique slides" ou "check slides". Reporta PASS/WARN/FAIL por slide.
+version: 0.2.0
 context: fork
 agent: Explore
+allowed-tools: Read, Grep, Glob
 argument-hint: "[lecture] [slide-number?]"
 ---
 
