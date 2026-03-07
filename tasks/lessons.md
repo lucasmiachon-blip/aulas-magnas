@@ -110,3 +110,11 @@
 ---
 
 *Append-only. Não remover lições antigas.*
+
+### Skills frontmatter — campos mar 2026
+
+- Novos campos disponíveis: `version`, `allowed-tools`, `argument-hint`, `user-invocable`, `disable-model-invocation`, `context`, `agent`
+- `allowed-tools` evita aprovação manual por uso — sempre especificar em skills de auditoria (Read, Grep, Glob)
+- **Bug crítico Issue #17283:** `context:fork` e `agent:` são ignorados quando skill invocado via Skill tool (API/SDK). Só funciona no CLI direto.
+- `user-invocable: false` útil para skills de conhecimento de fundo (Claude auto-ativa, não aparece no menu `/`)
+- `disable-model-invocation: true` para skills com side-effects sérios (deploy, push, send)
