@@ -16,6 +16,7 @@
 | `context7` | Docs on-demand de GSAP/Reveal/Vite/OKLCH (lazy) | Ao codar com libs do projeto |
 | `mem-search` | Busca semântica em HANDOFF/NOTES/lessons (lazy) | "o que decidimos sobre X?" |
 | `ralph-qa` | Loop autônomo lint→fix→build→fix até 0 FAILs | "qa loop", "rodar qa até passar" |
+| `evolve` | Comitê de 4 agentes — pesquisa state-of-art, propõe patches para skills/docs/tools | "evoluir skills", "comitê", "evolve" |
 
 **Regra:** Cada skill tem um papel. Nenhum duplica função de outro.
 
@@ -26,6 +27,7 @@
 | Multi-agent paralelo + confidence scoring | code-review-agents (Anthropic) | `review` |
 | Lazy loading (frontmatter only no startup) | Context7 (Upstash) | `context7`, `mem-search` |
 | 3-step token-efficient search | claude-mem (thedotmack) | `mem-search` |
+| Comitê de votação (≥3/4 para aprovar patch) | Adversarial review pattern | `evolve` |
 
 ## Ralph Loop
 
