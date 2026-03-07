@@ -427,3 +427,5 @@ Lucas sem computador até segunda. Decisões clínicas/narrativas são o trabalh
 5. s-a1-classify fica onde nesse arco? antes do CP1?
 
 [2026-03-07 22:51] [Explore:a7b6a76a] — concluído. Status: PARTIAL
+
+[2026-03-07 22:57] [Explore:aca358bc] — concluído. Status: FAIL
