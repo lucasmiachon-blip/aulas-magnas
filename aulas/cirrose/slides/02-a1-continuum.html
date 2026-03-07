@@ -1,7 +1,7 @@
 <!-- ============================================================
      s-a1-01 — Burden global de cirrose
      Archetype: hero-stat (state machine)
-     States: 0=hero countUp, 1=iceberg bars, 2=source
+     States: 0=hero countUp, 1=iceberg bars + badge, 2=source
      ============================================================ -->
 <section id="s-a1-01"
          data-timing="90"
@@ -9,68 +9,68 @@
 
   <div class="slide-inner archetype-hero-stat">
     <p class="section-tag">ATO 1 — CLASSIFICAR</p>
-    <h2 class="slide-headline">Cirrose mata 1,32 milhão por ano — e a epidemia silenciosa está crescendo</h2>
+    <h2 class="slide-headline">1,43 milhão morre por ano</h2>
 
     <!-- Hero block — repositions to top on click 1 -->
     <div class="burden-hero">
-      <span class="hero-number" data-color="danger" data-animate="countUp" data-target="1.32" data-decimals="2">0</span>
+      <span class="hero-number" data-color="danger" data-animate="countUp" data-target="1.43" data-decimals="2">0</span>
       <span class="hero-unit">milhão mortes/ano</span>
-      <p class="hero-label">8ª causa de morte global</p>
-      <p class="hero-context">GBD 2017 Cirrhosis Collaborators · Lancet Gastroenterol Hepatol 2020</p>
+      <p class="hero-label">Top 10 causas de morte global</p>
+      <p class="hero-context">GBD 2021 · Liver Int 2025</p>
       <div class="burden-pulse" aria-hidden="true"></div>
     </div>
 
-    <!-- Iceberg: compensados vs descompensados (click 1) -->
+    <!-- Iceberg: compensados (fundo) vs descompensados (cresce sobre) -->
     <div class="burden-iceberg">
       <div class="burden-bar-row">
         <div class="burden-bar-track">
           <div class="burden-bar-fill burden-bar-fill--comp"></div>
+          <div class="burden-bar-fill burden-bar-fill--decomp"></div>
         </div>
-        <div class="burden-bar-meta">
+        <div class="burden-bar-meta burden-bar-meta--comp">
           <span class="burden-bar-value burden-bar-value--safe"><span class="burden-bar-icon">✓</span> <span data-countup-target="112">0</span>M</span>
           <span class="burden-bar-label">compensados</span>
         </div>
       </div>
 
-      <div class="burden-bar-row">
-        <div class="burden-bar-track">
-          <div class="burden-bar-fill burden-bar-fill--decomp"></div>
-        </div>
-        <div class="burden-bar-meta">
+      <div class="burden-bar-row burden-bar-row--decomp">
+        <div class="burden-bar-meta burden-bar-meta--decomp">
           <span class="burden-bar-value burden-bar-value--danger"><span class="burden-bar-icon">✕</span> <span data-countup-target="10.6">0</span>M</span>
           <span class="burden-bar-label">descompensados</span>
         </div>
       </div>
 
-      <div class="burden-trend">
-        <span class="burden-trend-value">⚠ ↑ 17%</span>
-        <span class="burden-trend-label">incidência/década</span>
+      <div class="burden-badge">
+        <span class="burden-badge-value">⚠ +18% MASH</span>
+        <span class="burden-badge-label">casos 2010–2021</span>
       </div>
+
+      <p class="burden-asymmetry">10% descompensa — 90% não sabe que tem</p>
     </div>
 
-    <p class="source-tag" style="opacity:0">GBD 2017 Cirrhosis Collaborators (PMID 31981519) · 195 países · 1990–2017</p>
+    <p class="source-tag" style="opacity:0">Tham et al. Liver Int 2025 · GBD 2021 · 204 países · PMID 39927433</p>
   </div>
 
   <aside class="notes">
 [0:00-0:30] "Antes de classificar, vamos dimensionar."
-"Um milhão e 320 mil mortes por ano. Só por cirrose."
+"Um milhão e 430 mil mortes por ano. Só por cirrose e doenças hepáticas crônicas."
 PAUSA 3s.
-"Dado do GBD — Global Burden of Disease — 195 países, publicado no Lancet.
-É a 8ª causa de morte no mundo. Mais que câncer de rim. Mais que leucemia."
+"Dado do GBD 2021 — 204 países. Top 10 causas de morte global.
+A taxa ajustada por idade caiu — mas o número absoluto subiu porque tem mais gente com a doença."
 
-[0:30-1:00] click → escala e tendência
-"Olhem a escala: 112 milhões com cirrose compensada — muitos sem saber.
-10 milhões e 600 mil já descompensados.
-E a incidência subiu 17% em uma década — MASLD subindo enquanto hepatite C cai pós-antivirais."
+[0:30-1:00] click → iceberg e tendência
+"112 milhões com cirrose compensada — a maioria sem saber.
+Olhem: 10 milhões e 600 mil descompensados.
+A incidência subiu 18% entre 2010 e 2021 — MASH lidera o crescimento.
+10% descompensa. 90% não sabe que tem."
 
-[1:00-1:30] click → source, ponte para D'Amico
+[1:00-1:30] click → source, ponte para classificação
 "Mas esses 122 milhões não morrem da mesma forma.
 A diferença entre compensado e descompensado é um abismo de mortalidade.
 Vamos ver exatamente onde está esse abismo."
 → avançar
 
-[DATA] GBD 2017 Cirrhosis Collaborators, Lancet Gastroenterol Hepatol 2020 (PMID 31981519) | 1.32M mortes, 112M comp, 10.6M decomp | Verificado: 2026-03-04
-[DATA] Incidência +16.7% (2009-2019): GBD 2019 analysis, Ann Med 2024 | Verificado: 2026-03-04
-[DATA] MASLD trend: Paik JM et al., Hepatology 2020 (PMID 32043613) | Verificado: 2026-03-04
+[DATA] Tham EKJ et al., Liver Int 2025 (PMID 39927433) · GBD 2021 · 1,425,142 mortes (95%UI 1,308,121–1,563,089) · +18% casos 2010-2021 · Verificado: 2026-03-05
+[DATA] Prevalência 112M comp + 10,6M decomp: GBD 2017 Cirrhosis Collaborators, Lancet Gastroenterol Hepatol 2020 (PMID 31981519)
   </aside>
 </section>

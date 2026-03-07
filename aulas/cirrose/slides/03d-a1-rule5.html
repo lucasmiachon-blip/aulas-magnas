@@ -1,0 +1,122 @@
+<!-- ============================================================
+     s-a1-rule5 — Rule-of-5 + Antonio plotado
+     Archetype: flow (state machine)
+     States: 0=zones scaleY, 1=Antonio highlight+gray zone, 2=source
+     SLIDE MAIS IMPORTANTE DO BLOCO 1
+     ============================================================ -->
+<section id="s-a1-rule5"
+         data-timing="120"
+         data-panel-state="neutral">
+
+  <div class="slide-inner archetype-flow">
+    <p class="section-tag">ATO 1 — CLASSIFICAR</p>
+    <h2 class="slide-headline">Onde está o Antônio?</h2>
+
+    <!-- Rule-of-5 scale -->
+    <div class="rule-of-5">
+      <div class="rule-scale">
+        <div class="rule-zone rule-zone--safe" data-zone-idx="0">
+          <span class="rule-zone-icon" aria-hidden="true">✓</span>
+          <span class="rule-zone-range">&lt;10</span>
+          <span class="rule-zone-label">cACLD excluído</span>
+          <span class="rule-zone-directive">Manter na APS</span>
+        </div>
+        <div class="rule-zone rule-zone--gray" data-zone-idx="1">
+          <span class="rule-zone-icon" aria-hidden="true">⚠</span>
+          <span class="rule-zone-range">10–15</span>
+          <span class="rule-zone-label">Zona cinzenta</span>
+          <span class="rule-zone-directive">Elastografia + PLQ</span>
+        </div>
+        <div class="rule-zone rule-zone--caution" data-zone-idx="2">
+          <span class="rule-zone-icon" aria-hidden="true">⚠</span>
+          <span class="rule-zone-range">15–20</span>
+          <span class="rule-zone-label">cACLD provável</span>
+          <span class="rule-zone-directive">Rastreio de varizes</span>
+        </div>
+        <div class="rule-zone rule-zone--danger" data-zone-idx="3">
+          <span class="rule-zone-icon" aria-hidden="true">✕</span>
+          <span class="rule-zone-range">20–25</span>
+          <span class="rule-zone-label">cACLD + CSPH provável</span>
+          <span class="rule-zone-directive">NSBB · Rastreio HCC</span>
+        </div>
+        <div class="rule-zone rule-zone--critical" data-zone-idx="4">
+          <span class="rule-zone-icon" aria-hidden="true">✕</span>
+          <span class="rule-zone-range">≥25</span>
+          <span class="rule-zone-label">CSPH confirmado</span>
+          <span class="rule-zone-directive">Risco hemorrágico alto</span>
+        </div>
+      </div>
+
+      <!-- Gray zone overlay (appears after zones) -->
+      <div class="rule-gray-zone">
+        <span class="rule-gray-zone-label">Zona cinzenta — CSPH possível</span>
+        <span class="rule-gray-zone-range">10–25 kPa</span>
+      </div>
+
+      <p class="rule-axis-label">Rule-of-5 · Elastografia hepática (kPa)</p>
+    </div>
+
+    <!-- Antonio plotted (click 1) -->
+    <div class="antonio-plot">
+      <div class="antonio-pin">
+        <span class="antonio-pin-arrow">▼</span>
+        <span class="antonio-pin-label">Antônio: 21 kPa</span>
+      </div>
+      <p class="antonio-data">LSM 21 kPa · PLQ 112k · FIB-4 5,91</p>
+      <p class="antonio-conclusion">
+        <span class="cacld-tag">✓ cACLD confirmado</span>
+        <span class="csph-tag">⚠ CSPH provável</span>
+      </p>
+      <p class="rule-nuance-note">
+        Rule of 5 não descarta CSPH &lt;20 kPa se FIB-4 alto
+      </p>
+    </div>
+
+    <!-- Clinical nuances (below zones, visible with Antonio) -->
+    <div class="rule-caveats">
+      <p class="rule-caveat-line">Resultado influenciado por: inflamação aguda, ICC, obesidade (↑ falso+)</p>
+      <p class="rule-caveat-line">Jejum mínimo 2h. Repetir se IQR/mediana >30%.</p>
+    </div>
+
+    <!-- Conclusion banner -->
+    <div class="rule-conclusion-banner">
+      <span class="rule-conclusion-icon">✓</span>
+      <span class="rule-conclusion-text">cACLD confirmado</span>
+      <span class="rule-conclusion-icon">⚠</span>
+      <span class="rule-conclusion-text">CSPH não descartado</span>
+    </div>
+
+    <p class="source-tag" style="opacity:0">Baveno VII (PMID 35120736) · Duarte-Rojo &amp; Sterling Hepatology 2025 (PMID 38489521)</p>
+  </div>
+
+  <aside class="notes">
+[0:00-0:40] Zonas crescem com scaleY de baixo para cima (stagger 0.15s)
+[STAGING CUE: Deixar o stagger orquestrar — NÃO falar antes da zona aparecer.]
+"A ferramenta-chave para posicionar o paciente nesse espectro: elastografia.
+Rule-of-5: a cada 5 kPa, muda o estágio e a conduta."
+"Abaixo de 10: descartado, mantém na APS.
+10 a 15: zona cinza, precisa de mais dados.
+15 a 20: cACLD provável, rastreio de varizes.
+20 a 25: CSPH provável, considerar NSBB e HCC.
+Acima de 25: CSPH confirmado."
+Após zonas: gray zone overlay (10-25 kPa) aparece com borda tracejada.
+
+[0:40-1:20] Click 1 → Antônio plotado
+Pin marker cai na zona 20-25 com bounce.
+"Seu Antônio: 21 kPa. Zona 20-25. Plaquetas 112 mil."
+Zona 20-25 recebe glow warning.
+"cACLD confirmado. CSPH não descartado."
+"Importante: Rule of 5 não descarta CSPH abaixo de 20 se o FIB-4 é alto."
+PAUSA 3s.
+"Duas nuances antes de seguir:
+resultado influenciado por inflamação aguda, ICC, obesidade.
+E o exame exige jejum mínimo de 2 horas. IQR/mediana acima de 30% — repetir."
+
+[1:20-1:30] Click 2 → source
+→ avançar para MELD
+
+[DATA] Baveno VII: PMID 35120736 | Rule-of-5 | Verificado: 2026-03-04
+[DATA] Duarte-Rojo & Sterling: PMID 38489521 | LSM + PLQ thresholds | Verificado: 2026-03-05
+[DATA] Antônio: LSM 21 kPa, PLQ 112k, FIB-4 5,91 | Caso fictício
+  </aside>
+</section>

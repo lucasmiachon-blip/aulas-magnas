@@ -5,7 +5,7 @@ description: Use when creating, implementing, or modifying medical presentation 
 
 # Medical Slide Builder (Cursor)
 
-> **Escopo:** Cursor (com Notion MCP). Lê spec do Slides DB.
+> **Escopo:** Cursor (com Notion MCP). Lê spec do Slides DB e delega produção para `slide-frontend-ux`.
 > **Claude Code:** Usar `.claude/agents/slide-builder.md` (spec manual, sem Notion).
 
 ## When to use
@@ -13,71 +13,51 @@ description: Use when creating, implementing, or modifying medical presentation 
 - User references a Notion spec or Slides DB entry
 - User asks to convert a blueprint/storyboard into HTML
 
-## Workflow
+---
 
-### Step 1: Read the spec
-If a Notion Slides DB ID or slide name is provided:
-1. Use Notion MCP to read the slide record
-2. Extract: Headline PT, Visual Recomendado, Objetivo Cognitivo, Refs
-3. If no Notion spec: ask the user for headline + visual + objective
+## Step 0: Ler a spec no Notion
 
-### Step 2: Verify medical data
-Before writing any HTML:
-- [ ] Every number has a verified source (PMID or DOI)
-- [ ] HR vs RR correctly identified
-- [ ] NNT includes CI 95% and time frame
-- [ ] If any data missing: use `[TBD]` and flag to user
+Se um Notion Slides DB ID ou nome foi fornecido:
+1. Use Notion MCP para ler o registro do slide
+2. Extrair: Headline PT, Visual Recomendado, Objetivo Cognitivo, Refs
+3. Se sem spec Notion: pedir ao usuário headline + visual + objetivo
 
-### Step 3: Write HTML (assertion-evidence)
-Structure every slide as:
-```html
-<section class="slide" id="SLIDE-ID">
-  <!-- Título = AFIRMAÇÃO (frase completa, max 2 linhas) -->
-  <h2 class="slide-title">Albumina reduz mortalidade em PBE</h2>
-  
-  <!-- Corpo = EVIDÊNCIA VISUAL que comprova a afirmação -->
-  <div class="slide-body">
-    <!-- Hierarquia: SVG/gráfico > imagem > tabela > texto -->
-  </div>
-  
-  <!-- Referências -->
-  <footer class="slide-refs">Sort et al, NEJM 1999; PMID: 10451459</footer>
-</section>
-```
+---
 
-**Title rules:**
-- ✅ "Albumina reduz mortalidade em PBE por restaurar volemia efetiva"
-- ❌ "Tratamento de PBE" (isso é descrição, não afirmação)
+## Step 1: Verificar dados clínicos
 
-**Visual hierarchy:**
-1. SVG/D3 gráfico construído em código
-2. Imagem de paper (forest plot, Kaplan-Meier)
-3. Tabela formatada com classes existentes
-4. Texto puro (último recurso)
+Antes de escrever HTML — seguir `.claude/skills/medical-data/SKILL.md`:
+- [ ] Todo número tem fonte verificada (PMID ou DOI)
+- [ ] HR ≠ RR (não misturar)
+- [ ] NNT inclui IC 95% e time frame
+- [ ] Dado ausente → `[TBD]`, não inventar
 
-### Step 4: Apply design tokens
-- Use `var()` for ALL colors — never hardcode hex
-- Check font sizes against minimums: A ≥ 0.97vw, B ≥ 0.78vw, C ≥ 0.65vw
-- Gold on light background → use `--gold-dark` variant
+---
 
-### Step 5: Add interactivity (if applicable)
-- Every animation needs a pedagogical reason
-- Generic fadeUp on everything = prohibited
-- Progressive disclosure: one concept per click
-- Click sequence should mirror the presenter's oral narrative
+## Step 2: Implementar HTML
 
-### Step 6: Self-check before delivering
-- [ ] Title is an assertion, not a description?
-- [ ] Visual evidence supports the assertion?
-- [ ] All numbers have verified sources?
-- [ ] Font sizes meet tier minimums?
-- [ ] No hardcoded hex values?
-- [ ] No `display` inline on `<section>`?
-- [ ] Tags balanced?
+**Seguir `.cursor/skills/slide-frontend-ux/SKILL.md` integralmente** para:
+- Assertion-evidence (§1)
+- Tipografia e tokens de cor (§2, §3)
+- Layout e fill ratio (§4)
+- Animações GSAP + state machine (§5, §7)
+- Momento de impacto visual (§6)
+- Contraste e acessibilidade (§8)
+- Checklist de produção (§9)
 
-## Anti-patterns (never do these)
-- Slide with title only (no visual evidence)
-- Wall of text pretending to be a slide
-- Decorative animation without teaching purpose
-- Inventing or estimating clinical numbers
-- Using `!important` without justification comment
+---
+
+## Step 3: Atualizar Notion
+
+Após commit bem-sucedido:
+- Use Notion MCP para atualizar Pipeline Status → "implemented"
+- Adicionar comment com commit hash
+
+---
+
+## Anti-patterns
+
+- Inventar ou estimar dados clínicos
+- Slide com título-rótulo (não-afirmação)
+- Animação decorativa sem propósito pedagógico
+- HEX hardcoded em CSS

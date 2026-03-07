@@ -1,6 +1,9 @@
 ---
 name: medical-data
 description: Verifica e formata dados clínicos em slides — exige trial/estudo, effect size com IC95%, n, e PMID/DOI para cada número. Ativar ao adicionar qualquer claim clínico, estatística ou resultado de trial a um slide.
+version: 0.2.0
+allowed-tools: Read, Grep
+argument-hint: "[claim clínico ou slide-file]"
 ---
 
 ## Todo número clínico no slide DEVE ter

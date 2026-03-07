@@ -8,13 +8,70 @@
 
 ---
 
+## Propósito
+
+> Este projeto existe para tornar Lucas **um melhor** educador, pesquisador, médico e aprendiz — com seus agentes como parceiros, não como ferramentas.
+
+Os agentes não competem. Cada um amplifica uma capacidade:
+
+| Agente | Amplifica |
+|--------|-----------|
+| Opus 4.6 | Raciocínio clínico profundo · spec · arquitetura |
+| Claude Code (Sonnet) | Implementação precisa com constraints estritas |
+| Gemini 3.1 Pro | Visual · GSAP · SVG · motion QA |
+| Gemini 2.5 Flash | Iteração rápida · lint · pequenos fixes |
+| Perplexity Computer | Pesquisa de evidências · overnight batch |
+| ChatGPT Agent | Browser QA · navegação autônoma |
+
+**Objetivo encadeado:**
+Melhorar **AI/dev/ML fluency** → usar melhor os agentes → ser melhor educador, pesquisador e médico → aprendizado acumulado que pode contribuir de volta para criação de skills, agents ou models. Nunca se sabe.
+
+**Regra de ouro:** avançar sempre. Retrabalho é sinal, não fracasso — corrige e segue. O que paralisa é pior que o que precisa ser refeito.
+
+---
+
 ## Projeto
 
 Masterclass "Cirrose Hepática: Classificar, Intervir, Reverter" — 70 min.
 Reveal.js 5.x · GSAP 3.12 · Vite 6.x · Vanilla HTML/CSS/JS · OKLCH · Zero CDN · Offline-first.
 Público: hepatologistas seniores (Brasil). Conteúdo PT-BR, termos técnicos EN.
-Caso clínico: Seu Antônio, 54a, caminhoneiro, etilista, cACLD → descompensação.
+Caso clínico: Seu Antônio, 55a, caminhoneiro, obeso (IMC 31), DM2, etilista 60g/dia, cACLD → descompensação.
+Labs canônicos: AST 67 / ALT 31 (ratio 2,16) / PLQ 112k / GGT 210 / Alb 3,6 / Bili 1,3 / INR 1,2 / FIB-4 5,91.
 Plan C = default (light, 1280×720, GSAP ativo).
+
+## Hierarquia de Referências (ordem de autoridade)
+
+| # | Arquivo | Responsabilidade |
+|---|---------|-----------------|
+| 1 | `aulas/cirrose/references/CASE.md` | Dados do paciente (Seu Antônio) — labs, evolução, armadilhas |
+| 2 | `aulas/cirrose/references/evidence-db.md` | Literatura e trials — PMIDs, NNTs, tier |
+| 3 | `aulas/cirrose/references/narrative.md` | Arco narrativo — pacing, emoção, Chekhov's guns |
+| 4 | `aulas/cirrose/slides/_manifest.js` | Estrutura de slides — ordem, archetypes, panel states |
+
+**Regra de conflito:** o arquivo de maior autoridade (# menor) prevalece.
+**Duplicação proibida:** dados do paciente só em CASE.md. Outros arquivos referenciam com `ver CASE.md`.
+
+---
+
+## Pipeline do Ecossistema (leia antes de começar qualquer tarefa)
+
+> Modelos trabalham juntos, cada um no que faz melhor. Handoff claro = zero retrabalho.
+> Detalhe completo: `docs/ECOSYSTEM.md` · `docs/KPIs.md`
+
+```
+TAREFA                        → QUEM FAZ AQUI          ENTREGA PARA
+──────────────────────────────────────────────────────────────────────
+Spec clínica / arquitetura    → Opus 4.6 (chat)       → Claude Code (impl)
+HTML de slide (constraints)   → Claude Code (você)    → Gemini 3.1 Pro (review)
+CSS debug / layout visual     → Gemini 2.5 Flash      → humano (aprovação)
+GSAP / SVG animado            → Gemini 3.1 Pro        → Claude Code (git)
+Motion QA (vídeo .mp4)        → Gemini 3.1 Pro        → humano (julgamento)
+Browser QA (localhost:3000)   → ChatGPT Agent         → humano
+Pesquisa clínica (overnight)  → Perplexity Computer   → Opus 4.6 (síntese)
+Lint / build / git            → Claude Code (você)    → done
+```
+
+**Regra de handoff:** quando a tarefa sair do seu domínio (código → visual, visual → clínico), **pare e transfira**. Não tente fazer tudo. Isso elimina o retrabalho.
 
 ---
 
@@ -278,10 +335,10 @@ npm run lint:slides      # Assertion-evidence linter
 npm run build:cirrose    # Concatena slides → index.html via _manifest.js
 ```
 
-## Known Issues (Atualizado recentemente)
+## Known Issues (Atualizado 2026-03-05)
 
-1. **case-panel.js:** `renderTimeline()` has hardcoded HEX colors — migrate to `var(--severity-*)` tokens.
-2. **meld-calc.js:** Literal `#1a1a2e` for bg — migrate to `var(--bg-navy)`. Missing null checks on inputs.
+1. ~~**case-panel.js:** hardcoded HEX~~ — Verified: no HEX colors found. Already uses CSS tokens.
+2. ~~**meld-calc.js:** hardcoded colors~~ — Fixed: zone classes renamed to semantic (`-safe/-warning/-danger/-urgent`), CSS migrated to `var(--text-muted)`/`var(--divider)`.
 3. **.gitignore:** `*.png` pattern ignores QA screenshots in `qa-screenshots/` dir.
 
 ---
@@ -304,7 +361,7 @@ Isso substitui memória de contexto — não dependa do histórico da conversa.
 
 ## Anti-drift
 
-- Uma task por sessão. Commitar, /clear, nova sessão.
+- Até 3 tasks por sessão. Commitar entre tasks, /clear se contexto >70%.
 - /compact manual antes de batches grandes: `/compact Focus on: [task atual], [paths], [constraints]`
 - Não depender de "como discutimos antes" — cada prompt deve ser self-contained com ATUAL/NOVO explícito.
 - Se contexto >80%: parar, commitar o que tem, /clear, continuar em sessão nova.

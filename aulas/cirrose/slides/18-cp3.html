@@ -56,12 +56,9 @@
             const allChecked = Array.from(checks).every(c => c.checked);
             if (allChecked) {
               checklist.classList.add('all-checked');
-              if (typeof gsap !== 'undefined') {
-                gsap.fromTo(checklist, { scale: 1 }, {
-                  scale: 1.04, duration: 0.4, ease: 'back.out(2)',
-                  yoyo: true, repeat: 1
-                });
-              }
+              checklist.classList.remove('bounce');
+              void checklist.offsetWidth; /* reflow para reiniciar animação */
+              checklist.classList.add('bounce');
             } else {
               checklist.classList.remove('all-checked');
             }

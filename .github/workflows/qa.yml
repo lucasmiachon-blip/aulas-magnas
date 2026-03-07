@@ -1,0 +1,37 @@
+name: QA — lint + build
+
+on:
+  push:
+    paths:
+      - 'aulas/*/slides/**'
+      - 'shared/**'
+      - 'aulas/*/archetypes.css'
+      - 'aulas/*/cirrose.css'
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Lint slides (assertion-evidence)
+        run: npm run lint:slides
+
+      - name: Build cirrose
+        run: npm run build:cirrose
+
+      - name: Build grade
+        run: npm run build:grade
+        continue-on-error: true
+
+      - name: Build osteoporose
+        run: npm run build:osteoporose
+        continue-on-error: true

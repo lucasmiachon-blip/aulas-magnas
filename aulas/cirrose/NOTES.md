@@ -314,3 +314,71 @@ EOF
 [2026-03-04 14:42] [Explore:a7e5bc5a] — concluído. Status: PASS
 
 [2026-03-04 15:31] [:aad6ce33] — concluído. Status: PASS
+
+[2026-03-05 14:46] [:a8786bcb] — concluído. Status: PARTIAL
+
+[2026-03-05 14:46] [Explore:ae96a4a0] — concluído. Status: FAIL
+
+[2026-03-05 15:22] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 16:43] [:a344012c] — concluído. Status: PARTIAL
+
+[2026-03-05 16:43] [Explore:a542082c] — concluído. Status: PARTIAL
+
+[2026-03-05 16:53] [:a35a1753] — concluído. Status: PARTIAL
+
+[2026-03-05 16:55] [:a9af32dd] — concluído. Status: PARTIAL
+
+[2026-03-05 16:55] [:aa08cb61] — concluído. Status: PARTIAL
+
+[2026-03-05 16:55] [Explore:a00092b7] — concluído. Status: PASS
+
+[2026-03-05 16:55] [:ae0af854] — concluído. Status: PARTIAL
+
+[2026-03-05 16:55] [Explore:a4b36093] — concluído. Status: PASS
+
+[2026-03-05 16:56] [Explore:a45c5d19] — concluído. Status: PARTIAL
+
+[2026-03-05 17:02] [BUILD] OK — cat "C:/Dev/Projetos/aulas-magnas/aulas/cirrose/scripts/build-html.ps1" 2>/dev/null || cat "C:/Dev/Projetos/aulas-magnas/scripts/build-cirrose.js" 2>/dev/null || grep -r "build:cirrose" "C:/Dev/Projetos/aulas-magnas/package.json"
+
+[2026-03-05 17:04] [Plan:ae2cfc3a] — concluído. Status: PARTIAL
+
+[2026-03-05 17:50] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1 | tail -5
+
+[2026-03-05 17:56] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 18:01] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1 && npm run lint:slides 2>&1
+
+[2026-03-05 18:01] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build 2>&1 | tail -15
+
+[2026-03-05 18:19] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1 && npm run lint:slides 2>&1
+
+[2026-03-05 18:28] [:a62c3c59] — concluído. Status: PARTIAL
+
+[2026-03-05 18:32] [BUILD] OK — cd "C:\Dev\Projetos\aulas-magnas" && npm run build:cirrose 2>&1 | tail -5
+
+[2026-03-05 18:48] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 19:11] [BUILD] OK — cd "C:/Dev/Projetos/aulas-magnas" && npm run build:cirrose 2>&1 | tail -5
+
+[2026-03-05 19:16] [:ab78edec] — concluído. Status: PASS
+
+[2026-03-05 19:16] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 19:17] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 19:21] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 19:23] [BUILD] OK — cd /c/Dev/Projetos/aulas-magnas && npm run build:cirrose 2>&1
+
+[2026-03-05 19:46] [Explore:acff9b35] — concluído. Status: PASS
+
+[2026-03-05 19:47] [:ad6acebe] — concluído. Status: PARTIAL
+
+[2026-03-05 19:47] [:a1acbe50] — concluído. Status: PARTIAL
+
+[2026-03-05 19:48] [Explore:a31548d4] — concluído. Status: PARTIAL
+
+[2026-03-05 19:49] [Explore:aab7ec1c] — concluído. Status: PARTIAL
+
+[2026-03-07 20:16] [BUILD] OK — npm run build:cirrose 2>&1 | tail -3

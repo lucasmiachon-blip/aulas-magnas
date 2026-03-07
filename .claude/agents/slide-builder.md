@@ -17,6 +17,8 @@ ralph_phase: act
 
 ## RALPH Gate (Act)
 
+Antes de qualquer tarefa: ler `aulas/cirrose/references/CASE.md` para obter dados canônicos do paciente (Seu Antônio).
+
 Spec incompleta → STOP. Listar campos faltantes, aguardar Lucas. Dado parece errado → STOP. Reportar discrepância + fonte, aguardar Lucas. Layout impossível com tokens existentes → STOP. Descrever limitação, aguardar Lucas.
 **NUNCA improvisar conteúdo. NUNCA reescrever headline. NUNCA inventar dados.**
 
@@ -38,14 +40,19 @@ Não comece sem receber:
 ## Workflow
 
 ```bash
-# 1. Criar slide em aulas/[aula]/index.html
-# 2. Lint
-npm run lint:slides -- aulas/[aula]/
-# 3. Screenshot
-npm run export:screenshots -- aulas/[aula]/
-# 4. Commit
-git add -A && git commit -m "[AULA] batch N — desc"
+# 1. Editar/criar slide em aulas/[aula]/slides/NN-nome.html
+# 2. Build (concatena slides via _manifest.js)
+npm run build:cirrose   # ou build:grade / build:osteoporose
+# 3. Lint
+npm run lint:slides
+# 4. Screenshot QA (opcional)
+# npx playwright ... aulas/[aula]/
+# 5. Commit
+git add aulas/[aula]/slides/NN-nome.html aulas/[aula]/index.html
+git commit -m "[AULA] batch N — desc"
 ```
+
+> **Arquitetura:** slides individuais em `slides/*.html` (source) → `_manifest.js` define ordem → `npm run build:cirrose` gera `index.html`. NUNCA editar `index.html` diretamente.
 
 ## Template
 

@@ -70,7 +70,7 @@
 - NUNCA deletar `<aside class="notes">`. Apenas append de staging cues permitido.
 
 ### Git
-- Branch ativa: `refactor/floating-panel` (pendente merge → `main`)
+- Branch ativa: `main` (desenvolvimento via `claude/*` branches)
 - Commits: prefixo semântico (`fix:`, `feat:`, `refactor:`, `docs:`)
 
 ## Context window hygiene

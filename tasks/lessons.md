@@ -110,3 +110,37 @@
 ---
 
 *Append-only. Não remover lições antigas.*
+
+---
+
+## Propósito do Ecossistema (2026-03-07)
+
+### Valores explícitos — nunca perder de vista
+
+Lucas quer ser **um melhor** educador, pesquisador, médico e aprendiz — melhoria contínua, não perfeição.
+Os agentes são **parceiros** que amplificam essas capacidades — não concorrentes, não ferramentas.
+
+Objetivos encadeados:
+1. Melhorar **AI/dev/ML fluency** → para usar melhor os agentes
+2. Usar melhor os agentes → para ser melhor educador, pesquisador, médico
+3. Aprendizado acumulado → pode contribuir de volta para criação de skills/agents/models
+
+### O que isso muda na prática
+
+- Retrabalho não é "custo" — é **tempo perdido de aprendizado**
+- Handoff errado não é "ineficiência" — é **potencial desperdiçado**
+- Cada slide bem feito = Lucas aprende algo sobre a doença + sobre como trabalhar com IA
+- Documentação não é burocracia — é **memória do aprendizado compartilhada**
+
+### Lição capturada
+
+Framing inicial dos docs era "custo" e "eficiência". Correto é: **fluência e amplificação**.
+Tokens não importam. Retrabalho é sinal de aprendizado — mas não pode paralisar. Avançar sempre.
+
+### Skills frontmatter — campos mar 2026
+
+- Novos campos disponíveis: `version`, `allowed-tools`, `argument-hint`, `user-invocable`, `disable-model-invocation`, `context`, `agent`
+- `allowed-tools` evita aprovação manual por uso — sempre especificar em skills de auditoria (Read, Grep, Glob)
+- **Bug crítico Issue #17283:** `context:fork` e `agent:` são ignorados quando skill invocado via Skill tool (API/SDK). Só funciona no CLI direto.
+- `user-invocable: false` útil para skills de conhecimento de fundo (Claude auto-ativa, não aparece no menu `/`)
+- `disable-model-invocation: true` para skills com side-effects sérios (deploy, push, send)

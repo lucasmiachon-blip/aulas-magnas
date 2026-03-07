@@ -1,6 +1,6 @@
 # Skills — Melhores Práticas
 
-> Baseado em: [Cursor Docs — Agent Skills](https://cursor.com/docs/context/skills) (skills globais em ~/.cursor/skills/), plano v6.
+> Baseado em: docs oficiais Anthropic Claude Code (mar 2026) + Cursor Docs. Última atualização: 2026-03-07.
 
 ---
 
@@ -31,22 +31,29 @@ skill-name/
 ---
 name: skill-name
 description: O que faz e quando usar. Max 1024 chars.
+version: 0.1.0
+context: fork               # opcional — isola em subagent
+agent: general-purpose      # opcional — só com context:fork
+allowed-tools: Read, Grep   # opcional — sem aprovação por uso
+argument-hint: "[arg]"      # opcional — hint no autocomplete
+user-invocable: false       # opcional — esconde do menu /; Claude ainda auto-ativa
+disable-model-invocation: true  # opcional — só invocação manual
 ---
-
-# Nome do Skill
-
-## When to Use
-- Cenário 1
-- Cenário 2
-
-## Instructions
-...
 ```
 
 | Campo | Obrigatório | Regras |
 |------|-------------|--------|
 | `name` | Sim | lowercase, hífens, max 64 chars |
-| `description` | Sim | Terceira pessoa. Incluir WHAT + WHEN. Termos de trigger. |
+| `description` | Sim | Terceira pessoa. Incluir WHAT + WHEN. Termos de trigger. Max 1024 chars. |
+| `version` | Não | Semver (ex: `0.2.0`) para rastrear updates |
+| `context` | Não | `fork` = isola em subagent com contexto separado |
+| `agent` | Não | Tipo de subagent: `Explore`, `Plan`, `general-purpose` (só com `context:fork`) |
+| `allowed-tools` | Não | Ferramentas sem aprovação: `Read, Grep, Glob`, `Bash(npm run *)` |
+| `argument-hint` | Não | Hint no autocomplete: `[slide-file]`, `[query]` |
+| `user-invocable` | Não | `false` = esconde do `/`; Claude ainda auto-ativa |
+| `disable-model-invocation` | Não | `true` = só invocação manual (para workflows com side-effects) |
+
+> **Bug conhecido (Issue #17283):** `context:fork` e `agent:` são ignorados quando skill é invocado via Skill tool (API/SDK). Funciona apenas no CLI direto.
 
 ---
 
@@ -79,13 +86,25 @@ description: O que faz e quando usar. Max 1024 chars.
 
 ## Skills do Projeto
 
-| Skill | Local | Papel |
-|-------|-------|-------|
-| medical-slide | .cursor | Cursor: Notion→HTML, tri-mode, execução. Ver `.claude/agents/slide-builder.md` para Claude Code |
-| visual-qa | .cursor | Cursor: Playwright, a11y, screenshots |
-| docs-audit | .cursor (canônico) | Cursor: execução direta. Claude Code: redirect em `.claude/skills/docs-audit/` delega via subagent |
-| assertion-evidence | .claude | Claude: **validação** formato (não cria — usar slide-builder para criar) |
-| medical-data | .claude | Claude: verificação dados (complementar a reference-manager) |
+### Claude Code (`.claude/skills/`)
+
+| Skill | version | context | allowed-tools | Papel |
+|-------|---------|---------|---------------|-------|
+| `assertion-evidence` | 0.2.0 | — | Read, Grep, Glob | Valida formato assertion-evidence em slides HTML |
+| `medical-data` | 0.2.0 | — | Read, Grep | Verifica dados clínicos: trial, IC95%, PMID obrigatórios |
+| `docs-audit` | 0.2.0 | fork / general-purpose | Read, Grep, Glob | Audita docs/*.md: links, redundância, token economy |
+| `review` | 0.2.0 | fork / Explore | Read, Grep, Glob | Audita slides: PASS/WARN/FAIL por dimensão |
+| `evidence` | 0.2.0 | fork / general-purpose | Read, WebSearch | Busca evidências PubMed → citação AMA + dados slide |
+| `new-slide` | — | — | — | Cria slide HTML completo com archetype correto |
+| `export` | — | — | — | Exporta slides para PDF/compartilhamento |
+
+### Cursor (`.cursor/skills/`)
+
+| Skill | Papel |
+|-------|-------|
+| `medical-slide` | Notion→HTML, tri-mode, execução completa |
+| `visual-qa` | Playwright, a11y, screenshots |
+| `docs-audit` | Canônico — Claude Code delega para `.cursor/skills/docs-audit/` |
 
 ## Papéis — Sem conflito
 
@@ -95,4 +114,4 @@ description: O que faz e quando usar. Max 1024 chars.
 | **Claude Code** | .claude/skills/ | Terminal: auditoria, validação, pesquisa (sem Cursor) |
 | **Claude.ai** | .claude/skills/ | Web: specs, narrativa (upload manual) |
 
-**Regra:** Cada superfície usa seu diretório. docs-audit espelhado: mesmo conteúdo, path no prompt adaptado. Nenhum skill duplica papel de outro.
+**Regra:** Cada superfície usa seu diretório. docs-audit espelhado: mesmo conteúdo, path adaptado. Nenhum skill duplica papel de outro.

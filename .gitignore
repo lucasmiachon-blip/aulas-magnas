@@ -48,6 +48,8 @@ docs/transcripts/*.analysis.json
 *.png
 # Exceção: figuras de papers (assets de aula)
 !aulas/cirrose/assets/*.png
+# Exceção: QA screenshots (versionados para review)
+!qa-screenshots/*.png
 
 # Playwright MCP artifacts (screenshots, logs — gerados localmente)
 .playwright-mcp/
