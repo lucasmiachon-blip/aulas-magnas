@@ -2,6 +2,8 @@
 
 > Protocolo para decisões não-triviais sobre slides.
 > Agente propõe → Lucas decide → decisão registrada.
+> Coautoria: Opus 4.6 (draft) · Lucas (aprovação)
+> Ver: references/coautoria.md
 
 ---
 

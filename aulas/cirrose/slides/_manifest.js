@@ -10,6 +10,9 @@
  *   tensionLevel:  0-5 (matches narrative.md tension dots)
  *   narrativeCritical: true = slide whose h2/structure MUST NOT change without Lucas approval
  *
+ * Coautoria: Lucas (decisao clinica) · Opus 4.6 (codigo + governance)
+ * Ver: references/coautoria.md
+ *
  * Gerado na FASE 0 da refatoracao arquitetural.
  * Atualizado: 2026-03-08
  */
