@@ -1325,7 +1325,7 @@
 
 .vote-option--correct {
   border-color: var(--safe);
-  background: oklch(40% 0.08 170 / 0.08);
+  background: oklch(from var(--safe) l c h / 0.08);
 }
 
 .vote-option--correct::after {
@@ -1813,8 +1813,8 @@
 
 /* Zone highlight pulse */
 @keyframes zone-highlight {
-  0%, 100% { box-shadow: 0 0 0 0 oklch(60% 0.13 85 / 0.4); }
-  50% { box-shadow: 0 0 8px 2px oklch(60% 0.13 85 / 0.3); }
+  0%, 100% { box-shadow: 0 0 0 0 oklch(from var(--warning) l c h / 0.4); }
+  50% { box-shadow: 0 0 8px 2px oklch(from var(--warning) l c h / 0.3); }
 }
 .rule-zone--highlighted {
   animation: zone-highlight 2s ease infinite;
@@ -2657,6 +2657,16 @@
 .no-js .fib4-mandate,
 .stage-bad .fib4-mandate {
   opacity: 1 !important;
+}
+.no-js .classify-card,
+.stage-bad .classify-card {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.no-js .antonio-pin,
+.stage-bad .antonio-pin {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

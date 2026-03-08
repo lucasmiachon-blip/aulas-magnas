@@ -212,7 +212,7 @@
 | Prince DS, Hoque S et al. ("The Liver Toolkit") | **38934697** | Hepatol Commun 2024 | Screening >32k adultos (9 clinicas): **83% dos pacientes com cACLD tinham diagnostico novo** (n=23/179 recalled). Etiologia MASLD: 83%. |
 
 > **Dado confirmado:** "the majority of patients are only diagnosed when they exhibit features of end-stage decompensated disease"
-> **Uso:** slide 02c-a1-screening.html, Estado 1 — percentual de pacientes assintomaticos/nao diagnosticados.
+> **Uso:** slide 02c-a1-classify.html, Estado 1 — percentual de pacientes assintomaticos/nao diagnosticados.
 
 ### FIB-4 — Cutoffs e Performance Diagnostica (Tier-1)
 

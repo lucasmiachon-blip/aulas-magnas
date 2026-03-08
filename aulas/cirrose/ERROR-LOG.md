@@ -141,7 +141,7 @@ Severidades: CRITICAL (bloqueia projeção), HIGH (prejudica leitura), MEDIUM (e
 **Root cause:** `#s-a1-damico.archetype-flow` (sem espaço) seleciona elemento com ambas id e class no MESMO nó. A section tem id=s-a1-damico mas NÃO tem class=archetype-flow (a class está no div filho `.slide-inner`). Seletor nunca casa → track fica `height: auto` (~267px) → Era 5 dataset 2014 clippado.
 **Fix:** Adicionar espaço → `#s-a1-damico .archetype-flow` (descendente).
 **Regra:** CSS descendente = ESPAÇO (`A B`). Mesmo elemento = SEM espaço (`A.B`). Testar SEMPRE com `querySelectorAll('seletor').length > 0` para confirmar que o seletor casa.
-**Status:** ⚠ PENDENTE — 1 char de fix, não aplicado nesta sessão.
+**Status:** ✅ Corrigido (espaço já presente em cirrose.css:2220).
 
 ---
 
@@ -227,9 +227,9 @@ if (section?.id === 's-hook' && beatParam !== null) {
 
 | Severidade | Total | Corrigidos | Pendentes |
 |------------|-------|------------|-----------|
-| CRITICAL   | 4     | 3          | 1 (ERRO-021) |
-| HIGH       | 10    | 8          | 2 (ERRO-021, ERRO-022) |
+| CRITICAL   | 4     | 4          | 0 |
+| HIGH       | 10    | 9          | 1 (ERRO-022) |
 | MEDIUM     | 8     | 6          | 2 (ERRO-008, ERRO-023) |
 | LOW        | 1     | 1          | 0         |
 
-*Última atualização: 2026-03-08 · ERRO-024 (notas stale) adicionado e corrigido · ERRO-021/008/022/023 ainda pendentes*
+*Última atualização: 2026-03-08 · ERRO-021 corrigido (nota stale — já estava fixo). ERRO-008/022/023 pendentes*

@@ -4,7 +4,7 @@
 
 ---
 
-## 2026-03-08 — Source-of-truth enforcement + PLQ padronização
+## 2026-03-08 — Source-of-truth enforcement + PLQ + fixes técnicos
 
 Branch: `claude/diagnose-branch-commits-7twpK`
 
@@ -14,8 +14,11 @@ Branch: `claude/diagnose-branch-commits-7twpK`
 | Notas stale removidas | `[LUCAS DECIDE]` PLQ (CASE.md), "PLQ inconsistência" (HANDOFF.md) |
 | panelState inheritance documentada | Comentários em _manifest.js explicando null = herança via findLatestState |
 | ERRO-024 registrado | Regra: quem corrige bug DEVE limpar notas de warning associadas |
-
-**Regra nova:** Correção sem cleanup de notas = drift futuro. Enforcement pendente (lint/import).
+| lint:case-sync criado | Script + package.json + pre-commit hook |
+| OKLCH literals corrigidos | `.vote-option--correct`, `@keyframes zone-highlight` → `oklch(from var(...))` |
+| Rename screening→classify | `02c-a1-screening.html` → `02c-a1-classify.html` + `_manifest.js` + `evidence-db.md` |
+| .no-js failsafes | `.classify-card`, `.antonio-pin` — `opacity:1 !important; transform:none` |
+| ERRO-021 marcado corrigido | Nota stale — espaço no seletor já existia em cirrose.css:2220 |
 
 ---
 

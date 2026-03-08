@@ -87,12 +87,11 @@ Outras decisões pendentes:
 
 ### Fixes técnicos pendentes (do QA Bloco 1)
 
-| Item | Fix |
-|------|-----|
-| `cirrose.css` `@keyframes zone-highlight` | OKLCH literal → `oklch(from var(--warning) l c h / 0.4)` |
-| `cirrose.css` `.vote-option--correct` | OKLCH literal → `oklch(from var(--safe) l c h / 0.08)` |
-| `02c-a1-screening.html` filename | Renomear para bater com section ID `s-a1-classify` + atualizar `_manifest.js` |
-| `s-a1-classify` `.classify-card` | Adicionar CSS failsafe `.no-js .classify-card { opacity:1 }` |
+Todos resolvidos nesta sessão:
+- ~~OKLCH literals~~ → `oklch(from var(...))` aplicado
+- ~~Rename `02c-a1-screening.html`~~ → `02c-a1-classify.html` + `_manifest.js` atualizado
+- ~~`.no-js` failsafes~~ → `.classify-card`, `.antonio-pin` adicionados
+- ~~ERRO-021~~ → já estava corrigido (nota stale limpa)
 
 ---
 
