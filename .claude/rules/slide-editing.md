@@ -42,6 +42,22 @@ Antes de editar QUALQUER slide:
 
 ---
 
+## Narrative QA Checklist
+
+Antes de declarar slide "done", verificar:
+
+- [ ] `narrativeRole` em _manifest.js corresponde à função do slide no arco
+- [ ] `tensionLevel` em _manifest.js bate com narrative.md (● dots)
+- [ ] Se `narrativeCritical: true` → h2 NÃO pode mudar sem `[LUCAS DECIDE]`
+- [ ] Checkpoint NÃO revela resposta de ato posterior (forbidEarlyReveal)
+
+Validação automática: `npm run lint:narrative-sync`
+
+Para mudanças em slides narrativeCritical, usar protocolo Decision Record:
+ver `references/decision-protocol.md`
+
+---
+
 ## Referências cruzadas
 
 - Flexbox anti-patterns → `css-errors.md` Cluster A

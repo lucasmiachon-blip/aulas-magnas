@@ -2,6 +2,7 @@
 
 > Mapa narrativo para coding agents. Cada slide tem um PROPÓSITO emocional.
 > Sem este contexto, refatorar = destruir pacing.
+> Coautoria: Lucas (narrativa clinica) · ChatGPT 5.4 Pro (draft dramatico) · Opus 4.6 (governance fields)
 > Atualizado: 01/mar/2026 — Alinhado com repo canônico (CLAUDE-PROJECT.md).
 > Fonte: Bíblia Narrativa (Notion — ver `docs/SYNC-NOTION-REPO.md`)
 

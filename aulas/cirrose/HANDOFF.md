@@ -32,11 +32,9 @@ git push origin main  # agente só pushea em branches claude/*
 ### 🔴 IMEDIATO
 
 1. **`[LUCAS DECIDE]`** — ver slides no browser → decidir 6 h2 (tom: factual, par-a-par, sem manchete)
-2. ERRO-021 — fix 1 char CSS (5 dias parado)
-3. Fixes técnicos: OKLCH literals em `cirrose.css`, rename `screening→classify`, failsafe `.classify-card`
-4. Verificar 7 PMIDs CANDIDATE via PubMed MCP
-5. **Re-rodar qa-engineer** com rubrica 13 critérios + nova stack MCP
-6. Iterar até ≥ 9/10 em todos os critérios
+2. Verificar 7 PMIDs CANDIDATE via PubMed MCP
+3. **Re-rodar qa-engineer** com rubrica 13 critérios + nova stack MCP
+4. Iterar até ≥ 9/10 em todos os critérios
 
 ### 🟡 DECISÕES CLÍNICAS [LUCAS DECIDE]
 
@@ -65,13 +63,18 @@ Outras decisões pendentes:
 **Implementado 2026-03-08:**
 1. ✅ **Lint rule** — `npm run lint:case-sync` compara panelStates vs CASE.md, falha se divergir
 2. ✅ **Comentário-contrato** — header em _manifest.js: `DERIVADO DE: references/CASE.md`
+3. ✅ **Narrative governance** — `npm run lint:narrative-sync` valida narrativeRole + tensionLevel + narrativeCritical vs narrative.md
+4. ✅ **Decision Record protocol** — `references/decision-protocol.md` para mudanças em slides narrativeCritical
+5. ✅ **5 slides narrative-critical** — s-hook, s-cp1, s-cp2, s-cp3, s-close (flagged em _manifest.js)
 
 **Pendente:**
-- Wiring no pre-commit hook (rodar junto com lint:slides)
+- Wiring no pre-commit hook (lint:case-sync + lint:narrative-sync + lint:slides)
+- Slides interativos precisam de redesign completo via mockup Excalidraw (não protocolado ainda)
 
 **Regras operacionais (em vigor):**
 - Quem corrige dado clínico em CASE.md → atualiza _manifest.js + slide HTML na mesma sessão
 - Quem corrige bug → limpa TODAS as notas de warning associadas (HANDOFF, CASE.md, NOTES.md)
+- Mudança em slide narrativeCritical → usar Decision Record protocol
 
 ### 🟢 BAIXA
 
@@ -84,14 +87,6 @@ Outras decisões pendentes:
 
 - **ERRO-008** — Case panel redundante em s-hook
 - **D'Amico estádio 5** — label errado
-
-### Fixes técnicos pendentes (do QA Bloco 1)
-
-Todos resolvidos nesta sessão:
-- ~~OKLCH literals~~ → `oklch(from var(...))` aplicado
-- ~~Rename `02c-a1-screening.html`~~ → `02c-a1-classify.html` + `_manifest.js` atualizado
-- ~~`.no-js` failsafes~~ → `.classify-card`, `.antonio-pin` adicionados
-- ~~ERRO-021~~ → já estava corrigido (nota stale limpa)
 
 ---
 
