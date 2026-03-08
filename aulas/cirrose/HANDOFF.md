@@ -94,7 +94,7 @@ VERDICT, WHERE I DISAGREE WITH USER, WHERE I DISAGREE WITH CHATGPT COAUTHOR, WHE
 ## Pendências abertas (herdadas)
 
 - **ERRO-008** — Case panel redundante em s-hook
-- **D'Amico estádio 5** — label errado ("Infecção ou AKI" → "2º evento descompensante")
+- ~~**D'Amico estádio 5**~~ — RESOLVIDO: label "Infecção ou AKI" não existe no HTML atual (slide redesenhado com eras)
 - 21 referências [TBD] — 7 CANDIDATE, 12 NOT INDEXED (2025-2026)
 - CTP interobserver variability — PMID 6546609 ou 16305721
 - Pre-commit hook wiring pendente (lint:case-sync + lint:narrative-sync + lint:slides)

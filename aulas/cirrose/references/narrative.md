@@ -71,7 +71,7 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 
 | # | Slide | Headline | Propósito narrativo | Tensão |
 |---|-------|----------|---------------------|--------|
-| 8 | s-a2-01 | Carvedilol previne primeira descompensação | **Resolução 1**: NSBB = NNT 9 | ●●○○○ |
+| 8 | s-a2-01 | NSBBs previnem primeira descompensação | **Resolução 1**: NSBB = NNT 9 | ●●○○○ |
 | 9 | s-a2-02 | Early TIPS salva vidas no sangramento | **Urgência**: 72h window | ●●●○○ |
 | 10 | s-a2-03 | Albumina: 3 certas, 1 armadilha | **Twist**: ATTIRE = NÃO funciona (contraste) | ●●●●○ |
 | 11 | s-a2-04 | PBE: PMN ≥250 = tratar | Protocolo direto, tensão mantida | ●●●○○ |
