@@ -476,3 +476,5 @@ Quando PubMed MCP estiver disponivel (Cursor ou ambiente com rede):
 5. Cadastrar no Notion References DB
 
 [2026-03-07 23:07] [reference-manager:a6e6b53c] — concluído. Status: PASS
+
+[2026-03-08 00:26] [Explore:a9387db3] — concluído. Status: PASS
