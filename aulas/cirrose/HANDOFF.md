@@ -65,13 +65,18 @@ Outras decisões pendentes:
 **Implementado 2026-03-08:**
 1. ✅ **Lint rule** — `npm run lint:case-sync` compara panelStates vs CASE.md, falha se divergir
 2. ✅ **Comentário-contrato** — header em _manifest.js: `DERIVADO DE: references/CASE.md`
+3. ✅ **Narrative governance** — `npm run lint:narrative-sync` valida narrativeRole + tensionLevel + narrativeCritical vs narrative.md
+4. ✅ **Decision Record protocol** — `references/decision-protocol.md` para mudanças em slides narrativeCritical
+5. ✅ **5 slides narrative-critical** — s-hook, s-cp1, s-cp2, s-cp3, s-close (flagged em _manifest.js)
 
 **Pendente:**
-- Wiring no pre-commit hook (rodar junto com lint:slides)
+- Wiring no pre-commit hook (lint:case-sync + lint:narrative-sync + lint:slides)
+- Slides interativos precisam de redesign completo via mockup Excalidraw (não protocolado ainda)
 
 **Regras operacionais (em vigor):**
 - Quem corrige dado clínico em CASE.md → atualiza _manifest.js + slide HTML na mesma sessão
 - Quem corrige bug → limpa TODAS as notas de warning associadas (HANDOFF, CASE.md, NOTES.md)
+- Mudança em slide narrativeCritical → usar Decision Record protocol
 
 ### 🟢 BAIXA
 

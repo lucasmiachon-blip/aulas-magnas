@@ -16,6 +16,7 @@
     "fonts:install": "node scripts/install-fonts.js",
     "lint:slides": "node scripts/lint-slides.js",
     "lint:case-sync": "node scripts/lint-case-sync.js",
+    "lint:narrative-sync": "node scripts/lint-narrative-sync.js",
     "export:pdf": "node scripts/export-pdf.js",
     "export:screenshots": "node scripts/export-screenshots.js",
     "qa:a11y": "node scripts/qa-accessibility.js",
