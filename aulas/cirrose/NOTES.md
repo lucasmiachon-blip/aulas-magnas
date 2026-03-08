@@ -480,3 +480,5 @@ Quando PubMed MCP estiver disponivel (Cursor ou ambiente com rede):
 [2026-03-08 00:26] [Explore:a9387db3] — concluído. Status: PASS
 
 [2026-03-08 00:37] [Explore:a416ffc2] — concluído. Status: PARTIAL
+
+[2026-03-08 03:09] [Explore:a262a7a4] — concluído. Status: PARTIAL
