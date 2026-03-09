@@ -988,53 +988,133 @@ Se ele não parar, voltamos aqui em 6 meses com o slide vermelho.
   </section>
 
 <section id="s-a2-01">
-  <div class="slide-inner">
+  <div class="slide-inner archetype-flow">
     <p class="section-tag">ATO 2 — INTERVIR</p>
     <h2 class="slide-headline">Descompensação tem gatilho identificável na maioria dos casos — infecção, álcool e não-adesão lideram</h2>
-    <div class="evidence">
-      <!-- [SKELETON] Conteúdo será preenchido em sessão futura -->
+
+    <div class="flow-cascade" data-animate="stagger" data-stagger="0.2">
+      <div class="flow-step">
+        <span class="flow-test-name">Compensada</span>
+        <span class="flow-action">cACLD estável · NSBB · vigilância</span>
+        <span class="flow-cutoff" data-zone="safe">✓</span>
+      </div>
+      <div class="flow-arrow">↓ gatilho</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Gatilho</span>
+        <span class="flow-action">Infecção · álcool · não-adesão · HDA</span>
+        <span class="flow-cutoff" data-zone="warning">⚠</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Descompensada</span>
+        <span class="flow-action">Ascite · EH · HDA · further decomp em ~60%</span>
+        <span class="flow-cutoff" data-zone="danger">✕</span>
+      </div>
     </div>
-    <p class="source-tag">PREDICT 2020 · D'Amico 2024</p>
+
+    <p class="source-tag">PREDICT · PMID 32275982 · D'Amico 2024 · PMID 37916970</p>
   </div>
   <aside class="notes">
-[0:00-1:00] [SKELETON] Transição Act 1 → Act 2. Compensada ≠ estável.
-Antônio manteve etilismo, abandonou carvedilol. FIB-4 piorou, LSM subiu.
+[0:00-0:30 TRANSIÇÃO]
+"Ato 1 classificou. Agora vamos intervir."
+"Compensada não é estável. A maioria das descompensações tem gatilho identificável."
+PAUSA 2s.
 
-[DATA] Fonte: PREDICT PMID 32275982, D'Amico 2024 PMID 37916970 | Verificado: 2026-03-09
+[0:30-1:30 PREDICT + D'AMICO]
+"PREDICT, Trebicka 2020: infecção precipita 33%, sangramento 22%, álcool ativo 19%."
+"D'Amico 2024: further decompensation ocorre em ~60% após o primeiro evento."
+"O Antônio manteve etilismo, abandonou o carvedilol. FIB-4 piorou, LSM subiu."
+[NARRATIVO] MELD ~10→12 (piora basal, construção narrativa — não dado do trial).
+
+[DATA] Fonte: PREDICT PMID 32275982 (n=1273), D'Amico 2024 PMID 37916970 | Verificado: 2026-03-09
   </aside>
 </section>
 
 <section id="s-a2-02">
-  <div class="slide-inner">
+  <div class="slide-inner archetype-flow">
     <p class="section-tag">ATO 2 — INTERVIR</p>
-    <h2 class="slide-headline">Ascite nova = paracentese ≤12h. GASA >1,1 confirma portal</h2>
-    <div class="evidence">
-      <!-- [SKELETON] Conteúdo será preenchido em sessão futura -->
+    <h2 class="slide-headline">Ascite nova = paracentese ≤12h. GASA >1,1 confirma portal. PMN &lt;250 exclui PBE</h2>
+
+    <div class="flow-cascade" data-animate="stagger" data-stagger="0.2">
+      <div class="flow-step">
+        <span class="flow-test-name">Paracentese</span>
+        <span class="flow-action">Toda ascite nova · ≤12h da admissão</span>
+        <span class="flow-cutoff" data-zone="warning">≤12h</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-test-name">GASA</span>
+        <span class="flow-action">Albumina soro − albumina líquido</span>
+        <span class="flow-cutoff" data-zone="safe">>1,1</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-test-name">PMN</span>
+        <span class="flow-action">&lt;250 = sem PBE agora · ≥250 = tratar</span>
+        <span class="flow-cutoff" data-zone="danger">≥250</span>
+      </div>
     </div>
-    <p class="source-tag">EASL CPG 2024</p>
+
+    <p class="source-tag">EASL CPG Ascite 2024 · Runyon 1992</p>
   </div>
   <aside class="notes">
-[0:00-1:00] [SKELETON] 1º golpe: Antônio cruza a linha compensado → descompensado.
-Distensão abdominal progressiva. Paracentese: GASA >1,1. PMN 180.
+[0:00-0:30 PRIMEIRO GOLPE]
+"Antônio cruza a linha: compensado → descompensado."
+"Distensão abdominal progressiva. Ascite clínica."
+"Primeira conduta: puncionar. Nunca postergar por medo da agulha."
+PAUSA 2s.
 
-[DATA] Fonte: EASL CPG 2024 | Verificado: 2026-03-09
+[0:30-1:30 PROTOCOLO]
+"GASA > 1,1 g/dL confirma etiologia portal — sensibilidade 97%."
+"PMN: contagem obrigatória. Antônio tem PMN 180 — sem PBE neste momento."
+"Proteínas totais do líquido: se < 1,5 g/dL → risco de PBE futura."
+[NARRATIVO] MELD ~14 (1ª descompensação, construção narrativa).
+
+[DATA] Fonte: EASL CPG 2024 (protocolo atual), Runyon Am J Gastro 1992 (GASA original) | Verificado: 2026-03-09
   </aside>
 </section>
 
 <section id="s-a2-03">
-  <div class="slide-inner">
+  <div class="slide-inner archetype-flow">
     <p class="section-tag">ATO 2 — INTERVIR</p>
     <h2 class="slide-headline">Espironolactona 100→400 + furosemida 40→160: escalonamento e limites</h2>
-    <div class="evidence">
-      <!-- [SKELETON] Conteúdo será preenchido em sessão futura -->
+
+    <div class="flow-cascade" data-animate="stagger" data-stagger="0.2">
+      <div class="flow-step">
+        <span class="flow-test-name">Restrição Na</span>
+        <span class="flow-action">≤2 g/dia (≤88 mEq) · sem restrição hídrica salvo Na &lt;125</span>
+        <span class="flow-cutoff" data-zone="safe">≤2g</span>
+      </div>
+      <div class="flow-arrow">↓ sem resposta</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Diuréticos</span>
+        <span class="flow-action">Espiro 100→400 + Furo 40→160 · ratio 100:40</span>
+        <span class="flow-cutoff" data-zone="warning">titular</span>
+      </div>
+      <div class="flow-arrow">↓ sem resposta ou LVP</div>
+      <div class="flow-step">
+        <span class="flow-test-name">LVP + albumina</span>
+        <span class="flow-action">>5 L = albumina 8 g/L drenado</span>
+        <span class="flow-cutoff" data-zone="danger">8 g/L</span>
+      </div>
     </div>
-    <p class="source-tag">EASL CPG 2024</p>
+
+    <p class="source-tag">EASL CPG 2024 · Ginès 1988</p>
   </div>
   <aside class="notes">
-[0:00-1:00] [SKELETON] Conduta prática pós-diagnóstico de ascite.
-Antônio responde parcialmente a diuréticos. LVP mensal. Albumina 8g/L drenado em LVP >5L.
+[0:00-0:30 CONDUTA PRÁTICA]
+"Diagnóstico feito. Agora o manejo."
+"Restrição de sódio: ≤2g/dia. Não restringir água salvo hiponatremia < 125."
+"Meta de perda ponderal: 0,5 kg/dia sem edema, 1 kg/dia com edema periférico."
 
-[DATA] Fonte: EASL CPG 2024 | Verificado: 2026-03-09
+[0:30-1:30 ESCALONAMENTO]
+"Espironolactona como base: 100 mg → escalonar a cada 3-5 dias até 400 mg."
+"Furosemida: 40 mg → até 160 mg. Ratio 100:40 preserva potássio."
+"Sem resposta ou paracenteses frequentes: LVP com albumina 8 g/L drenado se >5L."
+"Antônio responde parcialmente. LVP mensal."
+[NARRATIVO] Ascite tem manejo, mas é o início da espiral.
+
+[DATA] Fonte: EASL CPG 2024 (escalonamento padrão), Ginès 1988 (espironolactona como base) | Verificado: 2026-03-09
   </aside>
 </section>
 
@@ -1122,19 +1202,48 @@ Fonte: Sort P et al., NEJM 1999, PMID 10432325 | Verificado: 2026-03-05
   </section>
 
 <section id="s-a2-06">
-  <div class="slide-inner">
+  <div class="slide-inner archetype-flow">
     <p class="section-tag">ATO 2 — INTERVIR</p>
     <h2 class="slide-headline">HDA varicosa: vasoativo + EDA &lt;12h + ATB. Early TIPS em 72h se Child B ativo ou C 10-13</h2>
-    <div class="evidence">
-      <!-- [SKELETON] Conteúdo será preenchido em sessão futura -->
+
+    <div class="flow-cascade" data-animate="stagger" data-stagger="0.2">
+      <div class="flow-step">
+        <span class="flow-test-name">Pacote HDA</span>
+        <span class="flow-action">Octreotide/terlipressina IV + EDA &lt;12h + ceftriaxone</span>
+        <span class="flow-cutoff" data-zone="danger">&lt;12h</span>
+      </div>
+      <div class="flow-arrow">↓ Child B ativo ou C 10-13?</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Early TIPS</span>
+        <span class="flow-action">Em 72h · sobrevida 86% vs 61% (Garcia-Pagán, n=63)</span>
+        <span class="flow-cutoff" data-zone="safe">86%</span>
+      </div>
+      <div class="flow-arrow">↓ seguimento</div>
+      <div class="flow-step">
+        <span class="flow-test-name">TIPS vs SOC</span>
+        <span class="flow-action">Further decomp 48% vs 63% a 2a (Larrue IPD, n=2338)</span>
+        <span class="flow-cutoff" data-zone="warning">48%</span>
+      </div>
     </div>
-    <p class="source-tag">Garcia-Pagán 2010 · Larrue 2023 IPD</p>
+
+    <p class="source-tag">Garcia-Pagán NEJM 2010 · PMID 20573925 · Larrue 2023 · PMID 37141993</p>
   </div>
   <aside class="notes">
-[0:00-1:00] [SKELETON] 2º golpe dramático. Sangramento varicoso.
-Antônio: hematemese, varizes F3. EDA de urgência com ligadura.
+[0:00-0:30 SEGUNDO GOLPE]
+"Antônio, 6 semanas pós-PBE, apresenta hematêmese. Varizes F3 com red signs."
+"EDA de urgência: ligadura elástica. Octreotide IV. Ceftriaxone profilático."
+PAUSA 2s.
+"Segundo golpe. Agora sangrou."
 
-[DATA] Fonte: Garcia-Pagán PMID 20573925, Larrue PMID 37141993 | Verificado: 2026-03-09
+[0:30-1:30 EARLY TIPS]
+"Garcia-Pagán, NEJM 2010: early TIPS em 72h. Sobrevida 86% vs 61% em 1 ano."
+"Critérios: Child B com sangramento ativo OU Child C 10-13."
+"Larrue 2023, IPD com 2338 pacientes: further decomp 48% vs 63% com TIPS vs SOC."
+"Antônio: Child B9, sangramento ativo — preenche critério."
+"Mas está em cidade sem centro de TIPS. Decisão: transferir ou manejar conservador?"
+[NARRATIVO] MELD ~17→18 (construção narrativa).
+
+[DATA] Garcia-Pagán PMID 20573925 (n=63, 1a FU), Larrue PMID 37141993 (IPD n=2338, 2a FU) | Verificado: 2026-03-09
   </aside>
 </section>
 
@@ -1231,36 +1340,93 @@ PAUSA 1s.
   </section>
 
 <section id="s-a2-09">
-  <div class="slide-inner">
+  <div class="slide-inner archetype-flow">
     <p class="section-tag">ATO 2 — INTERVIR</p>
-    <h2 class="slide-headline">Sarcopenia em cirrose: prevalência alta, mortalidade independente de MELD. Late-evening snack + proteína 1,2-1,5 g/kg</h2>
-    <div class="evidence">
-      <!-- [SKELETON] Conteúdo será preenchido em sessão futura -->
+    <h2 class="slide-headline">Sarcopenia em cirrose: prevalência alta, mortalidade independente de MELD</h2>
+
+    <div class="flow-cascade" data-animate="stagger" data-stagger="0.2">
+      <div class="flow-step">
+        <span class="flow-test-name">Avaliar</span>
+        <span class="flow-action">Hand-grip · CT L3 se disponível · IMC não exclui (obesidade sarcopênica)</span>
+        <span class="flow-cutoff" data-zone="warning">⚠</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Proteína</span>
+        <span class="flow-action">1,2–1,5 g/kg/dia · NUNCA restringir (mesmo com EH)</span>
+        <span class="flow-cutoff" data-zone="safe">1,5 g/kg</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Late-evening snack</span>
+        <span class="flow-action">~50 g carboidrato antes de dormir · reduz catabolismo noturno</span>
+        <span class="flow-cutoff" data-zone="safe">50g</span>
+      </div>
     </div>
-    <p class="source-tag">ESPEN 2019 · EASL CPG 2024</p>
+
+    <p class="source-tag">ESPEN 2019 · EASL CPG 2024 · prevalência [TBD SOURCE]</p>
   </div>
   <aside class="notes">
-[0:00-1:00] [SKELETON] Par com EH. Destrói mito da restrição proteica.
-Antônio: hand-grip diminuído. IMC 31 mascarava sarcopenia (obesidade sarcopênica).
+[0:00-0:30 MITO]
+"Antônio tem IMC 31. Parece bem nutrido? Hand-grip diminuído. Obesidade sarcopênica."
+"Prevalência de sarcopenia em cirróticos: [TBD SOURCE — meta-análises reportam 40-70% dependendo do critério]."
+"Mortalidade independente de MELD — sarcopenia é fator prognóstico próprio."
+PAUSA 2s.
 
-[DATA] Fonte: ESPEN 2019, EASL CPG 2024 | Verificado: 2026-03-09
+[0:30-1:30 CONDUTA]
+"ESPEN 2019 e EASL CPG 2024: proteína 1,2-1,5 g/kg/dia."
+"A restrição proteica piora prognóstico e NÃO previne encefalopatia."
+"Late-evening snack (~50g CHO): reduz catabolismo noturno em cirróticos."
+"Intervenção concreta, barata, e subutilizada."
+[NARRATIVO] Par com slide anterior (EH). Destroi mito da restrição proteica na prática.
+
+[DATA] Fonte: ESPEN 2019 guidelines (proteína 1,2-1,5 g/kg), EASL CPG 2024 | Verificado: 2026-03-09
+[DATA] Prevalência sarcopenia: [TBD SOURCE — buscar meta-análise específica]
   </aside>
 </section>
 
 <section id="s-a2-10">
-  <div class="slide-inner">
+  <div class="slide-inner archetype-flow">
     <p class="section-tag">ATO 2 — INTERVIR</p>
     <h2 class="slide-headline">MELD >15 persistente = iniciar avaliação para transplante</h2>
-    <div class="evidence">
-      <!-- [SKELETON] Conteúdo será preenchido em sessão futura -->
+
+    <div class="flow-cascade" data-animate="stagger" data-stagger="0.2">
+      <div class="flow-step">
+        <span class="flow-test-name">Limiar</span>
+        <span class="flow-action">MELD ≥15 persistente = benefício de sobrevida com TX vs sem</span>
+        <span class="flow-cutoff" data-zone="danger">≥15</span>
+      </div>
+      <div class="flow-arrow">↓ etiologia alcoólica?</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Regra 6 meses</span>
+        <span class="flow-action">Descompensação aguda + risco de morte = não esperar. Mathurin 2011</span>
+        <span class="flow-cutoff" data-zone="warning">questionar</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Early TX (ALD)</span>
+        <span class="flow-action">Sobrevida 6m: 77% vs 23% (selecionados, n=26)</span>
+        <span class="flow-cutoff" data-zone="safe">77%</span>
+      </div>
     </div>
-    <p class="source-tag">Mathurin 2011 · UNOS/SNT</p>
+
+    <p class="source-tag">Mathurin NEJM 2011 · PMID 22070476 · UNOS/SNT</p>
   </div>
   <aside class="notes">
-[0:00-1:00] [SKELETON] Pivô narrativo: "manejar" → "planejar saída."
-Antônio: MELD persistente 18 após PBE + HDA + EH. Encaminhado para centro transplantador.
+[0:00-0:30 PIVÔ NARRATIVO]
+"Até agora: manejar complicações. Agora: planejar saída."
+"Antônio: MELD persistente 18 após PBE + HDA + EH. Três descompensações em 6 meses."
+"MELD 15 = limiar onde transplante confere benefício de sobrevida vs manejo clínico."
+PAUSA 2s.
 
-[DATA] Fonte: Mathurin PMID 22070476 | Verificado: 2026-03-09
+[0:30-1:30 REGRA DOS 6 MESES]
+"Etiologia alcoólica: a regra dos 6 meses de abstinência como pré-requisito absoluto é conduta ultrapassada para descompensação aguda."
+"Mathurin, NEJM 2011: early transplant em hepatite alcoólica grave selecionada — 77% vs 23% sobrevida em 6 meses."
+"n=26, estudo seminal, controverso na época, agora replicado."
+"Não significa TX para todos: seleção psicossocial rigorosa. Mas não significa esperar paciente morrer."
+[NARRATIVO] Antônio encaminhado a centro transplantador. MELD 18, Child B9.
+
+[DATA] Fonte: Mathurin PMID 22070476 (n=26, 6m FU), UNOS policy (MELD ≥15 threshold) | Verificado: 2026-03-09
   </aside>
 </section>
 
@@ -1318,19 +1484,46 @@ Fonte: CONFIRM, Wong F, NEJM 2021, PMID 33657294 | Verificado: 2026-03-05 | Revi
   </section>
 
 <section id="s-a2-12">
-  <div class="slide-inner">
+  <div class="slide-inner archetype-flow">
     <p class="section-tag">ATO 2 — INTERVIR</p>
-    <h2 class="slide-headline">Ascite refratária: critérios ICA mudam estratégia</h2>
-    <div class="evidence">
-      <!-- [SKELETON] Conteúdo será preenchido em sessão futura -->
+    <h2 class="slide-headline">Ascite refratária: critérios ICA definem falha — espiro 400 + furo 160 ≥1 semana sem resposta</h2>
+
+    <div class="flow-cascade" data-animate="stagger" data-stagger="0.2">
+      <div class="flow-step">
+        <span class="flow-test-name">Diurético-resistente</span>
+        <span class="flow-action">Espiro 400 mg + furo 160 mg ≥1 semana sem perda ponderal</span>
+        <span class="flow-cutoff" data-zone="danger">✕</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-test-name">Diurético-intolerável</span>
+        <span class="flow-action">Efeitos colaterais impedem dose adequada (K⁺, Cr, Na)</span>
+        <span class="flow-cutoff" data-zone="danger">✕</span>
+      </div>
+      <div class="flow-arrow">↓ critérios ICA preenchidos</div>
+      <div class="flow-step">
+        <span class="flow-test-name">Próximo passo</span>
+        <span class="flow-action">Avaliar TIPS — ANTES: checar coração (CCM) e pulmão (SHP/PPH)</span>
+        <span class="flow-cutoff" data-zone="warning">→ TIPS?</span>
+      </div>
     </div>
-    <p class="source-tag">Arroyo/ICA 1996 · EASL CPG 2024</p>
+
+    <p class="source-tag">Arroyo/ICA 1996 · PMID 8550036 · EASL CPG 2024</p>
   </div>
   <aside class="notes">
-[0:00-1:00] [SKELETON] Antônio melhorou parcialmente do ACLF, mas ascite não responde.
-Cr voltou a 1,6. LVP semanal. Diuréticos em dose máxima sem resposta.
+[0:00-0:30 CENÁRIO]
+"Antônio melhorou parcialmente do ACLF. Cr voltou a 1,6. Mas a ascite não responde."
+"LVP semanal. Espironolactona 400 mg, furosemida 160 mg — sem resposta."
+[NARRATIVO] MELD 28→24 (melhora parcial, construção narrativa).
+PAUSA 2s.
 
-[DATA] Fonte: Arroyo/ICA PMID 8550036, EASL CPG 2024 | Verificado: 2026-03-09
+[0:30-1:30 CRITÉRIOS ICA]
+"Arroyo, ICA 1996: definição canônica de ascite refratária."
+"Duas categorias: diurético-resistente (dose máxima ≥1 semana sem resposta) vs diurético-intolerável (efeitos colaterais impedem dose adequada)."
+"Se confirmado: avaliar TIPS. Mas ANTES: eco com função diastólica + ECG (QTc) + gasometria."
+"Próximos dois slides: por que checar coração e pulmão antes de TIPS."
+
+[DATA] Fonte: Arroyo et al. Hepatology 1996, PMID 8550036 (definição canônica ICA) | Verificado: 2026-03-09
+[DATA] EASL CPG 2024 atualiza critérios mantendo framework ICA.
   </aside>
 </section>
 
