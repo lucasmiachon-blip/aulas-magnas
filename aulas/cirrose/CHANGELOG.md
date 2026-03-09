@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-03-08 — Act 2 P0 documental + narrative rewrite + reference fixes
+
+Branch: `main`
+
+| Item | Detalhe |
+|------|---------|
+| narrative.md reescrito | 16 slides + CP2, cascata clínica do mesmo paciente, 4 interações, MELD intermediários documentados como construções narrativas |
+| NSBB primary vs secondary | A2-07 corrigido: PREDESCI = prevenção PRIMÁRIA (Act 1 callback), pós-HDA = profilaxia SECUNDÁRIA. Erro conceitual grave prevenido. |
+| HRS-AKI lidera headline | A2-11: ACLF é contexto, não headline. HRS-AKI + CONFIRM NNT 7 NNH 12 = decisão acionável |
+| CP2 = hipotético | "E se tudo der certo?" — fecha caso real, não implica continuação direta |
+| CASE.md Chekhov's Guns | Carvedilol abandonado adicionado. ATTIRE distribuído (PBE+LVP vs ACLF). |
+| HANDOFF.md reescrito | Decisões travadas, caminho crítico P1=HTMLs |
+| medical-data.md PMIDs | ANSWER 29793859→29861076, CONFIRM 34882432→33657294 |
+| evidence-db.md fixes | Tonon 2025 PMID 40228583 (era NOT INDEXED). Ioannou 31374215 clarificado (pós-HCC, não incidência). |
+| Act 3 planejado | 5 slides cenário hipotético. Recompensação strict vs expanded. Research completo, RAW pendente. |
+
+---
+
 ## 2026-03-08 — Source-of-truth enforcement + PLQ + fixes técnicos
 
 Branch: `claude/diagnose-branch-commits-7twpK`

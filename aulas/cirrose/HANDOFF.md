@@ -67,14 +67,14 @@ Cenário HIPOTÉTICO, não continuação direta. CP2 fecha o caso real.
 
 - **ERRO-008** — Case panel redundante em s-hook
 - ~~**D'Amico estádio 5**~~ — RESOLVIDO
-- 21 referências [TBD] — 5 CANDIDATE, 12 NOT INDEXED (2025-2026), 2 resolvidos, 1 fonte não identificada, 1 não encontrado
+- 20 referências [TBD] — 5 CANDIDATE, 11 NOT INDEXED (2025-2026), 3 resolvidos (Tonon PMID 40228583), 1 fonte não identificada, 1 não encontrado
 - CTP interobserver variability — PMID 6546609 ou 16305721
 - Pre-commit hook wiring pendente
 - 6 h2 do Act 1 pendentes de decisão do Lucas
 - CASE.md Chekhov's Guns: IDs de slides serão atualizados quando novos HTMLs forem criados
 - evidence-db.md "Dados por Slide": mapeamento para IDs antigos, atualizar junto com HTMLs
 - Verificar ANVISA para rifaximina 550mg (Xifaxan)
-- Corrigir medical-data.md (.claude/rules): ANSWER PMID 29793859→29861076
+- ~~Corrigir medical-data.md: ANSWER PMID 29793859→29861076~~ — RESOLVIDO (+ CONFIRM 34882432→33657294)
 
 ---
 

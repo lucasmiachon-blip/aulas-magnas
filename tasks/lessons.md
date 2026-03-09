@@ -144,3 +144,39 @@ Tokens não importam. Retrabalho é sinal de aprendizado — mas não pode paral
 - **Bug crítico Issue #17283:** `context:fork` e `agent:` são ignorados quando skill invocado via Skill tool (API/SDK). Só funciona no CLI direto.
 - `user-invocable: false` útil para skills de conhecimento de fundo (Claude auto-ativa, não aparece no menu `/`)
 - `disable-model-invocation: true` para skills com side-effects sérios (deploy, push, send)
+
+---
+
+## Sessão Act 2 P0 + Narrative Rewrite (2026-03-08)
+
+### NSBB: primary ≠ secondary prophylaxis — ERRO CONCEITUAL
+
+- **PREDESCI** (PMID 30910320): testou NSBBs em pacientes com cACLD + CSPH **SEM descompensação prévia** → prevenção PRIMÁRIA
+- Usar PREDESCI NNT 9 como hero number de slide PÓS-HDA = erro conceitual grave (mistura populações)
+- Act 1 (s-a1-classify): PREDESCI como hero → correto (prevenção primária)
+- Act 2 (A2-07 pós-HDA): NSBB = profilaxia SECUNDÁRIA → hero number deve vir de outro trial ou ser callback narrativo ao Act 1
+- **Regra:** Sempre verificar a POPULAÇÃO do trial antes de usar como hero. Prevenção 1ª ≠ 2ª.
+
+### MELD intermediários: dados narrativos vs clínicos
+
+- Canônicos (CASE.md): ~10, 28, 12 — derivados de checkpoints clínicos reais
+- Intermediários (12→14→17→18→28→24): são CONSTRUÇÕES NARRATIVAS para dar ritmo à cascata
+- Moram em: narrative.md + _manifest.js panelStates. NUNCA em CASE.md.
+- **Regra:** Dados narrativos plausíveis ≠ dados clínicos. Separar sempre. Documentar origem.
+
+### PMIDs podem estar certos no evidence-db mas errados em medical-data.md
+
+- ANSWER: evidence-db tinha 29861076 (correto), medical-data.md tinha 29793859 (errado)
+- CONFIRM: medical-data.md tinha 34882432 (artigo de saúde transgênero!), correto = 33657294
+- **Regra:** Ao fixar um PMID em qualquer arquivo, grep por ALL occurrences e corrigir em todos.
+
+### Ioannou HCC: sobrevida pós-HCC ≠ incidência de HCC
+
+- PMID 31374215: HR 0.29 é sobre morte PÓS-HCC em pacientes com SVR (não prevenção de HCC)
+- PMID 31356807: este é o estudo sobre INCIDÊNCIA de HCC com/sem SVR
+- **Regra:** Ao citar HR de HCC, explicitar: é sobre INCIDÊNCIA ou SOBREVIDA pós-diagnóstico?
+
+### Operational records: atualizar no MESMO batch
+
+- CHANGELOG, ERROR-LOG, lessons.md devem ser atualizados na MESMA sessão em que o trabalho foi feito
+- Deixar para "depois" = invariavelmente esquece, próximo agente não tem contexto

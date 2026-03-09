@@ -154,14 +154,14 @@
 | Topico | Trial/Autor | Journal/Ano | PMID | Resultado-chave |
 |--------|------------|-------------|------|-----------------|
 | Early TIPS | Garcia-Pagan | NEJM 2010 | 20573925 | Sobrevida 86% vs 61%, NNT ~4 |
-| DAA-SVR + HCC | Singal/Ioannou | Gastro 2019 | 31374215 | HR 0,29 (morte) com SVR |
+| DAA-SVR + HCC sobrevida | Singal/Ioannou | Gastro 2019 | 31374215 | HR 0,29 (morte pós-HCC com SVR). NB: é sobrevida PÓS-HCC, não incidência. Para incidência HCC com SVR → PMID 31356807 |
 | STOPAH | Thursz | NEJM 2015 | 25901427 | Prednisolona OR 0,72 (**NS!**) |
 | Rifaximin pre-TIPS | Bureau | Ann Intern Med 2021 | 33524293 | 34% vs 53% HE, NNT ~5 |
 | PEG-3350 (HELP) | Rahimi | JAMA Int Med 2014 | 25243839 | 91% vs 52% melhora 24h |
 | D'Amico staging | D'Amico | J Hepatol 2006 | 16298014 | 4 estagios: 1% -> 57% mortalidade |
 | Early transplant ALD | Mathurin | NEJM 2011 | 22070476 | 77% vs 23% sobrevida 6m |
 | Recompensacao | Baveno VII | J Hepatol 2022 | 35120736 | >=12m sem descomp + labs melhorados |
-| Recompensacao expandida | Tonon 2025 | [NOT INDEXED — searched 2026-03-07, article likely too recent or not yet published in final form] | [TBD] | 7% strict, 37,6% expanded |
+| Recompensacao expandida | Tonon 2025 | J Hepatol 2025 | 40228583 | 7% strict, 37,6% expanded |
 
 ## Literatura Tier-1 — Referencias mestras
 
@@ -193,7 +193,7 @@
 | s-a2-04 | PBE: PMN >=250 = tratar | EASL CPG 2024 |
 | s-a2-05 | HRS-AKI: terlipressina NNT 7 / NNH 12 (corrigido) | CONFIRM (PMID 33657294) |
 | s-a2-06 | Encefalopatia: rifaximina NNT 4 | Bass (PMID 20335583) |
-| s-a3-01 | Recompensacao: Baveno VII definicao + Tonon 2025 | PMID 35120736 + [TBD] |
+| s-a3-01 | Recompensacao: Baveno VII definicao + Tonon 2025 | PMID 35120736 + PMID 40228583 |
 | s-a3-02 | SVR diferente de cura CSPH (53% persistem) | Baveno VII + Lens S et al J Hepatol 2020 (PMID **32535060**, corrigido de 28039099 via WebSearch audit 08/mar) |
 | s-a3-03 | Vigilancia HCC a cada 6 meses | EASL/AASLD guidelines |
 | s-app-01 | ACLF grau 3: mortalidade 28d 73% | CANONIC (PMID **23474284**, corrigido) + AASLD ACLF 2024 (PMID [CANDIDATE: 38530940 — VERIFICAR VIA MCP]) |
@@ -275,7 +275,7 @@
 | 18 | Pose JAMA 2025 — LIVERHOPE trial | [NOT INDEXED — searched 2026-03-07] | — | Pose E, Trebicka J, Mookerjee RP, et al. LIVERHOPE: A Randomized Clinical Trial of Statins and Rifaximin in Patients With Decompensated Cirrhosis. JAMA. 2025. | Artigo 2025 — provavelmente nao indexado |
 | 19 | Puente J Hepatol 2025 — CIRROXABAN trial | [NOT INDEXED — searched 2026-03-07] | — | Puente A, et al. CIRROXABAN: Rivaroxaban in patients with compensated cirrhosis. J Hepatol. 2025. | Artigo 2025 — provavelmente nao indexado |
 | 20 | D'Amico 2022 (NAD vs AD) — DOI 10.1016/j.jhep.2021.06.018 | [CANDIDATE: 34174336] | 10.1016/j.jhep.2021.06.018 | D'Amico G, Bernardi M, Angeli P, et al. New concepts on the clinical course and stratification of decompensated cirrhosis. J Hepatol. 2022;76(2):435-446. | VERIFICAR VIA MCP |
-| 21 | Tonon 2025 — recompensacao 7%/37,6% | [NOT INDEXED — searched 2026-03-07] | — | Tonon M, et al. [titulo TBD — recompensacao cirrose criteria]. [journal TBD]. 2025. | Artigo 2025 — provavelmente nao indexado |
+| 21 | Tonon 2025 — recompensacao 7%/37,6% | **RESOLVIDO** PMID 40228583 | — | Tonon M, et al. J Hepatol. 2025. PMID 40228583. | Indexado — atualizado 08/mar/2026 |
 
 ### Resumo da pesquisa 2026-03-07
 
@@ -283,7 +283,7 @@
 |--------|-----------|-------|
 | CANDIDATE — verificar via MCP | 5 | #1, #10, #11, #13, #20 |
 | RESOLVIDO via WebSearch (08/mar) | 2 | #7 (Lens → 32535060), #9 (CANONIC → 23474284) |
-| NOT INDEXED — artigo 2025/2026 | 12 | #3, #4, #5, #6, #8, #12, #15, #16, #17, #18, #19, #21 |
+| NOT INDEXED — artigo 2025/2026 | 11 | #3, #4, #5, #6, #8, #12, #15, #16, #17, #18, #19 |
 | FONTE NAO IDENTIFICADA | 1 | #2 (PPI HR 1,75 PBE) |
 | NAO ENCONTRADO | 1 | #14 (Skouloudi 2023) |
 

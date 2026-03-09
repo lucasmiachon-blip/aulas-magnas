@@ -87,8 +87,8 @@ Hierarquia visual: **NNT > ARR > HR**
 | EASL Cirrose 2024 | CPG | J Hepatol 2024 | DOI: TBD |
 | AASLD Varizes 2024 | Practice Guidance | Hepatology 2024 | DOI: TBD |
 | PREDESCI | RCT | Lancet 2019 | PMID: 30910320 |
-| CONFIRM | RCT | N Engl J Med 2021 | PMID: 34882432 |
-| ANSWER | RCT | Lancet 2018 | PMID: 29793859 |
+| CONFIRM | RCT | N Engl J Med 2021 | PMID: 33657294 |
+| ANSWER | RCT | Lancet 2018 | PMID: 29861076 |
 | D'Amico 2006 | Landmark systematic review | J Hepatol 2006 | PMID: 16298014 |
 
 **TODO:** Preencher DOIs faltantes antes de usar dados em slides.

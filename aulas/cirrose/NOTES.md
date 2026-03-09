@@ -134,3 +134,9 @@ Detalhes: ver `references/coautoria.md` (renomeado para AI Disclosure).
 [2026-03-08 18:24] [general-purpose:a317b384] — concluído. Status: PARTIAL
 
 [2026-03-08 18:51] [BUILD] OK — cd C:/Users/LM/Dev/Aulas && npm run build:cirrose 2>&1
+
+[2026-03-08 21:11] [general-purpose:aedfdeda] — concluído. Status: PARTIAL
+
+[2026-03-08 21:13] [:a8c2b144] — concluído. Status: PARTIAL
+
+[2026-03-08 21:16] [BUILD] OK — cd C:/Users/LM/Dev/Aulas && npm run build:cirrose 2>&1

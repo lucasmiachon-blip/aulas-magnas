@@ -225,11 +225,36 @@ if (section?.id === 's-hook' && beatParam !== null) {
 
 ---
 
+## Erros registrados — sessão P0 documental (2026-03-08)
+
+### ERRO-025 · HIGH · medical-data.md + evidence-db.md
+**PMIDs errados em Tier 1: ANSWER e CONFIRM**
+**Root cause:** medical-data.md copiou PMIDs sem verificação cruzada com evidence-db.md. ANSWER tinha 29793859 (correto = 29861076). CONFIRM tinha 34882432 (artigo sobre saúde transgênero — correto = 33657294).
+**Fix:** Corrigidos em medical-data.md.
+**Regra:** Ao fixar PMID, grep ALL occurrences em todo o repo e corrigir em todos os arquivos.
+**Status:** ✅ Corrigido.
+
+### ERRO-026 · HIGH · narrative.md
+**NSBB prevenção primária usado como hero de profilaxia secundária**
+**Root cause:** A2-07 (pós-HDA) usava PREDESCI NNT 9 como hero number. PREDESCI testou prevenção PRIMÁRIA (cACLD+CSPH sem descompensação). Pós-HDA = secundária — população diferente.
+**Fix:** A2-07 headline → "Profilaxia secundária pós-HDA: NSBB + EVL seriada". PREDESCI = callback narrativo, não hero.
+**Regra:** Verificar POPULAÇÃO do trial antes de usar como hero. Prevenção 1ª ≠ 2ª.
+**Status:** ✅ Corrigido (narrative.md).
+
+### ERRO-027 · MEDIUM · evidence-db.md
+**Ioannou PMID 31374215 descrito como "HR 0,29 (morte) com SVR" sem clarificar que é pós-HCC**
+**Root cause:** Descrição ambígua. Leitores poderiam entender como redução de incidência de HCC, mas é sobrevida pós-diagnóstico de HCC em pacientes com SVR.
+**Fix:** Clarificado: "morte pós-HCC com SVR. NB: para incidência → PMID 31356807"
+**Regra:** Ao citar HR de HCC, explicitar: incidência ou sobrevida pós-diagnóstico?
+**Status:** ✅ Corrigido.
+
+---
+
 | Severidade | Total | Corrigidos | Pendentes |
 |------------|-------|------------|-----------|
 | CRITICAL   | 4     | 4          | 0 |
-| HIGH       | 10    | 9          | 1 (ERRO-022) |
-| MEDIUM     | 8     | 6          | 2 (ERRO-008, ERRO-023) |
+| HIGH       | 12    | 11         | 1 (ERRO-022) |
+| MEDIUM     | 9     | 7          | 2 (ERRO-008, ERRO-023) |
 | LOW        | 1     | 1          | 0         |
 
-*Última atualização: 2026-03-08 · ERRO-021 corrigido (nota stale — já estava fixo). ERRO-008/022/023 pendentes*
+*Última atualização: 2026-03-08 · ERRO-025/026/027 registrados e corrigidos. ERRO-008/022/023 pendentes*
