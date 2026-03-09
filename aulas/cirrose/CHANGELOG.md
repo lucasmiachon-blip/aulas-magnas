@@ -4,6 +4,40 @@
 
 ---
 
+## 2026-03-08 — MD audit + ACT3-CONTRACT-V1
+
+Branch: `main` · Commits: `c1f220d`, `800ec87`
+
+### MD Audit (14 fixes, 11 arquivos, -64 linhas)
+
+| Tipo | Fix |
+|------|-----|
+| **P0 cross-check** | evidence-db.md slide IDs atualizados (s-a1-02→fib4, s-a1-03→meld, s-a1-04→a2-infec, s-a1-05→app-etio) |
+| **P0 PMIDs stale** | NOTES.md: Lens 28039099→32535060, CANONIC 23562128→23474284 marcados resolvidos |
+| **P0 must-read** | Tonon PMID 40228583 atualizado, comment VERIFICAR ANSWER removido |
+| **P0 noise** | NOTES.md: 27 linhas agent logs removidas. ERROR-LOG: 50 linhas raw code removidas |
+| **P1 links** | SETUP.md AGENTS.md→CLAUDE.md, MCP-ENV-VARS .env.example removido, archive/README ref fantasma |
+| **P1 XREF** | tasks/todo.md phantom removido, SETUP.md corrigido |
+| **P1 modelos** | KPIs.md Gemini 2.5→3.1 Flash-Lite, ECOSYSTEM.md Gemini 3 Pro marcado encerrado |
+| **P1 HANDOFF** | Colisão IDs Act 2 documentada, orphan 03c-a1-elasto registrado |
+
+### ACT3-CONTRACT-V1.md
+
+- Contrato narrativo do Act 3 (Lucas + ChatGPT 5.4)
+- 7 slides: bridge ascite → definição → estrito vs expandido → etiologia → risco residual → vigilância → fechamento
+- 9 PMIDs âncora (37190823, 36646527, 40228583, 41580090, 40378989, 36038017, 32535060, 37199193, 39220088)
+- Baveno VII estrito = canônico. Expandido = nuance rotulada.
+- Proibições: TIPS ≠ recompensação, alta de vigilância HCC, headline genérica
+- Prompt para Opus incluso
+
+### Auditoria executada por 3 subagentes paralelos
+
+1. **Docs audit** — links, redundância, verbosidade em docs/*.md
+2. **Cross-check cirrose** — CASE↔evidence-db↔narrative↔manifest↔HANDOFF
+3. **Notion sync** — bloqueado (MCP indisponível em Claude Code, payload repo-side pronto)
+
+---
+
 ## 2026-03-08 — Act 2 P0 documental + narrative rewrite + reference fixes
 
 Branch: `main`

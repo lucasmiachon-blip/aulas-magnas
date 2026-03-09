@@ -116,6 +116,7 @@ Cenário HIPOTÉTICO, não continuação direta. CP2 fecha o caso real.
 | Arco narrativo + pacing | `references/narrative.md` (#3 autoridade) |
 | Ordem dos slides | `slides/_manifest.js` (#4 autoridade) |
 | Blueprint Act 2 detalhado | `RAW_ACT2_V2.md` |
+| Contrato Act 3 | `ACT3-CONTRACT-V1.md` (9 PMIDs, prompt Opus) |
 | Regras operacionais | `CLAUDE.md` (cirrose) |
 | Design tokens | `.claude/rules/design-system.md` |
 | Erros e prevenção | `ERROR-LOG.md` (27 erros, 24 corrigidos) |
