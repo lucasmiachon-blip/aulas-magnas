@@ -115,11 +115,12 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
   11. TIPS como ponte → cidade sem acesso, LVP + albumina
   12. CP2: tudo aplicado, paciente quase morreu. Ato 3 traz esperança.
 
-- **4 Interações (why not PPTX):**
+- **5 Interações (why not PPTX):**
   1. **A2-05 (PBE)**: PMN 380 → decidir conduta. ATB+albumina vs esperar cultura. Sort NNT 5. Timer de urgência.
   2. **A2-06 (HDA)**: decidir early TIPS — 3 opções + constraint acesso Brasil. Garcia-Pagán NNT ~4.
-  3. **A2-10 (MELD>15)**: box lateral pulsa, MELD vermelho, decidir listagem TX + regra 6 meses. Mathurin 2011.
-  4. **A2-12 (Ascite refratária)**: checklist ICA interativo — marcar critérios + reveal condicional.
+  3. **A2-07 (BB/NSBB toggle)**: toggle ON/OFF — PREDESCI HR 0,51, NNT 9. Callback ao Act 1: "classificar mudou a conduta". Ironia narrativa: se nunca tivesse parado, não sangrava.
+  4. **A2-10 (MELD>15)**: box lateral pulsa, MELD vermelho, decidir listagem TX + regra 6 meses. Mathurin 2011.
+  5. **A2-12 (Ascite refratária)**: checklist ICA interativo — marcar critérios + reveal condicional.
 
 - **Albumina na cascata (não é slide próprio):**
   Aparece em 3 contextos: (1) LVP em A2-03, (2) PBE Sort NNT 5 em A2-05, (3) ACLF challenge em A2-11. ATTIRE como contraste em A2-11. Versão consolidada no apêndice.

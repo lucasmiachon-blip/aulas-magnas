@@ -45,4 +45,15 @@ O `pubmed` usa `scripts/run-pubmed-mcp.js` para corrigir o bug tiktoken no Windo
 
 ---
 
+---
+
+## Opcionais — não usar a princípio
+
+| Variável | MCP | Nota |
+|----------|-----|------|
+| `ATTENTION_INSIGHT_API_KEY` | attention-insight | Não usar a princípio |
+| `HYPERBOLIC_API_KEY` | frontend-review | Não usar a princípio |
+
+---
+
 **Sincronizado de Aulas_core em 2026-02-26**

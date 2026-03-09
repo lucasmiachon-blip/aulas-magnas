@@ -23,7 +23,7 @@ Reveal.js 5.x · GSAP 3.12 · Vite 6.x · Vanilla HTML/CSS/JS · OKLCH · Zero C
 
 | Pasta | Status | CLAUDE.md |
 |-------|--------|-----------|
-| `aulas/cirrose/` | 28/28 slides, QA pendente (foco atual) | `aulas/cirrose/CLAUDE.md` |
+| `aulas/cirrose/` | 33/33 slides, QA pendente (foco atual) | `aulas/cirrose/CLAUDE.md` |
 | `aulas/grade/` | 58/58 migrados | `aulas/grade/CLAUDE.md` |
 | `aulas/osteoporose/` | 70/70 migrados | `aulas/osteoporose/CLAUDE.md` |
 | `aulas/metanalise/` | Em planejamento | `aulas/metanalise/CLAUDE.md` |

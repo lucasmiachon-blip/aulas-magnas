@@ -4,13 +4,14 @@
 
 ---
 
-## Estado atual — 2026-03-08 (final de sessão)
+## Estado atual — 2026-03-09 (final de sessão)
 
 **Slides atuais:** 33 buildados (Act 2 com 7 slides ANTIGOS) · **Build:** ✅ · **Lint:** ✅
-**Arquitetura aprovada:** Act 2 com 16 slides + CP2 (cascata clínica). Docs alinhados. HTMLs pendentes.
+**Arquitetura aprovada:** Act 2 com 16 slides + CP2 (cascata clínica). 5 interações (BB/NSBB toggle restaurado). HTMLs pendentes.
 **P0 audit:** ZERO bloqueadores. Todos PMIDs Tier-1 verificados. Data consistency OK.
-**MD audit:** 14 fixes em 11 arquivos (commit c1f220d). -64 linhas de cruft. Cross-check CASE↔evidence-db↔narrative PASS.
-**Act 3 contract:** `ACT3-CONTRACT-V1.md` — 7 slides, 9 PMIDs, Baveno VII estrito como canônico. Pronto para RAW_ACT3_V1.
+**PMID audit 09/mar:** 5 CANDIDATE PMIDs verificados — TODOS estavam errados. Corrigidos em evidence-db.md.
+**Act 3:** `RAW_ACT3_V1.md` produzido — 7 slides, 7/9 PMIDs verificados, 2 unverified (41580090, 39220088).
+**Orphan deletado:** 03c-a1-elasto.html removido. CASE.md branch atualizado para main.
 
 ---
 
@@ -41,24 +42,51 @@ RAW_ACT2_V2.md produzido e commitado. narrative.md atualizado com arquitetura de
 4. Reestruturar s-a2-03 (albumina standalone → distribuída + apêndice consolidado)
 5. Reestruturar s-a2-05 (HRS → A2-11 com HRS-AKI liderando, ACLF como contexto)
 6. Atualizar `_manifest.js` com novos IDs, ordem, panelStates narrativos
-7. Verificar 5 PMIDs CANDIDATE via PubMed MCP
+7. ~~Verificar 5 PMIDs CANDIDATE~~ — DONE 09/mar (todos 5 estavam errados, corrigidos)
 8. Resolver [TBD SOURCE]: sarcopenia, covert HE, centros TIPS, ESPEN 2019, QTc threshold
 9. Resolver [TBD] HR PPI em s-a1-infeccao.html (único [TBD] em conteúdo visível de slide)
 
-### P1.5: Produzir RAW_ACT3_V1
+### ✅ DONE: RAW_ACT3_V1
 
-- **ACT3-CONTRACT-V1.md** commitado — contrato narrativo com 9 PMIDs e arquitetura de 7 slides
-- Bridge slide: ascite como 1ª descompensação → cura etiológica (PMID 37190823, HR 0,46/0,35)
-- Baveno VII estrito = canônico. Expandido = nuance de pesquisa, rotulado.
-- Proibições: TIPS ≠ recompensação, alta de vigilância HCC, headline genérica
-- Prompt pronto para Opus no contrato
-- Act 3 = cenário HIPOTÉTICO (decisão travada)
+- `RAW_ACT3_V1.md` produzido 09/mar — 7 slides detalhados com headlines, anchor numbers, speaker notes rascunho
+- 7/9 PMIDs âncora verificados via WebSearch. 2 unverified: 41580090 (álcool), 39220088 (TIPS ≠ recomp)
+- Baveno VII estrito = canônico. Expandido = nuance rotulada.
+- Tabela "melhora / persiste / vigilância" incluída
+- Próximo: Lucas revisa → HTMLs quando Act 2 estiver implementado
 
-### AMANHÃ (09/mar) — Plano de sessão
+### PRÓXIMA SESSÃO — P0: Resolver colisão de IDs
 
-1. **RAW_ACT3_V1** — usar prompt do ACT3-CONTRACT-V1.md para produzir o documento
-2. **QA Act 1** — slides do bloco 1 no browser, Lucas decide h2s, qa-engineer 13 critérios
-3. **Notion sync** — rodar em paralelo (precisa Cursor ou MCP Notion ativo)
+**⚠ BLOQUEADOR:** _manifest.js usa s-a2-01→s-a2-06 para slides ANTIGOS. narrative.md define s-a2-01→s-a2-15 para 16 slides NOVOS. Criar HTMLs sem resolver isso = colisão.
+
+**Fix planejado (manifest rewrite):**
+1. Reescrever _manifest.js Act 2 (16 slides) + Act 3 (7 slides) com IDs definitivos
+2. Atualizar IDs nos HTMLs existentes (section id= nos 9 files afetados)
+3. Criar skeleton HTMLs para slides novos (build não quebra)
+4. Mover s-app-05→s-a2-13 (CCM) e s-app-06→s-a2-14 (SHP/PPH)
+5. Mover s-a2-03 (albumina)→s-app-alb (apêndice)
+6. Adicionar panelStates novos para 12+ slides Act 2
+7. Build + lint
+
+**Mapping old→new (Act 2):**
+| Old ID | File | New ID | Ação |
+|--------|------|--------|------|
+| s-a2-01 | 08-a2-carvedilol | s-a2-07 | Rename ID |
+| s-a2-02 | 09-a2-tips | s-a2-15 | Rename ID |
+| s-a2-03 | 10-a2-albumina | s-app-alb | Move to appendix |
+| s-a2-infec | 05-a1-infeccao | s-a2-04 | Rename ID |
+| s-a2-04 | 11-a2-pbe | s-a2-05 | Rename ID |
+| s-a2-05 | 12-a2-hrs | s-a2-11 | Rename ID |
+| s-a2-06 | 13-a2-he | s-a2-08 | Rename ID |
+| s-app-05 | 24-app-ccc | s-a2-13 | Move to Act 2 |
+| s-app-06 | 25-app-pulm | s-a2-14 | Move to Act 2 |
+
+**New HTMLs needed (skeletons):** s-a2-01, s-a2-02, s-a2-03, s-a2-06, s-a2-09, s-a2-10, s-a2-12 (7 Act 2) + s-a3-01, s-a3-03, s-a3-04, s-a3-07 (4 Act 3)
+
+### Depois do manifest rewrite
+
+1. **Notion sync** — criar CIRR-A1-VOTE, limpar 5 deprecated, renomear v3 suffixes
+2. **QA Act 1** — Lucas no browser, decide h2s
+3. **Act 2 + Act 3 HTML content** — preencher skeletons com conteúdo de RAW_ACT2_V2 e RAW_ACT3_V1
 
 ### P2: QA
 
@@ -75,7 +103,7 @@ RAW_ACT2_V2.md produzido e commitado. narrative.md atualizado com arquitetura de
 ### Estrutura (NÃO reabrir)
 - Cascata clínica do MESMO paciente (não lista de tópicos)
 - 16 slides + CP2 na ordem definida em narrative.md
-- 4 interações: PBE (A2-05), HDA/TIPS (A2-06), TX (A2-10), ICA checklist (A2-12)
+- 5 interações: PBE (A2-05), HDA/TIPS (A2-06), BB/NSBB toggle (A2-07), TX (A2-10), ICA checklist (A2-12)
 - Albumina distribuída (LVP + PBE + ACLF challenge), consolidada no apêndice
 - NSBB pós-HDA = profilaxia SECUNDÁRIA (PREDESCI NNT 9 = callback Act 1, não hero)
 - HRS-AKI lidera headline (CONFIRM NNT 7, NNH 12). ACLF = contexto de severidade
@@ -94,8 +122,8 @@ Cenário HIPOTÉTICO, não continuação direta. CP2 fecha o caso real.
 
 - **ERRO-008** — Case panel redundante em s-hook
 - ~~**D'Amico estádio 5**~~ — RESOLVIDO
-- **Orphan:** `03c-a1-elasto.html` no disco, fora do manifest (fundido em s-a1-baveno). Deletar ou manter como referência?
-- 20 referências [TBD] — 5 CANDIDATE, 11 NOT INDEXED (2025-2026), 3 resolvidos (Tonon PMID 40228583), 1 fonte não identificada, 1 não encontrado
+- ~~**Orphan:** `03c-a1-elasto.html`~~ — DELETADO 09/mar
+- 20 referências [TBD] — 0 CANDIDATE (5 verificados 09/mar, todos estavam errados e corrigidos), 11 NOT INDEXED (2025-2026), 3 resolvidos (Tonon PMID 40228583), 1 fonte não identificada (#2 PPI HR), 1 não encontrado (#14 Skouloudi)
 - CTP interobserver variability — PMID 6546609 ou 16305721
 - Pre-commit hook wiring pendente
 - 6 h2 do Act 1 pendentes de decisão do Lucas
@@ -124,6 +152,15 @@ Cenário HIPOTÉTICO, não continuação direta. CP2 fecha o caso real.
 | Histórico de batches | `CHANGELOG.md` |
 | PMIDs Tier-1 verificados | `.claude/rules/medical-data.md` |
 | Cross-references docs | `docs/XREF.md` |
+
+---
+
+## MCPs — não usar a princípio
+
+- **attention-insight** (sharp fallback ou API paga)
+- **frontend-review** (Hyperbolic) — before/after visual diff
+
+Stack QA ativo: playwright, lighthouse, a11y, ui-ux-pro, design-comparison, floto, clinicaltrials, perplexity.
 
 ---
 

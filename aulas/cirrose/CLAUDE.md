@@ -13,7 +13,7 @@
 
 | Arquivo | Papel |
 |---------|-------|
-| `slides/*.html` | **DEFAULT — editar estes** (28 arquivos, 1 por slide) |
+| `slides/*.html` | **DEFAULT — editar estes** (33 arquivos, 1 por slide) |
 | `slides/_manifest.js` | Source of truth: ordem, archetypes, panelStates |
 | `slide-registry.js` | Wiring centralizado (custom anims, panel, click-reveal, meld) |
 | `index.template.html` | Template com `%%SLIDES%%` placeholder |
@@ -43,7 +43,7 @@
 2. **HANDOFF.md** — Pendências projeto · **HANDOFF-CLAUDE-AI.md** — Claude.ai (paths)
 3. **CHANGELOG.md** — Histórico de batches (read-only, append-only)
 4. **ERROR-LOG.md** — Erros por sessão → regras (atualizar a cada sessão)
-5. **AUDIT-VISUAL.md** — Auditoria visual 28 slides × 8 dimensões
+5. **AUDIT-VISUAL.md** — Auditoria visual 33 slides × 8 dimensões
 
 ## Reference Hierarchy
 
@@ -116,7 +116,7 @@ sed -n '/### Slide 11: s-a2-03/,/^---$/p' AUDIT-VISUAL.md
 | Fase | Status | Entregável |
 |------|--------|------------|
 | FASE 0 | ✅ | `_manifest.js` (source of truth) |
-| FASE 1 | ✅ | 28 slides em `slides/`, template, build script |
+| FASE 1 | ✅ | 33 slides em `slides/`, template, build script |
 | FASE 2 | ✅ | cirrose.css consolidado |
 | FASE 3 | ✅ | `slide-registry.js` (wiring centralizado) |
 | FASE 4 | ✅ | MDs atualizados, ciclo de melhoria |

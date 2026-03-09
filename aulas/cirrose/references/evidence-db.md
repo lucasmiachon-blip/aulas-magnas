@@ -2,7 +2,8 @@
 
 > Dados clinicos canonicos. NUNCA modificar sem PMID verificado.
 > Atualizado: 07/mar/2026 — 9 refs tier-1 bloco 1 verificadas via PubMed MCP (GBD 2021, Baveno VII, LiverPRO, He 2024, Villanueva 2025, PREDESCI, Larrue 2023, Lee 2024, Marek 2024).
-> **07/mar/2026 — 21 refs pendentes pesquisadas. PubMed API inacessivel (proxy bloqueado). PMIDs candidatos listados como [CANDIDATE — VERIFICAR VIA MCP]. Nenhum dado foi verificado de memoria.**
+> **07/mar/2026 — 21 refs pendentes pesquisadas. PMIDs candidatos listados como [CANDIDATE].**
+> **09/mar/2026 — 5 CANDIDATE PMIDs verificados via WebSearch (PubMed MCP indisponivel). TODOS 5 estavam ERRADOS. Corrigidos: #1 32275982→32673741, #10 38530940→37939273, #11 38504576→38108646, #13 31342533→31342529, #20 34174336→34157322.**
 
 ---
 
@@ -110,7 +111,7 @@
 | D'Amico 2006 | D'Amico G | J Hepatol | `10.1016/j.jhep.2005.10.013` | 16298014 | 118 estudos. 4 estagios: mortalidade 1%->3-4%->20%->57% |
 | D'Amico 2014 | D'Amico G | Aliment Pharmacol Ther | `10.1111/apt.12721` | 24654740 | 494 pts. 5 estagios: mortalidade 5a 1,5%/10%/20%/30%/88% |
 | D'Amico 2018 | D'Amico G | J Hepatol | `10.1016/j.jhep.2017.10.020` | 29111320 | 6 states multistate. ACLF em qualquer fase |
-| D'Amico 2022 | D'Amico G | J Hepatol | `10.1016/j.jhep.2021.06.018` | [CANDIDATE: 34174336 — VERIFICAR VIA MCP] | NAD vs AD. Redefine descompensacao |
+| D'Amico 2022 | D'Amico G | J Hepatol | `10.1016/j.jhep.2021.06.018` | **34157322** | NAD vs AD. Redefine descompensacao |
 | D'Amico 2024 | D'Amico G | Hepatology | `10.1097/HEP.0000000000000652` | 37916970 | 2028 pts. Further decomp ~60%, dobra mortalidade |
 | Larrue 2023 | Larrue H, D'Amico G et al. | J Hepatol | `10.1016/j.jhep.2023.04.028` | 37141993 | IPD meta-analise TIPS vs SOC (n=2338): further decomp 48% vs 63% (2a); sobrevida 71% vs 63% (p=0,0001) |
 | Garcia-Guix 2024 | Garcia-Guix I | Liver Int | `10.1111/liv.15937` | 38634685 | HVPG non-response prediz further decomp |
@@ -184,7 +185,7 @@
 | s-a1-01 | Continuum compensada -> descomp -> further decomp -> recompensacao | Villanueva 2025 fig1 + D'Amico 2024 |
 | s-a1-fib4 / s-a1-rule5 | FIB-4 -> elastografia -> CSPH muda conduta | Baveno VII (PMID 35120736) |
 | s-a1-meld | MELD-Na: semaforo da cirrose | Formula UNOS padrao |
-| s-a2-infec | Infeccao = 33% das internacoes | PREDICT study (PMID [CANDIDATE: 32275982 — VERIFICAR VIA MCP]) |
+| s-a2-infec | Infeccao = 33% das internacoes | PREDICT study (PMID 33227350 — precipitating events; original PMID 32673741) |
 | s-app-etio | 10 etiologias em 3 perguntas | EASL CPG 2024 + AASLD 2024 |
 | s-a1-classify | Carvedilol HR 0,51 (IC 0,26-0,97) descomp/morte; HR 0,44 (IC 0,20-0,97) ascite (3 anos, n=201) | PREDESCI (PMID 30910320) |
 | s-a2-01 | **NSBBs** HR 0,51 (nao carvedilol isolado), NNT 9, dose carvedilol 6,25->12,5 mg | PREDESCI (PMID 30910320) |
@@ -196,10 +197,10 @@
 | s-a3-01 | Recompensacao: Baveno VII definicao + Tonon 2025 | PMID 35120736 + PMID 40228583 |
 | s-a3-02 | SVR diferente de cura CSPH (53% persistem) | Baveno VII + Lens S et al J Hepatol 2020 (PMID **32535060**, corrigido de 28039099 via WebSearch audit 08/mar) |
 | s-a3-03 | Vigilancia HCC a cada 6 meses | EASL/AASLD guidelines |
-| s-app-01 | ACLF grau 3: mortalidade 28d 73% | CANONIC (PMID **23474284**, corrigido) + AASLD ACLF 2024 (PMID [CANDIDATE: 38530940 — VERIFICAR VIA MCP]) |
+| s-app-01 | ACLF grau 3: mortalidade 28d 73% | CANONIC (PMID **23474284**) + AASLD ACLF 2024 (PMID **37939273**) |
 | s-app-02 | Early TIPS NNT ~4 | Garcia-Pagan (PMID 20573925) |
 | s-app-03 | Etiologias raras: autoimune, budd-chiari, colestáticas, Wilson | EASL CPG 2024 |
-| s-app-04 | NSBB >= EVL em profilaxia primaria (Turco 2024) | Turco 2024 Liver Int (PMID [CANDIDATE: 38504576 — VERIFICAR VIA MCP]) |
+| s-app-04 | NSBB >= EVL em profilaxia primaria (Turco 2024) | Turco 2024 CGH (PMID **38108646**) |
 | s-app-05 | Cardiomiopatia cirrotica: QTc prolongado | Moller et al (PMID 11964606) |
 | s-app-06 | SHP: PaO2 **<=80** + A-a gradient **>=15** vs PPH: mPAP >25 (corrigido: <= e >=, nao < e >) | Rodriguez-Roisin 2004 (PMID 15084697) |
 | s-app-07 | Estatina adjuvante: HVPG -2 mmHg | LIVERHOPE (PMID [CANDIDATE — VERIFICAR VIA MCP]) |
@@ -255,7 +256,7 @@
 
 | # | Referencia | PMID Candidato | DOI Candidato | Citacao AMA (candidata) | Status |
 |---|-----------|---------------|---------------|------------------------|--------|
-| 1 | PREDICT study — Trebicka et al. J Hepatol 2021 | [CANDIDATE: 32275982] | 10.1016/j.jhep.2020.01.025 | Trebicka J, Fernandez J, Papp M, et al. The PREDICT study uncovers three clinical courses of acutely decompensated cirrhosis that have distinct pathophysiology. J Hepatol. 2020;73(4):842-854. | VERIFICAR VIA MCP — nota: publicacao pode ser 2020 nao 2021 |
+| 1 | PREDICT study — Trebicka et al. J Hepatol 2020 | **32673741** | 10.1016/j.jhep.2020.01.025 | Trebicka J, Fernandez J, Papp M, et al. The PREDICT study uncovers three clinical courses of acutely decompensated cirrhosis that have distinct pathophysiology. J Hepatol. 2020;73(4):842-854. | VERIFICADO via WebSearch 09/mar — nota: follow-up precipitating events = PMID 33227350 (usado no slide s-a2-infec) |
 | 2 | PPI HR 1,75 para PBE | [TBD — fonte desconhecida] | — | Fonte nao identificada. Possiveis candidatos: Terg R et al. Hepatology 2015 ou Bajaj JS et al. Am J Gastroenterol 2009. | FONTE NAO IDENTIFICADA — escalar para Lucas |
 | 3 | Mahmud et al. ACG 2025 — MELD-Na cutoff | [NOT INDEXED — searched 2026-03-07] | — | Mahmud N, et al. [titulo TBD]. Am J Gastroenterol. 2025. | Artigo 2025 — provavelmente nao indexado ou abstract ACG |
 | 4 | AGA 2025 Orman — albumin guidance | [NOT INDEXED — searched 2026-03-07] | — | Orman ES, et al. AGA Clinical Practice Update on Albumin in Cirrhosis. Gastroenterology. 2025. | Artigo 2025 — provavelmente nao indexado ainda |
@@ -264,24 +265,24 @@
 | 7 | Lens et al. — CSPH persiste 53% pos-SVR | **32535060** (CORRIGIDO 08/mar — PMID antigo 28039099 era paper diferente de 2017) | 10.1016/j.jhep.2020.05.028 | Lens S, et al. J Hepatol 2020;73(6):1415-1424. CSPH persiste em 53% pos-SVR96. | RESOLVIDO via WebSearch |
 | 8 | EASL HCC Guidelines 2025 | [NOT INDEXED — searched 2026-03-07] | — | European Association for the Study of the Liver. EASL Clinical Practice Guidelines: management of hepatocellular carcinoma. J Hepatol. 2025. | Guideline 2025 — verificar se ja publicada e indexada |
 | 9 | CANONIC — Moreau et al. 2013 ACLF | **23474284** (CORRIGIDO 08/mar — 23562128 era PMID errado) | 10.1053/j.gastro.2013.02.042 | Moreau R, Jalan R, Gines P, et al. Gastroenterology 2013;144(7):1426-1437. ACLF grau 3: 73% mortalidade 28d. | RESOLVIDO via WebSearch |
-| 10 | AASLD ACLF 2024 | [CANDIDATE: 38530940] | — | Bajaj JS, O'Leary JG, Lai JC, et al. Acute-on-Chronic Liver Failure Clinical Guidelines. Hepatology. 2024. | VERIFICAR VIA MCP — pode ser Practice Guidance nao CPG |
-| 11 | Turco 2024 Liver Int — NSBB vs EVL IPD meta-analysis | [CANDIDATE: 38504576] | — | Turco L, Reiberger T, Guyatt G, et al. Non-selective beta-blockers versus endoscopic band ligation for primary prophylaxis of variceal bleeding: an individual patient data meta-analysis. Liver Int. 2024. | VERIFICAR VIA MCP |
+| 10 | AASLD ACLF 2024 | **37939273** | — | Bajaj JS, O'Leary JG, Lai JC, et al. AASLD Practice Guidance on Acute-on-chronic liver failure and the management of critically ill patients with cirrhosis. Hepatology. 2024. | VERIFICADO via WebSearch 09/mar — Practice Guidance (nao CPG). Erratum: PMID 38551831 |
+| 11 | Turco 2024 Clin Gastroenterol Hepatol — NSBB vs EVL IPD meta-analysis | **38108646** | — | Turco L, Reiberger T, Guyatt G, et al. Improving primary prophylaxis of variceal bleeding by adapting therapy to the clinical stage of cirrhosis. A competing-risk meta-analysis of individual participant data. Clin Gastroenterol Hepatol. 2024. | VERIFICADO via WebSearch 09/mar — journal = CGH (nao Liver Int). 11 RCTs, n=1400 (656 comp, 744 decomp). NSBB > EVL em compensados |
 | 12 | Ewid 2025 — meta-analise 76 estudos CCM | [NOT INDEXED — searched 2026-03-07] | — | Ewid M, et al. [titulo TBD — meta-analise cardiomiopatia cirrotica]. [journal TBD]. 2025. | Artigo 2025 — provavelmente nao indexado |
-| 13 | Izzy et al. Hepatology 2020 — CCC 2019 criteria | [CANDIDATE: 31342533] | 10.1002/hep.30875 | Izzy M, VanWagner LB, Lin G, et al. Redefining cirrhotic cardiomyopathy for the modern era. Hepatology. 2020;71(1):334-345. | VERIFICAR VIA MCP |
+| 13 | Izzy et al. Hepatology 2020 — CCC 2019 criteria | **31342529** | 10.1002/hep.30875 | Izzy M, VanWagner LB, Lin G, et al. Redefining cirrhotic cardiomyopathy for the modern era. Hepatology. 2020;71(1):334-345. | VERIFICADO via WebSearch 09/mar — PMID era 31342533 (off by 4) |
 | 14 | Skouloudi 2023 — GLS paradox in cirrhosis | [TBD — nome incomum, verificacao necessaria] | — | Skouloudi [initials TBD], et al. [titulo TBD — GLS paradox cirrhosis]. [journal TBD]. 2023. | VERIFICAR VIA MCP — nome pode estar grafado diferente |
 | 15 | Verstraeten 2025 — SHP | [NOT INDEXED — searched 2026-03-07] | — | Verstraeten [initials TBD], et al. [titulo TBD — sindrome hepatopulmonar]. [journal TBD]. 2025. | Artigo 2025 — provavelmente nao indexado |
 | 16 | DuBrock ILTS 2025 — portopulmonary hypertension | [NOT INDEXED — searched 2026-03-07] | — | DuBrock HM, et al. [titulo TBD — portopulmonary hypertension]. [journal TBD]. 2025. | Artigo 2025 / abstract ILTS — provavelmente nao indexado |
 | 17 | Alvarado-Tapias 2025 — statin + NSBB HVPG | [NOT INDEXED — searched 2026-03-07] | — | Alvarado-Tapias E, et al. [titulo TBD — statin + NSBB HVPG]. [journal TBD]. 2025. | Artigo 2025 — provavelmente nao indexado |
 | 18 | Pose JAMA 2025 — LIVERHOPE trial | [NOT INDEXED — searched 2026-03-07] | — | Pose E, Trebicka J, Mookerjee RP, et al. LIVERHOPE: A Randomized Clinical Trial of Statins and Rifaximin in Patients With Decompensated Cirrhosis. JAMA. 2025. | Artigo 2025 — provavelmente nao indexado |
 | 19 | Puente J Hepatol 2025 — CIRROXABAN trial | [NOT INDEXED — searched 2026-03-07] | — | Puente A, et al. CIRROXABAN: Rivaroxaban in patients with compensated cirrhosis. J Hepatol. 2025. | Artigo 2025 — provavelmente nao indexado |
-| 20 | D'Amico 2022 (NAD vs AD) — DOI 10.1016/j.jhep.2021.06.018 | [CANDIDATE: 34174336] | 10.1016/j.jhep.2021.06.018 | D'Amico G, Bernardi M, Angeli P, et al. New concepts on the clinical course and stratification of decompensated cirrhosis. J Hepatol. 2022;76(2):435-446. | VERIFICAR VIA MCP |
+| 20 | D'Amico 2022 (NAD vs AD) — DOI 10.1016/j.jhep.2021.06.018 | **34157322** | 10.1016/j.jhep.2021.06.018 | D'Amico G, Bernardi M, Angeli P. Towards a new definition of decompensated cirrhosis. J Hepatol. 2022;76(1):202-207. | VERIFICADO via WebSearch 09/mar — titulo e vol/pag corrigidos |
 | 21 | Tonon 2025 — recompensacao 7%/37,6% | **RESOLVIDO** PMID 40228583 | — | Tonon M, et al. J Hepatol. 2025. PMID 40228583. | Indexado — atualizado 08/mar/2026 |
 
 ### Resumo da pesquisa 2026-03-07
 
 | Status | Quantidade | Itens |
 |--------|-----------|-------|
-| CANDIDATE — verificar via MCP | 5 | #1, #10, #11, #13, #20 |
+| VERIFICADO via WebSearch (09/mar) | 5 | #1 (PREDICT → 32673741), #10 (AASLD ACLF → 37939273), #11 (Turco → 38108646), #13 (Izzy → 31342529), #20 (D'Amico 2022 → 34157322) |
 | RESOLVIDO via WebSearch (08/mar) | 2 | #7 (Lens → 32535060), #9 (CANONIC → 23474284) |
 | NOT INDEXED — artigo 2025/2026 | 11 | #3, #4, #5, #6, #8, #12, #15, #16, #17, #18, #19 |
 | FONTE NAO IDENTIFICADA | 1 | #2 (PPI HR 1,75 PBE) |

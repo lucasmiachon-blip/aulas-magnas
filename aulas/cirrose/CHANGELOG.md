@@ -4,6 +4,38 @@
 
 ---
 
+## 2026-03-09 — PMID audit + RAW_ACT3_V1 + fixes
+
+Branch: `main` · Uncommitted
+
+### PMID Audit (5 CANDIDATEs — TODOS errados)
+
+| # | CANDIDATE | Correto | Era na verdade |
+|---|-----------|---------|----------------|
+| 1 | 32275982 | **32673741** | ELF test NAFLD (Vali) |
+| 10 | 38530940 | **37939273** | Herbicida pyrazole |
+| 11 | 38504576 | **38108646** | Belatacept heart TX |
+| 13 | 31342533 | **31342529** | Off by 4 |
+| 20 | 34174336 | **34157322** | Fluoxetine neurogenesis |
+
+Turco: journal corrigido Liver Int → CGH.
+
+### RAW_ACT3_V1.md produzido
+
+- 7 slides detalhados (A3-01 a A3-07) com headlines, anchor numbers, speaker notes rascunho
+- 7/9 PMIDs ancora verificados. 2 unverified: 41580090 (alcool), 39220088 (TIPS)
+- Tabela "melhora / persiste / vigilancia" incluida
+
+### Fixes triviais
+
+- CASE.md: branch restructure/act1 → main
+- 03c-a1-elasto.html deletado (orphan)
+- narrative.md: 4→5 interacoes (BB/NSBB toggle restaurado como A2-07)
+- HANDOFF.md: 5 interacoes, estado atualizado
+- s-a1-infeccao notes: [TBD] → [TBD SOURCE — escalar para Lucas]
+
+---
+
 ## 2026-03-08 — MD audit + ACT3-CONTRACT-V1
 
 Branch: `main` · Commits: `c1f220d`, `800ec87`
@@ -112,15 +144,14 @@ Branch: `claude/diagnose-branch-commits-7twpK`
 | `clinicaltrials` | ClinicalTrials.gov v2 — NCT ID, outcomes, patient match | 9 (resolve [TBD]s) |
 | `design-comparison` | Pixel diff before/after CSS — valida se fix funcionou | 4, 6 |
 | `page-design-guide` | Typography, layout F/Z/Bento, animation principles | 2, 6 |
-| `attention-insight` (sharp) | Clarity + focus score proxy, ~60% accuracy | 6, 11 |
+| ~~`attention-insight`~~ | **NÃO usar a princípio** — clarity/focus (sharp ou API paga) | — |
+| ~~`frontend-review-mcp` (Hyperbolic)~~ | **NÃO usar a princípio** — before/after visual diff | — |
 
 **Requer signup (free credits):**
 
 | MCP | Custo | Como ativar |
 |-----|-------|-------------|
-| `attention-insight` API real | 14 dias grátis → €119/mo | [app.attentioninsight.com/auth/signup](https://app.attentioninsight.com/auth/signup) → `.env`: `ATTENTION_INSIGHT_API_KEY=` |
 | `floto` | 1.000 créditos grátis | [test-app.floto.ai](https://test-app.floto.ai) → `.env`: `FLOTO_API_KEY=` |
-| `frontend-review-mcp` | Créditos grátis | [app.hyperbolic.xyz](https://app.hyperbolic.xyz) → `.env`: `HYPERBOLIC_API_KEY=` |
 
 **Mapeamento ferramentas → critérios qa-engineer:**
 
@@ -131,7 +162,7 @@ Branch: `claude/diagnose-branch-commits-7twpK`
 | 3. Contraste WCAG | `a11y-mcp`, `playwright` axe-core, `lighthouse` |
 | 4. Fill ratio | `playwright` screenshot 1280×720 |
 | 5. Densidade | `playwright` word count DOM |
-| 6. Impacto visual | `attention-insight`, `floto` |
+| 6. Impacto visual | `design-comparison`, `floto` |
 | 7. Interações | `playwright` Space/Arrow + hook check |
 | 8. CSS tokens | `grep` HEX/px literals |
 | 9. Dados clínicos | `scite`, `biomcp`, `clinicaltrials` |

@@ -1,6 +1,6 @@
 ---
 name: qa-engineer
-description: "Runs QA perfection loop on slides: audit → fix → re-audit until ALL 13 criteria ≥ 9/10. Criteria: assertion-evidence, typography, contrast, fill ratio, density, visual impact, interactions, CSS tokens, clinical data, a11y (Lighthouse+axe), cognitive load (Sweller CLT), adult learning (Knowles+Miller), narrative arc (Duarte+Alley). Tools: playwright, lighthouse, eslint, perplexity_reason, axe-core, ui-ux-pro (UX guidelines), frontend-review (before/after visual diff), attention-insight (clarity+cognitive load score). Use PROACTIVELY after any slide is created or modified."
+description: "Runs QA perfection loop on slides: audit → fix → re-audit until ALL 13 criteria ≥ 9/10. Criteria: assertion-evidence, typography, contrast, fill ratio, density, visual impact, interactions, CSS tokens, clinical data, a11y (Lighthouse+axe), cognitive load (Sweller CLT), adult learning (Knowles+Miller), narrative arc (Duarte+Alley). Tools: playwright, lighthouse, eslint, perplexity_reason, axe-core, ui-ux-pro, design-comparison (pixel diff), floto (smart diff). NÃO usar a princípio: attention-insight, frontend-review (Hyperbolic). Use PROACTIVELY after any slide is created or modified."
 tools:
   - Read
   - Write
@@ -11,8 +11,6 @@ tools:
   - mcp:eslint
   - mcp:perplexity
   - mcp:ui-ux-pro
-  - mcp:frontend-review
-  - mcp:attention-insight
   - mcp:design-comparison
   - mcp:floto
 model: sonnet
@@ -50,10 +48,10 @@ MAX 3 iterações por slide. Se não atingir após 3 → escalar para Lucas com 
 | `mcp:eslint lint-files` | Qualidade JS |
 | `mcp:perplexity perplexity_reason` | Avaliação pedagógica (CLT, Mayer, Knowles, Miller) |
 | `mcp:ui-ux-pro` | Padrões UX: tipografia, espaçamento, cores, landing patterns (103 styles, 170 UX guidelines) |
-| `mcp:frontend-review reviewEdit` | Comparar before/after screenshots — valida se CSS edit atingiu objetivo |
-| `mcp:attention-insight analyze_attention(image_path)` | Clarity score + Focus score + Cognitive load (sharp fallback sem API key; API real com ATTENTION_INSIGHT_API_KEY) |
 | `mcp:design-comparison compare(before, after)` | Pixel diff GRATUITO — before/after CSS fixes, % de diferença, imagem diff |
 | `mcp:floto compare_design(design, impl)` | Smart diff semântico — AI detecta discrepâncias visuais além de pixels (requer FLOTO_API_KEY) |
+| ~~`mcp:attention-insight`~~ | **NÃO usar a princípio** — clarity/focus score (sharp fallback ou API paga) |
+| ~~`mcp:frontend-review` (Hyperbolic)~~ | **NÃO usar a princípio** — before/after visual diff via Qwen-VL |
 | `Bash: npm run lint:slides` | Assertion-evidence lint |
 | `Bash: npm run build:cirrose` | Build check |
 | `Bash: grep` | HEX literals, px font-size, ul/ol |

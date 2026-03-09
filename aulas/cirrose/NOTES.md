@@ -51,14 +51,14 @@
 
 ## [03/03] Referências [TBD] — 21 itens
 
-5 CANDIDATE restantes (verificar via PubMed MCP):
-1. PREDICT (Trebicka) — PMID 32275982
+5 CANDIDATE — **TODOS ERRADOS** (verificados 09/mar via WebSearch):
+1. ~~PREDICT (Trebicka) — PMID 32275982~~ → **32673741** (32275982 = ELF test NAFLD)
 2. ~~Lens CSPH SVR — PMID 28039099~~ → **RESOLVIDO 08/mar: PMID 32535060**
 3. ~~CANONIC (Moreau) — PMID 23562128~~ → **RESOLVIDO 08/mar: PMID 23474284**
-4. AASLD ACLF 2024 — PMID 38530940
-5. Turco 2024 NSBB — PMID 38504576
-6. Izzy 2020 CCC — PMID 31342533
-7. D'Amico 2022 NAD vs AD — PMID 34174336
+4. ~~AASLD ACLF 2024 — PMID 38530940~~ → **37939273** (38530940 = herbicida pyrazole)
+5. ~~Turco 2024 NSBB — PMID 38504576~~ → **38108646** (38504576 = belatacept heart TX). Journal: CGH, não Liver Int
+6. ~~Izzy 2020 CCC — PMID 31342533~~ → **31342529** (off by 4)
+7. ~~D'Amico 2022 NAD vs AD — PMID 34174336~~ → **34157322** (34174336 = fluoxetine neurogenesis)
 
 12 NOT INDEXED (artigos 2025-2026): Mahmud ACG 2025, AGA 2025 Orman, Kuo 2025 AMR, Hofer/Reiberger 2026, EASL HCC 2025, Ewid 2025 CCM, Skouloudi 2023 GLS, Verstraeten 2025, DuBrock ILTS 2025, Alvarado-Tapias 2025, Pose JAMA 2025, Puente 2025 CIRROXABAN.
 
@@ -124,3 +124,23 @@ Disclosure obrigatório em Acknowledgments (final), nunca na linha de autoria.
 Detalhes: ver `references/coautoria.md` (renomeado para AI Disclosure).
 
 *Agent logs 08/mar removidos (machine noise — ver git history se necessário)*
+
+---
+
+## [09/03] Sessão — PMID audit + RAW_ACT3_V1
+
+### Decisões
+- **BB/NSBB toggle restaurado** como 5ª interação do Act 2 (A2-07). Lucas decidiu Opção A.
+- **PPI HR [TBD]** em s-a1-infeccao notes: fonte não identificada. OR 2,17 tem PMID 26214428, mas HR específico não tem paper. Escalar para Lucas.
+
+### Descobertas críticas
+- **5/5 CANDIDATE PMIDs estavam ERRADOS.** Todos produzidos por modelo sem verificação MCP. Lição: NUNCA confiar em PMID de modelo sem verificação via PubMed/WebSearch.
+- evidence-db.md atualizado com PMIDs corretos + notas de verificação.
+
+### Produzido
+- `RAW_ACT3_V1.md` — 7 slides, 7/9 PMIDs verificados
+- HANDOFF, CHANGELOG, NOTES atualizados
+
+[2026-03-09 19:05] [BUILD] OK — cd "C:/Dev/Projetos/aulas-magnas" && npm run build:cirrose 2>&1 | tail -3 && npm run lint:slides 2>&1 | tail -3
+
+[2026-03-09 19:20] [:a7ad0720] — concluído. Status: PARTIAL

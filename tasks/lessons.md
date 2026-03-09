@@ -180,3 +180,22 @@ Tokens não importam. Retrabalho é sinal de aprendizado — mas não pode paral
 
 - CHANGELOG, ERROR-LOG, lessons.md devem ser atualizados na MESMA sessão em que o trabalho foi feito
 - Deixar para "depois" = invariavelmente esquece, próximo agente não tem contexto
+
+---
+
+## Sessão 09/mar — PMID audit + RAW_ACT3_V1
+
+### NUNCA confiar em PMID gerado por modelo sem verificação
+
+- **5/5 CANDIDATE PMIDs estavam ERRADOS.** Todos foram produzidos por ChatGPT 5.4 Pro e model-based search sem MCP.
+- Tipos de erro: PMID de artigo completamente diferente (herbicida, belatacept, fluoxetine), off-by-4, journal errado.
+- **Regra:** Todo PMID deve ser verificado via PubMed MCP ou WebSearch (pubmed.ncbi.nlm.nih.gov/{PMID}) antes de entrar em evidence-db ou slide.
+- **Regra:** Marcar como `[CANDIDATE]` até verificado. Nunca promover a verificado sem check.
+- **Regra:** Se PubMed MCP indisponível, WebSearch no domínio pubmed.ncbi.nlm.nih.gov é fallback aceitável.
+
+### Act 3 anchor PMIDs: 2 não verificáveis
+
+- PMID 41580090 (álcool abstinência) e PMID 39220088 (TIPS ≠ recompensação) não foram encontrados via WebSearch.
+- Podem ser PMIDs recentes (2025/2026 não indexados) ou fabricados.
+- Alternativa para álcool: PMID 37469291 (18,1% retrospectivo) — verificado.
+- Alternativa para TIPS: conceito presente em Baveno VII (PMID 36646527/35120736) — verificado.

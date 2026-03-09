@@ -1,6 +1,6 @@
 # CASE.md — Caso Clínico: Seu Antônio
 > Source of truth único para dados do paciente. NUNCA duplicar em outros arquivos.
-> Atualizado: 2026-03-05 | Branch: restructure/act1
+> Atualizado: 2026-03-09 | Branch: main
 
 ## Identificação
 
