@@ -80,8 +80,8 @@ export const panelStates = {
   // ── Pre-Act + Act 1 ──
   's-hook': {
     severity: 'neutral',
-    values: { fib4: '5,91', lsm: '—', plq: '112k', meld: '—', albumin: '3,6', stage: '?' },
-    visibleFields: ['fib4', 'plq', 'albumin', 'stage'],
+    values: { fib4: '—', lsm: '—', plq: '112k', meld: '—', albumin: '3,6', stage: '?' },
+    visibleFields: ['plq', 'albumin', 'stage'],
     events: [],
   },
   's-a1-vote': {
@@ -92,8 +92,8 @@ export const panelStates = {
   },
   's-a1-baveno': {
     severity: 'neutral',
-    values: { fib4: '5,91', lsm: '—', plq: '112k', meld: '—', albumin: '3,6', stage: '?' },
-    visibleFields: ['fib4', 'plq', 'albumin', 'stage'],
+    values: { fib4: '—', lsm: '—', plq: '112k', meld: '—', albumin: '3,6', stage: '?' },
+    visibleFields: ['plq', 'albumin', 'stage'],
     events: [],
   },
   's-a1-fib4': {

@@ -166,3 +166,7 @@ Detalhes: ver `references/coautoria.md` (renomeado para AI Disclosure).
 [2026-03-09 20:32] [BUILD] OK — npm run build:cirrose 2>&1
 
 [2026-03-09 20:50] [BUILD] OK — npm run build:cirrose 2>&1
+
+[2026-03-09 20:57] [BUILD] OK — npm run build:cirrose 2>&1 | tail -10
+
+[2026-03-09 21:05] [BUILD] OK — cd "C:/Dev/Projetos/aulas-magnas" && npm run build:cirrose 2>&1 | tail -5 && npm run lint:slides 2>&1 | tail -5
