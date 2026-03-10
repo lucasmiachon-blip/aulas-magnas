@@ -78,40 +78,64 @@ Checklist: estatico (HTML structure, assertions, notes, data) + fixes aplicados.
 
 ---
 
-## Act 2 + CP2 — QA PENDENTE
+## Act 2 + CP2 — QA BROWSER COMPLETO (09/mar/2026)
 
-**Status: NAO INICIADO**
-16 slides (15 Act 2 + 1 CP2). Inclui 7 slides novos (skeletons preenchidos em 09/mar) + 8 slides existentes relocados.
+**Status: PASS (condicional)**
+Agente: Claude Code (Opus 4.6) · Sessao: 09/mar/2026
+Metodo: Playwright Chromium headless 1280x720 · navegacao real ArrowRight · 46 screenshots
 
-### Slides a auditar
+### Slides cobertos (16)
 
-| # | ID | Arquivo | Origem | Notas pre-QA |
-|---|-----|---------|--------|-------------|
-| 12 | s-a2-01 | 30-a2-gatilhos.html | NOVO | PMID corrigido (ERRO-028) |
-| 13 | s-a2-02 | 31-a2-ascite-dx.html | NOVO | h2 possivelmente longo demais |
-| 14 | s-a2-03 | 32-a2-ascite-manejo.html | NOVO | OK |
-| 15 | s-a2-04 | 05-a1-infeccao.html | RELOCADO (era A1) | Score anterior: 2.5 |
-| 16 | s-a2-05 | 11-a2-pbe.html | EXISTENTE | Score anterior: 3.0 |
-| 17 | s-a2-06 | 33-a2-hda.html | NOVO | h2 possivelmente longo demais |
-| 18 | s-a2-07 | 08-a2-carvedilol.html | EXISTENTE | Score anterior: 3.1 |
-| 19 | s-a2-08 | 13-a2-he.html | EXISTENTE | Score anterior: 2.5 |
-| 20 | s-a2-09 | 34-a2-nutricao.html | NOVO | [TBD SOURCE] removido (ERRO-029) |
-| 21 | s-a2-10 | 35-a2-tx.html | NOVO | OK |
-| 22 | s-a2-11 | 12-a2-hrs.html | EXISTENTE | Score anterior: 3.1 |
-| 23 | s-a2-12 | 36-a2-refrataria.html | NOVO | h2 possivelmente longo demais |
-| 24 | s-a2-13 | 24-app-ccc.html | RELOCADO (era APP) | Score anterior: 2.6 |
-| 25 | s-a2-14 | 25-app-pulm.html | RELOCADO (era APP) | Score anterior: 2.4 (FAIL) |
-| 26 | s-a2-15 | 09-a2-tips.html | EXISTENTE | Score anterior: 3.3 |
-| 27 | s-cp2 | 14-cp2.html | EXISTENTE | Score anterior: 3.4 |
+| # | ID | Arquivo | Origem | Status QA |
+|---|-----|---------|--------|-----------|
+| 12 | s-a2-01 | 30-a2-gatilhos.html | NOVO | PASS (h2 3 linhas — P1) |
+| 13 | s-a2-02 | 31-a2-ascite-dx.html | NOVO | PASS |
+| 14 | s-a2-03 | 32-a2-ascite-manejo.html | NOVO | PASS |
+| 15 | s-a2-04 | 05-a1-infeccao.html | RELOCADO | PASS (bar chart — bom) |
+| 16 | s-a2-05 | 11-a2-pbe.html | EXISTENTE | PASS |
+| 17 | s-a2-06 | 33-a2-hda.html | NOVO | PASS (h2 denso mas 2 linhas) |
+| 18 | s-a2-07 | 08-a2-carvedilol.html | EXISTENTE | PASS (4 states, excelente) |
+| 19 | s-a2-08 | 13-a2-he.html | EXISTENTE | PASS |
+| 20 | s-a2-09 | 34-a2-nutricao.html | NOVO | PASS (source-tag limpo) |
+| 21 | s-a2-10 | 35-a2-tx.html | NOVO | PASS |
+| 22 | s-a2-11 | 12-a2-hrs.html | EXISTENTE | PASS (3 perguntas, forte) |
+| 23 | s-a2-12 | 36-a2-refrataria.html | NOVO | PASS (h2 denso mas 2 linhas) |
+| 24 | s-a2-13 | 24-app-ccc.html | RELOCADO | PASS |
+| 25 | s-a2-14 | 25-app-pulm.html | RELOCADO | PASS (comparacao SHP/HPP) |
+| 26 | s-a2-15 | 09-a2-tips.html | EXISTENTE | PASS |
+| 27 | s-cp2 | 14-cp2.html | EXISTENTE | PASS (checkpoint forte) |
 
-### Blockers identificados (pre-QA)
+### Fixes aplicados nesta sessao
 
-| Prioridade | Issue | Slide | Fix |
-|-----------|-------|-------|-----|
-| ~~P0~~ | ~~PREDICT PMID~~ | s-a2-01 | ✅ Corrigido (ERRO-028) |
-| ~~P0~~ | ~~[TBD SOURCE] visivel~~ | s-a2-09 | ✅ Corrigido (ERRO-029) |
-| P1 | 5/7 novos slides: manifest headline != HTML h2 | Varios | Sync governance |
-| P1 | 7 novos slides usam layout identico (flow-cascade x3) | Todos novos | Monotonia visual — variar archetypes |
+1. **slides 31, 32**: Bare `<` em speaker notes escapados para `&lt;` (fix Vite parse5 error)
+2. **P0s ja corrigidos**: PMID s-a2-01 (ERRO-028), [TBD SOURCE] s-a2-09 (ERRO-029)
+
+### Checklist estrutural (todos 16 slides)
+
+- [x] `<h2>` com assercao clinica
+- [x] Sem `<ul>` ou `<ol>` no slide
+- [x] `<aside class="notes">` presente
+- [x] `<section>` sem `style` com `display` (E07)
+- [x] Background e cores corretos
+- [x] Sem CDN links
+- [x] Build + lint:slides + lint:case-sync + lint:narrative-sync PASS
+- [x] Navegacao ArrowRight funciona em todos 27 slides (Act 1 + Act 2)
+- [x] Case panel progride corretamente (verde → amarelo → vermelho)
+- [x] Zero erros de console
+
+### P1 pendencias (nao-bloqueantes)
+
+- **h2 longo**: s-a2-01 (3 linhas) — Lucas decide se encurta
+- **Monotonia visual**: 6/7 novos slides usam flow-cascade. s-a2-04 (bar chart) unico que varia. Gemini avaliara.
+- **[TBD] em notes**: s-a2-04 e s-a2-09 tem [TBD SOURCE] em speaker notes (nao visivel na projecao)
+
+### Destaques positivos
+
+- Case panel mostra progressao de doenca (dot verde → borda amarela → borda vermelha)
+- s-a2-07 (carvedilol): 4 states progressivos (headline → HR → NNT → dose) — excelente
+- s-a2-04 (infeccao): Unico slide novo com archetype diferente (bar chart)
+- s-a2-11 (HRS): 3 perguntas numeradas — forte decisao clinica
+- s-cp2: Checkpoint realista com caso + 3 opcoes
 
 ---
 
@@ -184,6 +208,7 @@ Checklist: estatico (HTML structure, assertions, notes, data) + fixes aplicados.
 |------|--------|-----------|
 | 25/fev/2026 | 28 slides (deck antigo) — scoring visual completo | Media 2.7/5.0, 0 PASS |
 | 09/mar/2026 | Pre-Act + Act 1 + CP1 (11 slides) — checklist estatico + fixes | 3 fixes aplicados, PASS |
+| 09/mar/2026 | Act 1 + Act 2 + CP2 (27 slides) — browser QA Playwright 1280x720 | 46 screenshots, 0 P0, PASS |
 
 ---
 

@@ -34,12 +34,19 @@ Manifest rewrite resolveu colisão s-a2-01→s-a2-06. 12 HTMLs renomeados, 11 sk
 
 Todos usam archetype-flow (.flow-cascade > .flow-step). Speaker notes com timing, [DATA], e [NARRATIVO] para MELDs construídos.
 
-### P0 ATUAL: QA estático + dinâmico (Gemini)
+### ✅ DONE: Browser QA Act 1 + Act 2 (Playwright)
 
-1. Rodar QA estático: assertion-evidence check, contraste, fill ratio, tipografia nos 44 slides
-2. QA dinâmico: testar reveals e interações existentes (Act 1 tem 9 custom anims)
+27 slides navegados via Playwright Chromium headless 1280x720. 46 screenshots em `qa-screenshots/browser-qa/`.
+- **Act 1 (11 slides):** PASS. 0 P0. P1: damico formula truncada, baveno clipping.
+- **Act 2 (16 slides):** PASS. 0 P0. P1: s-a2-01 h2 3 linhas, monotonia flow-cascade.
+- **Lints:** slides + case-sync + narrative-sync = all PASS. Zero console errors.
+
+### P0 ATUAL: QA visual Gemini (estático por state + dinâmico)
+
+1. Enviar screenshots state-by-state para Gemini (46 PNGs em qa-screenshots/browser-qa/)
+2. QA dinâmico: testar reveals e interações com vídeo
 3. h2 assertivos decididos (Lucas vê no browser → decide)
-4. Act 2 slides novos: visual check no browser (archetype-flow renderiza corretamente?)
+4. Monotonia visual Act 2: Gemini avalia se 6x flow-cascade precisa de variação
 
 ### P1: Preencher 4 skeletons Act 3
 

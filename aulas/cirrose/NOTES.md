@@ -178,3 +178,7 @@ Detalhes: ver `references/coautoria.md` (renomeado para AI Disclosure).
 [2026-03-09 21:27] [BUILD] OK — cd "C:/Dev/Projetos/aulas-magnas" && npm run build:cirrose 2>&1
 
 [2026-03-09 21:28] [BUILD] OK — cd "C:/Dev/Projetos/aulas-magnas" && npm run build:cirrose 2>&1 && npm run lint:slides 2>&1
+
+[2026-03-09 21:48] [BUILD] OK — cd "C:/Dev/Projetos/aulas-magnas" && npm run build:cirrose 2>&1
+
+[2026-03-09 21:55] [:abce5a3d] — concluído. Status: PARTIAL
