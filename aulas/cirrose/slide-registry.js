@@ -115,13 +115,24 @@ export const customAnimations = {
      State 0: question visible. State 1: reveal FIB-4 + verdict
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   's-a1-vote': (slide, gsap) => {
-    let revealed = false;
     const options = slide.querySelectorAll('.vote-option');
     const reveal = slide.querySelector('.vote-reveal');
     const instruction = slide.querySelector('.vote-instruction');
     const heroNum = slide.querySelector('.vote-hero-number');
     const verdict = slide.querySelector('.vote-verdict');
     const explanation = slide.querySelector('.vote-explanation');
+    const animTargets = [reveal, instruction, verdict, explanation].filter(Boolean);
+
+    // Reset leftover DOM state from previous visit (ctx.revert only undoes GSAP)
+    options.forEach(btn => {
+      btn.classList.remove('vote-option--correct', 'vote-option--dimmed');
+    });
+    gsap.set(reveal, { opacity: 0, visibility: 'hidden' });
+    gsap.set([verdict, explanation].filter(Boolean), { opacity: 0, y: 8 });
+    if (instruction) gsap.set(instruction, { opacity: 1 });
+    if (heroNum) heroNum.textContent = '5,91';
+
+    let revealed = false;
 
     function doReveal() {
       if (revealed) return false;
@@ -161,18 +172,28 @@ export const customAnimations = {
       if (!revealed) return false;
       revealed = false;
 
+      // Kill in-flight tweens before reversing
+      gsap.killTweensOf(animTargets);
+
       options.forEach(btn => {
         btn.classList.remove('vote-option--correct', 'vote-option--dimmed');
       });
 
       if (instruction) gsap.to(instruction, { opacity: 1, duration: 0.3 });
-      gsap.to(reveal, { opacity: 0, duration: 0.3, onComplete() { reveal.style.visibility = 'hidden'; } });
-      if (heroNum) heroNum.textContent = '0';
+      gsap.to(reveal, { opacity: 0, duration: 0.3, onComplete() {
+        reveal.style.visibility = 'hidden';
+        gsap.set([verdict, explanation].filter(Boolean), { opacity: 0, y: 8 });
+      }});
+      if (heroNum) heroNum.textContent = '5,91';
 
       return true;
     }
 
-    options.forEach(btn => btn.addEventListener('click', doReveal));
+    // stopPropagation prevents deck.js viewport click from advancing slide
+    options.forEach(btn => btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      doReveal();
+    }));
 
     slide.__hookAdvance = doReveal;
     slide.__hookRetreat = undoReveal;

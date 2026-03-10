@@ -1267,6 +1267,21 @@
    s-a1-vote — Audience poll with FIB-4 reveal
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
+/* Layout: center content vertically; tighter padding to fit reveal at 720px */
+#s-a1-vote .archetype-hero-stat {
+  align-content: center;
+  padding-top: 36px;
+  padding-bottom: 32px;
+}
+
+/* Headline: serif authority for the provocation */
+#s-a1-vote .slide-headline {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 2.8vw, 48px);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
 .vote-patient-summary {
   text-align: center;
   margin-bottom: var(--space-sm);
@@ -1274,25 +1289,26 @@
 
 .vote-bio {
   font-family: var(--font-body);
-  font-size: var(--text-body);
-  color: var(--text-secondary);
+  font-size: var(--text-small);
+  color: var(--text-muted);
 }
 
 .vote-labs-row {
   display: flex;
-  gap: var(--space-xs);
+  gap: 6px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: var(--space-xs);
+  margin-top: 6px;
 }
 
 .vote-lab {
   font-family: var(--font-mono);
-  font-size: var(--text-small);
-  padding: 0.25rem 0.5rem;
+  font-size: var(--text-caption);
+  padding: 0.15rem 0.4rem;
   border-radius: var(--radius-sm);
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--divider);
+  color: var(--text-secondary);
 }
 
 .vote-lab--success {
@@ -1307,50 +1323,59 @@
 
 .vote-options {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   justify-content: center;
+  margin-top: var(--space-sm);
 }
 
 .vote-option {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
+  flex: 1;
+  max-width: 300px;
   padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   border: 2px solid var(--border);
-  background: var(--bg-card);
+  background: var(--bg-elevated);
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
   font-family: var(--font-body);
   font-size: var(--text-body);
   color: var(--text-primary);
+  box-shadow: 0 1px 4px oklch(0% 0 0 / 0.06);
 }
 
 .vote-option:hover {
   border-color: var(--ui-accent);
-  background: var(--bg-elevated);
+  box-shadow: 0 3px 12px oklch(0% 0 0 / 0.10);
+  transform: translateY(-1px);
 }
 
 .vote-option-letter {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: var(--text-h3);
+  font-size: var(--text-h2);
   color: var(--ui-accent);
-  min-width: 2rem;
+  min-width: 2.5rem;
+  flex-shrink: 0;
 }
 
 .vote-option-text {
   text-align: left;
+  line-height: 1.3;
 }
 
 .vote-option--dimmed {
-  opacity: 0.3;
+  opacity: 0.25;
   pointer-events: none;
+  transform: scale(0.98);
 }
 
 .vote-option--correct {
   border-color: var(--safe);
   background: oklch(from var(--safe) l c h / 0.08);
+  box-shadow: 0 2px 12px oklch(from var(--safe) l c h / 0.15);
 }
 
 .vote-option--correct::after {
@@ -1361,18 +1386,20 @@
 }
 
 .vote-instruction {
-  font-family: var(--font-body);
-  font-size: var(--text-small);
-  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-body);
+  color: var(--text-secondary);
   text-align: center;
-  margin-top: var(--space-xs);
+  margin-top: var(--space-sm);
 }
 
 .vote-reveal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
   opacity: 0;
   visibility: hidden;
 }
@@ -1394,7 +1421,7 @@
 
 .vote-hero-number {
   font-family: var(--font-mono);
-  font-size: var(--text-hero);
+  font-size: clamp(48px, 4vw, 72px);
   font-weight: 700;
   color: var(--danger);
   line-height: 1;
@@ -1402,7 +1429,7 @@
 
 .vote-verdict {
   font-family: var(--font-display);
-  font-size: var(--text-h2);
+  font-size: var(--text-h3);
   color: var(--text-primary);
   text-align: center;
   margin: 0;
@@ -1410,7 +1437,7 @@
 
 .vote-explanation {
   font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-size: var(--text-small);
   color: var(--text-secondary);
   text-align: center;
   margin: 0;
