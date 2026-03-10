@@ -4,11 +4,11 @@
 
 ---
 
-## 2026-03-10 — Hardening pré-Gemini Act 1
+## 2026-03-10 — Hardening pré-Gemini Act 1 + re-QA consolidado
 
-Branch: `main`
+Branch: `main` · Commits: `80c4a7c` (hardening) + doc-only (consolidação)
 
-### Fixes
+### Fixes (commit 80c4a7c)
 
 | Arquivo | Fix |
 |---------|-----|
@@ -20,16 +20,26 @@ Branch: `main`
 | 02d-a1-vote.html | 1 countUp fallback: FIB-4 0→5,91 |
 | 03b-a1-fib4calc.html | 1 countUp fallback: FIB-4 0→5,91 |
 
-### QA
+### Re-QA consolidado (RODADA 3)
 
-- 27 screenshots frescos via `act1-reaudit.mjs` (Playwright Chromium 1280x720)
+- 27 screenshots via `act1-reaudit.mjs` (Playwright Chromium 1280x720)
 - 0 P0, 0 console errors, 11/11 slides navegados
 - Build + 3 lints PASS
+- Veredito: **PASS COM RISCOS** — 0 P0, 8 P1 remanescentes, 2 novos erros registrados
+
+### Novos erros encontrados
+
+| Erro | Slide | Descrição |
+|------|-------|-----------|
+| ERRO-030 | s-a1-meld | Emoji unicode (🟢🟡🟠🔴) projetado — viola ERRO-002 + daltonismo |
+| ERRO-031 | s-title | data-background-color usa var() em vez de HEX literal |
 
 ### Docs
 
-- HANDOFF.md atualizado com seção hardening
-- CHANGELOG.md atualizado
+- ERROR-LOG.md: +2 erros (ERRO-030, ERRO-031)
+- AUDIT-VISUAL.md: rodada 3 consolidada com resultado per-slide honesto
+- HANDOFF.md: estado atualizado
+- CHANGELOG.md: este registro
 
 ---
 

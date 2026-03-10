@@ -11,7 +11,7 @@
 **Act 2 skeletons:** ✅ 7/7 preenchidos com conteúdo HTML real (fontes, números, notes com timing).
 **narrative.md:** ✅ Act 3 expandido de 3→7 slides, alinhado com manifest e RAW_ACT3_V1.
 **Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento é P1.
-**Hardening Act 1:** ✅ DONE — 4 blockers fixed (headline drift, countUp fallbacks, stale QA). 27 fresh screenshots. 0 P0.
+**Hardening Act 1:** ✅ DONE — 4 blockers fixed (headline drift, countUp fallbacks, stale QA). 27 fresh screenshots. 0 P0. 2 novos erros registrados (ERRO-030 emoji meld, ERRO-031 var() title).
 
 ---
 
@@ -78,7 +78,9 @@ RAW_ACT3_V1.md tem todo o conteúdo necessário.
 - Pre-commit hook wiring pendente
 - [TBD SOURCE]: sarcopenia prevalência, covert HE, centros TIPS Brasil, ESPEN 2019 PMID, QTc threshold
 - ERRO-008: case panel redundante em s-hook
-- 6 h2 do Act 1 pendentes de decisão do Lucas
+- ERRO-030: emoji unicode em s-a1-meld (🟢🟡🟠🔴 → substituir por ✓/⚠/✕)
+- ERRO-031: s-title data-background-color usa var() em vez de HEX literal
+- 3 h2 do Act 1 pendentes de decisão do Lucas (fib4, meld, classify)
 
 ---
 

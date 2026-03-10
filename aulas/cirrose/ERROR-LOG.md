@@ -235,4 +235,29 @@ Severidades: CRITICAL (bloqueia projeção), HIGH (prejudica leitura), MEDIUM (e
 | MEDIUM     | 9     | 7          | 2 (ERRO-008, ERRO-023) |
 | LOW        | 1     | 1          | 0         |
 
-*Última atualização: 2026-03-09 · ERRO-028/029 registrados e corrigidos. ERRO-008/022/023 pendentes*
+---
+
+## Erros registrados — sessão hardening Act 1 (2026-03-10)
+
+### ERRO-030 · MEDIUM · s-a1-meld
+**Emoji unicode (🟢🟡🟠🔴) em slide projetado**
+**Root cause:** Slide criado com emoji circles como indicadores de faixa MELD. Viola ERRO-002 (zero emojis). Também viola daltonismo: reforço deveria ser ✓/⚠/✕ (design-system.md), não emoji.
+**Fix proposto:** Substituir por ícones semânticos ou colored dots CSS com ✓/⚠/✕ ao lado.
+**Status:** Pendente — Lucas decide (h2 + layout deste slide ainda em revisão).
+
+### ERRO-031 · LOW · s-title
+**`data-background-color` usa `var()` em vez de HEX literal**
+**Root cause:** `data-background-color="var(--bg-navy, #162032)"` — Reveal.js parseia como string JS. Funciona em browsers modernos mas é frágil. Regra: HEX literal.
+**Fix proposto:** Trocar para `data-background-color="#162032"`.
+**Status:** Pendente — cosmético, baixo risco.
+
+---
+
+| Severidade | Total | Corrigidos | Pendentes |
+|------------|-------|------------|-----------|
+| CRITICAL   | 5     | 5          | 0 |
+| HIGH       | 13    | 12         | 1 (ERRO-022) |
+| MEDIUM     | 10    | 7          | 3 (ERRO-008, ERRO-023, ERRO-030) |
+| LOW        | 2     | 1          | 1 (ERRO-031) |
+
+*Última atualização: 2026-03-10 · ERRO-030/031 registrados. ERRO-008/022/023/030/031 pendentes*

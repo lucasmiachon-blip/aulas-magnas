@@ -31,44 +31,53 @@
 
 ---
 
-## Pre-Act + Act 1 + CP1 — RODADA 2 (09/mar/2026)
+## Pre-Act + Act 1 + CP1 — RODADA 3 CONSOLIDADA (10/mar/2026)
 
-**Status: PASS**
-Agente: Claude Code (Opus 4.6) · Sessao: 09/mar/2026 (rodada 2 — correcao + re-QA)
+**Status: PASS COM RISCOS**
+Agente: Claude Code (Opus 4.6) · Sessao: 10/mar/2026 (rodada 3 — hardening + re-QA consolidado)
 Metodo: Playwright Chromium headless 1280x720 · navegacao real ArrowRight · 27 screenshots · `scripts/act1-reaudit.mjs`
+Screenshots: `aulas/cirrose/qa-screenshots/act1-reaudit/` (27 PNGs, gitignored)
 
-### Slides cobertos (11)
+### Resultado consolidado por slide (11)
 
-| # | ID | Arquivo | h2 | GATE A | GATE B | Veredito |
-|---|-----|---------|-----|--------|--------|----------|
-| 1 | s-title | 00-title.html | Cirrose Hepatica | PASS | PASS | **PASS** |
-| 2 | s-hook | 01-hook.html | Caso Antonio | PASS | PASS | **PASS** |
-| 3 | s-a1-01 | 02-a1-continuum.html | 1,43 milhao morre por ano | PASS | PASS | **PASS** |
-| 4 | s-a1-vote | 02d-a1-vote.html | Esse paciente tem cirrose? | PASS | PASS | **PASS** |
-| 5 | s-a1-damico | 02b-a1-damico.html | Do CTP ao D'Amico: prognostico passou de subjetivo a preditivo | PASS | PASS | **PASS** |
-| 6 | s-a1-baveno | 03-a1-baveno.html | Baveno VII redefiniu classificacao | PASS | PASS (P1 residual) | **PASS** |
-| 7 | s-a1-fib4 | 03b-a1-fib4calc.html | 4 dados. 1 numero. 1 decisao. | PASS | PASS | **PASS** |
-| 8 | s-a1-rule5 | 03d-a1-rule5.html | A cada 5 kPa, muda o estagio e a conduta | PASS | PASS | **PASS** |
-| 9 | s-a1-meld | 04-a1-meld.html | MELD-Na: o GPS da fila | PASS | PASS | **PASS** |
-| 10 | s-a1-classify | 02c-a1-classify.html | Classificar muda conduta | PASS | PASS | **PASS** |
-| 11 | s-cp1 | 07-cp1.html | LSM 21 kPa, plaquetas 112k | PASS | PASS | **PASS** |
+| # | ID | Status | Problema principal | Sev |
+|---|-----|--------|-------------------|-----|
+| 1 | s-title | OK | `var()` em data-background-color (fragil, nao HEX) | P2 |
+| 2 | s-hook | PASS COM RISCO | Fill 0% beat 0 (GSAP-dependente); beat 1 pode clipar INR+punchline a 720p | P1 |
+| 3 | s-a1-01 | OK | countUp fallbacks corrigidos; iceberg ok | — |
+| 4 | s-a1-vote | OK | Reveal funciona; FIB-4 fallback corrigido para 5,91 | — |
+| 5 | s-a1-damico | PASS COM RISCO | h2 2 linhas; era 2 pathway bars quase invisiveis; fill 205% | P1 |
+| 6 | s-a1-baveno | OK | card 3 toca borda inferior state 1 (aceitavel) | P1 |
+| 7 | s-a1-fib4 | OK | Layout limpo; h2 pendente Lucas | P1 |
+| 8 | s-a1-rule5 | OK | Melhor slide do ato; 5 zones + Antonio plot excelente | — |
+| 9 | s-a1-meld | PASS COM RISCO | Emoji unicode (ERRO-030); h2 pendente Lucas | P1 |
+| 10 | s-a1-classify | OK | 3 cards + PREDESCI; h2 pendente Lucas | P1 |
+| 11 | s-cp1 | OK | Checkpoint completo; interacao poll funciona | — |
 
-### Fixes aplicados nesta rodada
+### Fixes acumulados (rodadas 2 + 3)
 
-1. **cirrose.css** — `.stage-c #s-hook`: remapeamento de tokens custom para bg claro (contraste P0)
-2. **cirrose.css** — `.paradigm-container`: gap `var(--space-lg)` → `var(--space-md)` (baveno card 3 clipping)
-3. **cirrose.css** — `.meld-threshold`: `opacity: 0` no estado inicial (artefato "M")
-4. **cirrose.css** — `.rule-zone`: min-height 110→85px, gap 4→2px, padding reduzido (rule5 compactness)
-5. **02b-a1-damico.html** — h2 "Tres geracoes de escores" → "Do CTP ao D'Amico: prognostico passou de subjetivo a preditivo"
-6. **02b-a1-damico.html** — era-tag e further-decomp encurtados (word count)
-7. **03d-a1-rule5.html** — h2 "Onde esta o Antonio?" → "A cada 5 kPa, muda o estagio e a conduta"
-8. **03d-a1-rule5.html** — removidos: rule-nuance-note, rule-caveats, rule-conclusion-banner (movidos para notes oral)
+**Rodada 2 (09/mar):**
+1. cirrose.css — stage-c hook contraste, baveno gap, meld threshold opacity, rule5 compactness
+2. damico h2 + rule5 h2 reescritos
+3. rule5 conteudo movido para notes
 
-### P1 residuais (nao-bloqueantes)
+**Rodada 3 (10/mar — hardening):**
+4. _manifest.js — 2 headlines sync (drift pos-ca76b56)
+5. narrative.md — 2 headlines sync (idem)
+6. 5 HTML slides — 11 countUp fallbacks corrigidos (0 → valores reais)
 
-- **s-a1-baveno state 1**: card 3 (Rule of 5) toca borda inferior do viewport. State 2 (final) mostra tudo dentro. Aceitavel para projecao.
-- **s-a1-damico h2**: 2 linhas (assertion longa). Texto clinicamente preciso — encurtar perderia significado.
-- **3 h2 pendentes Lucas**: fib4, meld, classify — Lucas quer ver no browser antes de decidir.
+### Problemas remanescentes
+
+| # | Problema | Slide(s) | Sev | Quem resolve |
+|---|---------|----------|-----|-------------|
+| R1 | Emoji unicode (ERRO-030) | s-a1-meld | P1 | Claude (fix tecnico) |
+| R2 | h2 2 linhas | s-a1-damico | P1 | Lucas (decisao clinica) |
+| R3 | Era 2 pathway bars quase invisiveis | s-a1-damico | P1 | Claude ou Gemini (CSS) |
+| R4 | Fill 0% beat 0 | s-hook | P1 | Design decision |
+| R5 | 3 h2 pendentes Lucas | fib4, meld, classify | P1 | Lucas |
+| R6 | beat 1 pode clipar a 720p | s-hook | P1 | CSS audit |
+| R7 | var() em data-background-color | s-title | P2 | Claude (1-line fix) |
+| R8 | MELD >=18 PMID pendente | s-a1-meld notes | P2 | Lucas/pesquisa |
 
 ### Checklist estrutural (todos 11 slides)
 
@@ -77,12 +86,13 @@ Metodo: Playwright Chromium headless 1280x720 · navegacao real ArrowRight · 27
 - [x] `<aside class="notes">` presente com timing
 - [x] `<section>` sem `style` com `display` (E07)
 - [x] Dados numericos verificados contra evidence-db.md
-- [x] Background via `data-background-color` com HEX literal
+- [ ] Background via `data-background-color` com HEX literal (s-title usa var())
 - [x] Sem CDN links
 - [x] Build + lint:slides + lint:case-sync + lint:narrative-sync PASS
 - [x] Navegacao ArrowRight funciona em todos 11 slides
 - [x] Case panel progride corretamente
 - [x] Zero erros de console
+- [ ] Zero emojis em slides projetados (s-a1-meld tem 🟢🟡🟠🔴)
 
 ---
 
@@ -218,6 +228,7 @@ Metodo: Playwright Chromium headless 1280x720 · navegacao real ArrowRight · 46
 | 09/mar/2026 | Pre-Act + Act 1 + CP1 (11 slides) — checklist estatico + fixes | 3 fixes aplicados, PASS |
 | 09/mar/2026 | Act 1 + Act 2 + CP2 (27 slides) — browser QA Playwright 1280x720 | 46 screenshots, 0 P0, PASS |
 | 09/mar/2026 | Act 1 RODADA 2 — correcao 5 slides + re-QA browser | 8 fixes, 27 screenshots, 0 P0, **PASS** |
+| 10/mar/2026 | Act 1 RODADA 3 — hardening countUp + headline sync + re-QA consolidado | 13 fixes totais, 27 screenshots, 0 P0, **PASS COM RISCOS** |
 
 ---
 
