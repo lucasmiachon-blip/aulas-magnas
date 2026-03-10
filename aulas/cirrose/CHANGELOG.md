@@ -4,6 +4,45 @@
 
 ---
 
+## 2026-03-09 — Act 2 P0 fix + Act 1 QA + AUDIT-VISUAL rewrite
+
+Branch: `main`
+
+### P0 Fixes (Act 2 — 7 novos slides)
+
+| Slide | Fix |
+|-------|-----|
+| 30-a2-gatilhos.html | PREDICT PMID 32275982→32673741 (source-tag + notes) |
+| 34-a2-nutricao.html | Removido `[TBD SOURCE]` da source-tag projetada |
+
+### Act 1 QA (11 slides — DONE)
+
+| Slide | Fix |
+|-------|-----|
+| 01-hook.html | FIB-4 card removido (decisao Lucas — so aparece no slide calculadora) |
+| 07-cp1.html | FIB-4 corrigido 5,10→5,91 (calculo: (55x67)/(112xsqrt(31))) |
+| _manifest.js | FIB-4 removido de visibleFields em s-hook e s-a1-baveno |
+
+### Docs
+
+- AUDIT-VISUAL.md reescrito: organizado por Atos, Act 1 QA DONE, Act 2/3/APP pendentes
+- CHANGELOG.md, ERROR-LOG.md atualizados
+
+---
+
+## 2026-03-09 — Manifest rewrite: Act 2 (16 slides) + Act 3 (7 slides) + 11 skeletons
+
+Branch: `main` · Commits: `c302ef1`, `2d00776`, `c17732a`
+
+### Manifest rewrite
+
+- 33→44 slides. Act 2: 15 slides + CP2. Act 3: 7 slides + CP3 + close. Appendix: 8.
+- 11 skeletons criados (7 Act 2 + 4 Act 3) com archetype-flow, headlines, speaker notes rascunho
+- 7 Act 2 skeletons preenchidos com conteudo real: gatilhos, ascite-dx, ascite-manejo, hda, nutricao, tx, refrataria
+- narrative.md Act 3 expandido de 3 para 7 slides
+
+---
+
 ## 2026-03-09 — PMID audit + RAW_ACT3_V1 + fixes
 
 Branch: `main` · Uncommitted

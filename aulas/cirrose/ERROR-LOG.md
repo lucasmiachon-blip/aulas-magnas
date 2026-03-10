@@ -208,4 +208,31 @@ Severidades: CRITICAL (bloqueia projeção), HIGH (prejudica leitura), MEDIUM (e
 | MEDIUM     | 9     | 7          | 2 (ERRO-008, ERRO-023) |
 | LOW        | 1     | 1          | 0         |
 
-*Última atualização: 2026-03-08 · ERRO-025/026/027 registrados e corrigidos. ERRO-008/022/023 pendentes*
+---
+
+## Erros registrados — sessão correção pré-QA Act 2 (2026-03-09)
+
+### ERRO-028 · CRITICAL · s-a2-01 (30-a2-gatilhos.html)
+**PREDICT PMID errado projetado: 32275982 (ELF test NAFLD) em vez de 32673741 (Trebicka)**
+**Root cause:** HTML criado a partir de RAW_ACT2_V2.md que usava PMID CANDIDATE não verificado. evidence-db.md já tinha sido corrigido, mas a correção não propagou para o HTML gerado depois.
+**Fix:** source-tag e speaker notes corrigidos para PMID 32673741.
+**Regra:** Ao criar HTML de slide a partir de RAW, verificar CADA PMID contra evidence-db.md corrigido. CANDIDATE ≠ verificado.
+**Status:** ✅ Corrigido.
+
+### ERRO-029 · HIGH · s-a2-09 (34-a2-nutricao.html)
+**`[TBD SOURCE]` visível na source-tag projetada**
+**Root cause:** Skeleton preenchido sem fonte verificada para prevalência de sarcopenia. Placeholder ficou na source-tag projetada.
+**Fix:** Removido da source-tag. Mantido apenas nos speaker notes como [TBD] para busca futura.
+**Regra:** [TBD] é permitido em notes (não projetado). NUNCA em source-tag, headline ou corpo projetado.
+**Status:** ✅ Corrigido.
+
+---
+
+| Severidade | Total | Corrigidos | Pendentes |
+|------------|-------|------------|-----------|
+| CRITICAL   | 5     | 5          | 0 |
+| HIGH       | 13    | 12         | 1 (ERRO-022) |
+| MEDIUM     | 9     | 7          | 2 (ERRO-008, ERRO-023) |
+| LOW        | 1     | 1          | 0         |
+
+*Última atualização: 2026-03-09 · ERRO-028/029 registrados e corrigidos. ERRO-008/022/023 pendentes*

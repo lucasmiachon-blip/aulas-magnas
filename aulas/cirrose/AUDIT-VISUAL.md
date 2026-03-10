@@ -1,479 +1,196 @@
-# AUDIT-VISUAL — Cirrose Plan C (25/fev/2026)
+# AUDIT-VISUAL — Cirrose (por Atos)
 
-> Auditoria visual implacável de 28 slides.
-> Agente: Claude Code (Opus 4.6) · Método: preview_screenshot 1280×720 + force-reveal
-> Referência: AASLD/EASL Postgraduate Course slides
->
-> **Nota (27/fev/2026):** Slides agora modulares em `slides/*.html`. Scores ainda válidos.
-> Editar slide individual e rodar `npm run build:cirrose` para validar.
-
----
-
-## Resumo Executivo
-
-| Métrica | Valor |
-|---------|-------|
-| Slides auditados | 28/28 |
-| Média global | **2.7 / 5.0** |
-| PASS (≥4.0) | 0 slides (0%) |
-| WARN (2.5–3.9) | 18 slides (64%) |
-| FAIL (<2.5) | 10 slides (36%) |
-| Issue sistêmico #1 | Case panel 190px clipando conteúdo em 20+ slides |
-| Issue sistêmico #2 | >40% espaço vazio na maioria dos slides |
-| Issue sistêmico #3 | Conteúdo concentrado no quadrante superior-esquerdo |
-
-### Veredicto Global: ⛔ FAIL — Necessita redesign sistêmico antes de apresentar
-
----
-
-## Top 5 Fixes por Impacto
-
-| # | Tipo | Fix | Slides afetados | Esforço |
-|---|------|-----|-----------------|---------|
-| 1 | **Sistêmico CSS** | Case panel: reduzir para 140px OU esconder em appendix OU converter para overlay | 22/28 | Médio |
-| 2 | **Sistêmico CSS** | Fill ratio: content area precisa usar 70-85% do espaço (padding/max-width/grid ajustes) | 25/28 | Médio |
-| 3 | **Sistêmico CSS** | Headline max-width: expandir para ocupar largura disponível (hoje ~45% da tela) | 20/28 | Baixo |
-| 4 | **Individual** | Slides com 2-panel layout (SHP/HPP, Estatina, SVR, Albumina): garantir ambos painéis visíveis | 6 slides | Médio |
-| 5 | **Individual** | Stagger animations: elementos que não aparecem mesmo com force-reveal (3ª barra PREDICT, "3 decisões" HOOK) | 4 slides | Baixo |
-
----
-
-## Issues Sistêmicos (referência para seção de scoring)
-
-- **SYS-1: Case panel clipping** — Conteúdo clipado/truncado pelo case panel (14+ slides). Fix canônico: S1+S2.
-- **SYS-2: Fill ratio <60%** — Espaço vazio >40% (28+ slides). Fix canônico: S3.
-- **SYS-3: Hero typography undersized** — Número/dado hero em `--text-h1` em vez de `--text-hero` (8+ slides). Fix canônico: S4.
+> Auditoria visual organizada por Atos narrativos.
+> Deck: 44 slides (Pre-Act 2 + Act 1 8 + CP1 1 + Act 2 15 + CP2 1 + Act 3 7 + CP3 1 + Close 1 + Appendix 8)
+> Rubrica: 8 dimensoes (H/T/E/C/V/K/S/M), scoring 1-5.
+> Metodo: preview_screenshot 1280x720 + force-reveal + checklist estatico.
+> Referencia: AASLD/EASL Postgraduate Course slides.
 
 ---
 
 ## Rubrica de Scoring
 
-| Dim | Nome | 1 (Crítico) | 3 (Aceitável) | 5 (Referência AASLD) |
+| Dim | Nome | 1 (Critico) | 3 (Aceitavel) | 5 (Referencia AASLD) |
 |-----|------|-------------|---------------|----------------------|
-| **H** | Hierarquia Visual | Headline compete com corpo; nada domina | Headline > corpo, mas hero fraco | Hero 2-3×, Von Restorff claro, F/Z-pattern |
-| **T** | Tipografia | Font genérica, tamanhos uniformes | Scale correto, sem refinamento | Instrument Serif + DM Sans, escala clamp fluida |
-| **E** | Espaço & Layout | Cramped ou >40% vazio; desalinhado | Preenchimento 60-80%, alinhamento OK | Fill ratio ideal por tipo, grid consistente |
-| **C** | Cor & Contraste | Cores decorativas sem semântica; <4.5:1 | Semântica OK, contraste ≥4.5:1 | OKLCH tokens, safe/warning/danger, ≥7:1 |
-| **V** | Visuais & Figuras | Só texto; tabela Excel | Alguma evidência visual | Dados = visual (bar, card, timeline); Tufte |
-| **K** | Consistência | Cada slide = layout diferente | Mesmo tipo ≈ mesmo layout | Archetypes reutilizados, spacing idêntico |
-| **S** | Sofisticação | Parece Word; bordas pesadas | Clean mas genérico | Source-tag, OKLCH, micro-interações |
-| **M** | Comunicação | Headline = rótulo; bullets | Assertion OK mas corpo confuso | Assertion-evidence perfeito; corpo ≤30 palavras |
+| **H** | Hierarquia Visual | Headline compete com corpo; nada domina | Headline > corpo, mas hero fraco | Hero 2-3x, Von Restorff claro, F/Z-pattern |
+| **T** | Tipografia | Font generica, tamanhos uniformes | Scale correto, sem refinamento | Instrument Serif + DM Sans, escala clamp fluida |
+| **E** | Espaco & Layout | Cramped ou >40% vazio; desalinhado | Preenchimento 60-80%, alinhamento OK | Fill ratio ideal por tipo, grid consistente |
+| **C** | Cor & Contraste | Cores decorativas sem semantica; <4.5:1 | Semantica OK, contraste >=4.5:1 | OKLCH tokens, safe/warning/danger, >=7:1 |
+| **V** | Visuais & Figuras | So texto; tabela Excel | Alguma evidencia visual | Dados = visual (bar, card, timeline); Tufte |
+| **K** | Consistencia | Cada slide = layout diferente | Mesmo tipo ~ mesmo layout | Archetypes reutilizados, spacing identico |
+| **S** | Sofisticacao | Parece Word; bordas pesadas | Clean mas generico | Source-tag, OKLCH, micro-interacoes |
+| **M** | Comunicacao | Headline = rotulo; bullets | Assertion OK mas corpo confuso | Assertion-evidence perfeito; corpo <=30 palavras |
 
 ---
 
-## Scoring Completo — 28 Slides
+## Issues Sistemicos (referencia global)
 
-### Slide 1: s-title — "Cirrose Hepática / Classificar · Intervir · Reverter"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 1 | 3 | 2 | 3 | **2.4** |
-
-**Veredicto:** ⛔ FAIL
-1. [V] Zero visuais — fundo cinza liso sem imagem, ícone ou gradiente
-2. [H] Título e subtítulo competem; sem Von Restorff
-**Fix:** I1 (bg-navy + hero typography)
+- **SYS-1: Case panel clipping** — Conteudo clipado/truncado pelo case panel. Fix: panel responsivo.
+- **SYS-2: Fill ratio <60%** — Espaco vazio >40%. Fix: padding/max-width archetypes.
+- **SYS-3: Hero typography undersized** — Numero/dado hero em `--text-h1` em vez de `--text-hero`.
 
 ---
 
-### Slide 2: s-a1-01 — "Cirrose não é diagnóstico — é espectro"
+## Pre-Act + Act 1 + CP1 — QA COMPLETO (09/mar/2026)
 
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 4 | 4 | 3 | 4 | **3.4** |
+**Status: DONE**
+Agente: Claude Code (Opus 4.6) · Sessao: 09/mar/2026
+Checklist: estatico (HTML structure, assertions, notes, data) + fixes aplicados.
 
-**Veredicto:** ⚠️ WARN — SYS-1 (figure margem perdida)
-1. [H] Headline ocupa ~40% largura; evidence card compete com figure
-**Fix:** S1+S2
+### Slides cobertos (11)
 
----
+| # | ID | Arquivo | h2 (manifest) | Status QA |
+|---|-----|---------|---------------|-----------|
+| 1 | s-title | 00-title.html | Cirrose Hepatica | PASS |
+| 2 | s-hook | 01-hook.html | Caso Antonio | PASS (FIB-4 removido) |
+| 3 | s-a1-01 | 02-a1-continuum.html | 1,43 milhao morre por ano | PASS |
+| 4 | s-a1-vote | 02d-a1-vote.html | Esse paciente tem cirrose? | PASS |
+| 5 | s-a1-damico | 02b-a1-damico.html | Tres geracoes de escores | PASS (h2 pendente Lucas) |
+| 6 | s-a1-baveno | 03-a1-baveno.html | Baveno VII redefiniu classificacao | PASS |
+| 7 | s-a1-fib4 | 03b-a1-fib4calc.html | 4 dados. 1 numero. 1 decisao. | PASS (h2 pendente Lucas) |
+| 8 | s-a1-rule5 | 03d-a1-rule5.html | Onde esta o Antonio? | PASS |
+| 9 | s-a1-meld | 04-a1-meld.html | MELD-Na: o GPS da fila | PASS (h2 pendente Lucas) |
+| 10 | s-a1-classify | 02c-a1-classify.html | Classificar muda conduta | PASS |
+| 11 | s-cp1 | 07-cp1.html | LSM 21 kPa, plaquetas 112k | PASS (FIB-4 corrigido 5,10->5,91) |
 
-### Slide 3: s-a1-02 — "FIB-4 intercepta → elastografia confirma → CSPH muda conduta"
+### Fixes aplicados nesta sessao
 
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 4 | 3 | 3 | 4 | **3.3** |
+1. **s-hook**: Removido card FIB-4 (decisao do Lucas — FIB-4 so aparece no slide calculadora)
+2. **s-cp1**: Corrigido FIB-4 de 5,10 para 5,91 (calculo correto: (55x67)/(112xsqrt(31)))
+3. **_manifest.js**: Removido `fib4` de `visibleFields` em s-hook e s-a1-baveno; valor = '—'
 
-**Veredicto:** ⚠️ WARN
-1. [V] Figura de paper densa — sem anotação/destaque para guiar olho
-2. [H] Headline 2 linhas longas; poderia ser mais concisa
-**Fix:** Overlay highlight na seção CSPH; crop da figure
+### Checklist estatico (todos 11 slides)
 
----
+- [x] `<h2>` e assercao clinica (nao rotulo generico)
+- [x] Sem `<ul>` ou `<ol>` no slide
+- [x] `<aside class="notes">` presente com timing
+- [x] `<section>` sem `style` com `display` (E07)
+- [x] Dados numericos verificados contra evidence-db.md
+- [x] Background via `data-background-color` com HEX literal
+- [x] Sem CDN links
+- [x] Build + lint:slides + lint:case-sync + lint:narrative-sync PASS
 
-### Slide 4: s-hook — "Caso Seu Antônio · Qual é o próximo passo?" (v4 · 28/fev)
+### Pendencias Act 1 (nao-bloqueantes)
 
-> **Nota (28/fev):** s-hook v4: 3 beats (Caso → Labs → Pergunta), progress 1✓·2✓·3, retreatBeat(), ArrowDown removido.
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 4 | 3 | 3 | 4 | 3 | 4 | 4 | 4 | **3.6** |
-
-**Veredicto:** ⚠️ WARN (melhorou)
-**Melhorias v4:** 3 estágios com sucesso, retreatBeat (ERRO-010), ArrowDown removido (ERRO-011), place-content center (ERRO-013).
-1. [E] Case panel redundante (ERRO-008)
-
----
-
-### Slide 5: s-a1-03 — "MELD-Na é o semáforo da cirrose"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 2 | 4 | 4 | 4 | 4 | 4 | **3.5** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (MELD calculator: "SÓDIO" cortado, barra de zonas truncada), SYS-2
-**Fix:** S1+S2
+- **6 h2 assertivos**: damico, fib4, meld, baveno, rule5, classify — Lucas quer ver slides no browser antes de decidir
+- **s-a1-vote FIB-4 reveal**: Slide ainda menciona FIB-4 como "twist" — Lucas decidira se mantem ou remove
+- **Visual scoring (H/T/E/C/V/K/S/M)**: Nao re-executado com screenshots nesta sessao. Scores antigos (fev/2026) sao referencia mas desatualizados apos restructure.
 
 ---
 
-### Slide 6: s-a1-04 — "Infecção é o inimigo #1: 33% das internações"
+## Act 2 + CP2 — QA PENDENTE
 
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
+**Status: NAO INICIADO**
+16 slides (15 Act 2 + 1 CP2). Inclui 7 slides novos (skeletons preenchidos em 09/mar) + 8 slides existentes relocados.
 
-**Veredicto:** ⚠️ WARN — SYS-2, SYS-3
-1. [V] Apenas 2 de 3 barras PREDICT visíveis — barra "Álcool" ausente (stagger incompleto)
-**Fix:** I3 + S3
+### Slides a auditar
 
----
+| # | ID | Arquivo | Origem | Notas pre-QA |
+|---|-----|---------|--------|-------------|
+| 12 | s-a2-01 | 30-a2-gatilhos.html | NOVO | PMID corrigido (ERRO-028) |
+| 13 | s-a2-02 | 31-a2-ascite-dx.html | NOVO | h2 possivelmente longo demais |
+| 14 | s-a2-03 | 32-a2-ascite-manejo.html | NOVO | OK |
+| 15 | s-a2-04 | 05-a1-infeccao.html | RELOCADO (era A1) | Score anterior: 2.5 |
+| 16 | s-a2-05 | 11-a2-pbe.html | EXISTENTE | Score anterior: 3.0 |
+| 17 | s-a2-06 | 33-a2-hda.html | NOVO | h2 possivelmente longo demais |
+| 18 | s-a2-07 | 08-a2-carvedilol.html | EXISTENTE | Score anterior: 3.1 |
+| 19 | s-a2-08 | 13-a2-he.html | EXISTENTE | Score anterior: 2.5 |
+| 20 | s-a2-09 | 34-a2-nutricao.html | NOVO | [TBD SOURCE] removido (ERRO-029) |
+| 21 | s-a2-10 | 35-a2-tx.html | NOVO | OK |
+| 22 | s-a2-11 | 12-a2-hrs.html | EXISTENTE | Score anterior: 3.1 |
+| 23 | s-a2-12 | 36-a2-refrataria.html | NOVO | h2 possivelmente longo demais |
+| 24 | s-a2-13 | 24-app-ccc.html | RELOCADO (era APP) | Score anterior: 2.6 |
+| 25 | s-a2-14 | 25-app-pulm.html | RELOCADO (era APP) | Score anterior: 2.4 (FAIL) |
+| 26 | s-a2-15 | 09-a2-tips.html | EXISTENTE | Score anterior: 3.3 |
+| 27 | s-cp2 | 14-cp2.html | EXISTENTE | Score anterior: 3.4 |
 
-### Slide 7: s-a1-05 — "10 doenças cabem em 3 perguntas"
+### Blockers identificados (pre-QA)
 
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (coluna truncada)
-1. [V] Apenas 3 de 10 etiologias visíveis — tabela severamente incompleta
-2. [M] Headline promete "10 doenças" mas corpo mostra apenas 3 — contradição
-**Fix:** I4 + S1
-
----
-
-### Slide 8: s-cp1 — "LSM 21 kPa, plaquetas 118k. CSPH?"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 3 | 4 | 3 | 4 | **3.3** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (decision options truncadas), SYS-2
-1. [E] Case card com Na/MELD-Na sem valores visíveis
-**Fix:** S1+S2
-
----
-
-### Slide 9: s-a2-01 — "Carvedilol previne descompensação: NNT 9"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 2 | 3 | 3 | 4 | 3 | 4 | **3.1** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (3º card Dose clipado), SYS-3
-**Fix:** S1 + S4
+| Prioridade | Issue | Slide | Fix |
+|-----------|-------|-------|-----|
+| ~~P0~~ | ~~PREDICT PMID~~ | s-a2-01 | ✅ Corrigido (ERRO-028) |
+| ~~P0~~ | ~~[TBD SOURCE] visivel~~ | s-a2-09 | ✅ Corrigido (ERRO-029) |
+| P1 | 5/7 novos slides: manifest headline != HTML h2 | Varios | Sync governance |
+| P1 | 7 novos slides usam layout identico (flow-cascade x3) | Todos novos | Monotonia visual — variar archetypes |
 
 ---
 
-### Slide 10: s-a2-02 — "Early TIPS em 72h: sobrevida 86% vs 61%"
+## Act 3 + CP3 + Close — QA PENDENTE
 
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 4 | 3 | 3 | 4 | **3.3** |
+**Status: NAO INICIADO** (slides sao skeletons — QA apos Act 2 completo)
+9 slides (7 Act 3 + CP3 + Close). 4/7 slides do Act 3 sao skeletons ainda nao preenchidos.
 
-**Veredicto:** ⚠️ WARN — SYS-2 (~35% vazio)
-1. [H] Timeline steps mesmo tamanho — falta Von Restorff no "TIPS ≤72h"
-**Fix:** S3 + destacar "TIPS ≤72h" com 1.5× e --safe
+### Slides a auditar
 
----
-
-### Slide 11: s-a2-03 — "Albumina: 3 indicações certas, 1 armadilha"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 3 | 3 | 3 | 4 | **2.9** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (4º card ATTIRE ausente/clipado)
-1. [M] Headline fala em "1 armadilha" mas ATTIRE card não aparece — contradição
-**Fix:** I5 + S1
+| # | ID | Arquivo | Origem | Status conteudo |
+|---|-----|---------|--------|----------------|
+| 28 | s-a3-01 | 37-a3-bridge.html | NOVO | Conteudo preenchido |
+| 29 | s-a3-02 | 15-a3-recompensacao.html | EXISTENTE | Score anterior: 3.1 |
+| 30 | s-a3-03 | 38-a3-expandido.html | NOVO | Conteudo preenchido |
+| 31 | s-a3-04 | 39-a3-etiologia.html | NOVO | Conteudo preenchido |
+| 32 | s-a3-05 | 16-a3-svr.html | EXISTENTE | Score anterior: 2.9 |
+| 33 | s-a3-06 | 17-a3-vigilancia.html | EXISTENTE | Score anterior: 3.4 |
+| 34 | s-a3-07 | 40-a3-fechamento.html | NOVO | Conteudo preenchido |
+| 35 | s-cp3 | 18-cp3.html | EXISTENTE | Score anterior: 3.4 |
+| 36 | s-close | 19-close.html | EXISTENTE | Score anterior: 3.3 |
 
 ---
 
-### Slide 12: s-a2-04 — "PBE: PMN ≥250 = tratar. Cada hora de atraso custa vidas"
+## Appendix — QA PENDENTE
 
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 2 | 3 | 3 | 3 | 3 | 4 | **3.0** |
+**Status: NAO INICIADO** (baixa prioridade — appendix nao projetado em congresso)
+8 slides.
 
-**Veredicto:** ⚠️ WARN — SYS-1 (3º step truncado), SYS-2
-**Fix:** S1 + S3
+### Slides a auditar
 
----
-
-### Slide 13: s-a2-05 — "HRS-AKI: 3 perguntas antes da terlipressina"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 3 | 3 | 3 | 4 | **3.1** |
-
-**Veredicto:** ⚠️ WARN — SYS-2 (~40% vazio)
-1. [V] Items texto puro em cards brancos — sem iconografia ou cor semântica (✓/⚠/✕)
-**Fix:** S3 + ícones semânticos (safe/warning/danger)
+| # | ID | Arquivo | Score anterior |
+|---|-----|---------|---------------|
+| 37 | s-app-01 | 20-app-aclf.html | 3.3 |
+| 38 | s-app-02 | 21-app-tips.html | 2.5 |
+| 39 | s-app-03 | 22-app-abcw.html | 2.5 |
+| 40 | s-app-04 | 23-app-nsbb.html | 2.6 |
+| 41 | s-app-alb | 10-a2-albumina.html | 2.9 |
+| 42 | s-app-07 | 26-app-estatina.html | 2.5 |
+| 43 | s-app-08 | 27-app-cirrox.html | 3.0 |
+| 44 | s-app-etio | 06-a1-etiologias.html | 2.5 |
 
 ---
 
-### Slide 14: s-a2-06 — "Encefalopatia: lactulose + rifaximina + nutrição"
+## Fix Backlog Sistemico (referencia global)
 
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
+### Tier 1: Sistemico CSS (1 fix -> N slides)
 
-**Veredicto:** ⚠️ WARN — SYS-1 (3º pilar Nutrição completamente invisível), SYS-2
-1. [M] Headline fala "lactulose + rifaximina + nutrição" mas nutrição não aparece
-**Fix:** I6 + S1
-
----
-
-### Slide 15: s-cp2 — "Cr 2,8 + Na 126 + ascite tensa. HRS-AKI?"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 4 | 3 | 4 | 3 | 4 | **3.4** |
-
-**Veredicto:** ⚠️ WARN — SYS-2
-1. [C] Danger red tinting funciona bem — semântica clara ✓
-2. [E] Case card: campos Na e MELD-Na sem valores visíveis
-**Fix:** S3 + preencher campos case card
-
----
-
-### Slide 16: s-a3-01 — "Recompensação é real — e Baveno VII a definiu"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 3 | 3 | 3 | 4 | **3.1** |
-
-**Veredicto:** ⚠️ WARN — SYS-2
-1. [V] Critérios são texto puro — sem checkmarks visuais ou timeline to recompensation
-**Fix:** S3 + checkmarks verdes animados
-
----
-
-### Slide 17: s-a3-02 — "SVR cura o vírus mas não a hipertensão portal"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 3 | 3 | 3 | 4 | **2.9** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (3º painel MASLD clipado), SYS-2
-1. [M] Headline fala CSPH geral mas apenas 2 de 3 etiologias visíveis
-**Fix:** I7 + S1
-
----
-
-### Slide 18: s-a3-03 — "Vigilância a cada 6 meses — nunca dar alta"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 4 | 3 | 3 | 4 | 4 | **3.4** |
-
-**Veredicto:** ⚠️ WARN — SYS-2 (~35% vazio)
-1. [V] Surveillance box bem posicionado — um dos melhores slides ✓
-2. [H] "a cada 6 meses" hero-sized funciona, mas "US ± AFP" compete em peso visual
-**Fix:** S3 + countUp "6 meses" em --text-hero
-
----
-
-### Slide 19: s-cp3 — "SVR + abstinência, LSM 32→18. Recompensou?"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 4 | 3 | 4 | 3 | 4 | **3.4** |
-
-**Veredicto:** ⚠️ WARN — SYS-2, SYS-3
-1. [C] Hope green tinting funciona — case panel "Recompensando" coerente ✓
-2. [V] "32→18" poderia ser hero animado
-**Fix:** S3 + S4 (hero "32→18")
-
----
-
-### Slide 20: s-close — "5 números classificaram. 3 decisões salvaram."
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 3 | 4 | 3 | 4 | **3.3** |
-
-**Veredicto:** ⚠️ WARN — SYS-2
-1. [S] Take-homes genéricos em cards brancos — CTA fraco para slide de fechamento
-2. [H] Case panel timeline (resolved) é bom touch narrativo ✓
-**Fix:** S3 + hero headline + bg-navy opcional
-
----
-
-### Slide 21: s-app-01 — "ACLF grau 3: mortalidade 28d >70%"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 4 | 3 | 3 | 3 | 4 | **3.3** |
-
-**Veredicto:** ⚠️ WARN — SYS-2 (~30% vazio)
-1. [C] Grau 3 com borda danger red — semântica boa ✓
-2. [V] Percentuais (~20%, ~30%, >70%) poderiam ser barras horizontais coloridas
-**Fix:** S3 + barras safe→warning→danger; ">70%" em hero
-
----
-
-### Slide 22: s-app-02 — "Early TIPS em 72h — NNT 4"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 ("Early TIP..." cortado), SYS-2 (>50%), SYS-3
-**Fix:** S1 + S3 + S4
-
----
-
-### Slide 23: s-app-03 — "Etiologias raras: ABCW"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (col "Exame" severamente truncada: "ANA, a...", "Cerulo...")
-1. [M] Tabela perde propósito sem coluna de exames legível
-**Fix:** I8 + S1
-
----
-
-### Slide 24: s-app-04 — "NSBB ≥ EVL — carvedilol superior em HVPG"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.6** |
-
-**Veredicto:** ⚠️ WARN — SYS-2 (>45%)
-1. [V] 3 frases em cards brancos genéricos — sem comparação visual NSBB vs EVL
-**Fix:** S3 + layout 2-colunas comparativo com HR/NNT
-
----
-
-### Slide 25: s-app-05 — "Cardiomiopatia cirrótica: 48% prevalência"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.6** |
-
-**Veredicto:** ⚠️ WARN — SYS-2 (~45%), SYS-3
-1. [V] Critérios CCC texto puro — sem ícones (coração, eco)
-**Fix:** S3 + S4 + ícones
-
----
-
-### Slide 26: s-app-06 — "SHP vs HPP: fisiopatologia oposta"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 1 | 3 | 2 | 3 | 2 | 3 | **2.4** |
-
-**Veredicto:** ⛔ FAIL — SYS-1 (HPP panel completamente clipado)
-1. [M] Headline promete "oposta" (comparação) mas só SHP é legível
-**Fix:** I9 + S1
-
----
-
-### Slide 27: s-app-07 — "Estatina adjuvante: HVPG −2 mmHg"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | **2.5** |
-
-**Veredicto:** ⚠️ WARN — SYS-1 (LIVERHOPE box clipado: "LIVERHO..."), SYS-2 (>45%)
-**Fix:** I10 + S1
-
----
-
-### Slide 28: s-app-08 — "CIRROXABAN 2025: p=0,058 NS"
-
-| H | T | E | C | V | K | S | M | Média |
-|---|---|---|---|---|---|---|---|-------|
-| 3 | 3 | 3 | 3 | 2 | 3 | 3 | 4 | **3.0** |
-
-**Veredicto:** ⚠️ WARN — SYS-2 (~40%)
-1. [V] 3 text items sem visual — forest plot mini ou HR com CI faltando
-2. [M] "p=0,058 NS" na headline comunica incerteza bem ✓
-**Fix:** S3 + hero "0,058" + visual HR/CI
-
----
-
-## Análise por Dimensão (média global)
-
-| Dimensão | Média | Pior slides | Diagnóstico |
-|----------|-------|-------------|-------------|
-| **H** Hierarquia | 2.6 | s-title(2), s-hook(2), s-a1-04(2), s-a2-06(2), s-app-06(2) | Headlines OK mas hero elements ausentes; Von Restorff raramente aplicado |
-| **T** Tipografia | 3.0 | — | Consistente em 3; fonts corretas mas sem refinamento (clamp subaproveitado) |
-| **E** Espaço | 2.3 | s-app-06(1), s-title(2), s-hook(2), s-a1-03(2), múltiplos | **PIOR DIMENSÃO** — case panel + padding excessivo = 40-55% espaço vazio |
-| **C** Cor | 3.1 | — | Semântica checkpoint (danger/hope) funciona; resto neutro demais |
-| **V** Visuais | 2.6 | s-title(1), s-a1-04(2), s-a1-05(2), s-a2-06(2), s-app-04(2) | Maioria dos slides = texto em cards brancos; pouca evidência visual |
-| **K** Consistência | 3.2 | — | Archetypes ajudam; numbered items reusados corretamente |
-| **S** Sofisticação | 2.7 | s-title(2), s-hook(2), s-a1-04(2), s-a2-06(2), múltiplos | Source-tags presentes; mas look geral "Word-like" |
-| **M** Comunicação | 3.5 | — | **MELHOR DIMENSÃO** — headlines são assertions clínicas fortes |
-
----
-
-## Fix Backlog Priorizado
-
-### Tier 1: Sistêmico CSS (1 fix → N slides)
-
-| # | Fix | Slides afetados | Esforço | Impacto |
+| # | Fix | Slides afetados | Esforco | Impacto |
 |---|-----|-----------------|---------|---------|
-| S1 | **Case panel responsivo:** `.reveal.panel-active { grid-template-columns: 1fr 140px }` + esconder panel em `.appendix` slides | 22/28 | Médio | 🔴 Crítico |
-| S2 | **Content max-width:** Remover `max-width: 1120px` dos archetypes OU ajustar para `calc(100% - 40px)` quando panel ativo | 20/28 | Baixo | 🔴 Crítico |
-| S3 | **Fill ratio:** Reduzir padding dos archetypes de `2rem` para `1.5rem 2rem`. Headline `max-width` de ~45% para ~65% | 25/28 | Baixo | 🟡 Alto |
-| S4 | **Hero elements:** Criar classe `.hero-metric` com `font-size: var(--text-hero)` para o número principal de cada slide | 15/28 | Médio | 🟡 Alto |
-| S5 | **Horizontal overflow:** Todos containers flex/grid dentro de slides precisam de `max-width: calc(100% - var(--panel-width, 0px))` | 10/28 | Médio | 🟡 Alto |
+| S1 | Case panel responsivo: reduzir ou overlay | ~22 | Medio | Critico |
+| S2 | Content max-width: ajustar para panel ativo | ~20 | Baixo | Critico |
+| S3 | Fill ratio: reduzir padding, expandir headline | ~25 | Baixo | Alto |
+| S4 | Hero elements: classe `.hero-metric` com `--text-hero` | ~15 | Medio | Alto |
+| S5 | Horizontal overflow: max-width responsivo ao panel | ~10 | Medio | Alto |
 
-### Tier 2: Individual CSS (fix por slide ou grupo)
+### Tier 2: Redesign (novo layout/componente)
 
-| # | Fix | Slides | Esforço |
+| # | Fix | Slides | Esforco |
 |---|-----|--------|---------|
-| I1 | s-title: bg-navy + hero typography | 1 slide | Médio |
-| I2 | s-hook: fix stagger "3 decisões" + "Albumina 3,6" spacing | 1 slide | Baixo |
-| I3 | s-a1-04: garantir 3 barras PREDICT visíveis + expandir | 1 slide | Baixo |
-| I4 | s-a1-05: tabela 10 etiologias em grid 2×5 compacto | 1 slide | Médio |
-| I5 | s-a2-03: 4 albumin cards em grid 2×2 (não row) | 1 slide | Baixo |
-| I6 | s-a2-06: 3 pilares layout responsivo ao panel | 1 slide | Baixo |
-| I7 | s-a3-02: 3 etio panels layout responsivo | 1 slide | Baixo |
-| I8 | s-app-03: tabela ABCW max-width responsivo | 1 slide | Baixo |
-| I9 | s-app-06: SHP/HPP 2-panel responsivo | 1 slide | Baixo |
-| I10 | s-app-07: Alvarado/LIVERHOPE 2-panel responsivo | 1 slide | Baixo |
-
-### Tier 3: Redesign (novo layout/componente necessário)
-
-| # | Fix | Slides | Esforço |
-|---|-----|--------|---------|
-| R1 | Appendix slides: criar archetype-appendix com layout mais compacto e sem case panel | 8 slides | Alto |
-| R2 | Hero number component: countUp + metric + CI + source-tag | Múltiplos | Alto |
-| R3 | Comparison layout: 2-panel side-by-side garantido com responsive fallback | 4 slides | Médio |
+| R1 | Appendix archetype compacto sem case panel | 8 | Alto |
+| R2 | Hero number component: countUp + metric + CI + source-tag | Multiplos | Alto |
+| R3 | Comparison layout 2-panel responsivo | 4 | Medio |
 
 ---
 
-## Ordem de Execução Recomendada
+## Historico de sessoes QA
 
-1. **S1 + S2** (panel + max-width) → resolve clipping em 22 slides
-2. **S3** (fill ratio) → melhora espaço em 25 slides
-3. **S5** (overflow) → elimina truncamentos restantes
-4. **I1** (title) → primeiro slide visível = primeira impressão
-5. **I2-I10** (fixes individuais) → slides core
-6. **S4 + R2** (hero metrics) → adiciona impact visual
-7. **R1** (appendix archetype) → polimento final
+| Data | Escopo | Resultado |
+|------|--------|-----------|
+| 25/fev/2026 | 28 slides (deck antigo) — scoring visual completo | Media 2.7/5.0, 0 PASS |
+| 09/mar/2026 | Pre-Act + Act 1 + CP1 (11 slides) — checklist estatico + fixes | 3 fixes aplicados, PASS |
 
 ---
 
-## Referências
+## Referencias
 
 - `shared/css/base.css` — Design system tokens OKLCH
-- `.claude/rules/design-system.md` — Tokens canônicos
+- `.claude/rules/design-system.md` — Tokens canonicos
 - `.claude/rules/design-principles.md` — Rubrica Duarte/Tufte/Mayer
 - `.claude/rules/css-errors.md` — Anti-patterns CSS
-- AASLD Postgraduate Course 2024 — Referência visual externa
-- EASL Postgraduate Course 2024 — Referência visual externa
+- AASLD Postgraduate Course 2024 — Referencia visual externa
