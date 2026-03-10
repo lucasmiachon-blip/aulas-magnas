@@ -314,6 +314,7 @@
   width: 0;
   overflow: hidden;
   white-space: nowrap;
+  opacity: 0;
 }
 .meld-threshold-label {
   font-family: var(--font-display);
@@ -325,6 +326,7 @@
 .no-js .meld-threshold,
 .stage-bad .meld-threshold {
   width: 100%;
+  opacity: 1;
 }
 
 /* ============================================
@@ -1570,7 +1572,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   align-self: center;
   width: 100%;
 }
@@ -1683,11 +1685,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: var(--space-sm) var(--space-xs);
+  gap: 2px;
+  padding: var(--space-xs) var(--space-xs);
   border-radius: var(--radius-sm);
   text-align: center;
-  min-height: 110px;
+  min-height: 85px;
   position: relative;
   transition: box-shadow 0.4s ease;
 }
@@ -1915,6 +1917,17 @@
   --hook-lab-ref-color: oklch(57% 0.018 258);
   --hook-card-bg: oklch(25% 0.02 258 / 0.5);
   --hook-card-border: oklch(70% 0.01 258 / 0.2);
+}
+/* stage-c remap: hook tokens for light bg */
+.stage-c #s-hook {
+  --hook-text-bright: oklch(12% 0.015 258);
+  --hook-text-mid: oklch(25% 0.010 258);
+  --hook-text-dim: oklch(38% 0.008 258);
+  --hook-lab-label-color: oklch(30% 0.015 258);
+  --hook-lab-value-color: oklch(12% 0.015 258);
+  --hook-lab-ref-color: oklch(40% 0.010 258);
+  --hook-card-bg: oklch(82% 0.010 258);
+  --hook-card-border: oklch(72% 0.008 258);
 }
 #s-hook .hook-patient-name,
 #s-hook .hook-punchline { color: var(--hook-text-bright); }
