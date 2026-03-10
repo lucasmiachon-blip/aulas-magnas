@@ -57,10 +57,10 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 |---|-------|----------|---------------------|--------|
 | 2 | s-a1-01 | 1,43 milhão morre por ano | **Stakes**: mortalidade global como âncora | ●●○○○ |
 | 3 | s-a1-vote | Esse paciente tem cirrose? | **Engajamento**: audiência vota antes de saber | ●●○○○ |
-| 4 | s-a1-damico | Três gerações de escores | **Setup**: D'Amico 2006→2014→2024 | ●●○○○ |
+| 4 | s-a1-damico | Do CTP ao D'Amico: prognóstico passou de subjetivo a preditivo | **Setup**: D'Amico 2006→2014→2024 | ●●○○○ |
 | 5 | s-a1-baveno | Baveno VII redefiniu classificação | Ferramental: cACLD/dACLD, CSPH | ●○○○○ |
 | 6 | s-a1-fib4 | 4 dados. 1 número. 1 decisão. | FIB-4 como screening, aplica ao Antônio | ●●○○○ |
-| 7 | s-a1-rule5 | Onde está o Antônio? | Rule of 5: LSM + PLQ → risco | ●●○○○ |
+| 7 | s-a1-rule5 | A cada 5 kPa, muda o estágio e a conduta | Rule of 5: LSM + PLQ → risco | ●●○○○ |
 | 8 | s-a1-meld | MELD-Na: o GPS da fila | **Interactive**: calculadora, aplica ao Seu Antônio (~10) | ●●○○○ |
 | 9 | s-a1-classify | Classificar muda conduta | Síntese Act 1 — NSBBs, PREDESCI | ●○○○○ |
 | 10 | s-cp1 | LSM 21 kPa, plaquetas 112k. Como estadia? | **CHECKPOINT 1**: audiência decide. Pausa deliberada. | ●●●○○ |

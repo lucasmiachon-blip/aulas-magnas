@@ -4,13 +4,14 @@
 
 ---
 
-## Estado atual — 2026-03-09 (final de sessão)
+## Estado atual — 2026-03-10 (pós-hardening Act 1)
 
 **Slides:** 44 buildados (10 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 2 pre/close + 8 appendix) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
 **Manifest rewrite:** ✅ DONE (commit c302ef1). Colisão de IDs resolvida. 12 renames + 11 skeletons criados.
 **Act 2 skeletons:** ✅ 7/7 preenchidos com conteúdo HTML real (fontes, números, notes com timing).
 **narrative.md:** ✅ Act 3 expandido de 3→7 slides, alinhado com manifest e RAW_ACT3_V1.
 **Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento é P1.
+**Hardening Act 1:** ✅ DONE — 4 blockers fixed (headline drift, countUp fallbacks, stale QA). 27 fresh screenshots. 0 P0.
 
 ---
 
@@ -41,9 +42,19 @@ Todos usam archetype-flow (.flow-cascade > .flow-step). Speaker notes com timing
 - **Act 2 (16 slides):** PASS. 0 P0. P1: s-a2-01 h2 3 linhas, monotonia flow-cascade.
 - **Lints:** slides + case-sync + narrative-sync = all PASS. Zero console errors.
 
+### ✅ DONE: Hardening pré-Gemini Act 1 (rodada 10/mar/2026)
+
+4 blockers identificados e corrigidos:
+1. **Headline drift** — _manifest.js e narrative.md desatualizados para s-a1-damico e s-a1-rule5 (corrigido)
+2. **countUp "0" fallback** — 11 elementos em 5 slides mostravam "0" sem GSAP (corrigido para valores reais)
+3. **CSS failsafe gap** — `.pathway-stage--collapsed` orphan; analisado, failsafe pai já cobre (sem fix necessário)
+4. **Screenshots stale** — re-QA com 27 screenshots frescos via act1-reaudit.mjs. 0 P0, 0 console errors.
+
+Arquivos tocados: _manifest.js, narrative.md, 02-a1-continuum.html, 02b-a1-damico.html, 02c-a1-classify.html, 02d-a1-vote.html, 03b-a1-fib4calc.html
+
 ### P0 ATUAL: QA visual Gemini (estático por state + dinâmico)
 
-1. Enviar screenshots state-by-state para Gemini (46 PNGs em qa-screenshots/browser-qa/)
+1. Enviar screenshots state-by-state para Gemini (27 PNGs em `qa-screenshots/act1-reaudit/`)
 2. QA dinâmico: testar reveals e interações com vídeo
 3. h2 assertivos decididos (Lucas vê no browser → decide)
 4. Monotonia visual Act 2: Gemini avalia se 6x flow-cascade precisa de variação

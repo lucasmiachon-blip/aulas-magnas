@@ -4,6 +4,35 @@
 
 ---
 
+## 2026-03-10 — Hardening pré-Gemini Act 1
+
+Branch: `main`
+
+### Fixes
+
+| Arquivo | Fix |
+|---------|-----|
+| _manifest.js | 2 headlines sync (s-a1-damico, s-a1-rule5) — drift pós-commit ca76b56 |
+| narrative.md | 2 headlines sync (idem) |
+| 02-a1-continuum.html | 3 countUp fallbacks: hero 0→1,43 · comp 0→112 · decomp 0→10,6 |
+| 02b-a1-damico.html | 5 countUp fallbacks: c-stat 0→0,87 · pathway 0→1/5/20/57 |
+| 02c-a1-classify.html | 1 countUp fallback: PREDESCI HR 0→0,51 |
+| 02d-a1-vote.html | 1 countUp fallback: FIB-4 0→5,91 |
+| 03b-a1-fib4calc.html | 1 countUp fallback: FIB-4 0→5,91 |
+
+### QA
+
+- 27 screenshots frescos via `act1-reaudit.mjs` (Playwright Chromium 1280x720)
+- 0 P0, 0 console errors, 11/11 slides navegados
+- Build + 3 lints PASS
+
+### Docs
+
+- HANDOFF.md atualizado com seção hardening
+- CHANGELOG.md atualizado
+
+---
+
 ## 2026-03-09 — Act 2 P0 fix + Act 1 QA + AUDIT-VISUAL rewrite
 
 Branch: `main`
