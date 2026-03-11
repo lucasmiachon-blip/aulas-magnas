@@ -50,6 +50,22 @@ shared/js/case-panel.js → Panel lateral (cirrose)
 - **shared/ guard:** WT agents MUST NOT edit files under `shared/`. If a shared change is needed, flag it and defer to a main-branch session.
 - **Aula CLAUDE.md:** cada `aulas/*/CLAUDE.md` DEVE ter secao `## Worktree` declarando branch esperada e restricoes locais. Sem essa secao, WT agent deve recusar trabalho.
 
+## Merge Safety / Quarentena Semântica
+
+### Classes de mudança
+
+| Classe | Escopo | Exemplos | Absorção em WT |
+|--------|--------|----------|----------------|
+| **A — Governança** | Doc graph, paths, docs operacionais | CLAUDE.md, XREF.md, rules/, MEMORY.md | Absorver cedo (`git merge main`) |
+| **B — Infra QA** | Scripts, hooks, agentes, observabilidade | agents/, hooks/, skills/, KPIs.md | Absorver cedo |
+| **C — Semântico** | Conteúdo da aula: slides, `_manifest.js`, CSS da aula, refs narrativas | slides/*.html, _manifest.js, cirrose.css, narrative.md | **Quarentena:** NÃO absorver sem triagem humana |
+
+### Regras
+
+1. **Classe C não entra cegamente** em worktree ativa. Antes de `git merge main` numa WT de aula, verificar se main tem commits Classe C. Se sim, triagem obrigatória: ler diff de cada arquivo semântico antes de absorver.
+2. **Nunca misturar** hardening sistêmico (A/B) e mudança semântica do deck (C) na mesma rodada/branch. Branches separadas, commits separados.
+3. **Docs-only hardening** deve ocorrer fora da worktree ativa da aula (branch dedicada em main ou branch `claude/system-*`).
+
 ## Conventions
 
 - Slides: `NN-slug.html` (ex: `00-title.html`)
