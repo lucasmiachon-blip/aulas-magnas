@@ -6,9 +6,9 @@
 
 ## Estado atual
 
-- **Fase:** Bootstrap concluído
+- **Fase:** Infraestrutura visual + primeiros slides
 - **Branch:** feat/metanalise-mvp (worktree wt-metanalise)
-- **Slides prontos:** 0/14
+- **Slides prontos:** 2/14 (00-title, 01-hook)
 - **Docs fundacionais:** narrative.md, evidence-db.md, blueprint.md, reading-list.md
 
 ## O que foi feito
@@ -20,15 +20,15 @@
 - [x] Criação de reading-list.md (pre-reading residente + trilha professor)
 - [x] Atualização de metanalise-scope.md (supersede versão enciclopédica)
 - [x] Atualização de CLAUDE.md local (alinhado com novo escopo)
+- [x] metanalise.css (CSS base: tokens, título, hook, assertion, source-tag, GSAP failsafe)
+- [x] slides/00-title.html (Do diamante à decisão + 3 pilares)
+- [x] slides/01-hook.html (hook: O diamante diz que funciona. Você confia?)
+- [x] index.html migrado de Reveal.js para deck.js + engine.js
+- [x] Removidos placeholders stage-b/c (obsoletos)
 
 ## Caminho crítico — próximos batches
 
-### Batch 2 (próximo)
-- Criar CSS base da aula (metanalise.css)
-- Criar slides 00 (título) e 01 (hook)
-- Validar que shared/ engine funciona com o novo projeto
-
-### Batch 3
+### Batch 3 (próximo)
 - Slides 02–05 (Ato 1: PICO, âncora, abstract)
 
 ### Batch 4
@@ -56,4 +56,4 @@
 
 ---
 
-## Última atualização: 2026-03-11
+## Última atualização: 2026-03-12
