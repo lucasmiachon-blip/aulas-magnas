@@ -34,6 +34,19 @@
 2. `npm run build:grade` (gera `index.html`)
 3. `npm run dev:grade` → abrir `/aulas/grade/index.html`
 
+## Worktree
+
+- **Branch pattern:** `feat/grade-{feature}-mvp`
+- **WT location:** `../aulas-magnas-wt-grade-{feature}`
+- **shared/ restrictions:** READ-ONLY. Deferir mudancas para sessao em main.
+- **Pre-merge checklist:**
+  - [ ] `git diff --name-only main...HEAD | grep shared/` retorna vazio
+  - [ ] `npm run build:grade` passa sem erros
+  - [ ] `npm run lint:slides` passa
+  - [ ] `git status` limpo
+- **Merge protocol:** No main: `git merge --no-ff feat/grade-{feature}-mvp`
+- **Cleanup:** `bash .claude/scripts/worktree-cleanup.sh grade-{feature}`
+
 ## Variantes de palco
 
 | Arquivo | Uso |

@@ -2,7 +2,7 @@
 
 > Mapa canônico de dependências entre documentos do projeto.
 > Atualizar ao criar, mover ou deletar qualquer .md.
-> Gerado: 2026-03-07. Última revisão: idem.
+> Gerado: 2026-03-07. Última revisão: 2026-03-11.
 
 ---
 
@@ -19,6 +19,9 @@
 ```
 CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.md)
 ├── .claude/rules/*.md        ← regras detalhadas (prevalecem sobre .cursor se mais completas)
+├── .claude/hooks/*.sh        ← safety gates determinísticos (100% enforcement)
+├── .claude/scripts/*.sh      ← worktree lifecycle (init, cleanup)
+├── .claude/skills/*/SKILL.md ← skills invocáveis (13 ativas)
 ├── .cursor/rules/*.mdc       ← regras Cursor (quick-ref com globs)
 ├── docs/*.md                 ← referência expandida
 └── aulas/*/HANDOFF.md        ← estado por aula
@@ -76,6 +79,28 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | metanalise-scope.md | (autônomo) | ← README.md |
 | pipeline/README.md | (pipeline humano) | ← SUBAGENTS.md |
 
+### .claude/hooks/ (safety gates — determinísticos)
+
+| Arquivo | Wired em settings.json | Função |
+|---------|----------------------|--------|
+| audit-trail.sh | PostToolUse, PostToolUseFailure (*) | P0 traceability — JSONL log de toda tool call |
+| build-monitor.sh | PostToolUse, PostToolUseFailure (Bash) | Detecta falhas de build |
+| check-evidence-db.sh | PreToolUse (Write) | Valida dados clínicos antes de escrever |
+| guard-evidence-db.sh | PreToolUse (Write) | Protege evidence-db de edições não autorizadas |
+| guard-shared.sh | PreToolUse (Write, Edit) | Bloqueia edição de shared/ em branches não-main |
+| guard-destructive.sh | (dormant — coberto por deny permissions) | Backup: bloqueia comandos destrutivos |
+| guard-merge.sh | (dormant — coberto por ## Worktree checklist) | Backup: valida merge |
+| post-compact-reinject.sh | SessionStart (compact) | Reinjecta HANDOFF + git log após /compact |
+| session-tracker.sh | SessionStart, SessionEnd | Lifecycle de sessão (3-terminal tracking) |
+| subagent-stop-log.sh | SubagentStop | Loga conclusão de subagents |
+
+### .claude/scripts/
+
+| Arquivo | Função |
+|---------|--------|
+| worktree-init.sh | Cria WT com validação, logging, regras |
+| worktree-cleanup.sh | Valida estado, confirma merge, remove WT |
+
 ### aulas/cirrose/
 
 | Arquivo | Referencia | Referenciado por |
@@ -97,6 +122,7 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | HANDOFF_SYNC-CURSOR-2026-02-26.md | One-shot |
 | cirrose-scope.md | Superseded por blueprint-cirrose.md |
 | AUDIT-BATCHES.md | One-shot |
+| research-skills-ecosystem-2026-03-11.md | Pesquisa ecosystem upgrade (referência, não operacional) |
 
 ---
 
@@ -136,6 +162,9 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | Pedagogia | docs/slide-pedagogy.md | .claude/rules/design-principles.md |
 | KPIs multiagente | docs/KPIs.md | — |
 | Benchmarks modelos | docs/ECOSYSTEM.md | — |
+| Safety gates (hooks) | .claude/settings.json + .claude/hooks/ | — |
+| WT protocol | aulas/*/CLAUDE.md § Worktree | .claude/scripts/ |
+| Audit trail | .claude/hooks/audit-trail.sh | ~/.claude/session-logs/ |
 
 ---
 

@@ -65,6 +65,20 @@ Conflito: # menor vence. Notion e mirror, nao source of truth.
 | `ERROR-LOG.md` | Erros → regras | Quando encontrar erro novo |
 | `NOTES.md` | Decisoes entre agentes | Durante a sessao |
 
+## Worktree
+
+- **Branch pattern:** `feat/cirrose-{feature}-mvp`
+- **WT location:** `../aulas-magnas-wt-cirrose-{feature}`
+- **shared/ restrictions:** READ-ONLY. Se mudanca necessaria, registrar em NOTES.md e deferir para sessao em main.
+- **Pre-merge checklist:**
+  - [ ] `git diff --name-only main...HEAD | grep shared/` retorna vazio
+  - [ ] `npm run build:cirrose` passa sem erros
+  - [ ] `npm run lint:slides` passa
+  - [ ] Speaker notes tem `[DATA]` tags para dados numericos
+  - [ ] `git status` limpo (nada uncommitted)
+- **Merge protocol:** No main: `git merge --no-ff feat/cirrose-{feature}-mvp`
+- **Cleanup:** `bash .claude/scripts/worktree-cleanup.sh cirrose-{feature}`
+
 ## Regras inviolaveis
 
 ### Dados clínicos
