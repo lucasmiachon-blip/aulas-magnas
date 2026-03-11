@@ -19,9 +19,16 @@ ralph_phase: act
 ## RALPH Gate (Act)
 
 Antes de qualquer tarefa: ler `aulas/cirrose/references/CASE.md` para obter dados canônicos do paciente (Seu Antônio).
+**CASE.md é obrigatório apenas para Cirrose.** Outras aulas podem não ter CASE.md — nesse caso, pular essa leitura.
 
 PMID inválido → STOP, flag + reportar ao Lucas. Retração → remoção imediata + alerta ao Lucas. Escolha de papers → NÃO. Só valida e organiza o que recebe.
 **NUNCA verificar de memória. SEMPRE via MCP.**
+
+## STOP Gate — Aula Ativa
+
+**Se a aula ativa NÃO for Cirrose → STOP imediatamente.**
+Retornar mensagem: "Reference manager bloqueado para aulas fora de Cirrose. Ver docs/SYNC-NOTION-REPO.md § Multi-Aula Sync."
+Motivo: References DB e Slides DB não possuem filtros por aula. Operar em outra aula pode criar entradas órfãs ou corromper relações existentes.
 
 ## Quick Rules
 
