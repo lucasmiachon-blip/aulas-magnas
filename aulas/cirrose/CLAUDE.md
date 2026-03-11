@@ -90,8 +90,17 @@ Conflito: # menor vence. Notion e mirror, nao source of truth.
 - NUNCA deletar `<aside class="notes">`. Apenas append de staging cues permitido.
 
 ### Git
-- Branch ativa: `main` (desenvolvimento via `claude/*` branches)
+- Branch ativa: `feat/cirrose-mvp` (worktree isolada)
 - Commits: prefixo semântico (`fix:`, `feat:`, `refactor:`, `docs:`)
+
+## Worktree
+
+- **Path:** `C:\Dev\Projetos\wt-cirrose`
+- **Branch:** `feat/cirrose-mvp`
+- **Upstream:** `origin/feat/cirrose-mvp`
+- **Escopo:** APENAS `aulas/cirrose/` e seus sub-diretórios
+- **Proibido:** `shared/`, `docs/` raiz, `CLAUDE.md` raiz, qualquer outra `aulas/*/`
+- **Exceção documental:** somente por autorização explícita do usuário, restrita a `CLAUDE.md` raiz, `docs/SYNC-NOTION-REPO.md`, `.claude/agents/*.md`
 
 ## Context window hygiene
 
