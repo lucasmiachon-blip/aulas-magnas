@@ -12,23 +12,32 @@
 <!-- ======== SLIDE 00: TÍTULO ======== -->
 <section id="s-title" data-background-color="#162032">
     <div class="slide-inner slide-title">
+
       <h1 class="title-hero">Do diamante à decisão</h1>
-      <p class="title-subtitle">Como ler uma meta-análise sem virar metodologista</p>
-      <p class="title-pillars">
+
+      <p class="title-subtitle" data-animate="fadeUp">
+        Como ler uma meta-análise sem virar metodologista
+      </p>
+
+      <div class="title-pillars" data-animate="stagger" data-stagger="0.25">
         <span class="pillar">Perguntar</span>
         <span class="pillar-dot" aria-hidden="true"></span>
         <span class="pillar">Estimar</span>
         <span class="pillar-dot" aria-hidden="true"></span>
         <span class="pillar">Decidir</span>
-      </p>
+      </div>
+
       <div class="title-divider" aria-hidden="true"></div>
-      <div class="title-identity">
+
+      <div class="title-identity" data-animate="fadeUp">
         <p class="title-author">Lucas P. Miachon</p>
         <p class="title-affiliation">Hospital das Clínicas da Faculdade de Medicina da USP</p>
       </div>
+
     </div>
     <aside class="notes">
 [0:00-0:15] Título aparece enquanto audiência se acomoda.
+Subtítulo faz fadeUp, depois os 3 pilares entram escalonados.
 "Do diamante à decisão. Hoje vamos aprender a ler uma meta-análise
 como clínicos — sem virar estatísticos, sem terror."
 PAUSA 3s. "Três passos: Perguntar, Estimar, Decidir."
@@ -41,27 +50,57 @@ PAUSA 3s. "Três passos: Perguntar, Estimar, Decidir."
          class="slide-navy"
          data-timing="60"
          data-background-color="#162032">
+
   <div class="slide-inner">
     <div class="hook-question">
-      <p class="hook-question-text" data-animate="fadeUp">
+
+      <!-- BEAT 0: A pergunta (auto, fadeUp no enter) -->
+      <p class="hook-question-text hook-beat-0">
         O diamante diz que funciona.<br>
         Você confia?
       </p>
-      <p class="hook-question-sub" data-animate="fadeUp">
-        16 ensaios · 26.795 pacientes · RR 0,91<br>
-        Alta certeza para mortalidade. Moderada para o resto.
-      </p>
+
+      <!-- BEAT 1: Os dados (click para revelar) -->
+      <div class="hook-data hook-beat-1">
+        <div class="hook-data-grid">
+          <div class="hook-data-item">
+            <span class="hook-data-value" data-animate="countUp" data-target="16">0</span>
+            <span class="hook-data-label">ensaios</span>
+          </div>
+          <div class="hook-data-item">
+            <span class="hook-data-value hook-data-big" data-animate="countUp" data-target="26795" data-decimals="0">0</span>
+            <span class="hook-data-label">pacientes</span>
+          </div>
+          <div class="hook-data-item">
+            <span class="hook-data-value" data-animate="countUp" data-target="0.91" data-decimals="2">0</span>
+            <span class="hook-data-label">RR mortalidade</span>
+          </div>
+        </div>
+        <p class="hook-verdict">
+          Alta certeza para mortalidade. Moderada para o resto.
+        </p>
+      </div>
+
     </div>
   </div>
+
   <aside class="notes">
-[0:00] A pergunta
+[BEAT 0 · auto] A pergunta
 "Imaginem que vocês recebem no ambulatório um paciente de 68 anos,
 hipertenso, e querem saber: tratar reduz mortalidade?
-Abrem uma revisão Cochrane. 16 ensaios. Quase 27 mil pacientes.
-O diamante diz: RR 0,91, IC 0,85 a 0,97. Alta certeza."
+Abrem uma revisão Cochrane."
 PAUSA 3s.
-"A pergunta desta aula é simples: vocês confiam nesse diamante?
-E mais importante — sabem dizer por quê?"
+"O diamante diz que funciona. Vocês confiam?"
+
+[BEAT 1 · click] Os dados
+"16 ensaios. Quase 27 mil pacientes.
+RR 0,91. IC 0,85 a 0,97."
+PAUSA.
+"Alta certeza para mortalidade. Moderada para o resto.
+Sabem dizer por quê?"
+
+[TRANSIÇÃO] → slide 02 (RS vs MA)
+
 Fonte: Musini et al. Cochrane 2025;10:CD000028.
 Dados: abstract — RR mortalidade 0,91 (0,85–0,97), alta certeza GRADE.
   </aside>
@@ -79,6 +118,64 @@ Dados: abstract — RR mortalidade 0,91 (0,85–0,97), alta certeza GRADE.
   initDeck('#slide-viewport');
   initAula(gsap);
   const anim = createAnimationDispatcher(gsap);
+
+  // --- s-hook: 2-beat state machine ---
+  anim.registerCustom('s-hook', (slide, g) => {
+    const q = slide.querySelector('.hook-beat-0');
+    const data = slide.querySelector('.hook-beat-1');
+    const verdict = slide.querySelector('.hook-verdict');
+
+    // Beat 0 — pergunta aparece com fadeUp
+    g.to(q, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' });
+
+    // State machine
+    let beat = 0;
+
+    slide.__hookAdvance = () => {
+      if (beat === 0) {
+        beat = 1;
+        // Beat 1 — dados aparecem
+        g.to(data, { opacity: 1, visibility: 'visible', y: 0, duration: 0.6, ease: 'power3.out' });
+        // countUp triggers — re-trigger manually for beat 1
+        const countEls = data.querySelectorAll('[data-animate="countUp"]');
+        countEls.forEach(el => {
+          const raw = (el.dataset.target || '').replace(',', '.');
+          const target = parseFloat(raw);
+          if (isNaN(target)) return;
+          const dec = parseInt(el.dataset.decimals, 10);
+          const frac = !isNaN(dec) ? dec : (raw.includes('.') ? 1 : 0);
+          const obj = { val: 0 };
+          g.to(obj, {
+            val: target, duration: 1.5, ease: 'power2.out',
+            onUpdate: () => {
+              el.textContent = frac > 0
+                ? obj.val.toLocaleString('pt-BR', { minimumFractionDigits: frac, maximumFractionDigits: frac })
+                : Math.round(obj.val).toLocaleString('pt-BR');
+            }
+          });
+        });
+        // Verdict fades in after data
+        g.to(verdict, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 1.2 });
+        return true; // consumed — don't navigate
+      }
+      return false; // beat 1 done — let deck navigate
+    };
+
+    slide.__hookRetreat = () => {
+      if (beat === 1) {
+        beat = 0;
+        g.to(data, { opacity: 0, y: 30, duration: 0.4, ease: 'power2.in',
+          onComplete: () => { data.style.visibility = 'hidden'; }
+        });
+        g.to(verdict, { opacity: 0, y: 10, duration: 0.3 });
+        // Reset countUp values to 0
+        data.querySelectorAll('[data-animate="countUp"]').forEach(el => { el.textContent = '0'; });
+        return true;
+      }
+      return false;
+    };
+  });
+
   anim.connect();
 </script>
 </body>

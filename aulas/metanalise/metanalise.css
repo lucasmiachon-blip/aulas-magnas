@@ -122,12 +122,85 @@
   max-width: 40ch;
 }
 
-/* --- GSAP failsafe: animated elements start hidden, .no-js forces visible --- */
+/* --- GSAP failsafe: animated elements start hidden + offset, .no-js forces visible --- */
 [data-animate] {
   opacity: 0;
 }
-.no-js [data-animate] {
+[data-animate="fadeUp"] {
+  transform: translateY(20px);
+}
+[data-animate="stagger"] > * {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.no-js [data-animate],
+.no-js [data-animate="stagger"] > * {
   opacity: 1 !important;
+  transform: none !important;
+}
+
+/* --- Hook: 2-beat state machine --- */
+.hook-beat-0 {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.hook-beat-1 {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+}
+
+/* --- Hook: data grid (3 numbers) --- */
+.hook-data-grid {
+  display: flex;
+  gap: var(--space-xl);
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: var(--space-lg);
+}
+.hook-data-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.hook-data-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-h1);
+  color: var(--text-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.hook-data-big {
+  font-size: var(--text-hero);
+}
+.hook-data-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Hook: verdict line --- */
+.hook-verdict {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-md);
+  text-align: center;
+  max-width: 40ch;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* .no-js fallback for hook beats */
+.no-js .hook-beat-0,
+.no-js .hook-beat-1,
+.no-js .hook-verdict {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }
 
 /* --- Stage-C defaults (Plan C: light, 1280x720, GSAP ativo) --- */
