@@ -1,51 +1,59 @@
-# HANDOFF — Meta-analise
+# HANDOFF — Meta-análise
 
-> Estado operacional da aula. Atualizar ao final de cada sessao.
+> Estado operacional. Atualizar ao final de cada sessão.
 
-## Estado geral
+---
 
-**Fase:** Bootstrap — scaffolding + scope definido, zero slides de conteudo.
+## Estado atual
 
-## Branch
+- **Fase:** Bootstrap concluído
+- **Branch:** feat/metanalise-mvp (worktree wt-metanalise)
+- **Slides prontos:** 0/14
+- **Docs fundacionais:** narrative.md, evidence-db.md, blueprint.md, reading-list.md
 
-`feat/metanalise-mvp` (worktree em `C:\Dev\Projetos\wt-metanalise`)
+## O que foi feito
 
-## Escopo da aula
+- [x] Leitura e validação do memo direcionado
+- [x] Criação de narrative.md (tese, arco 4 atos, âncora, público)
+- [x] Criação de evidence-db.md (dados Musini 2025 abstract, referências por função)
+- [x] Criação de blueprint.md (15 slides com assertion, função, risco cognitivo)
+- [x] Criação de reading-list.md (pre-reading residente + trilha professor)
+- [x] Atualização de metanalise-scope.md (supersede versão enciclopédica)
+- [x] Atualização de CLAUDE.md local (alinhado com novo escopo)
 
-- 45-60 min, residentes avancados + staff gastro/hepato
-- Foco: LEITURA CRITICA de meta-analise (nao producao)
-- Modelo pairwise classico (NMA/Bayesian/IPD = teaser)
-- 10 blocos tematicos candidatos (ver `docs/metanalise-scope.md`)
-- 3 checkpoints interativos planejados
-- Assertion-evidence, Reveal.js, GSAP, OKLCH
+## Caminho crítico — próximos batches
 
-## Fontes que mandam
+### Batch 2 (próximo)
+- Criar CSS base da aula (metanalise.css)
+- Criar slides 00 (título) e 01 (hook)
+- Validar que shared/ engine funciona com o novo projeto
 
-| Doc | Papel |
-|-----|-------|
-| `docs/metanalise-scope.md` | Escopo completo, blocos, checkpoints, referencias |
-| `aulas/metanalise/CLAUDE.md` | Regras especificas (9 MAs, forest plot real obrigatorio) |
-| `CLAUDE.md` (raiz) | Stack, hard constraints, workflow |
+### Batch 3
+- Slides 02–05 (Ato 1: PICO, âncora, abstract)
 
-## O que ja existe
+### Batch 4
+- Slides 06–08 (Ato 2: forest plot, benefício, dano)
+- Decisão sobre forest plot: placeholder vs real
 
-| Arquivo | Status |
-|---------|--------|
-| `CLAUDE.md` | Regras especificas — OK |
-| `index.html` | Placeholder (1 section "Em construcao") |
-| `index.stage-b.html` | Placeholder Plano B |
-| `index.stage-c.html` | Placeholder Plano C |
+### Batch 5
+- Slides 09–11 (Ato 3: GRADE, heterogeneidade, fixed/random)
 
-## O que ainda e placeholder
+### Batch 6
+- Slides 12–14 (Ato 4: aplicabilidade, efeito absoluto, take-home)
 
-- **Tudo.** Nenhum slide de conteudo existe.
-- Nao ha `slides/` dir, `_manifest.js`, CSS proprio, nem build script.
-- Nao ha CHANGELOG, ERROR-LOG, NOTES.
-- Nao ha registro no Notion Slides DB.
-- `docs/README.md` e `docs/XREF.md` nao listam HANDOFF da metanalise.
+## Bloqueios conhecidos
 
-## Proximo micro passo
+| Bloqueio | Impacto | Workaround |
+|----------|---------|------------|
+| Full-text Musini indisponível até 2026-10-09 | Sem forest plot real, sem NNT | Usar dados do abstract; placeholder |
+| JAMA Users' Guides acesso institucional | Pode não estar disponível para residentes | Manter como good-to-read |
 
-1. Definir arco narrativo minimo: quantos slides por bloco, ordem dos 10 blocos, quais sao core vs optional.
-2. Criar `slides/` dir + `_manifest.js` com lista de slides planejados.
-3. Primeiro slide real: `00-title.html`.
+## Não fazer ainda
+
+- Não criar _manifest.js (precisa de slides primeiro)
+- Não tocar em Cirrose
+- Não expandir para NMA, IPD, bayesiana
+
+---
+
+## Última atualização: 2026-03-11
