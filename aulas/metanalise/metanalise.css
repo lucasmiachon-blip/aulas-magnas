@@ -1,0 +1,134 @@
+/* ============================================
+   META-ANÁLISE — Lecture-specific components
+   Depends: ../../shared/css/base.css (tokens)
+   ============================================ */
+
+/* --- Slide padding (consistent with cirrose) --- */
+#slide-viewport > section .slide-inner {
+  padding: 40px 64px;
+}
+
+/* --- Title slide (capa centrada) --- */
+.slide-title {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.slide-title h1 {
+  font-size: var(--text-hero);
+  max-width: 18ch;
+  margin: 0 auto;
+}
+
+/* --- Title: subtitle row --- */
+.title-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-sm);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* --- Title: pillars row (3 palavras-chave separadas por dot) --- */
+.title-pillars {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark-muted);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.pillar-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-on-dark-muted);
+  opacity: 0.5;
+}
+
+/* --- Title: divider line --- */
+.title-divider {
+  width: 80px;
+  height: 1px;
+  background: var(--border-navy);
+  margin: var(--space-md) auto;
+}
+
+/* --- Title: author identity block --- */
+.title-identity {
+  text-align: center;
+}
+.title-author {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  font-weight: 500;
+  margin: 0;
+}
+.title-affiliation {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  margin: var(--space-xs) 0 0;
+}
+
+/* --- Assertion headline (shared across content slides) --- */
+.slide-headline {
+  font-size: var(--text-h2);
+  color: var(--text-on-dark);
+  margin-bottom: var(--space-md);
+  line-height: 1.15;
+}
+
+/* --- Source tag (reference footer) --- */
+.source-tag {
+  font-family: var(--font-body);
+  font-size: clamp(10px, 0.55vw, 11px);
+  color: var(--text-on-dark-muted);
+  margin-top: auto;
+  padding-bottom: var(--space-xs);
+  text-align: center;
+}
+
+/* --- Hook slide: central question block --- */
+.hook-question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+}
+.hook-question-text {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-style: italic;
+  color: var(--text-on-dark);
+  max-width: 20ch;
+  line-height: 1.2;
+}
+.hook-question-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark-muted);
+  margin-top: var(--space-md);
+  max-width: 40ch;
+}
+
+/* --- GSAP failsafe: animated elements start hidden, .no-js forces visible --- */
+[data-animate] {
+  opacity: 0;
+}
+.no-js [data-animate] {
+  opacity: 1 !important;
+}
+
+/* --- Stage-C defaults (Plan C: light, 1280x720, GSAP ativo) --- */
+/* Nothing extra needed yet — base.css handles stage-c tokens. */
