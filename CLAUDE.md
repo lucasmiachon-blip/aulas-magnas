@@ -39,6 +39,17 @@ shared/js/deck.js      → Navegacao vanilla
 shared/js/case-panel.js → Panel lateral (cirrose)
 ```
 
+**`shared/` is READ-ONLY in worktrees.** Edits to shared/ must happen on `main` and be absorbed by WTs via `git merge main`. Never edit shared/ inside a feature branch.
+
+## Worktree Protocol
+
+- **Create:** `git worktree add ../aulas-magnas-wt-<slug> -b feat/<slug>-mvp`
+- **Merge back:** `git merge --no-ff feat/<slug>-mvp` (on main). Preserva historico.
+- **Absorb main updates:** Inside WT, `git merge main`. NUNCA `git rebase` em branch publicada.
+- **Cleanup:** `git worktree remove ../aulas-magnas-wt-<slug>` apos merge.
+- **shared/ guard:** WT agents MUST NOT edit files under `shared/`. If a shared change is needed, flag it and defer to a main-branch session.
+- **Aula CLAUDE.md:** cada `aulas/*/CLAUDE.md` DEVE ter secao `## Worktree` declarando branch esperada e restricoes locais. Sem essa secao, WT agent deve recusar trabalho.
+
 ## Conventions
 
 - Slides: `NN-slug.html` (ex: `00-title.html`)

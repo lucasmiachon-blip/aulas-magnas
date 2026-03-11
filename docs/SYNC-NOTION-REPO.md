@@ -41,6 +41,18 @@
 - **table_row:** células não são editáveis via PATCH block. Tabelas na Blueprint exigem edição manual.
 - **Database ID:** `retrieve-a-database` pode retornar 404; usar `query-data-source` com o ID da Slides DB.
 
+## Multi-Aula Sync — BLOQUEADO
+
+O sync atual assume todos os slides na Slides DB pertencem a Cirrose.
+Antes de sincronizar qualquer outra aula, os seguintes pre-requisitos devem existir no Notion:
+
+1. **Propriedade `Aula`** (Select) na Slides DB — valores: Cirrose, GRADE, Osteoporose, Meta-analise.
+2. **Filtros por aula** em todas as queries do notion-sync agent.
+3. **Views separadas** por aula no Notion (opcional, mas recomendado).
+
+Ate que (1) e (2) existam, `notion-sync` e `reference-manager` devem operar **somente em Cirrose**.
+Tentar sync de outra aula sem esses gates pode corromper dados de Cirrose na Slides DB.
+
 ## Comando sugerido
 
 ```

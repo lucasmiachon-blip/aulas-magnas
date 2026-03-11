@@ -17,6 +17,12 @@ Antes de qualquer tarefa: ler `aulas/cirrose/references/CASE.md` para obter dado
 > Scope: **Slides DB only.** References DB sync is handled by `reference-manager`.
 > IDs: read from `docs/SYNC-NOTION-REPO.md` (single source of truth). NEVER hardcode.
 
+## STOP Gate — Aula Ativa
+
+**Se a aula ativa NÃO for Cirrose → STOP imediatamente.**
+Retornar mensagem: "Notion sync bloqueado para aulas fora de Cirrose. Ver docs/SYNC-NOTION-REPO.md § Multi-Aula Sync."
+Motivo: Slides DB não possui propriedade `Aula` nem filtros por aula. Operar em outra aula pode corromper dados de Cirrose.
+
 ## Setup
 
 1. Read `docs/SYNC-NOTION-REPO.md` to get current Notion IDs
