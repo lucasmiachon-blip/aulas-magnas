@@ -25,10 +25,14 @@
 - [x] slides/01-hook.html (hook: O diamante diz que funciona. Você confia?)
 - [x] index.html migrado de Reveal.js para deck.js + engine.js
 - [x] Removidos placeholders stage-b/c (obsoletos)
+- [x] Hook redesenhado como 2-beat interativo (countUp + verdict)
+- [x] Título com stagger nos pilares
+- [x] CSS fadeUp com translateY real
+- [x] Validação visual em localhost
 
 ## Caminho crítico — próximos batches
 
-### Batch 3 (próximo)
+### Batch 4 (próximo)
 - Slides 02–05 (Ato 1: PICO, âncora, abstract)
 
 ### Batch 4
