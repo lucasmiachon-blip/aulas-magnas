@@ -65,6 +65,43 @@ Conflito: # menor vence. Notion e mirror, nao source of truth.
 | `ERROR-LOG.md` | Erros → regras | Quando encontrar erro novo |
 | `NOTES.md` | Decisoes entre agentes | Durante a sessao |
 
+## Worktree
+
+- **Branch pattern:** `feat/cirrose-{feature}-mvp`
+- **WT location:** `../aulas-magnas-wt-cirrose-{feature}`
+- **shared/ restrictions:** READ-ONLY. Se mudanca necessaria, registrar em NOTES.md e deferir para sessao em main.
+- **Pre-merge checklist:**
+  - [ ] `git diff --name-only main...HEAD | grep shared/` retorna vazio
+  - [ ] `npm run build:cirrose` passa sem erros
+  - [ ] `npm run lint:slides` passa
+  - [ ] Speaker notes tem `[DATA]` tags para dados numericos
+  - [ ] `git status` limpo (nada uncommitted)
+- **Merge protocol:** No main: `git merge --no-ff feat/cirrose-{feature}-mvp`
+- **Cleanup:** `bash .claude/scripts/worktree-cleanup.sh cirrose-{feature}`
+
+## Manifest Sync Guardrail
+
+`_manifest.js` é a camada que agentes e lints leem. HTML é a camada que humanos veem no browser. Drift entre os dois = split-brain de source of truth.
+
+### Triggers de verificação
+
+Qualquer uma destas mudanças exige checagem de `_manifest.js`:
+- Edição de `<h2>` em qualquer slide HTML
+- Mudança de `<section id="...">` (identidade do slide)
+- Rename de arquivo de slide
+- Reordenação lógica de slides
+
+### Regras
+
+1. **Drift da rodada** (slide tocado nesta rodada diverge do manifest) → **FAIL**. QA não pode ser declarado PASS.
+2. **Drift herdado** (slide NÃO tocado nesta rodada, drift pré-existente) → **WARN** + follow-up obrigatório registrado em HANDOFF.md. Não fingir PASS limpo.
+3. Antes de commit de aula, comparar `_manifest.js` headlines/IDs com os `<h2>`/`<section id>` dos slides tocados na rodada.
+4. Drift da rodada detectado → corrigir ANTES de prosseguir. Não anotar para "depois".
+
+### Referência
+
+ERRO-024 (notas stale) e hardening 10/mar (headline drift) são precedentes reais.
+
 ## Regras inviolaveis
 
 ### Dados clínicos

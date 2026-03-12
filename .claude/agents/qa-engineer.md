@@ -178,6 +178,40 @@ async () => {
 
 ---
 
+## Evidence Requirements (OBRIGATÓRIO antes de PASS)
+
+NUNCA declarar PASS com base apenas em build/lint. QA visual e interativo requer evidência mínima:
+
+| Evidência | Quando obrigatória | Formato |
+|-----------|-------------------|---------|
+| Screenshot estado inicial | SEMPRE | `qa-screenshots/...beat0.png` |
+| Screenshot estado final | SEMPRE | `qa-screenshots/...beatFinal.png` |
+| Screenshot retreat/reset | Slides com interação ou fragments | `qa-screenshots/...retreat.png` |
+| Console JS limpo | SEMPRE | `browser_console_messages` — 0 errors |
+| Manifest drift check | Se h2/section-id/rename/reorder tocados | Comparar `_manifest.js` headline vs HTML `<h2>` |
+
+### Regras de veredito
+
+- **Se evidência de interação for inconclusiva** → declarar `INCONCLUSIVO`, NUNCA PASS.
+- **"Não testável"** (sem Playwright, sem browser) **≠ "funcional"**. Declarar `NÃO TESTADO`, não PASS.
+- **Manifest drift da rodada** (slide tocado nesta rodada diverge do manifest) → `FAIL` bloqueante.
+- **Manifest drift herdado** (slide NÃO tocado, drift pré-existente) → `WARN` + follow-up obrigatório. Não fingir PASS limpo.
+
+### DOC COMPLIANCE (bloco obrigatório no scorecard)
+
+Antes do veredito final de cada slide, anexar:
+
+```
+DOC COMPLIANCE:
+- [ ] _manifest.js headline matches HTML <h2>
+- [ ] _manifest.js section ID matches HTML <section id>
+- [ ] Speaker notes tem [DATA] tags para cada dado numérico novo ou alterado na rodada
+- [ ] Nenhum [TBD] em corpo projetado (só em notes)
+```
+
+- Manifest/ID drift da rodada falhou → veredito = FAIL.
+- Outros itens falharam → veredito máximo = WARN (não PASS).
+
 ## Loop de Perfeição
 
 ```

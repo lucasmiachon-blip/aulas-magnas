@@ -34,6 +34,19 @@
 2. `npm run build:osteoporose` (gera `index.html`)
 3. `npm run dev:osteoporose` → abrir `/aulas/osteoporose/index.html`
 
+## Worktree
+
+- **Branch pattern:** `feat/osteoporose-{feature}-mvp`
+- **WT location:** `../aulas-magnas-wt-osteoporose-{feature}`
+- **shared/ restrictions:** READ-ONLY. Deferir mudancas para sessao em main.
+- **Pre-merge checklist:**
+  - [ ] `git diff --name-only main...HEAD | grep shared/` retorna vazio
+  - [ ] `npm run build:osteoporose` passa sem erros
+  - [ ] `npm run lint:slides` passa
+  - [ ] `git status` limpo
+- **Merge protocol:** No main: `git merge --no-ff feat/osteoporose-{feature}-mvp`
+- **Cleanup:** `bash .claude/scripts/worktree-cleanup.sh osteoporose-{feature}`
+
 ## Slide map
 
 - **Main:** S01-S06, S12-S14, S14b, S17, S19, S22-S26, S28-S31, S32-S33, S35-S44, S45-S50, S99
