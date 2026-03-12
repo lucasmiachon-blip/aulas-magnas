@@ -81,11 +81,11 @@ IF iteration == 10:
 ## Loop 2 — Gemini 3.x (Flash + Pro)
 
 **Agente:** Gemini via MCP (`gemini` server) ou API direta (`@google/genai`)
-**Modelos:** Flash 3 (`gemini-3-flash-preview`) para iteracoes 1-2 (layout), Pro 3.1 (`gemini-3.1-pro-preview`) para pass final (narrativa)
+**Modelos:** Flash-Lite 3.1 (`gemini-3.1-flash-lite-preview`) para iteracoes rapidas, Flash 3 (`gemini-3-flash-preview`) para layout, Pro 3.1 (`gemini-3.1-pro-preview`) para pass final (narrativa)
 **Responsabilidade:** visual, layout, percepção, acessibilidade, animações reais
 **Protocolo:** Gemini **só sugere** — retorna especificação estruturada → Opus lê o arquivo e executa o fix
 **Gemini não toca no código. Nunca.**
-**Custo:** ~$0.02/pass Flash, ~$0.06/pass Pro (3 slides video HIGH)
+**Custo:** ~$0.008/pass Lite, ~$0.02/pass Flash, ~$0.06/pass Pro (3 slides video HIGH)
 
 ### Integração (ordem de preferência)
 
@@ -257,7 +257,7 @@ NÃO editar nada — você só sugere, Opus executa.
 | Critério | 0 FAILs no lint + constraints | Gemini retorna PASS (confidence ≥80) |
 | Fix feito por | Opus | Opus (guiado por Gemini spec JSON) |
 | Integração | Claude Code nativo | MCP gemini (automático) ou API script |
-| Custo | $0 (Claude Code) | ~$0.02/pass Flash, ~$0.06/pass Pro |
+| Custo | $0 (Claude Code) | ~$0.008 Lite, ~$0.02 Flash, ~$0.06 Pro |
 | Independência | Não depende do Gemini | Não roda antes do Opus PASS |
 
 ## Segurança
