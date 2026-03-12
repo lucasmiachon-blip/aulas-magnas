@@ -6,9 +6,9 @@
 
 ## Estado atual
 
-- **Fase:** Infraestrutura visual + primeiros slides
+- **Fase:** Ato 1 completo, avançar para Ato 2
 - **Branch:** feat/metanalise-mvp (worktree wt-metanalise)
-- **Slides prontos:** 2/14 (00-title, 01-hook)
+- **Slides prontos:** 6/14 (00-title, 01-hook, 02-rs-vs-ma, 03-ancora, 04-pico, 05-abstract)
 - **Docs fundacionais:** narrative.md, evidence-db.md, blueprint.md, reading-list.md
 
 ## O que foi feito
@@ -29,20 +29,20 @@
 - [x] Título com stagger nos pilares
 - [x] CSS fadeUp com translateY real
 - [x] Validação visual em localhost
+- [x] Batch 4: slides 02–05 (Ato 1: RS vs MA, âncora, PICO, abstract)
+- [x] metanalise.css: 4 layouts (compare, anchor-card, pico-grid, pipeline-flow)
+- [x] index.html synced com 6 slides
 
 ## Caminho crítico — próximos batches
 
-### Batch 4 (próximo)
-- Slides 02–05 (Ato 1: PICO, âncora, abstract)
-
-### Batch 4
+### Batch 5 (próximo)
 - Slides 06–08 (Ato 2: forest plot, benefício, dano)
 - Decisão sobre forest plot: placeholder vs real
 
-### Batch 5
+### Batch 6
 - Slides 09–11 (Ato 3: GRADE, heterogeneidade, fixed/random)
 
-### Batch 6
+### Batch 7
 - Slides 12–14 (Ato 4: aplicabilidade, efeito absoluto, take-home)
 
 ## Bloqueios conhecidos

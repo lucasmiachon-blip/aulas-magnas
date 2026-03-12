@@ -203,5 +203,186 @@
   transform: none !important;
 }
 
+/* --- Compare layout (two-column RS vs MA) --- */
+.compare-layout {
+  display: flex;
+  gap: var(--space-lg);
+  flex: 1;
+  align-items: stretch;
+}
+.compare-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-navy-mid);
+}
+.compare-abbr {
+  font-family: var(--font-mono);
+  font-size: var(--text-h1);
+  color: var(--ui-accent-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.compare-name {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: var(--space-xs);
+}
+.compare-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  line-height: 1.5;
+  margin-top: var(--space-sm);
+}
+.compare-footer {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  color: var(--text-on-dark);
+  text-align: center;
+  margin-top: var(--space-md);
+  font-weight: 500;
+}
+
+/* --- Anchor card (article identity + metrics) --- */
+.anchor-card {
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.anchor-citation {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  line-height: 1.5;
+  border-left: 3px solid var(--ui-accent-on-dark);
+  padding-left: var(--space-sm);
+}
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-h1);
+  color: var(--text-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.metric-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* --- PICO grid (2×2 with letter emphasis) --- */
+.pico-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  flex: 1;
+  align-content: center;
+}
+.pico-item {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  background: var(--bg-navy-mid);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+.pico-letter {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  color: var(--ui-accent-on-dark);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 1.5ch;
+}
+.pico-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.pico-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pico-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  line-height: 1.3;
+}
+
+/* --- Pipeline flow (abstract structure) --- */
+.pipeline-flow {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: stretch;
+  flex: 1;
+  align-content: center;
+}
+.pipeline-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-sm);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.pipeline-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  color: var(--text-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.pipeline-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.pipeline-detail {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--text-on-dark-muted);
+  line-height: 1.3;
+}
+.pipeline-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--text-on-dark-muted);
+  font-size: var(--text-h3);
+  flex-shrink: 0;
+}
+
 /* --- Stage-C defaults (Plan C: light, 1280x720, GSAP ativo) --- */
 /* Nothing extra needed yet — base.css handles stage-c tokens. */
