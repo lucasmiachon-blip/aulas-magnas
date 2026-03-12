@@ -12,7 +12,11 @@ const i = JSON.parse(process.argv[1] || '{}');
 console.log((i.tool_input || {}).command || '');
 " "$INPUT" 2>/dev/null || echo "")
 
-# Only care about git merge commands
+# Skip non-merge git commands (commit messages may contain "merge" text)
+if echo "$CMD" | grep -qE 'git\s+(commit|log|diff|status|stash|add|push|pull|fetch|checkout|branch|tag|show|rebase|cherry-pick)'; then
+  exit 0
+fi
+# Only care about actual git merge commands
 if ! echo "$CMD" | grep -qE 'git\s+merge'; then
   exit 0
 fi
