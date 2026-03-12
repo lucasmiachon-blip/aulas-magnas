@@ -12,3 +12,4 @@ Docs superseded ou one-shot. Mantidos para referência histórica.
 | cirrose-scope.md | Superseded por docs/blueprint-cirrose.md |
 | AUDIT-BATCHES.md | One-shot |
 | NNT-IC95-REPORT.md | Relatório one-shot verificação NNTs (2026-03-02) |
+| research-skills-ecosystem-2026-03-11.md | Pesquisa ecosystem upgrade (referência, não operacional) |

@@ -12,12 +12,22 @@ const i = JSON.parse(process.argv[1] || '{}');
 console.log((i.tool_input || {}).command || '');
 " "$INPUT" 2>/dev/null || echo "")
 
-# Only care about git merge commands
+# Skip non-merge git commands (commit messages may contain "merge" text)
+if echo "$CMD" | grep -qE 'git\s+(commit|log|diff|status|stash|add|push|pull|fetch|checkout|branch|tag|show|rebase|cherry-pick)'; then
+  exit 0
+fi
+# Only care about actual git merge commands
 if ! echo "$CMD" | grep -qE 'git\s+merge'; then
   exit 0
 fi
 
-BRANCH=$(git branch --show-current 2>/dev/null || echo "unknown")
+# Detect target directory: if command has "cd <path> &&", resolve branch there
+TARGET_DIR=$(echo "$CMD" | grep -oE '^cd\s+[^ ]+' | awk '{print $2}' || true)
+if [ -n "$TARGET_DIR" ] && [ -d "$TARGET_DIR" ]; then
+  BRANCH=$(git -C "$TARGET_DIR" branch --show-current 2>/dev/null || echo "unknown")
+else
+  BRANCH=$(git branch --show-current 2>/dev/null || echo "unknown")
+fi
 
 # If merging TO main, enforce --no-ff
 if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then

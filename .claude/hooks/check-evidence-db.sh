@@ -5,13 +5,9 @@
 INPUT=$(cat)
 
 # Extract file_path from tool_input
-FILE_PATH=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('tool_input', {}).get('file_path', ''))
-except:
-    print('')
+FILE_PATH=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log((d.tool_input||{}).file_path||'');
 " 2>/dev/null)
 
 # Only apply to aulas/cirrose/slides/*.html
@@ -20,13 +16,9 @@ if [[ "$FILE_PATH" != *"aulas/cirrose/slides/"* ]] || [[ "$FILE_PATH" != *.html 
 fi
 
 # Get transcript path
-TRANSCRIPT=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('transcript_path', ''))
-except:
-    print('')
+TRANSCRIPT=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log(d.transcript_path||'');
 " 2>/dev/null)
 
 # If no transcript available, allow (can't verify)
@@ -35,39 +27,30 @@ if [ -z "$TRANSCRIPT" ] || [ ! -f "$TRANSCRIPT" ]; then
 fi
 
 # Search transcript for a Read tool call on evidence-db.md
-FOUND=$(python -c "
-import json, sys
-
-found = False
-try:
-    with open(sys.argv[1], encoding='utf-8', errors='replace') as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                entry = json.loads(line)
-                # Handle both direct message and wrapped { message: ... } formats
-                msg = entry.get('message', entry)
-                content = msg.get('content', [])
-                if not isinstance(content, list):
-                    continue
-                for item in content:
-                    if not isinstance(item, dict):
-                        continue
-                    if item.get('type') == 'tool_use' and item.get('name') == 'Read':
-                        fp = item.get('input', {}).get('file_path', '')
-                        if 'evidence-db.md' in fp:
-                            found = True
-                            break
-                if found:
-                    break
-            except Exception:
-                continue
-except Exception:
-    pass
-
-print('1' if found else '0')
+FOUND=$(node -e "
+const fs=require('fs');
+let found=false;
+try {
+  const lines=fs.readFileSync(process.argv[1],'utf8').split('\n');
+  for(const line of lines){
+    if(!line.trim()) continue;
+    try {
+      const entry=JSON.parse(line);
+      const msg=entry.message||entry;
+      const content=msg.content;
+      if(!Array.isArray(content)) continue;
+      for(const item of content){
+        if(typeof item!=='object'||item===null) continue;
+        if(item.type==='tool_use'&&item.name==='Read'){
+          const fp=(item.input||{}).file_path||'';
+          if(fp.includes('evidence-db.md')){found=true;break;}
+        }
+      }
+      if(found) break;
+    } catch(e){}
+  }
+} catch(e){}
+console.log(found?'1':'0');
 " "$TRANSCRIPT" 2>/dev/null)
 
 if [ "$FOUND" = "1" ]; then

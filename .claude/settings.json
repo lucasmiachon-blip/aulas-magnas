@@ -40,17 +40,6 @@
         ]
       },
       {
-        "matcher": "Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash .claude/hooks/guard-shared.sh",
-            "timeout": 5,
-            "statusMessage": "Verificando permissão shared/..."
-          }
-        ]
-      },
-      {
         "matcher": "Bash",
         "hooks": [
           {

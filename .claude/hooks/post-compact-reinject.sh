@@ -14,13 +14,17 @@ git branch --show-current 2>/dev/null || echo "(detached)"
 git log --oneline -5 2>/dev/null || echo "(no commits)"
 echo ""
 
-# Find and show active HANDOFF (look for most recently modified)
+# Find and show active HANDOFF (most recently modified)
 echo "--- Active HANDOFF (first 40 lines) ---"
 HANDOFF=""
-for f in aulas/cirrose/HANDOFF.md aulas/grade/HANDOFF.md aulas/osteoporose/HANDOFF.md; do
+LATEST_TS=0
+for f in aulas/*/HANDOFF.md; do
   if [ -f "$f" ]; then
-    HANDOFF="$f"
-    break
+    TS=$(stat -c '%Y' "$f" 2>/dev/null || stat -f '%m' "$f" 2>/dev/null || echo 0)
+    if [ "$TS" -gt "$LATEST_TS" ] 2>/dev/null; then
+      LATEST_TS="$TS"
+      HANDOFF="$f"
+    fi
   fi
 done
 

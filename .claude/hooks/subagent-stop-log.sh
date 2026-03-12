@@ -4,40 +4,24 @@
 
 INPUT=$(cat)
 
-AGENT_TYPE=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('agent_type', 'unknown'))
-except:
-    print('unknown')
+AGENT_TYPE=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log(d.agent_type||'unknown');
 " 2>/dev/null)
 
-AGENT_ID=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('agent_id', '?')[:8])
-except:
-    print('?')
+AGENT_ID=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log((d.agent_id||'?').slice(0,8));
 " 2>/dev/null)
 
-LAST_MSG=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('last_assistant_message', '')[:300])
-except:
-    print('')
+LAST_MSG=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log((d.last_assistant_message||'').slice(0,300));
 " 2>/dev/null)
 
-CWD=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('cwd', '.'))
-except:
-    print('.')
+CWD=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log(d.cwd||'.');
 " 2>/dev/null)
 
 DATE=$(date '+%Y-%m-%d %H:%M')

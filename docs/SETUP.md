@@ -157,7 +157,6 @@ Nada a configurar — funciona ao abrir o projeto.
 
 | Arquivo | Claude Desktop | Claude Code CLI | Cursor |
 |---------|---------------|----------------|--------|
-| `CLAUDE.md` | ✅ | ✅ | ❌ |
 | `CLAUDE.md` | ✅ | ✅ | ✅ (via .cursor/rules) |
 | `.claude/rules/*.md` | ✅ | ✅ | ❌ |
 | `.claude/skills/*/SKILL.md` | ✅ | ✅ | ❌ |
