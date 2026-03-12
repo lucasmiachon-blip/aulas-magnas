@@ -4,6 +4,21 @@
 
 ---
 
+## DR-001 — Ratificação: classify na posição 4 do Act 1
+
+**Data:** 2026-03-11
+**Tipo:** Decision Record
+
+**Fato:** commit `d20deec` (audit visual Act 1) incluiu reorder bundled — `s-a1-classify` movido para posição 4 (após s-a1-01, antes de s-a1-vote). A mudança foi executada sem DR explícito.
+
+**Ratificação:** Lucas aprova a ordem atual (2026-03-11). Classify na posição 4 é intencional.
+
+**Racional:** PREDESCI (HR 0,51) como hero do classify precisa vir antes do vote — a audiência precisa saber *por que* classificar importa antes de ser desafiada a fazê-lo. D'Amico (pos 5) e Baveno (pos 6) são ferramental que suporta a premissa já estabelecida.
+
+**Trade-off:** Classify antes de D'Amico inverte a ordem cronológica (D'Amico 2006 → Baveno 2022 → PREDESCI 2019). Aceito: narrativa > cronologia. A aula não é revisão histórica.
+
+---
+
 ## 2026-03-11 — Audit visual Act 1: headlines, density, a11y, data safety
 
 Branch: `feat/cirrose-mvp` · Commit: `d20deec`

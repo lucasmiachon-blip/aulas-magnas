@@ -56,10 +56,10 @@ acompanha os 3 atos, com o case panel evoluindo de neutro → perigo → esperan
 | # | Slide | Headline | Propósito narrativo | Tensão |
 |---|-------|----------|---------------------|--------|
 | 2 | s-a1-01 | Rastreio na atenção primária detecta hepatopatia antes da descompensação | **Ponte**: Antônio veio do rastreio — por que isso importa | ●●○○○ |
-| 3 | s-a1-classify | Classificar muda conduta | **Premissa do ato**: PREDESCI hero — prevenir a 1ª descompensação é possível | ●●○○○ |
+| 3 | s-a1-classify | Classificar antes da 1ª descompensação reduz eventos | **Premissa do ato**: PREDESCI hero — prevenir a 1ª descompensação é possível | ●●○○○ |
 | 4 | s-a1-vote | Esse paciente tem cirrose? | **Engajamento**: audiência aplica o que acabou de aprender | ●●○○○ |
 | 5 | s-a1-damico | Do CTP ao D'Amico: prognóstico passou de subjetivo a preditivo | **Setup**: D'Amico 2006→2014→2024 | ●●○○○ |
-| 6 | s-a1-baveno | Baveno VII redefiniu classificação | Ferramental: cACLD/dACLD, CSPH | ●○○○○ |
+| 6 | s-a1-baveno | Doença hepática avançada é espectro, não diagnóstico binário | Ferramental: cACLD/dACLD, CSPH | ●○○○○ |
 | 7 | s-a1-fib4 | 4 dados. 1 número. 1 decisão. | FIB-4 como screening, aplica ao Antônio | ●●○○○ |
 | 8 | s-a1-rule5 | A cada 5 kPa, muda o estágio e a conduta | Rule of 5: LSM + PLQ → risco | ●●○○○ |
 | 9 | s-a1-meld | MELD-Na: o GPS da fila | **Interactive**: calculadora, aplica ao Seu Antônio (~10) | ●●○○○ |
