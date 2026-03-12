@@ -89,7 +89,7 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | guard-evidence-db.sh | PreToolUse (Write) | Protege evidence-db de edições não autorizadas |
 | guard-shared.sh | PreToolUse (Write, Edit) | Bloqueia edição de shared/ em branches não-main |
 | guard-destructive.sh | (dormant — coberto por deny permissions) | Backup: bloqueia comandos destrutivos |
-| guard-merge.sh | (dormant — coberto por ## Worktree checklist) | Backup: valida merge |
+| guard-merge.sh | PreToolUse (Bash) | Valida merge: --no-ff em main, bloqueia shared/ changes |
 | post-compact-reinject.sh | SessionStart (compact) | Reinjecta HANDOFF + git log após /compact |
 | session-tracker.sh | SessionStart, SessionEnd | Lifecycle de sessão (3-terminal tracking) |
 | subagent-stop-log.sh | SubagentStop | Loga conclusão de subagents |

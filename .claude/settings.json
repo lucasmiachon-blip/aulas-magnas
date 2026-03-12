@@ -17,7 +17,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Write",
+        "matcher": "Write|Edit|StrReplace",
         "hooks": [
           {
             "type": "command",
@@ -47,6 +47,17 @@
             "command": "bash .claude/hooks/guard-shared.sh",
             "timeout": 5,
             "statusMessage": "Verificando permissão shared/..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-merge.sh",
+            "timeout": 10,
+            "statusMessage": "Validando merge..."
           }
         ]
       }

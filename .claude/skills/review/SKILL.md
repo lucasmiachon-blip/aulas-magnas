@@ -1,16 +1,25 @@
 ---
 name: review
-description: Audita slides médicos — assertion-evidence, acessibilidade, dados clínicos e design system. Ativar quando o usuário pedir "revise", "audite", "review", "verifique slides" ou "check slides". Reporta PASS/WARN/FAIL por slide.
-version: 0.3.0
+description: Audita slides médicos — assertion-evidence, acessibilidade, dados clínicos e design system. Adaptável por aula (lê CLAUDE.md da aula para contexto clínico). Ativar quando o usuário pedir "revise", "audite", "review", "verifique slides" ou "check slides". Reporta PASS/WARN/FAIL por slide.
+version: 0.4.0
 context: fork
 agent: general-purpose
 allowed-tools: Read, Grep, Glob, Agent
-argument-hint: "[lecture] [slide-number?]"
+argument-hint: "[aula=cirrose] [slide-number?]"
 ---
 
 # Review Slides — Multi-Agent
 
 Audite `$ARGUMENTS`. Se nenhum argumento: audite `aulas/cirrose/`.
+
+## Step 0 — Contexto da aula (parametrização)
+
+Antes de lançar subagents:
+1. Ler `aulas/{aula}/CLAUDE.md` → extrair: público-alvo, tema, fontes Tier 1, constraints específicos
+2. Ler `aulas/{aula}/slides/_manifest.js` → extrair: lista de slides, narrativeRole, archetypes
+3. Passar contexto para Agent B (Medical Data) e Agent D (Notes) como parâmetro
+
+Isso permite que o review funcione para QUALQUER aula (cirrose, grade, osteoporose, metanalise) sem editar a skill.
 
 ## Arquitetura (inspirada em code-review-agents, Anthropic 2026)
 

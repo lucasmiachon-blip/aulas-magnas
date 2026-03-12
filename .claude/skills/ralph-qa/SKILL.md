@@ -1,14 +1,14 @@
 ---
 name: ralph-qa
-description: QA em dois loops separados por batch de 3 slides. Loop 1 (Opus 4.6): lint+constraints até PASS. Loop 2 (Gemini Ultra): visual audit até PASS via screenshots estáticos (S0..SN) ou vídeo .webm das animações reais. Ativar quando usuário pedir "qa loop", "rodar qa até passar", "fix all lint", "qa autônomo", "qa batch".
-version: 5.0.0
+description: QA em dois loops separados por batch de 3 slides. Loop 1 (Opus 4.6): lint+constraints até PASS. Loop 2 (Gemini Flash/Pro via MCP): visual audit com video .webm das animações reais até PASS. Ativar quando usuário pedir "qa loop", "rodar qa até passar", "fix all lint", "qa autônomo", "qa batch".
+version: 6.0.0
 context: fork
 agent: general-purpose
 allowed-tools: Read, Edit, Bash, Grep, Glob, Agent
 argument-hint: "[lecture?] [batch-size=3] [max-iterations=10]"
 ---
 
-# Ralph-QA v4 — Opus Loop + Gemini Loop (separados)
+# Ralph-QA v6 — Opus Loop + Gemini Loop (separados)
 
 Loop de QA para `$ARGUMENTS` (default: `aulas/cirrose/`).
 Batch: 3 slides. Max iterações por loop: 10.
@@ -78,34 +78,47 @@ IF iteration == 10:
   output "OPUS-BLOCKED: [issue persistente]" → PARAR
 ```
 
-## Loop 2 — Gemini Ultra
+## Loop 2 — Gemini 3.x (Flash + Pro)
 
-**Agente:** Gemini Ultra (Assinatura pessoal Lucas)
+**Agente:** Gemini via MCP (`gemini` server) ou API direta (`@google/genai`)
+**Modelo:** Pro 3.1 (`gemini-3.1-pro-preview`) — sempre. Budget aprovado: ate $100/projeto.
+**Fallback:** Flash 3 (`gemini-3-flash-preview`) se Pro indisponivel. Flash-Lite 3.1 (`gemini-3.1-flash-lite-preview`) ultimo recurso.
 **Responsabilidade:** visual, layout, percepção, acessibilidade, animações reais
 **Protocolo:** Gemini **só sugere** — retorna especificação estruturada → Opus lê o arquivo e executa o fix
 **Gemini não toca no código. Nunca.**
+**Custo:** ~$0.06/pass Pro (3 slides video HIGH)
+
+### Integração (ordem de preferência)
+
+| Modo | Como funciona | Setup |
+|------|--------------|-------|
+| **MCP** (default) | Claude Code chama Gemini via MCP tool | `claude mcp add gemini` (já instalado) |
+| **API script** | Node script com `@google/genai` | `npm install @google/genai` |
+| **Manual** | Gera prompt + user cola no Gemini AI web | Nenhum (fallback) |
+
+GEMINI_API_KEY: já em env (verificado).
 
 ### Duas modalidades de input
 
 | Modalidade | Comando | Quando usar |
 |-----------|---------|------------|
 | **Estática** | `npm run qa:static` | Layout, hierarquia, contraste — rápido |
-| **Dinâmica** (vídeo) | `npm run qa:video` | Animações GSAP, timing, ritmo narrativo |
+| **Dinâmica** (vídeo, DEFAULT) | `npm run qa:video` | Animações GSAP, timing, ritmo narrativo |
 
-#### Fluxo estático (padrão)
+#### Fluxo vídeo dinâmico (padrão)
+```
+Playwright grava 3-5s .webm por slide via recordVideo API:
+→ qa-screenshots/videos/{slide-id}.webm
+→ Enviar via MCP para Gemini (automático)
+→ Gemini assiste a animação real (GSAP countUp, stagger, drawPath)
+→ Retorna issues com state/timing exato
+```
+
+#### Fluxo estático (fallback)
 ```
 npm run qa:static -- --batch=0,3
 → qa-screenshots/static/{slide-id}/s0.png, s1.png, ..., sN.png
-→ Enviar pasta para Gemini Ultra
-```
-
-#### Fluxo dinâmico (vídeo)
-```
-npm run qa:video -- --batch=0,3
-→ qa-screenshots/videos/{slide-id}.webm
-→ Upload manual do .webm para Gemini Ultra
-→ Gemini assiste a animação real (GSAP countUp, stagger, drawPath)
-→ Retorna issues com state/timing exato
+→ Enviar via MCP para Gemini
 ```
 
 ```
@@ -170,7 +183,7 @@ Solução: Gemini especifica **o quê** e **onde**, Opus executa o **como**:
 Opus recebe isso, faz `Grep` no arquivo com `line_hint` como anchor, localiza a string exata
 e executa `Edit`. Zero ambiguidade, zero string mismatch.
 
-**Prompt para Gemini 3.1 Pro:**
+**Prompt para Gemini 3.x Flash/Pro (via MCP):**
 ```
 Masterclass médica — hepatologistas seniores, Brasil. Cirrose Hepática.
 Reveal.js Plan C: fundo claro, 1280×720, GSAP ativo.
@@ -238,12 +251,14 @@ NÃO editar nada — você só sugere, Opus executa.
 
 ## Separação dos loops — por que importa
 
-| | Loop 1 (Opus) | Loop 2 (Gemini) |
+| | Loop 1 (Opus) | Loop 2 (Gemini Flash/Pro) |
 |---|---|---|
-| Domínio | Código, semântica, constraints | Visual, percepção, acessibilidade |
-| Input | HTML source | Screenshots renderizados |
+| Domínio | Código, semântica, constraints | Visual, percepção, acessibilidade, animações |
+| Input | HTML source | Vídeos .webm (default) ou screenshots .png |
 | Critério | 0 FAILs no lint + constraints | Gemini retorna PASS (confidence ≥80) |
-| Fix feito por | Opus | Opus (guiado por Gemini) |
+| Fix feito por | Opus | Opus (guiado por Gemini spec JSON) |
+| Integração | Claude Code nativo | MCP gemini (automático) ou API script |
+| Custo | $0 (Claude Code) | ~$0.06/pass Pro 3.1 |
 | Independência | Não depende do Gemini | Não roda antes do Opus PASS |
 
 ## Segurança
