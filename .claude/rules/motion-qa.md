@@ -123,7 +123,7 @@ Contexto: público = gastroenterologistas seniores, tema = cirrose hepática.
 
 ## Integração com QA Script
 
-O script `qa-screenshots-stage-c.js` já navega os 28 slides.
+O script `qa-screenshots-stage-c.js` navega todos os slides do deck dinamicamente.
 Para adicionar motion QA:
 
 1. **Antes** de forçar estado final: capturar estado inicial

@@ -73,7 +73,7 @@ Reveal.js controla visibilidade dos `<section>`. Um `display` inline sobrescreve
 | E01 | MAY | Perguntar "Como deve ficar no final?" |
 | E02 | SHOULD | Preview antes de "pronto" |
 | E03 | MAY | Cada elemento = propósito claro |
-| E05 | SHOULD | Naming: `S{NNN}_{titulo-kebab}.html` |
+| E05 | SHOULD | Naming: `NN-slug.html` (ex: `02b-a1-damico.html`) |
 | E09 | MUST | NUNCA remover overflow:hidden do @media print |
 | E11 | SHOULD | Primeiro render = rascunho |
 | E16 | MAY | "Slide N" = posição no deck, não nome de arquivo |

@@ -229,7 +229,7 @@ Sala escura, projetor decente. Navy + texto claro + animações.
 
 ### Plano B (.stage-bad — light, 1280×720)
 Sala clara, projetor fraco. Fundo branco + texto preto + sem animação + fontes mais pesadas.
-Arquivo removido (deprecated). Se necessário no futuro, reconstruir a partir de `index.html` com classe `.stage-bad`.
+CSS `.stage-bad` mantido em base.css (fallback funcional). Sem arquivo standalone dedicado — ativar via classe no body.
 
 ### Residência (?mode=residencia)
 Remove `data-visibility="hidden"` dos apêndices antes do init.

@@ -57,7 +57,7 @@ import 'reveal.js/dist/reveal.css';
 ### Tipos disponíveis
 | `data-animate` | Efeito | Atributos extras |
 |----------------|--------|-----------------|
-| `countUp` | Número animado | `data-target="25"` |
+| `countUp` | Número animado | `data-target="25"` `data-decimals="1"` (opcional) |
 | `stagger` | Filhos entram sequenciais | `data-stagger="0.15"` (opcional) |
 | `drawPath` | SVG stroke progressivo | — |
 | `fadeUp` | Fade + translate Y | — |
