@@ -213,6 +213,18 @@ Tokens não importam. Retrabalho é sinal de aprendizado — mas não pode paral
 - **Regra:** Marcar como `[CANDIDATE]` até verificado. Nunca promover a verificado sem check.
 - **Regra:** Se PubMed MCP indisponível, WebSearch no domínio pubmed.ncbi.nlm.nih.gov é fallback aceitável.
 
+### Hooks: usar `node -e`, nunca `python -c`
+
+- Python não é dependência do projeto; Node >=20 é obrigatório.
+- 4 hooks legados usavam `python -c` para JSON parsing — migrados para `node -e` em 12/mar.
+- **Regra:** Todo novo hook DEVE usar `node -e` para parsing JSON. Padrão:
+  ```bash
+  VALUE=$(echo "$INPUT" | node -e "
+  const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+  console.log(d.field||'');
+  " 2>/dev/null)
+  ```
+
 ### Act 3 anchor PMIDs: 2 não verificáveis
 
 - PMID 41580090 (álcool abstinência) e PMID 39220088 (TIPS ≠ recompensação) não foram encontrados via WebSearch.

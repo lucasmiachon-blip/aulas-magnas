@@ -7,13 +7,9 @@
 
 INPUT=$(cat)
 
-FILE_PATH=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('tool_input', {}).get('file_path', ''))
-except:
-    print('')
+FILE_PATH=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log((d.tool_input||{}).file_path||'');
 " 2>/dev/null)
 
 # Only apply to evidence-db.md

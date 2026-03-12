@@ -60,32 +60,9 @@
 
 ---
 
-## 📍 Status (atualizado 27/fev/2026)
+## 📍 Status
 
-> Pendências → `aulas/cirrose/HANDOFF.md` · Claude.ai → `HANDOFF-CLAUDE-AI.md`
-
-| Etapa | Status |
-|-------|--------|
-| Pesquisa | ✅ + auditoria PMIDs 23/fev + 15 trials verificados PubMed 25/fev |
-| Backward Design + Big Idea | ✅ (recalibrado gastro geral 23/fev) |
-| Blueprint v4 (3 Atos) | ✅ Atualizado 25/fev — narrativa v4, interações, pérolas, ações corretivas |
-| Storyboard slide-by-slide | ✅ Narrativa v4 completa |
-| Popular Slides DB | ✅ 28 registros ativos • 3 DEPRECATED |
-| Auditoria PMIDs | ✅ 27 PMIDs verificados • 2 DOI-only |
-| References DB | ⚠️ 15 refs pendentes de popular |
-| HTML (Reveal.js) | ✅ 28/28 modularizados em `slides/*.html` (FASE 0-4, 27/fev). Plan A/B desatualizados |
-| Auditoria Visual | ✅ 2.7/5.0 média — FAIL. Case panel + fill ratio = fixes sistêmicos |
-| Auditoria Narrativa | ✅ 3.0/5.0 média — WARN. Andragogia fraca, Duarte descrita não sentida |
-| Speaker Notes PT | ✅ Todas em PT. 10 pérolas ausentes identificadas |
-
-**Summary:** ✅ Blueprint v4 completo. 28/28 slides modulares (`slides/*.html`).
-⚠️ Auditorias concluídas: Visual (2.7/5) + Narrativa (3.0/5) = WARN. Refatoração arquitetural completa (FASE 0-4). Próximo: refatoração visual slide a slide.
-
-**Próximos passos:** (1) Lucas decide posição HOOK, (2) Separar checkpoints em 2 slides, (3) Fix CSS sistêmico (panel + fill), (4) Integrar 10 pérolas nas notes, (5) Sincronizar Plans A/B.
-
-**Ordem definitiva v4 (sincronizado com _manifest.js 27/fev):**
-TITLE(1) → HOOK(2) → A1-01(3) → A1-02(4) → A1-03(5) → ... → CLOSE(20) → APP-01(21)...APP-08(28)
-2 DEPRECATED: CIRR-A2-04-OLD (pos 99). CIRR-04-01 renomeado → CIRR-A1-01.
+> Estado atual → [`aulas/cirrose/HANDOFF.md`](../aulas/cirrose/HANDOFF.md) (fonte de verdade para pendências e ordem dos slides).
 
 ---
 
@@ -123,72 +100,10 @@ TITLE(1) → HOOK(2) → A1-01(3) → A1-02(4) → A1-03(5) → ... → CLOSE(20
 
 ---
 
-## 🎬 Narrativa Slide-a-Slide v4 (Auditoria 25/fev/2026)
+## 🎬 Narrativa Slide-a-Slide
 
-> **Fonte:** Auditoria narrativa Claude.ai (Prompt Mestre Duarte + Cognição + Andragogia)
-> **Mudanças vs v3:** Tom conversacional, interações com silêncio ativo, transições Duarte explícitas, pérolas integradas
-
-### Prólogo (TITLE — 20s)
-
-Micro-hook: "Homem, 55a. FIB-4 3,2. PLQ 118k. O que vocês fazem segunda-feira?" Silêncio 3s. Título aparece.
-
-### Ato 1 — CLASSIFICAR (slides 2-8, ~18 min)
-
-**A1-01 (2 min)** — "Cirrose não é um switch. É espectro." Villanueva fig1. D'Amico 1%→57%. Pérola: MASLD morte #1=cardiovascular. Volta ao caso: "Antônio está nesse espectro. Onde?"
-
-**A1-02 (3 min)** — Pipeline FIB-4→elastografia→CSPH. Baveno VII rule-of-5. Caveat obesos. "Antônio: IMC 31, MASLD — caveat aplica."
-
-**HOOK (2:30)** — Framework 5+3 à esquerda. Caso Antônio à direita. "Sem queixas. O que vocês fazem?" SILÊNCIO 3s. Pérola: "Antônio é motorista. Guardem."
-
-**A1-03 (2:30)** — Demo MELD calc ao vivo. Antônio: MELD 10 (verde). Muda Cr→3,1: MELD 28 (vermelho). "Uma variável."
-
-**A1-04 (2 min)** — Barras PREDICT. Infecção 33%. "Checklist D0 em todo internado."
-
-**A1-05 (2 min)** — 10 etiologias, 3 grandes mostradas. "Overlap álcool+MASLD = regra no Brasil."
-
-**CP1 (3 min)** — INTERAÇÃO: LSM 21, PLQ 118k. [PAUSA 30-60s] Show of hands: "Quem inicia carvedilol?" [CLICK] 3 decisões reveladas.
-
-### Transição 1→2 (30s, bg-navy)
-
-"Antônio saiu com carvedilol. Prometeu parar de beber. Seis meses depois..."
-
-### Ato 2 — INTERVIR (slides 9-15, ~21 min)
-
-**A2-01 (2 min)** — PREDESCI: HR 0,51, NNT 9, dose. "Ascite refratária NÃO é CI — mudança."
-
-**A2-02 (3 min)** — Timeline sangramento: octreotide→EDA→ATB→Early TIPS. NNT 4. "O ATB salva, não o octreotide."
-
-**A2-03 (3 min)** — 4 albumin cards: 3 SIMs + 1 NÃO. ATTIRE como anti-exemplo.
-
-### Mini-pausa (30s)
-
-"Antônio toma carvedilol há 6m. Até aqui, tudo bem. Mas parou de voltar. E é motorista."
-
-**A2-04 (2:30)** — PBE flow: PMN≥250=tratar. "10% internados com ascite = PBE silenciosa."
-
-**A2-05 (3 min)** — 3 perguntas antes da terlipressina. CONFIRM: NNT 7 rim, NNH 11 resp. "Melhora RIM, não SOBREVIDA."
-
-**A2-06 (2:30)** — 3 pilares HE. "NÃO restringir proteína." Callback: "Covert HE ~30%. Antônio dirige caminhão."
-
-**CP2 (3 min)** — INTERAÇÃO: Antônio volta de ambulância. Cr 2,8, Na 126, MELD 28. [PAUSA 30s] "3 perguntas. Pensem." [CLICK] Terlipressina + listar.
-
-### Transição 2→3 (30s)
-
-"Vocês estabilizaram. Um ano depois. Antônio parou de beber. O fígado começou a perdoar."
-
-### Ato 3 — REVERTER (slides 16-20, ~12 min)
-
-**A3-01 (2:30)** — Recompensação: 3 critérios Baveno VII. "Via de mão única? Baveno VII mudou." Pérola: regra 6 meses = mito anos 80.
-
-**A3-02 (2:30)** — 3 panels: HCV (25-60%), álcool (~1/3), MASLD (gap). "SVR cura vírus, não hipertensão portal."
-
-**A3-03 (2 min)** — Uma caixa: vigilância q6m. "CHC 1-5,1%/ano pós-SVR. Nunca zero."
-
-**CP3 (3 min)** — INTERAÇÃO: LSM 32→18, abstinente 10m. "Recompensou? Pode sair da vigilância?" Pergunta-bomba: "Pode voltar a dirigir?" Covert HE testing.
-
-**CLOSE (3 min)** — Refrão 5+3. 3 take-homes. CTA: "FIB-4 segunda-feira."
-
-**Timing total: ~48 min core + 12 min buffer = 60 min. Com apêndice: ~80 min.**
+> Detalhamento completo → [`docs/biblia-narrativa.md`](biblia-narrativa.md)
+> Timing, pérolas, interações, transições Duarte — tudo na bíblia narrativa.
 
 ---
 

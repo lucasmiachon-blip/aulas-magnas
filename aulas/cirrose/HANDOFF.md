@@ -4,7 +4,46 @@
 
 ---
 
-## Estado atual — 2026-03-11 (pós-audit visual Act 1)
+## Prep Skills — 2026-03-12
+
+### Terminal 1: repo-janitor (DONE)
+**Result:** Repo limpo. 0 FAIL, 0 WARN git-tracked.
+- Manifest sync: PASS (cirrose 44/44, grade 58/58, osteo 70/70)
+- Broken MD links: 0 real (5 false positives em template text de skills)
+- Temp files: 0
+- DEPRECATED markers: 0
+- Duplicate assets: 0
+- Stale qa-screenshots: 73 PNGs deletados (gitignored, local-only). Restam 80 PNGs em 3 dirs canônicos (act1-reaudit, act1-surgical-pass, browser-qa).
+- `exports/`: dir vazio (gitignored, staging area intencional)
+- Nenhum commit necessário (mudanças apenas em arquivos gitignored).
+
+### Terminal 2: docs-audit (DONE — commit 685a8f9)
+**Result:** 0 FAIL, 5 WARN. 4 fixes aplicados (-234 linhas):
+- SETUP.md: row duplicada consolidada
+- archive/README.md: entry research-2026-03-11 adicionada
+- NOTES.md: 145 linhas de machine logs purgadas (audit-trail as captura)
+- blueprint-cirrose.md: status stale removido (→ HANDOFF ref) + narrativa duplicada removida (→ biblia-narrativa ref)
+- **Backlog LOW (não corrigido):** ECOSYSTEM.md routing overlap com KPIs.md; biblia-narrativa.md stubs de evidência (40 linhas)
+
+### Terminal 3: evolve (DONE — commit af70be9)
+**Result:** 9 patches propostos, 7 aprovados (4/4 votos), 2 rejeitados.
+- P01: 4 hooks migrados `python -c` → `node -e` (3-agent convergence)
+- P02: guard-shared duplicado removido do settings.json
+- P03: context7 SKILL.md versões atualizadas (Reveal 5.2, Vite 6.x)
+- P04: post-compact-reinject detecta HANDOFF mais recente (não hardcoded)
+- P05: `npm audit fix` — 0 vulnerabilidades
+- P06: Lição registrada: hooks = `node -e`, nunca `python -c`
+- P07: reveal.js pinado `~5.2.1` (bloqueia 6.0 acidental)
+- **Rejeitados:** P08 (SDK update sem uso), P09 (Vite 8, risco alto pré-congresso)
+
+### Pós-skills: absorver em WTs (DONE — 2026-03-12)
+- wt-cirrose: merged (conflito HANDOFF.md resolvido — main wins)
+- wt-metanalise: merged
+- wt-osteo: merged
+
+---
+
+## Estado atual — 2026-03-12 (pós-prep skills + WT absorption)
 
 **Slides:** 44 buildados (10 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 2 pre/close + 8 appendix) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
 **Manifest rewrite:** ✅ DONE (commit c302ef1). Colisão de IDs resolvida. 12 renames + 11 skeletons criados.
@@ -15,6 +54,7 @@
 **CSS/Viewport Hard Gate:** ✅ DONE — ERRO-030 (emoji→CSS dots), ERRO-031 (var()→HEX), orphaned padding removed.
 **D'Amico chromatic + vote elevation:** ✅ DONE (cfb7d26 + fe5a1d8) — ERRO-022/032/033 fechados.
 **Audit visual Act 1:** ✅ DONE (d20deec) — 5 headlines/a11y/data fixes. Gate visual passou. Audit humano pendente.
+**Prep skills 12/mar:** ✅ DONE — repo-janitor (limpo), docs-audit (-234 linhas), evolve (7 patches), WTs absorvidas.
 
 ---
 
@@ -55,21 +95,12 @@ Todos usam archetype-flow (.flow-cascade > .flow-step). Speaker notes com timing
 
 Arquivos tocados: _manifest.js, narrative.md, 02-a1-continuum.html, 02b-a1-damico.html, 02c-a1-classify.html, 02d-a1-vote.html, 03b-a1-fib4calc.html
 
-### ✅ DONE: Audit visual Act 1 (d20deec)
+### P0 ATUAL: QA visual Gemini (estático por state + dinâmico)
 
-5 correções aplicadas:
-1. s-a1-baveno: headline → asserção ("espectro, não diagnóstico binário")
-2. s-a1-classify: headline → evidência ("reduz eventos")
-3. s-a1-damico: fórmula MELD removida (extraneous load), c-stat + tag mantidos
-4. s-a1-rule5: 5 ícones distintos (✓ ? ▲ ⚠ ⛔) para daltonismo
-5. s-a1-meld: threshold genérico (≥18 sem PMID removido), [LUCAS DECIDE] purgado
-
-Gate visual: APROVADO COM RESSALVAS. Audit humano no browser pendente.
-
-### P0 ATUAL: Audit humano visual Act 1
-
-Lucas precisa validar no browser (localhost:3001) os 5 fixes acima.
-Após aceite → doc sync Notion + avançar para Act 2/3.
+1. Enviar screenshots state-by-state para Gemini (27 PNGs em `qa-screenshots/act1-reaudit/`)
+2. QA dinâmico: testar reveals e interações com vídeo
+3. h2 assertivos decididos (Lucas vê no browser → decide)
+4. Monotonia visual Act 2: Gemini avalia se 6x flow-cascade precisa de variação
 
 ### P1: Preencher 4 skeletons Act 3
 
@@ -90,12 +121,9 @@ RAW_ACT3_V1.md tem todo o conteúdo necessário.
 - Pre-commit hook wiring pendente
 - [TBD SOURCE]: sarcopenia prevalência, covert HE, centros TIPS Brasil, ESPEN 2019 PMID, QTc threshold
 - ERRO-008: case panel redundante em s-hook
-- ~~ERRO-022:~~ ✅ s-a1-vote testado (fe5a1d8, 7/7 PASS)
 - ~~ERRO-030:~~ ✅ emoji → CSS dots (rodada 4)
 - ~~ERRO-031:~~ ✅ var() → HEX literal (rodada 4)
-- ~~ERRO-032:~~ ✅ D'Amico chromatic (cfb7d26)
-- ~~ERRO-033:~~ ✅ vote interaction bugs (fe5a1d8)
-- ~~3 h2 do Act 1 pendentes de decisão do Lucas (fib4, meld, classify)~~ ✅ classify e meld resolvidos (d20deec); fib4 mantido como mnemônico
+- 3 h2 do Act 1 pendentes de decisão do Lucas (fib4, meld, classify)
 
 ---
 

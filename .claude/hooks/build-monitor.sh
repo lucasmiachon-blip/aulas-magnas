@@ -5,31 +5,19 @@
 INPUT=$(cat)
 
 # Extract fields
-CMD=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('tool_input', {}).get('command', ''))
-except:
-    print('')
+CMD=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log((d.tool_input||{}).command||'');
 " 2>/dev/null)
 
-EVENT=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('hook_event_name', ''))
-except:
-    print('')
+EVENT=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log(d.hook_event_name||'');
 " 2>/dev/null)
 
-CWD=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('cwd', '.'))
-except:
-    print('.')
+CWD=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log(d.cwd||'.');
 " 2>/dev/null)
 
 # Filter: only build commands
@@ -48,13 +36,9 @@ if [ ! -f "$NOTES" ]; then
 fi
 
 if [[ "$EVENT" == "PostToolUseFailure" ]]; then
-    ERROR=$(echo "$INPUT" | python -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('error', 'exit code != 0'))
-except:
-    print('unknown error')
+    ERROR=$(echo "$INPUT" | node -e "
+const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+console.log(d.error||'exit code != 0');
 " 2>/dev/null)
     printf "\n[%s] [BUILD] FAIL — %s | cmd: %s\n" "$DATE" "$ERROR" "$CMD" >> "$NOTES"
 else

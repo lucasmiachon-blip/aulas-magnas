@@ -17,7 +17,7 @@ triggers:
 
 # Context7 — Docs Verificadas (atualizado 2026-03-07)
 
-Referência canônica para GSAP 3.14, Reveal.js 5.1, Vite 6.3.
+Referência canônica para GSAP 3.14, Reveal.js 5.2, Vite 6.x.
 Verificado via WebSearch + WebFetch por subagent. Substituir se libs atualizarem.
 
 ---
@@ -115,7 +115,7 @@ Afeta `engine.js` cleanup no `slidechanged` → motivo adicional para upgrade 3.
 
 ---
 
-## Reveal.js — versão atual: 5.1.0
+## Reveal.js — versão atual: 5.2.1
 
 ### Reveal.initialize() — opções relevantes
 ```js
@@ -194,7 +194,7 @@ Regra do projeto: **sempre `hidden`**, nunca `uncounted` para apêndice.
 
 ---
 
-## Vite — versão atual: 6.3.x
+## Vite — versão atual: 6.x (projeto pina ^6.0.0)
 
 ### Breaking changes v5→v6 relevantes para este projeto
 
