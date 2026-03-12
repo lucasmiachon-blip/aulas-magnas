@@ -113,6 +113,26 @@
 
 ---
 
+## Sessão Infra (2026-03-12)
+
+### Write tool preserva encoding do arquivo original
+
+- `.gitattributes` estava em UTF-16 LE (BOM `FF FE`). O Write tool reescreveu o conteúdo mas **manteve UTF-16**.
+- Fix: usar `printf` via Bash para forçar UTF-8: `printf '* text=auto eol=lf\n' > .gitattributes`
+- **Regra:** Quando corrigir encoding, usar Bash `printf` — não confiar em Write/Edit para mudar encoding.
+
+### Hook matcher: cobrir TODAS as tools que podem editar
+
+- `"matcher": "Write"` deixava brecha: agent types com `Edit` ou `StrReplace` como tools separadas não eram interceptados pelo guard de evidence-db.
+- **Regra:** Matcher de guards deve listar TODAS as tools de escrita: `"Write|Edit|StrReplace"`. Se uma tool não existe para um agent type, matcher nunca dispara (zero downside).
+
+### Build artifacts (index.html) não devem ser tracked
+
+- 4× `aulas/*/index.html` estavam tracked, gerando diffs de ~23k linhas em cada rebuild.
+- **Regra:** Arquivo gerado por `npm run build:*` = `.gitignore`. Usar `git rm --cached` para destrackear sem deletar do disco.
+
+---
+
 ## Propósito do Ecossistema (2026-03-07)
 
 ### Valores explícitos — nunca perder de vista
