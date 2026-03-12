@@ -912,25 +912,6 @@
   .burden-bar-fill { width: 100% !important; }
   .burden-bar-fill--decomp { transform: scaleX(1) !important; }
 
-  /* D'Amico */
-  .pathway-stage--collapsed {
-    flex: 1 !important;
-    opacity: 1 !important;
-    overflow: visible !important;
-    padding: var(--space-sm) var(--space-xs) !important;
-    width: auto !important;
-  }
-  .damico-further {
-    opacity: 1 !important;
-    position: relative !important;
-    width: 100% !important;
-    background: var(--danger-light) !important;
-  }
-  .damico-further-stat,
-  .damico-further-hr { color: var(--danger) !important; }
-  .damico-further-detail { color: var(--text-secondary) !important; }
-  .damico-badge--context { opacity: 1 !important; }
-
   /* Paradigma */
   .paradigm-old { display: none !important; }
   .paradigm-spectrum,
@@ -1465,140 +1446,6 @@
   border-bottom: 3px solid var(--danger);
 }
 
-/* CSPH divider — BAVENO VII boundary (teal, not red) */
-.pathway-divider--csph {
-  background: var(--safe) !important;
-}
-.pathway-divider--csph .pathway-divider-label {
-  color: var(--safe) !important;
-}
-
-/* 5th stage: collapsed by default, revealed via GSAP flex animation */
-.pathway-stage--collapsed {
-  flex: 0;
-  width: 0;
-  opacity: 0;
-  overflow: hidden;
-  padding: 0;
-  min-width: 0;
-}
-
-/* Failsafe */
-.no-js .pathway-stage--collapsed,
-.stage-bad .pathway-stage--collapsed {
-  flex: 1;
-  opacity: 1;
-  overflow: visible;
-  padding: var(--space-sm) var(--space-xs);
-  width: auto;
-}
-
-/* Year badge */
-.damico-badge {
-  font-family: var(--font-mono);
-  font-size: var(--text-caption);
-  font-weight: 700;
-  color: var(--ui-accent);
-  background: var(--ui-accent-light);
-  padding: 2px 8px;
-  border-radius: 4px;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-
-/* Context badge above pathway track (state 0 — fades in with stages) */
-.damico-badge--context {
-  display: block;
-  text-align: left;
-  margin-bottom: var(--space-xs);
-  opacity: 0; /* animated in by slide-registry.js */
-}
-
-.damico-badge--danger {
-  color: var(--danger);
-  background: oklch(from var(--danger) l c h / 0.12);
-}
-
-/* Further decompensation overlay — positioned over the pathway track */
-.damico-further {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  background: oklch(45% 0.12 25);
-  border-radius: var(--radius-sm);
-  padding: var(--space-md);
-  opacity: 0;
-  z-index: 3;
-}
-
-.damico-further-stat {
-  font-family: var(--font-body);
-  font-size: var(--text-body);
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-  line-height: 1.3;
-}
-
-.damico-further-detail {
-  font-family: var(--font-body);
-  font-size: var(--text-caption);
-  font-weight: 500;
-  color: oklch(90% 0 0 / 0.85);
-  text-align: center;
-  line-height: 1.3;
-  margin-top: calc(-1 * var(--space-xs) / 2);
-}
-
-.damico-further-hr {
-  font-family: var(--font-mono);
-  font-size: var(--text-h3);
-  font-weight: 700;
-  color: #fff;
-}
-
-.damico-further-ci {
-  font-family: var(--font-mono);
-  font-size: var(--text-caption);
-  color: oklch(90% 0 0 / 0.8);
-}
-
-.damico-further-ref {
-  font-family: var(--font-mono);
-  font-size: var(--text-caption);
-  color: oklch(90% 0 0 / 0.7);
-}
-
-/* Failsafe: show overlay content */
-.no-js .damico-further,
-.stage-bad .damico-further {
-  opacity: 1;
-  position: relative;
-  width: 100%;
-  background: var(--danger-light);
-}
-.no-js .damico-further-stat,
-.no-js .damico-further-hr,
-.stage-bad .damico-further-stat,
-.stage-bad .damico-further-hr {
-  color: var(--danger);
-}
-.no-js .damico-further-detail,
-.stage-bad .damico-further-detail {
-  color: var(--text-secondary);
-}
-.no-js .damico-badge--context,
-.stage-bad .damico-badge--context {
-  opacity: 1;
-}
-
 /* Pathway track needs position:relative for the overlay */
 #s-a1-damico .pathway-track {
   position: relative;
@@ -2100,12 +1947,6 @@
   background: oklch(40% 0.08 170 / 0.1);
 }
 
-.hook-lab--warning {
-  border-color: var(--warning-on-dark, oklch(78% 0.14 75));
-  background: oklch(60% 0.10 75 / 0.1);
-  box-shadow: 0 0 12px oklch(60% 0.10 75 / 0.12);
-}
-
 .hook-lab-label {
   font-family: var(--font-body);
   font-size: var(--text-caption);
@@ -2116,7 +1957,6 @@
 }
 
 .hook-lab--success .hook-lab-label { color: var(--safe-on-dark, oklch(55% 0.12 170)); }
-.hook-lab--warning .hook-lab-label { color: var(--warning-on-dark, oklch(78% 0.14 75)); }
 
 .hook-lab-value {
   font-family: var(--font-mono);
@@ -2127,7 +1967,6 @@
 }
 
 .hook-lab--success .hook-lab-value { color: var(--safe-on-dark, oklch(65% 0.12 170)); }
-.hook-lab--warning .hook-lab-value { color: var(--warning-on-dark, oklch(88% 0.14 75)); }
 
 .hook-lab-value small {
   font-size: 0.65em;
@@ -2141,7 +1980,6 @@
 }
 
 .hook-lab--success .hook-lab-ref { color: var(--safe-on-dark, oklch(50% 0.10 170)); }
-.hook-lab--warning .hook-lab-ref { color: var(--warning-on-dark, oklch(72% 0.12 75)); }
 
 /* Tag below card (e.g. "normal ✓", "calculado") */
 .hook-lab-tag {
@@ -2152,7 +1990,6 @@
   margin-top: 0.15rem;
 }
 .hook-lab--success .hook-lab-tag { color: var(--safe-on-dark, oklch(55% 0.12 170)); }
-.hook-lab--warning .hook-lab-tag { color: var(--warning-on-dark, oklch(78% 0.14 75)); }
 
 /* ── Punchline + question (click reveal) ── */
 .hook-punchline {
@@ -2511,11 +2348,6 @@
   color: var(--ui-accent);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-}
-.damico-dataset-source {
-  font-family: var(--font-mono);
-  font-size: var(--text-caption);
-  color: var(--text-muted);
 }
 /* Era 5 pathway track: flex row scoped for damico-dataset context (archetypes.css scopes only .archetype-pathway) */
 .damico-dataset .pathway-track {

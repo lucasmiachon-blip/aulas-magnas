@@ -37,9 +37,10 @@
 - **Rejeitados:** P08 (SDK update sem uso), P09 (Vite 8, risco alto pré-congresso)
 
 ### Pós-skills: absorver em WTs (DONE — 2026-03-12)
-- wt-cirrose: merged (conflito HANDOFF.md resolvido — main wins)
-- wt-metanalise: merged
-- wt-osteo: merged
+Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skills).
+- wt-cirrose: merged (conflito HANDOFF.md resolvido — main wins + WT status lines preservadas)
+- wt-metanalise: merged (conflito NOTES.md resolvido — main wins)
+- wt-osteo: merged (fast-forward, sem conflito)
 
 ---
 

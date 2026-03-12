@@ -1,6 +1,6 @@
 # Auditoria em Batches — Relatório
 
-> Executado conforme [tasks/todo.md](../tasks/todo.md). Documentação de achados e resoluções.
+> Executado conforme [tasks/todo.md](../../tasks/todo.md). Documentação de achados e resoluções.
 
 ---
 
