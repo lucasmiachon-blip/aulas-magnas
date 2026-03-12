@@ -25,21 +25,26 @@
 - blueprint-cirrose.md: status stale removido (→ HANDOFF ref) + narrativa duplicada removida (→ biblia-narrativa ref)
 - **Backlog LOW (não corrigido):** ECOSYSTEM.md routing overlap com KPIs.md; biblia-narrativa.md stubs de evidência (40 linhas)
 
-### Terminal 3: evolve (IN PROGRESS)
-1. [ ] Rodar evolve
-2. [ ] Revisar patches propostos
-3. [ ] Aprovar/rejeitar + commit
+### Terminal 3: evolve (DONE — commit af70be9)
+**Result:** 9 patches propostos, 7 aprovados (4/4 votos), 2 rejeitados.
+- P01: 4 hooks migrados `python -c` → `node -e` (3-agent convergence)
+- P02: guard-shared duplicado removido do settings.json
+- P03: context7 SKILL.md versões atualizadas (Reveal 5.2, Vite 6.x)
+- P04: post-compact-reinject detecta HANDOFF mais recente (não hardcoded)
+- P05: `npm audit fix` — 0 vulnerabilidades
+- P06: Lição registrada: hooks = `node -e`, nunca `python -c`
+- P07: reveal.js pinado `~5.2.1` (bloqueia 6.0 acidental)
+- **Rejeitados:** P08 (SDK update sem uso), P09 (Vite 8, risco alto pré-congresso)
 
-### Pós-skills: absorver em WTs
-```bash
-cd ../aulas-magnas-wt-cirrose && git merge main
-cd ../aulas-magnas-wt-metanalise && git merge main
-cd ../aulas-magnas-wt-osteo && git merge main
-```
+### Pós-skills: absorver em WTs (DONE — 2026-03-12)
+Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skills).
+- wt-cirrose: merged (conflito HANDOFF.md resolvido — main wins + WT status lines preservadas)
+- wt-metanalise: merged (conflito NOTES.md resolvido — main wins)
+- wt-osteo: merged (fast-forward, sem conflito)
 
 ---
 
-## Estado atual — 2026-03-10 (pós-hardening Act 1)
+## Estado atual — 2026-03-12 (pós-prep skills + WT absorption)
 
 **Slides:** 44 buildados (10 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 2 pre/close + 8 appendix) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
 **Manifest rewrite:** ✅ DONE (commit c302ef1). Colisão de IDs resolvida. 12 renames + 11 skeletons criados.
@@ -47,7 +52,10 @@ cd ../aulas-magnas-wt-osteo && git merge main
 **narrative.md:** ✅ Act 3 expandido de 3→7 slides, alinhado com manifest e RAW_ACT3_V1.
 **Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento é P1.
 **Hardening Act 1:** ✅ DONE — 4 blockers fixed (headline drift, countUp fallbacks, stale QA). 27 fresh screenshots. 0 P0.
-**CSS/Viewport Hard Gate:** ✅ DONE — ERRO-030 (emoji→CSS dots), ERRO-031 (var()→HEX), orphaned padding removed. 0 P0, 6 P1 remanescentes (4 Lucas, 1 CSS, 1 pesquisa).
+**CSS/Viewport Hard Gate:** ✅ DONE — ERRO-030 (emoji→CSS dots), ERRO-031 (var()→HEX), orphaned padding removed.
+**D'Amico chromatic + vote elevation:** ✅ DONE (cfb7d26 + fe5a1d8) — ERRO-022/032/033 fechados.
+**Audit visual Act 1:** ✅ DONE (d20deec) — 5 headlines/a11y/data fixes. Gate visual passou. Audit humano pendente.
+**Prep skills 12/mar:** ✅ DONE — repo-janitor (limpo), docs-audit (-234 linhas), evolve (7 patches), WTs absorvidas.
 
 ---
 

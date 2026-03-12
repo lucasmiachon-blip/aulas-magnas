@@ -13,3 +13,5 @@ Docs superseded ou one-shot. Mantidos para referência histórica.
 | AUDIT-BATCHES.md | One-shot |
 | NNT-IC95-REPORT.md | Relatório one-shot verificação NNTs (2026-03-02) |
 | research-skills-ecosystem-2026-03-11.md | Pesquisa ecosystem upgrade (referência, não operacional) |
+| CHATGPT_HANDOFF_ACT2.md | One-shot prompt para ChatGPT (síntese Act 2) |
+| aulas-magnas-system-v6.plan.md | Cursor plan superseded (bootstrap fases 0-3 concluídas) |
