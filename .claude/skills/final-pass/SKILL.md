@@ -71,7 +71,7 @@ Resultado: `qa-screenshots/final-pass/videos/{slide-id}.webm` (1 clip por slide)
 - Adequacao ao contexto clinico (animacao frivola?)
 
 **Custo video:** ~1,500 tokens/clip (5s HIGH) × 33 slides = 49,500 tokens
-**Custo total/pass:** $0.045 Flash | $0.185 Pro — praticamente igual a screenshots
+**Custo total/pass:** $0.07 Flash 3 | $0.26 Pro 3.1 — praticamente igual a screenshots
 
 #### Modalidade B: Screenshots estaticos (fallback)
 
@@ -85,7 +85,7 @@ Usar quando: server nao disponivel, ou slides sem animacao.
 #### Modalidade C: Both (mais completo)
 
 Gerar videos E screenshots do estado final. Gemini recebe ambos.
-Custo: ~2x input tokens (~$0.09 Flash | ~$0.37 Pro). Ainda barato.
+Custo: ~2x input tokens (~$0.13 Flash 3 | ~$0.51 Pro 3.1). Ainda barato.
 
 ### Step 2 — Montar pacote para Gemini
 
@@ -131,7 +131,7 @@ Se Gemini retornou issues:
 1. Opus corrige
 2. Re-gera screenshots afetados
 3. Re-envia para Gemini com before/after
-4. Max 3 iteracoes (custo total ~$0.12 Flash ou ~$0.51 Pro)
+4. Max 3 iteracoes (custo total ~$0.20 Flash 3 ou ~$0.77 Pro 3.1)
 
 ---
 
@@ -211,36 +211,37 @@ Se deck esta pronto: retornar {"verdict": "DECK-PASS", "notes": "[comentario fin
 
 ---
 
-## Custo estimado (atualizado — inclui video)
+## Custo estimado (atualizado — Gemini 3.x, inclui video)
 
 Fonte: ai.google.dev/gemini-api/docs/pricing (mar/2026)
+Modelos: Flash 3 (`gemini-3-flash-preview`) $0.50/$3.00 por 1M tok · Pro 3.1 (`gemini-3.1-pro-preview`) $2.00/$12.00 por 1M tok
 Certeza precos: Alta (publicado). Certeza tokens: Media (±30%).
 
 ### Por pass (33 slides, 5s video cada, HIGH res)
 
 | Modelo | Input (~68K tok) | Output (~10K tok) | **Total/pass** |
 |--------|-----------------|-------------------|---------------|
-| Flash 2.5 | $0.020 | $0.025 | **$0.045** |
-| Pro 2.5 | $0.085 | $0.100 | **$0.185** |
+| Flash 3 | $0.034 | $0.030 | **$0.064** |
+| Pro 3.1 | $0.136 | $0.120 | **$0.256** |
 | Free tier | $0.00 | $0.00 | **$0.00** |
 
 ### Por aula completa
 
-| Cenario | Flash | Pro |
-|---------|-------|-----|
-| 1 pass | $0.045 | $0.185 |
-| 3 passes (loop) | $0.135 | $0.555 |
-| Pessimista (tokens 2x) | $0.270 | $1.110 |
+| Cenario | Flash 3 | Pro 3.1 |
+|---------|---------|---------|
+| 1 pass | $0.07 | $0.26 |
+| 3 passes (loop) | $0.19 | $0.77 |
+| Pessimista (tokens 2x) | $0.38 | $1.54 |
 
 ### Free tier limits
 
 | Modelo | Requests/dia | TPM | Nosso uso (3 passes) |
 |--------|-------------|-----|---------------------|
-| Pro | 100 | 250K | 3 req, 68K/req → cabe |
-| Flash | 250 | 250K | 3 req, 68K/req → cabe |
+| Pro 3.1 | 100 | 250K | 3 req, 68K/req → cabe |
+| Flash 3 | 250 | 250K | 3 req, 68K/req → cabe |
 
-**Recomendacao:** Flash para iteracoes 1-2 (layout/coerencia), Pro para pass final (narrativa/pedagogia).
-**Custo tipico por aula: $0.05 a $0.55.** Possivel $0.00 no free tier.
+**Recomendacao:** Flash 3 para iteracoes 1-2 (layout/coerencia), Pro 3.1 para pass final (narrativa/pedagogia).
+**Custo tipico por aula: $0.07 a $0.77.** Possivel $0.00 no free tier.
 
 ---
 

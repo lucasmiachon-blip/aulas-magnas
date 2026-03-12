@@ -8,7 +8,7 @@ allowed-tools: Read, Edit, Bash, Grep, Glob, Agent
 argument-hint: "[lecture?] [batch-size=3] [max-iterations=10]"
 ---
 
-# Ralph-QA v4 — Opus Loop + Gemini Loop (separados)
+# Ralph-QA v6 — Opus Loop + Gemini Loop (separados)
 
 Loop de QA para `$ARGUMENTS` (default: `aulas/cirrose/`).
 Batch: 3 slides. Max iterações por loop: 10.
@@ -78,14 +78,14 @@ IF iteration == 10:
   output "OPUS-BLOCKED: [issue persistente]" → PARAR
 ```
 
-## Loop 2 — Gemini 2.5 (Flash + Pro)
+## Loop 2 — Gemini 3.x (Flash + Pro)
 
 **Agente:** Gemini via MCP (`gemini` server) ou API direta (`@google/genai`)
-**Modelos:** Flash 2.5 para iteracoes 1-2 (layout), Pro 2.5 para pass final (narrativa)
+**Modelos:** Flash 3 (`gemini-3-flash-preview`) para iteracoes 1-2 (layout), Pro 3.1 (`gemini-3.1-pro-preview`) para pass final (narrativa)
 **Responsabilidade:** visual, layout, percepção, acessibilidade, animações reais
 **Protocolo:** Gemini **só sugere** — retorna especificação estruturada → Opus lê o arquivo e executa o fix
 **Gemini não toca no código. Nunca.**
-**Custo:** ~$0.04/pass Flash, ~$0.19/pass Pro (3 slides video HIGH)
+**Custo:** ~$0.02/pass Flash, ~$0.06/pass Pro (3 slides video HIGH)
 
 ### Integração (ordem de preferência)
 
@@ -182,7 +182,7 @@ Solução: Gemini especifica **o quê** e **onde**, Opus executa o **como**:
 Opus recebe isso, faz `Grep` no arquivo com `line_hint` como anchor, localiza a string exata
 e executa `Edit`. Zero ambiguidade, zero string mismatch.
 
-**Prompt para Gemini 2.5 Flash/Pro (via MCP):**
+**Prompt para Gemini 3.x Flash/Pro (via MCP):**
 ```
 Masterclass médica — hepatologistas seniores, Brasil. Cirrose Hepática.
 Reveal.js Plan C: fundo claro, 1280×720, GSAP ativo.
@@ -257,7 +257,7 @@ NÃO editar nada — você só sugere, Opus executa.
 | Critério | 0 FAILs no lint + constraints | Gemini retorna PASS (confidence ≥80) |
 | Fix feito por | Opus | Opus (guiado por Gemini spec JSON) |
 | Integração | Claude Code nativo | MCP gemini (automático) ou API script |
-| Custo | $0 (Claude Code) | ~$0.04/pass Flash, ~$0.19/pass Pro |
+| Custo | $0 (Claude Code) | ~$0.02/pass Flash, ~$0.06/pass Pro |
 | Independência | Não depende do Gemini | Não roda antes do Opus PASS |
 
 ## Segurança
