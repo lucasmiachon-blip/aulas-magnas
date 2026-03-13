@@ -1,0 +1,141 @@
+{
+  "mcpServers": {
+    "biomcp": {
+      "command": "uvx",
+      "args": ["--from", "biomcp-python", "biomcp", "run"]
+    },
+    "pubmed": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/pubmed-mcp-server"],
+      "env": {
+        "NCBI_API_KEY": "${NCBI_API_KEY}"
+      }
+    },
+    "pubmed-simple": {
+      "command": "uvx",
+      "args": ["mcp-simple-pubmed"],
+      "env": {
+        "PUBMED_EMAIL": "${PUBMED_EMAIL}",
+        "PUBMED_API_KEY": "${NCBI_API_KEY}"
+      }
+    },
+    "zotero": {
+      "command": "uvx",
+      "args": ["--upgrade", "zotero-mcp"],
+      "env": {
+        "ZOTERO_LOCAL": "true",
+        "ZOTERO_API_KEY": "${ZOTERO_API_KEY}",
+        "ZOTERO_LIBRARY_ID": "${ZOTERO_LIBRARY_ID}"
+      }
+    },
+    "crossref": {
+      "command": "npx",
+      "args": ["-y", "@botanicastudios/crossref-mcp"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"]
+    },
+    "semantic-scholar": {
+      "command": "npx",
+      "args": ["-y", "@jucikuo666/semanticscholar-mcp-server"],
+      "env": {
+        "SEMANTIC_SCHOLAR_API_KEY": "${SEMANTIC_SCHOLAR_API_KEY}"
+      }
+    },
+    "arxiv": {
+      "command": "uvx",
+      "args": ["arxiv-paper-mcp-server"]
+    },
+    "perplexity": {
+      "command": "npx",
+      "args": ["-y", "@perplexity-ai/mcp-server"],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+      }
+    },
+    "google-scholar": {
+      "command": "npx",
+      "args": ["-y", "@JackKuo666/google-scholar-mcp-server"]
+    },
+    "scite": {
+      "type": "streamableHttp",
+      "url": "https://api.scite.ai/mcp"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${PROJECT_DIR}"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": "${PROJECT_DIR}/.memory/context.jsonl"
+      }
+    },
+    "eslint": {
+      "command": "npx",
+      "args": ["@eslint/mcp"]
+    },
+    "lighthouse": {
+      "command": "npx",
+      "args": ["@danielsogl/lighthouse-mcp"]
+    },
+    "a11y": {
+      "command": "npx",
+      "args": ["-y", "a11y-mcp-server"]
+    },
+    "sharp": {
+      "command": "npx",
+      "args": ["-y", "sharp-mcp"]
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_TOKEN": "${NOTION_TOKEN}"
+      }
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-server-fetch"]
+    },
+    "ui-ux-pro": {
+      "command": "npx",
+      "args": ["-y", "ui-ux-pro-mcp"]
+    },
+    "frontend-review": {
+      "command": "npx",
+      "args": ["frontend-review-mcp"],
+      "env": {
+        "HYPERBOLIC_API_KEY": "${HYPERBOLIC_API_KEY}"
+      }
+    },
+    "attention-insight": {
+      "command": "node",
+      "args": ["scripts/mcp-attention-insight.js"],
+      "env": {
+        "ATTENTION_INSIGHT_API_KEY": "${ATTENTION_INSIGHT_API_KEY}"
+      }
+    },
+    "clinicaltrials": {
+      "command": "npx",
+      "args": ["-y", "clinicaltrialsgov-mcp-server"]
+    },
+    "design-comparison": {
+      "command": "npx",
+      "args": ["-y", "mcp-design-comparison"]
+    },
+    "page-design-guide": {
+      "command": "npx",
+      "args": ["-y", "page-design-guide-mcp"]
+    },
+    "floto": {
+      "command": "npx",
+      "args": ["@floto/mcp-server", "run"],
+      "env": {
+        "FLOTO_API_KEY": "${FLOTO_API_KEY}"
+      }
+    }
+  }
+}

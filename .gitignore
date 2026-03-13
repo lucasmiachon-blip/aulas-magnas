@@ -17,6 +17,7 @@ exports/aulas-magnas-*-ia-*.zip
 # Environment
 .env
 .env.*
+!.env.example
 
 # OS
 .DS_Store

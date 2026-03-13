@@ -25,7 +25,11 @@
     "build:grade": "powershell -ExecutionPolicy Bypass -File aulas/grade/scripts/build-html.ps1",
     "build:osteoporose": "powershell -ExecutionPolicy Bypass -File aulas/osteoporose/scripts/build-html.ps1",
     "dev:osteoporose": "vite --open /aulas/osteoporose/index.html",
-    "zip:ia": "./scripts/build-zip-limpo-ia.ps1"
+    "zip:ia": "./scripts/build-zip-limpo-ia.ps1",
+    "mcp:dev": "node scripts/mcp-switch.js dev",
+    "mcp:research": "node scripts/mcp-switch.js research",
+    "mcp:qa": "node scripts/mcp-switch.js qa",
+    "mcp:full": "node scripts/mcp-switch.js full"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
