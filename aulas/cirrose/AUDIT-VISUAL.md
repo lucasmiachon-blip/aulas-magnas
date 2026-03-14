@@ -1,33 +1,93 @@
 # AUDIT-VISUAL — Cirrose (por Atos)
 
 > Auditoria visual organizada por Atos narrativos.
-> Deck: 44 slides (Pre-Act 2 + Act 1 8 + CP1 1 + Act 2 15 + CP2 1 + Act 3 7 + CP3 1 + Close 1 + Appendix 8)
-> Rubrica: 8 dimensoes (H/T/E/C/V/K/S/M), scoring 1-5.
-> Metodo: preview_screenshot 1280x720 + force-reveal + checklist estatico.
-> Referencia: AASLD/EASL Postgraduate Course slides.
+> Deck: 44 slides (2 pre + 8 Act 1 + 15 Act 2 + 7 Act 3 + 3 CP + 1 close + 8 app)
+> Rubrica: **13 dimensoes**, scoring 1-10 (min 9 para PASS).
+> Metodo: Playwright screenshot 1280x720 por estado (S0..SN) + constraint check + checklist.
+> Referencia: AASLD/EASL Postgraduate Course slides + Duarte Sparkline + Sweller CLT + Knowles.
+> Atualizado: 2026-03-14 — rubrica expandida de 8 (H/T/E/C/V/K/S/M) para 13 dimensoes (+ I/D/A/L/P/N).
 
 ---
 
-## Rubrica de Scoring
+## Rubrica de Scoring (13 dimensoes, 1-10)
 
-| Dim | Nome | 1 (Critico) | 3 (Aceitavel) | 5 (Referencia AASLD) |
-|-----|------|-------------|---------------|----------------------|
-| **H** | Hierarquia Visual | Headline compete com corpo; nada domina | Headline > corpo, mas hero fraco | Hero 2-3x, Von Restorff claro, F/Z-pattern |
-| **T** | Tipografia | Font generica, tamanhos uniformes | Scale correto, sem refinamento | Instrument Serif + DM Sans, escala clamp fluida |
-| **E** | Espaco & Layout | Cramped ou >40% vazio; desalinhado | Preenchimento 60-80%, alinhamento OK | Fill ratio ideal por tipo, grid consistente |
-| **C** | Cor & Contraste | Cores decorativas sem semantica; <4.5:1 | Semantica OK, contraste >=4.5:1 | OKLCH tokens, safe/warning/danger, >=7:1 |
-| **V** | Visuais & Figuras | So texto; tabela Excel | Alguma evidencia visual | Dados = visual (bar, card, timeline); Tufte |
-| **K** | Consistencia | Cada slide = layout diferente | Mesmo tipo ~ mesmo layout | Archetypes reutilizados, spacing identico |
-| **S** | Sofisticacao | Parece Word; bordas pesadas | Clean mas generico | Source-tag, OKLCH, micro-interacoes |
-| **M** | Comunicacao | Headline = rotulo; bullets | Assertion OK mas corpo confuso | Assertion-evidence perfeito; corpo <=30 palavras |
+> PASS = todas 13 dimensoes >= 9. WARN = qualquer entre 7-8. FAIL = qualquer < 7.
+> Conversao da escala anterior: 1→2, 2→4, 3→6, 4→8, 5→10.
+
+### Dimensoes visuais (originais, escala atualizada)
+
+| Dim | Nome | 1-3 (Critico) | 4-6 (Aceitavel) | 7-8 (Bom) | 9-10 (Referencia AASLD) |
+|-----|------|---------------|-----------------|-----------|------------------------|
+| **H** | Hierarquia Visual | Headline compete com corpo; nada domina | Headline > corpo, mas hero fraco | Hero 1,5-2x, F-pattern reconhecivel | Hero 2-3x, Von Restorff claro, F/Z-pattern |
+| **T** | Tipografia | Font generica, tamanhos uniformes | Scale correto, sem refinamento | Instrument Serif + DM Sans, escala OK | Escala clamp fluida, kerning, tabular-nums hero |
+| **E** | Espaco & Layout | Cramped ou >40% vazio; desalinhado | Preenchimento 50-65%, alinhamento OK | Fill 65-80%, grid consistente | Fill ratio ideal por archetype, whitespace intencional |
+| **C** | Cor & Contraste | Cores decorativas; <4.5:1; HEX hardcoded | Semantica OK, >=4.5:1, maioria var() | OKLCH tokens, safe/warning/danger, >=4.5:1, zero HEX | OKLCH completo, >=7:1 body, icones daltonismo |
+| **V** | Visuais & Figuras | So texto; tabela Excel | Alguma evidencia visual | Dados = visual (bar, card, timeline) | Tufte; visual dominante; hero metric integrado |
+| **K** | Consistencia | Cada slide = layout diferente | Mesmo tipo ~ mesmo layout | Archetypes reutilizados, spacing similar | Archetypes identicos, spacing pixel-perfect |
+| **S** | Sofisticacao | Parece Word; bordas pesadas | Clean mas generico | Source-tag presente, OKLCH, transitions | Micro-interacoes, GSAP polish, stage-bad failsafe |
+| **M** | Comunicacao | Headline = rotulo; bullets; >50 palavras | Assertion OK mas corpo confuso ou >30 palavras | Assertion-evidence; corpo <=30 palavras | Assertion-evidence perfeito; visual prova o claim |
+
+### Dimensoes tecnico-pedagogicas (novas — merge qa-engineer)
+
+| Dim | Nome | 1-3 (Critico) | 4-6 (Aceitavel) | 7-8 (Bom) | 9-10 (Referencia) |
+|-----|------|---------------|-----------------|-----------|-------------------|
+| **I** | Interacoes | JS quebrado; click avanca slide; sem retreat | advance funciona; retreat parcial; sem Plan B | advance+retreat OK; Plan B (.stage-bad) funciona | Todos estados testados; stopPropagation; leave/return reseta; Plan B perfeito |
+| **D** | Dados clinicos | Dado inventado; PMID errado; [TBD] em source-tag | Dados corretos mas sem PMID; IC95% ausente | PMID verificado; NNT com IC95%; [TBD] so em notes | Tier-1 fonte; NNT+IC95%+timeframe; [DATA] tag em notes; zero [TBD] projetado |
+| **A** | Acessibilidade | <3:1 contraste; sem navegacao teclado | >=4.5:1 body; teclado parcial | >=4.5:1 body, >=3:1 hero; foco visivel | >=7:1 body; icones ✓/⚠/✕ com cor; tab order correto; aria-labels |
+| **L** | Carga cognitiva (Sweller) | >3 conceitos/slide; extraneous load alto; info irrelevante | 2-3 conceitos; algum ruido | 1-2 conceitos; germane load dominante | 1 conceito central; extraneous eliminado; chunking visual claro |
+| **P** | Aprendiz adulto (Knowles+Miller) | Conteudo desconectado da pratica; >9 chunks | Relevancia clinica implicita; 7-9 chunks | Relevancia explicita; <=7 chunks; schema activation | "E dai?" obvio; <=5 chunks; decisao clinica acionavel; caso ancora |
+| **N** | Arco narrativo (Duarte+Alley) | Headline = rotulo generico; sem tensao | Assertion presente mas tensao plana | Assertion clinica; tensao coerente com narrative.md | Sparkline visivel; callbacks ao hook; tensao precisa; narrativeCritical respeitado |
 
 ---
 
 ## Issues Sistemicos (referencia global)
 
-- **SYS-1: Case panel clipping** — Conteudo clipado/truncado pelo case panel. Fix: panel responsivo.
-- **SYS-2: Fill ratio <60%** — Espaco vazio >40%. Fix: padding/max-width archetypes.
-- **SYS-3: Hero typography undersized** — Numero/dado hero em `--text-h1` em vez de `--text-hero`.
+- **SYS-1: Case panel clipping** — Conteudo clipado/truncado pelo case panel. Fix: panel responsivo. (dim: E, H)
+- **SYS-2: Fill ratio <60%** — Espaco vazio >40%. Fix: padding/max-width archetypes. (dim: E)
+- **SYS-3: Hero typography undersized** — Numero/dado hero em `--text-h1` em vez de `--text-hero`. (dim: H, T)
+
+## Protocolo de auditoria (13 dimensoes)
+
+### Loop 1 — Opus (sem Gemini)
+
+1. `npm run lint:slides` — confirmar PASS
+2. Para cada slide: constraint check automatizado
+   - `<h2>` = assercao clinica? (dim M, N)
+   - Zero `<ul>/<ol>` no corpo? (dim M, L)
+   - `<aside class="notes">` com timing? (dim N)
+   - `<section>` sem `style` com `display`? (dim S, E07)
+   - Cores via `var()` — zero HEX hardcoded? (dim C)
+   - Dados com PMID verificado ou `[TBD]`? (dim D)
+3. Playwright screenshot 1280x720 de cada estado (S0...SN)
+4. Scorecard: 13 dimensoes x nota 1-10
+5. Issues com nota < 9 → fix cirurgico
+6. Re-audit ate PASS (todas >= 9)
+
+### Loop 2 — Gemini MCP (apos Loop 1 PASS)
+
+Screenshots/video → Gemini avalia hierarquia, flow, legibilidade, daltonismo, densidade.
+Gemini so sugere (JSON spec) — Opus executa fix.
+
+### Scorecard template (copiar por slide)
+
+```
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   |      |           |
+| T   |      |           |
+| E   |      |           |
+| C   |      |           |
+| V   |      |           |
+| K   |      |           |
+| S   |      |           |
+| M   |      |           |
+| I   |      |           |
+| D   |      |           |
+| A   |      |           |
+| L   |      |           |
+| P   |      |           |
+| N   |      |           |
+```
 
 ---
 
