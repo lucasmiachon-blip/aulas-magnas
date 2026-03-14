@@ -25,7 +25,9 @@
     "build:grade": "powershell -ExecutionPolicy Bypass -File aulas/grade/scripts/build-html.ps1",
     "build:osteoporose": "powershell -ExecutionPolicy Bypass -File aulas/osteoporose/scripts/build-html.ps1",
     "dev:osteoporose": "vite --open /aulas/osteoporose/index.html",
-    "zip:ia": "./scripts/build-zip-limpo-ia.ps1"
+    "zip:ia": "./scripts/build-zip-limpo-ia.ps1",
+    "done:cirrose": "node scripts/done-gate.js cirrose",
+    "done:cirrose:strict": "node scripts/done-gate.js cirrose --strict"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
