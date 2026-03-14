@@ -75,7 +75,7 @@ Conflito: # menor vence. Notion e mirror, nao source of truth.
 ## Worktree
 
 - **Branch pattern:** `feat/cirrose-{feature}-mvp`
-- **WT location:** `../aulas-magnas-wt-cirrose-{feature}`
+- **WT location:** `../wt-cirrose` (path real: `C:/Dev/Projetos/wt-cirrose`)
 - **shared/ restrictions:** READ-ONLY. Se mudanca necessaria, registrar em NOTES.md e deferir para sessao em main.
 - **Pre-merge checklist:**
   - [ ] `git diff --name-only main...HEAD | grep shared/` retorna vazio
