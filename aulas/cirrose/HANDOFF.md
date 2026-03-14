@@ -44,6 +44,17 @@ Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skil
 
 ---
 
+## Sessão 2026-03-15: Stack drift cleanup (main)
+
+- Docs corrigidos: stack = `deck.js` (cirrose/metanalise), `Reveal.js legacy` (grade/osteo frozen)
+- Dead code removido: `preview.html`, `export-screenshots.js`, script npm `export:screenshots`
+- Grade/Osteo marcados 🧊 FROZEN em CLAUDE.md e HANDOFF.md
+- `package.json` description atualizada
+- **Commits em main:** `99631c3` (docs), `76004c7` (dead code)
+- **Impacto cirrose:** zero (apenas docs de governança). Build OK (44 slides).
+
+---
+
 ## Estado atual — 2026-03-12 (pós-prep skills + WT absorption)
 
 **Slides:** 44 buildados (10 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 2 pre/close + 8 appendix) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
