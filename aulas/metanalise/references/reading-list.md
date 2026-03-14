@@ -46,6 +46,13 @@
 - **Tier:** 1
 - **Acesso:** institucional (pode requerer login)
 
+### 3. Murad et al. Rating the certainty in evidence. JAMA 2014;312(2):171-9
+- **Função:** tutorial GRADE canônico — como pensar certeza sem single estimate
+- **Carga:** 12–15 min
+- **Tier:** 1
+- **Acesso:** PMID 25005654 — aberto (JAMA education)
+- **Nota:** adicionado 2026-03-14 (recomendação Gemini, PMID verificado)
+
 ## Residentes — Nice to read
 
 ### 1. Texto completo da revisão âncora
@@ -70,7 +77,10 @@
 
 ### Good to read
 
-1. **PRISMA 2020 Statement + Explanation & Elaboration** (Page et al. BMJ 2021)
+1. **Guyatt et al. GRADE: an emerging consensus on rating quality of evidence. BMJ 2008** (PMID 21195583)
+   - Série introdutória GRADE — fundamento das 4 categorias de certeza
+
+2. **PRISMA 2020 Statement + Explanation & Elaboration** (Page et al. BMJ 2021)
    - Transparência de relato ≠ qualidade metodológica
 
 2. **AMSTAR 2** (Shea et al. BMJ 2017)
@@ -103,4 +113,5 @@
 | Data | Mudança |
 |------|---------|
 | 2026-03-11 | v0 — derivado do memo direcionado |
+| 2026-03-14 | v0.2 — Murad JAMA 2014 (good to read residentes), Guyatt BMJ 2008 (good to read professor) |
 | 2026-03-13 | v0.1 — item 4 atualizado: artigo âncora = [TBD], não Musini definitivo |

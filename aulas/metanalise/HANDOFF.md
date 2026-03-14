@@ -45,27 +45,28 @@
 
 ## Decisões tomadas
 
-| Decisão | Razão |
-|---------|-------|
-| Artigo âncora = [TBD] | Primeiro importância, depois método, depois artigo. Musini é candidato, não decisão |
-| 3 fases + 2 interações | Retrieval practice entre blocos |
-| h2 = assertion técnica | Cirrose usa claims verificáveis; metanalise deve seguir mesmo padrão |
-| Fase 3 bloqueada até artigo definido | Slides 13-17 dependem da escolha |
-| Forest plots = imagens cropadas | NUNCA SVG construído do zero |
-| 01-objectives absorvido por 02-contrato | Evita redundância; contrato é mais forte pedagogicamente |
-| Hook generalizado (sem Musini) | Importância de MA > artigo específico. 4 PMIDs tier 1 sustentam o argumento |
+| Decisão | Razão | Data |
+|---------|-------|------|
+| Artigo âncora = [TBD] — 18 candidatos compilados | Primeiro importância, depois método, depois artigo. Lucas escolhe 2026-03-15 | 2026-03-14 |
+| Slide 11 (fixed vs random) MANTÉM como slide dedicado | Lucas override: slide importante para leitura madura. Contra 3 dossiês Gemini que sugeriam substituir | 2026-03-14 |
+| 3 fases + 2 interações | Retrieval practice entre blocos | 2026-03-13 |
+| h2 = assertion técnica | Cirrose usa claims verificáveis; metanalise deve seguir mesmo padrão | 2026-03-13 |
+| Fase 3 bloqueada até artigo definido | Slides 13-17 dependem da escolha | 2026-03-13 |
+| Forest plots = imagens cropadas | NUNCA SVG construído do zero | 2026-03-13 |
+| 01-objectives absorvido por 02-contrato | Evita redundância; contrato é mais forte pedagogicamente | 2026-03-13 |
+| Hook generalizado (sem Musini) | Importância de MA > artigo específico. 4 PMIDs tier 1 sustentam o argumento | 2026-03-13 |
 
 ## Caminho crítico — próximas sessões
 
-### Sessão N+1 (próxima)
-1. Adicionar 12 PMIDs da evidence-db v2 ao Notion References DB
-2. Decidir HEX navy: `#162032` (atual) vs `#0d1a2d` (canônico design-system)
-3. Criar checkpoint-2 (slide 12 — consolidação pré-Fase 3)
-4. Verificar beat machine do hook no browser (countUp em elementos `opacity:0`)
+### Sessão N+1 (2026-03-15 — Lucas escolhe artigo âncora)
+1. **Lucas decide artigo âncora** dentre os candidatos em blueprint.md v1.3 § Candidatos
+2. Verificar PMIDs Consensus-sourced do artigo escolhido (Zacharias, Aamann, etc.)
+3. Avaliar propostas narrativas dos 3 dossiês Gemini (credibility gap, tese central, 3 perguntas)
+4. Criar checkpoint-2 (slide 12 — recalibrar para "falso positivo" conforme Dossiê 3)
 
 ### Sessão N+2
-- Definir artigo âncora com Lucas
-- Iniciar Fase 3 (slides 13-17)
+- Iniciar Fase 3 (slides 13-17) com artigo âncora definido
+- Decidir HEX navy: `#162032` (atual) vs `#0d1a2d` (canônico design-system)
 
 ### Sessão N+3
 - Fase 3 completa + QA final (incluindo Gate 4 Gemini)
@@ -75,9 +76,11 @@
 
 | Bloqueio | Impacto | Workaround |
 |----------|---------|------------|
-| Artigo âncora não definido | Fase 3 inteira bloqueada (slides 13-17) | Avançar checkpoint-2 independentemente |
-| Full-text Musini indisponível até 2026-10-09 | Sem forest plot real, sem NNT | Se Musini escolhido: usar abstract |
+| Artigo âncora não definido | Fase 3 inteira bloqueada (slides 13-17) | ✅ Candidatos compilados (blueprint v1.3). Lucas decide 2026-03-15 |
+| Full-text Musini indisponível até 2026-10-09 | Sem forest plot real, sem NNT | Se Musini escolhido: usar abstract. Alternativas disponíveis |
 | HEX navy `#162032` vs canônico `#0d1a2d` | Inconsistência cross-aula | Decidir e aplicar batch replace |
+| PMIDs Consensus-sourced não verificados | 4 PMIDs (Zacharias, Aamann, AlSowaiegh, Saleh) pendentes PubMed check | Verificar antes de usar em slides |
+| Propostas narrativas Gemini pendentes | Credibility gap, tese, 3 perguntas, checkpoint-2 | Aguardando output final Gemini + decisão Lucas |
 
 ## Pendências para main (Classe B — não editar na WT)
 
@@ -93,6 +96,25 @@
 
 ---
 
+## Sessão 2026-03-14 — Análise Gemini + busca de candidatos
+
+### O que foi feito
+- [x] Analisados 3 dossiês Gemini contra narrative.md e blueprint.md
+- [x] Identificadas convergências (credibility gap, tese, 3 perguntas, checkpoint-2)
+- [x] Verificados 10 PMIDs citados por Gemini via PubMed MCP (todos ✅)
+- [x] Buscados candidatos via PubMed + Consensus: cardiologia, infectologia, hepatologia
+- [x] Valgimigli Lancet 2025 (clopidogrel vs aspirina) verificado — PMID 40902613 ✅
+- [x] Encontrados 12+ candidatos em cirrose: rifaximin (Cochrane), albumina, TIPS, ATB profilático, beta-bloqueadores, BCAAs
+- [x] Blueprint atualizado v1.3 com 18 candidatos em 3 tiers (S/A/B)
+- [x] Evidence-db atualizado v3 com refs metodológicas + dados top 3
+- [x] Reading-list atualizado v0.2 com Murad JAMA 2014 + Guyatt BMJ 2008
+
+### O que NÃO foi feito (deliberado)
+- Narrative.md NÃO alterado (aguardando output final Gemini + decisão Lucas)
+- Slides NÃO editados (Fase 3 bloqueada até artigo definido)
+- 4 PMIDs Consensus-sourced NÃO verificados via PubMed (Zacharias, Aamann, AlSowaiegh, Saleh)
+- Checkpoint-2 NÃO criado (recalibragem depende de decisões narrativas)
+
 ---
 
-## Última atualização: 2026-03-13 (sessão QA review)
+## Última atualização: 2026-03-14 (sessão análise Gemini + busca candidatos)

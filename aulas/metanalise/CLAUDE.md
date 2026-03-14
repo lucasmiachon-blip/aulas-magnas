@@ -62,4 +62,4 @@ reading-list.md (paralelo, informa pre-reading)
 
 ## Status
 
-**Fases 1+2 completas. 12 slides ativos no index.html, QA review pass feito. Faltam checkpoint-2 e Fase 3 (bloqueada por artigo âncora).**
+**Fases 1+2 completas. 12 slides ativos, QA pass. 18 candidatos a artigo âncora compilados (blueprint v1.3). Lucas decide 2026-03-15. Propostas narrativas Gemini pendentes. Faltam checkpoint-2 e Fase 3.**
