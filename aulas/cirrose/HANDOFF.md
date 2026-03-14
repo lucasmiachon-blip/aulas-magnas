@@ -55,13 +55,13 @@ Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skil
 
 ---
 
-## Estado atual — 2026-03-12 (pós-prep skills + WT absorption)
+## Estado atual — 2026-03-14 (pós-Act 3 fill)
 
 **Slides:** 44 buildados (10 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 2 pre/close + 8 appendix) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
 **Manifest rewrite:** ✅ DONE (commit c302ef1). Colisão de IDs resolvida. 12 renames + 11 skeletons criados.
 **Act 2 skeletons:** ✅ 7/7 preenchidos com conteúdo HTML real (fontes, números, notes com timing).
 **narrative.md:** ✅ Act 3 expandido de 3→7 slides, alinhado com manifest e RAW_ACT3_V1.
-**Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento é P1.
+**Act 3 skeletons:** ✅ 4/4 preenchidos com conteúdo HTML real (hero-stat, comparison, etiology-compare, flow).
 **Hardening Act 1:** ✅ DONE — 4 blockers fixed (headline drift, countUp fallbacks, stale QA). 27 fresh screenshots. 0 P0.
 **CSS/Viewport Hard Gate:** ✅ DONE — ERRO-030 (emoji→CSS dots), ERRO-031 (var()→HEX), orphaned padding removed.
 **D'Amico chromatic + vote elevation:** ✅ DONE (cfb7d26 + fe5a1d8) — ERRO-022/032/033 fechados.
@@ -114,18 +114,18 @@ Arquivos tocados: _manifest.js, narrative.md, 02-a1-continuum.html, 02b-a1-damic
 3. h2 assertivos decididos (Lucas vê no browser → decide)
 4. Monotonia visual Act 2: Gemini avalia se 6x flow-cascade precisa de variação
 
-### P1: Preencher 4 skeletons Act 3
+### ✅ DONE: Preencher 4 skeletons Act 3
 
-| Slide | Arquivo | Status |
-|-------|---------|--------|
-| s-a3-01 | 37-a3-bridge.html | skeleton (headline + notes ok) |
-| s-a3-03 | 38-a3-expandido.html | skeleton (headline + notes ok) |
-| s-a3-04 | 39-a3-etiologia.html | skeleton (headline + notes ok) |
-| s-a3-07 | 40-a3-fechamento.html | skeleton (headline + notes ok, pode ser suprimido) |
+| Slide | Arquivo | Archetype | Status |
+|-------|---------|-----------|--------|
+| s-a3-01 | 37-a3-bridge.html | hero-stat | ✅ HR 0,35/0,46 (Tonon 2023) |
+| s-a3-03 | 38-a3-expandido.html | comparison | ✅ Estrito 7% vs Expandido 37,6% (Tonon 2025) |
+| s-a3-04 | 39-a3-etiologia.html | etiology-compare | ✅ HBV/HCV/Álcool (3 PMIDs) |
+| s-a3-07 | 40-a3-fechamento.html | flow | ✅ Melhora → Persiste → Vigiar sempre |
 
-RAW_ACT3_V1.md tem todo o conteúdo necessário.
+Zero CSS novo. RAW_ACT3_V1.md como fonte. Build + 3 lints PASS.
 
-### P2: Dívida técnica
+### P1: Dívida técnica
 
 - 2 HEX hardcoded em cirrose.css (linhas ~1034, ~1905)
 - PDF export quebrado (DeckTape)
