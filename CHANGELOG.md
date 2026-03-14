@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added (2026-03-14 — Classe C guard)
+- `scripts/pre-commit.sh`: hook versionado que bloqueia commits de conteúdo (slides, CSS, JS, references) em `main`. Bypass: `ALLOW_MAIN_CONTENT=1`.
+- `scripts/install-hooks.sh`: atualizado para delegar pre-commit a `scripts/pre-commit.sh` (mesmo padrão do pre-push).
+- `docs/SETUP.md`: seção 1b documentando instalação de hooks.
+
 ### Fixed (2026-03-05 — Bloco 1 HTML fixes)
 - `aulas/cirrose/slides/06-a1-etiologias.html` (I4): redesign completo — tabela 3→10 etiologias em grid 2×5 compacto com `etio-grid`; Álcool/MASLD/HCV destacados; `archetype-metrics` adicionado
 - `aulas/cirrose/slides/05-a1-infeccao.html` (I3+S3): `archetype-metrics` adicionado para fill ratio; stagger delay 0.3→0.2

@@ -11,23 +11,12 @@ mkdir -p "$HOOKS_DIR"
 # ── Pre-commit ──
 cat > "$HOOKS_DIR/pre-commit" << 'EOF'
 #!/usr/bin/env bash
-# Pre-commit: bloqueia commit se lint falhar.
+# Pre-commit: delegates to versionado script.
+# Logic lives in scripts/pre-commit.sh (tracked in repo).
 set -e
 
-SLIDES_CHANGED=$(git diff --cached --name-only | grep -E 'aulas/.*/slides/.*\.html$' || true)
-CASE_OR_MANIFEST=$(git diff --cached --name-only | grep -E '(CASE\.md|_manifest\.js)$' || true)
-
-# lint:slides — se slides HTML mudaram
-if [ -n "$SLIDES_CHANGED" ]; then
-  echo "→ lint:slides (slides modificados detectados)..."
-  npm run lint:slides
-fi
-
-# lint:case-sync — se CASE.md ou _manifest.js mudaram
-if [ -n "$CASE_OR_MANIFEST" ]; then
-  echo "→ lint:case-sync (CASE.md ou _manifest.js modificados)..."
-  npm run lint:case-sync
-fi
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+bash "$REPO_ROOT/scripts/pre-commit.sh"
 EOF
 
 chmod +x "$HOOKS_DIR/pre-commit"

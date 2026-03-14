@@ -118,6 +118,22 @@ Windows: `%APPDATA%\Claude\` ou equivalente.
 
 ---
 
+## 1b. Git Hooks (obrigatório)
+
+Após clonar ou criar worktree, rodar **uma vez**:
+
+```bash
+bash scripts/install-hooks.sh
+```
+
+Isso instala:
+- **pre-commit** → bloqueia Classe C (slides, CSS, JS, references) em `main`. Conteúdo de aula deve ir pela worktree. Bypass emergencial: `ALLOW_MAIN_CONTENT=1 git commit`.
+- **pre-push** → roda `done-gate --strict` para a aula detectada na branch.
+
+A lógica vive em `scripts/pre-commit.sh` e `scripts/pre-push.sh` (versionados). Os hooks em `.git/hooks/` apenas delegam.
+
+---
+
 ## 2. Cursor — já configurado no projeto
 
 O Cursor lê `.cursor/mcp.json` do projeto automaticamente.
