@@ -1,11 +1,20 @@
-# Reveal.js + GSAP Patterns
+# Navigation + GSAP Patterns
 
 > Canônico para: speaker notes, fragments, checkpoints, PDF export, data-animate.
-> Código vive em `shared/js/engine.js`.
+> Código vive em `shared/js/engine.js` + `shared/js/deck.js`.
+
+> **Nota:** Cirrose e metanálise usam `deck.js` (custom). Grade/osteoporose usam Reveal.js (legacy frozen).
 
 ---
 
-## Import (npm/ESM — Zero CDN)
+## Import — Cirrose / Metanálise (deck.js)
+
+```js
+import { initDeck } from '../../shared/js/deck.js';
+import { initAnimations } from '../../shared/js/engine.js';
+```
+
+## Import — Grade / Osteoporose (Reveal.js legacy)
 
 ```js
 import Reveal from 'reveal.js';
@@ -110,8 +119,10 @@ Degradação graciosa: `.no-js .fragment { opacity: 1 }`.
 | `slidetransitionend` | Fim da transição | Iniciar animações |
 | `ready` | Deck carregou | Animar slide inicial |
 
-### viewDistance Warning
+### viewDistance Warning (Reveal.js legacy only)
 Reveal.js recicla DOM de slides distantes (`viewDistance` config). GSAP não pode calcular bounding box de elemento com `display:none`. Por isso: animações só no `slidetransitionend` (slide já visível).
+
+> Em `deck.js` todos os slides existem no DOM. Animações disparam via `deck:slidechanged` event.
 
 ---
 

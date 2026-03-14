@@ -6,7 +6,8 @@
 
 - **Titulo:** Sistema GRADE — Avaliando Certeza da Evidencia
 - **Slides:** 58/58 (migrados)
-- **Stack:** Reveal.js 5.x · GSAP 3.12 · Vanilla HTML/CSS/JS · OKLCH design tokens
+- **Stack:** Reveal.js 5.x (legacy) · GSAP 3.12 · Vanilla HTML/CSS/JS · OKLCH design tokens
+- **Status:** 🧊 FROZEN — fallback em Aulas_core. Sem desenvolvimento ativo.
 - **Resolucao:** 1280 x 720 (Plan C) · 1920 x 1080 (Plan A)
 - **Offline-first:** Zero CDN. Todos assets locais.
 

@@ -13,7 +13,7 @@ Antes de editar QUALQUER slide:
 - [ ] Tags balanceadas
 - [ ] Dados numéricos verificados (ver `medical-data.md`)
 - [ ] Layout em `.slide-inner`, não no `<section>`
-- [ ] Background via `data-background-color` com HEX literal
+- [ ] Background: `data-background-color` HEX (Reveal legacy) ou CSS class (deck.js)
 - [ ] Se bg escuro: `.slide-inner` tem `.slide-navy`
 - [ ] Sem CDN links
 - [ ] Animações via `data-animate`, NUNCA gsap inline

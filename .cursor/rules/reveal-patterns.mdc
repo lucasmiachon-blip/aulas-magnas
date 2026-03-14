@@ -1,12 +1,13 @@
 ---
-description: "Reveal.js + GSAP: data-animate, speaker notes, fragments, PDF. Código em shared/js/engine.js."
+description: "Navigation + GSAP: data-animate, speaker notes, fragments, PDF. deck.js (cirrose/metanalise) ou Reveal.js (grade/osteo legacy)."
 globs: "**/*.html,**/slides/**"
 alwaysApply: false
 ---
 
-# Reveal.js + GSAP Patterns
+# Navigation + GSAP Patterns
 
 > Canônico para: speaker notes, fragments, data-animate, PDF export.
+> Cirrose/metanálise: `deck.js` (custom). Grade/osteoporose: Reveal.js (legacy frozen).
 
 ## Estrutura de Slide
 

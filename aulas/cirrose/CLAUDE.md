@@ -5,7 +5,7 @@
 ## Projeto
 
 - **Título:** Cirrose Hepática — Classificar · Intervir · Reverter
-- **Stack:** Reveal.js 5.x · GSAP 3.12 · Vanilla HTML/CSS/JS · OKLCH design tokens
+- **Stack:** deck.js (custom nav) · GSAP 3.12 · Vanilla HTML/CSS/JS · OKLCH design tokens
 - **Resolução:** 1280 × 720 (Plan C) · 1920 × 1080 (Plan A)
 - **Offline-first:** Zero CDN. Todos assets locais.
 
@@ -13,7 +13,7 @@
 
 | Arquivo | Papel |
 |---------|-------|
-| `slides/*.html` | **DEFAULT — editar estes** (33 arquivos, 1 por slide) |
+| `slides/*.html` | **DEFAULT — editar estes** (44 arquivos, 1 por slide) |
 | `slides/_manifest.js` | Source of truth: ordem, archetypes, panelStates |
 | `slide-registry.js` | Wiring centralizado (custom anims, panel, click-reveal, meld) |
 | `index.template.html` | Template com `%%SLIDES%%` placeholder |
@@ -68,14 +68,14 @@ Conflito: # menor vence. Notion e mirror, nao source of truth.
 ## WT State (atualizar a cada sessao)
 
 - **Branch:** feat/cirrose-mvp
-- **Ultimo merge main:** baf1816 (2026-03-09)
+- **Ultimo merge main:** 87ba360 (2026-03-14)
 - **Classe C pendente:** 0 arquivos em main
-- **Infra sync:** Pendente — absorver main apos repatriacao (Fase 2)
+- **Infra sync:** OK — governance absorvida (Class A/B only)
 
 ## Worktree
 
 - **Branch pattern:** `feat/cirrose-{feature}-mvp`
-- **WT location:** `../aulas-magnas-wt-cirrose-{feature}`
+- **WT location:** `../wt-cirrose` (path real: `C:/Dev/Projetos/wt-cirrose`)
 - **shared/ restrictions:** READ-ONLY. Se mudanca necessaria, registrar em NOTES.md e deferir para sessao em main.
 - **Pre-merge checklist:**
   - [ ] `git diff --name-only main...HEAD | grep shared/` retorna vazio
@@ -121,9 +121,9 @@ ERRO-024 (notas stale) e hardening 10/mar (headline drift) são precedentes reai
 - Usar `min()` em todo `max-width` de container para respeitar case panel
 - Design tokens: `base.css` → `archetypes.css` → `cirrose.css` (cascata)
 
-### Reveal.js
-- NUNCA lutar contra o scaling math interno do Reveal
-- Usar position absolute + overlays para side panels
+### Navigation (deck.js)
+- Usa `deck.js` (custom) — NÃO Reveal.js
+- Position absolute + overlays para side panels
 - Reordenação de slides: alterar `_manifest.js` e rodar `npm run build:cirrose`
 
 ### GSAP

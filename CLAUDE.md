@@ -17,16 +17,18 @@ npm run lint:slides      # Assertion-evidence linter
 
 ## Stack
 
-Reveal.js 5.x · GSAP 3.12 · Vite 6.x · Vanilla HTML/CSS/JS · OKLCH · Zero CDN · Offline-first.
+deck.js (custom navigation) · GSAP 3.12 · Vite 6.x · Vanilla HTML/CSS/JS · OKLCH · Zero CDN · Offline-first.
+
+> **Reveal.js:** legacy — grade/osteoporose (frozen, fallback em Aulas_core). Cirrose e metanalise usam `deck.js`.
 
 ## Projects
 
 | Pasta | Status | CLAUDE.md |
 |-------|--------|-----------|
-| `aulas/cirrose/` | 33/33 slides, QA pendente (foco atual) | `aulas/cirrose/CLAUDE.md` |
-| `aulas/grade/` | 58/58 migrados | `aulas/grade/CLAUDE.md` |
-| `aulas/osteoporose/` | 70/70 migrados | `aulas/osteoporose/CLAUDE.md` |
-| `aulas/metanalise/` | Em planejamento | `aulas/metanalise/CLAUDE.md` |
+| `aulas/cirrose/` | 44 slides, QA visual pendente (foco ativo) | `aulas/cirrose/CLAUDE.md` |
+| `aulas/metanalise/` | Em planejamento (foco ativo) | `aulas/metanalise/CLAUDE.md` |
+| `aulas/grade/` | 58/58 migrados · 🧊 FROZEN (Reveal.js legacy, fallback Aulas_core) | `aulas/grade/CLAUDE.md` |
+| `aulas/osteoporose/` | 70/70 migrados · 🧊 FROZEN (Reveal.js legacy, fallback Aulas_core) | `aulas/osteoporose/CLAUDE.md` |
 
 Publico: hepatologistas seniores (Brasil). PT-BR, termos tecnicos EN.
 
@@ -136,7 +138,7 @@ cat tasks/lessons.md 2>/dev/null || echo "No lessons yet"
 - Design tokens: @.claude/rules/design-system.md
 - Design principles: @.claude/rules/design-principles.md
 - Medical data: @.claude/rules/medical-data.md
-- Reveal.js patterns: @.claude/rules/reveal-patterns.md
+- Navigation/animation patterns: @.claude/rules/reveal-patterns.md (rename pendente)
 - Slide editing: @.claude/rules/slide-editing.md
 - Motion QA: @.claude/rules/motion-qa.md
 - Doc graph: @docs/XREF.md

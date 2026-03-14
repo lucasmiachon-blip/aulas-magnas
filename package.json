@@ -1,7 +1,7 @@
 {
   "name": "aulas-magnas",
   "version": "7.0.0",
-  "description": "Aulas magnas para congressos — Reveal.js + GSAP + OKLCH",
+  "description": "Aulas magnas para congressos — deck.js + GSAP + OKLCH (grade/osteo: Reveal.js legacy)",
   "type": "module",
   "engines": {
     "node": ">=20.0.0"
@@ -18,7 +18,6 @@
     "lint:case-sync": "node scripts/lint-case-sync.js",
     "lint:narrative-sync": "node scripts/lint-narrative-sync.js",
     "export:pdf": "node scripts/export-pdf.js",
-    "export:screenshots": "node scripts/export-screenshots.js",
     "qa:a11y": "node scripts/qa-accessibility.js",
     "qa:screenshots:cirrose": "node aulas/cirrose/scripts/qa-screenshots-stage-c.js",
     "build:cirrose": "powershell -ExecutionPolicy Bypass -File aulas/cirrose/scripts/build-html.ps1",

@@ -22,6 +22,11 @@
 - `archetypes.css` — copiado de grade
 - `scripts/build-html.ps1` — concatena
 
+## Status
+
+🧊 **FROZEN** — Migração completa (70/70). Fallback em Aulas_core.
+Stack: Reveal.js (legacy). Sem desenvolvimento ativo neste repo.
+
 ## Migração
 
 Script: `scripts/migrate-osteoporose-slides.js`

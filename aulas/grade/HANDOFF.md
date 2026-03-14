@@ -24,8 +24,11 @@
 | 9 | s-11 | 09.html | comparison |
 | 10 | s-10 | 10.html | comparison |
 
+## Status
+
+🧊 **FROZEN** — Migração completa (58/58). Fallback em Aulas_core.
+Stack: Reveal.js (legacy). Sem desenvolvimento ativo neste repo.
+
 ## Pendências
 
-- Nenhuma — GRADE migração completa
-- preview.html (stage-c only)
-- qa:screenshots:grade script
+- Nenhuma ativa. Projeto congelado.

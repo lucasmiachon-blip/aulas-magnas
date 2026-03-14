@@ -5,7 +5,7 @@ Parent: ver CLAUDE.md na raiz.
 ## WT State (atualizar a cada sessao)
 
 - **Branch:** feat/metanalise-mvp
-- **Ultimo merge main:** 0e10d5b (2026-03-14)
+- **Ultimo merge main:** 6889ff7 (2026-03-15)
 - **Classe C pendente:** 0 arquivos em main
 - **Infra sync:** OK — governance absorvida (Class A/B only)
 
@@ -17,6 +17,12 @@ Parent: ver CLAUDE.md na raiz.
 - **Escopo:** apenas `aulas/metanalise/`
 - **Proibido:** `shared/`, `docs/` raiz, `CLAUDE.md` raiz, outras aulas
 - **Exceção documental:** `docs/metanalise-scope.md`, `docs/slide-pedagogy.md` (autorizados pelo usuário)
+- **shared/ restrictions:** READ-ONLY. Deferir mudanças para sessão em main.
+- **Pre-merge checklist:**
+  - [ ] `git diff --name-only main...HEAD | grep shared/` retorna vazio
+  - [ ] Build passa sem erros
+  - [ ] `git status` limpo
+- **Merge protocol:** No main: `git merge --no-ff feat/metanalise-mvp`
 
 ## Escopo
 

@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-03-15 — Stack drift cleanup (main)
+
+Branch: `main`
+
+### Mudanças
+
+- Docs corrigidos: stack referenciado como `deck.js` (projetos ativos), `Reveal.js legacy` (grade/osteo)
+- `preview.html` removido (cirrose) — obsoleto, substituído por `npm run dev`
+- `export-screenshots.js` removido — DeckTape/Reveal-specific, não funciona com deck.js
+- Script npm `export:screenshots` removido do package.json
+- package.json description atualizada
+- Grade/Osteoporose marcados 🧊 FROZEN nos CLAUDE.md e HANDOFF.md
+- `reveal-patterns.md` + `.mdc` renomeados para "Navigation + GSAP Patterns" (dual-stack)
+
+### Commits
+
+- `99631c3` — docs: correct stack refs
+- `76004c7` — chore: remove dead code
+
+### Impacto
+
+- Zero impacto funcional em cirrose (apenas docs)
+- Build: 44 slides ✅
+
+---
+
 ## 2026-03-10 — CSS/Viewport Hard Gate Act 1 (rodada 4)
 
 Branch: `main`
