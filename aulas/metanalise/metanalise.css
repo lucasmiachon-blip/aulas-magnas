@@ -587,6 +587,26 @@
   align-self: center;
 }
 
+/* --- Checkpoint: initial hidden state (controlled by state machine) --- */
+.checkpoint--hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.no-js .checkpoint--hidden,
+[data-qa] .checkpoint--hidden {
+  opacity: 1 !important;
+  transform: none !important;
+}
+@media print {
+  .checkpoint--hidden,
+  .hook-beat-0, .hook-beat-1, .hook-verdict,
+  .checkpoint-step, .checkpoint-verdict {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
 /* --- Checkpoint layout (scenario + question + reveal) --- */
 .checkpoint-layout {
   display: flex;
@@ -632,6 +652,9 @@
   font-size: var(--text-body);
   color: var(--safe-on-dark);
   font-weight: 500;
+}
+.checkpoint-grade--low {
+  color: var(--danger-on-dark);
 }
 .checkpoint-outcome {
   font-family: var(--font-body);

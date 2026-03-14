@@ -147,6 +147,7 @@
 | Murad et al. Rating the certainty in evidence in the absence of a single estimate of effect. JAMA 2014;312(2):171-9 | 25005654 ✅ | 10.1001/jama.2014.5952 | 1 | GRADE tutorial canônico — rating sem single estimate |
 | Guyatt et al. GRADE: an emerging consensus on rating quality of evidence. BMJ 2008;336(7650):924-6 | 21195583 ✅ | 10.1136/bmj.39489.470347.AD | 1 | Série introdutória GRADE |
 | Dettori et al. Understanding the forest plot. Global Spine J 2021;11(7):1137-9 | 33939533 ✅ | 10.1177/21925682211012058 | 1 | Didática forest plot (já usada no slide 07) |
+| Higgins & Lopez-Lopez. Reflections on the I² index for measuring inconsistency in meta-analysis. Res Synth Methods 2025 | pendente | — | 1 | I² creator cautions overuse. Usada no slide 10 notes |
 
 ---
 
@@ -162,7 +163,7 @@
 | Autores | Zacharias HD, Kamel F, Tan J, Kimer N, Gluud LL, Morgan MY |
 | Título | Rifaximin for prevention and treatment of hepatic encephalopathy in people with cirrhosis |
 | Fonte | Cochrane Database Syst Rev. 2023;7:CD011585 |
-| PMID | [VERIFICAR via PubMed] |
+| PMID | 37467180 ✅ |
 | RCTs | 41 |
 | Participantes | 4.545 |
 | Desfechos (rif+NAD vs NAD): mortalidade | RR 0,69 (0,55–0,86); NNT=22; I²=0%; certeza moderada |

@@ -5,8 +5,8 @@
   <div class="slide-inner slide-navy">
     <div class="checkpoint-layout">
 
-      <!-- Cenário clínico -->
-      <div class="checkpoint-scenario" data-animate="fadeUp">
+      <!-- Cenário clínico (beat 0 — auto on enter) -->
+      <div class="checkpoint-scenario checkpoint--hidden">
         <p class="checkpoint-context">MA de 12 RCTs, 3.200 pacientes:</p>
         <div class="checkpoint-result">
           <span class="checkpoint-metric">RR 0,75</span>
@@ -14,18 +14,18 @@
         </div>
         <div class="checkpoint-result">
           <span class="checkpoint-ci">I² = 72%</span>
-          <span class="checkpoint-grade" style="color: var(--danger-on-dark);">Certeza GRADE: baixa</span>
+          <span class="checkpoint-grade checkpoint-grade--low">Certeza GRADE: baixa</span>
         </div>
         <p class="checkpoint-outcome">para mortalidade total</p>
       </div>
 
-      <!-- A pergunta -->
-      <p class="checkpoint-question" data-animate="fadeUp">
+      <!-- A pergunta (beat 0 — auto on enter with delay) -->
+      <p class="checkpoint-question checkpoint--hidden">
         O diamante favorece. Você muda?
       </p>
 
-      <!-- Reveal: interpretação passo a passo -->
-      <div class="checkpoint-steps" data-animate="stagger" data-stagger="0.5">
+      <!-- Reveal: interpretação passo a passo (beats 1-3 via state machine) -->
+      <div class="checkpoint-steps">
         <div class="checkpoint-step checkpoint-step--safe">
           <span class="checkpoint-step-icon">&#x2713;</span>
           <span class="checkpoint-step-text">IC não cruza 1 — efeito estatisticamente significativo</span>
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <p class="checkpoint-verdict" data-animate="fadeUp">
+      <p class="checkpoint-verdict">
         Provavelmente NÃO muda conduta — diamante favorece, mas certeza e magnitude não sustentam
       </p>
 

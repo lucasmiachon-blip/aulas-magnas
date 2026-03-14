@@ -249,7 +249,7 @@
 | # | Artigo | Journal | RCTs | N | Desfecho principal | Efeito | GRADE | PMID | Notas |
 |---|--------|---------|------|---|-------------------|--------|-------|------|-------|
 | S1 | Musini 2025 — Anti-HTN ≥60 anos | Cochrane | 16 | 26.795 | Mortalidade total | RR 0,91 (0,85–0,97) | ✅ Alta/Mod/Baixa por desfecho | evidence-db v0 | Full-text indisponível até out/2026. PA 182/95 = aplicabilidade questionável |
-| S2 | Zacharias 2023 — Rifaximin para EH | Cochrane | 41 | 4.545 | Mortalidade (rif+NAD vs NAD) | RR 0,69 (0,55–0,86); NNT=22 | ✅ Moderada | [VERIFICAR] | GRADE por desfecho, NNT, I², RoB. Pacote completo. Hepatologia |
+| S2 | Zacharias 2023 — Rifaximin para EH | Cochrane | 41 | 4.545 | Mortalidade (rif+NAD vs NAD) | RR 0,69 (0,55–0,86); NNT=22 | ✅ Moderada | 37467180 ✅ | GRADE por desfecho, NNT, I², RoB. Pacote completo. Hepatologia |
 | S3 | Valgimigli 2025 — Clopidogrel vs aspirina | Lancet | 7 | 28.982 | MACCE (5,5 anos) | HR 0,86 (0,77–0,96) | Não explícito | 40902613 ✅ | IPD-MA (mais sofisticada que pairwise). Sem aumento de sangramento. Tema universal |
 
 ### Tier A — Fortes com ressalvas
