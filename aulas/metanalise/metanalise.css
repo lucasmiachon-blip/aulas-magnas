@@ -675,3 +675,151 @@
   opacity: 1 !important;
   transform: none !important;
 }
+
+/* --- Checkpoint: multi-step reveal (checkpoint-2) --- */
+.checkpoint-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 55ch;
+}
+.checkpoint-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transform: translateY(12px);
+}
+.checkpoint-step-icon {
+  font-size: var(--text-h3);
+  flex-shrink: 0;
+  min-width: 1.5ch;
+  text-align: center;
+}
+.checkpoint-step-text {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  line-height: 1.3;
+}
+.checkpoint-step--safe { border-left: 4px solid var(--safe-on-dark); }
+.checkpoint-step--safe .checkpoint-step-icon { color: var(--safe-on-dark); }
+.checkpoint-step--warning { border-left: 4px solid var(--warning-on-dark); }
+.checkpoint-step--warning .checkpoint-step-icon { color: var(--warning-on-dark); }
+.checkpoint-step--danger { border-left: 4px solid var(--danger-on-dark); }
+.checkpoint-step--danger .checkpoint-step-icon { color: var(--danger-on-dark); }
+.checkpoint-verdict {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  color: var(--danger-on-dark);
+  text-align: center;
+  max-width: 45ch;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(12px);
+}
+.no-js .checkpoint-step,
+.no-js .checkpoint-verdict {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* --- Conversion layout (relative → absolute effect) --- */
+.conversion-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.conversion-hero-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-hero);
+  color: var(--ui-accent-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.conversion-hero-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.conversion-scenarios {
+  display: flex;
+  gap: var(--space-lg);
+  width: 100%;
+}
+.conversion-scenario {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.conversion-baseline {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.conversion-arr {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  color: var(--text-on-dark);
+  font-weight: 600;
+}
+.conversion-nnt {
+  font-family: var(--font-mono);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: 1;
+}
+.conversion-nnt-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+}
+.conversion-impact .conversion-nnt { color: var(--safe-on-dark); }
+.conversion-negligible .conversion-nnt { color: var(--text-on-dark-muted); }
+
+/* --- Take-home: echoes contrato with upgraded content --- */
+.takehome-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.takehome-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-hero);
+  color: var(--ui-accent-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.takehome-question {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  color: var(--text-on-dark);
+  line-height: 1.2;
+}
+.takehome-detail {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  line-height: 1.3;
+}

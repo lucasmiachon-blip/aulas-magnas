@@ -141,15 +141,16 @@
 
 ## INTERAÇÃO 2 — Checkpoint de consolidação
 
-### Slide 12 — Mini-caso: interprete este forest plot
+### Slide 12 — Falso positivo: o diamante mente?
 
 - **Fase:** Interação 2
-- **Função:** consolidar conceitos antes de aplicar em artigo real
-- **Assertion:** "RR 0.75 (IC 0.50–1.12), I²=68%, certeza GRADE moderada — o que você conclui?"
-- **Risco cognitivo:** aprender conceitos sem integrar → incapaz de aplicar
-- **Evidência:** dados ilustrativos/didáticos (NÃO de artigo real — sinalizar)
-- **Status:** NOVO (interativo — pausa + reveal progressivo)
-- **Nota:** IC cruza nulidade + I² alto + moderada = "provavelmente não muda conduta, mas depende do contexto". Revelar a interpretação passo a passo.
+- **Função:** consolidar conceitos + expor viés de confiança no diamante
+- **Assertion:** "RR 0.75 (IC 0.60–0.93), I²=72%, certeza GRADE baixa — o diamante favorece. Você muda sua conduta?"
+- **Risco cognitivo:** confiar no diamante sem avaliar certeza e efeito absoluto
+- **Evidência:** dados ilustrativos/didáticos (NÃO de artigo real — sinalizar claramente)
+- **Status:** A CRIAR (interativo — pausa + reveal progressivo)
+- **Twist:** diamante favorece tratamento (IC não cruza 1) MAS I²=72% + GRADE baixa + efeito absoluto pequeno (ARR ~1,25%, NNT ~80 com baseline risk 5%) → "provavelmente NÃO muda conduta"
+- **Arco com CP1:** no checkpoint-1 a maioria disse "sim" (RR 0.91, IC significativo). Aqui, mesmo com RR mais impressionante (0.75), a resposta correta é "não" — crescimento do residente.
 
 ---
 
@@ -198,10 +199,10 @@
 
 - **Fase:** 3
 - **Função:** fechamento — as 3 perguntas que o residente leva
-- **Assertion:** "Três perguntas que você faz a toda MA: qual a pergunta? qual o efeito e quão certo? vale para meu paciente?"
+- **Assertion:** "Três perguntas: posso confiar na síntese? qual o efeito e quão certa é a evidência? o que isso significa para meu paciente?"
 - **Risco cognitivo:** sair da aula sem framework operacional reutilizável
 - **Evidência:** síntese narrativa
-- **Status:** NOVO
+- **Status:** A CRIAR (independe do artigo âncora)
 
 ---
 
@@ -288,10 +289,9 @@
 
 ---
 
-## Propostas de mudança narrativa (pendentes — Gemini dossiês)
+## Propostas de mudança narrativa (ABSORVIDAS 2026-03-15)
 
-> 3 dossiês Gemini analisados em 2026-03-14. Convergências identificadas.
-> Mudanças NÃO implementadas — aguardando output final do Gemini + decisão do Lucas.
+> 3 dossiês Gemini analisados em 2026-03-14. Convergências absorvidas em narrative.md v2 e blueprint v1.4.
 
 ### Convergências dos 3 dossiês (aceitar)
 
@@ -315,4 +315,4 @@
 
 ---
 
-## Status: BLUEPRINT v1.3 — Fases 1+2 completas (12 slides). Candidatos Fase 3 compilados (3S+7A+6B). Decisão de artigo âncora: 2026-03-15.
+## Status: BLUEPRINT v1.4 — Fases 1+2 completas (12 slides). Convergências Gemini absorvidas. CP2 recalibrado (falso positivo). Take-home reformulado. Candidatos Fase 3 compilados (3S+7A+6B). Artigo âncora: pendente.

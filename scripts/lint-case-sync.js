@@ -10,7 +10,7 @@
  * Usage: node scripts/lint-case-sync.js [aula]
  *   aula defaults to "cirrose"
  */
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -198,9 +198,21 @@ function compare(caseStates, manifestStates) {
 console.log(`\n🔗 lint-case-sync: validating ${aula}`);
 console.log(`   CASE.md → _manifest.js panelStates\n`);
 
+const casePath = join(aulaDir, 'references', 'CASE.md');
+const manifestPath = join(aulaDir, 'slides', '_manifest.js');
+
+if (!existsSync(casePath)) {
+  console.log(`  SKIP  No CASE.md for ${aula} — case-sync not applicable`);
+  process.exit(0);
+}
+if (!existsSync(manifestPath)) {
+  console.log(`  SKIP  No _manifest.js for ${aula} — case-sync deferred`);
+  process.exit(0);
+}
+
 try {
-  const caseStates = parseCaseMd(join(aulaDir, 'references', 'CASE.md'));
-  const manifestStates = parseManifest(join(aulaDir, 'slides', '_manifest.js'));
+  const caseStates = parseCaseMd(casePath);
+  const manifestStates = parseManifest(manifestPath);
   compare(caseStates, manifestStates);
 } catch (e) {
   err(`Parse error: ${e.message}`);

@@ -62,4 +62,4 @@ reading-list.md (paralelo, informa pre-reading)
 
 ## Status
 
-**Fases 1+2 completas. 12 slides ativos, QA pass. 18 candidatos a artigo âncora compilados (blueprint v1.3). Lucas decide 2026-03-15. Propostas narrativas Gemini pendentes. Faltam checkpoint-2 e Fase 3.**
+**15 slides ativos (Fases 1+2 + Interação 2 + slides 16-17). Faltam slides 13-15 (Fase 3 — artigo âncora TBD). Docs atualizados: narrative v2, blueprint v1.4, Gemini absorvidas. Notion synced.**

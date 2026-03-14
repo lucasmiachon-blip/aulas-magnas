@@ -6,11 +6,11 @@
 
 ## Estado atual
 
-- **Fase:** Fases 1+2 completas + QA review pass. Faltam checkpoint-2 (interação 2) e Fase 3.
+- **Fase:** Fases 1+2 completas + Interação 2 + slides 16-17. Faltam slides 13-15 (Fase 3 — artigo âncora TBD).
 - **Branch:** feat/metanalise-mvp (worktree wt-metanalise)
-- **Slides no index.html:** 12 (00-title → 01-hook → 02-contrato → 03-checkpoint-1 → 04-rs-vs-ma → 05-pico → 06-abstract → 07-forest-plot → 08-benefit-harm → 09-grade → 10-heterogeneity → 11-fixed-random)
-- **Slides planejados:** 18 (00-17) — ver blueprint.md v1.1
-- **Docs fundacionais:** narrative.md (v1), evidence-db.md (v2 — 12 refs tier 1), blueprint.md (v1.1), reading-list.md
+- **Slides no index.html:** 15 (00-title → 01-hook → 02-contrato → 03-checkpoint-1 → 04-rs-vs-ma → 05-pico → 06-abstract → 07-forest-plot → 08-benefit-harm → 09-grade → 10-heterogeneity → 11-fixed-random → 12-checkpoint-2 → [13-15 TBD] → 16-absoluto → 17-takehome)
+- **Slides planejados:** 18 (00-17) — ver blueprint.md v1.4
+- **Docs fundacionais:** narrative.md (v2), evidence-db.md (v3 — 12+ refs), blueprint.md (v1.4), reading-list.md
 - **Vite dev:** port 3032
 - **Orphan slides:** 0 (01-objectives, 02-rs-vs-ma, 03-ancora deletados em 2026-03-13)
 
@@ -42,6 +42,16 @@
   - Dead class `title-hero` removida de 00-title
   - Ícones daltonismo adicionados ao GRADE (✓ ○ ⚠ ✕) + CSS `.grade-icon`
   - Word count trimado em 8 slides (corpo ≤30 palavras)
+- [x] **Sessão 2026-03-15 — Notion sync + slides independentes + docs:**
+  - narrative.md v2: tese central expandida, 3 perguntas reformuladas, credibility gap, checkpoint-2 recalibrado
+  - blueprint.md v1.4: slide 12 recalibrado "falso positivo", slide 17 reformulado, Gemini absorvidas
+  - Notion Slides DB: 15 slides MA sincronizados (12 existentes + 3 novos)
+  - Notion References DB: 7 refs adicionadas, 3 atualizadas (Aula=Multi)
+  - **12-checkpoint-2.html — NOVO:** "falso positivo" do diamante. RR 0,75 + GRADE baixa + NNT 80 → não muda. Arco com CP1
+  - **16-absoluto.html — NOVO:** RR→NNT conversion. Baseline 20% → NNT 25 vs 2% → NNT 250
+  - **17-takehome.html — NOVO:** 3 perguntas reformuladas (credibilidade, GRADE por desfecho, efeito absoluto)
+  - metanalise.css: +120 linhas (checkpoint-steps, conversion-scenarios, takehome-cards)
+  - index.html: 15 slides ativos + placeholders para 13-15
 
 ## Decisões tomadas
 
@@ -58,29 +68,24 @@
 
 ## Caminho crítico — próximas sessões
 
-### Sessão N+1 (2026-03-15 — Lucas escolhe artigo âncora)
-1. **Lucas decide artigo âncora** dentre os candidatos em blueprint.md v1.3 § Candidatos
-2. Verificar PMIDs Consensus-sourced do artigo escolhido (Zacharias, Aamann, etc.)
-3. Avaliar propostas narrativas dos 3 dossiês Gemini (credibility gap, tese central, 3 perguntas)
-4. Criar checkpoint-2 (slide 12 — recalibrar para "falso positivo" conforme Dossiê 3)
+### Sessão N+1 (próxima)
+1. **Lucas decide artigo âncora** dentre os candidatos em blueprint.md v1.4 § Candidatos
+2. Verificar PMIDs Consensus-sourced do artigo escolhido
+3. Construir slides 13-15 (Fase 3) com artigo real
+4. Decidir HEX navy: `#162032` (atual) vs `#0d1a2d` (canônico design-system)
 
 ### Sessão N+2
-- Iniciar Fase 3 (slides 13-17) com artigo âncora definido
-- Decidir HEX navy: `#162032` (atual) vs `#0d1a2d` (canônico design-system)
-
-### Sessão N+3
 - Fase 3 completa + QA final (incluindo Gate 4 Gemini)
-- Take-home slide (17)
 
 ## Bloqueios conhecidos
 
 | Bloqueio | Impacto | Workaround |
 |----------|---------|------------|
-| Artigo âncora não definido | Fase 3 inteira bloqueada (slides 13-17) | ✅ Candidatos compilados (blueprint v1.3). Lucas decide 2026-03-15 |
+| Artigo âncora não definido | Slides 13-15 bloqueados (Fase 3) | ✅ Candidatos compilados (blueprint v1.4). Lucas decide |
 | Full-text Musini indisponível até 2026-10-09 | Sem forest plot real, sem NNT | Se Musini escolhido: usar abstract. Alternativas disponíveis |
 | HEX navy `#162032` vs canônico `#0d1a2d` | Inconsistência cross-aula | Decidir e aplicar batch replace |
 | PMIDs Consensus-sourced não verificados | 4 PMIDs (Zacharias, Aamann, AlSowaiegh, Saleh) pendentes PubMed check | Verificar antes de usar em slides |
-| Propostas narrativas Gemini pendentes | Credibility gap, tese, 3 perguntas, checkpoint-2 | Aguardando output final Gemini + decisão Lucas |
+| Propostas narrativas Gemini pendentes | ✅ ABSORVIDAS em narrative.md v2 + blueprint.md v1.4 | Resolvido 2026-03-15 |
 
 ## Pendências para main (Classe B — não editar na WT)
 
@@ -92,7 +97,7 @@
 - Não criar _manifest.js (precisa de slides finais)
 - Não tocar em Cirrose
 - Não expandir para NMA, IPD, bayesiana
-- Não construir slides da Fase 3 antes de definir artigo
+- Não construir slides 13-15 antes de definir artigo
 
 ---
 
@@ -109,12 +114,37 @@
 - [x] Evidence-db atualizado v3 com refs metodológicas + dados top 3
 - [x] Reading-list atualizado v0.2 com Murad JAMA 2014 + Guyatt BMJ 2008
 
+---
+
+## Sessão 2026-03-15 — Notion sync + slides independentes + docs
+
+### O que foi feito
+- [x] Notion Slides DB: 15 slides MA sincronizados (12 criados + 3 novos)
+- [x] Notion References DB: 7 refs adicionadas, 3 atualizadas (Aula=Multi)
+- [x] narrative.md v2: tese central, 3 perguntas reformuladas, credibility gap, checkpoint-2 recalibrado
+- [x] blueprint.md v1.4: slide 12 + 17 recalibrados, Gemini absorvidas
+- [x] 12-checkpoint-2.html: "falso positivo" — RR 0,75 + GRADE baixa + NNT 80 → não muda
+- [x] 16-absoluto.html: RR→NNT conversion (NNT 25 vs 250)
+- [x] 17-takehome.html: 3 perguntas reformuladas
+- [x] metanalise.css: checkpoint-steps, conversion-scenarios, takehome-cards
+- [x] index.html: 15 slides ativos + placeholders 13-15
+- [x] HANDOFF atualizado
+
 ### O que NÃO foi feito (deliberado)
-- Narrative.md NÃO alterado (aguardando output final Gemini + decisão Lucas)
-- Slides NÃO editados (Fase 3 bloqueada até artigo definido)
-- 4 PMIDs Consensus-sourced NÃO verificados via PubMed (Zacharias, Aamann, AlSowaiegh, Saleh)
-- Checkpoint-2 NÃO criado (recalibragem depende de decisões narrativas)
+- Slides 13-15 (Fase 3) — artigo âncora TBD
+- 4 PMIDs Consensus-sourced não verificados (Zacharias, Aamann, AlSowaiegh, Saleh)
 
 ---
 
-## Última atualização: 2026-03-14 (sessão análise Gemini + busca candidatos)
+## Repo Janitor — 2026-03-14
+
+**Rodada:** main + wt-cirrose + wt-metanalise em paralelo. Resultado wt-metanalise:
+
+- **FAIL [✅ corrigido]:** `docs/XREF.md` linha 80 — link `pipeline/README.md` inexistente. Corrigido para `archive/pipeline/README.md`.
+- **WARN:** 12 slides em `slides/` órfãos (sem `_manifest.js`) — intencional. Criar `SLIDES-STATUS.md` ao iniciar Fase 3.
+- **WARN:** `03-rs-vs-ma.html` conflita no prefixo com `03-checkpoint-1.html` — renomear para `04-rs-vs-ma.html` antes de criar `_manifest.js`.
+- **WARN:** 11 classes CSS órfãs em `metanalise.css` (`.scope-*`, `.anchor-*`, `.metric-*`) — retidas para Fase 3. Auditar ao começar.
+
+---
+
+## Última atualização: 2026-03-14 (repo-janitor + pré-nova-janela)

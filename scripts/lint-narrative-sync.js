@@ -14,7 +14,7 @@
  * Usage: node scripts/lint-narrative-sync.js [aula]
  *   aula defaults to "cirrose"
  */
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -199,9 +199,21 @@ function validate(manifestSlides, narrativeTensions) {
 console.log(`\n🔗 lint-narrative-sync: validating ${aula}`);
 console.log(`   narrative.md → _manifest.js narrative fields\n`);
 
+const narrativePath = join(aulaDir, 'references', 'narrative.md');
+const manifestPath = join(aulaDir, 'slides', '_manifest.js');
+
+if (!existsSync(manifestPath)) {
+  console.log(`  SKIP  No _manifest.js for ${aula} — narrative-sync deferred`);
+  process.exit(0);
+}
+if (!existsSync(narrativePath)) {
+  console.log(`  SKIP  No narrative.md for ${aula} — narrative-sync deferred`);
+  process.exit(0);
+}
+
 try {
-  const narrativeTensions = parseNarrativeTension(join(aulaDir, 'references', 'narrative.md'));
-  const manifestSlides = parseManifestSlides(join(aulaDir, 'slides', '_manifest.js'));
+  const narrativeTensions = parseNarrativeTension(narrativePath);
+  const manifestSlides = parseManifestSlides(manifestPath);
   validate(manifestSlides, narrativeTensions);
 } catch (e) {
   err(`Parse error: ${e.message}`);

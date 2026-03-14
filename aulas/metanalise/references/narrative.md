@@ -12,7 +12,7 @@
 
 ## Tese central
 
-Uma boa leitura de meta-análise começa pela pergunta clínica, passa pelo tamanho e pela precisão do efeito, e só se completa quando o leitor julga a certeza e a aplicabilidade do achado.
+Uma boa leitura de meta-análise começa pela pergunta clínica, avalia a credibilidade da síntese, mede o tamanho e a precisão do efeito, e só se completa quando o leitor julga a certeza da evidência e traduz o efeito relativo em impacto absoluto para seu paciente.
 
 ## Público
 
@@ -85,6 +85,8 @@ Residentes de clínica médica (básico-intermediário).
 7. Heterogeneidade (I²) — o que realmente importa
 8. Efeito fixo vs aleatório (mínimo necessário para leitura)
 
+**Credibility gap (convergência Gemini):** entre abstract (slide 06) e forest plot (slide 07), o residente pode assumir que PRISMA = qualidade. Não é: PRISMA é transparência de relato, não avaliação de risco de viés (RoB). O conceito de "posso confiar nesta síntese?" deve ser embutido nas speaker notes do abstract e reforçado no GRADE. Não requer slide adicional — é um fio condutor.
+
 **Tensão narrativa:** cada conceito revela uma camada de complexidade que o residente não via
 
 **Slides:** 04 a 11 (8 slides metodológicos)
@@ -94,13 +96,17 @@ Residentes de clínica médica (básico-intermediário).
 **Momento:** após ensinar os conceitos, antes de aplicar no artigo real.
 **Formato:** mini-caso com dados genéricos para o residente interpretar.
 
-**Exemplo:**
-"Forest plot mostra RR 0.75 (IC 0.50–1.12), I²=68%, certeza GRADE moderada.
-O que você conclui?"
-- Audiência aplica o que aprendeu
-- Revelar a interpretação correta passo a passo
+**Cenário (recalibrado — convergência Gemini):**
+"Forest plot mostra RR 0.75 (IC 0.60–0.93), I²=72%, certeza GRADE baixa.
+O diamante favorece o tratamento. Você muda sua conduta?"
 
-**Função pedagógica:** consolidar antes de complexificar com artigo real. Testing effect.
+**Twist (falso positivo):**
+- O diamante diz benefício (RR < 1, IC não cruza 1)
+- Mas I² alto + GRADE baixa = não confiar cegamente
+- E o efeito absoluto? Risco basal de 5% → ARR = 1,25% → NNT = 80
+- Resposta: "provavelmente NÃO muda conduta — efeito pequeno, certeza baixa, precisa de contexto"
+
+**Função pedagógica:** consolidar antes de complexificar com artigo real. Testing effect. Expor o viés de confiança no diamante (mesmo residente que disse "sim" no checkpoint 1 agora hesita — crescimento).
 
 **NOTA:** dados do mini-caso são ilustrativos/didáticos, não de artigo real. Sinalizar claramente no slide.
 
@@ -131,9 +137,9 @@ Uma meta-análise não é melhor do que os RCTs que a alimentam. A qualidade da 
 
 ## Três perguntas que o residente leva para casa
 
-1. Qual é exatamente a pergunta clínica da revisão?
-2. Qual é o tamanho do efeito, quão preciso ele é, e há dano relevante?
-3. Quão certo eu estou disso, e isso vale para o meu paciente?
+1. **Qual é a pergunta — e posso confiar na síntese?** (PICO + credibilidade: PRISMA ≠ qualidade; RoB importa)
+2. **Qual é o efeito, quão preciso, e qual o dano?** (forest plot + benefício-dano separados)
+3. **Quão certa é a evidência — e o que isso significa para MEU paciente?** (GRADE por desfecho + efeito absoluto, não só relativo)
 
 ## Formato
 
@@ -162,3 +168,4 @@ Uma meta-análise não é melhor do que os RCTs que a alimentam. A qualidade da 
 | 2026-03-11 | v0 — bootstrap a partir do memo direcionado |
 | 2026-03-13 | v1 — reestruturado de 4 atos para 3 fases + 2 interações. Artigo desancorado das fases iniciais |
 | 2026-03-13 | v1.1 — revisão de slides existentes concluída. Orphans deletados. Tabela de revisão atualizada |
+| 2026-03-15 | v2 — convergências Gemini absorvidas: tese central (credibilidade + efeito absoluto), 3 perguntas reformuladas, credibility gap documentado, checkpoint-2 recalibrado para "falso positivo" |

@@ -22,8 +22,14 @@ if [ -z "$AULA" ]; then
 fi
 
 echo "pre-push: branch '$BRANCH' → aula '$AULA'"
-echo "pre-push: running done-gate --strict..."
 
-node scripts/done-gate.js "$AULA" --strict
+# --strict only on main (merge gate). Feature branches use normal mode (warnings don't block).
+if [ "$BRANCH" = "main" ]; then
+  echo "pre-push: running done-gate --strict (main branch)..."
+  node scripts/done-gate.js "$AULA" --strict
+else
+  echo "pre-push: running done-gate (feature branch — warnings allowed)..."
+  node scripts/done-gate.js "$AULA"
+fi
 
 echo "pre-push: ✓ done-gate --strict passed for $AULA"

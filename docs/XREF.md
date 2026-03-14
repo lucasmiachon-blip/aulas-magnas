@@ -77,7 +77,7 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | SETUP.md | (autônomo — setup inicial) | ← README.md |
 | ZIP-LIMPO-PROTOCOLO.md | (autônomo) | ← README.md |
 | metanalise-scope.md | (autônomo) | ← README.md |
-| pipeline/README.md | (pipeline humano) | ← SUBAGENTS.md |
+| archive/pipeline/README.md | (pipeline humano — arquivado) | ← SUBAGENTS.md |
 
 ### .claude/hooks/ (safety gates — determinísticos)
 

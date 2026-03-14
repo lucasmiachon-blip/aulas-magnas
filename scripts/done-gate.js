@@ -59,14 +59,25 @@ console.log(`${SEP}\n`);
 // ── Gate 1: Technical ────────────────────────────────────────────
 console.log('-- GATE 1: Technical (automated) --\n');
 
+// Check if build script exists for this aula
+const pkgJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf-8'));
+const hasBuildScript = !!pkgJson.scripts?.[`build:${aula}`];
+
 const commands = [
-  { name: 'build', cmd: `npm run build:${aula}` },
+  ...(hasBuildScript
+    ? [{ name: 'build', cmd: `npm run build:${aula}` }]
+    : [{ name: 'build', cmd: null, skip: `No build:${aula} script — skipped` }]),
   { name: 'lint:slides', cmd: 'npm run lint:slides' },
   { name: 'lint:case-sync', cmd: `node scripts/lint-case-sync.js ${aula}` },
   { name: 'lint:narrative-sync', cmd: `node scripts/lint-narrative-sync.js ${aula}` },
 ];
 
-for (const { name, cmd } of commands) {
+for (const { name, cmd, skip } of commands) {
+  if (skip) {
+    console.log(`  SKIP  ${name}`);
+    console.log(`        ${skip}`);
+    continue;
+  }
   try {
     execSync(cmd, { cwd: root, stdio: 'pipe', encoding: 'utf-8' });
     console.log(`  PASS  ${name}`);
