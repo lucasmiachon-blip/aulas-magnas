@@ -44,18 +44,20 @@ Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skil
 
 ---
 
-## Estado atual — 2026-03-12 (pós-prep skills + WT absorption)
+## Estado atual — 2026-03-13 (pós-done-gate + narrative sync)
 
 **Slides:** 44 buildados (10 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 2 pre/close + 8 appendix) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
 **Manifest rewrite:** ✅ DONE (commit c302ef1). Colisão de IDs resolvida. 12 renames + 11 skeletons criados.
 **Act 2 skeletons:** ✅ 7/7 preenchidos com conteúdo HTML real (fontes, números, notes com timing).
-**narrative.md:** ✅ Act 3 expandido de 3→7 slides, alinhado com manifest e RAW_ACT3_V1.
+**narrative.md:** ✅ 16 headlines sincronizadas com HTML/manifest (Act 2: 10, Act 3+close: 6). 0 drift.
+**_manifest.js:** ✅ 39 headlines sincronizadas com HTML (sessão 13/mar).
 **Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento é P1.
 **Hardening Act 1:** ✅ DONE — 4 blockers fixed (headline drift, countUp fallbacks, stale QA). 27 fresh screenshots. 0 P0.
 **CSS/Viewport Hard Gate:** ✅ DONE — ERRO-030 (emoji→CSS dots), ERRO-031 (var()→HEX), orphaned padding removed.
 **D'Amico chromatic + vote elevation:** ✅ DONE (cfb7d26 + fe5a1d8) — ERRO-022/032/033 fechados.
 **Audit visual Act 1:** ✅ DONE (d20deec) — 5 headlines/a11y/data fixes. Gate visual passou. Audit humano pendente.
 **Prep skills 12/mar:** ✅ DONE — repo-janitor (limpo), docs-audit (-234 linhas), evolve (7 patches), WTs absorvidas.
+**Done-gate 13/mar:** ✅ DONE — pre-push hook, ERRO-023 fechado, CSS failsafes, stage-b/c cleanup.
 
 ---
 

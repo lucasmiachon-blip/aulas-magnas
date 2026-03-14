@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-03-13 — Done-gate + manifest headline sync (39) + ERRO-023 closure
+
+Branch: `feat/cirrose-mvp` · Commits: `14a7446`, `414a988`
+
+### Changes
+
+| Item | Detalhe |
+|------|---------|
+| pre-push hook | `done:cirrose:strict` — bloqueia push se build, lint ou manifest sync falhar |
+| _manifest.js | 39 headlines sincronizadas com HTML (`<h2>` → manifest) |
+| ERRO-023 closure | CSS failsafe verificado para todos 6 elementos `[data-animate]` |
+| cleanup | `stage-b.css` e `stage-c.css` removidos (deprecated). `.no-js` failsafes consolidados |
+
+### QA
+
+- Build: 44 slides ✅
+- `npm run done:cirrose:strict` PASS
+- ERRO-023 → ✅ Corrigido
+
+---
+
 ## DR-001 — Ratificação: classify na posição 4 do Act 1
 
 **Data:** 2026-03-11
