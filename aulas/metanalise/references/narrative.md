@@ -154,7 +154,7 @@ Uma meta-análise não é melhor do que os RCTs que a alimentam. A qualidade da 
 |-------|---------------|--------|
 | 00-title.html | Manter | ✅ Mantido |
 | 01-hook.html | Reescrever — generalizar | ✅ Reescrito (2-beat, 3 countUp, 4 PMIDs) |
-| 02-rs-vs-ma.html | Mover para posição 04 | ✅ Renumerado → 03-rs-vs-ma.html. Antigo 02-rs-vs-ma.html deletado |
+| 02-rs-vs-ma.html | Mover para posição 04 | ✅ Renumerado → 04-rs-vs-ma.html. Antigo 02-rs-vs-ma.html deletado |
 | 03-ancora.html | Postergar para Fase 3 | ✅ Deletado (será recriado na Fase 3 com artigo definido) |
 | 04-pico.html | Generalizar PICO | ✅ Generalizado (sem dados Musini) |
 | 05-abstract.html | Generalizar abstract | ✅ Generalizado (PRISMA genérico) |

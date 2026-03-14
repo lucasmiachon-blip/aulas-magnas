@@ -23,7 +23,7 @@
 - [x] **01-hook.html — REESCRITO (2026-03-13):** 2-beat state machine, 3 countUp (80/dia, 88%, 8.5%), 4 PMIDs tier 1
 - [x] **02-contrato.html — NOVO (2026-03-13):** 3 cards framework + scope footer. Absorveu 01-objectives.html
 - [x] **03-checkpoint-1.html — NOVO (2026-03-13):** cenário MA ilustrativo → "Você muda?" → twist (PICO, comparador, dano)
-- [x] 03-rs-vs-ma.html → posição 04 — RS vs MA (compare layout)
+- [x] 04-rs-vs-ma.html → posição 04 — RS vs MA (compare layout)
 - [x] 04-pico.html → posição 05 — PICO grid generalizado
 - [x] 05-abstract.html → posição 06 — pipeline PRISMA
 - [x] 06-forest-plot.html → posição 07 — anatomia 5 elementos
@@ -142,9 +142,9 @@
 
 - **FAIL [✅ corrigido]:** `docs/XREF.md` linha 80 — link `pipeline/README.md` inexistente. Corrigido para `archive/pipeline/README.md`.
 - **WARN:** 12 slides em `slides/` órfãos (sem `_manifest.js`) — intencional. Criar `SLIDES-STATUS.md` ao iniciar Fase 3.
-- **WARN:** `03-rs-vs-ma.html` conflita no prefixo com `03-checkpoint-1.html` — renomear para `04-rs-vs-ma.html` antes de criar `_manifest.js`.
+- **WARN [✅ corrigido]:** `03-rs-vs-ma.html` renomeado para `04-rs-vs-ma.html` — prefixo 03 não conflita mais com `03-checkpoint-1.html`.
 - **WARN:** 11 classes CSS órfãs em `metanalise.css` (`.scope-*`, `.anchor-*`, `.metric-*`) — retidas para Fase 3. Auditar ao começar.
 
 ---
 
-## Última atualização: 2026-03-14 (repo-janitor + pré-nova-janela)
+## Última atualização: 2026-03-15 (housekeeping: push, rename 03→04-rs-vs-ma, evidence-db header TBD)

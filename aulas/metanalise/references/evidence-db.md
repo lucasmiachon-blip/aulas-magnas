@@ -5,7 +5,7 @@
 
 ---
 
-## Âncora — Musini et al. 2025
+## Candidato a Âncora — Musini et al. 2025 (decisão TBD)
 
 ### Identificação
 

@@ -72,7 +72,7 @@
 - **Assertion:** "RS é o método de busca e seleção; MA é o cálculo estatístico — e são separáveis"
 - **Risco cognitivo:** tratar RS e MA como sinônimos → perda da estrutura lógica
 - **Evidência:** Cochrane Handbook v6.5, cap. 1
-- **Status:** ✅ FEITO (03-rs-vs-ma.html) — renumerado, assertion atualizada
+- **Status:** ✅ FEITO (04-rs-vs-ma.html) — renumerado, assertion atualizada
 
 ### Slide 05 — O PICO como porta de entrada
 
@@ -215,8 +215,8 @@
 | ~~01-objectives.html~~ | Slide 01 (v0) | — | Absorvido por 02-contrato | ✅ Deletado |
 | 02-contrato.html | — | Slide 02 (Fase 1) | NOVO | ✅ Criado + QA |
 | 03-checkpoint-1.html | — | Slide 03 (Interação 1) | NOVO | ✅ Criado + QA |
-| ~~02-rs-vs-ma.html~~ | Slide 02 (v0) | — | Orphan (substituído por 03-rs-vs-ma) | ✅ Deletado |
-| 03-rs-vs-ma.html | Slide 02 (v0) | Slide 04 (Fase 2) | Renumerar + assertion | ✅ QA pass |
+| ~~02-rs-vs-ma.html~~ | Slide 02 (v0) | — | Orphan (substituído por 04-rs-vs-ma) | ✅ Deletado |
+| 04-rs-vs-ma.html | Slide 02 (v0) | Slide 04 (Fase 2) | Renumerar + assertion | ✅ QA pass |
 | 04-pico.html | Slide 04 | Slide 05 (Fase 2) | Generalizar — remover Musini | ✅ QA pass |
 | 05-abstract.html | Slide 05 | Slide 06 (Fase 2) | Generalizar — remover Musini | ✅ QA pass |
 | 06-forest-plot.html | — | Slide 07 (Fase 2) | NOVO | ✅ QA pass |
