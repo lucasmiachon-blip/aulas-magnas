@@ -49,4 +49,4 @@ reading-list.md (paralelo, informa pre-reading)
 
 ## Status
 
-**Narrativa reestruturada (v1). 6 slides existentes, 4 precisam de revisão. 12 slides novos planejados.**
+**Fases 1+2 completas. 12 slides ativos no index.html, QA review pass feito. Faltam checkpoint-2 e Fase 3 (bloqueada por artigo âncora).**
