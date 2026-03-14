@@ -50,6 +50,17 @@ shared/js/case-panel.js → Panel lateral (cirrose)
 - **shared/ guard:** WT agents MUST NOT edit files under `shared/`. If a shared change is needed, flag it and defer to a main-branch session.
 - **Aula CLAUDE.md:** cada `aulas/*/CLAUDE.md` DEVE ter secao `## Worktree` declarando branch esperada e restricoes locais. Sem essa secao, WT agent deve recusar trabalho.
 
+## Source of Truth por Camada
+
+| Camada | Dono | Onde vive | Quem pode editar |
+|--------|------|-----------|-------------------|
+| Infra (hooks, scripts, settings) | main | .claude/, scripts/ | Apenas main |
+| Governanca (rules, skills, docs) | main | .claude/rules/, .claude/skills/, docs/ | Apenas main |
+| Design system (tokens, base.css) | main | shared/ | Apenas main |
+| Conteudo cirrose | feat/cirrose-mvp | aulas/cirrose/ | Apenas WT cirrose |
+| Conteudo metanalise | feat/metanalise-mvp | aulas/metanalise/ | Apenas WT metanalise |
+| Docs de aula | WT respectiva | docs/{aula}-*.md | WT da aula + main apos merge |
+
 ## Merge Safety / Quarentena Semântica
 
 ### Classes de mudança

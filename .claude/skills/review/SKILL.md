@@ -10,9 +10,17 @@ argument-hint: "[aula=cirrose] [slide-number?]"
 
 # Review Slides — Multi-Agent
 
-Audite `$ARGUMENTS`. Se nenhum argumento: audite `aulas/cirrose/`.
+Audite `$ARGUMENTS`.
 
-## Step 0 — Contexto da aula (parametrização)
+## Step 0 — Deteccao de aula
+
+Se argumento nao fornecido:
+1. `git branch --show-current` → extrair slug da aula
+2. Se `feat/{aula}-*` → usar `{aula}` (ex: `feat/cirrose-mvp` → `cirrose`)
+3. Se `main` → exigir argumento explicito ("Qual aula? cirrose, metanalise, grade, osteoporose")
+4. Se nao detectar → perguntar ao usuario
+
+## Step 1 — Contexto da aula (parametrização)
 
 Antes de lançar subagents:
 1. Ler `aulas/{aula}/CLAUDE.md` → extrair: público-alvo, tema, fontes Tier 1, constraints específicos

@@ -31,7 +31,7 @@ O agente roda aqui. Nada para o usuário fazer.
 
 ---
 
-## Step 2: Verificar wt-cirrose — [ ]
+## Step 2: Verificar wt-cirrose — [x] DONE (merge OK, build 44 slides, lint clean, janitor clean)
 
 Quando o agente disser "Step 1 done", abrir terminal novo e rodar:
 
@@ -52,7 +52,7 @@ Reportar PASS/FAIL de cada.
 
 ---
 
-## Step 3: Verificar wt-metanalise — [ ]
+## Step 3: Verificar wt-metanalise — [x] DONE (merge OK, build 44 slides, lint PASS*, janitor clean)
 
 Fechar terminal anterior, abrir novo:
 
@@ -73,7 +73,7 @@ Reportar PASS/FAIL de cada.
 
 ---
 
-## Step 4: Verificar wt-osteo — [ ]
+## Step 4: Verificar wt-osteo — [x] DONE
 
 Fechar terminal, abrir novo:
 
@@ -94,7 +94,14 @@ Reportar PASS/FAIL de cada.
 
 ---
 
-## Step 5: Criar `/audit-rules` (em main) — [ ]
+## Step 5: Criar `/audit-rules` (em main) — [x] DONE
+
+### Resultado:
+- Skill criada: `.claude/skills/audit-rules/SKILL.md`
+- Audit rodou: 4 FAIL + 10 WARN + 4 INFO
+- Fixes aplicados: F1-F4 corrigidos, W1/W4/W7-W9/W10 corrigidos
+- lint-slides.js: fix false positive (insideScript tracking)
+- Lint verificado: clean
 
 Fechar terminal, abrir novo:
 

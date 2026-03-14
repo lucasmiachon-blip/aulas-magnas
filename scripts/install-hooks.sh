@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-# Instala git pre-commit hook local.
-# Rodar uma vez após clonar o repo: bash scripts/install-hooks.sh
-
+# Instala git hooks (pre-commit + pre-push).
+# Funciona em repos normais e worktrees.
+# Rodar uma vez após clonar ou criar worktree: bash scripts/install-hooks.sh
 set -e
 
-HOOK=".git/hooks/pre-commit"
+# git-common-dir works in both repos (.git/) and worktrees (.git/worktrees/*)
+HOOKS_DIR="$(git rev-parse --git-common-dir)/hooks"
+mkdir -p "$HOOKS_DIR"
 
-cat > "$HOOK" << 'EOF'
+# ── Pre-commit ──
+cat > "$HOOKS_DIR/pre-commit" << 'EOF'
 #!/usr/bin/env bash
 # Pre-commit: bloqueia commit se lint falhar.
 set -e
@@ -27,5 +30,19 @@ if [ -n "$CASE_OR_MANIFEST" ]; then
 fi
 EOF
 
-chmod +x "$HOOK"
-echo "✓ pre-commit hook instalado em $HOOK"
+chmod +x "$HOOKS_DIR/pre-commit"
+echo "✓ pre-commit hook instalado em $HOOKS_DIR/pre-commit"
+
+# ── Pre-push ──
+cat > "$HOOKS_DIR/pre-push" << 'PUSHEOF'
+#!/usr/bin/env bash
+# Pre-push: runs done-gate --strict. Blocks push if any gate fails.
+# Logic lives in scripts/pre-push.sh (versionado).
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+bash "$REPO_ROOT/scripts/pre-push.sh"
+PUSHEOF
+
+chmod +x "$HOOKS_DIR/pre-push"
+echo "✓ pre-push hook instalado em $HOOKS_DIR/pre-push"

@@ -34,6 +34,31 @@
     "sharp": {
       "command": "npx",
       "args": ["-y", "sharp-mcp"]
+    },
+    "pubmed": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/pubmed-mcp-server"],
+      "env": {
+        "NCBI_API_KEY": "${NCBI_API_KEY}"
+      }
+    },
+    "crossref": {
+      "command": "npx",
+      "args": ["-y", "@botanicastudios/crossref-mcp"]
+    },
+    "semantic-scholar": {
+      "command": "npx",
+      "args": ["-y", "@jucikuo666/semanticscholar-mcp-server"],
+      "env": {
+        "SEMANTIC_SCHOLAR_API_KEY": "${SEMANTIC_SCHOLAR_API_KEY}"
+      }
+    },
+    "perplexity": {
+      "command": "npx",
+      "args": ["-y", "@perplexity-ai/mcp-server"],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+      }
     }
   }
 }

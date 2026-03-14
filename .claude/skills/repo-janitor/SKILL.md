@@ -24,6 +24,10 @@ Audita o repositorio e reporta debris acumulado: `$ARGUMENTS`
 | **Empty dirs** | Diretorios vazios apos refactor | INFO |
 | **Duplicate assets** | Imagens identicas com nomes diferentes em `shared/assets/` | WARN |
 
+## Worktree Awareness
+
+Em worktrees, cwd pode diferir do repo root. Usar `git rev-parse --show-toplevel` como base para todos os globs e paths. Nunca assumir que cwd = repo root.
+
 ## Workflow
 
 ### Mode READ-ONLY (default)

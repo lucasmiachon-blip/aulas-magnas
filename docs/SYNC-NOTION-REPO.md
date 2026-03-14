@@ -7,15 +7,18 @@
 
 ## IDs
 
-| Recurso | ID |
-|---------|-----|
-| Slides DB | `620431d1-8955-42b7-8b04-8f7cc616a8ab` |
-| Blueprint Cirrose | `30adfe68-59a8-815a-abf5-c817cd705b29` |
-| Blueprint Meta-análise | `30adfe68-59a8-81d2-b1f6-c81c59e3e12d` |
-| References DB (outer) | `9340cdc0-7c59-4566-81a2-6b5c6b4e7b5d` |
-| References DB (data source) | `2b24bb6c-91be-42c0-ae28-908a794e5cf5` |
-| Bíblia Narrativa | `311dfe68-59a8-816b-b9c0-ec10eccfb235` |
-| Dashboard Cirrose | `311dfe68-59a8-81dd-b88d-ddf52560d5bc` |
+**Fonte canônica:** `.env.example` na raiz do repo. IDs externalizados para higiene.
+
+| Recurso | Variável em `.env.example` |
+|---------|---------------------------|
+| Slides DB | `NOTION_SLIDES_DB_ID` |
+| Slides DB (data source para API) | `NOTION_SLIDES_DATA_SOURCE_ID` |
+| Blueprint Cirrose | `NOTION_BLUEPRINT_CIRROSE_ID` |
+| Blueprint Meta-análise | `NOTION_BLUEPRINT_META_ID` |
+| References DB (outer) | `NOTION_REFS_DB_ID` |
+| References DB (data source) | `NOTION_REFS_DATA_SOURCE_ID` |
+| Bíblia Narrativa | `NOTION_BIBLIA_NARRATIVA_ID` |
+| Dashboard Cirrose | `NOTION_DASHBOARD_CIRROSE_ID` |
 
 ## Direções
 

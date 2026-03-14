@@ -50,4 +50,4 @@ HEX é a verdade. OKLCH é aproximação. Se divergirem, HEX vence.
 
 ## Referência completa
 
-Para tokens OKLCH detalhados, layout, contraste WCAG: .claude/rules/design-system.md (legado) ou base.css.
+Para tokens OKLCH detalhados, layout, contraste WCAG: .claude/rules/design-system.md (referência completa) ou base.css.

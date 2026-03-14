@@ -47,6 +47,18 @@
             "command": "bash .claude/hooks/guard-merge.sh",
             "timeout": 10,
             "statusMessage": "Validando merge..."
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/guard-secrets.sh",
+            "timeout": 10,
+            "statusMessage": "Escaneando secrets..."
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/warn-class-c.sh",
+            "timeout": 10,
+            "statusMessage": "Verificando Class C..."
           }
         ]
       }

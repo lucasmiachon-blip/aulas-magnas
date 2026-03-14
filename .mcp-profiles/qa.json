@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"]
+    },
+    "lighthouse": {
+      "command": "npx",
+      "args": ["@danielsogl/lighthouse-mcp"]
+    },
+    "a11y": {
+      "command": "npx",
+      "args": ["-y", "a11y-mcp-server"]
+    },
+    "eslint": {
+      "command": "npx",
+      "args": ["@eslint/mcp"]
+    },
+    "design-comparison": {
+      "command": "npx",
+      "args": ["-y", "mcp-design-comparison"]
+    },
+    "floto": {
+      "command": "npx",
+      "args": ["@floto/mcp-server", "run"],
+      "env": {
+        "FLOTO_API_KEY": "${FLOTO_API_KEY}"
+      }
+    }
+  }
+}

@@ -65,6 +65,13 @@ Conflito: # menor vence. Notion e mirror, nao source of truth.
 | `ERROR-LOG.md` | Erros → regras | Quando encontrar erro novo |
 | `NOTES.md` | Decisoes entre agentes | Durante a sessao |
 
+## WT State (atualizar a cada sessao)
+
+- **Branch:** feat/cirrose-mvp
+- **Ultimo merge main:** baf1816 (2026-03-09)
+- **Classe C pendente:** 0 arquivos em main
+- **Infra sync:** Pendente — absorver main apos repatriacao (Fase 2)
+
 ## Worktree
 
 - **Branch pattern:** `feat/cirrose-{feature}-mvp`

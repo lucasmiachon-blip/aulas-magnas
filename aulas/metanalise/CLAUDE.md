@@ -2,6 +2,13 @@
 
 Parent: ver CLAUDE.md na raiz.
 
+## WT State (atualizar a cada sessao)
+
+- **Branch:** feat/metanalise-mvp
+- **Ultimo merge main:** baf1816 (2026-03-09)
+- **Classe C pendente:** 0 arquivos em main
+- **Infra sync:** Pendente — absorver main apos repatriacao (Fase 2)
+
 ## Worktree
 
 - **Path:** `C:\Dev\Projetos\wt-metanalise`

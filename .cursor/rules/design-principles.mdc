@@ -12,8 +12,8 @@ alwaysApply: false
 
 ## Psicologia Cognitiva Operacionalizada
 
-### 1. Miller (7±2)
-**Fazer:** Max 5 items por grupo visual. 3 = ideal.
+### 1. Chunking (Cowan 4±1)
+**Fazer:** Max 4 items por grupo visual. 3 = ideal.
 **Anti-padrão:** Slide com 8+ bullets soltos sem agrupamento.
 
 ### 2. Von Restorff (Efeito Isolamento)
@@ -41,7 +41,7 @@ alwaysApply: false
 **Anti-padrão:** Gradientes decorativos, ícones sem função, texto que repete o título.
 
 ### 8. Signaling (Mayer)
-**Fazer:** Hierarquia de cor = hierarquia de importância. Cor mais saturada = dado mais importante.
+**Fazer:** Destaque visual (tamanho, peso, posição) para dado mais importante. Cor segue semântica clínica (ver design-system), NÃO importância genérica.
 **Anti-padrão:** Cor mais vibrante num dado secundário.
 
 ### 9. Spatial Contiguity (Mayer)

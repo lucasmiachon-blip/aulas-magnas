@@ -67,7 +67,7 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | RULES.md | → SUBAGENTS.md, .cursor/rules/*.mdc | ← CLAUDE.md, ECOSYSTEM.md |
 | SKILLS.md | → .cursor/skills/, .claude/skills/ | ← CLAUDE.md, ECOSYSTEM.md |
 | SUBAGENTS.md | → .cursor/rules/core-constraints.mdc | ← CLAUDE.md, RULES.md |
-| SYNC-NOTION-REPO.md | (autônomo — IDs Notion canônicos) | ← CLAUDE.md |
+| SYNC-NOTION-REPO.md | → .env.example (IDs Notion) | ← CLAUDE.md |
 | blueprint-cirrose.md | (autônomo) | ← aulas/cirrose/HANDOFF.md |
 | biblia-narrativa.md | (autônomo) | ← aulas/cirrose/HANDOFF.md |
 | slide-pedagogy.md | (autônomo — teorias pedagógicas) | ← README.md |
@@ -90,6 +90,8 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | guard-shared.sh | PreToolUse (Write, Edit) | Bloqueia edição de shared/ em branches não-main |
 | guard-destructive.sh | (dormant — coberto por deny permissions) | Backup: bloqueia comandos destrutivos |
 | guard-merge.sh | PreToolUse (Bash) | Valida merge: --no-ff em main, bloqueia shared/ changes |
+| guard-secrets.sh | PreToolUse (Bash) | WARN-only: escaneia staged files por padrões de secrets |
+| warn-class-c.sh | PreToolUse (Bash) | WARN-only: lista arquivos Classe C ao fazer git merge main em WT |
 | post-compact-reinject.sh | SessionStart (compact) | Reinjecta HANDOFF + git log após /compact |
 | session-tracker.sh | SessionStart, SessionEnd | Lifecycle de sessão (3-terminal tracking) |
 | subagent-stop-log.sh | SubagentStop | Loga conclusão de subagents |
@@ -154,7 +156,8 @@ CLAUDE.md (root)              ← fonte de verdade operacional (absorveu AGENTS.
 | Animações GSAP | .claude/rules/motion-qa.md | shared/js/engine.js |
 | Reveal.js patterns | .claude/rules/reveal-patterns.md | — |
 | Assertion-Evidence | .claude/rules/slide-editing.md | design-principles.md §1 |
-| Notion IDs | docs/SYNC-NOTION-REPO.md | — |
+| Notion IDs | .env.example (variáveis `NOTION_*_ID`) | docs/SYNC-NOTION-REPO.md |
+| MCP profiles | .mcp-profiles/*.json | .mcp.json (perfil ativo) |
 | Estado Cirrose | aulas/cirrose/HANDOFF.md | — |
 | Context window | docs/SUBAGENTS.md | .cursor/rules/core-constraints.mdc |
 | Manifesto slides | aulas/cirrose/slides/_manifest.js | CLAUDE.md tabela |
