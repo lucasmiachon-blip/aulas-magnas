@@ -55,20 +55,17 @@ Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skil
 
 ---
 
-## Estado atual — 2026-03-14 (pós-done-gate + narrative sync + stack-drift merge)
+## Estado atual — 2026-03-14 (pós-diagnóstico aderência + rubrica expandida)
 
 **Slides:** 44 buildados (2 pre + 8 Act 1 + 15 Act 2 + 7 Act 3 + 3 CP + 1 close + 8 app) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
-**Manifest rewrite:** ✅ DONE (commit c302ef1). Colisão de IDs resolvida. 12 renames + 11 skeletons criados.
-**Act 2 skeletons:** ✅ 7/7 preenchidos com conteúdo HTML real (fontes, números, notes com timing).
-**narrative.md:** ✅ 16 headlines sincronizadas com HTML/manifest (Act 2: 10, Act 3+close: 6). 0 drift.
-**_manifest.js:** ✅ 39 headlines sincronizadas com HTML (sessão 13/mar).
-**Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento é P1.
-**Hardening Act 1:** ✅ DONE — 4 blockers fixed (headline drift, countUp fallbacks, stale QA). 27 fresh screenshots. 0 P0.
-**CSS/Viewport Hard Gate:** ✅ DONE — ERRO-030 (emoji→CSS dots), ERRO-031 (var()→HEX), orphaned padding removed.
-**D'Amico chromatic + vote elevation:** ✅ DONE (cfb7d26 + fe5a1d8) — ERRO-022/032/033 fechados.
-**Audit visual Act 1:** ✅ DONE (d20deec) — 5 headlines/a11y/data fixes. Gate visual passou. Audit humano pendente.
-**Prep skills 12/mar:** ✅ DONE — repo-janitor (limpo), docs-audit (-234 linhas), evolve (7 patches), WTs absorvidas.
-**Done-gate 13/mar:** ✅ DONE — pre-push hook, ERRO-023 fechado, CSS failsafes, stage-b/c cleanup.
+**Source of truth:** ✅ Validado — CASE→evidence-db→narrative→manifest→HTML (44/44 consistente, 0 drift de dados).
+**AUDIT-VISUAL.md:** ✅ Rubrica expandida 8→13 dimensões (merge qa-engineer). Scoring 1-10, min 9 para PASS.
+**QA Act 1:** ⏳ Loop 1 (Opus, 13 dim) NÃO INICIADO — Playwright técnico feito mas rubrica completa nunca aplicada.
+**QA Act 2:** ⏳ Bloqueado por Act 1 — não avançar até Act 1 = PASS.
+**Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento bloqueado.
+**Gemini MCP:** Somente após Loop 1 PASS.
+**Drifts cosméticos:** ✅ Corrigidos (3/3) — CLAUDE.md hash/data, HANDOFF decomposição + data.
+**ERROR-LOG:** 33/33 corrigidos, 0 pendentes.
 
 ---
 

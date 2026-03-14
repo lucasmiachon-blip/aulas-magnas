@@ -4,6 +4,33 @@
 
 ---
 
+## 2026-03-14 — Diagnóstico de aderência + rubrica AUDIT-VISUAL expandida
+
+Branch: `feat/cirrose-mvp` · Commits: `18d00bc`, `6ed8139`
+
+### Diagnóstico
+
+Diagnóstico completo de aderência WT vs GitHub:
+- 0 drift de código/dados
+- 3 drifts cosméticos encontrados e corrigidos (CLAUDE.md hash/data, HANDOFF.md decomposição aritmética + data stale)
+- Source of truth validado: CASE.md → evidence-db → narrative.md → _manifest.js → HTML (44/44 consistente)
+- QA gap identificado: Loop 1 técnico feito (Playwright), QA visual detalhado nunca aplicado
+
+### AUDIT-VISUAL.md — rubrica expandida
+
+Rubrica expandida de 8 para 13 dimensões (merge critérios qa-engineer):
+- 8 originais (H/T/E/C/V/K/S/M) migrados de escala 1-5 para 1-10
+- 6 novas: **I** (Interações), **D** (Dados clínicos), **A** (Acessibilidade), **L** (Carga cognitiva Sweller), **P** (Aprendiz adulto Knowles+Miller), **N** (Arco narrativo Duarte+Alley)
+- PASS = todas 13 dimensões >= 9/10
+- Protocolo Loop 1 (Opus) + Loop 2 (Gemini MCP) documentado
+- Scorecard template incluído
+
+### Próximo passo
+
+QA visual Loop 1 nos 11 slides do Act 1 (title + hook + 8 A1 + CP1) usando rubrica 13 dimensões. Não sair do Act 1 até PASS.
+
+---
+
 ## 2026-03-15 — Stack drift cleanup (main)
 
 Branch: `main`

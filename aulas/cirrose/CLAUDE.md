@@ -71,6 +71,7 @@ Conflito: # menor vence. Notion e mirror, nao source of truth.
 - **Ultimo merge main:** 62a2a6d (2026-03-14)
 - **Classe C pendente:** 0 arquivos em main
 - **Infra sync:** OK — main absorvida (Classe A/B), stack-drift cleanup
+- **QA Act 1:** Loop 1 (13 dim) pendente — próximo passo
 
 ## Worktree
 
