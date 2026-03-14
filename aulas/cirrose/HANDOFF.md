@@ -55,17 +55,19 @@ Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skil
 
 ---
 
-## Estado atual — 2026-03-14 (pós-diagnóstico aderência + rubrica expandida)
+## Estado atual — 2026-03-14 (pós-Act 3 fill + rubrica expandida)
 
-**Slides:** 44 buildados (2 pre + 8 Act 1 + 15 Act 2 + 7 Act 3 + 3 CP + 1 close + 8 app) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
+**Slides:** 44 buildados (2 pre + 8 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 1 close + 8 app) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
 **Source of truth:** ✅ Validado — CASE→evidence-db→narrative→manifest→HTML (44/44 consistente, 0 drift de dados).
+**Act 2 skeletons:** ✅ 7/7 preenchidos com conteúdo HTML real (fontes, números, notes com timing).
+**Act 3 skeletons:** ✅ 4/4 preenchidos com conteúdo HTML real (hero-stat, comparison, etiology-compare, flow).
 **AUDIT-VISUAL.md:** ✅ Rubrica expandida 8→13 dimensões (merge qa-engineer). Scoring 1-10, min 9 para PASS.
 **QA Act 1:** ⏳ Loop 1 (Opus, 13 dim) NÃO INICIADO — Playwright técnico feito mas rubrica completa nunca aplicada.
 **QA Act 2:** ⏳ Bloqueado por Act 1 — não avançar até Act 1 = PASS.
-**Act 3 skeletons:** 4 existem como skeleton (s-a3-01, s-a3-03, s-a3-04, s-a3-07). Preenchimento bloqueado.
 **Gemini MCP:** Somente após Loop 1 PASS.
 **Drifts cosméticos:** ✅ Corrigidos (3/3) — CLAUDE.md hash/data, HANDOFF decomposição + data.
 **ERROR-LOG:** 33/33 corrigidos, 0 pendentes.
+**Prep skills 12/mar:** ✅ DONE — repo-janitor (limpo), docs-audit (-234 linhas), evolve (7 patches), WTs absorvidas.
 
 ---
 
@@ -118,16 +120,16 @@ Foco em produto: corrigir erros de interação, CSS e conteúdo nos slides exist
 - Inline style removido (INR text-transform → classe CSS)
 - Build ✅ · 3 lints ✅ · `/review` QA pendente
 
-### P1: Preencher 4 skeletons Act 3
+### ✅ DONE: Preencher 4 skeletons Act 3
 
-| Slide | Arquivo | Status |
-|-------|---------|--------|
-| s-a3-01 | 37-a3-bridge.html | skeleton (headline + notes ok) |
-| s-a3-03 | 38-a3-expandido.html | skeleton (headline + notes ok) |
-| s-a3-04 | 39-a3-etiologia.html | skeleton (headline + notes ok) |
-| s-a3-07 | 40-a3-fechamento.html | skeleton (headline + notes ok, pode ser suprimido) |
+| Slide | Arquivo | Archetype | Status |
+|-------|---------|-----------|--------|
+| s-a3-01 | 37-a3-bridge.html | hero-stat | ✅ HR 0,35/0,46 (Tonon 2023) |
+| s-a3-03 | 38-a3-expandido.html | comparison | ✅ Estrito 7% vs Expandido 37,6% (Tonon 2025) |
+| s-a3-04 | 39-a3-etiologia.html | etiology-compare | ✅ HBV/HCV/Álcool (3 PMIDs) |
+| s-a3-07 | 40-a3-fechamento.html | flow | ✅ Melhora → Persiste → Vigiar sempre |
 
-RAW_ACT3_V1.md tem todo o conteúdo necessário.
+Zero CSS novo. RAW_ACT3_V1.md como fonte. Build + 3 lints PASS.
 
 ### Backlog
 

@@ -163,6 +163,12 @@
 | Early transplant ALD | Mathurin | NEJM 2011 | 22070476 | 77% vs 23% sobrevida 6m |
 | Recompensacao | Baveno VII | J Hepatol 2022 | 35120736 | >=12m sem descomp + labs melhorados |
 | Recompensacao expandida | Tonon 2025 | J Hepatol 2025 | 40228583 | 7% strict, 37,6% expanded |
+| Recompensacao conceito | Baveno VII (de Franchis) | J Hepatol 2022 | 36646527 | Definicao formal recompensacao |
+| Cura etiologica + ascite | Tonon 2023 | Hepatology 2023 | 37190823 | HR 0,46 decomp + HR 0,35 mortalidade, n=622 |
+| HCV recompensacao | Lens/Tonon 2025 | J Hepatol 2025 | 40378989 | 36,6% recompensaram (10 centros, n=2570); HCC NAO reduziu |
+| HBV recompensacao | Chang 2022 | Clin Gastro Hepatol | 36038017 | >50% Baveno VII criteria em 120 sem entecavir (n=320) |
+| Alcool recompensacao | Semmler 2023 | Hepatology 2023 | 37469291 | 18,1% recompensaram (retrospectivo) |
+| HCC surveillance | AASLD 2023 | Hepatology 2023 | 37199193 | US + AFP semestral — nunca dar alta |
 
 ## Literatura Tier-1 — Referencias mestras
 
@@ -193,9 +199,13 @@
 | s-a2-04 | PBE: PMN >=250 = tratar | EASL CPG 2024 |
 | s-a2-05 | HRS-AKI: terlipressina NNT 7 / NNH 12 (corrigido) | CONFIRM (PMID 33657294) |
 | s-a2-06 | Encefalopatia: rifaximina NNT 4 | Bass (PMID 20335583) |
-| s-a3-01 | Recompensacao: Baveno VII definicao + Tonon 2025 | PMID 35120736 + PMID 40228583 |
-| s-a3-02 | SVR diferente de cura CSPH (53% persistem) | Baveno VII + Lens S et al J Hepatol 2020 (PMID **32535060**, corrigido de 28039099 via WebSearch audit 08/mar) |
-| s-a3-03 | Vigilancia HCC a cada 6 meses | EASL/AASLD guidelines |
+| s-a3-01 | Bridge: cura etiologica reduz decomp/mortalidade | Tonon 2023 (PMID 37190823), n=622 |
+| s-a3-02 | Recompensacao: Baveno VII definicao estrita (7%) | PMID 35120736 + Tonon 2025 PMID 40228583 |
+| s-a3-03 | Expandido 37,6% vs estrito 7% | Tonon 2025 (PMID 40228583) |
+| s-a3-04 | Etiologia: HBV >50%, HCV 36,6%, alcool ~18% | PMIDs 36038017, 40378989, 37469291 |
+| s-a3-05 | SVR diferente de cura CSPH (53% persistem) | Lens 2020 (PMID **32535060**) + PMID 40378989 |
+| s-a3-06 | Vigilancia HCC a cada 6 meses — nunca dar alta | AASLD 2023 (PMID 37199193) |
+| s-a3-07 | Sintese: menor risco ≠ cura estrutural | Baveno VII PMID 36646527 + Lens + AASLD |
 | s-app-01 | ACLF grau 3: mortalidade 28d 73% | CANONIC (PMID **23474284**) + AASLD ACLF 2024 (PMID **37939273**) |
 | s-app-02 | Early TIPS NNT ~4 | Garcia-Pagan (PMID 20573925) |
 | s-app-03 | Etiologias raras: autoimune, budd-chiari, colestáticas, Wilson | EASL CPG 2024 |

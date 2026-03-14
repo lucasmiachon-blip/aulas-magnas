@@ -4,6 +4,28 @@
 
 ---
 
+## 2026-03-14 — Act 3 skeletons preenchidos (4/4)
+
+Branch: `main`
+
+### Slides preenchidos
+
+| Slide | Arquivo | Archetype | Conteúdo |
+|-------|---------|-----------|----------|
+| s-a3-01 | 37-a3-bridge.html | hero-stat | Bridge: HR 0,35 mortalidade + HR 0,46 decomp (Tonon 2023, PMID 37190823) |
+| s-a3-03 | 38-a3-expandido.html | comparison | Estrito 7,0% vs Expandido 37,6% (Tonon 2025, PMID 40228583) |
+| s-a3-04 | 39-a3-etiologia.html | etiology-compare | HBV >50% · HCV 36,6% · Álcool ~18% (PMIDs 40378989, 36038017, 37469291) |
+| s-a3-07 | 40-a3-fechamento.html | flow | Síntese: Melhora → Persiste → Vigiar sempre |
+
+### Padrão
+
+- Zero CSS novo — reutilizou archetypes existentes (hero-stat, comparison, etiology-compare, flow)
+- Speaker notes preservadas (já completas dos skeletons)
+- Fonte de dados: RAW_ACT3_V1.md
+- Build: 44 slides ✅ · Lints: slides + case-sync + narrative-sync ✅
+
+---
+
 ## 2026-03-14 — Diagnóstico de aderência + rubrica AUDIT-VISUAL expandida
 
 Branch: `feat/cirrose-mvp` · Commits: `18d00bc`, `6ed8139`
