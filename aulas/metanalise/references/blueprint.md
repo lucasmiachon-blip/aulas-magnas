@@ -69,73 +69,73 @@
 
 - **Fase:** 2
 - **Função:** desfazer a confusão mais comum
-- **Assertion:** "Revisão sistemática é o processo; meta-análise é o passo estatístico — e nem toda RS tem MA"
+- **Assertion:** "RS é o método de busca e seleção; MA é o cálculo estatístico — e são separáveis"
 - **Risco cognitivo:** tratar RS e MA como sinônimos → perda da estrutura lógica
-- **Evidência:** Cochrane Handbook, definições cap. 1
-- **Status:** EXISTENTE (02-rs-vs-ma.html) — renumerar para posição 04
+- **Evidência:** Cochrane Handbook v6.5, cap. 1
+- **Status:** ✅ FEITO (03-rs-vs-ma.html) — renumerado, assertion atualizada
 
 ### Slide 05 — O PICO como porta de entrada
 
 - **Fase:** 2
 - **Função:** ensinar que toda MA começa por uma pergunta estruturada
-- **Assertion:** "Antes do diamante, a pergunta: quem, o que, contra o que, medindo o quê"
+- **Assertion:** "PICO define a validade externa: se a população ou o comparador não batem, o resultado não se aplica"
 - **Risco cognitivo:** pular direto para resultados sem entender elegibilidade
-- **Evidência:** Cochrane Handbook — PICO framework (genérico)
-- **Status:** GENERALIZAR (04-pico.html — remover dados Musini, ensinar o conceito)
+- **Evidência:** Cochrane Handbook v6.5, cap. 3
+- **Status:** ✅ FEITO (04-pico.html) — generalizado, sem dados Musini
 
 ### Slide 06 — O que o abstract já entrega
 
 - **Fase:** 2
 - **Função:** mostrar que o abstract de boa RS é denso e ensinável
-- **Assertion:** "Um bom abstract de RS já informa busca, elegibilidade, método, n de estudos e n de pacientes"
+- **Assertion:** "Abstract PRISMA entrega busca, elegibilidade, N de estudos e resultado — triagem em 2 min antes do PDF"
 - **Risco cognitivo:** ler abstract superficialmente → perder metadados estruturais
-- **Evidência:** PRISMA 2020 for Abstracts (checklist 12 itens, genérico)
-- **Status:** GENERALIZAR (05-abstract.html — remover dados Musini, ensinar o que procurar)
+- **Evidência:** PRISMA 2020 for Abstracts (Page et al. BMJ 2021;372:n160)
+- **Status:** ✅ FEITO (05-abstract.html) — generalizado, pipeline flow layout
 
 ### Slide 07 — Como ler o forest plot
 
 - **Fase:** 2
 - **Função:** alfabetização no forest plot — medida, direção, nulidade, IC95%, peso
-- **Assertion:** "O diamante mostra o efeito combinado, mas o IC95% mostra o quanto devemos confiar no tamanho desse efeito"
+- **Assertion:** "Forest plot codifica efeito, precisão e peso de cada estudo em 5 elementos — quadrado, linha, diamante, eixo e direção"
 - **Risco cognitivo:** confundir significância estatística com importância clínica
-- **Evidência:** Sedgwick BMJ 2015 — forest plot anatomy (genérico)
-- **Status:** NOVO — forest plot genérico/didático (imagem cropada de artigo real)
+- **Evidência:** Dettori et al. Global Spine J 2021, PMID 33939533 · Baruah et al. Indian J Anaesth 2025, PMC11878362 · Cochrane Handbook v6.5, cap. 10
+- **Status:** ✅ FEITO (06-forest-plot.html) — anatomy grid, 5 elementos com símbolos
 
 ### Slide 08 — Benefício e dano no mesmo artigo
 
 - **Fase:** 2
 - **Função:** mostrar que MA séria reporta dano, não só benefício
-- **Assertion:** "Toda MA que só mostra benefício está contando metade da história — dano é o outro lado do diamante"
+- **Assertion:** "Benefício e dano podem ter certeza GRADE diferente na mesma MA — avaliar ambos separadamente"
 - **Risco cognitivo:** ignorar dano porque o benefício é significativo
-- **Evidência:** conceito genérico — exemplos em Fase 3
-- **Status:** NOVO
+- **Evidência:** Cochrane Handbook v6.5, cap. 15
+- **Status:** ✅ FEITO (07-benefit-harm.html) — compare layout com ícones ✓/✕
 
 ### Slide 09 — Certeza da evidência (GRADE)
 
 - **Fase:** 2
 - **Função:** introduzir GRADE como linguagem clínica
-- **Assertion:** "Alta, moderada, baixa — não é nota para o artigo; é quanto você confia que o efeito real está perto do estimado"
+- **Assertion:** "Certeza GRADE expressa confiança no efeito estimado — avalia por desfecho, não por artigo"
 - **Risco cognitivo:** tratar GRADE como burocracia metodológica → não usar na prática
-- **Evidência:** Cochrane Handbook cap. 14; GRADE Working Group
-- **Status:** NOVO
+- **Evidência:** GRADE Working Group · Cochrane Handbook v6.5, cap. 14
+- **Status:** ✅ FEITO (08-grade.html) — 4 níveis com ícones daltonismo (✓ ○ ⚠ ✕)
 
 ### Slide 10 — Heterogeneidade
 
 - **Fase:** 2
 - **Função:** desfazer o mito de que I² alto = MA inválida
-- **Assertion:** "Heterogeneidade existe em quase toda MA real; a pergunta madura é: ela é explicável e muda a decisão?"
+- **Assertion:** "I² alto não invalida a MA — importa se a heterogeneidade é explicável e clinicamente relevante"
 - **Risco cognitivo:** I² alto → descartar a MA automaticamente
-- **Evidência:** Cochrane Handbook cap. 10 (I², Q, tau²)
-- **Status:** NOVO
+- **Evidência:** Higgins & Thompson BMJ 2003, PMID 12958120 · Borenstein 2017, PMID 28058794 · Cochrane Handbook v6.5, cap. 10
+- **Status:** ✅ FEITO (09-heterogeneity.html) — concept card com I² hero + question box
 
 ### Slide 11 — Efeito fixo vs. aleatório
 
 - **Fase:** 2
 - **Função:** dar ao residente o mínimo para leitura madura
-- **Assertion:** "A escolha do modelo reflete uma visão sobre a variação entre estudos — e pode mudar o IC"
+- **Assertion:** "Random-effects alarga o IC quando há heterogeneidade — resultado significativo em fixed-effect pode desaparecer"
 - **Risco cognitivo:** ignorar que o modelo afeta a interpretação
-- **Evidência:** Cochrane Handbook cap. 10
-- **Status:** NOVO
+- **Evidência:** Cochrane Handbook v6.5, cap. 10
+- **Status:** ✅ FEITO (10-fixed-random.html) — compare layout FE vs RE
 
 ---
 
@@ -165,7 +165,7 @@
 - **Assertion:** "[TBD — assertion depende do artigo escolhido]"
 - **Risco cognitivo:** discutir MA no vácuo → desconexão clínica
 - **Evidência:** [ARTIGO TBD]
-- **Status:** EXISTENTE (03-ancora.html) — reposicionar aqui. Conteúdo depende do artigo
+- **Status:** A CRIAR — 03-ancora.html deletado (era Musini-specific). Recriar quando artigo âncora definido
 
 ### Slide 14 — PICO + resultados do artigo
 
@@ -209,20 +209,22 @@
 
 | Arquivo atual | Posição v0 | Nova posição v1 | Ação | Status |
 |---------------|-----------|-----------------|------|--------|
-| 00-title.html | Slide 00 | Slide 00 (Fase 1) | Manter | ✅ |
-| 01-hook.html | Slide 01 | Slide 01 (Fase 1) | Reescrever — generalizar | ✅ Reescrito |
-| 01-objectives.html | Slide 01 (v0) | — | Absorvido por 02-contrato | ✅ Orphan |
-| 02-contrato.html | — | Slide 02 (Fase 1) | NOVO | ✅ Criado |
-| 03-checkpoint-1.html | — | Slide 03 (Interação 1) | NOVO | ✅ Criado |
-| 03-rs-vs-ma.html | Slide 02 (v0) | Slide 04 (Fase 2) | Renumerar | ✅ |
-| 04-pico.html | Slide 04 | Slide 05 (Fase 2) | Generalizar — remover Musini | ✅ |
-| 05-abstract.html | Slide 05 | Slide 06 (Fase 2) | Generalizar — remover Musini | ✅ |
-| 06-forest-plot.html | — | Slide 07 (Fase 2) | Existente | ✅ |
-| 07-benefit-harm.html | — | Slide 08 (Fase 2) | Existente | ✅ |
-| 08-grade.html | — | Slide 09 (Fase 2) | Existente | ✅ |
-| 09-heterogeneity.html | — | Slide 10 (Fase 2) | Existente | ✅ |
-| 10-fixed-random.html | — | Slide 11 (Fase 2) | Existente | ✅ |
+| 00-title.html | Slide 00 | Slide 00 (Fase 1) | Manter | ✅ QA pass |
+| 01-hook.html | Slide 01 | Slide 01 (Fase 1) | Reescrever — generalizar | ✅ Reescrito + QA |
+| ~~01-objectives.html~~ | Slide 01 (v0) | — | Absorvido por 02-contrato | ✅ Deletado |
+| 02-contrato.html | — | Slide 02 (Fase 1) | NOVO | ✅ Criado + QA |
+| 03-checkpoint-1.html | — | Slide 03 (Interação 1) | NOVO | ✅ Criado + QA |
+| ~~02-rs-vs-ma.html~~ | Slide 02 (v0) | — | Orphan (substituído por 03-rs-vs-ma) | ✅ Deletado |
+| 03-rs-vs-ma.html | Slide 02 (v0) | Slide 04 (Fase 2) | Renumerar + assertion | ✅ QA pass |
+| 04-pico.html | Slide 04 | Slide 05 (Fase 2) | Generalizar — remover Musini | ✅ QA pass |
+| 05-abstract.html | Slide 05 | Slide 06 (Fase 2) | Generalizar — remover Musini | ✅ QA pass |
+| 06-forest-plot.html | — | Slide 07 (Fase 2) | NOVO | ✅ QA pass |
+| 07-benefit-harm.html | — | Slide 08 (Fase 2) | NOVO | ✅ QA pass |
+| 08-grade.html | — | Slide 09 (Fase 2) | NOVO | ✅ QA pass + ícones daltonismo |
+| 09-heterogeneity.html | — | Slide 10 (Fase 2) | NOVO | ✅ QA pass |
+| 10-fixed-random.html | — | Slide 11 (Fase 2) | NOVO | ✅ QA pass |
+| ~~03-ancora.html~~ | Slide 03 (v0) | — | Musini-specific, Fase 3 bloqueada | ✅ Deletado |
 
 ---
 
-## Status: BLUEPRINT v1.1 — Fases 1+2 completas (12 slides no deck). Fase 3 bloqueada até artigo definido.
+## Status: BLUEPRINT v1.2 — Fases 1+2 completas + QA review pass (12 slides). 3 orphans deletados. Fase 3 bloqueada até artigo definido.

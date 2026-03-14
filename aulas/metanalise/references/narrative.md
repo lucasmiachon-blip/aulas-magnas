@@ -54,7 +54,7 @@ Residentes de clínica médica (básico-intermediário).
 
 **Tensão narrativa:** "eu achava que sabia ler uma MA, mas talvez não saiba tanto"
 
-**Slides:** 00-title, 01-importancia, 02-contrato
+**Slides:** 00-title, 01-hook, 02-contrato
 
 ### Interação 1 — Checkpoint de engajamento (entre Fase 1 e Fase 2)
 
@@ -142,16 +142,16 @@ Uma meta-análise não é melhor do que os RCTs que a alimentam. A qualidade da 
 
 ---
 
-## Revisão dos slides existentes (00-05)
+## Revisão dos slides existentes (00-05) — CONCLUÍDA
 
-| Slide | Fase atual | Problema | Ação |
-|-------|-----------|----------|------|
-| 00-title.html | Fase 1 | OK — genérico | Manter, ajustar subtítulo se necessário |
-| 01-hook.html | Fase 1 | Ancorado no Musini (16 RCTs, 26795, RR 0.91) | Reescrever: gerar importância genérica |
-| 02-rs-vs-ma.html | Fase 2 | OK — conceito genérico | Mover para posição Fase 2 (slide 04) |
-| 03-ancora.html | Fase 3 | Totalmente Musini desde slide 3 | Postergar para Fase 3 ou remover até artigo definido |
-| 04-pico.html | Fase 2 | Usa PICO do Musini especificamente | Generalizar PICO (remover dados Musini) |
-| 05-abstract.html | Fase 2 | Usa dados do abstract Musini | Generalizar (ensinar o que procurar, sem artigo) |
+| Slide | Ação planejada | Status |
+|-------|---------------|--------|
+| 00-title.html | Manter | ✅ Mantido |
+| 01-hook.html | Reescrever — generalizar | ✅ Reescrito (2-beat, 3 countUp, 4 PMIDs) |
+| 02-rs-vs-ma.html | Mover para posição 04 | ✅ Renumerado → 03-rs-vs-ma.html. Antigo 02-rs-vs-ma.html deletado |
+| 03-ancora.html | Postergar para Fase 3 | ✅ Deletado (será recriado na Fase 3 com artigo definido) |
+| 04-pico.html | Generalizar PICO | ✅ Generalizado (sem dados Musini) |
+| 05-abstract.html | Generalizar abstract | ✅ Generalizado (PRISMA genérico) |
 
 ---
 
@@ -161,3 +161,4 @@ Uma meta-análise não é melhor do que os RCTs que a alimentam. A qualidade da 
 |------|---------|
 | 2026-03-11 | v0 — bootstrap a partir do memo direcionado |
 | 2026-03-13 | v1 — reestruturado de 4 atos para 3 fases + 2 interações. Artigo desancorado das fases iniciais |
+| 2026-03-13 | v1.1 — revisão de slides existentes concluída. Orphans deletados. Tabela de revisão atualizada |

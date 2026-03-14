@@ -20,8 +20,8 @@ Capacitar o residente-leitor a ler uma meta-análise sem confundir precisão est
 
 ## Âncora didática
 
-Musini et al. 2025 — Pharmacotherapy for hypertension in adults 60 years or older.
-Cochrane Database Syst Rev. 2025;10:CD000028.
+[TBD] — Musini et al. 2025 é candidato, não decisão final.
+Artigo âncora entra apenas na Fase 3 (slides 13-17). Fases 1-2 são genéricas.
 
 ## Princípio-chave
 
@@ -58,4 +58,4 @@ NMA, meta-regressão, prediction intervals, TSA, publication bias avançado, ROB
 
 ## Status
 
-**ESCOPO DEFINIDO. BLUEPRINT v0 PRONTO. SLIDES A INICIAR.**
+**Fases 1+2 completas (12 slides, QA pass). Fase 3 bloqueada até artigo âncora definido.**

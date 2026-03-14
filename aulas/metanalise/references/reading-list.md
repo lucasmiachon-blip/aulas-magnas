@@ -25,12 +25,13 @@
 - **Tier:** 1
 - **Acesso:** aberto, oficial
 
-### 4. Abstract da revisão âncora (Musini et al. 2025)
+### 4. Abstract da revisão âncora [TBD]
 - **Função:** chegar na aula tendo lido o caso real
 - **Tarefa:** anotar PICO, principal benefício, principal dano, uma dúvida de aplicabilidade
 - **Carga:** 10–12 min
 - **Tier:** 1
-- **Acesso:** abstract aberto (PubMed/Cochrane)
+- **Acesso:** depende do artigo escolhido
+- **Nota:** Musini et al. 2025 é candidato, não decisão final. Atualizar quando artigo definido.
 
 ---
 
@@ -102,3 +103,4 @@
 | Data | Mudança |
 |------|---------|
 | 2026-03-11 | v0 — derivado do memo direcionado |
+| 2026-03-13 | v0.1 — item 4 atualizado: artigo âncora = [TBD], não Musini definitivo |

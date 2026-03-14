@@ -144,5 +144,6 @@
 
 | Data | Mudança |
 |------|---------|
+| 2026-03-13 | v2 — QA pass: dados verificados nos slides, word count trimado. Nenhuma alteração de dados |
 | 2026-03-13 | v1 — adicionadas 12 referências tier 1 para hook (3 eixos: volume, qualidade, competência) |
 | 2026-03-11 | v0 — dados extraídos do abstract Musini 2025 |
