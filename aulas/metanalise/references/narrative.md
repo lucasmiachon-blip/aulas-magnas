@@ -2,6 +2,7 @@
 
 > Fonte de verdade narrativa da aula. Toda decisão de slide deve ser rastreável até aqui.
 > Derivado de: memo direcionado de conteúdo (mar/2026).
+> Reestruturado: 2026-03-13 — de 4 atos para 3 fases + 2 interações.
 
 ---
 
@@ -34,43 +35,95 @@ Residentes de clínica médica (básico-intermediário).
 - Não é como FAZER uma meta-análise
 - Não é NMA, IPD, bayesiana, dose-response
 
-## Arco narrativo — 4 atos
+---
 
-### Ato 1 — O que exatamente esta revisão está perguntando?
-PICO e elegibilidade. Diferença entre revisão sistemática e meta-análise.
+## Arco narrativo — 3 fases + 2 interações
 
-### Ato 2 — O que o forest plot / pooled effect está dizendo?
-Medida de efeito, direção do efeito, IC95%, noção de heterogeneidade.
+> Princípio: primeiro importância/curiosidade, depois metodologia, depois artigo.
+> Artigo âncora entra APENAS na Fase 3. Fases 1-2 são genéricas.
 
-### Ato 3 — Quanto eu confio nisso?
-Risco de viés, consistência, precisão, indireção, publicação seletiva.
-GRADE como linguagem de confiança.
+### Fase 1 — Criar importância (por que o residente precisa ler MA?)
 
-### Ato 4 — Isso vale para o meu paciente / meu ambulatório?
-Conversão para efeito absoluto, baseline risk, validade externa, contexto.
+**Objetivo:** engajar antes de ensinar. O residente precisa QUERER aprender.
 
-## Âncora didática
+**Conteúdo:**
+- Por que meta-análise importa para o residente clínico?
+- Dado de impacto: quantas decisões clínicas dependem de MA? [TBD — buscar dado]
+- Situação provocativa: "Você lê o abstract e confia no diamante. Mas deveria?"
+- Contrato com a audiência: o que a aula vai entregar (3 perguntas framework)
 
-**Musini VM et al.** _Pharmacotherapy for hypertension in adults 60 years or older._
-Cochrane Database Syst Rev. 2025;10:CD000028.
-DOI: 10.1002/14651858.CD000028.pub4
+**Tensão narrativa:** "eu achava que sabia ler uma MA, mas talvez não saiba tanto"
 
-### Por que esta revisão
+**Slides:** 00-title, 01-importancia, 02-contrato
 
-- Publicada 9 out 2025 — recente
-- Cochrane — tier 1
-- Pairwise clássica de RCTs — modelo canônico
-- Ambulatorial e cotidiana — hipertensão em ≥60 anos
-- Abstract ensinável: PICO, busca, RoB, síntese, GRADE
-- Mistura benefício + dano + certeza variável
-- Validade externa imperfeita (PA média 182/95, maioria tiazídico) — virtude pedagógica
+### Interação 1 — Checkpoint de engajamento (entre Fase 1 e Fase 2)
 
-### Status de acesso
+**Momento:** após criar importância, antes de entrar em metodologia.
+**Formato:** pergunta provocativa para a audiência.
 
-- Abstract: aberto (PubMed + Cochrane Library)
-- Full-text: PMCID disponível apenas 2026-10-09
-- Tratar como **abstract-access / full-text on request**
-- Se precisar de forest plot exato: necessário PDF
+**Exemplo:**
+"Você recebe uma MA que diz que o tratamento reduz mortalidade com RR 0.91 (IC 0.85–0.97). Você muda sua conduta?"
+- A maioria dirá sim
+- Mas ainda não sabem avaliar certeza, heterogeneidade, aplicabilidade
+- Isso é o que a aula vai ensinar
+
+**Função pedagógica:** retrieval practice + criar tensão ("eu achava que sabia, mas não sei tanto")
+
+**Slide:** 03-checkpoint-1
+
+### Fase 2 — Metodologia (conceitos-chave para leitura crítica)
+
+**Objetivo:** ensinar os conceitos necessários — sem ancorar em artigo específico.
+
+**Conteúdo (um conceito por slide):**
+1. RS vs MA — diferença fundamental
+2. PICO como porta de entrada (genérico, sem artigo)
+3. Como ler um abstract de RS (PRISMA, genérico)
+4. Forest plot: medida de efeito, direção, IC95%, peso, diamante
+5. Benefício e dano no mesmo artigo
+6. GRADE como linguagem clínica (alta, moderada, baixa)
+7. Heterogeneidade (I²) — o que realmente importa
+8. Efeito fixo vs aleatório (mínimo necessário para leitura)
+
+**Tensão narrativa:** cada conceito revela uma camada de complexidade que o residente não via
+
+**Slides:** 04 a 11 (8 slides metodológicos)
+
+### Interação 2 — Checkpoint de consolidação (entre Fase 2 e Fase 3)
+
+**Momento:** após ensinar os conceitos, antes de aplicar no artigo real.
+**Formato:** mini-caso com dados genéricos para o residente interpretar.
+
+**Exemplo:**
+"Forest plot mostra RR 0.75 (IC 0.50–1.12), I²=68%, certeza GRADE moderada.
+O que você conclui?"
+- Audiência aplica o que aprendeu
+- Revelar a interpretação correta passo a passo
+
+**Função pedagógica:** consolidar antes de complexificar com artigo real. Testing effect.
+
+**NOTA:** dados do mini-caso são ilustrativos/didáticos, não de artigo real. Sinalizar claramente no slide.
+
+**Slide:** 12-checkpoint-2
+
+### Fase 3 — Aplicação (artigo real — TBD)
+
+**Objetivo:** aplicar todos os conceitos em artigo real. Provar que o framework funciona.
+
+**Artigo âncora:** [TBD — Musini 2025 é candidato, não decisão]
+
+**Conteúdo:**
+1. O artigo âncora — apresentar a revisão real
+2. Aplicar PICO, forest plot, GRADE ao artigo
+3. Validade externa / aplicabilidade ("vale para meu paciente?")
+4. Efeito relativo vs absoluto (converter RR em NNT/impacto real)
+5. Take-home — as 3 perguntas que o residente leva
+
+**Tensão narrativa:** "agora que sei a teoria, os dados reais são mais complicados do que parecem"
+
+**Slides:** 13 a 17 (5 slides de aplicação)
+
+---
 
 ## Princípio pedagógico central
 
@@ -89,8 +142,22 @@ Uma meta-análise não é melhor do que os RCTs que a alimentam. A qualidade da 
 
 ---
 
+## Revisão dos slides existentes (00-05)
+
+| Slide | Fase atual | Problema | Ação |
+|-------|-----------|----------|------|
+| 00-title.html | Fase 1 | OK — genérico | Manter, ajustar subtítulo se necessário |
+| 01-hook.html | Fase 1 | Ancorado no Musini (16 RCTs, 26795, RR 0.91) | Reescrever: gerar importância genérica |
+| 02-rs-vs-ma.html | Fase 2 | OK — conceito genérico | Mover para posição Fase 2 (slide 04) |
+| 03-ancora.html | Fase 3 | Totalmente Musini desde slide 3 | Postergar para Fase 3 ou remover até artigo definido |
+| 04-pico.html | Fase 2 | Usa PICO do Musini especificamente | Generalizar PICO (remover dados Musini) |
+| 05-abstract.html | Fase 2 | Usa dados do abstract Musini | Generalizar (ensinar o que procurar, sem artigo) |
+
+---
+
 ## Changelog
 
 | Data | Mudança |
 |------|---------|
 | 2026-03-11 | v0 — bootstrap a partir do memo direcionado |
+| 2026-03-13 | v1 — reestruturado de 4 atos para 3 fases + 2 interações. Artigo desancorado das fases iniciais |

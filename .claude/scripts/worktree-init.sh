@@ -33,6 +33,16 @@ fi
 echo "Creating worktree: $WT_DIR (branch: $BRANCH)"
 git worktree add "$WT_DIR" -b "$BRANCH"
 
+# Copy gitignored font files (woff2) from main repo
+MAIN_FONTS="shared/assets/fonts"
+WT_FONTS="$WT_DIR/$MAIN_FONTS"
+if ls "$MAIN_FONTS"/*.woff2 >/dev/null 2>&1; then
+  cp "$MAIN_FONTS"/*.woff2 "$WT_FONTS/"
+  echo "Copied font files to worktree"
+else
+  echo "WARNING: No .woff2 fonts found in $MAIN_FONTS — fonts will fall back to system defaults" >&2
+fi
+
 # Log creation
 DIR="$HOME/.claude/session-logs"
 mkdir -p "$DIR"

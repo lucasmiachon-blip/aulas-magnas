@@ -6,58 +6,82 @@
 
 ## Estado atual
 
-- **Fase:** Ato 1 completo, avançar para Ato 2
+- **Fase:** Fases 1+2 completas. Faltam checkpoint-2 (interação 2) e Fase 3.
 - **Branch:** feat/metanalise-mvp (worktree wt-metanalise)
-- **Slides prontos:** 6/14 (00-title, 01-hook, 02-rs-vs-ma, 03-ancora, 04-pico, 05-abstract)
-- **Docs fundacionais:** narrative.md, evidence-db.md, blueprint.md, reading-list.md
+- **Slides no index.html:** 12 (00-title → 01-hook → 02-contrato → 03-checkpoint-1 → 04-rs-vs-ma → 05-pico → 06-abstract → 07-forest-plot → 08-benefit-harm → 09-grade → 10-heterogeneity → 11-fixed-random)
+- **Slides planejados:** 18 (00-17) — ver blueprint.md v1.1
+- **Docs fundacionais:** narrative.md (v1), evidence-db.md (v2 — 12 refs tier 1), blueprint.md (v1.1), reading-list.md
+- **Vite dev:** port 3032
 
 ## O que foi feito
 
-- [x] Leitura e validação do memo direcionado
-- [x] Criação de narrative.md (tese, arco 4 atos, âncora, público)
-- [x] Criação de evidence-db.md (dados Musini 2025 abstract, referências por função)
-- [x] Criação de blueprint.md (15 slides com assertion, função, risco cognitivo)
-- [x] Criação de reading-list.md (pre-reading residente + trilha professor)
-- [x] Atualização de metanalise-scope.md (supersede versão enciclopédica)
-- [x] Atualização de CLAUDE.md local (alinhado com novo escopo)
-- [x] metanalise.css (CSS base: tokens, título, hook, assertion, source-tag, GSAP failsafe)
-- [x] slides/00-title.html (Do diamante à decisão + 3 pilares)
-- [x] slides/01-hook.html (hook: O diamante diz que funciona. Você confia?)
-- [x] index.html migrado de Reveal.js para deck.js + engine.js
-- [x] Removidos placeholders stage-b/c (obsoletos)
-- [x] Hook redesenhado como 2-beat interativo (countUp + verdict)
-- [x] Título com stagger nos pilares
-- [x] CSS fadeUp com translateY real
-- [x] Validação visual em localhost
-- [x] Batch 4: slides 02–05 (Ato 1: RS vs MA, âncora, PICO, abstract)
-- [x] metanalise.css: 4 layouts (compare, anchor-card, pico-grid, pipeline-flow)
-- [x] index.html synced com 6 slides
+- [x] Narrativa reestruturada (v1): 3 fases + 2 interações
+- [x] Docs fundacionais: narrative.md, evidence-db.md, blueprint.md, reading-list.md
+- [x] metanalise.css: tokens, layouts (compare, pico-grid, pipeline-flow, anatomy-grid, concept-card, grade-stack, scope-layout, contrato-grid, checkpoint-layout)
+- [x] 00-title.html — "Meta-análise: Leitura crítica para decisão clínica" + 3 pilares
+- [x] **01-hook.html — REESCRITO (2026-03-13):** 2-beat state machine, 3 countUp (80/dia, 88%, 8.5%), 4 PMIDs tier 1
+- [x] **02-contrato.html — NOVO (2026-03-13):** 3 cards framework + scope footer. Absorveu 01-objectives.html
+- [x] **03-checkpoint-1.html — NOVO (2026-03-13):** cenário MA ilustrativo → "Você muda?" → twist (PICO, comparador, dano)
+- [x] 03-rs-vs-ma.html → posição 04 — RS vs MA (compare layout)
+- [x] 04-pico.html → posição 05 — PICO grid generalizado
+- [x] 05-abstract.html → posição 06 — pipeline PRISMA
+- [x] 06-forest-plot.html → posição 07 — anatomia 5 elementos
+- [x] 07-benefit-harm.html → posição 08 — benefício vs dano
+- [x] 08-grade.html → posição 09 — 4 níveis de certeza
+- [x] 09-heterogeneity.html → posição 10 — I² concept card
+- [x] 10-fixed-random.html → posição 11 — FE vs RE compare
+- [x] **h2 rewrite (2026-03-13):** 9 headlines trocados de framing retórico → assertions técnicas verificáveis
+- [x] **CSS fix (2026-03-13):** removido stage-c, slides renderizando corretamente
+- [x] index.html migrado para deck.js + engine.js (sem Reveal.js)
+- [x] **evidence-db.md v2 (2026-03-13):** 12 refs tier 1 em 4 eixos (volume, qualidade, guidelines, competência)
+- [x] **index.html reescrito (2026-03-13):** 12 slides na ordem final do blueprint v1.1
 
-## Caminho crítico — próximos batches
+## Decisões tomadas
 
-### Batch 5 (próximo)
-- Slides 06–08 (Ato 2: forest plot, benefício, dano)
-- Decisão sobre forest plot: placeholder vs real
+| Decisão | Razão |
+|---------|-------|
+| Artigo âncora = [TBD] | Primeiro importância, depois método, depois artigo. Musini é candidato, não decisão |
+| 3 fases + 2 interações | Retrieval practice entre blocos |
+| h2 = assertion técnica | Cirrose usa claims verificáveis; metanalise deve seguir mesmo padrão |
+| Fase 3 bloqueada até artigo definido | Slides 13-17 dependem da escolha |
+| Forest plots = imagens cropadas | NUNCA SVG construído do zero |
+| 01-objectives absorvido por 02-contrato | Evita redundância; contrato é mais forte pedagogicamente |
+| Hook generalizado (sem Musini) | Importância de MA > artigo específico. 4 PMIDs tier 1 sustentam o argumento |
 
-### Batch 6
-- Slides 09–11 (Ato 3: GRADE, heterogeneidade, fixed/random)
+## Caminho crítico — próximas sessões
 
-### Batch 7
-- Slides 12–14 (Ato 4: aplicabilidade, efeito absoluto, take-home)
+### Sessão N+1 (próxima)
+1. Adicionar refs novas ao Notion (References DB) — 12 PMIDs da evidence-db v2
+2. QA visual dos 12 slides (h2 comprimento em 1280×720, contraste, fill ratio)
+3. Criar checkpoint-2 (slide 12 — consolidação pré-Fase 3)
+
+### Sessão N+2
+- Definir artigo âncora com Lucas
+- Iniciar Fase 3 (slides 13-17)
+
+### Sessão N+3
+- Fase 3 completa + QA final
+- Take-home slide (17)
 
 ## Bloqueios conhecidos
 
 | Bloqueio | Impacto | Workaround |
 |----------|---------|------------|
-| Full-text Musini indisponível até 2026-10-09 | Sem forest plot real, sem NNT | Usar dados do abstract; placeholder |
-| JAMA Users' Guides acesso institucional | Pode não estar disponível para residentes | Manter como good-to-read |
+| Artigo âncora não definido | Fase 3 inteira bloqueada (slides 13-17) | Avançar QA e checkpoint-2 independentemente |
+| Full-text Musini indisponível até 2026-10-09 | Sem forest plot real, sem NNT | Se Musini escolhido: usar abstract |
+| 01-objectives.html orphan | Arquivo existe mas não está no index.html | Deletar após confirmar que contrato cobre tudo |
+
+## Pendências para main (Classe B — não editar na WT)
+
+- **lint-slides.js false positive:** `scripts/lint-slides.js:110` — `data-animate="countUp"` sem `data-target` não pula `<script>` blocks. 2 false positives no index.html built.
 
 ## Não fazer ainda
 
-- Não criar _manifest.js (precisa de slides primeiro)
+- Não criar _manifest.js (precisa de slides finais)
 - Não tocar em Cirrose
 - Não expandir para NMA, IPD, bayesiana
+- Não construir slides da Fase 3 antes de definir artigo
 
 ---
 
-## Última atualização: 2026-03-12
+## Última atualização: 2026-03-13

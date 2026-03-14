@@ -3,6 +3,15 @@
    Depends: ../../shared/css/base.css (tokens)
    ============================================ */
 
+/* 720p projection scale bumps (cherry-picked from stage-c) */
+#deck {
+  --text-h2:      clamp(32px, 2.4vw, 42px);
+  --text-h3:      clamp(22px, 1.6vw, 30px);
+  --text-body:    clamp(20px, 1.25vw, 26px);
+  --text-small:   clamp(16px, 1.0vw, 20px);
+  --text-caption: clamp(14px, 0.85vw, 15px);
+}
+
 /* --- Slide padding (consistent with cirrose) --- */
 #slide-viewport > section .slide-inner {
   padding: 40px 64px;
@@ -120,23 +129,6 @@
   color: var(--text-on-dark-muted);
   margin-top: var(--space-md);
   max-width: 40ch;
-}
-
-/* --- GSAP failsafe: animated elements start hidden + offset, .no-js forces visible --- */
-[data-animate] {
-  opacity: 0;
-}
-[data-animate="fadeUp"] {
-  transform: translateY(20px);
-}
-[data-animate="stagger"] > * {
-  opacity: 0;
-  transform: translateY(12px);
-}
-.no-js [data-animate],
-.no-js [data-animate="stagger"] > * {
-  opacity: 1 !important;
-  transform: none !important;
 }
 
 /* --- Hook: 2-beat state machine --- */
@@ -384,5 +376,292 @@
   flex-shrink: 0;
 }
 
-/* --- Stage-C defaults (Plan C: light, 1280x720, GSAP ativo) --- */
-/* Nothing extra needed yet — base.css handles stage-c tokens. */
+/* --- Scope layout (objectives: enters / doesn't enter) --- */
+.scope-layout {
+  display: flex;
+  gap: var(--space-lg);
+  flex: 1;
+  align-items: flex-start;
+}
+.scope-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.scope-label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border-navy);
+}
+.scope-item {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  line-height: 1.4;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-sm);
+}
+.scope-out .scope-item {
+  color: var(--text-on-dark-muted);
+  background: transparent;
+  border: 1px solid var(--border-navy);
+}
+
+/* --- Anatomy grid (forest plot components) --- */
+.anatomy-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+  justify-content: center;
+}
+.anatomy-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-sm);
+}
+.anatomy-symbol {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  color: var(--ui-accent-on-dark);
+  min-width: 3ch;
+  text-align: center;
+  line-height: 1;
+}
+.anatomy-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.anatomy-name {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  font-weight: 500;
+}
+.anatomy-what {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+}
+
+/* --- GRADE stack (certainty levels) --- */
+.grade-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+  justify-content: center;
+}
+.grade-level {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--bg-navy-mid);
+}
+.grade-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  min-width: 10ch;
+}
+.grade-meaning {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  line-height: 1.3;
+}
+.grade-high { border-left: 4px solid var(--safe-on-dark); }
+.grade-high .grade-label { color: var(--safe-on-dark); }
+.grade-moderate { border-left: 4px solid var(--warning-on-dark); }
+.grade-moderate .grade-label { color: var(--warning-on-dark); }
+.grade-low { border-left: 4px solid var(--danger-on-dark); }
+.grade-low .grade-label { color: var(--danger-on-dark); }
+.grade-very-low { border-left: 4px solid var(--text-on-dark-muted); }
+.grade-very-low .grade-label { color: var(--text-on-dark-muted); }
+
+/* --- Concept card (heterogeneity, general concepts) --- */
+.concept-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.concept-highlight {
+  font-family: var(--font-mono);
+  font-size: var(--text-hero);
+  color: var(--ui-accent-on-dark);
+  text-align: center;
+  line-height: 1;
+}
+.concept-definition {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark);
+  text-align: center;
+  max-width: 50ch;
+  line-height: 1.4;
+}
+.concept-question {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  color: var(--text-on-dark);
+  max-width: 50ch;
+  padding: var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--ui-accent-on-dark);
+  line-height: 1.35;
+}
+
+/* --- Semantic symbols (benefit/harm) --- */
+.symbol-safe { color: var(--safe-on-dark); }
+.symbol-danger { color: var(--danger-on-dark); }
+
+/* --- Contrato layout (3 cards + scope footer) --- */
+.contrato-grid {
+  display: flex;
+  gap: var(--space-md);
+  flex: 1;
+  align-items: stretch;
+}
+.contrato-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.contrato-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-hero);
+  color: var(--ui-accent-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.contrato-question {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  color: var(--text-on-dark);
+  line-height: 1.2;
+}
+.contrato-skill {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+}
+.contrato-scope {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+  text-align: center;
+  margin-top: var(--space-md);
+  max-width: 60ch;
+  align-self: center;
+}
+
+/* --- Checkpoint layout (scenario + question + reveal) --- */
+.checkpoint-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: var(--space-md);
+  text-align: center;
+}
+.checkpoint-scenario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.checkpoint-context {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-on-dark-muted);
+}
+.checkpoint-result {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.checkpoint-metric {
+  font-family: var(--font-mono);
+  font-size: var(--text-hero);
+  color: var(--text-on-dark);
+  font-weight: 600;
+  line-height: 1;
+}
+.checkpoint-ci {
+  font-family: var(--font-mono);
+  font-size: var(--text-h3);
+  color: var(--text-on-dark-muted);
+}
+.checkpoint-grade {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--safe-on-dark);
+  font-weight: 500;
+}
+.checkpoint-outcome {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  color: var(--text-on-dark);
+}
+.checkpoint-question {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-style: italic;
+  color: var(--text-on-dark);
+  margin-top: var(--space-md);
+  max-width: 20ch;
+  line-height: 1.2;
+}
+.checkpoint-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--bg-navy-mid);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--warning-on-dark);
+  max-width: 50ch;
+}
+.checkpoint-twist {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--warning-on-dark);
+  line-height: 1.3;
+}
+.checkpoint-teaser {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--text-on-dark-muted);
+}
+/* .no-js fallback for checkpoint */
+.no-js .checkpoint-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}

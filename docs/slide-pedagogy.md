@@ -165,10 +165,137 @@ Para cada slide do Bloco 1:
 
 ---
 
+## 8. Quatro Pilares Práticos — Com Exemplos e Take-Homes
+
+> Síntese operacional das 7 teorias acima em 4 regras acionáveis.
+> Cada pilar tem: por que importa (evidência), exemplo ruim vs bom, e take-home.
+
+### Pilar 1: O título é a mensagem, não o tópico (Assertion-Evidence)
+
+**Por que importa:**
+- Wolfe 2024 — assertion-evidence funciona inclusive para experts (não só novatos)
+- Garner & Alley 2013 — slides AE produzem menos misconceptions que slides tradicionais
+
+**Exemplo:**
+
+| Ruim | Bom |
+|------|-----|
+| "Resultados" | "Tratar HAS em >=60a reduz mortalidade total em 9%" |
+| "Heterogeneidade" | "I² alto não invalida a MA — a pergunta é se a variação é explicável" |
+
+**Como cria importância:** se alguém ler só o h2, sabe o que o slide prova. O título faz o trabalho cognitivo pesado.
+
+**Take-home:** Escreva o título como a única coisa que a audiência vai lembrar.
+
+### Pilar 2: Mostrar, não listar (Dual Coding + Multimedia)
+
+**Por que importa:**
+- Hales 2017 — fração de imagem no slide prediz avaliação positiva em CME
+- Noetel et al. 2022 — meta-análise (g=0.51): visual > texto puro em educação
+
+**Exemplo:**
+
+| Ruim | Bom |
+|------|-----|
+| Lista texto: "RR mortalidade 0.91, RR CV 0.72, RR AVC 0.66" | Metric cards com cor semântica por desfecho |
+| Tabela de números sem destaque | Forest plot com highlight na linha-chave (Von Restorff) |
+
+**Como cria importância:** imagem + palavra por canais diferentes = dual coding (Paivio). O visual não é decoração — é o segundo canal de processamento.
+
+**Take-home:** Todo slide precisa de 1 visual informacional. Reduzir texto não basta — ADICIONAR visual muda a avaliação.
+
+### Pilar 3: Perguntar antes de responder (Retrieval Practice + Andragogia)
+
+**Por que importa:**
+- Agarwal et al. 2021 — retrieval practice beneficia aprendizagem em 43 de 63 experimentos
+- Adultos aprendem resolvendo problemas, não recebendo informação passivamente (Knowles 1984)
+
+**Exemplo:**
+
+| Ruim | Bom |
+|------|-----|
+| Mostrar resultado, perguntar "entenderam?" | Checkpoint: "Você mudaria sua conduta?" PAUSA. Revelar resultado |
+| Resposta primeiro, pergunta depois | Luta cognitiva primeiro, resolução depois |
+
+**Como cria importância:** a luta cognitiva fixa conhecimento. Resposta só vale depois que o aluno tentou.
+
+**Take-home:** A cada ~10 min, PARE e faça a audiência trabalhar.
+
+### Pilar 4: Um conceito por slide, revelado na hora certa (CLT + Segmentação)
+
+**Por que importa:**
+- Meta-análise tem alta interatividade de elementos (Sweller) — conceitos dependem uns dos outros
+- Médicos em congresso estão fatigados — capacidade de processamento reduzida
+
+**Exemplo:**
+
+| Ruim | Bom |
+|------|-----|
+| Forest plot inteiro de uma vez (20+ quadrados, diamante, IC, pesos) | Reveal progressivo: pergunta, quadrados, diamante |
+| Slide com PICO + resultados + GRADE no mesmo frame | PICO num slide, resultados no próximo, GRADE no seguinte |
+
+**Take-home:** Se você precisa explicar um slide em mais de 60s, ele tem informação demais.
+
+---
+
+## 9. Benchmark Pedagógico 2024-2026
+
+> Validação empírica dos princípios acima. 23 referências em 3 tiers.
+> Mapeamento para nosso design system (tokens, patterns, critérios QA).
+
+### Tier 1 — Meta-análises e revisões sistemáticas de pedagogia
+
+| # | Referência | Achado-chave | Mapeia para |
+|---|-----------|-------------|-------------|
+| 1 | Noetel et al. 2022, Rev Educ Res | Visual em educação: g=0.51 vs texto | Pilar 2, Mayer Multimedia |
+| 2 | Agarwal et al. 2021, J Educ Psychol | Retrieval practice: benefício em 43/63 exp | Pilar 3, checkpoints |
+| 3 | Mayer 2009, Multimedia Learning 2nd ed | 12 princípios com meta-análises internas | Pilares 2+4 |
+| 4 | Sweller et al. 2019, Educ Psychol Rev | CLT atualizada — element interactivity | Pilar 4, <=4 elementos/slide |
+| 5 | Clark & Mayer 2016, e-Learning 4th ed | Princípios Mayer operacionalizados | Todo o design system |
+
+### Tier 2 — Estudos empíricos-chave
+
+| # | Referência | Achado-chave | Mapeia para |
+|---|-----------|-------------|-------------|
+| 6 | Garner & Alley 2013, Tech Comm Q | AE < misconceptions que slides tradicionais | Pilar 1, slide-editing.md |
+| 7 | Wolfe 2024 [VERIFICAR] | AE funciona para experts, não só novatos | Pilar 1, expertise-reversal |
+| 8 | Hales 2017 [VERIFICAR] | Image fraction prediz avaliação CME | Pilar 2, fill ratio |
+| 9 | Roediger & Butler 2011, Trends Cogn Sci | Testing effect: retrieval > re-study | Pilar 3, checkpoints |
+| 10 | Cowan 2001, Behav Brain Sci | Capacidade WM = 4+-1 chunks | Pilar 4, Chunking |
+| 11 | Kosslyn 2007, Clear and to the Point | 8 princípios cognitivos para slides | design-principles.md |
+| 12 | Sedgwick 2015, BMJ | Como ler forest plots | Slide forest plot |
+| 13 | Kalyuga et al. 2003, Educ Psychol | Expertise reversal effect | design-principles.md §2 |
+
+### Tier 3 — Fundacionais e teóricos
+
+| # | Referência | Contribuição | Mapeia para |
+|---|-----------|-------------|-------------|
+| 14 | Sweller 1988, Cogn Sci | CLT original — 3 tipos de carga | §1 deste documento |
+| 15 | Paivio 1986, Mental Representations | Dual coding theory | Pilar 2 |
+| 16 | Knowles 1984, The Adult Learner | 6 princípios da andragogia | §4, Pilar 3 |
+| 17 | Miller 1990, Acad Med | Pirâmide de competência | §5 |
+| 18 | Alley et al. 2006, Tech Comm | Assertion-evidence original | §3, Pilar 1 |
+| 19 | Duarte 2010, Resonate | Sparkline narrativa | §7 |
+| 20 | Tufte 2001, Visual Display | Data-ink ratio, lie factor | design-principles.md §22-27 |
+| 21 | Meyer & Land 2003, Improving Student Learning | Threshold concepts | §6 |
+| 22 | Von Restorff 1933 | Isolation effect | design-principles.md §6 |
+| 23 | Ebbinghaus 1885, Memory | Primacy-recency | design-principles.md §15 |
+
+### Mapeamento Design System
+
+| Pilar | Token/Pattern no nosso sistema | Critério QA |
+|-------|-------------------------------|-------------|
+| 1 — Assertion-Evidence | `<h2>` = assertion, slide-editing.md checklist | assertion-evidence >= 9 |
+| 2 — Visual dominante | fill ratio 65-90%, `data-animate`, metric cards | visual impact >= 9, density >= 9 |
+| 3 — Retrieval Practice | checkpoint slides, interactions entre fases | interactions >= 9 |
+| 4 — Segmentação | fragments, `data-animate="stagger"`, <=4 elementos | cognitive load >= 9 |
+
+---
+
 ## Resumo — Critérios Pedagógicos para qa-engineer
 
 | Critério | Teoria base | Nota 9 = |
 |----------|------------|----------|
-| **11. Carga Cognitiva** | Sweller CLT | ≤4 elementos, zero redundância, sinalização clara |
-| **12. Aprendizagem Adulto** | Knowles + Miller | Ancora em caso, tom de par, implica conduta |
-| **13. Arco Narrativo** | Duarte + Alley | Tensão presente, resolução = mensagem, encaixa na jornada |
+| **11. Carga Cognitiva** | Sweller CLT + Pilar 4 | <=4 elementos, zero redundância, sinalização clara, segmentação |
+| **12. Aprendizagem Adulto** | Knowles + Miller + Pilar 3 | Ancora em caso, tom de par, implica conduta, checkpoint ativo |
+| **13. Arco Narrativo** | Duarte + Alley + Pilar 1 | Tensão presente, resolução = mensagem, assertion no h2, encaixa na jornada |
