@@ -53,12 +53,18 @@ function checkHtml(file, content) {
   // Track context per line: are we inside <aside class="notes">? inside .appendix?
   let insideNotes = false;
   let insideAppendix = false;
+  let insideScript = false;
   let currentSectionHasNotes = false;
   let currentSectionStart = -1;
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const n = i + 1;
+
+    // Track script blocks (skip checks inside <script>)
+    if (/<script[\s>]/i.test(line)) insideScript = true;
+    if (/<\/script>/i.test(line)) { insideScript = false; continue; }
+    if (insideScript) continue;
 
     // Track section boundaries
     if (/<section[\s>]/i.test(line)) {

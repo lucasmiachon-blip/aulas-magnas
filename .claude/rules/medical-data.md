@@ -47,6 +47,21 @@ Hierarquia visual: **NNT > ARR > HR**
 
 ---
 
+## Verificação de PMIDs
+
+- **NUNCA usar PMID gerado por LLM sem verificação.** 5/5 PMIDs candidatos de modelos estavam errados (sessão 09/mar).
+- Todo PMID deve ser verificado via PubMed MCP ou WebSearch (`pubmed.ncbi.nlm.nih.gov/{PMID}`) antes de entrar em evidence-db ou slide.
+- Marcar como `[CANDIDATE]` até verificado. Nunca promover a verificado sem check.
+- Se PubMed MCP indisponível, WebSearch no domínio pubmed.ncbi.nlm.nih.gov é fallback aceitável.
+
+## População do Trial
+
+- Verificar POPULAÇÃO do trial antes de usar como hero number.
+- Prevenção primária ≠ secundária (ex: PREDESCI = 1ª, pós-HDA = 2ª).
+- Trial de uma população NÃO pode ser hero de slide com população diferente.
+
+---
+
 ## Trial Isolado vs Meta-Análise (E25)
 
 - **HR** vem de trial isolado (ex: CLEAR trial)

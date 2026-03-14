@@ -21,6 +21,8 @@
 | `repo-janitor` | Audita orphan files, broken MD links, dead HTML, temp files. READ-ONLY default | "limpar repo", "tem lixo?", "orphan files" |
 | `resolve-conflict` | Guia passo-a-passo para resolver conflitos git. PT-BR, aprovacao obrigatoria | "resolver conflito", "merge conflict" |
 | `gtd` | Getting Things Done simplificado — inbox, next actions, weekly review (lazy) | "gtd", "inbox", "o que tenho pendente?" |
+| `retro` | Extrai lições da sessão atual em tasks/lessons.md | "retro", "extract lessons", final de sessão |
+| `audit-rules` | Audita .claude/rules/*.md — contradições, refs stale, gaps vs ERROR-LOG | "auditar rules", "rules stale?", "audit-rules" |
 
 **Regra:** Cada skill tem um papel. Nenhum duplica função de outro.
 
