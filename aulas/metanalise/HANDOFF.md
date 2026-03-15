@@ -6,13 +6,14 @@
 
 ## Estado atual
 
-- **Fase:** Fases 1+2 completas + Interação 2 + slides 16-17. Faltam slides 13-15 (Fase 3 — artigo âncora TBD).
+- **Fase:** Fases 1+2 completas + Interações 1+2 + slides 16-17. QA pass (conteúdo + visual + interações) feito. Faltam slides 13-15 (Fase 3 — artigo âncora TBD).
 - **Branch:** feat/metanalise-mvp (worktree wt-metanalise)
 - **Slides no index.html:** 15 (00-title → 01-hook → 02-contrato → 03-checkpoint-1 → 04-rs-vs-ma → 05-pico → 06-abstract → 07-forest-plot → 08-benefit-harm → 09-grade → 10-heterogeneity → 11-fixed-random → 12-checkpoint-2 → [13-15 TBD] → 16-absoluto → 17-takehome)
 - **Slides planejados:** 18 (00-17) — ver blueprint.md v1.4
-- **Docs fundacionais:** narrative.md (v2), evidence-db.md (v3 — 12+ refs), blueprint.md (v1.4), reading-list.md
+- **Docs fundacionais:** narrative.md (v2), evidence-db.md (v3.2 — 13+ refs), blueprint.md (v1.5), reading-list.md
 - **Vite dev:** port 3032
-- **Orphan slides:** 0 (01-objectives, 02-rs-vs-ma, 03-ancora deletados em 2026-03-13)
+- **slide-registry.js:** CRIADO — state machines para hook (2-beat), checkpoint-1 (3-beat), checkpoint-2 (4-beat)
+- **Orphan slides:** 0
 
 ## O que foi feito
 
@@ -81,11 +82,11 @@
 
 | Bloqueio | Impacto | Workaround |
 |----------|---------|------------|
-| Artigo âncora não definido | Slides 13-15 bloqueados (Fase 3) | ✅ Candidatos compilados (blueprint v1.4). Lucas decide |
+| Artigo âncora não definido | Slides 13-15 bloqueados (Fase 3) | ✅ Candidatos compilados (blueprint v1.5). Lucas decide |
 | Full-text Musini indisponível até 2026-10-09 | Sem forest plot real, sem NNT | Se Musini escolhido: usar abstract. Alternativas disponíveis |
 | HEX navy `#162032` vs canônico `#0d1a2d` | Inconsistência cross-aula | Decidir e aplicar batch replace |
-| PMIDs Consensus-sourced não verificados | 4 PMIDs (Zacharias, Aamann, AlSowaiegh, Saleh) pendentes PubMed check | Verificar antes de usar em slides |
-| Propostas narrativas Gemini pendentes | ✅ ABSORVIDAS em narrative.md v2 + blueprint.md v1.4 | Resolvido 2026-03-15 |
+| PMIDs Consensus-sourced não verificados | 3 PMIDs (Aamann, AlSowaiegh, Saleh) pendentes PubMed check | ✅ Zacharias verificado (37467180). Restantes verificar antes de usar |
+| Propostas narrativas Gemini pendentes | ✅ ABSORVIDAS | Resolvido 2026-03-15 |
 
 ## Pendências para main (Classe B — não editar na WT)
 
@@ -147,4 +148,29 @@
 
 ---
 
-## Última atualização: 2026-03-15 (housekeeping: push, rename 03→04-rs-vs-ma, evidence-db header TBD)
+## Sessão 2026-03-15b — QA pass (conteúdo + visual + interações + refs)
+
+### O que foi feito
+- [x] Housekeeping: rename 03→04-rs-vs-ma, evidence-db header "Candidato a Âncora", HANDOFF timestamp
+- [x] **Contrato (02) alinhado com narrative v2 + takehome (17):** perguntas idênticas nos dois extremos do arco narrativo
+- [x] **Checkpoint-1 (03) source-tag genericizado:** removida ref a Musini (regra: nenhum artigo antes Fase 3)
+- [x] **GRADE (09) ícones daltonismo:** ✓ ○ ⚠ ✕ adicionados ao HTML (CSS já existia)
+- [x] **Checkpoint-2 (12) inline style → CSS class:** `.checkpoint-grade--low` em vez de `style=`
+- [x] **slide-registry.js CRIADO:** state machines para hook (2-beat click), checkpoint-1 (3-beat click), checkpoint-2 (4-beat click)
+- [x] **CSS:** `.checkpoint--hidden` (initial state), `.checkpoint-grade--low`, print/no-js fallbacks
+- [x] PICO (04) notes alinhado com Q1 reformulada
+- [x] Fixed-random (10) transition note especificado
+- [x] Title (00) notes "objetivos" → "hook" (standalone sync)
+- [x] **Refs verificadas:** Zacharias PMID 37467180 ✅, Higgins & Lopez-Lopez 2025 (I² reflections) encontrado e registrado
+- [x] Blueprint v1.5: Zacharias PMID atualizado
+- [x] Evidence-db v3.2: Higgins 2025 adicionado como ref metodológica
+- [x] Descoberto: `aulas/*/index.html` está no `.gitignore` — standalones em `slides/` são o source of truth no Git
+
+### O que NÃO foi feito (deliberado)
+- Slides 13-15 (Fase 3) — artigo âncora TBD (Lucas decide)
+- _manifest.js — precisa de slides finais
+- QA visual com Vite aberto (screenshots, projetor) — próxima sessão
+
+---
+
+## Última atualização: 2026-03-15 (QA pass: contrato/takehome align, state machines, refs, CSS)

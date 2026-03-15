@@ -62,4 +62,4 @@ reading-list.md (paralelo, informa pre-reading)
 
 ## Status
 
-**15 slides ativos (Fases 1+2 + Interação 2 + slides 16-17). Faltam slides 13-15 (Fase 3 — artigo âncora TBD). Docs atualizados: narrative v2, blueprint v1.4, Gemini absorvidas. Notion synced.**
+**15 slides ativos (Fases 1+2 + Interações 1+2 + slides 16-17). QA pass feito (conteúdo, visual, interações, refs). slide-registry.js criado (state machines para hook + checkpoints). Faltam slides 13-15 (Fase 3 — artigo âncora TBD). Docs: narrative v2, blueprint v1.5, evidence-db v3.2.**

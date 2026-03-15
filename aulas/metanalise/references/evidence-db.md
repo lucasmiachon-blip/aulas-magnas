@@ -220,6 +220,7 @@
 
 | Data | Mudança |
 |------|---------|
+| 2026-03-15 | v3.2 — Zacharias PMID verificado (37467180 ✅). Higgins & Lopez-Lopez 2025 (I² reflections) adicionado. Header "Candidato a Âncora" (TBD) |
 | 2026-03-14 | v3.1 — Jeyaraj/Cochrane 2026 (ATB não-rifaximin para EH, PMID 41631546 ✅). Mostra dano |
 | 2026-03-14 | v3 — Refs metodológicas (Murad, Guyatt, Dettori). Candidatos âncora top 3 (Zacharias, Valgimigli). PMIDs verificados via PubMed MCP |
 | 2026-03-13 | v2 — QA pass: dados verificados nos slides, word count trimado. Nenhuma alteração de dados |

@@ -45,7 +45,7 @@
 - **Assertion:** "Ao final, 3 perguntas que você faz a toda MA antes de mudar sua conduta"
 - **Risco cognitivo:** residente não saber o que esperar → atenção dispersa
 - **Evidência:** —
-- **Status:** ✅ FEITO (02-contrato.html) — 3 cards (PICO, Forest+GRADE, Aplicabilidade) + scope footer. Absorveu conteúdo de 01-objectives.html
+- **Status:** ✅ FEITO (02-contrato.html) — 3 cards reformulados: "Posso confiar na síntese?" / "Qual o efeito — e qual o dano?" / "O que isso significa para meu paciente?" + scope footer. Absorveu 01-objectives.html. Alinhado com takehome (slide 17).
 
 ---
 
@@ -57,8 +57,8 @@
 - **Função:** provocar a audiência — expor viés de confiança no diamante
 - **Assertion:** "Uma MA mostra RR 0.91 (IC 0.85–0.97) para mortalidade. Você muda sua conduta?"
 - **Risco cognitivo:** residente achar que já sabe ler MA → não engajar na metodologia
-- **Evidência:** dados ilustrativos baseados em Musini et al. Cochrane 2025 — sinalizado como didático
-- **Status:** ✅ FEITO (03-checkpoint-1.html) — reveal progressivo: cenário → pergunta → twist
+- **Evidência:** dados ilustrativos genéricos — cenário didático (Musini removido do visible text; regra: nenhum artigo antes Fase 3)
+- **Status:** ✅ FEITO (03-checkpoint-1.html) — state machine 3-beat: cenário → pergunta → twist (via slide-registry.js)
 - **Nota:** a maioria dirá sim. A aula vai mostrar por que a resposta não é tão simples.
 
 ---
@@ -148,7 +148,7 @@
 - **Assertion:** "RR 0.75 (IC 0.60–0.93), I²=72%, certeza GRADE baixa — o diamante favorece. Você muda sua conduta?"
 - **Risco cognitivo:** confiar no diamante sem avaliar certeza e efeito absoluto
 - **Evidência:** dados ilustrativos/didáticos (NÃO de artigo real — sinalizar claramente)
-- **Status:** A CRIAR (interativo — pausa + reveal progressivo)
+- **Status:** ✅ FEITO (12-checkpoint-2.html) — state machine 4-beat: cenário+pergunta → ✓safe → ⚠warning+✕danger → verdict (via slide-registry.js)
 - **Twist:** diamante favorece tratamento (IC não cruza 1) MAS I²=72% + GRADE baixa + efeito absoluto pequeno (ARR ~1,25%, NNT ~80 com baseline risk 5%) → "provavelmente NÃO muda conduta"
 - **Arco com CP1:** no checkpoint-1 a maioria disse "sim" (RR 0.91, IC significativo). Aqui, mesmo com RR mais impressionante (0.75), a resposta correta é "não" — crescimento do residente.
 
@@ -190,19 +190,19 @@
 
 - **Fase:** 3
 - **Função:** converter RR em NNT / efeito absoluto legível
-- **Assertion:** "RR de 0.91 em mortalidade pode significar coisas muito diferentes dependendo do risco basal do seu paciente"
+- **Assertion:** "Mesmo RR pode significar NNT 25 ou NNT 250 — sem risco basal, efeito relativo não informa decisão"
 - **Risco cognitivo:** tomar decisão clínica com efeito relativo sem baseline risk
-- **Evidência:** Cochrane Handbook cap. 15 + [ARTIGO TBD]
-- **Status:** NOVO
+- **Evidência:** Cochrane Handbook v6.5, cap. 15 — dados ilustrativos
+- **Status:** ✅ FEITO (16-absoluto.html) — conversion layout: RR 0.80 → NNT 25 (baseline 20%) vs NNT 250 (baseline 2%)
 
 ### Slide 17 — Take-home
 
 - **Fase:** 3
 - **Função:** fechamento — as 3 perguntas que o residente leva
-- **Assertion:** "Três perguntas: posso confiar na síntese? qual o efeito e quão certa é a evidência? o que isso significa para meu paciente?"
+- **Assertion:** "Três perguntas que você faz a toda MA antes de mudar sua conduta"
 - **Risco cognitivo:** sair da aula sem framework operacional reutilizável
-- **Evidência:** síntese narrativa
-- **Status:** A CRIAR (independe do artigo âncora)
+- **Evidência:** síntese narrativa — Cochrane Handbook, PRISMA 2020, GRADE
+- **Status:** ✅ FEITO (17-takehome.html) — 3 takehome cards com perguntas reformuladas, alinhado com contrato (slide 02)
 
 ---
 
@@ -225,6 +225,9 @@
 | 09-heterogeneity.html | — | Slide 10 (Fase 2) | NOVO | ✅ QA pass |
 | 10-fixed-random.html | — | Slide 11 (Fase 2) | NOVO | ✅ QA pass |
 | ~~03-ancora.html~~ | Slide 03 (v0) | — | Musini-specific, Fase 3 bloqueada | ✅ Deletado |
+| 12-checkpoint-2.html | — | Slide 12 (Interação 2) | NOVO | ✅ Criado + QA + state machine |
+| 16-absoluto.html | — | Slide 16 (Fase 3) | NOVO | ✅ Criado + QA |
+| 17-takehome.html | — | Slide 17 (Fase 3) | NOVO | ✅ Criado + QA |
 
 ---
 
@@ -232,7 +235,7 @@
 
 > Compilado 2026-03-14. Fontes: 3 dossiês Gemini + PubMed MCP + Consensus MCP.
 > PMIDs marcados ✅ = verificados via PubMed. Sem ✅ = Consensus-sourced, verificar antes de usar.
-> Lucas escolhe amanhã (2026-03-15). NÃO implementar slides até decisão.
+> Decisão do Lucas pendente. NÃO implementar slides 13-15 até decisão.
 
 ### Critérios ideais para a aula
 
@@ -315,4 +318,4 @@
 
 ---
 
-## Status: BLUEPRINT v1.4 — Fases 1+2 completas (12 slides). Convergências Gemini absorvidas. CP2 recalibrado (falso positivo). Take-home reformulado. Candidatos Fase 3 compilados (3S+7A+6B). Artigo âncora: pendente.
+## Status: BLUEPRINT v1.5 — 15 slides ativos (Fases 1+2, Interações 1+2, slides 16-17). QA pass completo. State machines (hook, CP1, CP2). Contrato/takehome alinhados. Refs verificadas. Faltam: slides 13-15 (Fase 3 — artigo âncora pendente).
