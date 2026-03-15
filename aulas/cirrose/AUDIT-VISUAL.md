@@ -91,6 +91,290 @@ Gemini so sugere (JSON spec) — Opus executa fix.
 
 ---
 
+## Act 1 — QA Loop 1 Baseline (14/mar/2026)
+
+**Status: BASELINE (nenhum slide PASS)**
+Agente: Claude Code (Opus) · Sessao: 14/mar/2026
+Metodo: Playwright Chromium headless 1280x720 · `scripts/act1-reaudit.mjs` (25 screenshots, 11 slides)
+Lints: lint:slides PASS · lint:case-sync PASS · lint:narrative-sync PASS
+Evidencia: HTML source code + Playwright metrics (fill ratio, word count, h2 lines, panel overlap, source-tag)
+Screenshots: `aulas/cirrose/qa-screenshots/act1-reaudit/` (25 PNGs)
+
+### s-title (00-title.html)
+
+**Headline:** Cirrose Hepatica (h1, nao h2 — archetype title)
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 7    | h1 hero presente. Fill 12% = canvas vazio. Sem F-pattern (title slide) |
+| T   | 8    | Classes .title-hero e .title-pillars. Escala aparentemente correta |
+| E   | 4    | Fill 12%. Titulo intencionalmente esparso mas muito abaixo do limiar 50% |
+| C   | 8    | #162032 em data-background-color (excecao documentada). var() no CSS. Contraste ~15:1 |
+| V   | 5    | Texto + brasao apenas. Sem visualizacao de dados (esperado para title) |
+| K   | 8    | Archetype title consistente com design system |
+| S   | 7    | Limpo. Sem source-tag (esperado). OKLCH tokens |
+| M   | 5    | h1 = rotulo de topico "Cirrose Hepatica", nao assercao clinica. Archetype title |
+| I   | 9    | Sem interacoes necessarias. Sem JS |
+| D   | 9    | Sem dados clinicos necessarios. Sem [TBD] |
+| A   | 8    | aria-hidden em dots decorativos. Alt text no brasao. Alto contraste |
+| L   | 9    | Conceito unico. 17 palavras. Zero extraneous |
+| P   | 6    | Sem decisao clinica. Apenas contexto |
+| N   | 7    | Ancora identidade visual. tensionLevel=0. Nao narrativeCritical |
+
+Obs: (1) Fill 12% e critico pela rubrica mas intencional para title. (2) Panel overlap detectado (cosmetic, title nao tem panel content). (3) h1 em vez de h2 e correto para archetype-title. (4) 4 console 404s detectados (assets missing, nao-bloqueante).
+
+### s-hook (01-hook.html)
+
+**Headline:** Caso Antonio - Qual sua conduta? (sem h2 — archetype hook customizado)
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 6    | Labs grid e ancora visual pos-GSAP. Fill 0% beat 0. Sem h2 hero. GSAP-dependente |
+| T   | 7    | .hook-lab-value sizing consistente. Sem hero typography visivel inicialmente |
+| E   | 4    | Fill 0% beat 0. Melhora pos-GSAP mas render inicial e vazio |
+| C   | 8    | #162032 (documentado). Vars escopadas. Lab flag cores. Alto contraste |
+| V   | 7    | Labs grid E evidencia visual. 6 lab values como cards de dados |
+| K   | 6    | Archetype customizado. Nao reutilizado em nenhum outro slide |
+| S   | 8    | GSAP stagger. Vars customizadas escopadas a #s-hook. OKLCH |
+| M   | 6    | Sem h2 assercao. "Qual sua conduta?" e pergunta diretora. 48 palavras com bio+labs |
+| I   | 8    | 1 clickReveal. Advance+retreat OK. ERRO-033 corrigido |
+| D   | 8    | Dados do paciente conferem com CASE.md. Sem claims de evidencia aqui |
+| A   | 7    | Alto contraste. Sem aria-labels explicitos nos labs. Tab order implicito |
+| L   | 7    | 2 conceitos (paciente + pergunta). 6 labs = leitura clinica natural |
+| P   | 8    | Caso clinico relevante. Prompt de decisao. Ancora no caso |
+| N   | 8    | Inciting incident. tensionLevel=3. narrativeCritical=true |
+
+Obs: (1) Fill 0% no beat 0 e risco P1 — se GSAP falhar, slide fica vazio. (2) .stage-bad failsafe nao testado para este slide. (3) h3 em vez de h2 e design choice do hook, nao violacao. (4) Beat 1 pode clipar a 720p (R6 historico).
+
+### s-a1-01 (02-a1-continuum.html)
+
+**Headline:** Rastreio na atencao primaria detecta hepatopatia antes da descompensacao
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 7    | Hero "83%" proeminente. Fill 52%, h2 2 linhas competem. Pathway adiciona estrutura |
+| T   | 7    | Numero hero grande. h2 2 linhas = headline denso. Escala OK |
+| E   | 6    | Fill 52% abaixo de 65% (limiar "Bom"). Grid funcional |
+| C   | 8    | var() tokens. Icones daltonismo (warning/check). Source-tag. Sem HEX no body |
+| V   | 8    | Hero stat "83%" + pathway 3-step. Dados = visual |
+| K   | 8    | archetype-hero-stat reutilizado. Patient-context bar pattern |
+| S   | 8    | Source-tag opacity:0 para GSAP. OKLCH. Transitions |
+| M   | 7    | h2 E assercao. Mas 2 linhas. Word count total 106 (inclui source-tag opacity:0). Body visivel ~60 palavras |
+| I   | 8    | 1 clickReveal (source). Advance OK |
+| D   | 9    | 3 PMIDs verificados (38934697, 39674225, 35120736). [DATA] tags em notes. Zero [TBD] projetado |
+| A   | 8    | Icones warning/check com cor. Alto contraste. aria-hidden em setas |
+| L   | 7    | 2 conceitos (screening + pathway). 106 palavras total (com hidden). Denso |
+| P   | 8    | Relevancia do screening explicita. Pathway acionavel. Caso ancora |
+| N   | 8    | Setup role. tensionLevel=2. Headline confere com narrative.md |
+
+Obs: (1) h2 2 linhas e o headline mais longo do Act 1. (2) Fill 52% e o segundo mais baixo (pos title/hook). (3) Word count inclui source-tag opacity:0; body visivel e menor mas ainda >30 palavras. (4) 3 PMIDs Tier-1 = forte em D.
+
+### s-a1-classify (02c-a1-classify.html)
+
+**Headline:** Classificar antes da 1a descompensacao reduz eventos
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 8    | PREDESCI hero HR 0,51 dominante. 3 cards abaixo com hierarquia visual. h2 1 linha |
+| T   | 8    | Hero value countUp. Card text proporcional. h2 1 linha limpo |
+| E   | 8    | Fill 85% excelente. Grid equilibrado hero + cards |
+| C   | 8    | classify-card--safe/warning/danger = cores semanticas. Icones daltonismo. var() |
+| V   | 8    | Hero stat + 3 cards color-coded. D'Amico mortalidade por estagio visivel |
+| K   | 8    | archetype-hero-stat reutilizado. Padrao de cards consistente |
+| S   | 8    | Source-tag. CountUp. OKLCH. Stagger |
+| M   | 8    | h2 E assercao. Hero prova o claim. 1 linha. Body ~40 palavras visiveis |
+| I   | 8    | 1 clickReveal (source). CountUp animation |
+| D   | 9    | 3 PMIDs (30910320, 16298014, 37916970). HR com IC95%. [DATA] tags |
+| A   | 8    | Icones com cores semanticas. Alto contraste. Cards acessiveis |
+| L   | 7    | 2 conceitos (PREDESCI beneficio + 3-estagio mortalidade). 3 cards adicionam densidade |
+| P   | 9    | "Classificar importa" = decisao clinica. Cards mostram desfecho por estagio. Caso ancora (FIB-4 5,91) |
+| N   | 8    | Setup role. tensionLevel=2. Headline confere com narrative.md |
+
+Obs: (1) Melhor slide do Act 1 em equilibrio geral. (2) PREDESCI HR 0,51 com IC95% = ouro no dim D. (3) 3 cards sao chunking eficaz (Sweller). (4) Patient-context inclui FIB-4 highlight — ancora caso.
+
+### s-a1-vote (02d-a1-vote.html)
+
+**Headline:** Esse paciente tem cirrose?
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 7    | h2 claro. Vote options abaixo. FIB-4 hero no reveal. Fill 48% |
+| T   | 7    | Vote option text proporcional. Hero 5,91 no reveal |
+| E   | 6    | Fill 48% abaixo de 65%. Botoes + labs summary |
+| C   | 8    | vote-lab--success verde. var() tokens. Sem HEX no body |
+| V   | 6    | Mainly text-based (labs + botoes). FIB-4 hero no reveal adiciona punch |
+| K   | 7    | Archetype poll customizado. Usa hero-stat inner. Unico |
+| S   | 7    | CountUp no reveal. Sem source-tag (raciocinio clinico). OKLCH |
+| M   | 7    | h2 e pergunta diretora, nao assercao. Escolha pedagogica. 73 palavras |
+| I   | 9    | Vote buttons funcionam. ERRO-033 corrigido. stopPropagation. Retreat reseta |
+| D   | 8    | FIB-4 calc verificado em notes. Dados do paciente de CASE.md |
+| A   | 7    | Botoes nativos (teclado OK). Lab row labels OK. Cor para ALT normal |
+| L   | 8    | 1 conceito (ele tem cirrose?). Decisao binaria limpa. FIB-4 = punchline |
+| P   | 9    | Engaja audiencia diretamente. Decisao clinica. "Levante a mao" = adult learning |
+| N   | 8    | Poll eleva tensao. Constroi sobre hook. tensionLevel=2 |
+
+Obs: (1) Fill 48% e aceitavel para slide interativo (espaco para botoes). (2) I=9 e o mais alto do Act 1 — interacao bem testada (ERRO-033 fechado). (3) Vote reveal e moment de punchline eficaz. (4) Sem source-tag e correto — e raciocinio, nao evidencia.
+
+### s-a1-damico (02b-a1-damico.html)
+
+**Headline:** Do CTP ao D'Amico: prognostico passou de subjetivo a preditivo
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 6    | h2 2 linhas. 3 eras competem. Fill 196% = overflow. Sem hero unico dominante |
+| T   | 7    | Era badges, CTP classes, c-stat value. Escala OK mas denso |
+| E   | 4    | Fill 196% = overflow critico. Conteudo excede viewport |
+| C   | 8    | ctp-class--a/b/c + pathway-stage = semantico. 5 PMIDs. var() |
+| V   | 8    | CTP pills + MELD c-stat + D'Amico pathway (4 estagios). Rico visualmente |
+| K   | 7    | archetype-flow. Era track e padrao unico |
+| S   | 8    | Source-tag. CountUp c-stat. GSAP era transitions. ERRO-032 corrigido |
+| M   | 7    | h2 E assercao. Mas 2 linhas. 143 palavras = muito denso |
+| I   | 8    | 2 clickReveals (era 1 + era 2). State machine |
+| D   | 9    | 5 PMIDs verificados (4541913, 11172350, 16697729, 16298014, 37916970). Zero [TBD] |
+| A   | 7    | Icones semanticos. Conteudo denso pode prejudicar legibilidade a distancia |
+| L   | 5    | 3 conceitos (CTP + MELD + D'Amico) em 1 slide. 143 palavras. Carga cognitiva muito alta |
+| P   | 7    | Progressao historica relevante. Mas 3 eras = pesado. Conexao com decisao indireta |
+| N   | 8    | Setup role. tensionLevel=2. Headline confere com narrative.md |
+
+Obs: (1) **Fill 196% e o problema mais grave do Act 1** — conteudo ultrapassa canvas. (2) 3 conceitos em 1 slide viola principio de Sweller. (3) 5 PMIDs = nota maxima em D. (4) Candidato a split em 2 slides no batch de fixes. (5) h2 2 linhas agrava o overflow.
+
+### s-a1-baveno (03-a1-baveno.html)
+
+**Headline:** Doenca hepatica avancada e espectro, nao diagnostico binario
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 8    | Paradigm shift (old->new) e hero. Espectro cACLD/dACLD. Pathway 3-step |
+| T   | 8    | Paradigm terms proporcionais. AUROC badge. Step numbers claros |
+| E   | 7    | Fill 104%->87%. Ligeiro overflow inicial, managed. Grid OK |
+| C   | 8    | Cores por step (triagem/confirma/estadia). var() tokens |
+| V   | 8    | Espectro bar. SplitText dissolve. Pathway 3-step. Dados = visual |
+| K   | 8    | archetype-hero-stat. Pathway step pattern reutilizado |
+| S   | 8    | Source-tag. SplitText dissolve. OKLCH. GSAP transitions |
+| M   | 8    | h2 E assercao. 1 linha. 65 palavras. Claro |
+| I   | 8    | 2 clickReveals (pathway + source). Advance/retreat |
+| D   | 9    | 2 PMIDs (35120736, 38489521). AUROC 0,90 sourced. [DATA] tags |
+| A   | 8    | Step numbers (1/2/3) auxiliam navegacao. aria-hidden em setas |
+| L   | 8    | 2 conceitos (paradigma + pathway) bem chunked. 65 palavras |
+| P   | 8    | Paradigm shift relevante. Pathway acionavel. "Se nao biopsia — como?" |
+| N   | 8    | Setup role. tensionLevel=1. Headline confere com narrative.md |
+
+Obs: (1) Overflow leve no estado inicial (104%) resolve para 87% apos click. (2) SplitText dissolve e animacao de referencia. (3) Unico slide com tensionLevel=1 no Act 1 — pausa narrativa intencional. (4) "Rule of 5" mencionado no step 3 — callback forward.
+
+### s-a1-fib4 (03b-a1-fib4calc.html)
+
+**Headline:** 4 dados. 1 numero. 1 decisao.
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 8    | Formula block + 3 cutoff zones + hero 5,91. Hierarquia clara |
+| T   | 8    | Formula text claro. Cutoff values tabulares. Hero 5,91 grande |
+| E   | 8    | Fill 81%. Cutoff zones organizadas. Antonio inputs abaixo (click) |
+| C   | 8    | cutoff--safe/warning/danger. data-color="danger" no hero. Icones. var() |
+| V   | 8    | Formula + 3-zone visual + hero number. Dados = visual |
+| K   | 8    | archetype-hero-stat. Cutoff pattern coerente |
+| S   | 8    | Source-tag. CountUp. Input cards stagger. OKLCH |
+| M   | 7    | h2 e mnemonico ("4 dados. 1 numero. 1 decisao."), nao assercao clinica per rubrica |
+| I   | 8    | 2 clickReveals (Antonio + source). CountUp. Advance/retreat |
+| D   | 9    | PMID 16729309 + Baveno VII. FIB-4 calc verificado: (55x67)/(112x sqrt31)=5,91 |
+| A   | 8    | Icones com cores. fib4-input-card--trap destaca ALT. aria claro |
+| L   | 8    | 1 conceito (FIB-4). Formula + cutoffs sao suporte. 59 palavras |
+| P   | 9    | "1 decisao" = acionavel. Dados do caso alimentam formula. Clinicamente util |
+| N   | 8    | Setup role. tensionLevel=2. Headline confere com narrative.md |
+
+Obs: (1) h2 mnemonico e eficaz mas tecnicamente nao e assercao clinica per rubrica. (2) ALT normal trap highlight e excelente pedagogicamente (input-card--trap). (3) CountUp 0->5.91 e moment forte. (4) Fill 81% excelente.
+
+### s-a1-rule5 (03d-a1-rule5.html)
+
+**Headline:** A cada 5 kPa, muda o estagio e a conduta
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 8    | 5 zones dominam canvas. Antonio pin como focal point. Hierarquia clara |
+| T   | 8    | Zone ranges, labels, directives bem dimensionados. Pin label visivel |
+| E   | 8    | Fill 72->83%. 5 zones stacked. Antonio plot overlay limpo |
+| C   | 8    | 5-tier semantico (safe/gray/caution/danger/critical). Icones para daltonismo. var() |
+| V   | 9    | 5 zones = visual dominante. Antonio pin = data overlay personalizado. Melhor visual do Act 1 |
+| K   | 8    | archetype-flow. Zone pattern unico mas espacamento interno consistente |
+| S   | 8    | Source-tag. ScaleY zones. Pin bounce. Gray zone overlay. GSAP |
+| M   | 8    | h2 E assercao. 1 linha. 95 palavras (inclui zone labels). Visual prova o claim |
+| I   | 8    | 2 clickReveals (Antonio + source). Zone scaleY. Pin drop |
+| D   | 9    | 2 PMIDs (35120736, 38489521). Zone thresholds de Baveno VII. [DATA] tags |
+| A   | 8    | 5 icones distintos para daltonismo. Zone labels descritivos. Antonio data visivel |
+| L   | 8    | 1 conceito (estadiamento LSM). 5 zones sao chunks estruturados. Antonio ancora |
+| P   | 9    | Slide mais acionavel: "kPa -> estagio -> conduta". Arvore de decisao direta |
+| N   | 8    | Setup role. tensionLevel=2. Headline confere com narrative.md |
+
+Obs: (1) **Melhor slide do Act 1** — V=9 e o unico 9 de todo o arco. (2) Antonio pin com bounce e momento forte de personalizacao. (3) Comment no HTML: "SLIDE MAIS IMPORTANTE DO BLOCO 1". (4) Gray zone overlay (10-25 kPa) adiciona nuance clinica sem poluir. (5) Fill 72-83% e ideal.
+
+### s-a1-meld (04-a1-meld.html)
+
+**Headline:** MELD-Na: o GPS da fila
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 8    | 4 bandas semaforo dominam. Threshold line secundaria. h2 1 linha |
+| T   | 8    | MELD ranges, mortalidade %, acoes bem dimensionados. CSS dots |
+| E   | 8    | Fill 74->85%. Bandas stacked clean |
+| C   | 8    | meld-band--green/yellow/orange/red = 4-tier semantico. CSS dot cores. var() |
+| V   | 8    | Semaforo 4-bandas = visual dominante. Mortalidade % como dados |
+| K   | 8    | archetype-hero-stat. Semaforo internamente consistente |
+| S   | 8    | Source-tag. Band stagger. Threshold width transition. OKLCH |
+| M   | 7    | h2 "MELD-Na: o GPS da fila" = metafora, nao assercao clinica estrita. Eficaz mas borderline |
+| I   | 8    | 2 clickReveals (threshold + source). Band stagger. Width transition |
+| D   | 8    | 3 fontes (Kamath, Kim, UNOS). Mortalidade 90d sourced. Source-tag usa autor+ano sem PMID inline |
+| A   | 8    | 4 bandas com CSS dots (nao emoji). Acoes com icones. aria consistente |
+| L   | 8    | 1 conceito (MELD scoring). 4 bandas estruturadas. 61 palavras |
+| P   | 8    | Semaforo = arvore de decisao. "Quando encaminhar" = acionavel |
+| N   | 8    | Setup role. tensionLevel=2. Headline confere com narrative.md |
+
+Obs: (1) ERRO-030 corrigido (emoji -> CSS dots). (2) h2 metaforico e memoravel mas nao atende rubrica M estrita. (3) Mortalidade 90d por faixa e dado forte (Kim 2008 + UNOS). (4) Threshold line animation e polish sutil.
+
+### s-cp1 (07-cp1.html)
+
+**Headline:** LSM 21 kPa, plaquetas 112k. Como voce estadia?
+
+| Dim | Nota | Evidencia |
+|-----|------|-----------|
+| H   | 7    | Case data + 3 poll buttons + feedback. h2 1 linha. Layout equilibrado, sem hero visual dominante |
+| T   | 7    | Data values, button text. font-size:0.82rem inline style na pergunta |
+| E   | 8    | Fill 85%. Layout checkpoint 2-colunas (case + decision) |
+| C   | 8    | data-severity="caution" tematiza. var(--text-muted) para pergunta. Botoes styled |
+| V   | 7    | Case data como card. Poll buttons. Sem hero stat ou chart |
+| K   | 8    | archetype-checkpoint consistente com design system |
+| S   | 7    | Sem source-tag (checkpoint). Sem GSAP (JS inline poll). Sem transitions alem de click |
+| M   | 8    | h2 usa dados clinicos no headline ("LSM 21 kPa, plaquetas 112k. Como voce estadia?"). Eficaz |
+| I   | 8    | Poll buttons funcionam (click -> correct/wrong + feedback). Module JS inline |
+| D   | 9    | PREDESCI PMID no feedback. Valores conferem com CASE.md. Baveno VII citado. Zero [TBD] |
+| A   | 7    | Botoes nativos (teclado OK). Sem aria-label nos botoes. Inline style font-size |
+| L   | 8    | 1 conceito (o que fazer agora?). 3 choices chunked. Feedback conciso |
+| P   | 9    | Decisao clinica direta. "Qual conduta agora?" = core adult learning. Feedback explica porque |
+| N   | 9    | Checkpoint role. tensionLevel=3. narrativeCritical=true. Fecha loop Act 1 |
+
+Obs: (1) Unico slide com N=9 — checkpoint fecha o arco narrativo. (2) Inline style font-size:0.82rem viola preferencia por classes CSS. (3) Poll feedback cita PREDESCI e Baveno VII — forte em D. (4) 3 opcoes de conduta sao chunking ideal para decisao. (5) data-severity="caution" ativa painel amarelo.
+
+### Resumo de padres recorrentes
+
+**Dimensoes fortes (>=8 na maioria):**
+- **D (Dados clinicos):** 9 em 9/11 slides. PMIDs Tier-1 verificados. [DATA] tags em notes. Zero [TBD] projetado.
+- **C (Cor & Contraste):** 8 em 11/11. var() tokens. Cores semanticas. Icones daltonismo.
+- **K (Consistencia):** 8 em 9/11. Archetypes reutilizados. Excecoes: s-hook (custom) e s-a1-vote (poll).
+- **I (Interacoes):** 8-9 em 11/11. Todas interacoes testadas. ERRO-033 corrigido.
+- **N (Arco narrativo):** 8 em 10/11, 9 em s-cp1. Headlines conferem com narrative.md.
+
+**Dimensoes fracas (<7 em 2+ slides):**
+- **E (Espaco & Layout):** 4 em 3 slides (s-title=4, s-hook=4, s-a1-damico=4). Fill ratio critico: 12%, 0%, 196%.
+- **M (Comunicacao):** 5-6 em 3 slides (s-title=5, s-hook=6, s-a1-vote=7). h2 ausente ou nao-assertivo.
+- **L (Carga cognitiva):** 5 em s-a1-damico (3 conceitos, 143 palavras). 7 em 4 slides.
+
+**Gargalo principal:** E (fill ratio) — 3 slides FAIL. Sem fix em HTML/CSS, esses scores nao mudam.
+**Segundo gargalo:** M (comunicacao) — 3 slides com headline nao-assertivo (title, hook, vote sao archetypes especiais; fib4/meld sao mnemonicos).
+**Terceiro gargalo:** L (carga cognitiva) — s-a1-damico precisa de split ou simplificacao.
+
+**Nenhum slide atinge PASS (todas 14 dim >= 9).** Melhor slide: s-a1-rule5 (V=9, unico 9 do arco). Pior slide: s-a1-damico (E=4, L=5, H=6).
+
+---
+
 ## Pre-Act + Act 1 + CP1 — RODADA 3 CONSOLIDADA (10/mar/2026)
 
 **Status: PASS COM RISCOS**

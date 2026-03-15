@@ -4,6 +4,34 @@
 
 ---
 
+## 2026-03-14 — QA Loop 1 baseline Act 1 + limpeza HANDOFF + permissoes Claude Code
+
+Branch: `feat/cirrose-mvp`
+
+### QA Loop 1 baseline (AUDIT-VISUAL.md)
+
+- 11 slides x 14 dimensoes = 154 scores reais inseridos em nova secao "Act 1 — QA Loop 1 Baseline"
+- Evidencia: Playwright `act1-reaudit.mjs` (25 screenshots, metricas por slide)
+- 3 lints PASS (slides + case-sync + narrative-sync)
+- Nenhum slide PASS (todas dim >= 9). Gargalos: E (fill ratio), M (comunicacao), L (carga cognitiva)
+- Rubrica e historico de rodadas anteriores preservados
+
+### Limpeza HANDOFF.md
+
+- Removidos 5 blocos DONE (Colisao IDs, Act 2 skeletons, Browser QA, Hardening, Act 3 skeletons) — -103 linhas
+- Removidos 4 itens strikethrough no backlog (ERRO-008, ERRO-030, ERRO-031, pre-commit hook)
+- Adicionada secao "FORA DE ESCOPO AGORA" (8 headings adiados + bloqueio Acts 2/3)
+- Estado atual atualizado para refletir QA baseline aplicado
+
+### Permissoes Claude Code (.claude/settings.json)
+
+- `permissions.allow` expandido de 4 para 39 padroes (git read/write, node, npm, grep, find, ls, etc.)
+- `permissions.deny` inalterado (rm -rf, push --force, reset --hard, clean -f/df bloqueados)
+- `settings.local.json` limpo (91 entradas redundantes → 0)
+- Hooks inalterados
+
+---
+
 ## 2026-03-14 — Act 3 skeletons preenchidos (4/4)
 
 Branch: `main`

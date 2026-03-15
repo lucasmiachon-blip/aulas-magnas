@@ -4,65 +4,14 @@
 
 ---
 
-## Prep Skills — 2026-03-12
-
-### Terminal 1: repo-janitor (DONE)
-**Result:** Repo limpo. 0 FAIL, 0 WARN git-tracked.
-- Manifest sync: PASS (cirrose 44/44, grade 58/58, osteo 70/70)
-- Broken MD links: 0 real (5 false positives em template text de skills)
-- Temp files: 0
-- DEPRECATED markers: 0
-- Duplicate assets: 0
-- Stale qa-screenshots: 73 PNGs deletados (gitignored, local-only). Restam 80 PNGs em 3 dirs canônicos (act1-reaudit, act1-surgical-pass, browser-qa).
-- `exports/`: dir vazio (gitignored, staging area intencional)
-- Nenhum commit necessário (mudanças apenas em arquivos gitignored).
-
-### Terminal 2: docs-audit (DONE — commit 685a8f9)
-**Result:** 0 FAIL, 5 WARN. 4 fixes aplicados (-234 linhas):
-- SETUP.md: row duplicada consolidada
-- archive/README.md: entry research-2026-03-11 adicionada
-- NOTES.md: 145 linhas de machine logs purgadas (audit-trail as captura)
-- blueprint-cirrose.md: status stale removido (→ HANDOFF ref) + narrativa duplicada removida (→ biblia-narrativa ref)
-- **Backlog LOW (não corrigido):** ECOSYSTEM.md routing overlap com KPIs.md; biblia-narrativa.md stubs de evidência (40 linhas)
-
-### Terminal 3: evolve (DONE — commit af70be9)
-**Result:** 9 patches propostos, 7 aprovados (4/4 votos), 2 rejeitados.
-- P01: 4 hooks migrados `python -c` → `node -e` (3-agent convergence)
-- P02: guard-shared duplicado removido do settings.json
-- P03: context7 SKILL.md versões atualizadas (Reveal 5.2, Vite 6.x)
-- P04: post-compact-reinject detecta HANDOFF mais recente (não hardcoded)
-- P05: `npm audit fix` — 0 vulnerabilidades
-- P06: Lição registrada: hooks = `node -e`, nunca `python -c`
-- P07: reveal.js pinado `~5.2.1` (bloqueia 6.0 acidental)
-- **Rejeitados:** P08 (SDK update sem uso), P09 (Vite 8, risco alto pré-congresso)
-
-### Pós-skills: absorver em WTs (DONE — 2026-03-12)
-Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skills).
-- wt-cirrose: merged (conflito HANDOFF.md resolvido — main wins + WT status lines preservadas)
-- wt-metanalise: merged (conflito NOTES.md resolvido — main wins)
-- wt-osteo: merged (fast-forward, sem conflito)
-
----
-
-## Sessão 2026-03-15: Stack drift cleanup (main)
-
-- Docs corrigidos: stack = `deck.js` (cirrose/metanalise), `Reveal.js legacy` (grade/osteo frozen)
-- Dead code removido: `preview.html`, `export-screenshots.js`, script npm `export:screenshots`
-- Grade/Osteo marcados 🧊 FROZEN em CLAUDE.md e HANDOFF.md
-- `package.json` description atualizada
-- **Commits em main:** `99631c3` (docs), `76004c7` (dead code)
-- **Impacto cirrose:** zero (apenas docs de governança). Build OK (44 slides).
-
----
-
-## Estado atual — 2026-03-14 (pós-Act 3 fill + rubrica expandida)
+## Estado atual — 2026-03-14 (QA Loop 1 baseline aplicado)
 
 **Slides:** 44 buildados (2 pre + 8 Act 1 + 16 Act 2 + 7 Act 3 + 3 CP + 1 close + 8 app) · **Build:** ✅ · **Lint:** ✅ (slides + case-sync + narrative-sync)
 **Source of truth:** ✅ Validado — CASE→evidence-db→narrative→manifest→HTML (44/44 consistente, 0 drift de dados).
 **Act 2 skeletons:** ✅ 7/7 preenchidos com conteúdo HTML real (fontes, números, notes com timing).
 **Act 3 skeletons:** ✅ 4/4 preenchidos com conteúdo HTML real (hero-stat, comparison, etiology-compare, flow).
 **AUDIT-VISUAL.md:** ✅ Rubrica expandida 8→13 dimensões (merge qa-engineer). Scoring 1-10, min 9 para PASS.
-**QA Act 1:** ⏳ Loop 1 (Opus, 13 dim) NÃO INICIADO — Playwright técnico feito mas rubrica completa nunca aplicada.
+**QA Act 1:** ✅ Loop 1 baseline aplicado (14/mar/2026) — 11 slides × 14 dimensões, scores reais em AUDIT-VISUAL.md. Nenhum slide PASS (>= 9 em todas dim). Gargalo: E (fill ratio), M (word count), L (carga cognitiva).
 **QA Act 2:** ⏳ Bloqueado por Act 1 — não avançar até Act 1 = PASS.
 **Gemini MCP:** Somente após Loop 1 PASS.
 **Drifts cosméticos:** ✅ Corrigidos (3/3) — CLAUDE.md hash/data, HANDOFF decomposição + data.
@@ -72,41 +21,6 @@ Quarentena verificada: 0 commits Classe C em main. Apenas A/B (docs, hooks, skil
 ---
 
 ## CAMINHO CRÍTICO
-
-### ✅ DONE: Colisão de IDs (P0 bloqueador)
-
-Manifest rewrite resolveu colisão s-a2-01→s-a2-06. 12 HTMLs renomeados, 11 skeletons criados, _manifest.js reescrito com 44 slides. Build + 3 lints pass.
-
-### ✅ DONE: Act 2 skeletons preenchidos (7/7)
-
-| Slide | Arquivo | Conteúdo |
-|-------|---------|----------|
-| s-a2-01 | 30-a2-gatilhos.html | Gatilhos: PREDICT + D'Amico 2024 |
-| s-a2-02 | 31-a2-ascite-dx.html | Ascite dx: GASA, PMN, EASL CPG |
-| s-a2-03 | 32-a2-ascite-manejo.html | Ascite manejo: espiro/furo escalation, LVP |
-| s-a2-06 | 33-a2-hda.html | HDA: Garcia-Pagán 86%/61%, Larrue IPD |
-| s-a2-09 | 34-a2-nutricao.html | Nutrição: ESPEN 1.2-1.5g/kg, late-evening snack |
-| s-a2-10 | 35-a2-tx.html | TX: MELD≥15, Mathurin 77%/23% |
-| s-a2-12 | 36-a2-refrataria.html | Refratária: ICA 1996 critérios |
-
-Todos usam archetype-flow (.flow-cascade > .flow-step). Speaker notes com timing, [DATA], e [NARRATIVO] para MELDs construídos.
-
-### ✅ DONE: Browser QA Act 1 + Act 2 (Playwright)
-
-27 slides navegados via Playwright Chromium headless 1280x720. 46 screenshots em `qa-screenshots/browser-qa/`.
-- **Act 1 (11 slides):** PASS. 0 P0. P1: damico formula truncada, baveno clipping.
-- **Act 2 (16 slides):** PASS. 0 P0. P1: s-a2-01 h2 3 linhas, monotonia flow-cascade.
-- **Lints:** slides + case-sync + narrative-sync = all PASS. Zero console errors.
-
-### ✅ DONE: Hardening pré-Gemini Act 1 (rodada 10/mar/2026)
-
-4 blockers identificados e corrigidos:
-1. **Headline drift** — _manifest.js e narrative.md desatualizados para s-a1-damico e s-a1-rule5 (corrigido)
-2. **countUp "0" fallback** — 11 elementos em 5 slides mostravam "0" sem GSAP (corrigido para valores reais)
-3. **CSS failsafe gap** — `.pathway-stage--collapsed` orphan; analisado, failsafe pai já cobre (sem fix necessário)
-4. **Screenshots stale** — re-QA com 27 screenshots frescos via act1-reaudit.mjs. 0 P0, 0 console errors.
-
-Arquivos tocados: _manifest.js, narrative.md, 02-a1-continuum.html, 02b-a1-damico.html, 02c-a1-classify.html, 02d-a1-vote.html, 03b-a1-fib4calc.html
 
 ### P0 ATUAL: Conteúdo + interações + CSS graves (slide a slide)
 
@@ -120,17 +34,6 @@ Foco em produto: corrigir erros de interação, CSS e conteúdo nos slides exist
 - Inline style removido (INR text-transform → classe CSS)
 - Build ✅ · 3 lints ✅ · `/review` QA pendente
 
-### ✅ DONE: Preencher 4 skeletons Act 3
-
-| Slide | Arquivo | Archetype | Status |
-|-------|---------|-----------|--------|
-| s-a3-01 | 37-a3-bridge.html | hero-stat | ✅ HR 0,35/0,46 (Tonon 2023) |
-| s-a3-03 | 38-a3-expandido.html | comparison | ✅ Estrito 7% vs Expandido 37,6% (Tonon 2025) |
-| s-a3-04 | 39-a3-etiologia.html | etiology-compare | ✅ HBV/HCV/Álcool (3 PMIDs) |
-| s-a3-07 | 40-a3-fechamento.html | flow | ✅ Melhora → Persiste → Vigiar sempre |
-
-Zero CSS novo. RAW_ACT3_V1.md como fonte. Build + 3 lints PASS.
-
 ### Backlog
 
 - QA visual Gemini (estático por state + dinâmico): screenshots state-by-state, vídeo de reveals, monotonia visual Act 2
@@ -138,11 +41,24 @@ Zero CSS novo. RAW_ACT3_V1.md como fonte. Build + 3 lints PASS.
 - 2 HEX hardcoded em cirrose.css (linhas ~1034, ~1905)
 - PDF export quebrado (DeckTape)
 - Nomes de arquivo semanticamente enganosos (05-a1-infeccao → s-a2-04, 24-app-ccc → s-a2-13, etc.)
-- ~~Pre-commit hook wiring pendente~~ ✅ Pre-push hook instalado (done-gate --strict)
 - [TBD SOURCE]: sarcopenia prevalência, covert HE, centros TIPS Brasil, ESPEN 2019 PMID, QTc threshold
-- ~~ERRO-008: case panel redundante em s-hook~~ ✅ (panelState: hidden)
-- ~~ERRO-030:~~ ✅ emoji → CSS dots (rodada 4)
-- ~~ERRO-031:~~ ✅ var() → HEX literal (rodada 4)
+
+---
+
+## FORA DE ESCOPO AGORA
+
+Headings explicitamente adiados para batch posterior ao QA baseline do Act 1:
+
+1. Renomear D'Amico para "Child, MELD e D'Amico: os modelos prognóstico"
+2. Sequência "Testes não invasivos — mudança de paradigma"
+3. Sequência "Scores e nuances"
+4. Slide explicativo de elastografia
+5. The Rule of 5 (redesign/expansão)
+6. MELD / MELD-Na / MELD 3.0 (redesign/expansão)
+7. Checkpoint "qual o próximo passo?"
+8. Slide final do Ato 1: "Trajetórias — Cirrose e suas descompensações"
+
+Acts 2 e 3: bloqueados até Act 1 atingir PASS (todas 13 dimensões >= 9).
 
 ---
 
